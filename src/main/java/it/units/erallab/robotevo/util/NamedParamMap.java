@@ -430,12 +430,4 @@ public class NamedParamMap {
     return npmsMap.get(n);
   }
 
-  public static void main(String[] args) {
-    NamedParamMap m = NamedParamMap.parse(
-        "name(cs=[a(i=1.0);b(i=2.1)];x=ciao;y=3.0;z=ailo(r=-12.0;z=-1.55;names=[caino;abele]);xs=[1.0;2.0;3.0;5.0];" +
-            "flag=true)");
-    System.out.println(m.npm("z").i("r"));
-    System.out.println(m.npm("z").d("z"));
-    System.out.println(m.b("flag"));
-  }
 }
