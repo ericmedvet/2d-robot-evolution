@@ -22,25 +22,29 @@ import it.units.erallab.mrsim.util.builder.NamedBuilder;
 import it.units.erallab.mrsim.util.builder.ParamMap;
 import it.units.malelab.jgea.core.order.PartialComparator;
 
+import java.util.Comparator;
+import java.util.function.Function;
+
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
 public class ComparatorBuilder extends NamedBuilder<PartialComparator<?>> {
 
   private ComparatorBuilder() {
-    register("locomotionXVelocity", ComparatorBuilder::createLocomotionVelocity);
+    register("min", ComparatorBuilder::createMin);
+    register("max", (m, nb) -> createMin(m, nb).reversed());
   }
 
-  private static PartialComparator<Locomotion.Outcome> createLocomotionVelocity(ParamMap m, NamedBuilder<?> nb) {
-    double transientT = m.d("transientT", 0d);
-    return (o1, o2) -> {
-      int o = Double.compare(
-          o1.subOutcome(new DoubleRange(transientT, o1.duration())).xVelocity(),
-          o1.subOutcome(new DoubleRange(transientT, o2.duration())).xVelocity()
-      );
-      if (o<0) {
+
+  @SuppressWarnings("unchecked")
+  private static PartialComparator<Object> createMin(ParamMap m, NamedBuilder<?> nb) {
+    Function<Object, Double> extractor = (Function<Object, Double>) nb.build(m.npm("of"))
+        .orElseThrow(() -> new IllegalArgumentException("No value for of"));
+    return (k1, k2) -> {
+      int o = Double.compare(extractor.apply(k1), extractor.apply(k2));
+      if (o < 0) {
         return PartialComparator.PartialComparatorOutcome.BEFORE;
-      } else if (o>0) {
+      } else if (o > 0) {
         return PartialComparator.PartialComparatorOutcome.AFTER;
       }
       return PartialComparator.PartialComparatorOutcome.SAME;

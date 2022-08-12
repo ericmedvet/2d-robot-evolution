@@ -25,36 +25,37 @@ import it.units.erallab.robotevo.builder.PrototypedFunctionBuilder;
 
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
 public class CentralizedNumGridVSRBrain implements NamedBuilder.Builder<PrototypedFunctionBuilder<List<Double>,
-    CentralizedNumGridVSR>> {
+    Supplier<CentralizedNumGridVSR>>> {
   @SuppressWarnings("unchecked")
   @Override
-  public PrototypedFunctionBuilder<List<Double>, CentralizedNumGridVSR> build(
+  public PrototypedFunctionBuilder<List<Double>, Supplier<CentralizedNumGridVSR>> build(
       ParamMap m,
       NamedBuilder<?> nb
   ) throws IllegalArgumentException {
     PrototypedFunctionBuilder<List<Double>, TimedRealFunction> trfMapper = (PrototypedFunctionBuilder<List<Double>,
         TimedRealFunction>) nb.build(
         m.npm("trf")).orElseThrow(() -> new IllegalArgumentException("No value for the timerdRealFunction"));
-    return new PrototypedFunctionBuilder<TimedRealFunction, CentralizedNumGridVSR>() {
+    return new PrototypedFunctionBuilder<TimedRealFunction, Supplier<CentralizedNumGridVSR>>() {
       @Override
-      public Function<TimedRealFunction, CentralizedNumGridVSR> buildFor(CentralizedNumGridVSR target) {
-        return trf -> new CentralizedNumGridVSR(
-            new NumGridVSR.Body(target.getBody().grid()),
+      public Function<TimedRealFunction, Supplier<CentralizedNumGridVSR>> buildFor(Supplier<CentralizedNumGridVSR> target) {
+        return trf -> () -> new CentralizedNumGridVSR(
+            new NumGridVSR.Body(target.get().getBody().grid()),
             trf
         );
       }
 
       @Override
-      public TimedRealFunction exampleFor(CentralizedNumGridVSR centralizedNumGridVSR) {
+      public TimedRealFunction exampleFor(Supplier<CentralizedNumGridVSR> target) {
         return TimedRealFunction.from(
             (t, in) -> in,
-            centralizedNumGridVSR.nOfInputs(),
-            centralizedNumGridVSR.nOfOutputs()
+            target.get().nOfInputs(),
+            target.get().nOfOutputs()
         );
       }
     }.compose(trfMapper);

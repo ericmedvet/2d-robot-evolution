@@ -72,7 +72,7 @@ public class DoublesMultiLayerPerceptron implements NamedBuilder.Builder<Prototy
         int nOfInputs = trf.nOfInputs();
         int nOfOutputs = trf.nOfOutputs();
         int[] innerNeurons = innerNeurons(nOfInputs, nOfOutputs, innerLayerRatio, nOfInnerLayers);
-        return Collections.nCopies(MultiLayerPerceptron.countWeights(innerNeurons), 0d);
+        return Collections.nCopies(MultiLayerPerceptron.countWeights(nOfInputs, innerNeurons, nOfOutputs), 0d);
       }
     };
   }
