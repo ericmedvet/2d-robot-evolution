@@ -29,6 +29,9 @@ import it.units.erallab.mrsim.tasks.locomotion.Locomotion;
 import it.units.erallab.mrsim.util.builder.NamedBuilder;
 import it.units.erallab.mrsim.util.builder.Param;
 import it.units.erallab.mrsim.util.builder.ParamMap;
+import it.units.erallab.mrsim.viewer.Drawers;
+import it.units.erallab.mrsim.viewer.VideoBuilder;
+import it.units.erallab.mrsim.viewer.VideoUtils;
 import it.units.erallab.robotevo.builder.*;
 import it.units.erallab.robotevo.builder.agent.DumbCentralizedNumGridVSR;
 import it.units.erallab.robotevo.builder.mapper.Composition;
@@ -38,14 +41,19 @@ import it.units.erallab.robotevo.builder.solver.DoublesStandard;
 import it.units.erallab.robotevo.builder.solver.SolverBuilder;
 import it.units.malelab.jgea.core.QualityBasedProblem;
 import it.units.malelab.jgea.core.listener.*;
+import it.units.malelab.jgea.core.listener.telegram.TelegramProgressMonitor;
+import it.units.malelab.jgea.core.listener.telegram.TelegramUpdater;
 import it.units.malelab.jgea.core.order.PartialComparator;
 import it.units.malelab.jgea.core.solver.Individual;
 import it.units.malelab.jgea.core.solver.IterativeSolver;
 import it.units.malelab.jgea.core.solver.SolverException;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
 import it.units.malelab.jgea.core.util.Args;
+import it.units.malelab.jgea.core.util.ImagePlotters;
 import it.units.malelab.jgea.core.util.Misc;
+import org.jetbrains.annotations.NotNull;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -75,68 +83,144 @@ public class Starter implements Runnable {
 
   private final NamedBuilder<Object> nb;
   private final String descFile;
+  private final String telegramBotId;
 
-  public Starter(NamedBuilder<Object> nb, String descFile) {
+  public Starter(NamedBuilder<Object> nb, String descFile, String telegramBotId) {
     this.nb = nb;
     this.descFile = descFile;
+    this.telegramBotId = telegramBotId;
   }
 
   public record Experiment<G, Q>(
       @Param("runs") List<? extends Run<? extends G, ? extends Q>> runs,
-      @Param("qExtractor") Function<? super Q, Double> qExtractor,
-      @Param("bestFileSaver") FileSaver<Q> bestFileSaver
+      @Param("qExtractor") Function<? super Q, Double> qExtractor, @Param("bestFileSaver") FileSaver<Q> bestFileSaver,
+      @Param("telegramChatId") String telegramChatId,
+      @Param("videoTasks") List<Task<Supplier<EmbodiedAgent>, ?>> videoTasks
   ) {}
 
+
   public record FileSaver<Q>(
-      @Param("fileName") String fileName,
-      @Param("serializer") Function<? super Q, String> serializer
+      @Param("fileName") String fileName, @Param("serializer") Function<? super Q, String> serializer
   ) {}
 
   public record Run<G, Q>(
       @Param("solver") SolverBuilder<G> solverBuilder,
-      @Param("mapper") MapperBuilder<G, Supplier<EmbodiedAgent>> mapper,
-      @Param("target") EmbodiedAgent target,
+      @Param("mapper") MapperBuilder<G, Supplier<EmbodiedAgent>> mapper, @Param("target") EmbodiedAgent target,
       @Param("task") Task<Supplier<EmbodiedAgent>, Q> task,
       @Param("comparator") PartialComparator<? super Q> comparator,
-      @Param("randomGenerator") RandomGenerator randomGenerator,
-      @Param(value = "", self = true) ParamMap map
+      @Param("randomGenerator") RandomGenerator randomGenerator, @Param(value = "", self = true) ParamMap map
   ) {}
+
+  @NotNull
+  private static CSVPrinter<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> getCsvPrinter(
+      FileSaver<?> fileSaver,
+      List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> nonVisualFunctions,
+      List<NamedFunction<? super Map<String, Object>, ?>> keysFunctions
+  ) {
+    @SuppressWarnings("unchecked") Function<Object, String> serializer =
+        (Function<Object, String>) fileSaver.serializer();
+    List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> fileFunctions =
+        nonVisualFunctions;
+    if (fileSaver.serializer() != null) {
+      NamedFunction<? super Individual<?, Supplier<EmbodiedAgent>, ?>, ?> gSerializer = f(
+          "g",
+          "%s",
+          i -> serializer.apply(i.genotype())
+      );
+      //noinspection unchecked,rawtypes
+      fileFunctions = Misc.concat(List.of(nonVisualFunctions, best().then((List) List.of(gSerializer))));
+    }
+    return new CSVPrinter<>(fileFunctions, keysFunctions, new File(fileSaver.fileName()));
+  }
+
+  private static AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, BufferedImage, Map<String,
+      Object>> getPlotter(
+      Experiment<?, ?> experiment
+  ) {
+    @SuppressWarnings("unchecked") Function<Object, Double> qFunction =
+        ((Function<Object, Double>) experiment.qExtractor());
+    return new TableBuilder<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Number, Map<String, Object>>(List.of(
+        iterations(),
+        f("q", qFunction).of(fitness()).of(best()),
+        min(Double::compare).of(each(f("q", qFunction).of(fitness()))).of(all()),
+        median(Double::compare).of(each(f("q", qFunction).of(fitness()))).of(all())
+    ), List.of()).then(t -> ImagePlotters.xyLines(600, 400).apply(t));
+  }
+
+  private static AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, File, Map<String, Object>> getVideoMaker(
+      Supplier<Engine> engineSupplier, Task<Supplier<EmbodiedAgent>, ?> task
+  ) {
+    return AccumulatorFactory.last((state, keys) -> {
+      File file;
+      try {
+        file = File.createTempFile("robot-video", ".mp4");
+        VideoBuilder videoBuilder = new VideoBuilder(
+            300,
+            200,
+            0,
+            30,
+            30,
+            VideoUtils.EncoderFacility.JCODEC,
+            file,
+            Drawers.basic()
+        );
+        Supplier<EmbodiedAgent> agent = Misc.first(state.getPopulation().firsts()).solution();
+        task.run(agent, engineSupplier.get(), videoBuilder);
+        file = videoBuilder.get();
+        file.deleteOnExit();
+      } catch (IOException ioException) {
+        L.warning(String.format("Cannot save video of best: %s", ioException));
+        return null;
+      }
+      return file;
+    });
+  }
 
   public static void main(String[] args) {
     NamedBuilder<Object> nb = NamedBuilder.empty()
         .and(List.of("sim", "s"), NamedBuilder.empty()
-            .and(List.of("terrain", "t"), NamedBuilder.fromUtilityClass(TerrainBuilder.class))
-            .and(List.of("task"), NamedBuilder.empty()
-                .and(NamedBuilder.fromClass(Locomotion.class))
-            )
-            .and(List.of("vsr"), NamedBuilder.empty()
-                .and(NamedBuilder.fromClass(NumGridVSR.Body.class))
-                .and(List.of("shape", "s"), NamedBuilder.fromUtilityClass(GridShapeBuilder.class))
-                .and(
+            .and(List.of(
+                "terrain",
+                "t"
+            ), NamedBuilder.fromUtilityClass(TerrainBuilder.class))
+            .and(List.of("task"), NamedBuilder.empty().and(NamedBuilder.fromClass(Locomotion.class)))
+            .and(
+                List.of("vsr"),
+                NamedBuilder.empty().and(NamedBuilder.fromClass(NumGridVSR.Body.class)).and(
+                    List.of("shape", "s"),
+                    NamedBuilder.fromUtilityClass(GridShapeBuilder.class)
+                ).and(
                     List.of("sensorizingFunction", "sf"),
                     NamedBuilder.fromUtilityClass(VSRSensorizingFunctionBuilder.class)
-                )
-                .and(List.of("voxelSensor", "vs"), NamedBuilder.fromUtilityClass(VoxelSensorBuilder.class)))
-        )
+                ).and(List.of("voxelSensor", "vs"), NamedBuilder.fromUtilityClass(VoxelSensorBuilder.class))
+            ))
         .and(List.of("randomGenerator", "rg"), NamedBuilder.fromUtilityClass(RandomGeneratorBuilder.class))
         .and(List.of("comparator", "c"), NamedBuilder.fromUtilityClass(ComparatorBuilder.class))
         .and(List.of("extractor", "e"), NamedBuilder.fromUtilityClass(ExtractorBuilder.class))
         .and(List.of("serializer", "ser"), NamedBuilder.fromUtilityClass(SerializerBuilder.class))
-        .and(List.of("mapper", "m"), NamedBuilder.empty()
-            .and(NamedBuilder.fromClass(Composition.class))
-            .and(NamedBuilder.fromClass(CentralizedNumGridVSRBrain.class))
-            .and(NamedBuilder.fromClass(DoublesMultiLayerPerceptron.class))
+        .and(
+            List.of("mapper", "m"),
+            NamedBuilder.empty()
+                .and(NamedBuilder.fromClass(Composition.class))
+                .and(NamedBuilder.fromClass(CentralizedNumGridVSRBrain.class))
+                .and(NamedBuilder.fromClass(DoublesMultiLayerPerceptron.class))
         )
-        .and(List.of("agent", "a"), NamedBuilder.empty()
-            .and(NamedBuilder.fromClass(DumbCentralizedNumGridVSR.class))
-        )
-        .and(List.of("solver", "so"), NamedBuilder.empty()
-            .and(NamedBuilder.fromClass(DoublesStandard.class))
-        )
+        .and(List.of("agent", "a"), NamedBuilder.empty().and(NamedBuilder.fromClass(DumbCentralizedNumGridVSR.class)))
+        .and(List.of("solver", "so"), NamedBuilder.empty().and(NamedBuilder.fromClass(DoublesStandard.class)))
         .and(NamedBuilder.fromClass(FileSaver.class))
         .and(NamedBuilder.fromClass(Run.class))
         .and(NamedBuilder.fromClass(Experiment.class));
-    new Starter(nb, Args.a(args, "descFile", null)).run();
+    new Starter(nb, Args.a(args, "descFile", null), Args.a(args, "telegramBotId", null)).run();
+  }
+
+  @NotNull
+  private TelegramUpdater<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> getTelegramUpdater(
+      Experiment<?, ?> experiment, Supplier<Engine> engineSupplier
+  ) {
+    List<AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?, Map<String, Object>>> accumulators = new ArrayList<>();
+    accumulators.add(getPlotter(experiment));
+    experiment.videoTasks().forEach(t -> accumulators.add(getVideoMaker(engineSupplier, t)));
+    return new TelegramUpdater<>(accumulators, telegramBotId, Long.parseLong(experiment.telegramChatId()));
   }
 
   @Override
@@ -157,33 +241,29 @@ public class Starter implements Runnable {
     //create executor
     ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
     //create common listeners and progress monitor
-    List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> basicFunctions = List.of(
-        iterations(),
-        births(),
-        fitnessEvaluations(),
-        elapsedSeconds()
-    );
+    List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> basicFunctions =
+        List.of(
+            iterations(),
+            births(),
+            fitnessEvaluations(),
+            elapsedSeconds()
+        );
     @SuppressWarnings("unchecked") Function<Object, Double> qFunction =
-        (Function<Object, Double>) experiment.qExtractor();
+        ((Function<Object, Double>) experiment.qExtractor());
     List<NamedFunction<? super Individual<?, Supplier<EmbodiedAgent>, ?>, ?>> individualFunctions = List.of(
-        size().of(genotype()),
+        size().of(
+            genotype()),
         f("genotype.birth.iteration", "%4d", Individual::genotypeBirthIteration),
         f("q", "%+6.3f", i -> qFunction.apply(i.fitness()))
     );
-    List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> visualFunctions = List.of(
-        hist(8).of(each(f("q", qFunction).of(fitness()))).of(all())
-    );
+    List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> visualFunctions =
+        List.of(hist(8).of(
+            each(f("q", qFunction).of(fitness()))).of(all()));
     @SuppressWarnings({"rawtypes", "unchecked"}) List<NamedFunction<? super POSetPopulationState<?,
-        Supplier<EmbodiedAgent>, ?>, ?>> nonVisualFunctions =
-        Misc.concat(List.of(
-            basicFunctions,
-            best().then((List) individualFunctions)
-        ));
+        Supplier<EmbodiedAgent>, ?>, ?>> nonVisualFunctions = Misc.concat(
+        List.of(basicFunctions, best().then((List) individualFunctions)));
     List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> screenFunctions = Misc.concat(
-        List.of(
-            nonVisualFunctions,
-            visualFunctions
-        ));
+        List.of(nonVisualFunctions, visualFunctions));
     List<NamedFunction<? super Map<String, Object>, ?>> keysFunctions = List.of(
         attribute("solver"),
         attribute("mapper"),
@@ -195,24 +275,22 @@ public class Starter implements Runnable {
     List<ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>>> factories = new ArrayList<>();
     factories.add(new TabularPrinter<>(screenFunctions, List.of()));
     if (experiment.bestFileSaver() != null) {
-      @SuppressWarnings("unchecked") Function<Object, String> serializer =
-          (Function<Object, String>) experiment.bestFileSaver()
-              .serializer();
-      List<NamedFunction<? super Individual<?, Supplier<EmbodiedAgent>, ?>, ?>> individualFileFunctions = List.of(
-          f("g", "%s", i -> serializer.apply(i.genotype()))
-      );
-      @SuppressWarnings({"unchecked", "rawtypes"}) List<NamedFunction<? super POSetPopulationState<?,
-          Supplier<EmbodiedAgent>, ?>,
-          ?>> fileFunctions = Misc.concat(
-          List.of(
-              nonVisualFunctions,
-              best().then((List) individualFileFunctions)
-          ));
-      factories.add(new CSVPrinter<>(fileFunctions, keysFunctions, new File(experiment.bestFileSaver().fileName())));
+      factories.add(getCsvPrinter(experiment.bestFileSaver(), nonVisualFunctions, keysFunctions));
+    }
+    if (experiment.telegramChatId() != null && !experiment.telegramChatId().isEmpty()) {
+      factories.add(getTelegramUpdater(experiment, engineSupplier));
     }
     ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> factory =
-        ListenerFactory.all(factories);
+        ListenerFactory.all(
+            factories);
+    //build progress monitor
     ProgressMonitor progressMonitor = new ScreenProgressMonitor(System.out);
+    if (experiment.telegramChatId() != null && !experiment.telegramChatId().isEmpty()) {
+      progressMonitor = progressMonitor.and(new TelegramProgressMonitor(
+          telegramBotId,
+          Long.parseLong(experiment.telegramChatId())
+      ));
+    }
     //iterate over runs
     for (int i = 0; i < experiment.runs().size(); i++) {
       Run<?, ?> run = experiment.runs().get(i);
@@ -225,10 +303,7 @@ public class Starter implements Runnable {
           QualityBasedProblem<Supplier<EmbodiedAgent>, ?>, Supplier<EmbodiedAgent>> solver;
       try {
         //noinspection unchecked,rawtypes
-        solver = run.solverBuilder().build(
-            (MapperBuilder) run.mapper(),
-            (Supplier<EmbodiedAgent>) run::target
-        );
+        solver = run.solverBuilder().build((MapperBuilder) run.mapper(), (Supplier<EmbodiedAgent>) run::target);
       } catch (RuntimeException e) {
         L.warning(String.format("Cannot instantiate solver %s: %s", run.map().npm("solver"), e));
         e.printStackTrace();
@@ -241,14 +316,18 @@ public class Starter implements Runnable {
               (PartialComparator<Object>) run.comparator()
           );
       //build listener
-      Listener<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>> listener = factory.build(Map.ofEntries(
-          Map.entry("solver", run.map().npm("solver")),
-          Map.entry("mapper", run.map().npm("mapper")),
-          Map.entry("target", run.map().npm("target")),
-          Map.entry("task", run.map().npm("task")),
-          Map.entry("comparator", run.map().npm("comparator")),
-          Map.entry("randomGenerator", run.map().npm("randomGenerator"))
-      ));
+      Listener<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>> listener =
+          factory.build(Map.ofEntries(
+              Map.entry(
+                  "solver",
+                  run.map().npm("solver")
+              ),
+              Map.entry("mapper", run.map().npm("mapper")),
+              Map.entry("target", run.map().npm("target")),
+              Map.entry("task", run.map().npm("task")),
+              Map.entry("comparator", run.map().npm("comparator")),
+              Map.entry("randomGenerator", run.map().npm("randomGenerator"))
+          ));
       //do optimization
       try {
         Instant startingT = Instant.now();
@@ -259,16 +338,13 @@ public class Starter implements Runnable {
             listener
         );
         double elapsedT = Duration.between(startingT, Instant.now()).toMillis() / 1000d;
-        progressMonitor.notify(
-            (float) (i + 1) / (float) experiment.runs().size(),
-            String.format(
-                "%d/%d run done in %.2fs, found %d solutions",
-                i,
-                experiment.runs().size(),
-                elapsedT,
-                solutions.size()
-            )
-        );
+        progressMonitor.notify((float) (i + 1) / (float) experiment.runs().size(), String.format(
+            "%d/%d run done in %.2fs, found %d solutions",
+            i,
+            experiment.runs().size(),
+            elapsedT,
+            solutions.size()
+        ));
       } catch (SolverException e) {
         L.warning(String.format("Cannot solve %s: %s", run.map(), e));
         break;
