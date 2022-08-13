@@ -332,7 +332,7 @@ public class Starter implements Runnable {
           (float) i / (float) experiment.runs().size(),
           String.format(
               "Starting %d/%d run:%n%s",
-              i,
+              i + 1,
               experiment.runs().size(),
               (run.map() instanceof StringNamedParamMap) ? ((StringNamedParamMap) run.map()).prettyToString() :
                   run.map().toString()
@@ -379,7 +379,7 @@ public class Starter implements Runnable {
             (float) (i + 1) / (float) experiment.runs().size(),
             String.format(
                 "%d/%d run done in %.2fs, found %d solutions",
-                i,
+                i + 1,
                 experiment.runs().size(),
                 elapsedT,
                 solutions.size()
