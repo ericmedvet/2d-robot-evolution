@@ -217,7 +217,7 @@ public class Starter implements Runnable {
             videoSaver.frameRate(),
             VideoUtils.EncoderFacility.valueOf(videoSaver.codec().toUpperCase()),
             file,
-            videoSaver.drawer().apply(videoTask.map().toString())
+            videoSaver.drawer().apply(videoTask.map().npm("task").toString())
         );
         Supplier<EmbodiedAgent> agent = Misc.first(state.getPopulation().firsts()).solution();
         videoTask.task().run(agent, engineSupplier.get(), videoBuilder);
