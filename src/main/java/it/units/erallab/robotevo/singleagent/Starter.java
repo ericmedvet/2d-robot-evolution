@@ -298,7 +298,7 @@ public class Starter implements Runnable {
     if (experiment.bestFileSaver() != null) {
       factories.add(getCsvPrinter(experiment.bestFileSaver(), nonVisualFunctions, keysFunctions));
     }
-    if (experiment.telegramChatId() != null && !experiment.telegramChatId().isEmpty()) {
+    if (experiment.telegramChatId() != null && !experiment.telegramChatId().isEmpty() && configuration.telegramBotId()!=null && !configuration.telegramBotId().isEmpty()) {
       factories.add(getTelegramUpdater(experiment, engineSupplier));
     }
     ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> factory =
