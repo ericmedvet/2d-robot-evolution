@@ -29,6 +29,7 @@ import it.units.erallab.mrsim.tasks.locomotion.Locomotion;
 import it.units.erallab.mrsim.util.builder.NamedBuilder;
 import it.units.erallab.mrsim.util.builder.Param;
 import it.units.erallab.mrsim.util.builder.ParamMap;
+import it.units.erallab.mrsim.util.builder.StringNamedParamMap;
 import it.units.erallab.mrsim.viewer.Drawer;
 import it.units.erallab.mrsim.viewer.VideoBuilder;
 import it.units.erallab.mrsim.viewer.VideoUtils;
@@ -329,7 +330,13 @@ public class Starter implements Runnable {
       Run<?, ?> run = experiment.runs().get(i);
       progressMonitor.notify(
           (float) i / (float) experiment.runs().size(),
-          String.format("Starting %d/%d run: %s", i, experiment.runs().size(), run.map())
+          String.format(
+              "Starting %d/%d run:%n%s",
+              i,
+              experiment.runs().size(),
+              (run.map() instanceof StringNamedParamMap) ? ((StringNamedParamMap) run.map()).prettyToString() :
+                  run.map().toString()
+          )
       );
       //build solver
       IterativeSolver<? extends POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>,
@@ -351,10 +358,7 @@ public class Starter implements Runnable {
       //build listener
       Listener<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>> listener =
           factory.build(Map.ofEntries(
-              Map.entry(
-                  "solver",
-                  run.map().npm("solver")
-              ),
+              Map.entry("solver", run.map().npm("solver")),
               Map.entry("mapper", run.map().npm("mapper")),
               Map.entry("target", run.map().npm("target")),
               Map.entry("task", run.map().npm("task")),
