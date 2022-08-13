@@ -17,25 +17,19 @@
 package it.units.erallab.robotevo.builder.agent;
 
 import it.units.erallab.mrsim.agents.gridvsr.CentralizedNumGridVSR;
-import it.units.erallab.mrsim.agents.gridvsr.NumGridVSR;
 import it.units.erallab.mrsim.functions.TimedRealFunction;
-import it.units.erallab.mrsim.util.builder.NamedBuilder;
-import it.units.erallab.mrsim.util.builder.ParamMap;
+import it.units.erallab.mrsim.util.builder.Param;
 
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
-public class DumbCentralizedNumGridVSR implements NamedBuilder.Builder<CentralizedNumGridVSR> {
+public class DumbCentralizedNumGridVSR extends CentralizedNumGridVSR {
 
-  @Override
-  public CentralizedNumGridVSR build(ParamMap m, NamedBuilder<?> nb) throws IllegalArgumentException {
-    NumGridVSR.Body body = (NumGridVSR.Body) nb.build(m.npm("body")).orElseThrow(() -> new IllegalArgumentException(
-        "No value for the body"));
-    int nOfInputs = CentralizedNumGridVSR.nOfInputs(body);
-    int nOfOutputs = CentralizedNumGridVSR.nOfOutputs(body);
-    return new CentralizedNumGridVSR(
-        body,
-        TimedRealFunction.from((t, in) -> new double[nOfOutputs], nOfInputs, nOfOutputs)
-    );
+  public DumbCentralizedNumGridVSR(@Param("body") Body body) {
+    super(body, TimedRealFunction.from((t, in) -> new double[CentralizedNumGridVSR.nOfOutputs(body)],
+        CentralizedNumGridVSR.nOfInputs(body),
+        CentralizedNumGridVSR.nOfOutputs(body)
+    ));
   }
+
 }

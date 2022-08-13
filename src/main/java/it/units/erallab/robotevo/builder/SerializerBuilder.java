@@ -23,7 +23,7 @@ import java.util.function.Function;
  */
 public class SerializerBuilder {
 
-  public static Function<Object, String> stringer() {
+  public static Function<Object, String> stringifier() {
     return Object::toString;
   }
 

@@ -25,13 +25,12 @@ import it.units.erallab.mrsim.core.EmbodiedAgent;
 import it.units.erallab.mrsim.engine.Engine;
 import it.units.erallab.mrsim.engine.dyn4j.Dyn4JEngine;
 import it.units.erallab.mrsim.tasks.Task;
+import it.units.erallab.mrsim.tasks.locomotion.Locomotion;
 import it.units.erallab.mrsim.util.builder.NamedBuilder;
 import it.units.erallab.mrsim.util.builder.Param;
 import it.units.erallab.mrsim.util.builder.ParamMap;
-import it.units.erallab.robotevo.builder.ComparatorBuilder;
-import it.units.erallab.robotevo.builder.ExtractorBuilder;
-import it.units.erallab.robotevo.builder.MapperBuilder;
-import it.units.erallab.robotevo.builder.RandomGeneratorBuilder;
+import it.units.erallab.robotevo.builder.*;
+import it.units.erallab.robotevo.builder.agent.DumbCentralizedNumGridVSR;
 import it.units.erallab.robotevo.builder.mapper.Composition;
 import it.units.erallab.robotevo.builder.mapper.agent.CentralizedNumGridVSRBrain;
 import it.units.erallab.robotevo.builder.mapper.function.DoublesMultiLayerPerceptron;
@@ -94,7 +93,7 @@ public class Starter implements Runnable {
   ) {}
 
   public record Run<G, Q>(
-      @Param("solverBuilder") SolverBuilder<G> solverBuilder,
+      @Param("solver") SolverBuilder<G> solverBuilder,
       @Param("mapper") MapperBuilder<G, Supplier<EmbodiedAgent>> mapper,
       @Param("target") EmbodiedAgent target,
       @Param("task") Task<Supplier<EmbodiedAgent>, Q> task,
@@ -106,22 +105,30 @@ public class Starter implements Runnable {
   public static void main(String[] args) {
     NamedBuilder<Object> nb = NamedBuilder.empty()
         .and(List.of("sim", "s"), NamedBuilder.empty()
-            .and(NamedBuilder.fromClass(NumGridVSR.Body.class))
             .and(List.of("terrain", "t"), NamedBuilder.fromUtilityClass(TerrainBuilder.class))
-            .and(List.of("shape", "s"), NamedBuilder.fromUtilityClass(GridShapeBuilder.class))
-            .and(
-                List.of("sensorizingFunction", "sf"),
-                NamedBuilder.fromUtilityClass(VSRSensorizingFunctionBuilder.class)
+            .and(List.of("task"), NamedBuilder.empty()
+                .and(NamedBuilder.fromClass(Locomotion.class))
             )
-            .and(List.of("voxelSensor", "vs"), NamedBuilder.fromUtilityClass(VoxelSensorBuilder.class)))
+            .and(List.of("vsr"), NamedBuilder.empty()
+                .and(NamedBuilder.fromClass(NumGridVSR.Body.class))
+                .and(List.of("shape", "s"), NamedBuilder.fromUtilityClass(GridShapeBuilder.class))
+                .and(
+                    List.of("sensorizingFunction", "sf"),
+                    NamedBuilder.fromUtilityClass(VSRSensorizingFunctionBuilder.class)
+                )
+                .and(List.of("voxelSensor", "vs"), NamedBuilder.fromUtilityClass(VoxelSensorBuilder.class)))
+        )
         .and(List.of("randomGenerator", "rg"), NamedBuilder.fromUtilityClass(RandomGeneratorBuilder.class))
         .and(List.of("comparator", "c"), NamedBuilder.fromUtilityClass(ComparatorBuilder.class))
         .and(List.of("extractor", "e"), NamedBuilder.fromUtilityClass(ExtractorBuilder.class))
-        .and(List.of("serializer", "ser"), NamedBuilder.fromUtilityClass(ExtractorBuilder.class))
+        .and(List.of("serializer", "ser"), NamedBuilder.fromUtilityClass(SerializerBuilder.class))
         .and(List.of("mapper", "m"), NamedBuilder.empty()
             .and(NamedBuilder.fromClass(Composition.class))
             .and(NamedBuilder.fromClass(CentralizedNumGridVSRBrain.class))
             .and(NamedBuilder.fromClass(DoublesMultiLayerPerceptron.class))
+        )
+        .and(List.of("agent", "a"), NamedBuilder.empty()
+            .and(NamedBuilder.fromClass(DumbCentralizedNumGridVSR.class))
         )
         .and(List.of("solver", "so"), NamedBuilder.empty()
             .and(NamedBuilder.fromClass(DoublesStandard.class))

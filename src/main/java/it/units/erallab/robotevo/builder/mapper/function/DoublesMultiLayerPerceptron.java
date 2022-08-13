@@ -41,7 +41,7 @@ public class DoublesMultiLayerPerceptron implements MapperBuilder<List<Double>, 
   ) {
     this.innerLayerRatio = innerLayerRatio;
     this.nOfInnerLayers = nOfInnerLayers;
-    this.activationFunction = MultiLayerPerceptron.ActivationFunction.valueOf(activationFunction);
+    this.activationFunction = MultiLayerPerceptron.ActivationFunction.valueOf(activationFunction.toUpperCase());
   }
 
   protected static int[] innerNeurons(int nOfInputs, int nOfOutputs, double innerLayerRatio, int nOfInnerLayers) {
