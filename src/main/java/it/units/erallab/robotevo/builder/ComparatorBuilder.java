@@ -16,30 +16,21 @@
 
 package it.units.erallab.robotevo.builder;
 
-import it.units.erallab.mrsim.tasks.locomotion.Locomotion;
-import it.units.erallab.mrsim.util.DoubleRange;
-import it.units.erallab.mrsim.util.builder.NamedBuilder;
-import it.units.erallab.mrsim.util.builder.ParamMap;
+import it.units.erallab.mrsim.util.builder.Param;
 import it.units.malelab.jgea.core.order.PartialComparator;
 
-import java.util.Comparator;
 import java.util.function.Function;
 
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
-public class ComparatorBuilder extends NamedBuilder<PartialComparator<?>> {
+public class ComparatorBuilder {
 
-  private ComparatorBuilder() {
-    register("min", ComparatorBuilder::createMin);
-    register("max", (m, nb) -> createMin(m, nb).reversed());
+  public static PartialComparator<Object> max(@Param("of") Function<Object, Double> extractor) {
+    return min(extractor).reversed();
   }
 
-
-  @SuppressWarnings("unchecked")
-  private static PartialComparator<Object> createMin(ParamMap m, NamedBuilder<?> nb) {
-    Function<Object, Double> extractor = (Function<Object, Double>) nb.build(m.npm("of"))
-        .orElseThrow(() -> new IllegalArgumentException("No value for of"));
+  public static PartialComparator<Object> min(@Param("of") Function<Object, Double> extractor) {
     return (k1, k2) -> {
       int o = Double.compare(extractor.apply(k1), extractor.apply(k2));
       if (o < 0) {
@@ -49,12 +40,6 @@ public class ComparatorBuilder extends NamedBuilder<PartialComparator<?>> {
       }
       return PartialComparator.PartialComparatorOutcome.SAME;
     };
-  }
-
-  private final static ComparatorBuilder INSTANCE = new ComparatorBuilder();
-
-  public static ComparatorBuilder getInstance() {
-    return INSTANCE;
   }
 
 }

@@ -16,8 +16,7 @@
 
 package it.units.erallab.robotevo.builder;
 
-import it.units.erallab.mrsim.util.builder.NamedBuilder;
-import it.units.erallab.mrsim.util.builder.ParamMap;
+import it.units.erallab.mrsim.util.builder.Param;
 
 import java.util.Random;
 import java.util.random.RandomGenerator;
@@ -25,20 +24,10 @@ import java.util.random.RandomGenerator;
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
-public class RandomGeneratorBuilder extends NamedBuilder<RandomGenerator> {
+public class RandomGeneratorBuilder {
 
-  private RandomGeneratorBuilder() {
-    register("default", RandomGeneratorBuilder::createDefault);
-  }
-
-  private static RandomGenerator createDefault(ParamMap m, NamedBuilder<?> nb) {
-    return new Random(m.i("seed", 1));
-  }
-
-  private final static RandomGeneratorBuilder INSTANCE = new RandomGeneratorBuilder();
-
-  public static RandomGeneratorBuilder getInstance() {
-    return INSTANCE;
+  public static RandomGenerator defaultRG(@Param(value = "seed", dI = 0) int seed) {
+    return new Random(seed);
   }
 
 }

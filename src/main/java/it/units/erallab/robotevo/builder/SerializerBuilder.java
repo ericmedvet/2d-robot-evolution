@@ -16,30 +16,15 @@
 
 package it.units.erallab.robotevo.builder;
 
-import it.units.erallab.mrsim.tasks.locomotion.Locomotion;
-import it.units.erallab.mrsim.util.DoubleRange;
-import it.units.erallab.mrsim.util.builder.NamedBuilder;
-import it.units.erallab.mrsim.util.builder.ParamMap;
-
 import java.util.function.Function;
 
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
-public class SerializerBuilder extends NamedBuilder<Function<?,String>> {
+public class SerializerBuilder {
 
-  private SerializerBuilder() {
-    register("toString", SerializerBuilder::createToString);
-  }
-
-  private static Function<Object, String> createToString(ParamMap m, NamedBuilder<?> nb) {
+  public static Function<Object, String> stringer() {
     return Object::toString;
-  }
-
-  private final static SerializerBuilder INSTANCE = new SerializerBuilder();
-
-  public static SerializerBuilder getInstance() {
-    return INSTANCE;
   }
 
 }

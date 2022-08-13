@@ -16,20 +16,27 @@
 
 package it.units.erallab.robotevo.singleagent;
 
+import it.units.erallab.mrsim.agents.gridvsr.NumGridVSR;
+import it.units.erallab.mrsim.builders.GridShapeBuilder;
+import it.units.erallab.mrsim.builders.TerrainBuilder;
+import it.units.erallab.mrsim.builders.VSRSensorizingFunctionBuilder;
+import it.units.erallab.mrsim.builders.VoxelSensorBuilder;
 import it.units.erallab.mrsim.core.EmbodiedAgent;
 import it.units.erallab.mrsim.engine.Engine;
 import it.units.erallab.mrsim.engine.dyn4j.Dyn4JEngine;
 import it.units.erallab.mrsim.tasks.Task;
-import it.units.erallab.mrsim.util.builder.GridVSRBodyBuilder;
 import it.units.erallab.mrsim.util.builder.NamedBuilder;
+import it.units.erallab.mrsim.util.builder.Param;
 import it.units.erallab.mrsim.util.builder.ParamMap;
-import it.units.erallab.mrsim.util.builder.TaskBuilder;
-import it.units.erallab.robotevo.builder.*;
-import it.units.erallab.robotevo.builder.agent.AgentBuilder;
-import it.units.erallab.robotevo.builder.mapper.MapperBuilder;
+import it.units.erallab.robotevo.builder.ComparatorBuilder;
+import it.units.erallab.robotevo.builder.ExtractorBuilder;
+import it.units.erallab.robotevo.builder.MapperBuilder;
+import it.units.erallab.robotevo.builder.RandomGeneratorBuilder;
+import it.units.erallab.robotevo.builder.mapper.Composition;
+import it.units.erallab.robotevo.builder.mapper.agent.CentralizedNumGridVSRBrain;
+import it.units.erallab.robotevo.builder.mapper.function.DoublesMultiLayerPerceptron;
+import it.units.erallab.robotevo.builder.solver.DoublesStandard;
 import it.units.erallab.robotevo.builder.solver.SolverBuilder;
-import it.units.erallab.robotevo.builder.solver.SolverBuilderBuilder;
-import it.units.malelab.jgea.Worker;
 import it.units.malelab.jgea.core.QualityBasedProblem;
 import it.units.malelab.jgea.core.listener.*;
 import it.units.malelab.jgea.core.order.PartialComparator;
@@ -37,6 +44,7 @@ import it.units.malelab.jgea.core.solver.Individual;
 import it.units.malelab.jgea.core.solver.IterativeSolver;
 import it.units.malelab.jgea.core.solver.SolverException;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
+import it.units.malelab.jgea.core.util.Args;
 import it.units.malelab.jgea.core.util.Misc;
 
 import java.io.BufferedReader;
@@ -45,7 +53,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.logging.Logger;
@@ -57,103 +70,85 @@ import static it.units.malelab.jgea.core.listener.NamedFunctions.*;
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
-public class Starter extends Worker {
+public class Starter implements Runnable {
 
-  public record Run<G, Q>(
-      SolverBuilder<G> solverBuilder,
-      PrototypedFunctionBuilder<G, Supplier<EmbodiedAgent>> mapper,
-      EmbodiedAgent target,
-      Task<Supplier<EmbodiedAgent>, Q> task,
-      PartialComparator<? super Q> comparator,
-      RandomGenerator randomGenerator,
-      ParamMap map
-  ) {}
-
-  private record FileSaver<Q>(
-      String fileName,
-      Function<? super Q, String> serializer
-  ) {}
-
-  public record Experiment<G, Q>(
-      List<? extends Run<? extends G, ? extends Q>> runs,
-      Function<? super Q, Double> qExtractor,
-      FileSaver<Q> bestFileSaver
-  ) {}
-
-  private final static NamedBuilder<Object> NB = new NamedBuilder<>();
   private final static Logger L = Logger.getLogger(Starter.class.getName());
 
-  static {
-    NB.register(List.of("randomGenerator", "rg"), RandomGeneratorBuilder.getInstance());
-    NB.register(List.of("gridVsrBody", "gvb"), GridVSRBodyBuilder.getInstance());
-    NB.register(List.of("task", "t"), TaskBuilder.getInstance());
-    NB.register(List.of("comparator", "c"), ComparatorBuilder.getInstance());
-    NB.register(List.of("extractor", "e"), ExtractorBuilder.getInstance());
-    NB.register(List.of("serializer"), SerializerBuilder.getInstance());
-    NB.register(List.of("solver", "s"), SolverBuilderBuilder.getInstance());
-    NB.register(List.of("mapper", "m"), MapperBuilder.getInstance());
-    NB.register(List.of("agent", "a"), AgentBuilder.getInstance());
-    NB.register("vsr", GridVSRBodyBuilder.getInstance());
-    //noinspection unchecked
-    NB.register("exp", (m, nb) -> new Experiment<Object, Object>(
-        m.npms("runs").stream()
-            .map(im -> (Run<?, ?>) nb.build(im)
-                .orElseThrow(() -> new IllegalArgumentException("Cannot build run for " + im)))
-            .toList(),
-        (Function<Object, Double>) nb.build(m.npm("qExtractor"))
-            .orElseThrow(() -> new IllegalArgumentException("Cannot build extractor")),
-        (FileSaver<Object>) ((m.npm("bestFileSaver") == null) ? null : nb.build(m.npm("bestFileSaver"))
-            .orElseThrow(() -> new IllegalArgumentException("Cannot build best file saver")))
-    ));
-    //noinspection unchecked
-    NB.register("run", (m, nb) -> new Run<>(
-        (SolverBuilder<Object>) nb.build(m.npm("solver"))
-            .orElseThrow(() -> new IllegalArgumentException("Cannot build solver")),
-        (PrototypedFunctionBuilder<Object, Supplier<EmbodiedAgent>>) nb.build(m.npm("mapper"))
-            .orElseThrow(() -> new IllegalArgumentException("Cannot build mapper")),
-        (EmbodiedAgent) nb.build(m.npm("target"))
-            .orElseThrow(() -> new IllegalArgumentException("Cannot build target")),
-        (Task<Supplier<EmbodiedAgent>, Object>) nb.build(m.npm("task"))
-            .orElseThrow(() -> new IllegalArgumentException("Cannot build task")),
-        (PartialComparator<Object>) nb.build(m.npm("comparator"))
-            .orElseThrow(() -> new IllegalArgumentException("Cannot build comparator")),
-        ((NamedBuilder<Object>) nb).build(m.npm("randomGenerator"), (Supplier<RandomGenerator>) () -> new Random(1))
-            .orElseThrow(),
-        m
-    ));
-    //noinspection unchecked
-    NB.register("fileSaver", (m, nb) -> new FileSaver<>(
-        m.s("file"),
-        (Function<? super Object, String>) nb.build(m.npm("serializer"))
-            .orElseThrow(() -> new IllegalArgumentException("Cannot build serializer"))
-    ));
+  private final NamedBuilder<Object> nb;
+  private final String descFile;
+
+  public Starter(NamedBuilder<Object> nb, String descFile) {
+    this.nb = nb;
+    this.descFile = descFile;
   }
 
-  public Starter(String[] args) {
-    super(args);
-  }
+  public record Experiment<G, Q>(
+      @Param("runs") List<? extends Run<? extends G, ? extends Q>> runs,
+      @Param("qExtractor") Function<? super Q, Double> qExtractor,
+      @Param("bestFileSaver") FileSaver<Q> bestFileSaver
+  ) {}
+
+  public record FileSaver<Q>(
+      @Param("fileName") String fileName,
+      @Param("serializer") Function<? super Q, String> serializer
+  ) {}
+
+  public record Run<G, Q>(
+      @Param("solverBuilder") SolverBuilder<G> solverBuilder,
+      @Param("mapper") MapperBuilder<G, Supplier<EmbodiedAgent>> mapper,
+      @Param("target") EmbodiedAgent target,
+      @Param("task") Task<Supplier<EmbodiedAgent>, Q> task,
+      @Param("comparator") PartialComparator<? super Q> comparator,
+      @Param("randomGenerator") RandomGenerator randomGenerator,
+      @Param(value = "", self = true) ParamMap map
+  ) {}
 
   public static void main(String[] args) {
-    new Starter(args);
+    NamedBuilder<Object> nb = NamedBuilder.empty()
+        .and(List.of("sim", "s"), NamedBuilder.empty()
+            .and(NamedBuilder.fromClass(NumGridVSR.Body.class))
+            .and(List.of("terrain", "t"), NamedBuilder.fromUtilityClass(TerrainBuilder.class))
+            .and(List.of("shape", "s"), NamedBuilder.fromUtilityClass(GridShapeBuilder.class))
+            .and(
+                List.of("sensorizingFunction", "sf"),
+                NamedBuilder.fromUtilityClass(VSRSensorizingFunctionBuilder.class)
+            )
+            .and(List.of("voxelSensor", "vs"), NamedBuilder.fromUtilityClass(VoxelSensorBuilder.class)))
+        .and(List.of("randomGenerator", "rg"), NamedBuilder.fromUtilityClass(RandomGeneratorBuilder.class))
+        .and(List.of("comparator", "c"), NamedBuilder.fromUtilityClass(ComparatorBuilder.class))
+        .and(List.of("extractor", "e"), NamedBuilder.fromUtilityClass(ExtractorBuilder.class))
+        .and(List.of("serializer", "ser"), NamedBuilder.fromUtilityClass(ExtractorBuilder.class))
+        .and(List.of("mapper", "m"), NamedBuilder.empty()
+            .and(NamedBuilder.fromClass(Composition.class))
+            .and(NamedBuilder.fromClass(CentralizedNumGridVSRBrain.class))
+            .and(NamedBuilder.fromClass(DoublesMultiLayerPerceptron.class))
+        )
+        .and(List.of("solver", "so"), NamedBuilder.empty()
+            .and(NamedBuilder.fromClass(DoublesStandard.class))
+        )
+        .and(NamedBuilder.fromClass(FileSaver.class))
+        .and(NamedBuilder.fromClass(Run.class))
+        .and(NamedBuilder.fromClass(Experiment.class));
+    new Starter(nb, Args.a(args, "descFile", null)).run();
   }
 
   @Override
   public void run() {
     //read experiment description
-    String descFile = a("descFile", null);
     if (descFile == null) {
       throw new IllegalArgumentException("Experiment description file not provided");
     }
     Experiment<?, ?> experiment;
     try (BufferedReader br = new BufferedReader(new FileReader(descFile))) {
       String expDescription = br.lines().collect(Collectors.joining());
-      experiment = (Experiment<?, ?>) NB.build(expDescription)
-          .orElseThrow(() -> new IllegalArgumentException("Cannot parse experiment description"));
+      experiment = (Experiment<?, ?>) nb.build(expDescription);
     } catch (IOException e) {
       throw new IllegalArgumentException(String.format("Cannot read experiment description: %s", e));
     }
     //create engine
     Supplier<Engine> engineSupplier = Dyn4JEngine::new;
+    //create executor
+    ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
     //create common listeners and progress monitor
     List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> basicFunctions = List.of(
         iterations(),
@@ -224,7 +219,7 @@ public class Starter extends Worker {
       try {
         //noinspection unchecked,rawtypes
         solver = run.solverBuilder().build(
-            (PrototypedFunctionBuilder) run.mapper(),
+            (MapperBuilder) run.mapper(),
             (Supplier<EmbodiedAgent>) run::target
         );
       } catch (RuntimeException e) {
@@ -273,5 +268,6 @@ public class Starter extends Worker {
       }
     }
     factory.shutdown();
+    executorService.shutdown();
   }
 }

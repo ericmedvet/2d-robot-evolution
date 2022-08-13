@@ -19,45 +19,25 @@ package it.units.erallab.robotevo.builder.mapper.agent;
 import it.units.erallab.mrsim.agents.gridvsr.CentralizedNumGridVSR;
 import it.units.erallab.mrsim.agents.gridvsr.NumGridVSR;
 import it.units.erallab.mrsim.functions.TimedRealFunction;
-import it.units.erallab.mrsim.util.builder.NamedBuilder;
-import it.units.erallab.mrsim.util.builder.ParamMap;
-import it.units.erallab.robotevo.builder.PrototypedFunctionBuilder;
+import it.units.erallab.robotevo.builder.MapperBuilder;
 
-import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
-public class CentralizedNumGridVSRBrain implements NamedBuilder.Builder<PrototypedFunctionBuilder<List<Double>,
-    Supplier<CentralizedNumGridVSR>>> {
-  @SuppressWarnings("unchecked")
-  @Override
-  public PrototypedFunctionBuilder<List<Double>, Supplier<CentralizedNumGridVSR>> build(
-      ParamMap m,
-      NamedBuilder<?> nb
-  ) throws IllegalArgumentException {
-    PrototypedFunctionBuilder<List<Double>, TimedRealFunction> trfMapper = (PrototypedFunctionBuilder<List<Double>,
-        TimedRealFunction>) nb.build(
-        m.npm("trf")).orElseThrow(() -> new IllegalArgumentException("No value for the timerdRealFunction"));
-    return new PrototypedFunctionBuilder<TimedRealFunction, Supplier<CentralizedNumGridVSR>>() {
-      @Override
-      public Function<TimedRealFunction, Supplier<CentralizedNumGridVSR>> buildFor(Supplier<CentralizedNumGridVSR> target) {
-        return trf -> () -> new CentralizedNumGridVSR(
-            new NumGridVSR.Body(target.get().getBody().grid()),
-            trf
-        );
-      }
+public class CentralizedNumGridVSRBrain implements MapperBuilder<TimedRealFunction,
+    Supplier<CentralizedNumGridVSR>> {
 
-      @Override
-      public TimedRealFunction exampleFor(Supplier<CentralizedNumGridVSR> target) {
-        return TimedRealFunction.from(
-            (t, in) -> in,
-            target.get().nOfInputs(),
-            target.get().nOfOutputs()
-        );
-      }
-    }.compose(trfMapper);
+  @Override
+  public Function<TimedRealFunction, Supplier<CentralizedNumGridVSR>> buildFor(Supplier<CentralizedNumGridVSR> target) {
+    return trf -> () -> new CentralizedNumGridVSR(new NumGridVSR.Body(target.get().getBody().grid()), trf);
+  }
+
+  @Override
+  public TimedRealFunction exampleFor(Supplier<CentralizedNumGridVSR> target) {
+    return TimedRealFunction.from((t, in) -> in, target.get().nOfInputs(), target.get().nOfOutputs());
   }
 }
+

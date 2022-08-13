@@ -16,7 +16,7 @@
 
 package it.units.erallab.robotevo.builder.solver;
 
-import it.units.erallab.robotevo.builder.PrototypedFunctionBuilder;
+import it.units.erallab.robotevo.builder.MapperBuilder;
 import it.units.malelab.jgea.core.QualityBasedProblem;
 import it.units.malelab.jgea.core.solver.IterativeSolver;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
@@ -26,7 +26,7 @@ import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
  */
 public interface SolverBuilder<G> {
   <S, Q> IterativeSolver<? extends POSetPopulationState<G, S, Q>, QualityBasedProblem<S, Q>, S> build(
-      PrototypedFunctionBuilder<G, S> builder,
+      MapperBuilder<G, S> builder,
       S target
   );
 

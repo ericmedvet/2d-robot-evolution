@@ -16,9 +16,8 @@
 
 package it.units.erallab.robotevo.builder.solver;
 
-import it.units.erallab.mrsim.util.builder.NamedBuilder;
-import it.units.erallab.mrsim.util.builder.ParamMap;
-import it.units.erallab.robotevo.builder.PrototypedFunctionBuilder;
+import it.units.erallab.mrsim.util.builder.Param;
+import it.units.erallab.robotevo.builder.MapperBuilder;
 import it.units.malelab.jgea.core.IndependentFactory;
 import it.units.malelab.jgea.core.QualityBasedProblem;
 import it.units.malelab.jgea.core.operator.GeneticOperator;
@@ -40,65 +39,86 @@ import java.util.Map;
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
-public class DoublesStandard implements NamedBuilder.Builder<SolverBuilder<List<Double>>> {
+public class DoublesStandard implements SolverBuilder<List<Double>> {
+
+  private final double initialMinV;
+  private final double initialMaxV;
+  private final double crossoverP;
+  private final double sigmaMut;
+  private final double tournamentRate;
+  private final int minNTournament;
+  private final int nPop;
+  private final int nEval;
+  private final boolean diversity;
+  private final boolean remap;
+
+  public DoublesStandard(
+      @Param(value = "initialMinV", dD = -1d) double initialMinV,
+      @Param(value = "initialMaxV", dD = 1d) double initialMaxV,
+      @Param(value = "crossoverP", dD = 0.8d) double crossoverP,
+      @Param(value = "sigmaMut", dD = 0.35d) double sigmaMut,
+      @Param(value = "tournamentRate", dD = 0.05d) double tournamentRate,
+      @Param(value = "minNTournament", dI = 3) int minNTournament,
+      @Param(value = "nPop", dI = 100) int nPop,
+      @Param(value = "nEval") int nEval,
+      @Param(value = "diversity") boolean diversity,
+      @Param(value = "remap") boolean remap
+  ) {
+    this.initialMinV = initialMinV;
+    this.initialMaxV = initialMaxV;
+    this.crossoverP = crossoverP;
+    this.sigmaMut = sigmaMut;
+    this.tournamentRate = tournamentRate;
+    this.minNTournament = minNTournament;
+    this.nPop = nPop;
+    this.nEval = nEval;
+    this.diversity = diversity;
+    this.remap = remap;
+
+  }
 
   @Override
-  public SolverBuilder<List<Double>> build(ParamMap m, NamedBuilder<?> nb) throws IllegalArgumentException {
-    double initialMinV = m.d("initialMinV", -1d);
-    double initialMaxV = m.d("initialMaxV", 1d);
-    double crossoverP = m.d("crossoverP", 0.8d);
-    double sigmaMut = m.d("sigmaMut", 0.35d);
-    double tournamentRate = m.d("tournamentRate", 0.05d);
-    int minNTournament = m.i("minNTournament", 3);
-    int nPop = m.i("nPop", 100);
-    int nEval = m.i("nEval");
-    boolean diversity = m.b("diversity", false);
-    boolean remap = m.b("remap", false);
-    return new SolverBuilder<>() {
-      @Override
-      public <S, Q> IterativeSolver<? extends POSetPopulationState<List<Double>, S, Q>, QualityBasedProblem<S, Q>, S> build(
-          PrototypedFunctionBuilder<List<Double>, S> mapper,
-          S target
-      ) {
-        IndependentFactory<List<Double>> doublesFactory = new FixedLengthListFactory<>(
-            mapper.exampleFor(target).size(),
-            new UniformDoubleFactory(initialMinV, initialMaxV)
-        );
-        Map<GeneticOperator<List<Double>>, Double> geneticOperators = Map.of(
-            new GaussianMutation(sigmaMut), 1d - crossoverP,
-            new UniformCrossover<>(doublesFactory).andThen(new GaussianMutation(sigmaMut)), crossoverP
-        );
-        if (!diversity) {
-          return new StandardEvolver<>(
-              mapper.buildFor(target),
-              doublesFactory,
-              nPop,
-              StopConditions.nOfFitnessEvaluations(nEval),
-              geneticOperators,
-              new Tournament(Math.max(minNTournament, (int) Math.ceil((double) nPop * tournamentRate))),
-              new Last(),
-              nPop,
-              true,
-              remap,
-              (p, r) -> new POSetPopulationState<>()
-          );
-        } else {
-          return new StandardWithEnforcedDiversityEvolver<>(
-              mapper.buildFor(target),
-              doublesFactory,
-              nPop,
-              StopConditions.nOfFitnessEvaluations(nEval),
-              geneticOperators,
-              new Tournament(Math.max(minNTournament, (int) Math.ceil((double) nPop * tournamentRate))),
-              new Last(),
-              nPop,
-              true,
-              remap,
-              (p, r) -> new POSetPopulationState<>(),
-              100
-          );
-        }
-      }
-    };
+  public <S, Q> IterativeSolver<? extends POSetPopulationState<List<Double>, S, Q>, QualityBasedProblem<S, Q>, S> build(
+      MapperBuilder<List<Double>, S> mapper,
+      S target
+  ) {
+    IndependentFactory<List<Double>> doublesFactory = new FixedLengthListFactory<>(
+        mapper.exampleFor(target).size(),
+        new UniformDoubleFactory(initialMinV, initialMaxV)
+    );
+    Map<GeneticOperator<List<Double>>, Double> geneticOperators = Map.of(
+        new GaussianMutation(sigmaMut), 1d - crossoverP,
+        new UniformCrossover<>(doublesFactory).andThen(new GaussianMutation(sigmaMut)), crossoverP
+    );
+    if (!diversity) {
+      return new StandardEvolver<>(
+          mapper.buildFor(target),
+          doublesFactory,
+          nPop,
+          StopConditions.nOfFitnessEvaluations(nEval),
+          geneticOperators,
+          new Tournament(Math.max(minNTournament, (int) Math.ceil((double) nPop * tournamentRate))),
+          new Last(),
+          nPop,
+          true,
+          remap,
+          (p, r) -> new POSetPopulationState<>()
+      );
+    } else {
+      return new StandardWithEnforcedDiversityEvolver<>(
+          mapper.buildFor(target),
+          doublesFactory,
+          nPop,
+          StopConditions.nOfFitnessEvaluations(nEval),
+          geneticOperators,
+          new Tournament(Math.max(minNTournament, (int) Math.ceil((double) nPop * tournamentRate))),
+          new Last(),
+          nPop,
+          true,
+          remap,
+          (p, r) -> new POSetPopulationState<>(),
+          100
+      );
+    }
   }
 }

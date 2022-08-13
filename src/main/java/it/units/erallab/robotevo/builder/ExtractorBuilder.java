@@ -18,29 +18,17 @@ package it.units.erallab.robotevo.builder;
 
 import it.units.erallab.mrsim.tasks.locomotion.Locomotion;
 import it.units.erallab.mrsim.util.DoubleRange;
-import it.units.erallab.mrsim.util.builder.NamedBuilder;
-import it.units.erallab.mrsim.util.builder.ParamMap;
+import it.units.erallab.mrsim.util.builder.Param;
 
 import java.util.function.Function;
 
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
-public class ExtractorBuilder extends NamedBuilder<Function<?,Double>> {
+public class ExtractorBuilder {
 
-  private ExtractorBuilder() {
-    register("locomotionXVelocity", ExtractorBuilder::createLocomotionXVelocity);
-  }
-
-  private static Function<Locomotion.Outcome, Double> createLocomotionXVelocity(ParamMap m, NamedBuilder<?> nb) {
-    double transientT = m.d("transientT", 0d);
-    return o -> o.subOutcome(new DoubleRange(transientT,o.duration())).xVelocity();
-  }
-
-  private final static ExtractorBuilder INSTANCE = new ExtractorBuilder();
-
-  public static ExtractorBuilder getInstance() {
-    return INSTANCE;
+  public static Function<Locomotion.Outcome, Double> locomotionXVelocity(@Param(value = "transientT", dD = 0d) double transientT) {
+    return o -> o.subOutcome(new DoubleRange(transientT, o.duration())).xVelocity();
   }
 
 }
