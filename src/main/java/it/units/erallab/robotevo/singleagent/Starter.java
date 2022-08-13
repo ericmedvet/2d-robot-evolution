@@ -30,7 +30,6 @@ import it.units.erallab.mrsim.util.builder.NamedBuilder;
 import it.units.erallab.mrsim.util.builder.Param;
 import it.units.erallab.mrsim.util.builder.ParamMap;
 import it.units.erallab.mrsim.viewer.Drawer;
-import it.units.erallab.mrsim.viewer.Drawers;
 import it.units.erallab.mrsim.viewer.VideoBuilder;
 import it.units.erallab.mrsim.viewer.VideoUtils;
 import it.units.erallab.robotevo.builder.*;
@@ -38,6 +37,7 @@ import it.units.erallab.robotevo.builder.agent.DumbCentralizedNumGridVSR;
 import it.units.erallab.robotevo.builder.mapper.Composition;
 import it.units.erallab.robotevo.builder.mapper.agent.CentralizedNumGridVSRBrain;
 import it.units.erallab.robotevo.builder.mapper.function.DoublesMultiLayerPerceptron;
+import it.units.erallab.robotevo.builder.mapper.function.Phases;
 import it.units.erallab.robotevo.builder.solver.DoublesStandard;
 import it.units.erallab.robotevo.builder.solver.SolverBuilder;
 import it.units.malelab.jgea.core.QualityBasedProblem;
@@ -98,7 +98,7 @@ public class Starter implements Runnable {
       @Param("runs") List<? extends Run<? extends G, ? extends Q>> runs,
       @Param("qExtractor") Function<? super Q, Double> qExtractor, @Param("bestFileSaver") FileSaver<Q> bestFileSaver,
       @Param("telegramChatId") String telegramChatId, @Param("videoSaver") VideoSaver videoSaver,
-      @Param("videoTasks") List<Task<Supplier<EmbodiedAgent>, ?>> videoTasks
+      @Param("videoTasks") List<VideoTask> videoTasks
   ) {}
 
   public record FileSaver<Q>(
@@ -107,18 +107,64 @@ public class Starter implements Runnable {
 
   public record Run<G, Q>(
       @Param("solver") SolverBuilder<G> solverBuilder,
-      @Param("mapper") MapperBuilder<G, Supplier<EmbodiedAgent>> mapper, @Param("target") EmbodiedAgent target,
+      @Param("mapper") MapperBuilder<G, Supplier<EmbodiedAgent>> mapper,
+      @Param("target") EmbodiedAgent target,
       @Param("task") Task<Supplier<EmbodiedAgent>, Q> task,
       @Param("comparator") PartialComparator<? super Q> comparator,
-      @Param("randomGenerator") RandomGenerator randomGenerator, @Param(value = "", self = true) ParamMap map
+      @Param("randomGenerator") RandomGenerator randomGenerator,
+      @Param(value = "", self = true) ParamMap map
   ) {}
 
   public record VideoSaver(
       @Param(value = "w", dI = 400) int w, @Param(value = "h", dI = 250) int h,
       @Param(value = "frameRate", dD = 30) double frameRate, @Param(value = "startTime", dD = 0) double startTime,
       @Param(value = "endTime", dD = 30) double endTime, @Param(value = "codec", dS = "jcodec") String codec,
-      @Param(value = "drawer") Drawer drawer
+      @Param(value = "drawer") Function<String, Drawer> drawer
   ) {}
+
+  public record VideoTask(
+      @Param("task") Task<Supplier<EmbodiedAgent>, ?> task,
+      @Param(value = "", self = true) ParamMap map
+  ) {}
+
+  private static NamedBuilder<Object> buildNamedBuilder() {
+    return NamedBuilder.empty()
+        .and(List.of("sim", "s"), NamedBuilder.empty()
+            .and(List.of("terrain", "t"), NamedBuilder.fromUtilityClass(TerrainBuilder.class))
+            .and(List.of("task"), NamedBuilder.empty()
+                .and(NamedBuilder.fromClass(Locomotion.class))
+            )
+            .and(List.of("vsr"), NamedBuilder.empty()
+                .and(NamedBuilder.fromClass(NumGridVSR.Body.class))
+                .and(List.of("shape", "s"), NamedBuilder.fromUtilityClass(GridShapeBuilder.class))
+                .and(
+                    List.of("sensorizingFunction", "sf"),
+                    NamedBuilder.fromUtilityClass(VSRSensorizingFunctionBuilder.class)
+                )
+                .and(List.of("voxelSensor", "vs"), NamedBuilder.fromUtilityClass(VoxelSensorBuilder.class))
+            ))
+        .and(List.of("randomGenerator", "rg"), NamedBuilder.fromUtilityClass(RandomGeneratorBuilder.class))
+        .and(List.of("comparator", "c"), NamedBuilder.fromUtilityClass(ComparatorBuilder.class))
+        .and(List.of("extractor", "e"), NamedBuilder.fromUtilityClass(ExtractorBuilder.class))
+        .and(List.of("serializer", "ser"), NamedBuilder.fromUtilityClass(SerializerBuilder.class))
+        .and(List.of("drawer", "d"), NamedBuilder.fromUtilityClass(DrawerBuilder.class))
+        .and(List.of("mapper", "m"), NamedBuilder.empty()
+            .and(NamedBuilder.fromClass(Composition.class))
+            .and(NamedBuilder.fromClass(CentralizedNumGridVSRBrain.class))
+            .and(NamedBuilder.fromClass(DoublesMultiLayerPerceptron.class))
+            .and(NamedBuilder.fromClass(Phases.class))
+        )
+        .and(List.of("agent", "a"), NamedBuilder.empty().and(NamedBuilder.fromClass(DumbCentralizedNumGridVSR.class)))
+        .and(List.of("solver", "so"), NamedBuilder.empty()
+            .and(NamedBuilder.fromClass(DoublesStandard.class))
+        )
+        .and(NamedBuilder.fromClass(FileSaver.class))
+        .and(NamedBuilder.fromClass(VideoSaver.class))
+        .and(NamedBuilder.fromClass(VideoTask.class))
+        .and(NamedBuilder.fromClass(Run.class))
+        .and(NamedBuilder.fromClass(Experiment.class))
+        .and(NamedBuilder.fromClass(Configuration.class));
+  }
 
   @NotNull
   private static CSVPrinter<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> getCsvPrinter(
@@ -157,7 +203,7 @@ public class Starter implements Runnable {
   }
 
   private static AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, File, Map<String, Object>> getVideoMaker(
-      Supplier<Engine> engineSupplier, VideoSaver videoSaver, Task<Supplier<EmbodiedAgent>, ?> task
+      Supplier<Engine> engineSupplier, VideoSaver videoSaver, VideoTask videoTask
   ) {
     return AccumulatorFactory.last((state, keys) -> {
       File file;
@@ -171,10 +217,10 @@ public class Starter implements Runnable {
             videoSaver.frameRate(),
             VideoUtils.EncoderFacility.valueOf(videoSaver.codec().toUpperCase()),
             file,
-            videoSaver.drawer()
+            videoSaver.drawer().apply(videoTask.map().toString())
         );
         Supplier<EmbodiedAgent> agent = Misc.first(state.getPopulation().firsts()).solution();
-        task.run(agent, engineSupplier.get(), videoBuilder);
+        videoTask.task().run(agent, engineSupplier.get(), videoBuilder);
         file = videoBuilder.get();
         file.deleteOnExit();
       } catch (IOException ioException) {
@@ -186,42 +232,7 @@ public class Starter implements Runnable {
   }
 
   public static void main(String[] args) {
-    NamedBuilder<Object> nb = NamedBuilder.empty()
-        .and(List.of("sim", "s"), NamedBuilder.empty()
-            .and(List.of("terrain", "t"), NamedBuilder.fromUtilityClass(TerrainBuilder.class))
-            .and(List.of("drawer", "d"), NamedBuilder.fromUtilityClass(Drawers.class))
-            .and(List.of("task"), NamedBuilder.empty()
-                .and(NamedBuilder.fromClass(Locomotion.class))
-            )
-            .and(List.of("vsr"), NamedBuilder.empty()
-                .and(NamedBuilder.fromClass(NumGridVSR.Body.class))
-                .and(List.of("shape", "s"), NamedBuilder.fromUtilityClass(GridShapeBuilder.class))
-                .and(
-                    List.of("sensorizingFunction", "sf"),
-                    NamedBuilder.fromUtilityClass(VSRSensorizingFunctionBuilder.class)
-                )
-                .and(List.of("voxelSensor", "vs"), NamedBuilder.fromUtilityClass(VoxelSensorBuilder.class))
-            ))
-        .and(List.of("randomGenerator", "rg"), NamedBuilder.fromUtilityClass(RandomGeneratorBuilder.class))
-        .and(List.of("comparator", "c"), NamedBuilder.fromUtilityClass(ComparatorBuilder.class))
-        .and(List.of("extractor", "e"), NamedBuilder.fromUtilityClass(ExtractorBuilder.class))
-        .and(List.of("serializer", "ser"), NamedBuilder.fromUtilityClass(SerializerBuilder.class))
-        .and(
-            List.of("mapper", "m"),
-            NamedBuilder.empty()
-                .and(NamedBuilder.fromClass(Composition.class))
-                .and(NamedBuilder.fromClass(CentralizedNumGridVSRBrain.class))
-                .and(NamedBuilder.fromClass(DoublesMultiLayerPerceptron.class))
-        )
-        .and(List.of("agent", "a"), NamedBuilder.empty().and(NamedBuilder.fromClass(DumbCentralizedNumGridVSR.class)))
-        .and(List.of("solver", "so"), NamedBuilder.empty()
-            .and(NamedBuilder.fromClass(DoublesStandard.class))
-        )
-        .and(NamedBuilder.fromClass(FileSaver.class))
-        .and(NamedBuilder.fromClass(VideoSaver.class))
-        .and(NamedBuilder.fromClass(Run.class))
-        .and(NamedBuilder.fromClass(Experiment.class))
-        .and(NamedBuilder.fromClass(Configuration.class));
+    NamedBuilder<Object> nb = buildNamedBuilder();
     String configuration = "configuration(descFile=\"/home/eric/experiments/2dmrsim/basic/exp-biped.txt\";" +
         "nOfThreads=3.0)";
     if (args.length > 0) {
@@ -298,7 +309,8 @@ public class Starter implements Runnable {
     if (experiment.bestFileSaver() != null) {
       factories.add(getCsvPrinter(experiment.bestFileSaver(), nonVisualFunctions, keysFunctions));
     }
-    if (experiment.telegramChatId() != null && !experiment.telegramChatId().isEmpty() && configuration.telegramBotId()!=null && !configuration.telegramBotId().isEmpty()) {
+    if (experiment.telegramChatId() != null && !experiment.telegramChatId()
+        .isEmpty() && configuration.telegramBotId() != null && !configuration.telegramBotId().isEmpty()) {
       factories.add(getTelegramUpdater(experiment, engineSupplier));
     }
     ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> factory =
