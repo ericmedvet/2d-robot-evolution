@@ -48,7 +48,6 @@ import it.units.malelab.jgea.core.solver.Individual;
 import it.units.malelab.jgea.core.solver.IterativeSolver;
 import it.units.malelab.jgea.core.solver.SolverException;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
-import it.units.malelab.jgea.core.util.Args;
 import it.units.malelab.jgea.core.util.ImagePlotters;
 import it.units.malelab.jgea.core.util.Misc;
 import org.jetbrains.annotations.NotNull;
@@ -82,14 +81,18 @@ public class Starter implements Runnable {
   private final static Logger L = Logger.getLogger(Starter.class.getName());
 
   private final NamedBuilder<Object> nb;
-  private final String descFile;
-  private final String telegramBotId;
+  private final Configuration configuration;
 
-  public Starter(NamedBuilder<Object> nb, String descFile, String telegramBotId) {
+  public Starter(NamedBuilder<Object> nb, String configuration) {
     this.nb = nb;
-    this.descFile = descFile;
-    this.telegramBotId = telegramBotId;
+    this.configuration = (Configuration) nb.build(configuration);
   }
+
+  public record Configuration(
+      @Param("descFile") String descFile,
+      @Param("telegramBotId") String telegramBotId,
+      @Param("nOfThreads") int nOfThreads
+  ) {}
 
   public record Experiment<G, Q>(
       @Param("runs") List<? extends Run<? extends G, ? extends Q>> runs,
@@ -209,8 +212,15 @@ public class Starter implements Runnable {
         .and(List.of("solver", "so"), NamedBuilder.empty().and(NamedBuilder.fromClass(DoublesStandard.class)))
         .and(NamedBuilder.fromClass(FileSaver.class))
         .and(NamedBuilder.fromClass(Run.class))
-        .and(NamedBuilder.fromClass(Experiment.class));
-    new Starter(nb, Args.a(args, "descFile", null), Args.a(args, "telegramBotId", null)).run();
+        .and(NamedBuilder.fromClass(Experiment.class))
+        .and(NamedBuilder.fromClass(Configuration.class));
+    String configuration = "configuration(descFile=\"/home/eric/experiments/2dmrsim/basic/exp-biped.txt\";" +
+        "nOfThreads=3.0)";
+    if (args.length > 0) {
+      configuration = args[0];
+      System.out.println("Configuration found: " + configuration);
+    }
+    new Starter(nb, configuration).run();
   }
 
   @NotNull
@@ -220,17 +230,16 @@ public class Starter implements Runnable {
     List<AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?, Map<String, Object>>> accumulators = new ArrayList<>();
     accumulators.add(getPlotter(experiment));
     experiment.videoTasks().forEach(t -> accumulators.add(getVideoMaker(engineSupplier, t)));
-    return new TelegramUpdater<>(accumulators, telegramBotId, Long.parseLong(experiment.telegramChatId()));
+    return new TelegramUpdater<>(accumulators,
+        configuration.telegramBotId(), Long.parseLong(experiment.telegramChatId())
+    );
   }
 
   @Override
   public void run() {
     //read experiment description
-    if (descFile == null) {
-      throw new IllegalArgumentException("Experiment description file not provided");
-    }
     Experiment<?, ?> experiment;
-    try (BufferedReader br = new BufferedReader(new FileReader(descFile))) {
+    try (BufferedReader br = new BufferedReader(new FileReader(configuration.descFile()))) {
       String expDescription = br.lines().collect(Collectors.joining());
       experiment = (Experiment<?, ?>) nb.build(expDescription);
     } catch (IOException e) {
@@ -239,7 +248,7 @@ public class Starter implements Runnable {
     //create engine
     Supplier<Engine> engineSupplier = Dyn4JEngine::new;
     //create executor
-    ExecutorService executorService = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+    ExecutorService executorService = Executors.newFixedThreadPool(configuration.nOfThreads());
     //create common listeners and progress monitor
     List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> basicFunctions =
         List.of(
@@ -287,7 +296,7 @@ public class Starter implements Runnable {
     ProgressMonitor progressMonitor = new ScreenProgressMonitor(System.out);
     if (experiment.telegramChatId() != null && !experiment.telegramChatId().isEmpty()) {
       progressMonitor = progressMonitor.and(new TelegramProgressMonitor(
-          telegramBotId,
+          configuration.telegramBotId(),
           Long.parseLong(experiment.telegramChatId())
       ));
     }
