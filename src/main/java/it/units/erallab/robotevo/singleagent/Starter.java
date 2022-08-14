@@ -29,7 +29,6 @@ import it.units.erallab.mrsim.tasks.locomotion.Locomotion;
 import it.units.erallab.mrsim.util.builder.NamedBuilder;
 import it.units.erallab.mrsim.util.builder.Param;
 import it.units.erallab.mrsim.util.builder.ParamMap;
-import it.units.erallab.mrsim.util.builder.StringNamedParamMap;
 import it.units.erallab.mrsim.viewer.Drawer;
 import it.units.erallab.mrsim.viewer.VideoBuilder;
 import it.units.erallab.mrsim.viewer.VideoUtils;
@@ -334,8 +333,7 @@ public class Starter implements Runnable {
               "Starting %d/%d run:%n%s",
               i + 1,
               experiment.runs().size(),
-              (run.map() instanceof StringNamedParamMap) ? ((StringNamedParamMap) run.map()).prettyToString() :
-                  run.map().toString()
+              run.map().toString() // TODO restore StringNamedParamMap.prettyToString(run.map(), 40)
           )
       );
       //build solver
