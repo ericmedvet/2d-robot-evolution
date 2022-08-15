@@ -19,7 +19,6 @@ package it.units.erallab.robotevo.builder.solver;
 import it.units.erallab.mrsim.util.builder.Param;
 import it.units.erallab.robotevo.builder.MapperBuilder;
 import it.units.malelab.jgea.core.QualityBasedProblem;
-import it.units.malelab.jgea.core.TotalOrderQualityBasedProblem;
 import it.units.malelab.jgea.core.solver.IterativeSolver;
 import it.units.malelab.jgea.core.solver.SimpleEvolutionaryStrategy;
 import it.units.malelab.jgea.core.solver.StopConditions;
@@ -27,7 +26,6 @@ import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
 import it.units.malelab.jgea.representation.sequence.FixedLengthListFactory;
 import it.units.malelab.jgea.representation.sequence.numeric.UniformDoubleFactory;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 
@@ -90,6 +88,7 @@ public class SimpleES implements SolverBuilder<List<Double>> {
         sigma,
         remap
     );
+    /*
     @SuppressWarnings("unchecked") Function<Q, Double> qDoubleFunction = (Function<Q, Double>) qExtractor;
     Comparator<Q> qComparator = switch (goal) {
       case MIN -> Comparator.comparing(qDoubleFunction);
@@ -106,5 +105,8 @@ public class SimpleES implements SolverBuilder<List<Double>> {
         return qComparator;
       }
     });
+
+     */
+    return null;
   }
 }
