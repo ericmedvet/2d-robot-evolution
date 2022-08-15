@@ -53,7 +53,6 @@ import it.units.malelab.jgea.core.solver.SolverException;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
 import it.units.malelab.jgea.core.util.ImagePlotters;
 import it.units.malelab.jgea.core.util.Misc;
-import org.jetbrains.annotations.NotNull;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -169,7 +168,6 @@ public class Starter implements Runnable {
         .and(NamedBuilder.fromClass(Configuration.class));
   }
 
-  @NotNull
   private static CSVPrinter<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> getCsvPrinter(
       FileSaver<?> fileSaver,
       List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> nonVisualFunctions,
@@ -245,7 +243,6 @@ public class Starter implements Runnable {
     new Starter(nb, configuration).run();
   }
 
-  @NotNull
   private TelegramUpdater<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> getTelegramUpdater(
       Experiment<?, ?> experiment, Supplier<Engine> engineSupplier
   ) {
