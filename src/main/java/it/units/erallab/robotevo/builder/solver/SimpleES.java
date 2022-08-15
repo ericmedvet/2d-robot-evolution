@@ -19,6 +19,7 @@ package it.units.erallab.robotevo.builder.solver;
 import it.units.erallab.mrsim.util.builder.Param;
 import it.units.erallab.robotevo.builder.MapperBuilder;
 import it.units.malelab.jgea.core.QualityBasedProblem;
+import it.units.malelab.jgea.core.TotalOrderQualityBasedProblem;
 import it.units.malelab.jgea.core.solver.IterativeSolver;
 import it.units.malelab.jgea.core.solver.SimpleEvolutionaryStrategy;
 import it.units.malelab.jgea.core.solver.StopConditions;
@@ -26,6 +27,7 @@ import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
 import it.units.malelab.jgea.representation.sequence.FixedLengthListFactory;
 import it.units.malelab.jgea.representation.sequence.numeric.UniformDoubleFactory;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Function;
 
@@ -88,13 +90,14 @@ public class SimpleES implements SolverBuilder<List<Double>> {
         sigma,
         remap
     );
-    /*
     @SuppressWarnings("unchecked") Function<Q, Double> qDoubleFunction = (Function<Q, Double>) qExtractor;
     Comparator<Q> qComparator = switch (goal) {
       case MIN -> Comparator.comparing(qDoubleFunction);
       case MAX -> Comparator.comparing(qDoubleFunction).reversed();
     };
-    return es.with((QualityBasedProblem<S, Q> p) -> new TotalOrderQualityBasedProblem<>() {
+    //noinspection Convert2Diamond
+    return es.with((QualityBasedProblem<S, Q> p) -> new TotalOrderQualityBasedProblem<S, Q>() {
+      // IMPORTANT: do not remove <S, Q>, as it triggers a bug in the compiler!
       @Override
       public Function<S, Q> qualityFunction() {
         return p.qualityFunction();
@@ -105,8 +108,5 @@ public class SimpleES implements SolverBuilder<List<Double>> {
         return qComparator;
       }
     });
-
-     */
-    return null;
   }
 }
