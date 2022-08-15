@@ -40,6 +40,7 @@ import it.units.erallab.robotevo.builder.mapper.agent.CentralizedNumGridVSRBrain
 import it.units.erallab.robotevo.builder.mapper.function.DoublesMultiLayerPerceptron;
 import it.units.erallab.robotevo.builder.mapper.function.Phases;
 import it.units.erallab.robotevo.builder.solver.DoublesStandard;
+import it.units.erallab.robotevo.builder.solver.SimpleES;
 import it.units.erallab.robotevo.builder.solver.SolverBuilder;
 import it.units.malelab.jgea.core.QualityBasedProblem;
 import it.units.malelab.jgea.core.listener.*;
@@ -158,6 +159,7 @@ public class Starter implements Runnable {
         .and(List.of("agent", "a"), NamedBuilder.empty().and(NamedBuilder.fromClass(DumbCentralizedNumGridVSR.class)))
         .and(List.of("solver", "so"), NamedBuilder.empty()
             .and(NamedBuilder.fromClass(DoublesStandard.class))
+            .and(NamedBuilder.fromClass(SimpleES.class))
         )
         .and(NamedBuilder.fromClass(FileSaver.class))
         .and(NamedBuilder.fromClass(VideoSaver.class))
@@ -235,7 +237,7 @@ public class Starter implements Runnable {
   public static void main(String[] args) {
     NamedBuilder<Object> nb = buildNamedBuilder();
     String configuration = "configuration(descFile=\"/home/eric/experiments/2dmrsim/basic/exp-biped.txt\";" +
-        "nOfThreads=3.0)";
+        "nOfThreads=3)";
     if (args.length > 0) {
       configuration = args[0];
       System.out.println("Configuration found: " + configuration);
@@ -319,7 +321,8 @@ public class Starter implements Runnable {
             factories);
     //build progress monitor
     ProgressMonitor progressMonitor = new ScreenProgressMonitor(System.out);
-    if (experiment.telegramChatId() != null && !experiment.telegramChatId().isEmpty()) {
+    if (experiment.telegramChatId() != null && !experiment.telegramChatId()
+        .isEmpty() && configuration.telegramBotId() != null && !configuration.telegramBotId().isEmpty()) {
       progressMonitor = progressMonitor.and(new TelegramProgressMonitor(
           configuration.telegramBotId(),
           Long.parseLong(experiment.telegramChatId())
@@ -334,7 +337,7 @@ public class Starter implements Runnable {
               "Starting %d/%d run:%n%s",
               i + 1,
               experiment.runs().size(),
-              StringNamedParamMap.prettyToString(run.map(),40)
+              StringNamedParamMap.prettyToString(run.map(), 40)
           )
       );
       //build solver

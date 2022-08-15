@@ -19,6 +19,7 @@ package it.units.erallab.robotevo.builder.solver;
 import it.units.erallab.mrsim.util.builder.Param;
 import it.units.erallab.robotevo.builder.MapperBuilder;
 import it.units.malelab.jgea.core.QualityBasedProblem;
+import it.units.malelab.jgea.core.TotalOrderQualityBasedProblem;
 import it.units.malelab.jgea.core.solver.IterativeSolver;
 import it.units.malelab.jgea.core.solver.SimpleEvolutionaryStrategy;
 import it.units.malelab.jgea.core.solver.StopConditions;
@@ -26,7 +27,9 @@ import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
 import it.units.malelab.jgea.representation.sequence.FixedLengthListFactory;
 import it.units.malelab.jgea.representation.sequence.numeric.UniformDoubleFactory;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * @author "Eric Medvet" on 2022/08/14 for 2d-robot-evolution
@@ -41,7 +44,8 @@ public class SimpleES implements SolverBuilder<List<Double>> {
   private final int nPop;
   private final int nEval;
   private final boolean remap;
-
+  private final Function<?, Double> qExtractor;
+  private final Goal goal;
   public SimpleES(
       @Param(value = "initialMinV", dD = -1d) double initialMinV,
       @Param(value = "initialMaxV", dD = 1d) double initialMaxV,
@@ -50,7 +54,9 @@ public class SimpleES implements SolverBuilder<List<Double>> {
       @Param(value = "nOfElites", dI = 1) int nOfElites,
       @Param(value = "nPop", dI = 30) int nPop,
       @Param(value = "nEval") int nEval,
-      @Param(value = "remap") boolean remap
+      @Param(value = "remap") boolean remap,
+      @Param(value = "qExtractor") Function<?, Double> qExtractor,
+      @Param(value = "goal", dS = "min") String goalString
   ) {
     this.initialMinV = initialMinV;
     this.initialMaxV = initialMaxV;
@@ -60,14 +66,18 @@ public class SimpleES implements SolverBuilder<List<Double>> {
     this.nPop = nPop;
     this.nEval = nEval;
     this.remap = remap;
+    this.qExtractor = qExtractor;
+    this.goal = Goal.valueOf(goalString.toUpperCase());
   }
+
+  private enum Goal {MAX, MIN}
 
   @Override
   public <S, Q> IterativeSolver<? extends POSetPopulationState<List<Double>, S, Q>, QualityBasedProblem<S, Q>, S> build(
       MapperBuilder<List<Double>, S> builder,
       S target
   ) {
-    SimpleEvolutionaryStrategy<S, Q> solver = new SimpleEvolutionaryStrategy<>(
+    SimpleEvolutionaryStrategy<S, Q> es = new SimpleEvolutionaryStrategy<>(
         builder.buildFor(target),
         new FixedLengthListFactory<>(
             builder.exampleFor(target).size(),
@@ -80,6 +90,21 @@ public class SimpleES implements SolverBuilder<List<Double>> {
         sigma,
         remap
     );
-    throw new UnsupportedOperationException("!"); //TODO cannot work because needs a TotalOrderQualityBasedProblem
+    @SuppressWarnings("unchecked") Function<Q, Double> qDoubleFunction = (Function<Q, Double>) qExtractor;
+    Comparator<Q> qComparator = switch (goal) {
+      case MIN -> Comparator.comparing(qDoubleFunction);
+      case MAX -> Comparator.comparing(qDoubleFunction).reversed();
+    };
+    return es.with((QualityBasedProblem<S, Q> p) -> new TotalOrderQualityBasedProblem<>() {
+      @Override
+      public Function<S, Q> qualityFunction() {
+        return p.qualityFunction();
+      }
+
+      @Override
+      public Comparator<Q> totalOrderComparator() {
+        return qComparator;
+      }
+    });
   }
 }
