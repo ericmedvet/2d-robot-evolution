@@ -14,17 +14,22 @@
  * limitations under the License.
  */
 
-package robotevo2d.builder;
+package it.units.erallab.robotevo2d.main.builder.agent;
 
-import java.util.function.Function;
+import it.units.erallab.mrsim2d.builder.Param;
+import it.units.erallab.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR;
+import it.units.erallab.mrsim2d.core.functions.TimedRealFunction;
 
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
-public class SerializerBuilder {
+public class DumbCentralizedNumGridVSR extends CentralizedNumGridVSR {
 
-  public static Function<Object, String> stringifier() {
-    return Object::toString;
+  public DumbCentralizedNumGridVSR(@Param("body") Body body) {
+    super(body, TimedRealFunction.from((t, in) -> new double[CentralizedNumGridVSR.nOfOutputs(body)],
+        CentralizedNumGridVSR.nOfInputs(body),
+        CentralizedNumGridVSR.nOfOutputs(body)
+    ));
   }
 
 }

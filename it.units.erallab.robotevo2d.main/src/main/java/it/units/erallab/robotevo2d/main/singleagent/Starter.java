@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package robotevo2d.singleagent;
+package it.units.erallab.robotevo2d.main.singleagent;
 
 import it.units.erallab.mrsim2d.builder.NamedBuilder;
 import it.units.erallab.mrsim2d.builder.Param;
@@ -32,6 +32,15 @@ import it.units.erallab.mrsim2d.core.tasks.locomotion.Locomotion;
 import it.units.erallab.mrsim2d.viewer.Drawer;
 import it.units.erallab.mrsim2d.viewer.VideoBuilder;
 import it.units.erallab.mrsim2d.viewer.VideoUtils;
+import it.units.erallab.robotevo2d.main.builder.*;
+import it.units.erallab.robotevo2d.main.builder.agent.DumbCentralizedNumGridVSR;
+import it.units.erallab.robotevo2d.main.builder.mapper.Composition;
+import it.units.erallab.robotevo2d.main.builder.mapper.agent.CentralizedNumGridVSRBrain;
+import it.units.erallab.robotevo2d.main.builder.mapper.function.DoublesMultiLayerPerceptron;
+import it.units.erallab.robotevo2d.main.builder.mapper.function.Phases;
+import it.units.erallab.robotevo2d.main.builder.solver.DoublesStandard;
+import it.units.erallab.robotevo2d.main.builder.solver.SimpleES;
+import it.units.erallab.robotevo2d.main.builder.solver.SolverBuilder;
 import it.units.malelab.jgea.core.QualityBasedProblem;
 import it.units.malelab.jgea.core.listener.*;
 import it.units.malelab.jgea.core.listener.telegram.TelegramProgressMonitor;
@@ -43,15 +52,6 @@ import it.units.malelab.jgea.core.solver.SolverException;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
 import it.units.malelab.jgea.core.util.ImagePlotters;
 import it.units.malelab.jgea.core.util.Misc;
-import robotevo2d.builder.*;
-import robotevo2d.builder.agent.DumbCentralizedNumGridVSR;
-import robotevo2d.builder.mapper.Composition;
-import robotevo2d.builder.mapper.agent.CentralizedNumGridVSRBrain;
-import robotevo2d.builder.mapper.function.DoublesMultiLayerPerceptron;
-import robotevo2d.builder.mapper.function.Phases;
-import robotevo2d.builder.solver.DoublesStandard;
-import robotevo2d.builder.solver.SimpleES;
-import robotevo2d.builder.solver.SolverBuilder;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;

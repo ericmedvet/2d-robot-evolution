@@ -14,21 +14,32 @@
  * limitations under the License.
  */
 
-package robotevo2d.builder;
+package it.units.erallab.robotevo2d.main.builder;
 
 import it.units.erallab.mrsim2d.builder.Param;
-import it.units.erallab.mrsim2d.core.tasks.locomotion.Locomotion;
-import it.units.erallab.mrsim2d.core.util.DoubleRange;
+import it.units.malelab.jgea.core.order.PartialComparator;
 
 import java.util.function.Function;
 
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
-public class ExtractorBuilder {
+public class ComparatorBuilder {
 
-  public static Function<Locomotion.Outcome, Double> locomotionXVelocity(@Param(value = "transientT", dD = 0d) double transientT) {
-    return o -> o.subOutcome(new DoubleRange(transientT, o.duration())).xVelocity();
+  public static PartialComparator<Object> max(@Param("of") Function<Object, Double> extractor) {
+    return min(extractor).reversed();
+  }
+
+  public static PartialComparator<Object> min(@Param("of") Function<Object, Double> extractor) {
+    return (k1, k2) -> {
+      int o = Double.compare(extractor.apply(k1), extractor.apply(k2));
+      if (o < 0) {
+        return PartialComparator.PartialComparatorOutcome.BEFORE;
+      } else if (o > 0) {
+        return PartialComparator.PartialComparatorOutcome.AFTER;
+      }
+      return PartialComparator.PartialComparatorOutcome.SAME;
+    };
   }
 
 }

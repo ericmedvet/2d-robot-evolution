@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-package robotevo2d.builder;
+package it.units.erallab.robotevo2d.main.builder;
 
 import it.units.erallab.mrsim2d.builder.Param;
+import it.units.erallab.mrsim2d.core.tasks.locomotion.Locomotion;
+import it.units.erallab.mrsim2d.core.util.DoubleRange;
 
-import java.util.Random;
-import java.util.random.RandomGenerator;
+import java.util.function.Function;
 
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
-public class RandomGeneratorBuilder {
+public class ExtractorBuilder {
 
-  public static RandomGenerator defaultRG(@Param(value = "seed", dI = 0) int seed) {
-    return new Random(seed);
+  public static Function<Locomotion.Outcome, Double> locomotionXVelocity(@Param(value = "transientT", dD = 0d) double transientT) {
+    return o -> o.subOutcome(new DoubleRange(transientT, o.duration())).xVelocity();
   }
 
 }
-

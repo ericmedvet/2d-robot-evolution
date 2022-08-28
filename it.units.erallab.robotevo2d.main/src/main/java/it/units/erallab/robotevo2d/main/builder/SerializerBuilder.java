@@ -14,13 +14,17 @@
  * limitations under the License.
  */
 
-package robotevo2d;
+package it.units.erallab.robotevo2d.main.builder;
+
+import java.util.function.Function;
 
 /**
- * @author "Eric Medvet" on 2022/08/08 for 2d-robot-evolution
+ * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
-public class Main {
-  public static void main(String[] args) {
-    System.out.println("Hello world!");
+public class SerializerBuilder {
+
+  public static Function<Object, String> stringifier() {
+    return Object::toString;
   }
+
 }
