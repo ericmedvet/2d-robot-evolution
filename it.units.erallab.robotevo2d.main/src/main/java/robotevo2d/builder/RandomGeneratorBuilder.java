@@ -14,22 +14,21 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo2d.builder.agent;
+package robotevo2d.builder;
 
-import it.units.erallab.mrsim.agents.gridvsr.CentralizedNumGridVSR;
-import it.units.erallab.mrsim.functions.TimedRealFunction;
-import it.units.erallab.mrsim.util.builder.Param;
+import it.units.erallab.mrsim2d.builder.Param;
+
+import java.util.Random;
+import java.util.random.RandomGenerator;
 
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
-public class DumbCentralizedNumGridVSR extends CentralizedNumGridVSR {
+public class RandomGeneratorBuilder {
 
-  public DumbCentralizedNumGridVSR(@Param("body") Body body) {
-    super(body, TimedRealFunction.from((t, in) -> new double[CentralizedNumGridVSR.nOfOutputs(body)],
-        CentralizedNumGridVSR.nOfInputs(body),
-        CentralizedNumGridVSR.nOfOutputs(body)
-    ));
+  public static RandomGenerator defaultRG(@Param(value = "seed", dI = 0) int seed) {
+    return new Random(seed);
   }
 
 }
+

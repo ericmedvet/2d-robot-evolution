@@ -14,19 +14,20 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo2d.builder;
+package robotevo2d.builder.solver;
 
-import it.units.erallab.mrsim.viewer.Drawer;
-import it.units.erallab.mrsim.viewer.Drawers;
-
-import java.util.function.Function;
+import it.units.malelab.jgea.core.QualityBasedProblem;
+import it.units.malelab.jgea.core.solver.IterativeSolver;
+import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
+import robotevo2d.builder.MapperBuilder;
 
 /**
- * @author "Eric Medvet" on 2022/08/13 for 2d-robot-evolution
+ * @author "Eric Medvet" on 2022/02/14 for VSREvolution
  */
-public class DrawerBuilder {
+public interface SolverBuilder<G> {
+  <S, Q> IterativeSolver<? extends POSetPopulationState<G, S, Q>, QualityBasedProblem<S, Q>, S> build(
+      MapperBuilder<G, S> builder,
+      S target
+  );
 
-  public static Function<String, Drawer> basic() {
-    return Drawers::basic;
-  }
 }

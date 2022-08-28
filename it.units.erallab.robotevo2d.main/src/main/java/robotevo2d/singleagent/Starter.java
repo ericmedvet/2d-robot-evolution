@@ -14,34 +14,24 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo2d.singleagent;
+package robotevo2d.singleagent;
 
-import it.units.erallab.mrsim.agents.gridvsr.NumGridVSR;
-import it.units.erallab.mrsim.builders.GridShapeBuilder;
-import it.units.erallab.mrsim.builders.TerrainBuilder;
-import it.units.erallab.mrsim.builders.VSRSensorizingFunctionBuilder;
-import it.units.erallab.mrsim.builders.VoxelSensorBuilder;
-import it.units.erallab.mrsim.core.EmbodiedAgent;
-import it.units.erallab.mrsim.engine.Engine;
-import it.units.erallab.mrsim.engine.dyn4j.Dyn4JEngine;
-import it.units.erallab.mrsim.tasks.Task;
-import it.units.erallab.mrsim.tasks.locomotion.Locomotion;
-import it.units.erallab.mrsim.util.builder.NamedBuilder;
-import it.units.erallab.mrsim.util.builder.Param;
-import it.units.erallab.mrsim.util.builder.ParamMap;
-import it.units.erallab.mrsim.util.builder.StringNamedParamMap;
-import it.units.erallab.mrsim.viewer.Drawer;
-import it.units.erallab.mrsim.viewer.VideoBuilder;
-import it.units.erallab.mrsim.viewer.VideoUtils;
-import it.units.erallab.robotevo2d.builder.*;
-import it.units.erallab.robotevo2d.builder.agent.DumbCentralizedNumGridVSR;
-import it.units.erallab.robotevo2d.builder.mapper.Composition;
-import it.units.erallab.robotevo2d.builder.mapper.agent.CentralizedNumGridVSRBrain;
-import it.units.erallab.robotevo2d.builder.mapper.function.DoublesMultiLayerPerceptron;
-import it.units.erallab.robotevo2d.builder.mapper.function.Phases;
-import it.units.erallab.robotevo2d.builder.solver.DoublesStandard;
-import it.units.erallab.robotevo2d.builder.solver.SimpleES;
-import it.units.erallab.robotevo2d.builder.solver.SolverBuilder;
+import it.units.erallab.mrsim2d.builder.NamedBuilder;
+import it.units.erallab.mrsim2d.builder.Param;
+import it.units.erallab.mrsim2d.builder.ParamMap;
+import it.units.erallab.mrsim2d.builder.StringNamedParamMap;
+import it.units.erallab.mrsim2d.core.EmbodiedAgent;
+import it.units.erallab.mrsim2d.core.agents.gridvsr.NumGridVSR;
+import it.units.erallab.mrsim2d.core.builders.GridShapeBuilder;
+import it.units.erallab.mrsim2d.core.builders.TerrainBuilder;
+import it.units.erallab.mrsim2d.core.builders.VSRSensorizingFunctionBuilder;
+import it.units.erallab.mrsim2d.core.builders.VoxelSensorBuilder;
+import it.units.erallab.mrsim2d.core.engine.Engine;
+import it.units.erallab.mrsim2d.core.tasks.Task;
+import it.units.erallab.mrsim2d.core.tasks.locomotion.Locomotion;
+import it.units.erallab.mrsim2d.viewer.Drawer;
+import it.units.erallab.mrsim2d.viewer.VideoBuilder;
+import it.units.erallab.mrsim2d.viewer.VideoUtils;
 import it.units.malelab.jgea.core.QualityBasedProblem;
 import it.units.malelab.jgea.core.listener.*;
 import it.units.malelab.jgea.core.listener.telegram.TelegramProgressMonitor;
@@ -53,6 +43,15 @@ import it.units.malelab.jgea.core.solver.SolverException;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
 import it.units.malelab.jgea.core.util.ImagePlotters;
 import it.units.malelab.jgea.core.util.Misc;
+import robotevo2d.builder.*;
+import robotevo2d.builder.agent.DumbCentralizedNumGridVSR;
+import robotevo2d.builder.mapper.Composition;
+import robotevo2d.builder.mapper.agent.CentralizedNumGridVSRBrain;
+import robotevo2d.builder.mapper.function.DoublesMultiLayerPerceptron;
+import robotevo2d.builder.mapper.function.Phases;
+import robotevo2d.builder.solver.DoublesStandard;
+import robotevo2d.builder.solver.SimpleES;
+import robotevo2d.builder.solver.SolverBuilder;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -61,10 +60,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Function;
@@ -269,7 +265,9 @@ public class Starter implements Runnable {
       throw new IllegalArgumentException(String.format("Cannot read experiment description: %s", e));
     }
     //create engine
-    Supplier<Engine> engineSupplier = Dyn4JEngine::new;
+    Supplier<Engine> engineSupplier = () -> ServiceLoader.load(Engine.class)
+        .findFirst()
+        .orElseThrow(() -> new RuntimeException("Cannot instantiate an engine"));
     //create executor
     ExecutorService executorService = Executors.newFixedThreadPool(configuration.nOfThreads());
     //create common listeners and progress monitor

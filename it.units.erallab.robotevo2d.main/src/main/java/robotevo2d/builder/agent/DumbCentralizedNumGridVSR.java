@@ -14,20 +14,22 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo2d.builder.solver;
+package robotevo2d.builder.agent;
 
-import it.units.erallab.robotevo2d.builder.MapperBuilder;
-import it.units.malelab.jgea.core.QualityBasedProblem;
-import it.units.malelab.jgea.core.solver.IterativeSolver;
-import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
+import it.units.erallab.mrsim2d.builder.Param;
+import it.units.erallab.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR;
+import it.units.erallab.mrsim2d.core.functions.TimedRealFunction;
 
 /**
- * @author "Eric Medvet" on 2022/02/14 for VSREvolution
+ * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
-public interface SolverBuilder<G> {
-  <S, Q> IterativeSolver<? extends POSetPopulationState<G, S, Q>, QualityBasedProblem<S, Q>, S> build(
-      MapperBuilder<G, S> builder,
-      S target
-  );
+public class DumbCentralizedNumGridVSR extends CentralizedNumGridVSR {
+
+  public DumbCentralizedNumGridVSR(@Param("body") Body body) {
+    super(body, TimedRealFunction.from((t, in) -> new double[CentralizedNumGridVSR.nOfOutputs(body)],
+        CentralizedNumGridVSR.nOfInputs(body),
+        CentralizedNumGridVSR.nOfOutputs(body)
+    ));
+  }
 
 }

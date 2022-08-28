@@ -14,21 +14,19 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo2d.builder;
+package robotevo2d.builder;
 
-import it.units.erallab.mrsim.util.builder.Param;
+import it.units.erallab.mrsim2d.viewer.Drawer;
+import it.units.erallab.mrsim2d.viewer.Drawers;
 
-import java.util.Random;
-import java.util.random.RandomGenerator;
+import java.util.function.Function;
 
 /**
- * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
+ * @author "Eric Medvet" on 2022/08/13 for 2d-robot-evolution
  */
-public class RandomGeneratorBuilder {
+public class DrawerBuilder {
 
-  public static RandomGenerator defaultRG(@Param(value = "seed", dI = 0) int seed) {
-    return new Random(seed);
+  public static Function<String, Drawer> basic() {
+    return Drawers::basic;
   }
-
 }
-

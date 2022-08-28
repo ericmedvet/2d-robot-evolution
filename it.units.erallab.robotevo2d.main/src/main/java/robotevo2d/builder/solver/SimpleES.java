@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo2d.builder.solver;
+package robotevo2d.builder.solver;
 
-import it.units.erallab.mrsim.util.builder.Param;
-import it.units.erallab.robotevo2d.builder.MapperBuilder;
+import it.units.erallab.mrsim2d.builder.Param;
 import it.units.malelab.jgea.core.QualityBasedProblem;
 import it.units.malelab.jgea.core.TotalOrderQualityBasedProblem;
 import it.units.malelab.jgea.core.solver.IterativeSolver;
@@ -26,6 +25,7 @@ import it.units.malelab.jgea.core.solver.StopConditions;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
 import it.units.malelab.jgea.representation.sequence.FixedLengthListFactory;
 import it.units.malelab.jgea.representation.sequence.numeric.UniformDoubleFactory;
+import robotevo2d.builder.MapperBuilder;
 
 import java.util.Comparator;
 import java.util.List;

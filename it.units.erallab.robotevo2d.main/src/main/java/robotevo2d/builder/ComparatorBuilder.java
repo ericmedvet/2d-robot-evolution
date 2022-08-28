@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo2d.builder;
+package robotevo2d.builder;
 
-import it.units.erallab.mrsim.util.builder.Param;
+import it.units.erallab.mrsim2d.builder.Param;
 import it.units.malelab.jgea.core.order.PartialComparator;
 
 import java.util.function.Function;

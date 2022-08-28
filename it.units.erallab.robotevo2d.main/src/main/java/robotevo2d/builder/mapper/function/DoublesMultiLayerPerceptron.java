@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo2d.builder.mapper.function;
+package robotevo2d.builder.mapper.function;
 
-import it.units.erallab.mrsim.functions.MultiLayerPerceptron;
-import it.units.erallab.mrsim.functions.TimedRealFunction;
-import it.units.erallab.mrsim.util.builder.Param;
-import it.units.erallab.robotevo2d.builder.MapperBuilder;
+import it.units.erallab.mrsim2d.builder.Param;
+import it.units.erallab.mrsim2d.core.functions.MultiLayerPerceptron;
+import it.units.erallab.mrsim2d.core.functions.TimedRealFunction;
+import robotevo2d.builder.MapperBuilder;
 
 import java.util.Collections;
 import java.util.List;

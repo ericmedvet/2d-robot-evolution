@@ -21,23 +21,18 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>it.units.erallab</groupId>
     <artifactId>robotevo2d</artifactId>
-    <version>0.1.0</version>
-    <packaging>jar</packaging>
+    <version>${revision}</version>
+    <modules>
+        <module>it.units.erallab.robotevo2d.main</module>
+    </modules>
+    <packaging>pom</packaging>
     <properties>
+        <revision>0.1.0</revision>
+        <mrsim2d.version>0.5.1</mrsim2d.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>18</jdk.version>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>it.units.erallab</groupId>
-            <artifactId>TwoDimMultiRobotSimulator</artifactId>
-            <version>0.4.1</version>
-        </dependency>
-        <dependency>
-            <groupId>it.units.malelab</groupId>
-            <artifactId>JGEA</artifactId>
-            <version>2.0.2</version>
-        </dependency>
         <!--
                 <dependency>
                     <groupId>org.junit.jupiter</groupId>
