@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo.builder.mapper.agent;
+package it.units.erallab.robotevo2d.builder.mapper.agent;
 
 import it.units.erallab.mrsim.agents.gridvsr.CentralizedNumGridVSR;
 import it.units.erallab.mrsim.agents.gridvsr.NumGridVSR;
 import it.units.erallab.mrsim.functions.TimedRealFunction;
-import it.units.erallab.robotevo.builder.MapperBuilder;
+import it.units.erallab.robotevo2d.builder.MapperBuilder;
 
 import java.util.function.Function;
 import java.util.function.Supplier;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo.builder.agent;
+package it.units.erallab.robotevo2d.builder.agent;
 
 import it.units.erallab.mrsim.agents.gridvsr.CentralizedNumGridVSR;
 import it.units.erallab.mrsim.functions.TimedRealFunction;

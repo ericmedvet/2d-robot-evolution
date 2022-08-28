@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo.builder.mapper;
+package it.units.erallab.robotevo2d.builder.mapper;
 
 import it.units.erallab.mrsim.util.builder.Param;
-import it.units.erallab.robotevo.builder.MapperBuilder;
+import it.units.erallab.robotevo2d.builder.MapperBuilder;
 
 import java.util.function.Function;
 

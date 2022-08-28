@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo.builder.solver;
+package it.units.erallab.robotevo2d.builder.solver;
 
-import it.units.erallab.robotevo.builder.MapperBuilder;
+import it.units.erallab.robotevo2d.builder.MapperBuilder;
 import it.units.malelab.jgea.core.QualityBasedProblem;
 import it.units.malelab.jgea.core.solver.IterativeSolver;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;

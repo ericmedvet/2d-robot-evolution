@@ -14,17 +14,21 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo.builder;
+package it.units.erallab.robotevo2d.builder;
+
+import it.units.erallab.mrsim.tasks.locomotion.Locomotion;
+import it.units.erallab.mrsim.util.DoubleRange;
+import it.units.erallab.mrsim.util.builder.Param;
 
 import java.util.function.Function;
 
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
-public class SerializerBuilder {
+public class ExtractorBuilder {
 
-  public static Function<Object, String> stringifier() {
-    return Object::toString;
+  public static Function<Locomotion.Outcome, Double> locomotionXVelocity(@Param(value = "transientT", dD = 0d) double transientT) {
+    return o -> o.subOutcome(new DoubleRange(transientT, o.duration())).xVelocity();
   }
 
 }

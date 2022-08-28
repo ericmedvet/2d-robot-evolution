@@ -14,19 +14,13 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo.builder;
-
-import it.units.erallab.mrsim.viewer.Drawer;
-import it.units.erallab.mrsim.viewer.Drawers;
-
-import java.util.function.Function;
+package it.units.erallab.robotevo2d;
 
 /**
- * @author "Eric Medvet" on 2022/08/13 for 2d-robot-evolution
+ * @author "Eric Medvet" on 2022/08/08 for 2d-robot-evolution
  */
-public class DrawerBuilder {
-
-  public static Function<String, Drawer> basic() {
-    return Drawers::basic;
+public class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello world!");
   }
 }

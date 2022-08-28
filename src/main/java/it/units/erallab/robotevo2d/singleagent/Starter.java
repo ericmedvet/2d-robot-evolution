@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo.singleagent;
+package it.units.erallab.robotevo2d.singleagent;
 
 import it.units.erallab.mrsim.agents.gridvsr.NumGridVSR;
 import it.units.erallab.mrsim.builders.GridShapeBuilder;
@@ -33,15 +33,15 @@ import it.units.erallab.mrsim.util.builder.StringNamedParamMap;
 import it.units.erallab.mrsim.viewer.Drawer;
 import it.units.erallab.mrsim.viewer.VideoBuilder;
 import it.units.erallab.mrsim.viewer.VideoUtils;
-import it.units.erallab.robotevo.builder.*;
-import it.units.erallab.robotevo.builder.agent.DumbCentralizedNumGridVSR;
-import it.units.erallab.robotevo.builder.mapper.Composition;
-import it.units.erallab.robotevo.builder.mapper.agent.CentralizedNumGridVSRBrain;
-import it.units.erallab.robotevo.builder.mapper.function.DoublesMultiLayerPerceptron;
-import it.units.erallab.robotevo.builder.mapper.function.Phases;
-import it.units.erallab.robotevo.builder.solver.DoublesStandard;
-import it.units.erallab.robotevo.builder.solver.SimpleES;
-import it.units.erallab.robotevo.builder.solver.SolverBuilder;
+import it.units.erallab.robotevo2d.builder.*;
+import it.units.erallab.robotevo2d.builder.agent.DumbCentralizedNumGridVSR;
+import it.units.erallab.robotevo2d.builder.mapper.Composition;
+import it.units.erallab.robotevo2d.builder.mapper.agent.CentralizedNumGridVSRBrain;
+import it.units.erallab.robotevo2d.builder.mapper.function.DoublesMultiLayerPerceptron;
+import it.units.erallab.robotevo2d.builder.mapper.function.Phases;
+import it.units.erallab.robotevo2d.builder.solver.DoublesStandard;
+import it.units.erallab.robotevo2d.builder.solver.SimpleES;
+import it.units.erallab.robotevo2d.builder.solver.SolverBuilder;
 import it.units.malelab.jgea.core.QualityBasedProblem;
 import it.units.malelab.jgea.core.listener.*;
 import it.units.malelab.jgea.core.listener.telegram.TelegramProgressMonitor;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo.builder;
+package it.units.erallab.robotevo2d.builder;
 
 import java.util.ArrayList;
 import java.util.List;
