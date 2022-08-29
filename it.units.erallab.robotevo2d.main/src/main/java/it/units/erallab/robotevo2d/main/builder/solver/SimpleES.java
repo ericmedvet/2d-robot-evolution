@@ -20,12 +20,12 @@ import it.units.erallab.mrsim2d.builder.Param;
 import it.units.erallab.robotevo2d.main.builder.MapperBuilder;
 import it.units.malelab.jgea.core.QualityBasedProblem;
 import it.units.malelab.jgea.core.TotalOrderQualityBasedProblem;
+import it.units.malelab.jgea.core.representation.sequence.FixedLengthListFactory;
+import it.units.malelab.jgea.core.representation.sequence.numeric.UniformDoubleFactory;
 import it.units.malelab.jgea.core.solver.IterativeSolver;
 import it.units.malelab.jgea.core.solver.SimpleEvolutionaryStrategy;
 import it.units.malelab.jgea.core.solver.StopConditions;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
-import it.units.malelab.jgea.representation.sequence.FixedLengthListFactory;
-import it.units.malelab.jgea.representation.sequence.numeric.UniformDoubleFactory;
 
 import java.util.Comparator;
 import java.util.List;

@@ -3,7 +3,7 @@
  */
 module it.units.erallab.robotevo2d.main {
   uses it.units.erallab.mrsim2d.core.engine.Engine;
-  requires JGEA;
+  requires it.units.malelab.jgea.core;
   requires java.desktop;
   requires java.logging;
   requires it.units.erallab.mrsim2d.core;
