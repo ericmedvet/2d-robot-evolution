@@ -24,6 +24,7 @@
     <version>${revision}</version>
     <modules>
         <module>it.units.erallab.robotevo2d.main</module>
+        <module>it.units.erallab.robotevo2d.assembly</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
@@ -105,61 +106,11 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>get-module-path-unix</id>
-                        <configuration>
-                            <executable>sh</executable>
-                            <arguments>
-                                <argument>-c</argument>
-                                <argument>echo $0</argument>
-                                <modulepath />
-                            </arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-                <configuration>
-                    <includeProjectDependencies>true</includeProjectDependencies>
-                    <includePluginDependencies>true</includePluginDependencies>
-                    <executable>java</executable>
-                    <!--
-                                        <executableDependency>
-                                            <groupId>it.units.erallab</groupId>
-                                            <artifactId>mrsim2d.engine.dyn4j</artifactId>
-                                        </executableDependency>
-                    -->
-                    <mainClass>it.units.erallab.robotevo2d.main.singleagent.Starter</mainClass>
-                    <arguments>
-                        <argument>--module-path</argument>
-                        "<modulepath/>"
-                        <argument>--module</argument>
-                        <argument>it.units.erallab.robotevo2d.main/it.units.erallab.robotevo2d.main.singleagent.Starter</argument>
-                    </arguments>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>it.units.erallab</groupId>
-                        <artifactId>mrsim2d.engine.dyn4j</artifactId>
-                        <version>0.5.1</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>it.units.erallab</groupId>
-                        <artifactId>robotevo2d.main</artifactId>
-                        <version>0.2.0</version>
-                    </dependency>
-                </dependencies>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.4.2</version>
             </plugin>
-
         </plugins>
     </build>
 

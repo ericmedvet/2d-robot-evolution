@@ -25,35 +25,42 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>robotevo2d.main</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>robotevo2d.assembly</artifactId>
+    <packaging>pom</packaging>
 
     <dependencies>
         <dependency>
             <groupId>it.units.erallab</groupId>
-            <artifactId>mrsim2d.core</artifactId>
-            <version>${mrsim2d.version}</version>
+            <artifactId>robotevo2d.main</artifactId>
+            <version>${revision}</version>
         </dependency>
-        <dependency>
-            <groupId>it.units.erallab</groupId>
-            <artifactId>mrsim2d.viewer</artifactId>
-            <version>${mrsim2d.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>it.units.erallab</groupId>
-            <artifactId>mrsim2d.builder</artifactId>
-            <version>${mrsim2d.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>it.units.erallab</groupId>
-            <artifactId>mrsim2d.engine.dyn4j</artifactId>
-            <version>${mrsim2d.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>it.units.malelab</groupId>
-            <artifactId>jgea.core</artifactId>
-            <version>${jgea.version}</version>
-        </dependency>
+        <!--<dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>1.4.10</version>
+        </dependency>-->
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>make-bundles</id>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>zip-assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
