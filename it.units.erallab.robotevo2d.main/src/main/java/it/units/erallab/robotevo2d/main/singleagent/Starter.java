@@ -16,8 +16,9 @@
 
 package it.units.erallab.robotevo2d.main.singleagent;
 
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.ParameterException;
 import it.units.erallab.mrsim2d.builder.NamedBuilder;
-import it.units.erallab.mrsim2d.builder.Param;
 import it.units.erallab.mrsim2d.builder.StringNamedParamMap;
 import it.units.erallab.mrsim2d.core.EmbodiedAgent;
 import it.units.erallab.mrsim2d.core.agents.gridvsr.NumGridVSR;
@@ -58,6 +59,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -70,20 +72,22 @@ public class Starter implements Runnable {
 
   private final static Logger L = Logger.getLogger(Starter.class.getName());
 
-  private final NamedBuilder<Object> nb;
-  private final Configuration configuration;
-
-  public Starter(NamedBuilder<Object> nb, Configuration configuration) {
-    this.nb = nb;
-    this.configuration = configuration;
+  static {
+    try {
+      LogManager.getLogManager().readConfiguration(Starter.class.getClassLoader()
+          .getResourceAsStream("logging.properties"));
+    } catch (IOException ex) {
+      //ignore
+    }
   }
 
-  public record Configuration(
-      @Param("descFile") String descFile,
-      @Param("telegramBotId") String telegramBotId,
-      @Param("telegramChatId") String telegramChatId,
-      @Param("nOfThreads") int nOfThreads
-  ) {}
+  private final Configuration configuration;
+  private final NamedBuilder<Object> nb;
+
+  public Starter(Configuration configuration, NamedBuilder<Object> nb) {
+    this.configuration = configuration;
+    this.nb = nb;
+  }
 
   private static NamedBuilder<Object> buildNamedBuilder() {
     return NamedBuilder.empty()
@@ -125,6 +129,11 @@ public class Starter implements Runnable {
         .and(NamedBuilder.fromClass(Configuration.class));
   }
 
+  private static void die(String msg) {
+    L.severe(msg);
+    System.exit(-1);
+  }
+
   private static ListenerFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> getCsvPrinter(
       FileSaver<?> fileSaver,
       List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> nonVisualFunctions,
@@ -160,6 +169,20 @@ public class Starter implements Runnable {
     ), List.of()).then(t -> ImagePlotters.xyLines(600, 400).apply(t));
   }
 
+  private static TelegramUpdater<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> getTelegramUpdater(
+      Experiment<?, ?> experiment,
+      Supplier<Engine> engineSupplier,
+      String telegramBotId,
+      long telegramChatId
+  ) {
+    List<AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?, Map<String, Object>>> accumulators = new ArrayList<>();
+    accumulators.add(getPlotter(experiment));
+    if (experiment.videoSaver() != null) {
+      experiment.videoTasks().forEach(t -> accumulators.add(getVideoMaker(engineSupplier, experiment.videoSaver(), t)));
+    }
+    return new TelegramUpdater<>(accumulators, telegramBotId, telegramChatId);
+  }
+
   private static AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, File, Map<String, Object>> getVideoMaker(
       Supplier<Engine> engineSupplier, VideoSaver videoSaver, VideoTask videoTask
   ) {
@@ -191,60 +214,75 @@ public class Starter implements Runnable {
 
   public static void main(String[] args) {
     NamedBuilder<Object> nb = buildNamedBuilder();
-    Configuration configuration = new Configuration(
-        "",
-        "1462661025:AAFM8n2qRYI_ZylUHvwGUalrX0Bgh1nDEmY",
-        "207490209",
-        Runtime.getRuntime().availableProcessors() - 1
-    );
-    if (args.length > 0) {
-      configuration = (Configuration) nb.build(args[0]);
-      System.out.println("Configuration found: " + configuration);
+    Configuration configuration = new Configuration();
+    try {
+      JCommander.newBuilder()
+          .addObject(configuration)
+          .build()
+          .parse(args);
+      new Starter(configuration, nb).run();
+    } catch (ParameterException e) {
+      e.usage();
+      die(String.format("Cannot read command line options: %s", e));
     }
-    new Starter(nb, configuration).run();
-  }
-
-  private TelegramUpdater<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> getTelegramUpdater(
-      Experiment<?, ?> experiment, Supplier<Engine> engineSupplier
-  ) {
-    List<AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?, Map<String, Object>>> accumulators = new ArrayList<>();
-    accumulators.add(getPlotter(experiment));
-    if (experiment.videoSaver() != null) {
-      experiment.videoTasks().forEach(t -> accumulators.add(getVideoMaker(engineSupplier, experiment.videoSaver(), t)));
-    }
-    return new TelegramUpdater<>(
-        accumulators,
-        configuration.telegramBotId(),
-        Long.parseLong(configuration.telegramChatId())
-    );
   }
 
   @Override
   public void run() {
     //read experiment description
-    Experiment<?, ?> experiment;
-    InputStream inputStream;
-    if (configuration.descFile().isEmpty()) {
-      inputStream = getClass().getResourceAsStream("/example-experiment.txt");
+    String expDescription = "";
+    if (configuration.experimentDescriptionFilePath.isEmpty()) {
+      L.info("Using default experiment description");
+      InputStream inputStream = getClass().getResourceAsStream("/example-experiment.txt");
       if (inputStream == null) {
-        throw new RuntimeException("Cannot find default experiment description");
+        die("Cannot find default experiment description");
+      } else {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+          expDescription = br.lines().collect(Collectors.joining());
+        } catch (IOException e) {
+          die("Cannot find default experiment description");
+        }
       }
     } else {
-      try {
-        inputStream = new FileInputStream(configuration.descFile());
-      } catch (FileNotFoundException e) {
-        throw new IllegalArgumentException(String.format("Cannot read experiment description: %s", e));
+      L.info(String.format("Using provided experiment description: %s", configuration.experimentDescriptionFilePath));
+      try (BufferedReader br = new BufferedReader(new FileReader(configuration.experimentDescriptionFilePath))) {
+        expDescription = br.lines().collect(Collectors.joining());
+      } catch (IOException e) {
+        die(String.format(
+            "Cannot read provided experiment description at %s: %s",
+            configuration.experimentDescriptionFilePath,
+            e
+        ));
       }
     }
-    BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-    String expDescription = br.lines().collect(Collectors.joining());
-    experiment = (Experiment<?, ?>) nb.build(expDescription);
+    Experiment<?, ?> experiment = (Experiment<?, ?>) nb.build(expDescription);
+    //read telegram credentials file
+    String telegramBotId = "";
+    long telegramChatId = 0;
+    if (!configuration.telegramCredentialsFilePath.isEmpty()) {
+      try (BufferedReader br = new BufferedReader(new FileReader(configuration.telegramCredentialsFilePath))) {
+        List<String> lines = br.lines().toList();
+        if (lines.size() < 1) {
+          die("Invalid telegram credential file with 0 lines");
+        }
+        String[] pieces = lines.get(0).split("\\s");
+        telegramBotId = pieces[0];
+        telegramChatId = Long.parseLong(pieces[1]);
+        L.info(String.format("Using provided telegram credentials: %s", configuration.telegramCredentialsFilePath));
+      } catch (IOException e) {
+        die(String.format(
+            "Cannot read telegram credentials at %s: %s",
+            configuration.experimentDescriptionFilePath,
+            e
+        ));
+      }
+    }
     //create engine
     Supplier<Engine> engineSupplier = () -> ServiceLoader.load(Engine.class)
         .findFirst()
         .orElseThrow(() -> new RuntimeException("Cannot instantiate an engine"));
     //create executor
-    ExecutorService executorService = Executors.newFixedThreadPool(configuration.nOfThreads());
+    ExecutorService executorService = Executors.newFixedThreadPool(configuration.nOfThreads);
     //create common listeners and progress monitor
     List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> basicFunctions =
         List.of(
@@ -283,21 +321,16 @@ public class Starter implements Runnable {
         .fileName() != null && !experiment.bestFileSaver().fileName().isEmpty()) {
       factories.add(getCsvPrinter(experiment.bestFileSaver(), nonVisualFunctions, keysFunctions));
     }
-    if (configuration.telegramChatId() != null && !configuration.telegramChatId()
-        .isEmpty() && configuration.telegramBotId() != null && !configuration.telegramBotId().isEmpty()) {
-      factories.add(getTelegramUpdater(experiment, engineSupplier));
+    if (!telegramBotId.isEmpty()) {
+      factories.add(getTelegramUpdater(experiment, engineSupplier, telegramBotId, telegramChatId));
     }
     ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> factory =
         ListenerFactory.all(
             factories);
     //build progress monitor
     ProgressMonitor progressMonitor = new ScreenProgressMonitor(System.out);
-    if (configuration.telegramChatId() != null && !configuration.telegramChatId()
-        .isEmpty() && configuration.telegramBotId() != null && !configuration.telegramBotId().isEmpty()) {
-      progressMonitor = progressMonitor.and(new TelegramProgressMonitor(
-          configuration.telegramBotId(),
-          Long.parseLong(configuration.telegramChatId())
-      ));
+    if (!telegramBotId.isEmpty()) {
+      progressMonitor = progressMonitor.and(new TelegramProgressMonitor(telegramBotId, telegramChatId));
     }
     //iterate over runs
     for (int i = 0; i < experiment.runs().size(); i++) {

@@ -59,6 +59,11 @@
             <artifactId>jgea.telegram</artifactId>
             <version>${jgea.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.beust</groupId>
+            <artifactId>jcommander</artifactId>
+            <version>1.82</version>
+        </dependency>
     </dependencies>
 
 </project>
