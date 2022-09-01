@@ -18,7 +18,6 @@ package it.units.erallab.robotevo2d.main.singleagent;
 
 import it.units.erallab.mrsim2d.builder.NamedBuilder;
 import it.units.erallab.mrsim2d.builder.Param;
-import it.units.erallab.mrsim2d.builder.ParamMap;
 import it.units.erallab.mrsim2d.builder.StringNamedParamMap;
 import it.units.erallab.mrsim2d.core.EmbodiedAgent;
 import it.units.erallab.mrsim2d.core.agents.gridvsr.NumGridVSR;
@@ -27,9 +26,7 @@ import it.units.erallab.mrsim2d.core.builders.TerrainBuilder;
 import it.units.erallab.mrsim2d.core.builders.VSRSensorizingFunctionBuilder;
 import it.units.erallab.mrsim2d.core.builders.VoxelSensorBuilder;
 import it.units.erallab.mrsim2d.core.engine.Engine;
-import it.units.erallab.mrsim2d.core.tasks.Task;
 import it.units.erallab.mrsim2d.core.tasks.locomotion.Locomotion;
-import it.units.erallab.mrsim2d.viewer.Drawer;
 import it.units.erallab.mrsim2d.viewer.VideoBuilder;
 import it.units.erallab.mrsim2d.viewer.VideoUtils;
 import it.units.erallab.robotevo2d.main.builder.*;
@@ -40,7 +37,6 @@ import it.units.erallab.robotevo2d.main.builder.mapper.function.DoublesMultiLaye
 import it.units.erallab.robotevo2d.main.builder.mapper.function.Phases;
 import it.units.erallab.robotevo2d.main.builder.solver.DoublesStandard;
 import it.units.erallab.robotevo2d.main.builder.solver.SimpleES;
-import it.units.erallab.robotevo2d.main.builder.solver.SolverBuilder;
 import it.units.malelab.jgea.core.QualityBasedProblem;
 import it.units.malelab.jgea.core.listener.*;
 import it.units.malelab.jgea.core.order.PartialComparator;
@@ -63,7 +59,6 @@ import java.util.concurrent.Executors;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.logging.Logger;
-import java.util.random.RandomGenerator;
 import java.util.stream.Collectors;
 
 import static it.units.malelab.jgea.core.listener.NamedFunctions.*;
@@ -87,45 +82,6 @@ public class Starter implements Runnable {
       @Param("descFile") String descFile,
       @Param("telegramBotId") String telegramBotId,
       @Param("nOfThreads") int nOfThreads
-  ) {}
-
-  public record Experiment<G, Q>(
-      @Param("runs") List<? extends Run<? extends G, ? extends Q>> runs,
-      @Param("qExtractor") Function<? super Q, Double> qExtractor,
-      @Param("bestFileSaver") FileSaver<Q> bestFileSaver,
-      @Param("telegramChatId") String telegramChatId,
-      @Param("videoSaver") VideoSaver videoSaver,
-      @Param("videoTasks") List<VideoTask> videoTasks
-  ) {}
-
-  public record FileSaver<Q>(
-      @Param("fileName") String fileName,
-      @Param("serializer") Function<? super Q, String> serializer
-  ) {}
-
-  public record Run<G, Q>(
-      @Param("solver") SolverBuilder<G> solverBuilder,
-      @Param("mapper") MapperBuilder<G, Supplier<EmbodiedAgent>> mapper,
-      @Param("target") EmbodiedAgent target,
-      @Param("task") Task<Supplier<EmbodiedAgent>, Q> task,
-      @Param("comparator") PartialComparator<? super Q> comparator,
-      @Param("randomGenerator") RandomGenerator randomGenerator,
-      @Param(value = "", self = true) ParamMap map
-  ) {}
-
-  public record VideoSaver(
-      @Param(value = "w", dI = 400) int w,
-      @Param(value = "h", dI = 250) int h,
-      @Param(value = "frameRate", dD = 30) double frameRate,
-      @Param(value = "startTime", dD = 0) double startTime,
-      @Param(value = "endTime", dD = 30) double endTime,
-      @Param(value = "codec", dS = "jcodec") String codec,
-      @Param(value = "drawer") Function<String, Drawer> drawer
-  ) {}
-
-  public record VideoTask(
-      @Param("task") Task<Supplier<EmbodiedAgent>, ?> task,
-      @Param(value = "", self = true) ParamMap map
   ) {}
 
   private static NamedBuilder<Object> buildNamedBuilder() {
