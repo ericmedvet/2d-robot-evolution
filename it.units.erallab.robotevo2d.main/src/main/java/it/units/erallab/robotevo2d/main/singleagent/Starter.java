@@ -30,6 +30,7 @@ import it.units.erallab.mrsim2d.core.engine.Engine;
 import it.units.erallab.mrsim2d.core.tasks.locomotion.Locomotion;
 import it.units.erallab.mrsim2d.viewer.VideoBuilder;
 import it.units.erallab.mrsim2d.viewer.VideoUtils;
+import it.units.erallab.robotevo2d.main.ColoredFormatter;
 import it.units.erallab.robotevo2d.main.builder.*;
 import it.units.erallab.robotevo2d.main.builder.agent.DumbCentralizedNumGridVSR;
 import it.units.erallab.robotevo2d.main.builder.mapper.Composition;
@@ -59,7 +60,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Function;
 import java.util.function.Supplier;
-import java.util.logging.LogManager;
+import java.util.logging.ConsoleHandler;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -73,12 +74,10 @@ public class Starter implements Runnable {
   private final static Logger L = Logger.getLogger(Starter.class.getName());
 
   static {
-    try {
-      LogManager.getLogManager().readConfiguration(Starter.class.getClassLoader()
-          .getResourceAsStream("logging.properties"));
-    } catch (IOException ex) {
-      //ignore
-    }
+    L.setUseParentHandlers(false);
+    ConsoleHandler consoleHandler = new ConsoleHandler();
+    consoleHandler.setFormatter(new ColoredFormatter());
+    L.addHandler(consoleHandler);
   }
 
   private final Configuration configuration;
