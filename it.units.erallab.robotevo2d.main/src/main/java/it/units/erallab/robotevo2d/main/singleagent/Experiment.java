@@ -12,7 +12,6 @@ public record Experiment<G, Q>(
     @Param("runs") List<? extends Run<? extends G, ? extends Q>> runs,
     @Param("qExtractor") Function<? super Q, Double> qExtractor,
     @Param("bestFileSaver") FileSaver<Q> bestFileSaver,
-    @Param("telegramChatId") String telegramChatId,
     @Param("videoSaver") VideoSaver videoSaver,
     @Param("videoTasks") List<VideoTask> videoTasks
 ) {}

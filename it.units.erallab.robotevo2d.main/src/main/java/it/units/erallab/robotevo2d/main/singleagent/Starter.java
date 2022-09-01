@@ -81,6 +81,7 @@ public class Starter implements Runnable {
   public record Configuration(
       @Param("descFile") String descFile,
       @Param("telegramBotId") String telegramBotId,
+      @Param("telegramChatId") String telegramChatId,
       @Param("nOfThreads") int nOfThreads
   ) {}
 
@@ -124,7 +125,7 @@ public class Starter implements Runnable {
         .and(NamedBuilder.fromClass(Configuration.class));
   }
 
-  private static CSVPrinter<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> getCsvPrinter(
+  private static ListenerFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> getCsvPrinter(
       FileSaver<?> fileSaver,
       List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> nonVisualFunctions,
       List<NamedFunction<? super Map<String, Object>, ?>> keysFunctions
@@ -193,6 +194,7 @@ public class Starter implements Runnable {
     Configuration configuration = new Configuration(
         "",
         "1462661025:AAFM8n2qRYI_ZylUHvwGUalrX0Bgh1nDEmY",
+        "207490209",
         Runtime.getRuntime().availableProcessors() - 1
     );
     if (args.length > 0) {
@@ -213,7 +215,7 @@ public class Starter implements Runnable {
     return new TelegramUpdater<>(
         accumulators,
         configuration.telegramBotId(),
-        Long.parseLong(experiment.telegramChatId())
+        Long.parseLong(configuration.telegramChatId())
     );
   }
 
@@ -281,7 +283,7 @@ public class Starter implements Runnable {
         .fileName() != null && !experiment.bestFileSaver().fileName().isEmpty()) {
       factories.add(getCsvPrinter(experiment.bestFileSaver(), nonVisualFunctions, keysFunctions));
     }
-    if (experiment.telegramChatId() != null && !experiment.telegramChatId()
+    if (configuration.telegramChatId() != null && !configuration.telegramChatId()
         .isEmpty() && configuration.telegramBotId() != null && !configuration.telegramBotId().isEmpty()) {
       factories.add(getTelegramUpdater(experiment, engineSupplier));
     }
@@ -290,11 +292,11 @@ public class Starter implements Runnable {
             factories);
     //build progress monitor
     ProgressMonitor progressMonitor = new ScreenProgressMonitor(System.out);
-    if (experiment.telegramChatId() != null && !experiment.telegramChatId()
+    if (configuration.telegramChatId() != null && !configuration.telegramChatId()
         .isEmpty() && configuration.telegramBotId() != null && !configuration.telegramBotId().isEmpty()) {
       progressMonitor = progressMonitor.and(new TelegramProgressMonitor(
           configuration.telegramBotId(),
-          Long.parseLong(experiment.telegramChatId())
+          Long.parseLong(configuration.telegramChatId())
       ));
     }
     //iterate over runs
