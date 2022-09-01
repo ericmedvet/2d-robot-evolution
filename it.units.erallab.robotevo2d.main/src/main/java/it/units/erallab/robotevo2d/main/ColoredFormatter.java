@@ -37,7 +37,7 @@ public class ColoredFormatter extends Formatter {
   }
 
   @Override
-  public String format(LogRecord record) {
+  public synchronized String format(LogRecord record) {
     return ANSI_RESET +
         "[" +
         color(record.getLevel()) +
@@ -48,6 +48,7 @@ public class ColoredFormatter extends Formatter {
         "] " +
         ANSI_WHITE +
         record.getMessage() +
+        ANSI_RESET +
         "\n";
   }
 }

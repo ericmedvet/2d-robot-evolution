@@ -61,6 +61,7 @@ import java.util.concurrent.Executors;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -71,13 +72,17 @@ import static it.units.malelab.jgea.core.listener.NamedFunctions.*;
  */
 public class Starter implements Runnable {
 
-  private final static Logger L = Logger.getLogger(Starter.class.getName());
+  private final static Logger L;
 
   static {
-    L.setUseParentHandlers(false);
+    Logger mainLogger = Logger.getLogger("");
+    mainLogger.setLevel(Level.CONFIG);
+    Arrays.stream(mainLogger.getHandlers()).forEach(mainLogger::removeHandler);
     ConsoleHandler consoleHandler = new ConsoleHandler();
     consoleHandler.setFormatter(new ColoredFormatter());
-    L.addHandler(consoleHandler);
+    consoleHandler.setLevel(Level.CONFIG);
+    mainLogger.addHandler(consoleHandler);
+    L = Logger.getLogger(Starter.class.getName());
   }
 
   private final Configuration configuration;
@@ -231,7 +236,7 @@ public class Starter implements Runnable {
     //read experiment description
     String expDescription = "";
     if (configuration.experimentDescriptionFilePath.isEmpty()) {
-      L.info("Using default experiment description");
+      L.config("Using default experiment description");
       InputStream inputStream = getClass().getResourceAsStream("/example-experiment.txt");
       if (inputStream == null) {
         die("Cannot find default experiment description");
@@ -243,7 +248,7 @@ public class Starter implements Runnable {
         }
       }
     } else {
-      L.info(String.format("Using provided experiment description: %s", configuration.experimentDescriptionFilePath));
+      L.config(String.format("Using provided experiment description: %s", configuration.experimentDescriptionFilePath));
       try (BufferedReader br = new BufferedReader(new FileReader(configuration.experimentDescriptionFilePath))) {
         expDescription = br.lines().collect(Collectors.joining());
       } catch (IOException e) {
@@ -267,7 +272,7 @@ public class Starter implements Runnable {
         String[] pieces = lines.get(0).split("\\s");
         telegramBotId = pieces[0];
         telegramChatId = Long.parseLong(pieces[1]);
-        L.info(String.format("Using provided telegram credentials: %s", configuration.telegramCredentialsFilePath));
+        L.config(String.format("Using provided telegram credentials: %s", configuration.telegramCredentialsFilePath));
       } catch (IOException e) {
         die(String.format(
             "Cannot read telegram credentials at %s: %s",
@@ -327,7 +332,7 @@ public class Starter implements Runnable {
         ListenerFactory.all(
             factories);
     //build progress monitor
-    ProgressMonitor progressMonitor = new ScreenProgressMonitor(System.out);
+    ProgressMonitor progressMonitor = new LoggerProgressMonitor();
     if (!telegramBotId.isEmpty()) {
       progressMonitor = progressMonitor.and(new TelegramProgressMonitor(telegramBotId, telegramChatId));
     }
