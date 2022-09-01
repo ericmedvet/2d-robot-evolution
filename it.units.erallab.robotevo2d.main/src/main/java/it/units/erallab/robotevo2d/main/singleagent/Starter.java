@@ -236,7 +236,7 @@ public class Starter implements Runnable {
     NamedBuilder<Object> nb = buildNamedBuilder();
     Configuration configuration = new Configuration(
         "",
-        "",
+        "1462661025:AAFM8n2qRYI_ZylUHvwGUalrX0Bgh1nDEmY",
         Runtime.getRuntime().availableProcessors() - 1
     );
     if (args.length > 0) {
