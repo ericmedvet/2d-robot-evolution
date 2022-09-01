@@ -9,12 +9,12 @@ experiment(
     ) * [a.dumbCentralizedNumGridVSR()]) *
     (randomGenerator = (seed = [1]) * [rg.defaultRG()]) * [
     run(
-      solver = so.doublesStandard(nEval = 500; nPop = 50);
+      solver = so.doublesStandard(nEval = 50; nPop = 10);
       mapper = m.composition(
         first = m.doublesMultiLayerPerceptron(nOfInnerLayers = 1);
         second = m.centralizedNumGridVSRBrain()
       );
-      task = s.task.locomotion(terrain = s.t.flat(); duration = 20);
+      task = s.task.locomotion(terrain = s.t.flat(); duration = 10);
       comparator = c.max(of = e.locomotionXVelocity())
     )
   ];
@@ -23,7 +23,7 @@ experiment(
   telegramChatId = "207490209";
   videoSaver = videoSaver(drawer = d.basic(); w = 600; h = 400);
   videoTasks = [
-    videoTask(task = s.task.locomotion(terrain = s.t.flat(); duration = 20));
-    videoTask(task = s.task.locomotion(terrain = s.t.hilly(); duration = 20))
+    videoTask(task = s.task.locomotion(terrain = s.t.flat(); duration = 10));
+    videoTask(task = s.task.locomotion(terrain = s.t.hilly(); duration = 10))
   ]
 )

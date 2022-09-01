@@ -43,8 +43,6 @@ import it.units.erallab.robotevo2d.main.builder.solver.SimpleES;
 import it.units.erallab.robotevo2d.main.builder.solver.SolverBuilder;
 import it.units.malelab.jgea.core.QualityBasedProblem;
 import it.units.malelab.jgea.core.listener.*;
-import it.units.malelab.jgea.core.listener.telegram.TelegramProgressMonitor;
-import it.units.malelab.jgea.core.listener.telegram.TelegramUpdater;
 import it.units.malelab.jgea.core.order.PartialComparator;
 import it.units.malelab.jgea.core.solver.Individual;
 import it.units.malelab.jgea.core.solver.IterativeSolver;
@@ -52,6 +50,8 @@ import it.units.malelab.jgea.core.solver.SolverException;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
 import it.units.malelab.jgea.core.util.ImagePlotters;
 import it.units.malelab.jgea.core.util.Misc;
+import it.units.malelab.jgea.telegram.TelegramProgressMonitor;
+import it.units.malelab.jgea.telegram.TelegramUpdater;
 
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -234,7 +234,11 @@ public class Starter implements Runnable {
 
   public static void main(String[] args) {
     NamedBuilder<Object> nb = buildNamedBuilder();
-    Configuration configuration = new Configuration("", "", Runtime.getRuntime().availableProcessors() - 1);
+    Configuration configuration = new Configuration(
+        "",
+        "",
+        Runtime.getRuntime().availableProcessors() - 1
+    );
     if (args.length > 0) {
       configuration = (Configuration) nb.build(args[0]);
       System.out.println("Configuration found: " + configuration);
@@ -264,7 +268,7 @@ public class Starter implements Runnable {
     InputStream inputStream;
     if (configuration.descFile().isEmpty()) {
       inputStream = getClass().getResourceAsStream("/example-experiment.txt");
-      if (inputStream==null) {
+      if (inputStream == null) {
         throw new RuntimeException("Cannot find default experiment description");
       }
     } else {
