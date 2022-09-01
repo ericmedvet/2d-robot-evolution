@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Eric Medvet <eric.medvet@gmail.com> (as eric)
+ * Copyright 2022 eric
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,10 +54,7 @@ import it.units.malelab.jgea.core.util.ImagePlotters;
 import it.units.malelab.jgea.core.util.Misc;
 
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
@@ -81,25 +78,29 @@ public class Starter implements Runnable {
   private final NamedBuilder<Object> nb;
   private final Configuration configuration;
 
-  public Starter(NamedBuilder<Object> nb, String configuration) {
+  public Starter(NamedBuilder<Object> nb, Configuration configuration) {
     this.nb = nb;
-    this.configuration = (Configuration) nb.build(configuration);
+    this.configuration = configuration;
   }
 
   public record Configuration(
-      @Param("descFile") String descFile, @Param("telegramBotId") String telegramBotId,
+      @Param("descFile") String descFile,
+      @Param("telegramBotId") String telegramBotId,
       @Param("nOfThreads") int nOfThreads
   ) {}
 
   public record Experiment<G, Q>(
       @Param("runs") List<? extends Run<? extends G, ? extends Q>> runs,
-      @Param("qExtractor") Function<? super Q, Double> qExtractor, @Param("bestFileSaver") FileSaver<Q> bestFileSaver,
-      @Param("telegramChatId") String telegramChatId, @Param("videoSaver") VideoSaver videoSaver,
+      @Param("qExtractor") Function<? super Q, Double> qExtractor,
+      @Param("bestFileSaver") FileSaver<Q> bestFileSaver,
+      @Param("telegramChatId") String telegramChatId,
+      @Param("videoSaver") VideoSaver videoSaver,
       @Param("videoTasks") List<VideoTask> videoTasks
   ) {}
 
   public record FileSaver<Q>(
-      @Param("fileName") String fileName, @Param("serializer") Function<? super Q, String> serializer
+      @Param("fileName") String fileName,
+      @Param("serializer") Function<? super Q, String> serializer
   ) {}
 
   public record Run<G, Q>(
@@ -113,9 +114,12 @@ public class Starter implements Runnable {
   ) {}
 
   public record VideoSaver(
-      @Param(value = "w", dI = 400) int w, @Param(value = "h", dI = 250) int h,
-      @Param(value = "frameRate", dD = 30) double frameRate, @Param(value = "startTime", dD = 0) double startTime,
-      @Param(value = "endTime", dD = 30) double endTime, @Param(value = "codec", dS = "jcodec") String codec,
+      @Param(value = "w", dI = 400) int w,
+      @Param(value = "h", dI = 250) int h,
+      @Param(value = "frameRate", dD = 30) double frameRate,
+      @Param(value = "startTime", dD = 0) double startTime,
+      @Param(value = "endTime", dD = 30) double endTime,
+      @Param(value = "codec", dS = "jcodec") String codec,
       @Param(value = "drawer") Function<String, Drawer> drawer
   ) {}
 
@@ -230,10 +234,9 @@ public class Starter implements Runnable {
 
   public static void main(String[] args) {
     NamedBuilder<Object> nb = buildNamedBuilder();
-    String configuration = "configuration(descFile=\"/home/eric/experiments/2dmrsim/basic/exp-biped.txt\";" +
-        "nOfThreads=3)";
+    Configuration configuration = new Configuration("", "", Runtime.getRuntime().availableProcessors() - 1);
     if (args.length > 0) {
-      configuration = args[0];
+      configuration = (Configuration) nb.build(args[0]);
       System.out.println("Configuration found: " + configuration);
     }
     new Starter(nb, configuration).run();
@@ -258,12 +261,22 @@ public class Starter implements Runnable {
   public void run() {
     //read experiment description
     Experiment<?, ?> experiment;
-    try (BufferedReader br = new BufferedReader(new FileReader(configuration.descFile()))) {
-      String expDescription = br.lines().collect(Collectors.joining());
-      experiment = (Experiment<?, ?>) nb.build(expDescription);
-    } catch (IOException e) {
-      throw new IllegalArgumentException(String.format("Cannot read experiment description: %s", e));
+    InputStream inputStream;
+    if (configuration.descFile().isEmpty()) {
+      inputStream = getClass().getResourceAsStream("/example-experiment.txt");
+      if (inputStream==null) {
+        throw new RuntimeException("Cannot find default experiment description");
+      }
+    } else {
+      try {
+        inputStream = new FileInputStream(configuration.descFile());
+      } catch (FileNotFoundException e) {
+        throw new IllegalArgumentException(String.format("Cannot read experiment description: %s", e));
+      }
     }
+    BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+    String expDescription = br.lines().collect(Collectors.joining());
+    experiment = (Experiment<?, ?>) nb.build(expDescription);
     //create engine
     Supplier<Engine> engineSupplier = () -> ServiceLoader.load(Engine.class)
         .findFirst()
@@ -304,7 +317,8 @@ public class Starter implements Runnable {
     );
     List<ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>>> factories = new ArrayList<>();
     factories.add(new TabularPrinter<>(screenFunctions, List.of()));
-    if (experiment.bestFileSaver() != null) {
+    if (experiment.bestFileSaver() != null && experiment.bestFileSaver()
+        .fileName() != null && !experiment.bestFileSaver().fileName().isEmpty()) {
       factories.add(getCsvPrinter(experiment.bestFileSaver(), nonVisualFunctions, keysFunctions));
     }
     if (experiment.telegramChatId() != null && !experiment.telegramChatId()
