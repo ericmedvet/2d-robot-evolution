@@ -133,11 +133,6 @@ public class Starter implements Runnable {
         .and(NamedBuilder.fromClass(Configuration.class));
   }
 
-  private static void die(String msg) {
-    L.severe(msg);
-    System.exit(-1);
-  }
-
   private static ListenerFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> getCsvPrinter(
       FileSaver<?> fileSaver,
       List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> nonVisualFunctions,
@@ -227,24 +222,28 @@ public class Starter implements Runnable {
       new Starter(configuration, nb).run();
     } catch (ParameterException e) {
       e.usage();
-      die(String.format("Cannot read command line options: %s", e));
+      L.severe(String.format("Cannot read command line options: %s", e));
+      System.exit(-1);
+    } catch (RuntimeException e) {
+      L.severe(e.getClass().getSimpleName()+": "+e.getMessage());
+      System.exit(-1);
     }
   }
 
   @Override
   public void run() {
     //read experiment description
-    String expDescription = "";
+    String expDescription;
     if (configuration.experimentDescriptionFilePath.isEmpty()) {
       L.config("Using default experiment description");
       InputStream inputStream = getClass().getResourceAsStream("/example-experiment.txt");
       if (inputStream == null) {
-        die("Cannot find default experiment description");
+        throw new IllegalArgumentException("Cannot find default experiment description");
       } else {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
           expDescription = br.lines().collect(Collectors.joining());
         } catch (IOException e) {
-          die("Cannot find default experiment description");
+          throw new IllegalArgumentException(String.format("Cannot read default experiment description: %s", e));
         }
       }
     } else {
@@ -252,7 +251,7 @@ public class Starter implements Runnable {
       try (BufferedReader br = new BufferedReader(new FileReader(configuration.experimentDescriptionFilePath))) {
         expDescription = br.lines().collect(Collectors.joining());
       } catch (IOException e) {
-        die(String.format(
+        throw new IllegalArgumentException(String.format(
             "Cannot read provided experiment description at %s: %s",
             configuration.experimentDescriptionFilePath,
             e
@@ -267,14 +266,14 @@ public class Starter implements Runnable {
       try (BufferedReader br = new BufferedReader(new FileReader(configuration.telegramCredentialsFilePath))) {
         List<String> lines = br.lines().toList();
         if (lines.size() < 1) {
-          die("Invalid telegram credential file with 0 lines");
+          throw new IllegalArgumentException("Invalid telegram credential file with 0 lines");
         }
         String[] pieces = lines.get(0).split("\\s");
         telegramBotId = pieces[0];
         telegramChatId = Long.parseLong(pieces[1]);
         L.config(String.format("Using provided telegram credentials: %s", configuration.telegramCredentialsFilePath));
       } catch (IOException e) {
-        die(String.format(
+        throw new IllegalArgumentException(String.format(
             "Cannot read telegram credentials at %s: %s",
             configuration.experimentDescriptionFilePath,
             e
