@@ -5,6 +5,7 @@ module it.units.erallab.robotevo2d.main {
   uses it.units.erallab.mrsim2d.core.engine.Engine;
   requires it.units.malelab.jgea.core;
   requires it.units.malelab.jgea.telegram;
+  requires it.units.malelab.jgea.tui;
   requires java.desktop;
   requires java.logging;
   requires it.units.erallab.mrsim2d.core;

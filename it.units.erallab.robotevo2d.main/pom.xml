@@ -56,6 +56,11 @@
         </dependency>
         <dependency>
             <groupId>it.units.malelab</groupId>
+            <artifactId>jgea.tui</artifactId>
+            <version>${jgea.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>it.units.malelab</groupId>
             <artifactId>jgea.telegram</artifactId>
             <version>${jgea.version}</version>
         </dependency>

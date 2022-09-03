@@ -1,4 +1,4 @@
-package it.units.erallab.robotevo2d.main;
+package it.units.erallab.robotevo2d.main.util;
 
 import java.util.logging.Formatter;
 import java.util.logging.Level;

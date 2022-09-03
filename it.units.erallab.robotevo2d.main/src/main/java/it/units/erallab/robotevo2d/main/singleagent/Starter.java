@@ -30,7 +30,6 @@ import it.units.erallab.mrsim2d.core.engine.Engine;
 import it.units.erallab.mrsim2d.core.tasks.locomotion.Locomotion;
 import it.units.erallab.mrsim2d.viewer.VideoBuilder;
 import it.units.erallab.mrsim2d.viewer.VideoUtils;
-import it.units.erallab.robotevo2d.main.ColoredFormatter;
 import it.units.erallab.robotevo2d.main.builder.*;
 import it.units.erallab.robotevo2d.main.builder.agent.DumbCentralizedNumGridVSR;
 import it.units.erallab.robotevo2d.main.builder.mapper.Composition;
@@ -50,6 +49,7 @@ import it.units.malelab.jgea.core.util.ImagePlotters;
 import it.units.malelab.jgea.core.util.Misc;
 import it.units.malelab.jgea.telegram.TelegramProgressMonitor;
 import it.units.malelab.jgea.telegram.TelegramUpdater;
+import it.units.malelab.jgea.tui.TerminalMonitor;
 
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -60,8 +60,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Function;
 import java.util.function.Supplier;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -72,18 +70,7 @@ import static it.units.malelab.jgea.core.listener.NamedFunctions.*;
  */
 public class Starter implements Runnable {
 
-  private final static Logger L;
-
-  static {
-    Logger mainLogger = Logger.getLogger("");
-    mainLogger.setLevel(Level.CONFIG);
-    Arrays.stream(mainLogger.getHandlers()).forEach(mainLogger::removeHandler);
-    ConsoleHandler consoleHandler = new ConsoleHandler();
-    consoleHandler.setFormatter(new ColoredFormatter());
-    consoleHandler.setLevel(Level.CONFIG);
-    mainLogger.addHandler(consoleHandler);
-    L = Logger.getLogger(Starter.class.getName());
-  }
+  private final static Logger L = Logger.getLogger(Starter.class.getName());
 
   private final Configuration configuration;
   private final NamedBuilder<Object> nb;
@@ -187,6 +174,7 @@ public class Starter implements Runnable {
   ) {
     return AccumulatorFactory.last((state, keys) -> {
       File file;
+      L.info(String.format("Doing video for %s", videoTask.map().npm("task").toString()));
       try {
         file = File.createTempFile("robot-video", ".mp4");
         VideoBuilder videoBuilder = new VideoBuilder(
@@ -225,7 +213,7 @@ public class Starter implements Runnable {
       L.severe(String.format("Cannot read command line options: %s", e));
       System.exit(-1);
     } catch (RuntimeException e) {
-      L.severe(e.getClass().getSimpleName()+": "+e.getMessage());
+      L.severe(e.getClass().getSimpleName() + ": " + e.getMessage());
       System.exit(-1);
     }
   }
@@ -318,8 +306,14 @@ public class Starter implements Runnable {
         attribute("comparator"),
         attribute("randomGenerator")
     );
+    //prepare terminal monitor
+    TerminalMonitor<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> terminalMonitor = new TerminalMonitor<>(
+        screenFunctions,
+        List.of()
+    );
+    //preapare factories
     List<ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>>> factories = new ArrayList<>();
-    factories.add(new TabularPrinter<>(screenFunctions, List.of()));
+    factories.add(terminalMonitor);
     if (experiment.bestFileSaver() != null && experiment.bestFileSaver()
         .fileName() != null && !experiment.bestFileSaver().fileName().isEmpty()) {
       factories.add(getCsvPrinter(experiment.bestFileSaver(), nonVisualFunctions, keysFunctions));
@@ -331,7 +325,7 @@ public class Starter implements Runnable {
         ListenerFactory.all(
             factories);
     //build progress monitor
-    ProgressMonitor progressMonitor = new LoggerProgressMonitor();
+    ProgressMonitor progressMonitor = terminalMonitor;
     if (!telegramBotId.isEmpty()) {
       progressMonitor = progressMonitor.and(new TelegramProgressMonitor(telegramBotId, telegramChatId));
     }

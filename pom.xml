@@ -28,9 +28,9 @@
     </modules>
     <packaging>pom</packaging>
     <properties>
-        <revision>0.2.0</revision>
+        <revision>0.3.0</revision>
         <mrsim2d.version>0.5.2</mrsim2d.version>
-        <jgea.version>2.1.1</jgea.version>
+        <jgea.version>2.2.0</jgea.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>18</jdk.version>
     </properties>
