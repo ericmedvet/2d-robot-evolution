@@ -47,6 +47,7 @@ import it.units.malelab.jgea.core.solver.SolverException;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
 import it.units.malelab.jgea.core.util.ImagePlotters;
 import it.units.malelab.jgea.core.util.Misc;
+import it.units.malelab.jgea.core.util.Pair;
 import it.units.malelab.jgea.telegram.TelegramProgressMonitor;
 import it.units.malelab.jgea.telegram.TelegramUpdater;
 import it.units.malelab.jgea.tui.TerminalMonitor;
@@ -309,7 +310,13 @@ public class Starter implements Runnable {
     //prepare terminal monitor
     TerminalMonitor<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> terminalMonitor = new TerminalMonitor<>(
         screenFunctions,
-        List.of()
+        List.of(),
+        List.of(
+            new Pair<>(
+                iterations(),
+                best().then(f("q", "%+6.3f", i -> qFunction.apply(i.fitness())))
+            )
+        )
     );
     //preapare factories
     List<ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>>> factories = new ArrayList<>();
