@@ -17,7 +17,7 @@
 package it.units.erallab.robotevo2d.main.builder;
 
 import it.units.erallab.mrsim2d.builder.Param;
-import it.units.erallab.mrsim2d.core.tasks.locomotion.Locomotion;
+import it.units.erallab.mrsim2d.core.tasks.locomotion.Outcome;
 import it.units.erallab.mrsim2d.core.util.DoubleRange;
 import it.units.malelab.jgea.core.listener.NamedFunction;
 
@@ -26,7 +26,7 @@ import it.units.malelab.jgea.core.listener.NamedFunction;
  */
 public class ExtractorBuilder {
 
-  public static NamedFunction<Locomotion.Outcome, Double> locomotionXVelocity(@Param(value = "transientT", dD = 0d) double transientT) {
+  public static NamedFunction<Outcome, Double> locomotionXVelocity(@Param(value = "transientT", dD = 0d) double transientT) {
     return NamedFunction.build(
         "vx",
         "%+5.2f",

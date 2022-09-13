@@ -55,6 +55,7 @@
                         <configuration>
                             <descriptors>
                                 <descriptor>zip-assembly.xml</descriptor>
+                                <descriptor>dir-assembly.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>

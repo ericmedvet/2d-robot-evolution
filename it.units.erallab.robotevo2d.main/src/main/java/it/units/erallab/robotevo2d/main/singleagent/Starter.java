@@ -28,10 +28,12 @@ import it.units.erallab.mrsim2d.core.builders.VSRSensorizingFunctionBuilder;
 import it.units.erallab.mrsim2d.core.builders.VoxelSensorBuilder;
 import it.units.erallab.mrsim2d.core.engine.Engine;
 import it.units.erallab.mrsim2d.core.tasks.locomotion.Locomotion;
+import it.units.erallab.mrsim2d.core.tasks.piling.FallPiling;
 import it.units.erallab.mrsim2d.viewer.VideoBuilder;
 import it.units.erallab.mrsim2d.viewer.VideoUtils;
 import it.units.erallab.robotevo2d.main.builder.*;
 import it.units.erallab.robotevo2d.main.builder.agent.DumbCentralizedNumGridVSR;
+import it.units.erallab.robotevo2d.main.builder.agent.DumbNumIndependentVoxel;
 import it.units.erallab.robotevo2d.main.builder.mapper.Composition;
 import it.units.erallab.robotevo2d.main.builder.mapper.agent.CentralizedNumGridVSRBrain;
 import it.units.erallab.robotevo2d.main.builder.mapper.function.DoublesMultiLayerPerceptron;
@@ -87,6 +89,7 @@ public class Starter implements Runnable {
             .and(List.of("terrain", "t"), NamedBuilder.fromUtilityClass(TerrainBuilder.class))
             .and(List.of("task"), NamedBuilder.empty()
                 .and(NamedBuilder.fromClass(Locomotion.class))
+                .and(NamedBuilder.fromClass(FallPiling.class))
             )
             .and(List.of("vsr"), NamedBuilder.empty()
                 .and(NamedBuilder.fromClass(NumGridVSR.Body.class))
@@ -108,7 +111,10 @@ public class Starter implements Runnable {
             .and(NamedBuilder.fromClass(DoublesMultiLayerPerceptron.class))
             .and(NamedBuilder.fromClass(Phases.class))
         )
-        .and(List.of("agent", "a"), NamedBuilder.empty().and(NamedBuilder.fromClass(DumbCentralizedNumGridVSR.class)))
+        .and(List.of("agent", "a"), NamedBuilder.empty()
+            .and(NamedBuilder.fromClass(DumbCentralizedNumGridVSR.class))
+            .and(NamedBuilder.fromClass(DumbNumIndependentVoxel.class))
+        )
         .and(List.of("solver", "so"), NamedBuilder.empty()
             .and(NamedBuilder.fromClass(DoublesStandard.class))
             .and(NamedBuilder.fromClass(SimpleES.class))
