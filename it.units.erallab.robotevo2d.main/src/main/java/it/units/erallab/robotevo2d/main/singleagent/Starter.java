@@ -146,13 +146,13 @@ public class Starter implements Runnable {
       Object>> getPlotter(
       Experiment<?, ?> experiment
   ) {
-    @SuppressWarnings("unchecked") Function<Object, Double> qFunction =
-        ((Function<Object, Double>) experiment.qExtractor());
+    @SuppressWarnings("unchecked") NamedFunction<Object, Double> qFunction =
+        ((NamedFunction<Object, Double>) experiment.qExtractor());
     return new TableBuilder<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Number, Map<String, Object>>(List.of(
         iterations(),
-        f("q", qFunction).of(fitness()).of(best()),
-        min(Double::compare).of(each(f("q", qFunction).of(fitness()))).of(all()),
-        median(Double::compare).of(each(f("q", qFunction).of(fitness()))).of(all())
+        best().then(fitness()).then(qFunction),
+        min(Double::compare).of(each(qFunction.of(fitness()))).of(all()),
+        median(Double::compare).of(each(qFunction.of(fitness()))).of(all())
     ), List.of()).then(t -> ImagePlotters.xyLines(600, 400).apply(t));
   }
 
@@ -283,17 +283,15 @@ public class Starter implements Runnable {
             fitnessEvaluations(),
             elapsedSeconds()
         );
-    @SuppressWarnings("unchecked") Function<Object, Double> qFunction =
-        ((Function<Object, Double>) experiment.qExtractor());
+    @SuppressWarnings("unchecked") NamedFunction<Object, Double> qFunction =
+        ((NamedFunction<Object, Double>) experiment.qExtractor());
     List<NamedFunction<? super Individual<?, Supplier<EmbodiedAgent>, ?>, ?>> individualFunctions = List.of(
-        size().of(
-            genotype()),
+        size().of(genotype()),
         f("genotype.birth.iteration", "%4d", Individual::genotypeBirthIteration),
-        f("q", "%+6.3f", i -> qFunction.apply(i.fitness()))
+        fitness().then(qFunction)
     );
     List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> visualFunctions =
-        List.of(hist(8).of(
-            each(f("q", qFunction).of(fitness()))).of(all()));
+        List.of(hist(8).of(each(qFunction.of(fitness()))).of(all()));
     @SuppressWarnings({"rawtypes", "unchecked"}) List<NamedFunction<? super POSetPopulationState<?,
         Supplier<EmbodiedAgent>, ?>, ?>> nonVisualFunctions = Misc.concat(
         List.of(basicFunctions, best().then((List) individualFunctions)));
@@ -314,7 +312,7 @@ public class Starter implements Runnable {
         List.of(
             new Pair<>(
                 iterations(),
-                best().then(f("q", "%+6.3f", i -> qFunction.apply(i.fitness())))
+                best().then(fitness()).then(qFunction)
             )
         )
     );
