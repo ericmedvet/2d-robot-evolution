@@ -36,6 +36,7 @@ import it.units.erallab.robotevo2d.main.builder.agent.DumbCentralizedNumGridVSR;
 import it.units.erallab.robotevo2d.main.builder.agent.DumbNumIndependentVoxel;
 import it.units.erallab.robotevo2d.main.builder.mapper.Composition;
 import it.units.erallab.robotevo2d.main.builder.mapper.agent.CentralizedNumGridVSRBrain;
+import it.units.erallab.robotevo2d.main.builder.mapper.agent.NumIndependentVoxelBrain;
 import it.units.erallab.robotevo2d.main.builder.mapper.function.DoublesMultiLayerPerceptron;
 import it.units.erallab.robotevo2d.main.builder.mapper.function.Phases;
 import it.units.erallab.robotevo2d.main.builder.solver.DoublesStandard;
@@ -108,6 +109,7 @@ public class Starter implements Runnable {
         .and(List.of("mapper", "m"), NamedBuilder.empty()
             .and(NamedBuilder.fromClass(Composition.class))
             .and(NamedBuilder.fromClass(CentralizedNumGridVSRBrain.class))
+            .and(NamedBuilder.fromClass(NumIndependentVoxelBrain.class))
             .and(NamedBuilder.fromClass(DoublesMultiLayerPerceptron.class))
             .and(NamedBuilder.fromClass(Phases.class))
         )

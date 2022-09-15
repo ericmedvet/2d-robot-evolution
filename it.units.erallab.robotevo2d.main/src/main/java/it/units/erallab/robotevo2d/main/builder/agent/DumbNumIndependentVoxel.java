@@ -14,6 +14,13 @@ public class DumbNumIndependentVoxel extends NumIndependentVoxel {
   public DumbNumIndependentVoxel(
       @Param("sensors") List<Function<Voxel, Sense<? super Voxel>>> sensors
   ) {
-    super(sensors, TimedRealFunction.from((t, in) -> new double[8], sensors.size(), 8));
+    super(
+        sensors,
+        TimedRealFunction.from(
+            (t, in) -> new double[NumIndependentVoxel.nOfOutputs()],
+            NumIndependentVoxel.nOfInputs(sensors),
+            NumIndependentVoxel.nOfOutputs()
+        )
+    );
   }
 }
