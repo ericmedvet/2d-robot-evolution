@@ -168,6 +168,11 @@ public class Starter implements Runnable {
 
   @Override
   public void run() {
+    //check if it's just an help invocation
+    if (configuration.showExpFileName) {
+      System.out.println(NamedBuilder.prettyToString(nb, true));
+      System.exit(0);
+    }
     //read experiment description
     String expDescription;
     if (configuration.experimentDescriptionFilePath.isEmpty()) {
@@ -340,7 +345,7 @@ public class Starter implements Runnable {
                 solutions.size()
             )
         );
-      } catch (SolverException e) {
+      } catch (SolverException | RuntimeException e) {
         L.warning(String.format("Cannot solve %s: %s", run.map(), e));
         break;
       }

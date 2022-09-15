@@ -34,4 +34,12 @@ public class ExtractorBuilder {
     );
   }
 
+  public static NamedFunction<it.units.erallab.mrsim2d.core.tasks.piling.Outcome, Double> fallPilingHeightDiff() {
+    return NamedFunction.build(
+        "dh",
+        "%+5.2f",
+        it.units.erallab.mrsim2d.core.tasks.piling.Outcome::pileHeightDiff
+    );
+  }
+
 }

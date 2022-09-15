@@ -22,4 +22,9 @@ public final class Configuration {
   )
   public int nOfThreads = 1;
 
+  @Parameter(
+      names = {"--showExpFileHelp", "-d"},
+      description = "Show a description of available constructs for the experiment file"
+  )
+  public boolean showExpFileName = false;
 }
