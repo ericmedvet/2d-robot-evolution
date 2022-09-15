@@ -21,26 +21,10 @@ import com.beust.jcommander.ParameterException;
 import it.units.erallab.mrsim2d.builder.NamedBuilder;
 import it.units.erallab.mrsim2d.builder.StringNamedParamMap;
 import it.units.erallab.mrsim2d.core.EmbodiedAgent;
-import it.units.erallab.mrsim2d.core.agents.gridvsr.NumGridVSR;
-import it.units.erallab.mrsim2d.core.builders.GridShapeBuilder;
-import it.units.erallab.mrsim2d.core.builders.TerrainBuilder;
-import it.units.erallab.mrsim2d.core.builders.VSRSensorizingFunctionBuilder;
-import it.units.erallab.mrsim2d.core.builders.VoxelSensorBuilder;
 import it.units.erallab.mrsim2d.core.engine.Engine;
-import it.units.erallab.mrsim2d.core.tasks.locomotion.Locomotion;
-import it.units.erallab.mrsim2d.core.tasks.piling.FallPiling;
 import it.units.erallab.mrsim2d.viewer.VideoBuilder;
 import it.units.erallab.mrsim2d.viewer.VideoUtils;
-import it.units.erallab.robotevo2d.main.builder.*;
-import it.units.erallab.robotevo2d.main.builder.agent.DumbCentralizedNumGridVSR;
-import it.units.erallab.robotevo2d.main.builder.agent.DumbNumIndependentVoxel;
-import it.units.erallab.robotevo2d.main.builder.mapper.Composition;
-import it.units.erallab.robotevo2d.main.builder.mapper.agent.CentralizedNumGridVSRBrain;
-import it.units.erallab.robotevo2d.main.builder.mapper.agent.NumIndependentVoxelBrain;
-import it.units.erallab.robotevo2d.main.builder.mapper.function.DoublesMultiLayerPerceptron;
-import it.units.erallab.robotevo2d.main.builder.mapper.function.Phases;
-import it.units.erallab.robotevo2d.main.builder.solver.DoublesStandard;
-import it.units.erallab.robotevo2d.main.builder.solver.SimpleES;
+import it.units.erallab.robotevo2d.main.builder.MapperBuilder;
 import it.units.malelab.jgea.core.QualityBasedProblem;
 import it.units.malelab.jgea.core.listener.*;
 import it.units.malelab.jgea.core.order.PartialComparator;
@@ -82,51 +66,6 @@ public class Starter implements Runnable {
   public Starter(Configuration configuration, NamedBuilder<Object> nb) {
     this.configuration = configuration;
     this.nb = nb;
-  }
-
-  private static NamedBuilder<Object> buildNamedBuilder() {
-    return NamedBuilder.empty()
-        .and(List.of("sim", "s"), NamedBuilder.empty()
-            .and(List.of("terrain", "t"), NamedBuilder.fromUtilityClass(TerrainBuilder.class))
-            .and(List.of("task"), NamedBuilder.empty()
-                .and(NamedBuilder.fromClass(Locomotion.class))
-                .and(NamedBuilder.fromClass(FallPiling.class))
-            )
-            .and(List.of("vsr"), NamedBuilder.empty()
-                .and(NamedBuilder.fromClass(NumGridVSR.Body.class))
-                .and(List.of("shape", "s"), NamedBuilder.fromUtilityClass(GridShapeBuilder.class))
-                .and(
-                    List.of("sensorizingFunction", "sf"),
-                    NamedBuilder.fromUtilityClass(VSRSensorizingFunctionBuilder.class)
-                )
-                .and(List.of("voxelSensor", "vs"), NamedBuilder.fromUtilityClass(VoxelSensorBuilder.class))
-            ))
-        .and(List.of("randomGenerator", "rg"), NamedBuilder.fromUtilityClass(RandomGeneratorBuilder.class))
-        .and(List.of("comparator", "c"), NamedBuilder.fromUtilityClass(ComparatorBuilder.class))
-        .and(List.of("extractor", "e"), NamedBuilder.fromUtilityClass(ExtractorBuilder.class))
-        .and(List.of("serializer", "ser"), NamedBuilder.fromUtilityClass(SerializerBuilder.class))
-        .and(List.of("drawer", "d"), NamedBuilder.fromUtilityClass(DrawerBuilder.class))
-        .and(List.of("mapper", "m"), NamedBuilder.empty()
-            .and(NamedBuilder.fromClass(Composition.class))
-            .and(NamedBuilder.fromClass(CentralizedNumGridVSRBrain.class))
-            .and(NamedBuilder.fromClass(NumIndependentVoxelBrain.class))
-            .and(NamedBuilder.fromClass(DoublesMultiLayerPerceptron.class))
-            .and(NamedBuilder.fromClass(Phases.class))
-        )
-        .and(List.of("agent", "a"), NamedBuilder.empty()
-            .and(NamedBuilder.fromClass(DumbCentralizedNumGridVSR.class))
-            .and(NamedBuilder.fromClass(DumbNumIndependentVoxel.class))
-        )
-        .and(List.of("solver", "so"), NamedBuilder.empty()
-            .and(NamedBuilder.fromClass(DoublesStandard.class))
-            .and(NamedBuilder.fromClass(SimpleES.class))
-        )
-        .and(NamedBuilder.fromClass(FileSaver.class))
-        .and(NamedBuilder.fromClass(VideoSaver.class))
-        .and(NamedBuilder.fromClass(VideoTask.class))
-        .and(NamedBuilder.fromClass(Run.class))
-        .and(NamedBuilder.fromClass(Experiment.class))
-        .and(NamedBuilder.fromClass(Configuration.class));
   }
 
   private static ListenerFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> getCsvPrinter(
@@ -209,7 +148,7 @@ public class Starter implements Runnable {
   }
 
   public static void main(String[] args) {
-    NamedBuilder<Object> nb = buildNamedBuilder();
+    NamedBuilder<Object> nb = PreparedNameBuilder.get();
     Configuration configuration = new Configuration();
     try {
       JCommander.newBuilder()
