@@ -8,6 +8,7 @@ import it.units.erallab.mrsim2d.core.builders.VSRSensorizingFunctionBuilder;
 import it.units.erallab.mrsim2d.core.builders.VoxelSensorBuilder;
 import it.units.erallab.mrsim2d.core.tasks.locomotion.Locomotion;
 import it.units.erallab.mrsim2d.core.tasks.piling.FallPiling;
+import it.units.erallab.mrsim2d.core.tasks.piling.StandPiling;
 import it.units.erallab.robotevo2d.main.builder.*;
 import it.units.erallab.robotevo2d.main.builder.agent.DumbCentralizedNumGridVSR;
 import it.units.erallab.robotevo2d.main.builder.agent.DumbNumIndependentVoxel;
@@ -29,6 +30,7 @@ public class PreparedNameBuilder {
           .and(List.of("task"), NamedBuilder.empty()
               .and(NamedBuilder.fromClass(Locomotion.class))
               .and(NamedBuilder.fromClass(FallPiling.class))
+              .and(NamedBuilder.fromClass(StandPiling.class))
           )
           .and(List.of("vsr"), NamedBuilder.empty()
               .and(NamedBuilder.fromClass(NumGridVSR.Body.class))
