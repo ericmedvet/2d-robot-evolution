@@ -4,15 +4,28 @@ experiment(
       body = (shape = [
         s.vsr.s.biped(w = 4; h = 3)
       ]) * [s.vsr.body(
-        sensorizingFunction = s.vsr.sf.directional()
+        sensorizingFunction = s.vsr.sf.directional(
+          headSensors = [
+            s.s.sin(f = 0);
+            s.s.d(a = -15; r = 5)
+          ];
+          nSensors = [
+            s.s.ar();
+            s.s.rv(a = 0);
+            s.s.rv(a = 90)
+          ];
+          sSensors = [
+            s.s.d(a = -90)
+          ]
+        )
       )]
-    ) * [a.dumbCentralizedNumGridVSR()]) *
+    ) * [s.a.centralizedNumGridVSR()]) *
     (randomGenerator = (seed = [1]) * [rg.defaultRG()]) * [
     run(
       solver = so.doublesStandard(nEval = 50; nPop = 10);
       mapper = m.composition(
         first = m.doublesMultiLayerPerceptron(nOfInnerLayers = 1);
-        second = m.centralizedNumGridVSRBrain()
+        second = m.withTimedRealFunctionBrain()
       );
       task = s.task.locomotion(terrain = s.t.flat(); duration = 10);
       comparator = c.max(of = e.locomotionXVelocity())
