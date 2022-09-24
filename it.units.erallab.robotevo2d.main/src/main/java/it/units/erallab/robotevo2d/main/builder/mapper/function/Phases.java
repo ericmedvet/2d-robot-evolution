@@ -30,11 +30,14 @@ import java.util.function.Function;
 public class Phases implements MapperBuilder<List<Double>, TimedRealFunction> {
 
   private final double frequency;
+  private final double amplitude;
 
   public Phases(
-      @Param(value = "f", dD = 1f) double frequency
+      @Param(value = "f", dD = 1f) double frequency,
+      @Param(value = "a", dD = 1f) double amplitude
   ) {
     this.frequency = frequency;
+    this.amplitude = amplitude;
   }
 
   @Override
@@ -50,7 +53,7 @@ public class Phases implements MapperBuilder<List<Double>, TimedRealFunction> {
       }
       return TimedRealFunction.from(
           (t, in) -> values.stream()
-              .mapToDouble(v -> Math.sin(2d * Math.PI * frequency * t + v))
+              .mapToDouble(v -> amplitude * Math.sin(2d * Math.PI * frequency * t + v))
               .toArray(),
           trf.nOfInputs(),
           trf.nOfOutputs()

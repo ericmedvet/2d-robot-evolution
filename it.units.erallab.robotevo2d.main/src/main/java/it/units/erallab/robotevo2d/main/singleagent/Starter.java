@@ -303,7 +303,10 @@ public class Starter implements Runnable {
           QualityBasedProblem<Supplier<EmbodiedAgent>, ?>, Supplier<EmbodiedAgent>> solver;
       try {
         //noinspection unchecked,rawtypes
-        solver = run.solverBuilder().build((MapperBuilder) run.mapper(), (Supplier<EmbodiedAgent>) run::target);
+        solver = run.solverBuilder().build(
+            (MapperBuilder) run.mapper(),
+            (Supplier<EmbodiedAgent>) () -> (EmbodiedAgent) nb.build(run.map().npm("target"))
+        );
       } catch (RuntimeException e) {
         L.warning(String.format("Cannot instantiate solver %s: %s", run.map().npm("solver"), e));
         e.printStackTrace();
