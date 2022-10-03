@@ -37,10 +37,6 @@ public class WithTimedRealFunctionBrain<T extends WithTimedRealFunction> impleme
 
   @Override
   public TimedRealFunction exampleFor(Supplier<T> withTimedRealFunctionSupplier) {
-    T withTimedRealFunction = withTimedRealFunctionSupplier.get();
-    return TimedRealFunction.zeros(
-        withTimedRealFunction.getTimedRealFunction().nOfInputs(),
-        withTimedRealFunction.getTimedRealFunction().nOfOutputs()
-    );
+    return withTimedRealFunctionSupplier.get().getTimedRealFunction();
   }
 }
