@@ -3,7 +3,7 @@ experiment(
     (target = (
       body = (shape = [
         s.vsr.s.biped(w = 4; h = 3)
-      ]) * [s.vsr.body(
+      ]) * [s.vsr.gridBody(
         sensorizingFunction = s.vsr.sf.directional(
           headSensors = [
             s.s.sin(f = 0);
@@ -23,10 +23,7 @@ experiment(
     (randomGenerator = (seed = [1; 2; 3]) * [rg.defaultRG()]) * [
     run(
       solver = so.doublesStandard(nEval = 100; nPop = 10);
-      mapper = m.composition(
-        first = m.toParametrized();
-        second = m.withTimedRealFunctionBrain()
-      );
+      mapper = m.toParametrized();
       task = s.task.locomotion(terrain = s.t.flat(); duration = 20);
       comparator = c.max(of = e.locomotionXVelocity())
     )

@@ -20,7 +20,6 @@ import it.units.erallab.mrsim2d.builder.NamedBuilder;
 import it.units.erallab.mrsim2d.core.PreparedNamedBuilder;
 import it.units.erallab.robotevo2d.main.builder.*;
 import it.units.erallab.robotevo2d.main.builder.mapper.Composition;
-import it.units.erallab.robotevo2d.main.builder.mapper.agent.WithTimedRealFunctionBrain;
 import it.units.erallab.robotevo2d.main.builder.mapper.function.ToParametrized;
 import it.units.erallab.robotevo2d.main.builder.solver.DoublesStandard;
 import it.units.erallab.robotevo2d.main.builder.solver.SimpleES;
@@ -38,7 +37,6 @@ public class PreparedNameBuilder {
       .and(List.of("drawer", "d"), NamedBuilder.fromUtilityClass(DrawerBuilder.class))
       .and(List.of("mapper", "m"), NamedBuilder.empty()
           .and(NamedBuilder.fromClass(Composition.class))
-          .and(NamedBuilder.fromClass(WithTimedRealFunctionBrain.class))
           .and(NamedBuilder.fromClass(ToParametrized.class))
       )
       .and(List.of("solver", "so"), NamedBuilder.empty()
