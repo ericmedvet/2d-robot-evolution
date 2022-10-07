@@ -29,4 +29,8 @@ public class DrawerBuilder {
   public static Function<String, Drawer> basic() {
     return Drawers::basic;
   }
+
+  public static Function<String, Drawer> basicWithAgentMiniature() {
+    return Drawers::basicWithAgentMiniature;
+  }
 }

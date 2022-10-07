@@ -29,8 +29,8 @@ experiment(
     )
   ];
   qExtractor = e.locomotionXVelocity();
-  bestFileSaver = fileSaver(serializer = ser.stringifier());
-  videoSaver = videoSaver(drawer = d.basic(); w = 600; h = 400);
+  bestFileSaver = fileSaver(serializer = ser.javaSerializer());
+  videoSaver = videoSaver(drawer = d.basicWithAgentMiniature(); w = 600; h = 400);
   videoTasks = [
     videoTask(task = s.task.locomotion(terrain = s.t.flat(); duration = 20))
   ]

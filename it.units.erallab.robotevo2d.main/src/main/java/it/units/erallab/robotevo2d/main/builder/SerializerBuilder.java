@@ -16,12 +16,33 @@
 
 package it.units.erallab.robotevo2d.main.builder;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.Base64;
 import java.util.function.Function;
+import java.util.logging.Logger;
 
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
 public class SerializerBuilder {
+
+  private final static Logger L = Logger.getLogger(SerializerBuilder.class.getName());
+
+  public static Function<Object, String> javaSerializer() {
+    return o -> {
+      try (ByteArrayOutputStream baos = new ByteArrayOutputStream(); ObjectOutputStream oos = new ObjectOutputStream(
+          baos)) {
+        oos.writeObject(o);
+        oos.flush();
+        return Base64.getEncoder().encodeToString(baos.toByteArray());
+      } catch (IOException ex) {
+        L.warning("Cannot serialize a %s: %s".formatted(o.getClass().getSimpleName(), ex));
+      }
+      return "";
+    };
+  }
 
   public static Function<Object, String> stringifier() {
     return Object::toString;

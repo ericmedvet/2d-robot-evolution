@@ -221,7 +221,7 @@ public class Starter implements Runnable {
         ));
       }
     }
-    //create engine
+    //create engine supplier
     Supplier<Engine> engineSupplier = () -> ServiceLoader.load(Engine.class)
         .findFirst()
         .orElseThrow(() -> new RuntimeException("Cannot instantiate an engine"));
@@ -338,16 +338,15 @@ public class Starter implements Runnable {
             listener
         );
         double elapsedT = Duration.between(startingT, Instant.now()).toMillis() / 1000d;
-        progressMonitor.notify(
-            (float) (i + 1) / (float) experiment.runs().size(),
-            String.format(
-                "%d/%d run done in %.2fs, found %d solutions",
-                i + 1,
-                experiment.runs().size(),
-                elapsedT,
-                solutions.size()
-            )
+        String msg = String.format(
+            "%d/%d run done in %.2fs, found %d solutions",
+            i + 1,
+            experiment.runs().size(),
+            elapsedT,
+            solutions.size()
         );
+        L.info(msg);
+        progressMonitor.notify((float) (i + 1) / (float) experiment.runs().size(), msg);
       } catch (SolverException | RuntimeException e) {
         L.warning(String.format("Cannot solve %s: %s", run.map(), e));
         break;
