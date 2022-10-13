@@ -17,7 +17,6 @@
 package it.units.erallab.robotevo2d.main.singleagent;
 
 import it.units.erallab.mrsim2d.builder.NamedBuilder;
-import it.units.erallab.mrsim2d.core.PreparedNamedBuilder;
 import it.units.erallab.robotevo2d.main.builder.*;
 import it.units.erallab.robotevo2d.main.builder.mapper.Composition;
 import it.units.erallab.robotevo2d.main.builder.mapper.function.ToParametrized;
@@ -26,10 +25,10 @@ import it.units.erallab.robotevo2d.main.builder.solver.SimpleES;
 
 import java.util.List;
 
-public class PreparedNameBuilder {
+public class PreparedNamedBuilder {
 
   private final static NamedBuilder<Object> NB = NamedBuilder.empty()
-      .and(PreparedNamedBuilder.get())
+      .and(it.units.erallab.mrsim2d.core.PreparedNamedBuilder.get())
       .and(List.of("randomGenerator", "rg"), NamedBuilder.fromUtilityClass(RandomGeneratorBuilder.class))
       .and(List.of("comparator", "c"), NamedBuilder.fromUtilityClass(ComparatorBuilder.class))
       .and(List.of("extractor", "e"), NamedBuilder.fromUtilityClass(ExtractorBuilder.class))

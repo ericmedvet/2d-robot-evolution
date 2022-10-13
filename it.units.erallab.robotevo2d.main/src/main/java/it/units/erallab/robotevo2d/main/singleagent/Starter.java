@@ -148,7 +148,7 @@ public class Starter implements Runnable {
   }
 
   public static void main(String[] args) {
-    NamedBuilder<Object> nb = PreparedNameBuilder.get();
+    NamedBuilder<Object> nb = PreparedNamedBuilder.get();
     Configuration configuration = new Configuration();
     try {
       JCommander.newBuilder()
