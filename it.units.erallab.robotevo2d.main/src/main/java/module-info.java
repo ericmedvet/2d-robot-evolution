@@ -14,6 +14,7 @@ module it.units.erallab.robotevo2d.main {
   requires jcommander;
   opens it.units.erallab.robotevo2d.main.singleagent to it.units.erallab.mrsim2d.builder;
   exports it.units.erallab.robotevo2d.main.singleagent;
+  exports it.units.erallab.robotevo2d.main.builder;
   opens it.units.erallab.robotevo2d.main.builder to it.units.erallab.mrsim2d.builder;
   opens it.units.erallab.robotevo2d.main.builder.mapper to it.units.erallab.mrsim2d.builder;
   opens it.units.erallab.robotevo2d.main.builder.mapper.function to it.units.erallab.mrsim2d.builder;
