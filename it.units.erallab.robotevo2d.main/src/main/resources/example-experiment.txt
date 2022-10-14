@@ -20,7 +20,7 @@ experiment(
         )
       )]
     ) * [s.a.centralizedNumGridVSR(function = s.f.sinPF())]) *
-    (randomGenerator = (seed = [1; 2; 3]) * [rg.defaultRG()]) * [
+    (randomGenerator = (seed = [1:1:5]) * [rg.defaultRG()]) * [
     run(
       solver = so.doublesStandard(nEval = 100; nPop = 10);
       mapper = m.toParametrized();
