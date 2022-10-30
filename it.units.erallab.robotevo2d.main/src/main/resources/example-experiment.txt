@@ -30,8 +30,11 @@ experiment(
   ];
   qExtractor = e.locomotionXVelocity();
   listeners = [
-    l.csvPrinter(
+    l.bestCsvPrinter(
       filePath = "/home/eric/Documenti/experiments/foo.txt";
+      bestFunctions = [
+        nf.composition(first = nf.genotype(); second = nf.base64Serializer())
+      ];
       runKeys = ["randomGenerator.seed"; solver]
     )
   ];

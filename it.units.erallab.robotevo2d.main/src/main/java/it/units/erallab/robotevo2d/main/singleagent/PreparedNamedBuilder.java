@@ -33,7 +33,7 @@ public class PreparedNamedBuilder {
       .and(List.of("comparator", "c"), NamedBuilder.fromUtilityClass(ComparatorBuilder.class))
       .and(List.of("extractor", "e"), NamedBuilder.fromUtilityClass(ExtractorBuilder.class))
       .and(List.of("listener", "l"), NamedBuilder.fromUtilityClass(ListenerBuilder.class))
-      .and(List.of("serializer", "ser"), NamedBuilder.fromUtilityClass(SerializerBuilder.class))
+      .and(List.of("namedFunction", "nf"), NamedBuilder.fromUtilityClass(NamedFunctionBuilder.class))
       .and(List.of("drawer", "d"), NamedBuilder.fromUtilityClass(DrawerBuilder.class))
       .and(List.of("mapper", "m"), NamedBuilder.empty()
           .and(NamedBuilder.fromClass(Composition.class))

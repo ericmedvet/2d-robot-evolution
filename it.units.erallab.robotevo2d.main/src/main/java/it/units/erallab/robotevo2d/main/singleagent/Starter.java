@@ -244,8 +244,8 @@ public class Starter implements Runnable {
     //preapare factories
     List<ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ParamMap>> factories = new ArrayList<>();
     factories.add(terminalMonitor);
-    //noinspection unchecked
-    experiment.listeners().forEach(l -> factories.add((ListenerFactory) l.apply(qFunction)));
+    //noinspection unchecked,rawtypes
+    experiment.listeners().forEach(l -> factories.add(l.apply((Experiment)experiment)));
     if (!telegramBotId.isEmpty()) {
       factories.add(getTelegramUpdater(experiment, engineSupplier, telegramBotId, telegramChatId));
     }

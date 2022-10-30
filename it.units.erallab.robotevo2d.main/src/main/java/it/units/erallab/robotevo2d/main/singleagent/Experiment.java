@@ -15,7 +15,7 @@ import java.util.function.Function;
 public record Experiment<G, S, Q>(
     @Param("runs") List<? extends Run<? extends G, ? extends Q>> runs,
     @Param("qExtractor") NamedFunction<? super Q, Double> qExtractor,
-    @Param("listeners") List<Function<NamedFunction<? super Q, Double>, ? extends ListenerFactory<? super POSetPopulationState<? extends G, ? extends S, ? extends Q>, ParamMap>>> listeners,
+    @Param("listeners") List<Function<Experiment<G,S,Q>, ? extends ListenerFactory<? super POSetPopulationState<? extends G, ? extends S, ? extends Q>, ParamMap>>> listeners,
     @Param("videoSaver") VideoSaver videoSaver,
     @Param("videoTasks") List<VideoTask> videoTasks
 ) {}

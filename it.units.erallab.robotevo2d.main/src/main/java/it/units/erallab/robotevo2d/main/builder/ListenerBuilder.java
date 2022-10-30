@@ -3,6 +3,9 @@ package it.units.erallab.robotevo2d.main.builder;
 import it.units.erallab.mrsim2d.builder.NamedParamMap;
 import it.units.erallab.mrsim2d.builder.Param;
 import it.units.erallab.mrsim2d.builder.ParamMap;
+import it.units.erallab.robotevo2d.main.singleagent.Experiment;
+import it.units.erallab.robotevo2d.main.singleagent.VideoSaver;
+import it.units.malelab.jgea.core.listener.AccumulatorFactory;
 import it.units.malelab.jgea.core.listener.CSVPrinter;
 import it.units.malelab.jgea.core.listener.NamedFunction;
 import it.units.malelab.jgea.core.solver.Individual;
@@ -29,7 +32,7 @@ public class ListenerBuilder {
   private ListenerBuilder() {
   }
 
-  public static <G, S, Q> Function<NamedFunction<? super Q, Double>, CSVPrinter<? super POSetPopulationState<G, S, Q>, ParamMap>> csvPrinter(
+  public static <G, S, Q> Function<Experiment<G,S,Q>, CSVPrinter<? super POSetPopulationState<G, S, Q>, ParamMap>> bestCsvPrinter(
       @Param("filePath") String filePath,
       @Param("popFunctions") List<NamedFunction<? super POSetPopulationState<? extends G, ? extends S, ? extends Q>, ?>> popFunctions,
       @Param("bestFunctions") List<NamedFunction<? super Individual<? extends G, ? extends S, ? extends Q>, ?>> bestFunctions,
@@ -47,14 +50,24 @@ public class ListenerBuilder {
             (ParamMap m) -> getKeyFromParamMap(m, Arrays.stream(k.split("\\.")).toList())
         ))
         .toList());
-    return qFunction -> {
-      functions.add(best.then(fitness()).then(qFunction));
+    return experiment -> {
+      functions.add(best.then(fitness()).then(experiment.qExtractor()));
       return new CSVPrinter<POSetPopulationState<G, S, Q>, ParamMap>(
           Collections.unmodifiableList(functions),
           paramMapFunctions,
           new File(filePath)
       );
     };
+  }
+
+  public static <G, S, Q> Function<Experiment<G,S,Q>, AccumulatorFactory<? super POSetPopulationState<G, S, Q>, File, ParamMap>> lastBestVideo(
+      @Param("dirPath") String dirPath,
+      @Param(value = "fileNameTemplate", dS = "video-%s.mp4") String fileNameTemplate,
+      @Param("runKeys") List<String> runKeys,
+      @Param("videoSaver") VideoSaver videoSaver
+  ) {
+    // TODO
+    throw new UnsupportedOperationException();
   }
 
   private static Object getKeyFromParamMap(ParamMap paramMap, List<String> keyPieces) {
