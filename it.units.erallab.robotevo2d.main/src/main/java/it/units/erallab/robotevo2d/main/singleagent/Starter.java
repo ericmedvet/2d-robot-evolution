@@ -19,6 +19,7 @@ package it.units.erallab.robotevo2d.main.singleagent;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
 import it.units.erallab.mrsim2d.builder.NamedBuilder;
+import it.units.erallab.mrsim2d.builder.ParamMap;
 import it.units.erallab.mrsim2d.builder.StringNamedParamMap;
 import it.units.erallab.mrsim2d.core.EmbodiedAgent;
 import it.units.erallab.mrsim2d.core.engine.Engine;
@@ -43,10 +44,12 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.ServiceLoader;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -68,34 +71,12 @@ public class Starter implements Runnable {
     this.nb = nb;
   }
 
-  private static ListenerFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> getCsvPrinter(
-      FileSaver<?> fileSaver,
-      List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> nonVisualFunctions,
-      List<NamedFunction<? super Map<String, Object>, ?>> keysFunctions
-  ) {
-    @SuppressWarnings("unchecked") Function<Object, String> serializer =
-        (Function<Object, String>) fileSaver.serializer();
-    List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> fileFunctions =
-        nonVisualFunctions;
-    if (fileSaver.serializer() != null) {
-      NamedFunction<? super Individual<?, Supplier<EmbodiedAgent>, ?>, ?> gSerializer = f(
-          "g",
-          "%s",
-          i -> serializer.apply(i.genotype())
-      );
-      //noinspection unchecked,rawtypes
-      fileFunctions = Misc.concat(List.of(nonVisualFunctions, best().then((List) List.of(gSerializer))));
-    }
-    return new CSVPrinter<>(fileFunctions, keysFunctions, new File(fileSaver.fileName()));
-  }
-
-  private static AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, BufferedImage, Map<String,
-      Object>> getPlotter(
-      Experiment<?, ?> experiment
+  private static AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, BufferedImage, ParamMap> getPlotter(
+      Experiment<?, ?, ?> experiment
   ) {
     @SuppressWarnings("unchecked") NamedFunction<Object, Double> qFunction =
         ((NamedFunction<Object, Double>) experiment.qExtractor());
-    return new TableBuilder<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Number, Map<String, Object>>(List.of(
+    return new TableBuilder<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Number, ParamMap>(List.of(
         iterations(),
         best().then(fitness()).then(qFunction),
         min(Double::compare).of(each(qFunction.of(fitness()))).of(all()),
@@ -103,13 +84,13 @@ public class Starter implements Runnable {
     ), List.of()).then(t -> ImagePlotters.xyLines(600, 400).apply(t));
   }
 
-  private static TelegramUpdater<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> getTelegramUpdater(
-      Experiment<?, ?> experiment,
+  private static TelegramUpdater<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ParamMap> getTelegramUpdater(
+      Experiment<?, ?, ?> experiment,
       Supplier<Engine> engineSupplier,
       String telegramBotId,
       long telegramChatId
   ) {
-    List<AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?, Map<String, Object>>> accumulators = new ArrayList<>();
+    List<AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?, ParamMap>> accumulators = new ArrayList<>();
     accumulators.add(getPlotter(experiment));
     if (experiment.videoSaver() != null) {
       experiment.videoTasks().forEach(t -> accumulators.add(getVideoMaker(engineSupplier, experiment.videoSaver(), t)));
@@ -117,7 +98,7 @@ public class Starter implements Runnable {
     return new TelegramUpdater<>(accumulators, telegramBotId, telegramChatId);
   }
 
-  private static AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, File, Map<String, Object>> getVideoMaker(
+  private static AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, File, ParamMap> getVideoMaker(
       Supplier<Engine> engineSupplier, VideoSaver videoSaver, VideoTask videoTask
   ) {
     return AccumulatorFactory.last((state, keys) -> {
@@ -199,7 +180,7 @@ public class Starter implements Runnable {
         ));
       }
     }
-    Experiment<?, ?> experiment = (Experiment<?, ?>) nb.build(expDescription);
+    Experiment<?, ?, ?> experiment = (Experiment<?, ?, ?>) nb.build(expDescription);
     //read telegram credentials file
     String telegramBotId = "";
     long telegramChatId = 0;
@@ -249,16 +230,8 @@ public class Starter implements Runnable {
         List.of(basicFunctions, best().then((List) individualFunctions)));
     List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> screenFunctions = Misc.concat(
         List.of(nonVisualFunctions, visualFunctions));
-    List<NamedFunction<? super Map<String, Object>, ?>> keysFunctions = List.of(
-        attribute("solver"),
-        attribute("mapper"),
-        attribute("target"),
-        attribute("task"),
-        attribute("comparator"),
-        attribute("randomGenerator")
-    );
     //prepare terminal monitor
-    TerminalMonitor<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> terminalMonitor = new TerminalMonitor<>(
+    TerminalMonitor<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ParamMap> terminalMonitor = new TerminalMonitor<>(
         screenFunctions,
         List.of(),
         List.of(
@@ -269,18 +242,15 @@ public class Starter implements Runnable {
         )
     );
     //preapare factories
-    List<ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>>> factories = new ArrayList<>();
+    List<ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ParamMap>> factories = new ArrayList<>();
     factories.add(terminalMonitor);
-    if (experiment.bestFileSaver() != null && experiment.bestFileSaver()
-        .fileName() != null && !experiment.bestFileSaver().fileName().isEmpty()) {
-      factories.add(getCsvPrinter(experiment.bestFileSaver(), nonVisualFunctions, keysFunctions));
-    }
+    //noinspection unchecked
+    experiment.listeners().forEach(l -> factories.add((ListenerFactory) l.apply(qFunction)));
     if (!telegramBotId.isEmpty()) {
       factories.add(getTelegramUpdater(experiment, engineSupplier, telegramBotId, telegramChatId));
     }
-    ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Map<String, Object>> factory =
-        ListenerFactory.all(
-            factories);
+    ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ParamMap> factory =
+        ListenerFactory.all(factories);
     //build progress monitor
     ProgressMonitor progressMonitor = terminalMonitor;
     if (!telegramBotId.isEmpty()) {
@@ -320,14 +290,7 @@ public class Starter implements Runnable {
           );
       //build listener
       Listener<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>> listener =
-          factory.build(Map.ofEntries(
-              Map.entry("solver", run.map().npm("solver")),
-              Map.entry("mapper", run.map().npm("mapper")),
-              Map.entry("target", run.map().npm("target")),
-              Map.entry("task", run.map().npm("task")),
-              Map.entry("comparator", run.map().npm("comparator")),
-              Map.entry("randomGenerator", run.map().npm("randomGenerator"))
-          ));
+          factory.build(run.map());
       //do optimization
       try {
         Instant startingT = Instant.now();

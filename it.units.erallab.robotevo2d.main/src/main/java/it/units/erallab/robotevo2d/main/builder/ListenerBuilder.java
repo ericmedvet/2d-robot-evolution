@@ -33,23 +33,23 @@ public class ListenerBuilder {
       @Param("filePath") String filePath,
       @Param("popFunctions") List<NamedFunction<? super POSetPopulationState<? extends G, ? extends S, ? extends Q>, ?>> popFunctions,
       @Param("bestFunctions") List<NamedFunction<? super Individual<? extends G, ? extends S, ? extends Q>, ?>> bestFunctions,
-      @Param("runKeys") List<String> keys
+      @Param("runKeys") List<String> runKeys
   ) {
     NamedFunction<POSetPopulationState<? extends G, ? extends S, ? extends Q>, Individual<? extends G, ? extends S, ? extends Q>> best = best();
     List<NamedFunction<? super POSetPopulationState<? extends G, ? extends S, ? extends Q>, ?>> functions = new ArrayList<>(
         BASIC_FUNCTIONS);
     functions.addAll(popFunctions);
     functions.addAll(best.then(bestFunctions));
-    List<NamedFunction<? super ParamMap, ?>> paramMapFunctions = Collections.unmodifiableList(keys.stream()
+    List<NamedFunction<? super ParamMap, ?>> paramMapFunctions = Collections.unmodifiableList(runKeys.stream()
         .map(k -> NamedFunction.build(
             k,
             "%s",
             (ParamMap m) -> getKeyFromParamMap(m, Arrays.stream(k.split("\\.")).toList())
         ))
         .toList());
-    return (NamedFunction<? super Q, Double> qFunction) -> {
-      functions.add(best.then(Individual::fitness).then(qFunction));
-      return new CSVPrinter<>(
+    return qFunction -> {
+      functions.add(best.then(fitness()).then(qFunction));
+      return new CSVPrinter<POSetPopulationState<G, S, Q>, ParamMap>(
           Collections.unmodifiableList(functions),
           paramMapFunctions,
           new File(filePath)
@@ -65,6 +65,6 @@ public class ListenerBuilder {
     if (namedParamMap == null) {
       return null;
     }
-    return getKeyFromParamMap(namedParamMap, keyPieces.subList(0, keyPieces.size()));
+    return getKeyFromParamMap(namedParamMap, keyPieces.subList(1, keyPieces.size()));
   }
 }

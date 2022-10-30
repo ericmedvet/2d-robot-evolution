@@ -29,7 +29,12 @@ experiment(
     )
   ];
   qExtractor = e.locomotionXVelocity();
-  bestFileSaver = fileSaver(serializer = ser.javaSerializer());
+  listeners = [
+    l.csvPrinter(
+      filePath = "/home/eric/Documenti/experiments/foo.txt";
+      runKeys = ["randomGenerator.seed"; solver]
+    )
+  ];
   videoSaver = videoSaver(drawer = d.basicWithAgentMiniature(); w = 600; h = 400);
   videoTasks = [
     videoTask(task = s.task.locomotion(terrain = s.t.flat(); duration = 20))
