@@ -1,27 +1,17 @@
 experiment(
-  runs =
-    (target = (
-      body = (shape = [
-        s.vsr.s.biped(w = 4; h = 3)
-      ]) * [s.vsr.gridBody(
-        sensorizingFunction = s.vsr.sf.directional(
-          headSensors = [
-            s.s.sin(f = 0);
-            s.s.d(a = -15; r = 5)
-          ];
-          nSensors = [
-            s.s.ar();
-            s.s.rv(a = 0);
-            s.s.rv(a = 90)
-          ];
-          sSensors = [
-            s.s.d(a = -90)
-          ]
-        )
-      )]
-    ) * [s.a.centralizedNumGridVSR(function = s.f.sinPF())]) *
-    (randomGenerator = (seed = [1:1:5]) * [rg.defaultRG()]) * [
+  runs = (randomGenerator = (seed = [1:1:5]) * [rg.defaultRG()]) * [
     run(
+      target = s.a.centralizedNumGridVSR(
+        function = s.f.sinPF();
+        body = s.vsr.gridBody(
+          shape = s.vsr.s.biped(w = 4; h = 3);
+          sensorizingFunction = s.vsr.sf.directional(
+            headSensors = [s.s.sin(f = 0);s.s.d(a = -15; r = 5)];
+            nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
+            sSensors = [s.s.d(a = -90)]
+          )
+        )
+      );
       solver = so.doublesStandard(nEval = 100; nPop = 10);
       mapper = m.toParametrized();
       task = s.task.locomotion(terrain = s.t.flat(); duration = 20);
@@ -30,16 +20,19 @@ experiment(
   ];
   qExtractor = e.locomotionXVelocity();
   listeners = [
-    l.bestCsvPrinter(
-      filePath = "/home/eric/Documenti/experiments/foo.txt";
+    l.bestCsv(
+      filePath = "/home/eric/experiments/foo.txt";
       bestFunctions = [
         nf.composition(first = nf.genotype(); second = nf.base64Serializer())
       ];
       runKeys = ["randomGenerator.seed"; solver]
+    );
+    l.lastBestVideo(
+      dirPath = "/home/eric/experiments";
+      tasks = [
+        namedTask(task = s.task.locomotion(terrain = s.t.flat(); duration = 10));
+        namedTask(task = s.task.locomotion(terrain = s.t.hilly(); duration = 10))
+      ]
     )
-  ];
-  videoSaver = videoSaver(drawer = d.basicWithAgentMiniature(); w = 600; h = 400);
-  videoTasks = [
-    videoTask(task = s.task.locomotion(terrain = s.t.flat(); duration = 20))
   ]
 )

@@ -33,6 +33,7 @@ public class PreparedNamedBuilder {
       .and(List.of("comparator", "c"), NamedBuilder.fromUtilityClass(ComparatorBuilder.class))
       .and(List.of("extractor", "e"), NamedBuilder.fromUtilityClass(ExtractorBuilder.class))
       .and(List.of("listener", "l"), NamedBuilder.fromUtilityClass(ListenerBuilder.class))
+      .and("engine", NamedBuilder.fromUtilityClass(EngineBuilder.class))
       .and(List.of("namedFunction", "nf"), NamedBuilder.fromUtilityClass(NamedFunctionBuilder.class))
       .and(List.of("drawer", "d"), NamedBuilder.fromUtilityClass(DrawerBuilder.class))
       .and(List.of("mapper", "m"), NamedBuilder.empty()
@@ -44,7 +45,7 @@ public class PreparedNamedBuilder {
           .and(NamedBuilder.fromClass(SimpleES.class))
       )
       .and(NamedBuilder.fromClass(VideoSaver.class))
-      .and(NamedBuilder.fromClass(VideoTask.class))
+      .and(NamedBuilder.fromClass(NamedTask.class))
       .and(NamedBuilder.fromClass(Run.class))
       .and(NamedBuilder.fromClass(Experiment.class))
       .and(NamedBuilder.fromClass(Configuration.class));

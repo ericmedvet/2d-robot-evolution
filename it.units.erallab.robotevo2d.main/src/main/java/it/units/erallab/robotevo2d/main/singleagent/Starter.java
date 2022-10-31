@@ -19,12 +19,8 @@ package it.units.erallab.robotevo2d.main.singleagent;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
 import it.units.erallab.mrsim2d.builder.NamedBuilder;
-import it.units.erallab.mrsim2d.builder.ParamMap;
 import it.units.erallab.mrsim2d.builder.StringNamedParamMap;
 import it.units.erallab.mrsim2d.core.EmbodiedAgent;
-import it.units.erallab.mrsim2d.core.engine.Engine;
-import it.units.erallab.mrsim2d.viewer.VideoBuilder;
-import it.units.erallab.mrsim2d.viewer.VideoUtils;
 import it.units.erallab.robotevo2d.main.builder.MapperBuilder;
 import it.units.malelab.jgea.core.QualityBasedProblem;
 import it.units.malelab.jgea.core.listener.*;
@@ -37,7 +33,6 @@ import it.units.malelab.jgea.core.util.ImagePlotters;
 import it.units.malelab.jgea.core.util.Misc;
 import it.units.malelab.jgea.core.util.Pair;
 import it.units.malelab.jgea.telegram.TelegramProgressMonitor;
-import it.units.malelab.jgea.telegram.TelegramUpdater;
 import it.units.malelab.jgea.tui.TerminalMonitor;
 
 import java.awt.image.BufferedImage;
@@ -47,7 +42,6 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.ServiceLoader;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Supplier;
@@ -71,12 +65,12 @@ public class Starter implements Runnable {
     this.nb = nb;
   }
 
-  private static AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, BufferedImage, ParamMap> getPlotter(
+  private static AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, BufferedImage, Run<?, ?>> getPlotter(
       Experiment<?, ?, ?> experiment
   ) {
     @SuppressWarnings("unchecked") NamedFunction<Object, Double> qFunction =
         ((NamedFunction<Object, Double>) experiment.qExtractor());
-    return new TableBuilder<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Number, ParamMap>(List.of(
+    return new TableBuilder<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Number, Run<?, ?>>(List.of(
         iterations(),
         best().then(fitness()).then(qFunction),
         min(Double::compare).of(each(qFunction.of(fitness()))).of(all()),
@@ -84,49 +78,20 @@ public class Starter implements Runnable {
     ), List.of()).then(t -> ImagePlotters.xyLines(600, 400).apply(t));
   }
 
-  private static TelegramUpdater<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ParamMap> getTelegramUpdater(
+  /*private static TelegramUpdater<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Run<?, ?>> getTelegramUpdater(
       Experiment<?, ?, ?> experiment,
       Supplier<Engine> engineSupplier,
       String telegramBotId,
       long telegramChatId
   ) {
-    List<AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?, ParamMap>> accumulators = new ArrayList<>();
+    List<AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?, Run<?, ?>>> accumulators =
+        new ArrayList<>();
     accumulators.add(getPlotter(experiment));
     if (experiment.videoSaver() != null) {
-      experiment.videoTasks().forEach(t -> accumulators.add(getVideoMaker(engineSupplier, experiment.videoSaver(), t)));
+      experiment.namedTasks().forEach(t -> accumulators.add(getVideoMaker(engineSupplier, experiment.videoSaver(), t)));
     }
     return new TelegramUpdater<>(accumulators, telegramBotId, telegramChatId);
-  }
-
-  private static AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, File, ParamMap> getVideoMaker(
-      Supplier<Engine> engineSupplier, VideoSaver videoSaver, VideoTask videoTask
-  ) {
-    return AccumulatorFactory.last((state, keys) -> {
-      File file;
-      L.info(String.format("Doing video for %s", videoTask.map().npm("task").toString()));
-      try {
-        file = File.createTempFile("robot-video", ".mp4");
-        VideoBuilder videoBuilder = new VideoBuilder(
-            videoSaver.w(),
-            videoSaver.h(),
-            videoSaver.startTime(),
-            videoSaver.endTime(),
-            videoSaver.frameRate(),
-            VideoUtils.EncoderFacility.valueOf(videoSaver.codec().toUpperCase()),
-            file,
-            videoSaver.drawer().apply(videoTask.map().npm("task").toString())
-        );
-        Supplier<EmbodiedAgent> agent = Misc.first(state.getPopulation().firsts()).solution();
-        videoTask.task().run(agent, engineSupplier.get(), videoBuilder);
-        file = videoBuilder.get();
-        file.deleteOnExit();
-      } catch (IOException ioException) {
-        L.warning(String.format("Cannot save video of best: %s", ioException));
-        return null;
-      }
-      return file;
-    });
-  }
+  }*/
 
   public static void main(String[] args) {
     NamedBuilder<Object> nb = PreparedNamedBuilder.get();
@@ -202,10 +167,6 @@ public class Starter implements Runnable {
         ));
       }
     }
-    //create engine supplier
-    Supplier<Engine> engineSupplier = () -> ServiceLoader.load(Engine.class)
-        .findFirst()
-        .orElseThrow(() -> new RuntimeException("Cannot instantiate an engine"));
     //create executor
     ExecutorService executorService = Executors.newFixedThreadPool(configuration.nOfThreads);
     //create common listeners and progress monitor
@@ -231,7 +192,8 @@ public class Starter implements Runnable {
     List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> screenFunctions = Misc.concat(
         List.of(nonVisualFunctions, visualFunctions));
     //prepare terminal monitor
-    TerminalMonitor<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ParamMap> terminalMonitor = new TerminalMonitor<>(
+    TerminalMonitor<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Run<?, ?>> terminalMonitor =
+        new TerminalMonitor<>(
         screenFunctions,
         List.of(),
         List.of(
@@ -242,14 +204,16 @@ public class Starter implements Runnable {
         )
     );
     //preapare factories
-    List<ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ParamMap>> factories = new ArrayList<>();
+    List<ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Run<?, ?>>> factories =
+        new ArrayList<>();
     factories.add(terminalMonitor);
     //noinspection unchecked,rawtypes
-    experiment.listeners().forEach(l -> factories.add(l.apply((Experiment)experiment)));
+    experiment.listeners().forEach(l -> factories.add(l.apply((Experiment) experiment)));
+    /*
     if (!telegramBotId.isEmpty()) {
-      factories.add(getTelegramUpdater(experiment, engineSupplier, telegramBotId, telegramChatId));
-    }
-    ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ParamMap> factory =
+      factories.add(getTelegramUpdater(experiment, experiment.engineSupplier(), telegramBotId, telegramChatId));
+    }*/
+    ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Run<?, ?>> factory =
         ListenerFactory.all(factories);
     //build progress monitor
     ProgressMonitor progressMonitor = terminalMonitor;
@@ -285,12 +249,11 @@ public class Starter implements Runnable {
       //build problem
       @SuppressWarnings("unchecked") QualityBasedProblem<Supplier<EmbodiedAgent>, ?> problem =
           QualityBasedProblem.create(
-              s -> run.task().run(s, engineSupplier.get()),
+              s -> run.task().run(s, experiment.engineSupplier().get()),
               (PartialComparator<Object>) run.comparator()
           );
       //build listener
-      Listener<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>> listener =
-          factory.build(run.map());
+      Listener<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>> listener = factory.build(run);
       //do optimization
       try {
         Instant startingT = Instant.now();
