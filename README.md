@@ -20,14 +20,14 @@ For JGEA:
 ```shell
 git clone --depth 1 --branch <tag_name> https://github.com/ericmedvet/jgea.git
 cd jgea
-mvn clean install
+mvn install
 ```
 
 For 2D-MR-Sim (in a different directory than the one in which you cloned JGEA):
 ```shell
 git clone --depth 1 --branch <tag_name> https://github.com/ericmedvet/2dmrsim.git
 cd 2dmrsim
-mvn clean install
+mvn install
 ```
 
 Where `<tag_name>` is the tag of the version you need (i.e., `v` followed by the version number), e.g., `v2.2.1`.
@@ -38,7 +38,7 @@ Now you can clone this project and build it:
 ```shell
 git clone --depth 1 https://github.com/ericmedvet/2d-robot-evolution.git
 cd 2d-robot-evolution
-mvn clean package
+mvn package
 ```
 
 At this point, if everything worked smoothly, you should be able to run a first short evolutionary optimization (assume you are in the parent directory of the `2d-robot-evolution` one that has been created after the last clone; this is suggested for real runs, so that you don't pollute your git branch with outcome files):
