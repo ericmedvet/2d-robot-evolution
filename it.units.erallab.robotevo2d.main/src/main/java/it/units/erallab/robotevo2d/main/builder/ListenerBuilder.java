@@ -18,27 +18,27 @@ import it.units.malelab.jgea.core.util.Misc;
 
 import java.io.File;
 import java.util.*;
-import java.util.concurrent.Executors;
-import java.util.function.Function;
+import java.util.concurrent.ExecutorService;
+import java.util.function.BiFunction;
 import java.util.logging.Logger;
 
 import static it.units.malelab.jgea.core.listener.NamedFunctions.*;
 
 public class ListenerBuilder {
 
-  private final static Logger L = Logger.getLogger(ListenerBuilder.class.getName());
-
-  private final static List<NamedFunction<? super POSetPopulationState<?, ?, ?>, ?>> BASIC_FUNCTIONS = List.of(
+  public final static List<NamedFunction<? super POSetPopulationState<?, ?, ?>, ?>> BASIC_FUNCTIONS = List.of(
       iterations(),
       births(),
       fitnessEvaluations(),
       elapsedSeconds()
   );
+  private final static Logger L = Logger.getLogger(ListenerBuilder.class.getName());
 
   private ListenerBuilder() {
   }
 
-  public static <G, S, Q> Function<Experiment<G, S, Q>, CSVPrinter<? super POSetPopulationState<G, S, Q>, Run<?, ?>>> bestCsv(
+  public static <G, S, Q> BiFunction<Experiment<G, S, Q>, ExecutorService, CSVPrinter<? super POSetPopulationState<G,
+      S, Q>, Run<?, ?>>> bestCsv(
       @Param("filePath") String filePath,
       @Param("popFunctions") List<NamedFunction<? super POSetPopulationState<? extends G, ? extends S, ? extends Q>,
           ?>> popFunctions,
@@ -59,7 +59,7 @@ public class ListenerBuilder {
             (Run<?, ?> run) -> getKeyFromParamMap(run.map(), Arrays.stream(k.split("\\.")).toList())
         ))
         .toList());
-    return experiment -> {
+    return (experiment, executorService) -> {
       functions.add(best.then(fitness()).then(experiment.qExtractor()));
       return new CSVPrinter<POSetPopulationState<G, S, Q>, Run<?, ?>>(
           Collections.unmodifiableList(functions),
@@ -80,7 +80,8 @@ public class ListenerBuilder {
     return getKeyFromParamMap(namedParamMap, keyPieces.subList(1, keyPieces.size()));
   }
 
-  public static <G, S, Q> Function<Experiment<G, S, Q>, ListenerFactory<? super POSetPopulationState<G, S, Q>,
+  public static <G, S, Q> BiFunction<Experiment<G, S, Q>, ExecutorService, ListenerFactory<?
+      super POSetPopulationState<G, S, Q>,
       Run<?, ?>>> lastBestVideo(
       @Param("dirPath") String dirPath,
       @Param(value = "fileNameTemplate", dS = "video-%s.mp4") String fileNameTemplate,
@@ -88,7 +89,7 @@ public class ListenerBuilder {
       @Param("tasks") List<NamedTask<? super S>> namedTasks,
       @Param(value = "deferred", dB = true) boolean deferred
   ) {
-    return experiment -> {
+    return (experiment, executorService) -> {
       ListenerFactory<POSetPopulationState<G, S, Q>, Run<?, ?>> listenerFactory =
           ((ListenerFactory<POSetPopulationState<G, S, Q>, Run<?, ?>>) run -> state -> {
             for (NamedTask<? super S> namedTask : namedTasks) {
@@ -116,7 +117,7 @@ public class ListenerBuilder {
             }
           }).onLast();
       if (deferred) {
-        listenerFactory = listenerFactory.deferred(Executors.newFixedThreadPool(1));
+        listenerFactory = listenerFactory.deferred(executorService);
       }
       return listenerFactory;
     };

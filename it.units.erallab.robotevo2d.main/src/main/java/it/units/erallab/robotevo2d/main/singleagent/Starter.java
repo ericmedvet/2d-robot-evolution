@@ -169,8 +169,9 @@ public class Starter implements Runnable {
         ));
       }
     }
-    //create executor
-    ExecutorService executorService = Executors.newFixedThreadPool(configuration.nOfThreads);
+    //create executors
+    ExecutorService runExecutorService = Executors.newFixedThreadPool(configuration.nOfThreads);
+    ExecutorService listenerExecutorService = Executors.newSingleThreadExecutor();
     //create common listeners and progress monitor
     List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> basicFunctions =
         List.of(
@@ -196,30 +197,26 @@ public class Starter implements Runnable {
     //prepare terminal monitor
     TerminalMonitor<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Run<?, ?>> terminalMonitor =
         new TerminalMonitor<>(
-        screenFunctions,
-        List.of(),
-        List.of(
-            new Pair<>(
-                iterations(),
-                best().then(fitness()).then(qFunction)
+            screenFunctions,
+            List.of(),
+            List.of(
+                new Pair<>(
+                    iterations(),
+                    best().then(fitness()).then(qFunction)
+                )
             )
-        )
-    );
+        );
     //preapare factories
     List<ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Run<?, ?>>> factories =
         new ArrayList<>();
     //noinspection unchecked,rawtypes
-    experiment.listeners().forEach(l -> factories.add(l.apply((Experiment) experiment)));
+    experiment.listeners().forEach(l -> factories.add(l.apply((Experiment) experiment, listenerExecutorService)));
     factories.add(terminalMonitor);
-    /*
-    if (!telegramBotId.isEmpty()) {
-      factories.add(getTelegramUpdater(experiment, experiment.engineSupplier(), telegramBotId, telegramChatId));
-    }*/
     ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Run<?, ?>> factory =
         ListenerFactory.all(factories);
     //build progress monitor
     ProgressMonitor progressMonitor = terminalMonitor;
-    if (!telegramBotId.isEmpty()) {
+    if (!telegramBotId.isEmpty()) { // TODO improve
       progressMonitor = progressMonitor.and(new TelegramProgressMonitor(telegramBotId, telegramChatId));
     }
     //iterate over runs
@@ -262,7 +259,7 @@ public class Starter implements Runnable {
         Collection<Supplier<EmbodiedAgent>> solutions = solver.solve(
             problem,
             run.randomGenerator(),
-            executorService,
+            runExecutorService,
             listener
         );
         double elapsedT = Duration.between(startingT, Instant.now()).toMillis() / 1000d;
@@ -281,6 +278,7 @@ public class Starter implements Runnable {
       }
     }
     factory.shutdown();
-    executorService.shutdown();
+    runExecutorService.shutdown();
+    listenerExecutorService.shutdown();
   }
 }
