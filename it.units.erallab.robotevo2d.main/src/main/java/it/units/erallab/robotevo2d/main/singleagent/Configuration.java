@@ -12,11 +12,6 @@ public final class Configuration {
   )
   public String experimentDescriptionFilePath = "";
   @Parameter(
-      names = {"--telegramFile", "-t"},
-      description = "Path of the file with the Telegram credentials"
-  )
-  public String telegramCredentialsFilePath = "";
-  @Parameter(
       names = {"--nOfThreads", "-n"},
       description = "Number of threads to be used"
   )

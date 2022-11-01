@@ -21,23 +21,21 @@ import com.beust.jcommander.ParameterException;
 import it.units.erallab.mrsim2d.builder.NamedBuilder;
 import it.units.erallab.mrsim2d.builder.StringNamedParamMap;
 import it.units.erallab.mrsim2d.core.EmbodiedAgent;
-import it.units.erallab.mrsim2d.core.engine.Engine;
 import it.units.erallab.robotevo2d.main.builder.MapperBuilder;
 import it.units.malelab.jgea.core.QualityBasedProblem;
-import it.units.malelab.jgea.core.listener.*;
+import it.units.malelab.jgea.core.listener.Listener;
+import it.units.malelab.jgea.core.listener.ListenerFactory;
+import it.units.malelab.jgea.core.listener.NamedFunction;
+import it.units.malelab.jgea.core.listener.ProgressMonitor;
 import it.units.malelab.jgea.core.order.PartialComparator;
 import it.units.malelab.jgea.core.solver.Individual;
 import it.units.malelab.jgea.core.solver.IterativeSolver;
 import it.units.malelab.jgea.core.solver.SolverException;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
-import it.units.malelab.jgea.core.util.ImagePlotters;
 import it.units.malelab.jgea.core.util.Misc;
 import it.units.malelab.jgea.core.util.Pair;
-import it.units.malelab.jgea.telegram.TelegramProgressMonitor;
-import it.units.malelab.jgea.telegram.TelegramUpdater;
 import it.units.malelab.jgea.tui.TerminalMonitor;
 
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.time.Duration;
 import java.time.Instant;
@@ -46,6 +44,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -65,34 +64,6 @@ public class Starter implements Runnable {
   public Starter(Configuration configuration, NamedBuilder<Object> nb) {
     this.configuration = configuration;
     this.nb = nb;
-  }
-
-  private static AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, BufferedImage, Run<?, ?>> getPlotter(
-      Experiment<?, ?, ?> experiment
-  ) {
-    @SuppressWarnings("unchecked") NamedFunction<Object, Double> qFunction =
-        ((NamedFunction<Object, Double>) experiment.qExtractor());
-    return new TableBuilder<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Number, Run<?, ?>>(List.of(
-        iterations(),
-        best().then(fitness()).then(qFunction),
-        min(Double::compare).of(each(qFunction.of(fitness()))).of(all()),
-        median(Double::compare).of(each(qFunction.of(fitness()))).of(all())
-    ), List.of()).then(t -> ImagePlotters.xyLines(600, 400).apply(t));
-  }
-
-  private static TelegramUpdater<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Run<?, ?>> getTelegramUpdater(
-      Experiment<?, ?, ?> experiment,
-      Supplier<Engine> engineSupplier,
-      String telegramBotId,
-      long telegramChatId
-  ) {
-    List<AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?, Run<?, ?>>> accumulators =
-        new ArrayList<>();
-    accumulators.add(getPlotter(experiment));
-    /*if (experiment.videoSaver() != null) {
-      experiment.namedTasks().forEach(t -> accumulators.add(getVideoMaker(engineSupplier, experiment.videoSaver(), t)));
-    }*/
-    return new TelegramUpdater<>(accumulators, telegramBotId, telegramChatId);
   }
 
   public static void main(String[] args) {
@@ -148,27 +119,6 @@ public class Starter implements Runnable {
       }
     }
     Experiment<?, ?, ?> experiment = (Experiment<?, ?, ?>) nb.build(expDescription);
-    //read telegram credentials file
-    String telegramBotId = "";
-    long telegramChatId = 0;
-    if (!configuration.telegramCredentialsFilePath.isEmpty()) {
-      try (BufferedReader br = new BufferedReader(new FileReader(configuration.telegramCredentialsFilePath))) {
-        List<String> lines = br.lines().toList();
-        if (lines.size() < 1) {
-          throw new IllegalArgumentException("Invalid telegram credential file with 0 lines");
-        }
-        String[] pieces = lines.get(0).split("\\s");
-        telegramBotId = pieces[0];
-        telegramChatId = Long.parseLong(pieces[1]);
-        L.config(String.format("Using provided telegram credentials: %s", configuration.telegramCredentialsFilePath));
-      } catch (IOException e) {
-        throw new IllegalArgumentException(String.format(
-            "Cannot read telegram credentials at %s: %s",
-            configuration.experimentDescriptionFilePath,
-            e
-        ));
-      }
-    }
     //create executors
     ExecutorService runExecutorService = Executors.newFixedThreadPool(configuration.nOfThreads);
     ExecutorService listenerExecutorService = Executors.newSingleThreadExecutor();
@@ -214,15 +164,10 @@ public class Starter implements Runnable {
     factories.add(terminalMonitor);
     ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Run<?, ?>> factory =
         ListenerFactory.all(factories);
-    //build progress monitor
-    ProgressMonitor progressMonitor = terminalMonitor;
-    if (!telegramBotId.isEmpty()) { // TODO improve
-      progressMonitor = progressMonitor.and(new TelegramProgressMonitor(telegramBotId, telegramChatId));
-    }
     //iterate over runs
     for (int i = 0; i < experiment.runs().size(); i++) {
       Run<?, ?> run = experiment.runs().get(i);
-      progressMonitor.notify(
+      terminalMonitor.notify(
           (float) i / (float) experiment.runs().size(),
           String.format(
               "Starting %d/%d run:%n%s",
@@ -271,14 +216,23 @@ public class Starter implements Runnable {
             solutions.size()
         );
         L.info(msg);
-        progressMonitor.notify((float) (i + 1) / (float) experiment.runs().size(), msg);
+        ((ProgressMonitor) terminalMonitor).notify((float) (i + 1) / (float) experiment.runs().size(), msg);
       } catch (SolverException | RuntimeException e) {
         L.warning(String.format("Cannot solve %s: %s", run.map(), e));
         break;
       }
     }
-    factory.shutdown();
     runExecutorService.shutdown();
     listenerExecutorService.shutdown();
+    while (true) {
+      try {
+        if (listenerExecutorService.awaitTermination(1, TimeUnit.SECONDS)) {
+          break;
+        }
+      } catch (InterruptedException e) {
+        //ignore
+      }
+    }
+    factory.shutdown();
   }
 }
