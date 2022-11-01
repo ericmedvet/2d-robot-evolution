@@ -1,5 +1,5 @@
 experiment(
-  runs = (randomGenerator = (seed = [1:1:5]) * [rg.defaultRG()]) * [
+  runs = (randomGenerator = (seed = [1:1:1]) * [rg.defaultRG()]) * [
     run(
       target = s.a.centralizedNumGridVSR(
         function = s.f.sinPF();
@@ -12,7 +12,7 @@ experiment(
           )
         )
       );
-      solver = so.doublesStandard(nEval = 100; nPop = 10);
+      solver = so.doublesStandard(nEval = 30; nPop = 10);
       mapper = m.toParametrized();
       task = s.task.locomotion(terrain = s.t.flat(); duration = 20);
       comparator = c.max(of = e.locomotionXVelocity())
@@ -30,7 +30,6 @@ experiment(
     l.lastBestVideo(
       dirPath = "/home/eric/experiments";
       tasks = [
-        namedTask(task = s.task.locomotion(terrain = s.t.flat(); duration = 10));
         namedTask(task = s.task.locomotion(terrain = s.t.hilly(); duration = 10))
       ]
     )

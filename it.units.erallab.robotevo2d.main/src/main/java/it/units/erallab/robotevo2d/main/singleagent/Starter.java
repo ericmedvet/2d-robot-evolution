@@ -21,6 +21,7 @@ import com.beust.jcommander.ParameterException;
 import it.units.erallab.mrsim2d.builder.NamedBuilder;
 import it.units.erallab.mrsim2d.builder.StringNamedParamMap;
 import it.units.erallab.mrsim2d.core.EmbodiedAgent;
+import it.units.erallab.mrsim2d.core.engine.Engine;
 import it.units.erallab.robotevo2d.main.builder.MapperBuilder;
 import it.units.malelab.jgea.core.QualityBasedProblem;
 import it.units.malelab.jgea.core.listener.*;
@@ -33,6 +34,7 @@ import it.units.malelab.jgea.core.util.ImagePlotters;
 import it.units.malelab.jgea.core.util.Misc;
 import it.units.malelab.jgea.core.util.Pair;
 import it.units.malelab.jgea.telegram.TelegramProgressMonitor;
+import it.units.malelab.jgea.telegram.TelegramUpdater;
 import it.units.malelab.jgea.tui.TerminalMonitor;
 
 import java.awt.image.BufferedImage;
@@ -78,7 +80,7 @@ public class Starter implements Runnable {
     ), List.of()).then(t -> ImagePlotters.xyLines(600, 400).apply(t));
   }
 
-  /*private static TelegramUpdater<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Run<?, ?>> getTelegramUpdater(
+  private static TelegramUpdater<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Run<?, ?>> getTelegramUpdater(
       Experiment<?, ?, ?> experiment,
       Supplier<Engine> engineSupplier,
       String telegramBotId,
@@ -87,11 +89,11 @@ public class Starter implements Runnable {
     List<AccumulatorFactory<POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?, Run<?, ?>>> accumulators =
         new ArrayList<>();
     accumulators.add(getPlotter(experiment));
-    if (experiment.videoSaver() != null) {
+    /*if (experiment.videoSaver() != null) {
       experiment.namedTasks().forEach(t -> accumulators.add(getVideoMaker(engineSupplier, experiment.videoSaver(), t)));
-    }
+    }*/
     return new TelegramUpdater<>(accumulators, telegramBotId, telegramChatId);
-  }*/
+  }
 
   public static void main(String[] args) {
     NamedBuilder<Object> nb = PreparedNamedBuilder.get();
@@ -206,9 +208,9 @@ public class Starter implements Runnable {
     //preapare factories
     List<ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Run<?, ?>>> factories =
         new ArrayList<>();
-    factories.add(terminalMonitor);
     //noinspection unchecked,rawtypes
     experiment.listeners().forEach(l -> factories.add(l.apply((Experiment) experiment)));
+    factories.add(terminalMonitor);
     /*
     if (!telegramBotId.isEmpty()) {
       factories.add(getTelegramUpdater(experiment, experiment.engineSupplier(), telegramBotId, telegramChatId));
