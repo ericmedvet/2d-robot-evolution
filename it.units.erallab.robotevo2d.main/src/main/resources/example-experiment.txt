@@ -27,12 +27,6 @@ experiment(
       ];
       runKeys = ["randomGenerator.seed"; solver]
     );
-    l.lastBestVideo(
-      dirPath = "/home/eric/experiments";
-      tasks = [
-        namedTask(task = s.task.locomotion(terrain = s.t.hilly(); duration = 10))
-      ]
-    );
     l.telegram(
       chatId = "207490209";
       botIdFilePath = "/home/eric/experiments/2dmrsim/tlg.txt";

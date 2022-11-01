@@ -46,13 +46,15 @@ public class ListenerBuilder {
   private ListenerBuilder() {
   }
 
-  public static <G, S, Q> BiFunction<Experiment<G, S, Q>, ExecutorService, CSVPrinter<? super POSetPopulationState<G,
+  public static <G, S, Q> BiFunction<Experiment<G, S, Q>, ExecutorService, ListenerFactory<?
+      super POSetPopulationState<G,
       S, Q>, Run<G, Q>>> bestCsv(
       @Param("filePath") String filePath,
       @Param("popFunctions") List<NamedFunction<? super POSetPopulationState<? extends G, ? extends S, ? extends Q>,
           ?>> popFunctions,
       @Param("bestFunctions") List<NamedFunction<? super Individual<? extends G, ? extends S, ? extends Q>, ?>> bestFunctions,
-      @Param("runKeys") List<String> runKeys
+      @Param("runKeys") List<String> runKeys,
+      @Param(value = "onlyLast", dB = false) boolean onlyLast
   ) {
     NamedFunction<POSetPopulationState<? extends G, ? extends S, ? extends Q>, Individual<? extends G, ? extends S, ?
         extends Q>> best = best();
@@ -71,11 +73,16 @@ public class ListenerBuilder {
     return (experiment, executorService) -> {
       functions.add(best.then(fitness()).then(experiment.qExtractor()));
       //noinspection unchecked,rawtypes
-      return new CSVPrinter<POSetPopulationState<G, S, Q>, Run<G, Q>>(
+      ListenerFactory<? super POSetPopulationState<G, S, Q>, Run<G, Q>> listenerFactory =
+          new CSVPrinter<POSetPopulationState<G, S, Q>, Run<G, Q>>(
           Collections.unmodifiableList(functions),
           (List) runFunctions,
           new File(filePath)
       );
+      if (onlyLast) {
+        listenerFactory = listenerFactory.onLast();
+      }
+      return listenerFactory;
     };
   }
 
