@@ -21,8 +21,8 @@ experiment(
   qExtractor = e.locomotionXVelocity();
   listeners = [
     l.bestCsv(
-      filePath = "/home/eric/experiments/foo.txt";
-      bestFunctions = [
+      filePath = "/home/eric/experiments/best-foo.txt";
+      individualFunctions = [
         nf.composition(first = nf.genotype(); second = nf.base64Serializer())
       ];
       runKeys = ["randomGenerator.seed"; solver]
@@ -33,6 +33,14 @@ experiment(
       tasks = [
         namedTask(task = s.task.locomotion(terrain = s.t.hilly(); duration = 10))
       ]
+    );
+    l.allCsv(
+      filePath = "/home/eric/experiments/all-foo.txt";
+      individualFunctions = [
+        nf.fitness()
+      ];
+      runKeys = ["randomGenerator.seed"; solver];
+      onlyLast = true
     )
   ]
 )

@@ -3,6 +3,7 @@ package it.units.erallab.robotevo2d.main.builder;
 import it.units.erallab.mrsim2d.builder.NamedParamMap;
 import it.units.erallab.mrsim2d.builder.Param;
 import it.units.erallab.mrsim2d.builder.ParamMap;
+import it.units.erallab.mrsim2d.builder.StringNamedParamMap;
 import it.units.erallab.mrsim2d.viewer.VideoBuilder;
 import it.units.erallab.mrsim2d.viewer.VideoUtils;
 import it.units.erallab.robotevo2d.main.singleagent.Experiment;
@@ -48,11 +49,83 @@ public class ListenerBuilder {
 
   public static <G, S, Q> BiFunction<Experiment<G, S, Q>, ExecutorService, ListenerFactory<?
       super POSetPopulationState<G,
+      S, Q>, Run<G, Q>>> allCsv(
+      @Param("filePath") String filePath,
+      @Param("individualFunctions") List<NamedFunction<? super Individual<? extends G, ? extends S, ? extends Q>, ?>> individualFunctions,
+      @Param("runKeys") List<String> runKeys,
+      @Param(value = "onlyLast", dB = false) boolean onlyLast
+  ) {
+    @SuppressWarnings({"rawtypes", "unchecked"}) List<NamedFunction<POSetPopulationState<G, S, Q>, ?>> popFunctions =
+        new ArrayList<>(
+            (List) BASIC_FUNCTIONS);
+    List<NamedFunction<Run<G, Q>, Object>> runFunctions = runKeys.stream()
+        .map(k -> NamedFunction.build(
+            k,
+            "%s",
+            (Run<G, Q> run) -> getKeyFromParamMap(run.map(), Arrays.stream(k.split("\\.")).toList())
+        ))
+        .toList();
+    record PopIndividualPair<G, S, Q>(POSetPopulationState<G, S, Q> pop, Individual<G, S, Q> individual) {}
+    List<NamedFunction<? super PopIndividualPair<G, S, Q>, ?>> pairFunctions = new ArrayList<>();
+    popFunctions.stream()
+        .map(f -> NamedFunction.build(
+            f.getName(),
+            f.getFormat(),
+            (PopIndividualPair<G, S, Q> pair) -> f.apply(pair.pop())
+        ))
+        .forEach(pairFunctions::add);
+    individualFunctions.stream()
+        .map(f -> NamedFunction.build(
+            f.getName(),
+            f.getFormat(),
+            (PopIndividualPair<G, S, Q> pair) -> f.apply(pair.individual())
+        ))
+        .forEach(pairFunctions::add);
+    @SuppressWarnings({"unchecked", "rawtypes"}) CSVPrinter<PopIndividualPair<G, S, Q>, Run<G, Q>> innerListenerFactory =
+        new CSVPrinter<>(
+            (List) Collections.unmodifiableList(pairFunctions),
+            (List) runFunctions,
+            new File(filePath)
+        );
+    return (experiment, executorService) -> {
+      ListenerFactory<? super POSetPopulationState<G, S, Q>, Run<G, Q>> listenerFactory = new ListenerFactory<>() {
+        @Override
+        public Listener<POSetPopulationState<G, S, Q>> build(Run<G, Q> run) {
+          Listener<PopIndividualPair<G, S, Q>> innerListener = innerListenerFactory.build(run);
+          return new Listener<>() {
+            @Override
+            public void listen(POSetPopulationState<G, S, Q> state) {
+              for (Individual<G, S, Q> individual : state.getPopulation().all()) {
+                innerListener.listen(new PopIndividualPair<>(state, individual));
+              }
+            }
+
+            @Override
+            public void done() {
+              innerListener.done();
+            }
+          };
+        }
+
+        @Override
+        public void shutdown() {
+          innerListenerFactory.shutdown();
+        }
+      };
+      if (onlyLast) {
+        listenerFactory = listenerFactory.onLast();
+      }
+      return listenerFactory;
+    };
+  }
+
+  public static <G, S, Q> BiFunction<Experiment<G, S, Q>, ExecutorService, ListenerFactory<?
+      super POSetPopulationState<G,
       S, Q>, Run<G, Q>>> bestCsv(
       @Param("filePath") String filePath,
       @Param("popFunctions") List<NamedFunction<? super POSetPopulationState<? extends G, ? extends S, ? extends Q>,
           ?>> popFunctions,
-      @Param("bestFunctions") List<NamedFunction<? super Individual<? extends G, ? extends S, ? extends Q>, ?>> bestFunctions,
+      @Param("individualFunctions") List<NamedFunction<? super Individual<? extends G, ? extends S, ? extends Q>, ?>> individualFunctions,
       @Param("runKeys") List<String> runKeys,
       @Param(value = "onlyLast", dB = false) boolean onlyLast
   ) {
@@ -62,7 +135,7 @@ public class ListenerBuilder {
         new ArrayList<>(
             BASIC_FUNCTIONS);
     functions.addAll(popFunctions);
-    functions.addAll(best.then(bestFunctions));
+    functions.addAll(best.then(individualFunctions));
     List<NamedFunction<Run<G, Q>, Object>> runFunctions = runKeys.stream()
         .map(k -> NamedFunction.build(
             k,
@@ -75,10 +148,10 @@ public class ListenerBuilder {
       //noinspection unchecked,rawtypes
       ListenerFactory<? super POSetPopulationState<G, S, Q>, Run<G, Q>> listenerFactory =
           new CSVPrinter<POSetPopulationState<G, S, Q>, Run<G, Q>>(
-          Collections.unmodifiableList(functions),
-          (List) runFunctions,
-          new File(filePath)
-      );
+              Collections.unmodifiableList(functions),
+              (List) runFunctions,
+              new File(filePath)
+          );
       if (onlyLast) {
         listenerFactory = listenerFactory.onLast();
       }
@@ -178,6 +251,17 @@ public class ListenerBuilder {
       @SuppressWarnings("unchecked") NamedFunction<Object, Double> qFunction =
           ((NamedFunction<Object, Double>) experiment.qExtractor());
       List<AccumulatorFactory<POSetPopulationState<G, S, Q>, ?, Run<G, Q>>> accumulators = new ArrayList<>();
+      //prepare text accumulator
+      accumulators.add(run -> new Accumulator<>() {
+        @Override
+        public String get() {
+          return StringNamedParamMap.prettyToString(run.map(), 40);
+        }
+
+        @Override
+        public void listen(POSetPopulationState<G, S, Q> state) {
+        }
+      });
       //prepare plotter accumulator
       accumulators.add(new TableBuilder<POSetPopulationState<G, S, Q>, Number, Run<G, Q>>(
           List.of(
