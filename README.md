@@ -56,6 +56,11 @@ java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotev
 ```
 where `EXP_FILE` is the path to a file with an **experiment description** and `N` is the **number of threads** to be used for running the experiment.
 
+Once started, `Starter` shows a text-based UI giving information about overall progress of the experiment, the current run, logs, and resources usage.
+`Starter` may be stopped (before conclusion) with `ctrl+C`.
+
+![The text-based UI of `Starter`](assets/sample-run.png)
+
 For the number of threads `N`, it is suggested to use a number lower or equal to the number of cores on the machine you run the experiment on.
 The actual degree of concurrency will depend on `N` and on the evolutionary algorithm being used: e.g., a GA with a population of `npop=30` will do at most `min(30,N)` fitness evaluations at the same time.
 
@@ -122,6 +127,11 @@ In the following sections, we describe the key elements.
 
 ##### Embodied agents
 
+There are five available embodied agents (i.e., *robots*).
+Their builders are described [here](assets/builder-help.md#package-simagent).
+
+- `sim.agent.centralizedNumGridVSR()` corresponds to a VSR with a single closed-loop controller taking as input the sensor readings and giving as output the activation values, as described in [[1]](#2020-c-mbdf-evolution).
+
 ##### Tasks
 
 ##### Solvers
@@ -131,3 +141,6 @@ In the following sections, we describe the key elements.
 ##### Listeners
 
 #### Examples of experiment files
+
+## References
+1. <a name="2020-c-mbdf-evolution"></a> Medvet, Bartoli, De Lorenzo, Fidel; [Evolution of Distributed Neural Controllers for Voxel-based Soft Robots](https://medvet.inginf.units.it/publications/2020-c-mbdf-evolution/); ACM Genetic and Evolutionary Computation Conference (GECCO); 2020
