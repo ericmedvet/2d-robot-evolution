@@ -64,7 +64,7 @@ Produces <code><abbr title="it.units.erallab.robotevo2d.main.singleagent.VideoSa
 
 Aliases: `c`, `comparator`
 
-### Builder `max()`
+### Builder `comparator.max()`
 
 `c.max(of)`
 
@@ -74,7 +74,7 @@ Aliases: `c`, `comparator`
 
 Produces <code><abbr title="it.units.malelab.jgea.core.order.PartialComparator">PartialComparator</abbr><<abbr title="java.lang.Object">Object</abbr>></code>
 
-### Builder `min()`
+### Builder `comparator.min()`
 
 `c.min(of)`
 
@@ -88,13 +88,13 @@ Produces <code><abbr title="it.units.malelab.jgea.core.order.PartialComparator">
 
 Aliases: `d`, `drawer`
 
-### Builder `basic()`
+### Builder `drawer.basic()`
 
 `d.basic()`
 
 Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.String">String</abbr>, <abbr title="it.units.erallab.mrsim2d.viewer.Drawer">Drawer</abbr>></code>
 
-### Builder `basicWithAgentMiniature()`
+### Builder `drawer.basicWithAgentMiniature()`
 
 `d.basicWithAgentMiniature()`
 
@@ -102,7 +102,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr t
 
 ## Package `engine`
 
-### Builder `defaultEngine()`
+### Builder `engine.defaultEngine()`
 
 `engine.defaultEngine()`
 
@@ -112,7 +112,7 @@ Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr><<abbr t
 
 Aliases: `e`, `extractor`
 
-### Builder `locomotionXVelocity()`
+### Builder `extractor.locomotionXVelocity()`
 
 `e.locomotionXVelocity(transientT)`
 
@@ -122,13 +122,13 @@ Aliases: `e`, `extractor`
 
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.erallab.mrsim2d.core.tasks.locomotion.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>></code>
 
-### Builder `pilingAverageHeight()`
+### Builder `extractor.pilingAverageHeight()`
 
 `e.pilingAverageHeight()`
 
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.erallab.mrsim2d.core.tasks.piling.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>></code>
 
-### Builder `pilingHeightDiff()`
+### Builder `extractor.pilingHeightDiff()`
 
 `e.pilingHeightDiff()`
 
@@ -138,7 +138,7 @@ Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">N
 
 Aliases: `l`, `listener`
 
-### Builder `allCsv()`
+### Builder `listener.allCsv()`
 
 `l.allCsv(filePath; individualFunctions; runKeys; onlyLast)`
 
@@ -151,7 +151,7 @@ Aliases: `l`, `listener`
 
 Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="it.units.erallab.robotevo2d.main.singleagent.Experiment">Experiment</abbr><G, S, Q>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="it.units.malelab.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="it.units.erallab.robotevo2d.main.singleagent.Run">Run</abbr><G, Q>>></code>
 
-### Builder `bestCsv()`
+### Builder `listener.bestCsv()`
 
 `l.bestCsv(filePath; popFunctions; individualFunctions; runKeys; onlyLast)`
 
@@ -165,7 +165,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 
 Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="it.units.erallab.robotevo2d.main.singleagent.Experiment">Experiment</abbr><G, S, Q>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="it.units.malelab.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="it.units.erallab.robotevo2d.main.singleagent.Run">Run</abbr><G, Q>>></code>
 
-### Builder `lastBestVideo()`
+### Builder `listener.lastBestVideo()`
 
 `l.lastBestVideo(dirPath; fileNameTemplate; videoSaver; tasks; deferred)`
 
@@ -179,7 +179,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 
 Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="it.units.erallab.robotevo2d.main.singleagent.Experiment">Experiment</abbr><G, S, Q>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="it.units.malelab.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="it.units.erallab.robotevo2d.main.singleagent.Run">Run</abbr><G, Q>>></code>
 
-### Builder `telegram()`
+### Builder `listener.telegram()`
 
 `l.telegram(chatId; botIdFilePath; videoSaver; tasks; deferred)`
 
@@ -197,7 +197,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 
 Aliases: `m`, `mapper`
 
-### Builder `composition()`
+### Builder `mapper.composition()`
 
 `m.composition(first; second)`
 
@@ -208,7 +208,7 @@ Aliases: `m`, `mapper`
 
 Produces <code><abbr title="it.units.erallab.robotevo2d.main.builder.mapper.Composition">Composition</abbr></code>
 
-### Builder `toParametrized()`
+### Builder `mapper.toParametrized()`
 
 `m.toParametrized()`
 
@@ -218,13 +218,13 @@ Produces <code><abbr title="it.units.erallab.robotevo2d.main.builder.mapper.func
 
 Aliases: `namedFunction`, `nf`
 
-### Builder `base64Serializer()`
+### Builder `namedFunction.base64Serializer()`
 
 `nf.base64Serializer()`
 
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><?, <abbr title="java.lang.String">String</abbr>></code>
 
-### Builder `composition()`
+### Builder `namedFunction.composition()`
 
 `nf.composition(first; second)`
 
@@ -235,25 +235,25 @@ Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">N
 
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><A, C></code>
 
-### Builder `fitness()`
+### Builder `namedFunction.fitness()`
 
 `nf.fitness()`
 
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><?, ?, ? extends Q>, Q></code>
 
-### Builder `genotype()`
+### Builder `namedFunction.genotype()`
 
 `nf.genotype()`
 
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><? extends G, ?, ?>, G></code>
 
-### Builder `solution()`
+### Builder `namedFunction.solution()`
 
 `nf.solution()`
 
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><?, ? extends S, ?>, S></code>
 
-### Builder `stringSerialized()`
+### Builder `namedFunction.stringSerialized()`
 
 `nf.stringSerialized()`
 
@@ -263,7 +263,7 @@ Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">N
 
 Aliases: `randomGenerator`, `rg`
 
-### Builder `defaultRG()`
+### Builder `randomGenerator.defaultRG()`
 
 `rg.defaultRG(seed)`
 
@@ -277,7 +277,7 @@ Produces <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</a
 
 Aliases: `s`, `sim`
 
-### Builder `range()`
+### Builder `sim.range()`
 
 `s.range(min; max)`
 
@@ -292,7 +292,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">Doub
 
 Aliases: `s.a`, `s.agent`, `sim.a`, `sim.agent`
 
-### Builder `centralizedNumGridVSR()`
+### Builder `sim.agent.centralizedNumGridVSR()`
 
 `s.a.centralizedNumGridVSR(body; function)`
 
@@ -303,7 +303,7 @@ Aliases: `s.a`, `s.agent`, `sim.a`, `sim.agent`
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR">CentralizedNumGridVSR</abbr></code>
 
-### Builder `heteroDistributedNumGridVSR()`
+### Builder `sim.agent.heteroDistributedNumGridVSR()`
 
 `s.a.heteroDistributedNumGridVSR(body; function; signals; directional)`
 
@@ -316,7 +316,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.Central
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.HeteroDistributedNumGridVSR">HeteroDistributedNumGridVSR</abbr></code>
 
-### Builder `homoDistributedNumGridVSR()`
+### Builder `sim.agent.homoDistributedNumGridVSR()`
 
 `s.a.homoDistributedNumGridVSR(body; function; signals; directional)`
 
@@ -329,7 +329,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.HeteroD
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.HomoDistributedNumGridVSR">HomoDistributedNumGridVSR</abbr></code>
 
-### Builder `numIndependentVoxel()`
+### Builder `sim.agent.numIndependentVoxel()`
 
 `s.a.numIndependentVoxel(sensors; function)`
 
@@ -340,7 +340,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.HomoDis
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.independentvoxel.NumIndependentVoxel">NumIndependentVoxel</abbr></code>
 
-### Builder `numLeggedHybridModularRobot()`
+### Builder `sim.agent.numLeggedHybridModularRobot()`
 
 `s.a.numLeggedHybridModularRobot(modules; function)`
 
@@ -355,7 +355,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.NumLegge
 
 Aliases: `s.a.l`, `s.a.legged`, `s.agent.l`, `s.agent.legged`, `sim.a.l`, `sim.a.legged`, `sim.agent.l`, `sim.agent.legged`
 
-### Builder `legChunk()`
+### Builder `sim.agent.legged.legChunk()`
 
 `s.a.l.legChunk(trunkLength; width; mass; upConnector)`
 
@@ -368,7 +368,7 @@ Aliases: `s.a.l`, `s.a.legged`, `s.agent.l`, `s.agent.legged`, `sim.a.l`, `sim.a
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$LegChunk">AbstractLeggedHybridModularRobot$LegChunk</abbr></code>
 
-### Builder `module()`
+### Builder `sim.agent.legged.module()`
 
 `s.a.l.module(trunkLength; trunkWidth; trunkMass; legChunks; downConnector; rightConnector)`
 
@@ -387,7 +387,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.Abstract
 
 Aliases: `s.f`, `s.function`, `sim.f`, `sim.function`
 
-### Builder `diffIn()`
+### Builder `sim.function.diffIn()`
 
 `s.f.diffIn(windowT; innerFunction; types)`
 
@@ -399,7 +399,7 @@ Aliases: `s.f`, `s.function`, `sim.f`, `sim.function`
 
 Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.DiffInputTRF">DiffInputTRF</abbr>></code>
 
-### Builder `mlp()`
+### Builder `sim.function.mlp()`
 
 `s.f.mlp(innerLayerRatio; nOfInnerLayers; activationFunction)`
 
@@ -411,7 +411,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 
 Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.MultiLayerPerceptron">MultiLayerPerceptron</abbr>></code>
 
-### Builder `sinP()`
+### Builder `sim.function.sinP()`
 
 `s.f.sinP(p; f; a)`
 
@@ -423,7 +423,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 
 Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
-### Builder `sinPA()`
+### Builder `sim.function.sinPA()`
 
 `s.f.sinPA(p; f; a)`
 
@@ -435,7 +435,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 
 Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
-### Builder `sinPF()`
+### Builder `sim.function.sinPF()`
 
 `s.f.sinPF(p; f; a)`
 
@@ -447,7 +447,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 
 Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
-### Builder `sinPFA()`
+### Builder `sim.function.sinPFA()`
 
 `s.f.sinPFA(p; f; a)`
 
@@ -459,7 +459,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 
 Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
-### Builder `stepOut()`
+### Builder `sim.function.stepOut()`
 
 `s.f.stepOut(stepT; innerFunction)`
 
@@ -474,25 +474,25 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 
 Aliases: `s.s`, `s.sensor`, `sim.s`, `sim.sensor`
 
-### Builder `a()`
+### Builder `sim.sensor.a()`
 
 `s.s.a()`
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.Body">Body</abbr>></code>
 
-### Builder `ar()`
+### Builder `sim.sensor.ar()`
 
 `s.s.ar()`
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.SoftBody">SoftBody</abbr>></code>
 
-### Builder `c()`
+### Builder `sim.sensor.c()`
 
 `s.s.c()`
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.Body">Body</abbr>></code>
 
-### Builder `d()`
+### Builder `sim.sensor.d()`
 
 `s.s.d(a; r)`
 
@@ -503,7 +503,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.Body">Body</abbr>></code>
 
-### Builder `rv()`
+### Builder `sim.sensor.rv()`
 
 `s.s.rv(a)`
 
@@ -513,7 +513,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.Body">Body</abbr>></code>
 
-### Builder `sa()`
+### Builder `sim.sensor.sa()`
 
 `s.s.sa(s)`
 
@@ -523,7 +523,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>></code>
 
-### Builder `sc()`
+### Builder `sim.sensor.sc()`
 
 `s.s.sc(s)`
 
@@ -533,7 +533,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>></code>
 
-### Builder `sin()`
+### Builder `sim.sensor.sin()`
 
 `s.s.sin(f; p)`
 
@@ -548,7 +548,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><
 
 Aliases: `s.task`, `sim.task`
 
-### Builder `fallPiling()`
+### Builder `sim.task.fallPiling()`
 
 `s.task.fallPiling(duration; fallInterval; nOfAgents; xSigmaRatio; randomGenerator; terrain; yGapRatio)`
 
@@ -564,7 +564,7 @@ Aliases: `s.task`, `sim.task`
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.tasks.piling.FallPiling">FallPiling</abbr></code>
 
-### Builder `locomotion()`
+### Builder `sim.task.locomotion()`
 
 `s.task.locomotion(duration; terrain)`
 
@@ -575,7 +575,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.tasks.piling.FallPilin
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.tasks.locomotion.Locomotion">Locomotion</abbr></code>
 
-### Builder `standPiling()`
+### Builder `sim.task.standPiling()`
 
 `s.task.standPiling(duration; nOfAgents; xGapRatio; terrain)`
 
@@ -592,7 +592,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.tasks.piling.StandPili
 
 Aliases: `s.t`, `s.terrain`, `sim.t`, `sim.terrain`
 
-### Builder `downhill()`
+### Builder `sim.terrain.downhill()`
 
 `s.t.downhill(w; h; borderW; borderH; a)`
 
@@ -606,7 +606,7 @@ Aliases: `s.t`, `s.terrain`, `sim.t`, `sim.terrain`
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>
 
-### Builder `flat()`
+### Builder `sim.terrain.flat()`
 
 `s.t.flat(w; h; borderW; borderH)`
 
@@ -619,7 +619,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terr
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>
 
-### Builder `hilly()`
+### Builder `sim.terrain.hilly()`
 
 `s.t.hilly(w; h; borderW; borderH; chunkW; chunkH; seed)`
 
@@ -635,7 +635,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terr
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>
 
-### Builder `steppy()`
+### Builder `sim.terrain.steppy()`
 
 `s.t.steppy(w; h; borderW; borderH; chunkW; chunkH; seed)`
 
@@ -651,7 +651,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terr
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>
 
-### Builder `uphill()`
+### Builder `sim.terrain.uphill()`
 
 `s.t.uphill(w; h; borderW; borderH; a)`
 
@@ -669,7 +669,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terr
 
 Aliases: `s.vsr`, `sim.vsr`
 
-### Builder `gridBody()`
+### Builder `sim.vsr.gridBody()`
 
 `s.vsr.gridBody(shape; sensorizingFunction)`
 
@@ -684,7 +684,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.GridBod
 
 Aliases: `s.vsr.sensorizingFunction`, `s.vsr.sf`, `sim.vsr.sensorizingFunction`, `sim.vsr.sf`
 
-### Builder `directional()`
+### Builder `sim.vsr.sensorizingFunction.directional()`
 
 `s.vsr.sf.directional(nSensors; eSensors; sSensors; wSensors; headSensors)`
 
@@ -698,13 +698,13 @@ Aliases: `s.vsr.sensorizingFunction`, `s.vsr.sf`, `sim.vsr.sensorizingFunction`,
 
 Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>>, <abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>>>></code>
 
-### Builder `empty()`
+### Builder `sim.vsr.sensorizingFunction.empty()`
 
 `s.vsr.sf.empty()`
 
 Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>>, <abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>>>></code>
 
-### Builder `uniform()`
+### Builder `sim.vsr.sensorizingFunction.uniform()`
 
 `s.vsr.sf.uniform(sensors)`
 
@@ -718,7 +718,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr t
 
 Aliases: `s.vsr.s`, `s.vsr.shape`, `sim.vsr.s`, `sim.vsr.shape`
 
-### Builder `ball()`
+### Builder `sim.vsr.shape.ball()`
 
 `s.vsr.s.ball(d)`
 
@@ -728,7 +728,7 @@ Aliases: `s.vsr.s`, `s.vsr.shape`, `sim.vsr.s`, `sim.vsr.shape`
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
 
-### Builder `biped()`
+### Builder `sim.vsr.shape.biped()`
 
 `s.vsr.s.biped(w; h)`
 
@@ -739,7 +739,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr>
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
 
-### Builder `comb()`
+### Builder `sim.vsr.shape.comb()`
 
 `s.vsr.s.comb(w; h)`
 
@@ -750,7 +750,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr>
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
 
-### Builder `free()`
+### Builder `sim.vsr.shape.free()`
 
 `s.vsr.s.free(s)`
 
@@ -760,7 +760,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr>
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
 
-### Builder `t()`
+### Builder `sim.vsr.shape.t()`
 
 `s.vsr.s.t(w; h)`
 
@@ -771,7 +771,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr>
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
 
-### Builder `triangle()`
+### Builder `sim.vsr.shape.triangle()`
 
 `s.vsr.s.triangle(l)`
 
@@ -781,7 +781,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr>
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
 
-### Builder `tripod()`
+### Builder `sim.vsr.shape.tripod()`
 
 `s.vsr.s.tripod(w; h)`
 
@@ -792,7 +792,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr>
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
 
-### Builder `worm()`
+### Builder `sim.vsr.shape.worm()`
 
 `s.vsr.s.worm(w; h)`
 
@@ -807,7 +807,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr>
 
 Aliases: `so`, `solver`
 
-### Builder `doublesStandard()`
+### Builder `solver.doublesStandard()`
 
 `so.doublesStandard(initialMinV; initialMaxV; crossoverP; sigmaMut; tournamentRate; minNTournament; nPop; nEval; diversity; remap)`
 
@@ -826,7 +826,7 @@ Aliases: `so`, `solver`
 
 Produces <code><abbr title="it.units.erallab.robotevo2d.main.builder.solver.DoublesStandard">DoublesStandard</abbr></code>
 
-### Builder `simpleES()`
+### Builder `solver.simpleES()`
 
 `so.simpleES(initialMinV; initialMaxV; sigma; parentsRate; nOfElites; nPop; nEval; remap; qExtractor; goal)`
 

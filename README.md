@@ -75,7 +75,7 @@ An experiment is described in `Experiment`.
 The description also includes information on if/how/where to store the info about ongoing runs: one reasonable choice is to save one line of a CSV file for each iteration of each run.
 
 You can describe an experiment through an experiment file containing a textual description of the experiment.
-The description must contain a *named parameter map* for an experiment, i.e., its content has to be something like `experiment(...)` (see the [`experiment`](assets/builder-help.md#builder-experiment)) builder documentation=. 
+The description must contain a *named parameter map* for an experiment, i.e., its content has to be something like `experiment(...)` (see the [`experiment()`](assets/builder-help.md#builder-experiment)) builder documentation=. 
 
 #### Named parameter map format
 
@@ -118,4 +118,16 @@ office(
 
 The complete specifications for available parameters and corresponding values for a valid description of an experiment is available [here](assets/builder-help.md).
 
-#### Examples
+In the following sections, we describe the key elements.
+
+##### Embodied agents
+
+##### Tasks
+
+##### Solvers
+
+##### Mappers
+
+##### Listeners
+
+#### Examples of experiment files
