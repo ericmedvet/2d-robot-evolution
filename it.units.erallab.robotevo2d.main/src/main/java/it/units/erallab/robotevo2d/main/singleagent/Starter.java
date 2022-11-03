@@ -18,6 +18,7 @@ package it.units.erallab.robotevo2d.main.singleagent;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
+import it.units.erallab.mrsim2d.builder.InfoPrinter;
 import it.units.erallab.mrsim2d.builder.NamedBuilder;
 import it.units.erallab.mrsim2d.builder.StringNamedParamMap;
 import it.units.erallab.mrsim2d.core.EmbodiedAgent;
@@ -91,6 +92,15 @@ public class Starter implements Runnable {
     if (configuration.showExpFileName) {
       System.out.println(NamedBuilder.prettyToString(nb, true));
       System.exit(0);
+    }
+    if (!configuration.mdHelpFilePath.isEmpty()) {
+      try (PrintStream filePS = new PrintStream(configuration.mdHelpFilePath)) {
+        InfoPrinter infoPrinter = new InfoPrinter();
+        infoPrinter.print(nb, filePS);
+        System.exit(0);
+      } catch (FileNotFoundException e) {
+        throw new IllegalArgumentException("Cannot open md file %s: %s".formatted(configuration.mdHelpFilePath, e), e);
+      }
     }
     //read experiment description
     String expDescription;

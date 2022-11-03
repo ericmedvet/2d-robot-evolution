@@ -5,7 +5,6 @@ import it.units.erallab.mrsim2d.builder.Param;
 import it.units.erallab.mrsim2d.builder.ParamMap;
 import it.units.erallab.mrsim2d.builder.StringNamedParamMap;
 import it.units.erallab.mrsim2d.viewer.VideoBuilder;
-import it.units.erallab.mrsim2d.viewer.VideoUtils;
 import it.units.erallab.robotevo2d.main.singleagent.Experiment;
 import it.units.erallab.robotevo2d.main.singleagent.NamedTask;
 import it.units.erallab.robotevo2d.main.singleagent.Run;
@@ -198,7 +197,7 @@ public class ListenerBuilder {
                   videoSaver.startTime(),
                   videoSaver.endTime(),
                   videoSaver.frameRate(),
-                  VideoUtils.EncoderFacility.valueOf(videoSaver.codec().toUpperCase()),
+                  videoSaver.codec(),
                   file,
                   videoSaver.drawer().apply(namedTask.map().npm("task").toString())
               );
@@ -286,7 +285,7 @@ public class ListenerBuilder {
                       videoSaver.startTime(),
                       videoSaver.endTime(),
                       videoSaver.frameRate(),
-                      VideoUtils.EncoderFacility.valueOf(videoSaver.codec().toUpperCase()),
+                      videoSaver.codec(),
                       file,
                       videoSaver.drawer().apply(namedTask.map().npm("task").toString())
                   );

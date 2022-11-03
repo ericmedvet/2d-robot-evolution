@@ -22,4 +22,10 @@ public final class Configuration {
       description = "Show a description of available constructs for the experiment file"
   )
   public boolean showExpFileName = false;
+
+  @Parameter(
+      names = {"--outHelpMdFile"},
+      description = "Save the markdown documentation of the builder on the target file"
+  )
+  public String mdHelpFilePath = "";
 }
