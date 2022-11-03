@@ -129,12 +129,40 @@ In the following sections, we describe the key elements.
 
 There are five available embodied agents (i.e., *robots*).
 Their builders are described [here](assets/builder-help.md#package-simagent).
+The two most significant follows.
 
-- `sim.agent.centralizedNumGridVSR()` corresponds to a VSR with a single closed-loop controller taking as input the sensor readings and giving as output the activation values, as described in [[1]](#2020-c-mbdf-evolution).
+[`sim.agent.centralizedNumGridVSR()`](assets/builder-help.md#builder-simagentcentralizednumgridvsr) corresponds to a VSR with a single closed-loop controller taking as input the sensor readings and giving as output the activation values, as described in [[1]](#2020-c-mbdf-evolution).
+The controller is a `TimedRealFunction`, i.e., a multivariate function taking $m$ real values and the current time $t$ and giving $n$ real values; formally, it is a $f: \mathbb{R}^m \times \mathbb{R} \to \mathbb{R}^n$.
+Available functions are described [here](assets/builder-help.md#package-simfunction).
+
+[`sim.agent.heteroDistributedNumGridVSR()`](assets/builder-help.md#builder-simagentheterodistributednumgridvsr) and [`sim.agent.homoDistributedNumGridVSR()`](assets/builder-help.md#builder-simagenthomodistributednumgridvsr) correspond to a VSR with one `TimedRealFunction` inside each one of the voxels.
+Each `TimedRealFunction` takes as input the local sensor readings and some (exactly `signals`) values coming from adjacent voxels and gives as output the local activation value and some values going to adjacent voxels, as described in [[1]](#2020-c-mbdf-evolution).
+For `sim.agent.homoDistributedNumGridVSR()`, the same function is used in each voxel; for `sim.agent.heteroDistributedNumGridVSR()` different functions are used.
+I.e., they for the former case, the function share the parameters: for using `sim.agent.homoDistributedNumGridVSR()`, each voxel in the body has to have the same number of sensors.
 
 ##### Tasks
 
+There are three available tasks.
+Their builders are described [here](assets/builder-help.md#package-simtask).
+
+The most significant is [`sim.task.locomotion()`](assets/builder-help.md#builder-simtasklocomotion).
+Here, the robot is put on a `Terrain` (see [here](assets/builder-help.md#package-simterrain) for the options) and let move for `duration` simulated seconds.
+The usual goal in terms of optimization is to maximize the velocity of the robot, that can be extracted from the task outcome with [`extractor.locomotionXVelocity()`](assets/builder-help.md#builder-extractorlocomotionxvelocity).
+
 ##### Solvers
+
+Solvers correspond to evolutionary algorithms.
+In principle, any solver implemented in JGEA might be used.
+In practice, a few are available here.
+Their builders are described [here](assets/builder-help.md#package-solver).
+A solver must be compatible with a mapper, since the solver search a given space $G$, the mapper maps a $g \in G$ to a robot, and the robot fitness is evaluated and used by the solver to drive the search.
+See [[2]](#2022-c-mnm-jgea) for a more detailed description.
+The two most significant solvers are GA and ES: both are able to work with real numbers, i.e., $G = \mathbb{R}^p$.
+
+[solver.doublesStandard()](assets/builder-help.md#builder-solverdoublesstandard) is a standard GA working on $\mathbb{R}^p$.
+It iteratively evolves `nPop` individuals until `nEval` fitness evaluations have been done.
+Individual genotypes are initially generated randomly with each element in `[initialMinV,initialMaxV]`; then, they are modified by applying a Gaussian mutation with `sigmaMut` and a uniform crossover.
+Selection is done through a tournament with size `tournamentRate*nPop` (clipped to a lowest value of `minNTournament`).
 
 ##### Mappers
 
@@ -144,3 +172,4 @@ Their builders are described [here](assets/builder-help.md#package-simagent).
 
 ## References
 1. <a name="2020-c-mbdf-evolution"></a> Medvet, Bartoli, De Lorenzo, Fidel; [Evolution of Distributed Neural Controllers for Voxel-based Soft Robots](https://medvet.inginf.units.it/publications/2020-c-mbdf-evolution/); ACM Genetic and Evolutionary Computation Conference (GECCO); 2020
+2. <a name="2022-c-mnm-jgea"></a>Medvet, Nadizar, Manzoni; [JGEA: a Modular Java Framework for Experimenting with Evolutionary Computation](https://medvet.inginf.units.it/publications/2022-c-mnm-jgea/); Workshop Evolutionary Computation Software Systems (EvoSoft@GECCO); 2022
