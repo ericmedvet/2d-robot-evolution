@@ -52,17 +52,17 @@ java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotev
 
 An experiment can be started by invoking:
 ```shell
-java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" it.units.erallab.robotevo2d.main.singleagent.Starter --expFile EXP_FILE --nOfThreads N
+java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" it.units.erallab.robotevo2d.main.singleagent.Starter --expFile <exp-file> --nOfThreads <n>
 ```
-where `EXP_FILE` is the path to a file with an **experiment description** and `N` is the **number of threads** to be used for running the experiment.
+where `<exp-file>` is the path to a file with an **experiment description** and `<n>` is the **number of threads** to be used for running the experiment.
 
 Once started, `Starter` shows a text-based UI giving information about overall progress of the experiment, the current run, logs, and resources usage.
 `Starter` may be stopped (before conclusion) with `ctrl+C`.
 
 ![The text-based UI of `Starter`](assets/images/sample-run.png)
 
-For the number of threads `N`, it is suggested to use a number lower or equal to the number of cores on the machine you run the experiment on.
-The actual degree of concurrency will depend on `N` and on the evolutionary algorithm being used: e.g., a GA with a population of `npop=30` will do at most `min(30,N)` fitness evaluations at the same time.
+For the number of threads `n`, it is suggested to use a number lower or equal to the number of cores on the machine you run the experiment on.
+The actual degree of concurrency will depend on `n` and on the evolutionary algorithm being used: e.g., a GA with a population of `npop=30` will do at most `min(30,N)` fitness evaluations at the same time.
 
 The help about what other parameters can be set while invoking `Starter` may be obtained with:
 ```shell
