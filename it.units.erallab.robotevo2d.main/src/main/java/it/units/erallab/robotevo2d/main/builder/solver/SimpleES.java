@@ -56,7 +56,7 @@ public class SimpleES implements SolverBuilder<List<Double>> {
       @Param(value = "nEval") int nEval,
       @Param(value = "remap") boolean remap,
       @Param(value = "qExtractor") Function<?, Double> qExtractor,
-      @Param(value = "goal", dS = "min") String goalString
+      @Param(value = "goal", dS = "min") Goal goal
   ) {
     this.initialMinV = initialMinV;
     this.initialMaxV = initialMaxV;
@@ -67,7 +67,7 @@ public class SimpleES implements SolverBuilder<List<Double>> {
     this.nEval = nEval;
     this.remap = remap;
     this.qExtractor = qExtractor;
-    this.goal = Goal.valueOf(goalString.toUpperCase());
+    this.goal = goal;
   }
 
   private enum Goal {MAX, MIN}
