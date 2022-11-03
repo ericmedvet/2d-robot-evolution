@@ -29,8 +29,8 @@
     <packaging>pom</packaging>
     <properties>
         <revision>0.3.6-dev</revision>
-        <mrsim2d.version>0.6.8-dev</mrsim2d.version>
-        <jgea.version>2.2.3-dev</jgea.version>
+        <mrsim2d.version>0.6.8</mrsim2d.version>
+        <jgea.version>2.2.3</jgea.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>18</jdk.version>
     </properties>

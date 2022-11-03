@@ -1,37 +1,10 @@
-## Package ``
+## Unnamed package
 
-Aliases: ``
+### Builder `configuration()`
 
-### Builder `videoSaver()`
+`configuration()`
 
-`videoSaver(w; h; frameRate; startTime; endTime; codec; drawer)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `w` | i | `400` | <code>int</code> |
-| `h` | i | `250` | <code>int</code> |
-| `frameRate` | d | `30.0` | <code>double</code> |
-| `startTime` | d | `0.0` | <code>double</code> |
-| `endTime` | d | `30.0` | <code>double</code> |
-| `codec` | s | `jcodec` | <code><abbr title="java.lang.String">String</abbr></code> |
-| `drawer` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.String">String</abbr>, <abbr title="it.units.erallab.mrsim2d.viewer.Drawer">Drawer</abbr>></code> |
-
-Produces <code><abbr title="it.units.erallab.robotevo2d.main.singleagent.VideoSaver">VideoSaver</abbr></code>
-
-### Builder `run()`
-
-`run(solver; mapper; target; task; comparator; randomGenerator; )`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `solver` | npm |  | <code><abbr title="it.units.erallab.robotevo2d.main.builder.solver.SolverBuilder">SolverBuilder</abbr><G></code> |
-| `mapper` | npm |  | <code><abbr title="it.units.erallab.robotevo2d.main.builder.MapperBuilder">MapperBuilder</abbr><G, <abbr title="java.util.function.Supplier">Supplier</abbr><<abbr title="it.units.erallab.mrsim2d.core.EmbodiedAgent">EmbodiedAgent</abbr>>></code> |
-| `target` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.EmbodiedAgent">EmbodiedAgent</abbr></code> |
-| `task` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.tasks.Task">Task</abbr><<abbr title="java.util.function.Supplier">Supplier</abbr><<abbr title="it.units.erallab.mrsim2d.core.EmbodiedAgent">EmbodiedAgent</abbr>>, Q></code> |
-| `comparator` | npm |  | <code><abbr title="it.units.malelab.jgea.core.order.PartialComparator">PartialComparator</abbr><? super Q></code> |
-| `randomGenerator` | npm |  | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.robotevo2d.main.singleagent.Run">Run</abbr></code>
+Produces <code><abbr title="it.units.erallab.robotevo2d.main.singleagent.Configuration">Configuration</abbr></code>
 
 ### Builder `experiment()`
 
@@ -56,24 +29,40 @@ Produces <code><abbr title="it.units.erallab.robotevo2d.main.singleagent.Experim
 
 Produces <code><abbr title="it.units.erallab.robotevo2d.main.singleagent.NamedTask">NamedTask</abbr></code>
 
-### Builder `configuration()`
+### Builder `run()`
 
-`configuration()`
-Produces <code><abbr title="it.units.erallab.robotevo2d.main.singleagent.Configuration">Configuration</abbr></code>
+`run(solver; mapper; target; task; comparator; randomGenerator; )`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `solver` | npm |  | <code><abbr title="it.units.erallab.robotevo2d.main.builder.solver.SolverBuilder">SolverBuilder</abbr><G></code> |
+| `mapper` | npm |  | <code><abbr title="it.units.erallab.robotevo2d.main.builder.MapperBuilder">MapperBuilder</abbr><G, <abbr title="java.util.function.Supplier">Supplier</abbr><<abbr title="it.units.erallab.mrsim2d.core.EmbodiedAgent">EmbodiedAgent</abbr>>></code> |
+| `target` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.EmbodiedAgent">EmbodiedAgent</abbr></code> |
+| `task` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.tasks.Task">Task</abbr><<abbr title="java.util.function.Supplier">Supplier</abbr><<abbr title="it.units.erallab.mrsim2d.core.EmbodiedAgent">EmbodiedAgent</abbr>>, Q></code> |
+| `comparator` | npm |  | <code><abbr title="it.units.malelab.jgea.core.order.PartialComparator">PartialComparator</abbr><? super Q></code> |
+| `randomGenerator` | npm |  | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
+
+Produces <code><abbr title="it.units.erallab.robotevo2d.main.singleagent.Run">Run</abbr></code>
+
+### Builder `videoSaver()`
+
+`videoSaver(w; h; frameRate; startTime; endTime; codec; drawer)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `w` | i | `400` | <code>int</code> |
+| `h` | i | `250` | <code>int</code> |
+| `frameRate` | d | `30.0` | <code>double</code> |
+| `startTime` | d | `0.0` | <code>double</code> |
+| `endTime` | d | `30.0` | <code>double</code> |
+| `codec` | e | `JCODEC` | <code><abbr title="it.units.erallab.mrsim2d.viewer.VideoUtils$EncoderFacility">VideoUtils$EncoderFacility</abbr></code> |
+| `drawer` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.String">String</abbr>, <abbr title="it.units.erallab.mrsim2d.viewer.Drawer">Drawer</abbr>></code> |
+
+Produces <code><abbr title="it.units.erallab.robotevo2d.main.singleagent.VideoSaver">VideoSaver</abbr></code>
 
 ## Package `comparator`
 
 Aliases: `c`, `comparator`
-
-### Builder `min()`
-
-`c.min(of)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `of` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.Object">Object</abbr>, <abbr title="java.lang.Double">Double</abbr>></code> |
-
-Produces <code><abbr title="it.units.malelab.jgea.core.order.PartialComparator">PartialComparator</abbr><<abbr title="java.lang.Object">Object</abbr>></code>
 
 ### Builder `max()`
 
@@ -85,27 +74,38 @@ Produces <code><abbr title="it.units.malelab.jgea.core.order.PartialComparator">
 
 Produces <code><abbr title="it.units.malelab.jgea.core.order.PartialComparator">PartialComparator</abbr><<abbr title="java.lang.Object">Object</abbr>></code>
 
+### Builder `min()`
+
+`c.min(of)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.Object">Object</abbr>, <abbr title="java.lang.Double">Double</abbr>></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.order.PartialComparator">PartialComparator</abbr><<abbr title="java.lang.Object">Object</abbr>></code>
+
 ## Package `drawer`
 
 Aliases: `d`, `drawer`
 
-### Builder `basicWithAgentMiniature()`
-
-`d.basicWithAgentMiniature()`
-Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.String">String</abbr>, <abbr title="it.units.erallab.mrsim2d.viewer.Drawer">Drawer</abbr>></code>
-
 ### Builder `basic()`
 
 `d.basic()`
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.String">String</abbr>, <abbr title="it.units.erallab.mrsim2d.viewer.Drawer">Drawer</abbr>></code>
+
+### Builder `basicWithAgentMiniature()`
+
+`d.basicWithAgentMiniature()`
+
 Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.String">String</abbr>, <abbr title="it.units.erallab.mrsim2d.viewer.Drawer">Drawer</abbr>></code>
 
 ## Package `engine`
 
-Aliases: `engine`
-
 ### Builder `defaultEngine()`
 
 `engine.defaultEngine()`
+
 Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr><<abbr title="it.units.erallab.mrsim2d.core.engine.Engine">Engine</abbr>></code>
 
 ## Package `extractor`
@@ -125,16 +125,31 @@ Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">N
 ### Builder `pilingAverageHeight()`
 
 `e.pilingAverageHeight()`
+
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.erallab.mrsim2d.core.tasks.piling.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>></code>
 
 ### Builder `pilingHeightDiff()`
 
 `e.pilingHeightDiff()`
+
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.erallab.mrsim2d.core.tasks.piling.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>></code>
 
 ## Package `listener`
 
 Aliases: `l`, `listener`
+
+### Builder `allCsv()`
+
+`l.allCsv(filePath; individualFunctions; runKeys; onlyLast)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `filePath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+| `individualFunctions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><? extends G, ? extends S, ? extends Q>, ?>></code> |
+| `runKeys` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="java.lang.String">String</abbr>></code> |
+| `onlyLast` | b | `false` | <code>boolean</code> |
+
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="it.units.erallab.robotevo2d.main.singleagent.Experiment">Experiment</abbr><G, S, Q>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="it.units.malelab.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="it.units.erallab.robotevo2d.main.singleagent.Run">Run</abbr><G, Q>>></code>
 
 ### Builder `bestCsv()`
 
@@ -144,19 +159,6 @@ Aliases: `l`, `listener`
 | --- | --- | --- | --- |
 | `filePath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 | `popFunctions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><? extends G, ? extends S, ? extends Q>, ?>></code> |
-| `individualFunctions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><? extends G, ? extends S, ? extends Q>, ?>></code> |
-| `runKeys` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="java.lang.String">String</abbr>></code> |
-| `onlyLast` | b | `false` | <code>boolean</code> |
-
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="it.units.erallab.robotevo2d.main.singleagent.Experiment">Experiment</abbr><G, S, Q>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="it.units.malelab.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="it.units.erallab.robotevo2d.main.singleagent.Run">Run</abbr><G, Q>>></code>
-
-### Builder `allCsv()`
-
-`l.allCsv(filePath; individualFunctions; runKeys; onlyLast)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `filePath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 | `individualFunctions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><? extends G, ? extends S, ? extends Q>, ?>></code> |
 | `runKeys` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="java.lang.String">String</abbr>></code> |
 | `onlyLast` | b | `false` | <code>boolean</code> |
@@ -209,11 +211,18 @@ Produces <code><abbr title="it.units.erallab.robotevo2d.main.builder.mapper.Comp
 ### Builder `toParametrized()`
 
 `m.toParametrized()`
+
 Produces <code><abbr title="it.units.erallab.robotevo2d.main.builder.mapper.function.ToParametrized">ToParametrized</abbr></code>
 
 ## Package `namedFunction`
 
 Aliases: `namedFunction`, `nf`
+
+### Builder `base64Serializer()`
+
+`nf.base64Serializer()`
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><?, <abbr title="java.lang.String">String</abbr>></code>
 
 ### Builder `composition()`
 
@@ -226,29 +235,28 @@ Aliases: `namedFunction`, `nf`
 
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><A, C></code>
 
-### Builder `solution()`
-
-`nf.solution()`
-Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><?, ? extends S, ?>, S></code>
-
 ### Builder `fitness()`
 
 `nf.fitness()`
+
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><?, ?, ? extends Q>, Q></code>
-
-### Builder `base64Serializer()`
-
-`nf.base64Serializer()`
-Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><?, <abbr title="java.lang.String">String</abbr>></code>
 
 ### Builder `genotype()`
 
 `nf.genotype()`
+
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><? extends G, ?, ?>, G></code>
+
+### Builder `solution()`
+
+`nf.solution()`
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><?, ? extends S, ?>, S></code>
 
 ### Builder `stringSerialized()`
 
 `nf.stringSerialized()`
+
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><?, <abbr title="java.lang.String">String</abbr>></code>
 
 ## Package `randomGenerator`
@@ -284,6 +292,17 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">Doub
 
 Aliases: `s.a`, `s.agent`, `sim.a`, `sim.agent`
 
+### Builder `centralizedNumGridVSR()`
+
+`s.a.centralizedNumGridVSR(body; function)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `body` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
+| `function` | npm |  | <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, ? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR">CentralizedNumGridVSR</abbr></code>
+
 ### Builder `heteroDistributedNumGridVSR()`
 
 `s.a.heteroDistributedNumGridVSR(body; function; signals; directional)`
@@ -296,6 +315,19 @@ Aliases: `s.a`, `s.agent`, `sim.a`, `sim.agent`
 | `directional` | b | `false` | <code>boolean</code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.HeteroDistributedNumGridVSR">HeteroDistributedNumGridVSR</abbr></code>
+
+### Builder `homoDistributedNumGridVSR()`
+
+`s.a.homoDistributedNumGridVSR(body; function; signals; directional)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `body` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
+| `function` | npm |  | <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, ? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
+| `signals` | i |  | <code>int</code> |
+| `directional` | b | `false` | <code>boolean</code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.HomoDistributedNumGridVSR">HomoDistributedNumGridVSR</abbr></code>
 
 ### Builder `numIndependentVoxel()`
 
@@ -318,30 +350,6 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.independentvoxe
 | `function` | npm |  | <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, ? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.NumLeggedHybridModularRobot">NumLeggedHybridModularRobot</abbr></code>
-
-### Builder `homoDistributedNumGridVSR()`
-
-`s.a.homoDistributedNumGridVSR(body; function; signals; directional)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `body` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
-| `function` | npm |  | <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, ? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
-| `signals` | i |  | <code>int</code> |
-| `directional` | b | `false` | <code>boolean</code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.HomoDistributedNumGridVSR">HomoDistributedNumGridVSR</abbr></code>
-
-### Builder `centralizedNumGridVSR()`
-
-`s.a.centralizedNumGridVSR(body; function)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `body` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
-| `function` | npm |  | <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, ? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR">CentralizedNumGridVSR</abbr></code>
 
 ## Package `sim.agent.legged`
 
@@ -379,9 +387,45 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.Abstract
 
 Aliases: `s.f`, `s.function`, `sim.f`, `sim.function`
 
-### Builder `sinPFA()`
+### Builder `diffIn()`
 
-`s.f.sinPFA(p; f; a)`
+`s.f.diffIn(windowT; innerFunction; types)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `windowT` | d |  | <code>double</code> |
+| `innerFunction` | npm |  | <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, ? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
+| `types` | e[] | `[CURRENT, TREND, AVG]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.DiffInputTRF$Type">DiffInputTRF$Type</abbr>></code> |
+
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.DiffInputTRF">DiffInputTRF</abbr>></code>
+
+### Builder `mlp()`
+
+`s.f.mlp(innerLayerRatio; nOfInnerLayers; activationFunction)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `innerLayerRatio` | d | `0.65` | <code>double</code> |
+| `nOfInnerLayers` | i | `1` | <code>int</code> |
+| `activationFunction` | e | `TANH` | <code><abbr title="it.units.erallab.mrsim2d.core.functions.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
+
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.MultiLayerPerceptron">MultiLayerPerceptron</abbr>></code>
+
+### Builder `sinP()`
+
+`s.f.sinP(p; f; a)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
+
+### Builder `sinPA()`
+
+`s.f.sinPA(p; f; a)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -403,6 +447,18 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 
 Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
+### Builder `sinPFA()`
+
+`s.f.sinPFA(p; f; a)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
+
 ### Builder `stepOut()`
 
 `s.f.stepOut(stepT; innerFunction)`
@@ -414,66 +470,25 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 
 Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.SteppedOutputTRF">SteppedOutputTRF</abbr>></code>
 
-### Builder `sinPA()`
-
-`s.f.sinPA(p; f; a)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
-
-### Builder `sinP()`
-
-`s.f.sinP(p; f; a)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
-
-### Builder `mlp()`
-
-`s.f.mlp(innerLayerRatio; nOfInnerLayers; activationFunction)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `innerLayerRatio` | d | `0.65` | <code>double</code> |
-| `nOfInnerLayers` | i | `1` | <code>int</code> |
-| `activationFunction` | e | `TANH` | <code><abbr title="it.units.erallab.mrsim2d.core.functions.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
-
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.MultiLayerPerceptron">MultiLayerPerceptron</abbr>></code>
-
-### Builder `diffIn()`
-
-`s.f.diffIn(windowT; innerFunction; types)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `windowT` | d |  | <code>double</code> |
-| `innerFunction` | npm |  | <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, ? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
-| `types` | e[] | `[CURRENT, TREND, AVG]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.DiffInputTRF$Type">DiffInputTRF$Type</abbr>></code> |
-
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.DiffInputTRF">DiffInputTRF</abbr>></code>
-
 ## Package `sim.sensor`
 
 Aliases: `s.s`, `s.sensor`, `sim.s`, `sim.sensor`
 
-### Builder `sin()`
+### Builder `a()`
 
-`s.s.sin(f; p)`
+`s.s.a()`
 
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `f` | d | `1.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
-| `p` | d | `0.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.Body">Body</abbr>></code>
+
+### Builder `ar()`
+
+`s.s.ar()`
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.SoftBody">SoftBody</abbr>></code>
+
+### Builder `c()`
+
+`s.s.c()`
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.Body">Body</abbr>></code>
 
@@ -488,14 +503,14 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.Body">Body</abbr>></code>
 
-### Builder `a()`
+### Builder `rv()`
 
-`s.s.a()`
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.Body">Body</abbr>></code>
+`s.s.rv(a)`
 
-### Builder `c()`
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `a` | d | `0.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 
-`s.s.c()`
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.Body">Body</abbr>></code>
 
 ### Builder `sa()`
@@ -518,48 +533,20 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>></code>
 
-### Builder `rv()`
+### Builder `sin()`
 
-`s.s.rv(a)`
+`s.s.sin(f; p)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `a` | d | `0.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
+| `f` | d | `1.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
+| `p` | d | `0.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.Body">Body</abbr>></code>
-
-### Builder `ar()`
-
-`s.s.ar()`
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.SoftBody">SoftBody</abbr>></code>
 
 ## Package `sim.task`
 
 Aliases: `s.task`, `sim.task`
-
-### Builder `standPiling()`
-
-`s.task.standPiling(duration; nOfAgents; xGapRatio; terrain)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `duration` | d | `45.0` | <code>double</code> |
-| `nOfAgents` | i |  | <code>int</code> |
-| `xGapRatio` | d | `1.0` | <code>double</code> |
-| `terrain` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.tasks.piling.StandPiling">StandPiling</abbr></code>
-
-### Builder `locomotion()`
-
-`s.task.locomotion(duration; terrain)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `duration` | d | `30.0` | <code>double</code> |
-| `terrain` | npm | `terrain.flat()` | <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.tasks.locomotion.Locomotion">Locomotion</abbr></code>
 
 ### Builder `fallPiling()`
 
@@ -577,22 +564,33 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.tasks.locomotion.Locom
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.tasks.piling.FallPiling">FallPiling</abbr></code>
 
-## Package `sim.terrain`
+### Builder `locomotion()`
 
-Aliases: `s.t`, `s.terrain`, `sim.t`, `sim.terrain`
-
-### Builder `flat()`
-
-`s.t.flat(w; h; borderW; borderH)`
+`s.task.locomotion(duration; terrain)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `w` | d | `2000.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
-| `h` | d | `25.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
-| `borderW` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
-| `borderH` | d | `100.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
+| `duration` | d | `30.0` | <code>double</code> |
+| `terrain` | npm | `terrain.flat()` | <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
 
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.tasks.locomotion.Locomotion">Locomotion</abbr></code>
+
+### Builder `standPiling()`
+
+`s.task.standPiling(duration; nOfAgents; xGapRatio; terrain)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `duration` | d | `45.0` | <code>double</code> |
+| `nOfAgents` | i |  | <code>int</code> |
+| `xGapRatio` | d | `1.0` | <code>double</code> |
+| `terrain` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.tasks.piling.StandPiling">StandPiling</abbr></code>
+
+## Package `sim.terrain`
+
+Aliases: `s.t`, `s.terrain`, `sim.t`, `sim.terrain`
 
 ### Builder `downhill()`
 
@@ -605,6 +603,19 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terr
 | `borderW` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderH` | d | `100.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `a` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>
+
+### Builder `flat()`
+
+`s.t.flat(w; h; borderW; borderH)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `w` | d | `2000.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
+| `h` | d | `25.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
+| `borderW` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
+| `borderH` | d | `100.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>
 
@@ -673,11 +684,6 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.GridBod
 
 Aliases: `s.vsr.sensorizingFunction`, `s.vsr.sf`, `sim.vsr.sensorizingFunction`, `sim.vsr.sf`
 
-### Builder `empty()`
-
-`s.vsr.sf.empty()`
-Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>>, <abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>>>></code>
-
 ### Builder `directional()`
 
 `s.vsr.sf.directional(nSensors; eSensors; sSensors; wSensors; headSensors)`
@@ -689,6 +695,12 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr t
 | `sSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>></code> |
 | `wSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>></code> |
 | `headSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>></code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>>, <abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>>>></code>
+
+### Builder `empty()`
+
+`s.vsr.sf.empty()`
 
 Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>>, <abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>>>></code>
 
@@ -716,6 +728,17 @@ Aliases: `s.vsr.s`, `s.vsr.shape`, `sim.vsr.s`, `sim.vsr.shape`
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
 
+### Builder `biped()`
+
+`s.vsr.s.biped(w; h)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
+| `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
+
 ### Builder `comb()`
 
 `s.vsr.s.comb(w; h)`
@@ -727,20 +750,19 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr>
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
 
-### Builder `t()`
+### Builder `free()`
 
-`s.vsr.s.t(w; h)`
+`s.vsr.s.free(s)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
-| `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
+| `s` | s | `111-101` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
 
-### Builder `worm()`
+### Builder `t()`
 
-`s.vsr.s.worm(w; h)`
+`s.vsr.s.t(w; h)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -759,17 +781,6 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr>
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
 
-### Builder `biped()`
-
-`s.vsr.s.biped(w; h)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
-| `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
-
 ### Builder `tripod()`
 
 `s.vsr.s.tripod(w; h)`
@@ -781,13 +792,14 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr>
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
 
-### Builder `free()`
+### Builder `worm()`
 
-`s.vsr.s.free(s)`
+`s.vsr.s.worm(w; h)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `s` | s | `111-101` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
+| `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
 
