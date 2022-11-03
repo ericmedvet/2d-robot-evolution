@@ -47,3 +47,75 @@ java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotev
 ```
 
 ## Usage
+
+### In a nutshell
+
+An experiment can be started by invoking:
+```shell
+java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" it.units.erallab.robotevo2d.main.singleagent.Starter --expFile EXP_FILE --nOfThreads N
+```
+where `EXP_FILE` is the path to a file with an **experiment description** and `N` is the **number of threads** to be used for running the experiment.
+
+For the number of threads `N`, it is suggested to use a number lower or equal to the number of cores on the machine you run the experiment on.
+The actual degree of concurrency will depend on `N` and on the evolutionary algorithm being used: e.g., a GA with a population of `npop=30` will do at most `min(30,N)` fitness evaluations at the same time.
+
+The help about what other parameters can be set while invoking `Starter` may be obtained with:
+```shell
+java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" it.units.erallab.robotevo2d.main.singleagent.Starter --help
+```
+
+### The experiment description
+
+An *experiment* consists of one or more *runs*.
+
+Each *run* is an evolutionary optimization using a `Solver` (obtained with a `SolverBuilder`) and a `Mapper` (obtained with a `MapperBuilder`), that maps a genotype into a target robot, for solving a `Task`.
+A run is described in `Run`, which also includes other key information as, e.g., the `RandomGenerator`.
+
+An experiment is described in `Experiment`.
+The description also includes information on if/how/where to store the info about ongoing runs: one reasonable choice is to save one line of a CSV file for each iteration of each run.
+
+You can describe an experiment through an experiment file containing a textual description of the experiment.
+The description must contain a *named parameter map* for an experiment, i.e., its content has to be something like `experiment(...)` (see the [`experiment`](assets/builder-help.md#builder-experiment)) builder documentation=. 
+
+#### Named parameter map format
+
+A *named parameter map* is a string adhering the following human- and machine-readable format described by the following grammar:
+```
+<e> ::= <n>(<nps>)
+<nps> ::= ∅ | <np> | <nps>;<np>
+<np> ::= <n>=<e> | <n>=<d> | <n>=<s> | <n>=<le> | <n>=<ld> | <n>=<ls>
+<le> ::= (<np>)*<le> | <i>*[<es>] | [<es>]
+<ld> ::= [<d>:<d>:<d>] | [<ds>]
+<ls> ::= [<ss>]
+<es> ::= ∅ | <e> | <es>;<e>
+<ds> ::= ∅ | <d> | <ds>;<d>
+<ss> ::= ∅ | <s> | <ss>;<s>
+```
+where `<s>` are strings, `<d>` are numbers, and `<e>` are named parameter maps.
+The format is reasonably robust to spaces and line-breaks.
+
+An example of a syntactically valid named parameter map is:
+```
+car(dealer=Ferrari;price=45000)
+```
+where `dealer` and `price` are parameter names and `Ferrari` and `45000` are parameter values.
+`car()` refers to a builder taking `dealer` and `price` as parameters.
+
+Another, more complex example is:
+```
+office(
+  head = person(name = "Mario Rossi"; age = 43);
+  staff = [
+    person(name = Alice; age = 33);
+    person(name = Bob; age = 25);
+    person(name = Charlie; age = 38)
+  ];
+  roomNumbers = [1:2:10]  
+)
+```
+
+#### Specification for the experiment file
+
+The complete specifications for available parameters and corresponding values for a valid description of an experiment is available [here](assets/builder-help.md).
+
+#### Examples

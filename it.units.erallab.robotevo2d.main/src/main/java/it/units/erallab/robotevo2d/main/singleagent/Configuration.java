@@ -25,7 +25,7 @@ public final class Configuration {
 
   @Parameter(
       names = {"--outHelpMdFile"},
-      description = "Save the markdown documentation of the builder on the target file"
+      description = "Save the markdown documentation for the available constructs for the experiment file"
   )
   public String mdHelpFilePath = "";
 }
