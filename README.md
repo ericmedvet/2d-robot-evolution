@@ -59,7 +59,7 @@ where `EXP_FILE` is the path to a file with an **experiment description** and `N
 Once started, `Starter` shows a text-based UI giving information about overall progress of the experiment, the current run, logs, and resources usage.
 `Starter` may be stopped (before conclusion) with `ctrl+C`.
 
-![The text-based UI of `Starter`](assets/sample-run.png)
+![The text-based UI of `Starter`](assets/images/sample-run.png)
 
 For the number of threads `N`, it is suggested to use a number lower or equal to the number of cores on the machine you run the experiment on.
 The actual degree of concurrency will depend on `N` and on the evolutionary algorithm being used: e.g., a GA with a population of `npop=30` will do at most `min(30,N)` fitness evaluations at the same time.
@@ -210,9 +210,9 @@ The CSV will have one row for each iteration of each run and one column for each
 Values for `popFunctions` and `individualFunctions` are of type `NamedFunction` (i.e., functions with a name) and can be built as described [here](assets/builder-help.md#package-namedfunction).
 Each function in `popFunctions` is applied to the population at the given EA iteration, whereas each function in `individualFunctions` is applied to the best individual of the population.
 
-[`listener.telegram()`](assets/builder-help.md#builder-listenertelegram) sends updates about the current run via telegram.
+[`listener.telegram()`](assets/builder-help.md#builder-listenertelegram) sends updates about the current run via Telegram.
 In particular, at the end of each run it sends a plot of the fitness during the evolution and zero or more videos of the best individual found upon the evolution performing the tasks described in `tasks`, not necessarily including the one using to drive the evolution.
-This listener requires a `chatId` and a telegram botId that has to be the only content of a text file located at `botIdFilePath`.
+This listener requires a `chatId` and a Telegram botId that has to be the only content of a text file located at `botIdFilePath`.
 
 #### Examples of experiment files
 
@@ -273,6 +273,10 @@ This can be reused for later re-use of the best individuals.
 
 The experiment also notifies about its progresses via Telegram.
 In particular, after each run, it takes the best individual and let it rub on a different terrain than the one it was evolved on (`s.t.hilly()` instead of `s.t.flat()`): the resulting video is sent on a chat with `chatId=207490209` (the double quotes are needed to let interpret it as a string).
+The received video might look as this one:
+![The text-based UI of `Starter`](assets/images/biped.gif)
+
+Note that this is the result of a rather short (`nEval = 500`) evolution; moreover, the best robot is here facing a terrain "it never saw" (more precisely, it and its entire ancestry never saw) during the evolution.
 
 #### Example 1: 10 runs with a 3 VSR bodies on 2 terrains
 
