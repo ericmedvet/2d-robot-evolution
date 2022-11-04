@@ -57,34 +57,36 @@ java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotev
 where `<exp-file>` is the path to a file with an **experiment description** and `<n>` is the **number of threads** to be used for running the experiment.
 
 Once started, `Starter` shows a text-based UI giving information about overall progress of the experiment, the current run, logs, and resources usage.
-`Starter` may be stopped (before conclusion) with `ctrl+C`.
+`Starter` may be stopped (before conclusion) with <kbd>Ctrl</kbd> + <kbd>C</kbd>.
 
 ![The text-based UI of `Starter`](assets/images/sample-run.png)
 
 For the number of threads `n`, it is suggested to use a number lower or equal to the number of cores on the machine you run the experiment on.
-The actual degree of concurrency will depend on `n` and on the evolutionary algorithm being used: e.g., a GA with a population of `npop=30` will do at most `min(30,N)` fitness evaluations at the same time.
+The actual degree of concurrency will depend on $n$ and on the evolutionary algorithm being used: e.g., a GA with a population of `npop=30` will do at most $\min(30,n)$ fitness evaluations at the same time.
 
-The help about what other parameters can be set while invoking `Starter` may be obtained with:
+You can have an overview on the other (few) parameters of `Starter` with:
 ```shell
 java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" it.units.erallab.robotevo2d.main.singleagent.Starter --help
 ```
 
 ### The experiment description
 
-An *experiment* consists of one or more *runs*.
+An **experiment** consists of one or more runs.
 
-Each *run* is an evolutionary optimization using a `Solver` (obtained with a `SolverBuilder`) and a `Mapper` (obtained with a `MapperBuilder`), that maps a genotype into a target robot, for solving a `Task`.
+Each **run** is an evolutionary optimization using a **solver** (obtained with a `SolverBuilder`) and a **mapper** (obtained with a `MapperBuilder`), that maps a genotype into a target robot, for solving a `Task`.
 A run is described in `Run`, which also includes other key information as, e.g., the `RandomGenerator`.
 
 An experiment is described in `Experiment`.
 The description also includes information on if/how/where to store the info about ongoing runs: one reasonable choice is to save one line of a CSV file for each iteration of each run.
+This way you can process the results of the experiment offline after it ended using, e.g., R or python.
 
 You can describe an experiment through an experiment file containing a textual description of the experiment.
-The description must contain a *named parameter map* for an experiment, i.e., its content has to be something like `experiment(...)` (see the [`experiment()`](assets/builder-help.md#builder-experiment)) builder documentation=. 
+The description must contain a **named parameter map** for an experiment, i.e., its content has to be something like `experiment(...)` (see the [`experiment()`](assets/builder-help.md#builder-experiment) builder documentation and the [examples](#examples-of-experiment-files) given below). 
 
 #### Named parameter map format
 
-A *named parameter map* is a string adhering the following human- and machine-readable format described by the following grammar:
+A **named parameter map** is a map (or dictionary, in other terms) with a name.
+It can be described with a string adhering the following human- and machine-readable format described by the following grammar:
 ```
 <e> ::= <n>(<nps>)
 <nps> ::= ∅ | <np> | <nps>;<np>
@@ -96,7 +98,7 @@ A *named parameter map* is a string adhering the following human- and machine-re
 <ds> ::= ∅ | <d> | <ds>;<d>
 <ss> ::= ∅ | <s> | <ss>;<s>
 ```
-where `<s>` are strings, `<d>` are numbers, and `<e>` are named parameter maps.
+where `<s>` are strings (i.e., `([A-Za-z][A-Za-z0-9_]*)|(\"[./:\-\w]+\")`), `<d>` are numbers (i.e., `-?[0-9]+(\.[0-9]+)?`), and `<e>` are named parameter maps.
 The format is reasonably robust to spaces and line-breaks.
 
 An example of a syntactically valid named parameter map is:
@@ -104,7 +106,7 @@ An example of a syntactically valid named parameter map is:
 car(dealer=Ferrari;price=45000)
 ```
 where `dealer` and `price` are parameter names and `Ferrari` and `45000` are parameter values.
-`car()` refers to a builder taking `dealer` and `price` as parameters.
+`car` is the name of the map.
 
 Another, more complex example is:
 ```
@@ -118,12 +120,13 @@ office(
   roomNumbers = [1:2:10]  
 )
 ```
+In this case, the `head` parameter of `office` is valued with another named parameter map: `person(name = "Mario Rossi"; age = 43)`.
 
-##### `*` operator
+##### The `*` operator
 
-Note the possible use of `*` for specifying arrays (broadly speaking, collection of values) in a more compact way.
+Note the possible use of `*` for specifying arrays (broadly speaking, collections of values) in a more compact way.
 For example, `3 * [1; 2]` corresponds to `[1; 2; 1; 2; 1; 2]`.
-A more complex case is the one of left-product:
+A more complex case is the one of left-product that takes a parameter $p$ valued with an array $v_1, \dots, v_k$ (on the left) and an array $m_1, \dots, m_n$ of named parameter maps (on the right) and results in the array of named parameter maps $m^\prime_{1,1}, \dots, m^\prime_{1,k}, \dots, m^\prime_{n,1}, \dots, m^\prime_{n,k}$ where each $m'_{i,j}$ is the map $m_i$ with a parameter $p$ valued $v_k$.
 ```
 (size = [m; s; xxs]) * [hoodie(color = red)]
 ```
@@ -138,24 +141,32 @@ corresponds to:
 
 #### Specification for the experiment file
 
-The complete specifications for available parameters and corresponding values for a valid description of an experiment is available [here](assets/builder-help.md).
+You describe an experiment and its components using a named parameter map in a text file: in practice, each map describe a **builder** of a component along with its parameters.
+The complete specification for available maps, parameters, and corresponding values for a valid description of an experiment is available [here](assets/builder-help.md).
 
 In the following sections, we describe the key elements.
+For better organizing them, the builders are grouped in **packages**, whose name are something like `sim.agent`.
 
 ##### Embodied agents
 
-There are five available embodied agents (i.e., *robots*).
-Their builders are described [here](assets/builder-help.md#package-simagent).
+There are five available embodied agents (i.e., **robots**).
+Their builders are grouped in the [`sim.agent`](assets/builder-help.md#package-simagent) package.
 The two most significant follows.
 
 [`sim.agent.centralizedNumGridVSR()`](assets/builder-help.md#builder-simagentcentralizednumgridvsr) corresponds to a VSR with a single closed-loop controller taking as input the sensor readings and giving as output the activation values, as described in [[1]](#2020-c-mbdf-evolution).
 The controller is a `TimedRealFunction`, i.e., a multivariate function taking the current time $t$ and $m$ real values and giving $n$ real values; formally, it is a $f: \mathbb{R} \times \mathbb{R}^m \to \mathbb{R}^n$.
-Available functions are described [here](assets/builder-help.md#package-simfunction).
+Available functions are grouped in the [`sim.function`](assets/builder-help.md#package-simfunction) package: the key ones are described [below](#functions).
 
 [`sim.agent.heteroDistributedNumGridVSR()`](assets/builder-help.md#builder-simagentheterodistributednumgridvsr) and [`sim.agent.homoDistributedNumGridVSR()`](assets/builder-help.md#builder-simagenthomodistributednumgridvsr) correspond to a VSR with one `TimedRealFunction` inside each one of the voxels.
 Each `TimedRealFunction` takes as input the local sensor readings and some (exactly `signals`) values coming from adjacent voxels and gives as output the local activation value and some values going to adjacent voxels, as described in [[1]](#2020-c-mbdf-evolution).
 For `sim.agent.homoDistributedNumGridVSR()`, the same function is used in each voxel; for `sim.agent.heteroDistributedNumGridVSR()` different functions are used.
 I.e., they for the former case, the function share the parameters: for using `sim.agent.homoDistributedNumGridVSR()`, each voxel in the body has to have the same number of sensors.
+
+##### Functions
+
+Functions are multivariate functions taking the current time $t$ and $m$ real values and giving $n$ real values (i.e., $f: \mathbb{R} \times \mathbb{R}^m \to \mathbb{R}^n$) and are used inside robots as controllers (or brains).
+Their builders are grouped in the [`sim.function`](assets/builder-help.md#package-simfunction) package.
+The most significant follows.
 
 ##### Tasks
 
