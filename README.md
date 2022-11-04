@@ -56,7 +56,7 @@ java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotev
 ```
 where `<exp-file>` is the path to a file with an **experiment description** and `<n>` is the **number of threads** to be used for running the experiment.
 
-Once started, `Starter` shows a text-based UI giving information about overall progress of the experiment, the current run, logs, and resources usage.
+Once started, `Starter` shows a text-based UI giving information about the overall progress of the experiment, the current run, logs, and resources usage.
 `Starter` may be stopped (before conclusion) with <kbd>Ctrl</kbd> + <kbd>C</kbd>.
 
 ![The text-based UI of `Starter`](assets/images/sample-run.png)
@@ -88,17 +88,22 @@ The description must contain a **named parameter map** for an experiment, i.e., 
 A **named parameter map** is a map (or dictionary, in other terms) with a name.
 It can be described with a string adhering the following human- and machine-readable format described by the following grammar:
 ```
-<e> ::= <n>(<nps>)
+<npm> ::= <n>(<nps>)
 <nps> ::= ∅ | <np> | <nps>;<np>
 <np> ::= <n>=<e> | <n>=<d> | <n>=<s> | <n>=<le> | <n>=<ld> | <n>=<ls>
-<le> ::= (<np>)*<le> | <i>*[<es>] | [<es>]
+<lnmp> ::= (<np>)*<lnpm> | <i>*[<npms>] | [<npms>]
 <ld> ::= [<d>:<d>:<d>] | [<ds>]
 <ls> ::= [<ss>]
-<es> ::= ∅ | <e> | <es>;<e>
+<npms> ::= ∅ | <npm> | <npms>;<npm>
 <ds> ::= ∅ | <d> | <ds>;<d>
 <ss> ::= ∅ | <s> | <ss>;<s>
 ```
-where `<s>` are strings (i.e., `([A-Za-z][A-Za-z0-9_]*)|(\"[./:\-\w]+\")`), `<d>` are numbers (i.e., `-?[0-9]+(\.[0-9]+)?`), and `<e>` are named parameter maps.
+where:
+- `<npm>` is a named parameter map;
+- `<s>` is a string in the format `([A-Za-z][A-Za-z0-9_]*)|(\"[./:\-\w]+\")`;
+- `<d>` is a number in the format `-?[0-9]+(\.[0-9]+)?`;
+- `∅` is the empty string.
+
 The format is reasonably robust to spaces and line-breaks.
 
 An example of a syntactically valid named parameter map is:
@@ -124,8 +129,8 @@ In this case, the `head` parameter of `office` is valued with another named para
 
 ##### The `*` operator
 
-Note the possible use of `*` for specifying arrays (broadly speaking, collections of values) in a more compact way.
-For example, `3 * [1; 2]` corresponds to `[1; 2; 1; 2; 1; 2]`.
+Note the possible use of `*` for specifying arrays of named parameter maps (broadly speaking, collections of them) in a more compact way.
+For example, `2 * [dog(name = simba); dog(name = gass)]` corresponds to `[dog(name = simba); dog(name = gass); dog(name = simba); dog(name = gass)]`.
 A more complex case is the one of left-product that takes a parameter $p$ valued with an array $v_1, \dots, v_k$ (on the left) and an array $m_1, \dots, m_n$ of named parameter maps (on the right) and results in the array of named parameter maps $m^\prime_{1,1}, \dots, m^\prime_{1,k}, \dots, m^\prime_{n,1}, \dots, m^\prime_{n,k}$ where each $m'_{i,j}$ is the map $m_i$ with a parameter $p$ valued $v_k$.
 ```
 (size = [m; s; xxs]) * [hoodie(color = red)]
