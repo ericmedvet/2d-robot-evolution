@@ -175,7 +175,7 @@ In facts, their builders return a `BiFunction<Integer, Integer, TimedRealFunctio
 `sim.function.mlp()` is a `Parametrized` function: its parameters are the weigths of the MLP.
 Usually, the are exactly what you want to optimize using an evolutionary algorithm.
 
-[`sim.function.sinP()`](assets/builder-help.md#builder-simfunctionsinp), [`sim.function.sinPA()`](assets/builder-help.md#builder-simfunctionsinpa), [`sim.function.sinPF()`](assets/builder-help.md#builder-simfunctionsinf), and [`sim.function.sinPFA()`](assets/builder-help.md#builder-simfunctionsinpfa) are simple functions that determine the output in $\mathbb{R}^n$ using an array of $n$ sinusoidal functions, i.e., $a \sin(2 \pi f t + \phi)$.
+[`sim.function.sinP()`](assets/builder-help.md#builder-simfunctionsinp), [`sim.function.sinPA()`](assets/builder-help.md#builder-simfunctionsinpa), [`sim.function.sinPF()`](assets/builder-help.md#builder-simfunctionsinpf), and [`sim.function.sinPFA()`](assets/builder-help.md#builder-simfunctionsinpfa) are simple functions that determine the output in $\mathbb{R}^n$ using an array of $n$ sinusoidal functions, i.e., $a \sin(2 \pi f t + \phi)$.
 Note that the input is not used when computing the output: that is, controllers employing (only) these functions are open-loop controllers, since they do not use the sensor readings.
 The four variants are all `Parametrized` but differ in what is actually an evolvable parameter: for `sinP()`, just the phase $\phi$ for each of the $n$ sinusoidal functions, for `sinPF()`, phase $\phi$ and frequency $f$, and so on.
 When a parameter is evolvable, it is mapped with min-max normalization in the corresponding range; when it is not, it is statically set to the mid point of the corresponding range.
