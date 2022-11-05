@@ -156,7 +156,7 @@ For better organizing them, the builders are grouped in **packages**, whose name
 
 There are five available embodied agents (i.e., **robots**).
 Their builders are grouped in the [`sim.agent`](assets/builder-help.md#package-simagent) package.
-The two most significant follows.
+Here we describe the most significant ones.
 
 [`sim.agent.centralizedNumGridVSR()`](assets/builder-help.md#builder-simagentcentralizednumgridvsr) corresponds to a VSR with a single closed-loop controller taking as input the sensor readings and giving as output the activation values, as described in [[1]](#2020-c-mbdf-evolution).
 The controller is a `TimedRealFunction`, i.e., a multivariate function taking the current time $t$ and $m$ real values and giving $n$ real values; formally, it is a $f: \mathbb{R} \times \mathbb{R}^m \to \mathbb{R}^n$.
@@ -171,7 +171,7 @@ That is, they for the former case, the function share the parameters: for using 
 
 Functions are multivariate functions taking the current time $t$ and $m$ real values and giving $n$ real values (i.e., $f: \mathbb{R} \times \mathbb{R}^m \to \mathbb{R}^n$) and are used inside robots as controllers (or brains).
 Their builders are grouped in the [`sim.function`](assets/builder-help.md#package-simfunction) package.
-The most significant follows.
+Here we describe the most significant ones.
 
 [`sim.function.mlp()`](assets/builder-help.md#builder-simfunctionmlp) is a Multi-layer Perceptron consisting of `nOfInnerLayers` inner layers in which each neuron has the same `activationFunction`.
 The size (number of neurons) inside each layer is computed based on the size of the first (*input*) and last (*output*) layers using the parameter `innerLayerRatio`: in brief, the $j+1$-th layer size is `innerLayerRatio` times the size of the $j$-th layer.
@@ -198,10 +198,10 @@ It may be useful for avoiding high-frequency behaviors, like in [[3]](#2022-c-mr
 ##### Tasks
 
 There are three available tasks.
-Their builders are described [here](assets/builder-help.md#package-simtask).
+Their builders are grouped in the [`sim.task`](assets/builder-help.md#package-simtask) package.
 
 The most significant is [`sim.task.locomotion()`](assets/builder-help.md#builder-simtasklocomotion).
-Here, the robot is put on a `Terrain` (see [here](assets/builder-help.md#package-simterrain) for the options) and let move for `duration` simulated seconds.
+Here, the robot is put on a `terrain` (see [here](assets/builder-help.md#package-simterrain) for the options) and let move for `duration` simulated seconds.
 The usual goal in terms of optimization is to maximize the velocity of the robot, that can be extracted from the task outcome with [`extractor.locomotionXVelocity()`](assets/builder-help.md#builder-extractorlocomotionxvelocity).
 
 ##### Solvers
@@ -240,7 +240,7 @@ A significant case is [`sim.function.mlp()`](assets/builder-help.md#builder-simf
 Listeners are notified at each iteration during the evolution and at the end of each run.
 They can be used to save, typically on a file, useful information concerning the evolution.
 Their builders are grouped in the [`listener`](assets/builder-help.md#package-listener) package.
-The most significant follows.
+Here we describe the most significant ones.
 
 [`listener.bestCsv()`](assets/builder-help.md#builder-listenerbestcsv) writes a single CSV file for the experiment.
 If the file at `filePath` already exists, a new file with a similar name is used, without overwriting the existing file.
@@ -250,7 +250,7 @@ Each function in `popFunctions` is applied to the population at the given EA ite
 `runKeys` are strings specifying elements of the run descritpion to be extracted as cell values, e.g., `target.body.shape`, `randomGenerator.seed`, or `task.terrain`.
 
 [`listener.telegram()`](assets/builder-help.md#builder-listenertelegram) sends updates about the current run via Telegram.
-In particular, at the end of each run it sends a plot of the fitness during the evolution and zero or more videos of the best individual found upon the evolution performing the tasks described in `tasks`, not necessarily including the one using to drive the evolution.
+In particular, at the end of each run it sends a plot of the fitness during the evolution and zero or more videos of the best individual found upon the evolution performing the tasks described in `tasks`, not necessarily including the one used to drive the evolution.
 This listener requires a `chatId` and a Telegram botId that has to be the only content of a text file located at `botIdFilePath`.
 
 #### Examples of experiment files
@@ -354,7 +354,7 @@ experiment(
 )
 ```
 
-Here there are no listeners, just for simplifying of the example; in practice it would be weird to run such a big experiment without saving any data.
+Here there are no listeners, just for simplifying the example; in practice it would be weird to run such a big experiment without saving any data.
 
 A single solver is used to solve two tasks:
 - `s.task.locomotion(terrain = s.t.flat(); duration = 15)`
