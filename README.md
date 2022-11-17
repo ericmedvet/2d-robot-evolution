@@ -78,7 +78,7 @@ A run is described in `Run`, which also includes other key information as, e.g.,
 
 An experiment is described in `Experiment`.
 The description also includes information on if/how/where to store the info about ongoing runs: one reasonable choice is to save one line of a CSV file for each iteration of each run.
-This way you can process the results of the experiment offline after it ended using, e.g., R or python.
+This way you can process the results of the experiment offline after it ended using, e.g., R or Python.
 
 You can describe an experiment through an experiment file containing a textual description of the experiment.
 The description must contain a **named parameter map** for an experiment, i.e., its content has to be something like `experiment(...)` (see the [`experiment()`](assets/builder-help.md#builder-experiment) builder documentation and the [examples](#examples-of-experiment-files) given below). 
@@ -146,7 +146,7 @@ corresponds to:
 
 #### Specification for the experiment file
 
-You describe an experiment and its components using a named parameter map in a text file: in practice, each map describe a **builder** of a component along with its parameters.
+You describe an experiment and its components using a named parameter map in a text file: in practice, each map describes a **builder** of a component along with its parameters.
 The complete specification for available maps, parameters, and corresponding values for a valid description of an experiment is available [here](assets/builder-help.md).
 
 In the following sections, we describe the key elements.
@@ -165,7 +165,7 @@ Available functions are grouped in the [`sim.function`](assets/builder-help.md#p
 [`sim.agent.heteroDistributedNumGridVSR()`](assets/builder-help.md#builder-simagentheterodistributednumgridvsr) and [`sim.agent.homoDistributedNumGridVSR()`](assets/builder-help.md#builder-simagenthomodistributednumgridvsr) correspond to a VSR with one `TimedRealFunction` inside each one of the voxels.
 Each `TimedRealFunction` takes as input the local sensor readings and some (exactly `signals`) values coming from adjacent voxels and gives as output the local activation value and some values going to adjacent voxels, as described in [[1]](#2020-c-mbdf-evolution).
 For `sim.agent.homoDistributedNumGridVSR()`, the same function is used in each voxel; for `sim.agent.heteroDistributedNumGridVSR()` different functions are used.
-That is, they for the former case, the function share the parameters: for using `sim.agent.homoDistributedNumGridVSR()`, each voxel in the body has to have the same number of sensors.
+That is, they for the former case, the functions share the parameters: for using `sim.agent.homoDistributedNumGridVSR()`, each voxel in the body has to have the same number of sensors.
 
 ##### Functions
 
@@ -178,7 +178,7 @@ The size (number of neurons) inside each layer is computed based on the size of 
 As explained above, the size of the first and last layer are determined based on the context the function is used in (this holds for all the functions in this package).
 In facts, their builders return a `BiFunction<Integer, Integer, TimedRealFunction>`, where the two `Integer` parameters of the `BiFunction` are the dimension $m$ and $n$ of the input and output space.
 `sim.function.mlp()` is a `Parametrized` function: its parameters are the weigths of the MLP.
-Usually, the are exactly what you want to optimize using an evolutionary algorithm.
+Usually, they are exactly what you want to optimize using an evolutionary algorithm.
 
 [`sim.function.sinP()`](assets/builder-help.md#builder-simfunctionsinp), [`sim.function.sinPA()`](assets/builder-help.md#builder-simfunctionsinpa), [`sim.function.sinPF()`](assets/builder-help.md#builder-simfunctionsinpf), and [`sim.function.sinPFA()`](assets/builder-help.md#builder-simfunctionsinpfa) are simple functions that determine the output in $\mathbb{R}^n$ using an array of $n$ sinusoidal functions, i.e., $a \sin(2 \pi f t + \phi)$.
 Note that the input is not used when computing the output: that is, controllers employing (only) these functions are open-loop controllers, since they do not use the sensor readings.
@@ -191,7 +191,7 @@ Actually, `diffIn()` is a *dynamical system* rather than a *function*, since it 
 
 [`sim.function.stepOut()`](assets/builder-help.md#builder-simfunctionstepout) is a composite function that wraps another `innerFunction`.
 It acts similarly to `diffIn()` but operates on the output instead of on the input.
-It lets `innerFunction` computing the output $\vec{x}$ of $m$ values passing it the untouched input and delivers as output $\vec{x}$ kept constant for consecutive time windows of `stepT` seconds.
+It lets `innerFunction` compute the output $\vec{x}$ of $m$ values passing it the untouched input and delivers as output $\vec{x}$ kept constant for consecutive time windows of `stepT` seconds.
 In other words, `stepOut()` makes `innerFunction` a step function.
 It may be useful for avoiding high-frequency behaviors, like in [[3]](#2022-c-mr-impact), where `stepT` was set to 0.2.
 
@@ -317,7 +317,7 @@ The received video might look like this:
 
 Note that this is the result of a rather short (`nEval = 500`) evolution; moreover, the best robot is here facing a terrain "it never saw" (more precisely, it and its entire ancestry never saw it) during the evolution.
 
-#### Example 2: 10 runs with a 3 VSR bodies on 2 terrains
+#### Example 2: 10 runs with 3 VSR bodies on 2 terrains
 
 ```
 experiment(
