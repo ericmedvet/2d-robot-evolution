@@ -90,7 +90,7 @@ It can be described with a string adhering the following human- and machine-read
 ```
 <npm> ::= <n>(<nps>)
 <nps> ::= ∅ | <np> | <nps>;<np>
-<np> ::= <n>=<e> | <n>=<d> | <n>=<s> | <n>=<le> | <n>=<ld> | <n>=<ls>
+<np> ::= <n>=<npm> | <n>=<d> | <n>=<s> | <n>=<lnpm> | <n>=<ld> | <n>=<ls>
 <lnmp> ::= (<np>)*<lnpm> | <i>*[<npms>] | [<npms>]
 <ld> ::= [<d>:<d>:<d>] | [<ds>]
 <ls> ::= [<ss>]
@@ -100,8 +100,10 @@ It can be described with a string adhering the following human- and machine-read
 ```
 where:
 - `<npm>` is a named parameter map;
+- `<n>` is a name, i.e., a string in the format `[A-Za-z][.A-Za-z0-9_]*`;
 - `<s>` is a string in the format `([A-Za-z][A-Za-z0-9_]*)|(\"[./:\-\w]+\")`;
 - `<d>` is a number in the format `-?[0-9]+(\.[0-9]+)?`;
+- `<i>` is a number in the format `[0-9]+`;
 - `∅` is the empty string.
 
 The format is reasonably robust to spaces and line-breaks.
@@ -163,7 +165,7 @@ The controller is a `TimedRealFunction`, i.e., a multivariate function taking th
 Available functions are grouped in the [`sim.function`](assets/builder-help.md#package-simfunction) package: the key ones are described [below](#functions).
 
 [`sim.agent.heteroDistributedNumGridVSR()`](assets/builder-help.md#builder-simagentheterodistributednumgridvsr) and [`sim.agent.homoDistributedNumGridVSR()`](assets/builder-help.md#builder-simagenthomodistributednumgridvsr) correspond to a VSR with one `TimedRealFunction` inside each one of the voxels.
-Each `TimedRealFunction` takes as input the local sensor readings and some (exactly `signals`) values coming from adjacent voxels and gives as output the local activation value and some values going to adjacent voxels, as described in [[1]](#2020-c-mbdf-evolution).
+Each `TimedRealFunction` takes as input the local sensor readings and some (exactly `signals` for each one of the 4 adjacent voxels) values coming from adjacent voxels and gives as output the local activation value and some values going to adjacent voxels, as described in [[1]](#2020-c-mbdf-evolution).
 For `sim.agent.homoDistributedNumGridVSR()`, the same function is used in each voxel; for `sim.agent.heteroDistributedNumGridVSR()` different functions are used.
 That is, they for the former case, the functions share the parameters: for using `sim.agent.homoDistributedNumGridVSR()`, each voxel in the body has to have the same number of sensors.
 
@@ -191,7 +193,7 @@ Actually, `diffIn()` is a *dynamical system* rather than a *function*, since it 
 
 [`sim.function.stepOut()`](assets/builder-help.md#builder-simfunctionstepout) is a composite function that wraps another `innerFunction`.
 It acts similarly to `diffIn()` but operates on the output instead of on the input.
-It lets `innerFunction` compute the output $\vec{x}$ of $m$ values passing it the untouched input and delivers as output $\vec{x}$ kept constant for consecutive time windows of `stepT` seconds.
+It lets `innerFunction` compute the output $\vec{x}$ of $m$ values passing it the untouched input and delivers as output $\vec{x}$ kept constant for consecutive time windows of `stepT` seconds; actually the `innerFunction` is invoked only once at a constant rate each `stepT` seconds and stored internally.
 In other words, `stepOut()` makes `innerFunction` a step function.
 It may be useful for avoiding high-frequency behaviors, like in [[3]](#2022-c-mr-impact), where `stepT` was set to 0.2.
 
