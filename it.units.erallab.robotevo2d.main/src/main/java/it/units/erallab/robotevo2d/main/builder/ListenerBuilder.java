@@ -46,9 +46,9 @@ public class ListenerBuilder {
   private ListenerBuilder() {
   }
 
-  public static <G, S, Q> BiFunction<Experiment<G, S, Q>, ExecutorService, ListenerFactory<?
+  public static <G, S, Q> BiFunction<Experiment, ExecutorService, ListenerFactory<?
       super POSetPopulationState<G,
-      S, Q>, Run<G, Q>>> allCsv(
+      S, Q>, Run<?, G, S, Q>>> allCsv(
       @Param("filePath") String filePath,
       @Param("individualFunctions") List<NamedFunction<? super Individual<? extends G, ? extends S, ? extends Q>, ?>> individualFunctions,
       @Param("runKeys") List<String> runKeys,
@@ -57,11 +57,11 @@ public class ListenerBuilder {
     @SuppressWarnings({"rawtypes", "unchecked"}) List<NamedFunction<POSetPopulationState<G, S, Q>, ?>> popFunctions =
         new ArrayList<>(
             (List) BASIC_FUNCTIONS);
-    List<NamedFunction<Run<G, Q>, Object>> runFunctions = runKeys.stream()
+    List<NamedFunction<Run<?, G, S, Q>, Object>> runFunctions = runKeys.stream()
         .map(k -> NamedFunction.build(
             k,
             "%s",
-            (Run<G, Q> run) -> getKeyFromParamMap(run.map(), Arrays.stream(k.split("\\.")).toList())
+            (Run<?, G, S, Q> run) -> getKeyFromParamMap(run.map(), Arrays.stream(k.split("\\.")).toList())
         ))
         .toList();
     record PopIndividualPair<G, S, Q>(POSetPopulationState<G, S, Q> pop, Individual<G, S, Q> individual) {}
@@ -80,37 +80,38 @@ public class ListenerBuilder {
             (PopIndividualPair<G, S, Q> pair) -> f.apply(pair.individual())
         ))
         .forEach(pairFunctions::add);
-    @SuppressWarnings({"unchecked", "rawtypes"}) CSVPrinter<PopIndividualPair<G, S, Q>, Run<G, Q>> innerListenerFactory =
+    @SuppressWarnings({"unchecked", "rawtypes"}) CSVPrinter<PopIndividualPair<G, S, Q>, Run<?, G, S, Q>> innerListenerFactory =
         new CSVPrinter<>(
             (List) Collections.unmodifiableList(pairFunctions),
             (List) runFunctions,
             new File(filePath)
         );
     return (experiment, executorService) -> {
-      ListenerFactory<? super POSetPopulationState<G, S, Q>, Run<G, Q>> listenerFactory = new ListenerFactory<>() {
-        @Override
-        public Listener<POSetPopulationState<G, S, Q>> build(Run<G, Q> run) {
-          Listener<PopIndividualPair<G, S, Q>> innerListener = innerListenerFactory.build(run);
-          return new Listener<>() {
+      ListenerFactory<? super POSetPopulationState<G, S, Q>, Run<?, G, S, Q>> listenerFactory =
+          new ListenerFactory<>() {
             @Override
-            public void listen(POSetPopulationState<G, S, Q> state) {
-              for (Individual<G, S, Q> individual : state.getPopulation().all()) {
-                innerListener.listen(new PopIndividualPair<>(state, individual));
-              }
+            public Listener<POSetPopulationState<G, S, Q>> build(Run<?, G, S, Q> run) {
+              Listener<PopIndividualPair<G, S, Q>> innerListener = innerListenerFactory.build(run);
+              return new Listener<>() {
+                @Override
+                public void listen(POSetPopulationState<G, S, Q> state) {
+                  for (Individual<G, S, Q> individual : state.getPopulation().all()) {
+                    innerListener.listen(new PopIndividualPair<>(state, individual));
+                  }
+                }
+
+                @Override
+                public void done() {
+                  innerListener.done();
+                }
+              };
             }
 
             @Override
-            public void done() {
-              innerListener.done();
+            public void shutdown() {
+              innerListenerFactory.shutdown();
             }
           };
-        }
-
-        @Override
-        public void shutdown() {
-          innerListenerFactory.shutdown();
-        }
-      };
       if (onlyLast) {
         listenerFactory = listenerFactory.onLast();
       }
@@ -118,9 +119,9 @@ public class ListenerBuilder {
     };
   }
 
-  public static <G, S, Q> BiFunction<Experiment<G, S, Q>, ExecutorService, ListenerFactory<?
+  public static <G, S, Q> BiFunction<Experiment, ExecutorService, ListenerFactory<?
       super POSetPopulationState<G,
-      S, Q>, Run<G, Q>>> bestCsv(
+      S, Q>, Run<?, G, S, Q>>> bestCsv(
       @Param("filePath") String filePath,
       @Param("popFunctions") List<NamedFunction<? super POSetPopulationState<? extends G, ? extends S, ? extends Q>,
           ?>> popFunctions,
@@ -135,18 +136,18 @@ public class ListenerBuilder {
             BASIC_FUNCTIONS);
     functions.addAll(popFunctions);
     functions.addAll(best.then(individualFunctions));
-    List<NamedFunction<Run<G, Q>, Object>> runFunctions = runKeys.stream()
+    List<NamedFunction<Run<?, G, S, Q>, Object>> runFunctions = runKeys.stream()
         .map(k -> NamedFunction.build(
             k,
             "%s",
-            (Run<G, Q> run) -> getKeyFromParamMap(run.map(), Arrays.stream(k.split("\\.")).toList())
+            (Run<?, G, S, Q> run) -> getKeyFromParamMap(run.map(), Arrays.stream(k.split("\\.")).toList())
         ))
         .toList();
     return (experiment, executorService) -> {
-      functions.add(best.then(fitness()).then(experiment.qExtractor()));
+      // functions.add(best.then(fitness()).then(experiment.qExtractor())); //TODO
       //noinspection unchecked,rawtypes
-      ListenerFactory<? super POSetPopulationState<G, S, Q>, Run<G, Q>> listenerFactory =
-          new CSVPrinter<POSetPopulationState<G, S, Q>, Run<G, Q>>(
+      ListenerFactory<? super POSetPopulationState<G, S, Q>, Run<?, G, S, Q>> listenerFactory =
+          new CSVPrinter<POSetPopulationState<G, S, Q>, Run<?, G, S, Q>>(
               Collections.unmodifiableList(functions),
               (List) runFunctions,
               new File(filePath)
@@ -169,9 +170,9 @@ public class ListenerBuilder {
     return getKeyFromParamMap(namedParamMap, keyPieces.subList(1, keyPieces.size()));
   }
 
-  public static <G, S, Q> BiFunction<Experiment<G, S, Q>, ExecutorService, ListenerFactory<?
+  public static <G, S, Q> BiFunction<Experiment, ExecutorService, ListenerFactory<?
       super POSetPopulationState<G, S, Q>,
-      Run<G, Q>>> lastBestVideo(
+      Run<?, G, S, Q>>> lastBestVideo(
       @Param("dirPath") String dirPath,
       @Param(value = "fileNameTemplate", dS = "video-%s.mp4") String fileNameTemplate,
       @Param(value = "videoSaver", dNPM =
@@ -180,8 +181,8 @@ public class ListenerBuilder {
       @Param(value = "deferred", dB = true) boolean deferred
   ) {
     return (experiment, executorService) -> {
-      ListenerFactory<POSetPopulationState<G, S, Q>, Run<G, Q>> listenerFactory =
-          ((ListenerFactory<POSetPopulationState<G, S, Q>, Run<G, Q>>) run -> state -> {
+      ListenerFactory<POSetPopulationState<G, S, Q>, Run<?, G, S, Q>> listenerFactory =
+          ((ListenerFactory<POSetPopulationState<G, S, Q>, Run<?, G, S, Q>>) run -> state -> {
             for (NamedTask<? super S> namedTask : namedTasks) {
               String fileName = fileNameTemplate.formatted(UUID.nameUUIDFromBytes(
                   (namedTask.map().toString() + run.map().toString()).getBytes()
@@ -213,9 +214,9 @@ public class ListenerBuilder {
     };
   }
 
-  public static <G, S, Q> BiFunction<Experiment<G, S, Q>, ExecutorService, ListenerFactory<?
+  public static <G, S, Q> BiFunction<Experiment, ExecutorService, ListenerFactory<?
       super POSetPopulationState<G,
-      S, Q>, Run<G, Q>>> telegram(
+      S, Q>, Run<?, G, S, Q>>> telegram(
       @Param("chatId") String chatId,
       @Param("botIdFilePath") String botIdFilePath,
       @Param(value = "videoSaver", dNPM = "videoSaver(drawer=d.basicWithAgentMiniature();w=" + TELEGRAM_VIDEO_W + ";" +
@@ -247,9 +248,7 @@ public class ListenerBuilder {
       throw new IllegalArgumentException("Invalid chatId %s: not a number".formatted(chatId));
     }
     return (experiment, executorService) -> {
-      @SuppressWarnings("unchecked") NamedFunction<Object, Double> qFunction =
-          ((NamedFunction<Object, Double>) experiment.qExtractor());
-      List<AccumulatorFactory<POSetPopulationState<G, S, Q>, ?, Run<G, Q>>> accumulators = new ArrayList<>();
+      List<AccumulatorFactory<POSetPopulationState<G, S, Q>, ?, Run<?, G, S, Q>>> accumulators = new ArrayList<>();
       //prepare text accumulator
       accumulators.add(run -> new Accumulator<>() {
         @Override
@@ -262,18 +261,19 @@ public class ListenerBuilder {
         }
       });
       //prepare plotter accumulator
-      accumulators.add(new TableBuilder<POSetPopulationState<G, S, Q>, Number, Run<G, Q>>(
+      accumulators.add(new TableBuilder<POSetPopulationState<G, S, Q>, Number, Run<?, G, S, Q>>(
           List.of(
               iterations(),
+              iterations()/*,
               best().then(fitness()).then(qFunction),
               min(Double::compare).of(each(qFunction.of(fitness()))).of(all()),
-              median(Double::compare).of(each(qFunction.of(fitness()))).of(all())
+              median(Double::compare).of(each(qFunction.of(fitness()))).of(all())*/ // TODO make plots a parameter
           ),
           List.of()
       ).then(t -> ImagePlotters.xyLines(TELEGRAM_IMAGE_W, TELEGRAM_IMAGE_H).apply(t)));
       //prepare video accumulators
       namedTasks.stream()
-          .map(namedTask -> (AccumulatorFactory<POSetPopulationState<G, S, Q>, File, Run<G, Q>>) run -> Accumulator.<POSetPopulationState<G, S, Q>>last()
+          .map(namedTask -> (AccumulatorFactory<POSetPopulationState<G, S, Q>, File, Run<?, G, S, Q>>) run -> Accumulator.<POSetPopulationState<G, S, Q>>last()
               .then(state -> {
                 File file;
                 try {
@@ -301,13 +301,13 @@ public class ListenerBuilder {
               }))
           .forEach(accumulators::add);
       //prepare listener
-      TelegramUpdater<? super POSetPopulationState<G, S, Q>, Run<G, Q>> telegramUpdater = new TelegramUpdater<>(
+      TelegramUpdater<? super POSetPopulationState<G, S, Q>, Run<?, G, S, Q>> telegramUpdater = new TelegramUpdater<>(
           accumulators,
           botId,
           longChatId
       );
       L.info("Will send updates to Telegram chat `%s`".formatted(telegramUpdater.getChatInfo()));
-      ListenerFactory<? super POSetPopulationState<G, S, Q>, Run<G, Q>> listenerFactory = telegramUpdater;
+      ListenerFactory<? super POSetPopulationState<G, S, Q>, Run<?, G, S, Q>> listenerFactory = telegramUpdater;
       if (deferred) {
         listenerFactory = listenerFactory.deferred(executorService);
       }

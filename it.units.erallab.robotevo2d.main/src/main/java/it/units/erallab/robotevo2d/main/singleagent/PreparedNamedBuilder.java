@@ -20,8 +20,6 @@ import it.units.erallab.mrsim2d.builder.NamedBuilder;
 import it.units.erallab.robotevo2d.main.builder.*;
 import it.units.erallab.robotevo2d.main.builder.mapper.Composition;
 import it.units.erallab.robotevo2d.main.builder.mapper.function.ToParametrized;
-import it.units.erallab.robotevo2d.main.builder.solver.DoublesStandard;
-import it.units.erallab.robotevo2d.main.builder.solver.SimpleES;
 
 import java.util.List;
 
@@ -40,10 +38,8 @@ public class PreparedNamedBuilder {
           .and(NamedBuilder.fromClass(Composition.class))
           .and(NamedBuilder.fromClass(ToParametrized.class))
       )
-      .and(List.of("solver", "so"), NamedBuilder.empty()
-          .and(NamedBuilder.fromClass(DoublesStandard.class))
-          .and(NamedBuilder.fromClass(SimpleES.class))
-      )
+      .and(List.of("solver", "so"), NamedBuilder.fromUtilityClass(SolverBuilder.class))
+      .and(List.of("problem", "p"), NamedBuilder.fromUtilityClass(ProcessBuilder.class))
       .and(NamedBuilder.fromClass(VideoSaver.class))
       .and(NamedBuilder.fromClass(NamedTask.class))
       .and(NamedBuilder.fromClass(Run.class))

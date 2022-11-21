@@ -21,20 +21,13 @@ import com.beust.jcommander.ParameterException;
 import it.units.erallab.mrsim2d.builder.InfoPrinter;
 import it.units.erallab.mrsim2d.builder.NamedBuilder;
 import it.units.erallab.mrsim2d.builder.StringNamedParamMap;
-import it.units.erallab.mrsim2d.core.EmbodiedAgent;
-import it.units.erallab.robotevo2d.main.builder.MapperBuilder;
-import it.units.malelab.jgea.core.QualityBasedProblem;
-import it.units.malelab.jgea.core.listener.Listener;
 import it.units.malelab.jgea.core.listener.ListenerFactory;
 import it.units.malelab.jgea.core.listener.NamedFunction;
 import it.units.malelab.jgea.core.listener.ProgressMonitor;
-import it.units.malelab.jgea.core.order.PartialComparator;
 import it.units.malelab.jgea.core.solver.Individual;
-import it.units.malelab.jgea.core.solver.IterativeSolver;
 import it.units.malelab.jgea.core.solver.SolverException;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
 import it.units.malelab.jgea.core.util.Misc;
-import it.units.malelab.jgea.core.util.Pair;
 import it.units.malelab.jgea.tui.TerminalMonitor;
 
 import java.io.*;
@@ -46,7 +39,6 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -128,55 +120,56 @@ public class Starter implements Runnable {
         ));
       }
     }
-    Experiment<?, ?, ?> experiment = (Experiment<?, ?, ?>) nb.build(expDescription);
+    Experiment experiment = (Experiment) nb.build(expDescription);
     //create executors
     ExecutorService runExecutorService = Executors.newFixedThreadPool(configuration.nOfThreads);
     ExecutorService listenerExecutorService = Executors.newSingleThreadExecutor();
     //create common listeners and progress monitor
-    List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> basicFunctions =
+    List<NamedFunction<? super POSetPopulationState<?, ?, ?>, ?>> basicFunctions =
         List.of(
             iterations(),
             births(),
             fitnessEvaluations(),
             elapsedSeconds()
         );
-    @SuppressWarnings("unchecked") NamedFunction<Object, Double> qFunction =
-        ((NamedFunction<Object, Double>) experiment.qExtractor());
-    List<NamedFunction<? super Individual<?, Supplier<EmbodiedAgent>, ?>, ?>> individualFunctions = List.of(
+    List<NamedFunction<? super Individual<?, ?, ?>, ?>> individualFunctions = List.of(
         size().of(genotype()),
-        f("genotype.birth.iteration", "%4d", Individual::genotypeBirthIteration),
-        fitness().then(qFunction)
+        f("genotype.birth.iteration", "%4d", Individual::genotypeBirthIteration)/*,
+        fitness().then(qFunction)*/
     );
-    List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> visualFunctions =
-        List.of(hist(8).of(each(qFunction.of(fitness()))).of(all()));
-    @SuppressWarnings({"rawtypes", "unchecked"}) List<NamedFunction<? super POSetPopulationState<?,
-        Supplier<EmbodiedAgent>, ?>, ?>> nonVisualFunctions = Misc.concat(
-        List.of(basicFunctions, best().then((List) individualFunctions)));
-    List<NamedFunction<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, ?>> screenFunctions = Misc.concat(
+    List<NamedFunction<? super POSetPopulationState<?, ?, ?>, ?>> visualFunctions = List.of();
+    //List.of(hist(8).of(each(qFunction.of(fitness()))).of(all()));
+    @SuppressWarnings({"rawtypes", "unchecked"}) List<NamedFunction<? super POSetPopulationState<?, ?, ?>, ?>> nonVisualFunctions = Misc.concat(
+        List.of(
+            basicFunctions,
+            best().then((List) individualFunctions)
+        )
+    );
+    List<NamedFunction<? super POSetPopulationState<?, ?, ?>, ?>> screenFunctions = Misc.concat(
         List.of(nonVisualFunctions, visualFunctions));
     //prepare terminal monitor
-    TerminalMonitor<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Run<?, ?>> terminalMonitor =
+    TerminalMonitor<? super POSetPopulationState<?, ?, ?>, Run<?, ?, ?, ?>> terminalMonitor =
         new TerminalMonitor<>(
             screenFunctions,
             List.of(),
-            List.of(
+            List.of(/*
                 new Pair<>(
                     iterations(),
                     best().then(fitness()).then(qFunction)
-                )
+                )*/
             )
         );
     //preapare factories
-    List<ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Run<?, ?>>> factories =
-        new ArrayList<>();
+    List<ListenerFactory<? super POSetPopulationState<?, ?, ?>, Run<?, ?, ?, ?>>> factories = new ArrayList<>();
     //noinspection unchecked,rawtypes
-    experiment.listeners().forEach(l -> factories.add(l.apply((Experiment) experiment, listenerExecutorService)));
+    experiment.listeners().stream()
+        .map(l -> l.apply(experiment, listenerExecutorService))
+        .forEach(l -> factories.add((ListenerFactory) l));
     factories.add(terminalMonitor);
-    ListenerFactory<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>, Run<?, ?>> factory =
-        ListenerFactory.all(factories);
+    ListenerFactory<? super POSetPopulationState<?, ?, ?>, Run<?, ?, ?, ?>> factory = ListenerFactory.all(factories);
     //iterate over runs
     for (int i = 0; i < experiment.runs().size(); i++) {
-      Run<?, ?> run = experiment.runs().get(i);
+      Run<?, ?, ?, ?> run = experiment.runs().get(i);
       terminalMonitor.notify(
           (float) i / (float) experiment.runs().size(),
           String.format(
@@ -186,37 +179,10 @@ public class Starter implements Runnable {
               StringNamedParamMap.prettyToString(run.map(), 40)
           )
       );
-      //build solver
-      IterativeSolver<? extends POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>,
-          QualityBasedProblem<Supplier<EmbodiedAgent>, ?>, Supplier<EmbodiedAgent>> solver;
-      try {
-        //noinspection unchecked,rawtypes
-        solver = run.solverBuilder().build(
-            (MapperBuilder) run.mapper(),
-            (Supplier<EmbodiedAgent>) () -> (EmbodiedAgent) nb.build(run.map().npm("target"))
-        );
-      } catch (RuntimeException e) {
-        L.warning(String.format("Cannot instantiate solver %s: %s", run.map().npm("solver"), e));
-        e.printStackTrace();
-        break;
-      }
-      //build problem
-      @SuppressWarnings("unchecked") QualityBasedProblem<Supplier<EmbodiedAgent>, ?> problem =
-          QualityBasedProblem.create(
-              s -> run.task().run(s, experiment.engineSupplier().get()),
-              (PartialComparator<Object>) run.comparator()
-          );
-      //build listener
-      Listener<? super POSetPopulationState<?, Supplier<EmbodiedAgent>, ?>> listener = factory.build(run);
       //do optimization
       try {
         Instant startingT = Instant.now();
-        Collection<Supplier<EmbodiedAgent>> solutions = solver.solve(
-            problem,
-            run.randomGenerator(),
-            runExecutorService,
-            listener
-        );
+        Collection<?> solutions = run.run(experiment.engineSupplier(), runExecutorService, factory.build(run));
         double elapsedT = Duration.between(startingT, Instant.now()).toMillis() / 1000d;
         String msg = String.format(
             "%d/%d run done in %.2fs, found %d solutions",

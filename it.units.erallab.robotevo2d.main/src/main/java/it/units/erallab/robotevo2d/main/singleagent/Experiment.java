@@ -3,7 +3,6 @@ package it.units.erallab.robotevo2d.main.singleagent;
 import it.units.erallab.mrsim2d.builder.Param;
 import it.units.erallab.mrsim2d.core.engine.Engine;
 import it.units.malelab.jgea.core.listener.ListenerFactory;
-import it.units.malelab.jgea.core.listener.NamedFunction;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
 
 import java.util.List;
@@ -14,13 +13,12 @@ import java.util.function.Supplier;
 /**
  * @author "Eric Medvet" on 2022/09/01 for 2d-robot-evolution
  */
-public record Experiment<G, S, Q>(
-    @Param("runs") List<? extends Run<? extends G, ? extends Q>> runs,
-    @Param("qExtractor") NamedFunction<? super Q, Double> qExtractor,
+public record Experiment(
+    @Param("runs") List<Run<?, ?, ?, ?>> runs,
     @Param("listeners") List<BiFunction<
-        Experiment<G, S, Q>,
+        Experiment,
         ExecutorService,
-        ? extends ListenerFactory<? super POSetPopulationState<? extends G, ? extends S, ? extends Q>, Run<? extends G, ? extends Q>>
+        ListenerFactory<? extends POSetPopulationState<?, ?, ?>, Run<?, ?, ?, ?>>
         >> listeners,
     @Param(value = "engine", dNPM = "engine.defaultEngine()") Supplier<Engine> engineSupplier
 ) {}
