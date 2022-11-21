@@ -1,23 +1,7 @@
-/*
- * Copyright 2022 Eric Medvet <eric.medvet@gmail.com> (as eric)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-package it.units.erallab.robotevo2d.main.builder.solver;
+package it.units.erallab.robotevo2d.main.builder;
 
 import it.units.erallab.mrsim2d.builder.Param;
-import it.units.erallab.robotevo2d.main.builder.MapperBuilder;
+import it.units.erallab.robotevo2d.main.builder.mapper.InvertibleMapper;
 import it.units.malelab.jgea.core.IndependentFactory;
 import it.units.malelab.jgea.core.QualityBasedProblem;
 import it.units.malelab.jgea.core.operator.GeneticOperator;
@@ -27,7 +11,7 @@ import it.units.malelab.jgea.core.representation.sequence.numeric.GaussianMutati
 import it.units.malelab.jgea.core.representation.sequence.numeric.UniformDoubleFactory;
 import it.units.malelab.jgea.core.selector.Last;
 import it.units.malelab.jgea.core.selector.Tournament;
-import it.units.malelab.jgea.core.solver.IterativeSolver;
+import it.units.malelab.jgea.core.solver.SimpleEvolutionaryStrategy;
 import it.units.malelab.jgea.core.solver.StandardEvolver;
 import it.units.malelab.jgea.core.solver.StandardWithEnforcedDiversityEvolver;
 import it.units.malelab.jgea.core.solver.StopConditions;
@@ -37,22 +21,19 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
+ * @author "Eric Medvet" on 2022/11/21 for 2d-robot-evolution
  */
-public class DoublesStandard implements SolverBuilder<List<Double>> {
+public class SolverBuilder {
 
-  private final double initialMinV;
-  private final double initialMaxV;
-  private final double crossoverP;
-  private final double sigmaMut;
-  private final double tournamentRate;
-  private final int minNTournament;
-  private final int nPop;
-  private final int nEval;
-  private final boolean diversity;
-  private final boolean remap;
+  private SolverBuilder() {
+  }
 
-  public DoublesStandard(
+  public <S, Q> StandardEvolver<
+      POSetPopulationState<List<Double>, S, Q>,
+      QualityBasedProblem<S, Q>,
+      List<Double>, S, Q
+      > numGA(
+      @Param(value = "mapper") InvertibleMapper<List<Double>, S> mapper,
       @Param(value = "initialMinV", dD = -1d) double initialMinV,
       @Param(value = "initialMaxV", dD = 1d) double initialMaxV,
       @Param(value = "crossoverP", dD = 0.8d) double crossoverP,
@@ -64,26 +45,8 @@ public class DoublesStandard implements SolverBuilder<List<Double>> {
       @Param(value = "diversity") boolean diversity,
       @Param(value = "remap") boolean remap
   ) {
-    this.initialMinV = initialMinV;
-    this.initialMaxV = initialMaxV;
-    this.crossoverP = crossoverP;
-    this.sigmaMut = sigmaMut;
-    this.tournamentRate = tournamentRate;
-    this.minNTournament = minNTournament;
-    this.nPop = nPop;
-    this.nEval = nEval;
-    this.diversity = diversity;
-    this.remap = remap;
-
-  }
-
-  @Override
-  public <S, Q> IterativeSolver<? extends POSetPopulationState<List<Double>, S, Q>, QualityBasedProblem<S, Q>, S> build(
-      MapperBuilder<List<Double>, S> mapper,
-      S target
-  ) {
     IndependentFactory<List<Double>> doublesFactory = new FixedLengthListFactory<>(
-        mapper.exampleFor(target).size(),
+        mapper.exampleInput().size(),
         new UniformDoubleFactory(initialMinV, initialMaxV)
     );
     Map<GeneticOperator<List<Double>>, Double> geneticOperators = Map.of(
@@ -92,7 +55,7 @@ public class DoublesStandard implements SolverBuilder<List<Double>> {
     );
     if (!diversity) {
       return new StandardEvolver<>(
-          mapper.buildFor(target),
+          mapper,
           doublesFactory,
           nPop,
           StopConditions.nOfFitnessEvaluations(nEval),
@@ -106,7 +69,7 @@ public class DoublesStandard implements SolverBuilder<List<Double>> {
       );
     } else {
       return new StandardWithEnforcedDiversityEvolver<>(
-          mapper.buildFor(target),
+          mapper,
           doublesFactory,
           nPop,
           StopConditions.nOfFitnessEvaluations(nEval),
@@ -120,5 +83,32 @@ public class DoublesStandard implements SolverBuilder<List<Double>> {
           100
       );
     }
+  }
+
+  public <S, Q> SimpleEvolutionaryStrategy<S, Q> simpleES(
+      @Param(value = "mapper") InvertibleMapper<List<Double>, S> mapper,
+      @Param(value = "initialMinV", dD = -1d) double initialMinV,
+      @Param(value = "initialMaxV", dD = 1d) double initialMaxV,
+      @Param(value = "sigma", dD = 0.35d) double sigma,
+      @Param(value = "parentsRate", dD = 0.33d) double parentsRate,
+      @Param(value = "nOfElites", dI = 1) int nOfElites,
+      @Param(value = "nPop", dI = 30) int nPop,
+      @Param(value = "nEval") int nEval,
+      @Param(value = "remap") boolean remap
+  ) {
+    return new SimpleEvolutionaryStrategy<>(
+        mapper,
+        new FixedLengthListFactory<>(
+            mapper.exampleInput().size(),
+            new UniformDoubleFactory(initialMinV, initialMaxV)
+        ),
+        nPop,
+        StopConditions.nOfFitnessEvaluations(nEval),
+        nOfElites,
+        (int) Math.round(nPop * parentsRate),
+        sigma,
+        remap
+    );
+
   }
 }
