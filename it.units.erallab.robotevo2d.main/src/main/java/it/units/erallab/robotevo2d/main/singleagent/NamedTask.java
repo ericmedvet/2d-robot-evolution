@@ -9,5 +9,5 @@ import it.units.erallab.mrsim2d.core.tasks.Task;
  */
 public record NamedTask<Q>(
     @Param("task") Task<Q, ?> task,
-    @Param(value = "", self = true) ParamMap map
+    @Param(value = "", injection = Param.Injection.MAP) ParamMap map
 ) {}

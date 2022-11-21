@@ -24,7 +24,7 @@ public record Run<P extends QualityBasedProblem<S, Q>, G, S, Q>(
     @Param("problem") Function<Function<S, Q>, P> problem,
     @Param("task") Task<S, Q> task,
     @Param("randomGenerator") RandomGenerator randomGenerator,
-    @Param(value = "", self = true) ParamMap map
+    @Param(value = "", injection = Param.Injection.MAP) ParamMap map
 ) {
 
   public Collection<S> run(

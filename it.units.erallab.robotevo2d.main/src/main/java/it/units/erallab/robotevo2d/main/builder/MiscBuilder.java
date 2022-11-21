@@ -1,5 +1,6 @@
 package it.units.erallab.robotevo2d.main.builder;
 
+import it.units.erallab.mrsim2d.builder.NamedBuilder;
 import it.units.erallab.mrsim2d.builder.Param;
 import it.units.erallab.mrsim2d.builder.ParamMap;
 
@@ -12,13 +13,13 @@ public class MiscBuilder {
   private MiscBuilder() {
   }
 
+  @SuppressWarnings("unused")
   public static <T> Supplier<T> supplier(
       @Param("of") T target,
-      @Param(value = "", self = true) ParamMap map
-      // TODO add here a injection notation for injecting a NamedBuilder
+      @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
+      @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
   ) {
-    return () -> {
-      return target; // TODO use
-    };
+    //noinspection unchecked
+    return () -> (T)builder.build(map.npm("of"));
   }
 }
