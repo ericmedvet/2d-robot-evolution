@@ -1,21 +1,30 @@
-package it.units.erallab.robotevo2d.main.builder.mapper.function;
+package it.units.erallab.robotevo2d.main.builder.mapper;
 
+import it.units.erallab.mrsim2d.builder.BuilderMethod;
+import it.units.erallab.mrsim2d.builder.Param;
 import it.units.erallab.mrsim2d.core.util.Parametrized;
-import it.units.erallab.robotevo2d.main.builder.MapperBuilder;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
  * @author "Eric Medvet" on 2022/10/03 for 2d-robot-evolution
  */
-public class ToParametrized implements MapperBuilder<List<Double>, Supplier<? extends Parametrized>> {
+public class ParametrizedSupplier implements InvertibleMapper<List<Double>, Supplier<? extends Parametrized>> {
+
+  private final Supplier<? extends Parametrized> supplier;
+
+  @BuilderMethod
+  public ParametrizedSupplier(
+      @Param("target") Supplier<? extends Parametrized> supplier
+  ) {
+    this.supplier = supplier;
+  }
 
   @Override
-  public Function<List<Double>, Supplier<? extends Parametrized>> buildFor(Supplier<? extends Parametrized> supplier) {
-    return values -> () -> {
+  public Supplier<? extends Parametrized> apply(List<Double> values) {
+    return () -> {
       if (values.size() != supplier.get().getParams().length) {
         throw new IllegalArgumentException("Wrong number of params: %d expected, %d found".formatted(
             supplier.get().getParams().length,
@@ -29,7 +38,8 @@ public class ToParametrized implements MapperBuilder<List<Double>, Supplier<? ex
   }
 
   @Override
-  public List<Double> exampleFor(Supplier<? extends Parametrized> supplier) {
+  public List<Double> exampleInput() {
     return Arrays.stream(supplier.get().getParams()).boxed().toList();
   }
+
 }

@@ -26,6 +26,9 @@ import java.util.random.RandomGenerator;
  */
 public class RandomGeneratorBuilder {
 
+  private RandomGeneratorBuilder() {
+  }
+
   public static RandomGenerator defaultRG(@Param(value = "seed", dI = 0) int seed) {
     return new Random(seed);
   }

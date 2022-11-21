@@ -1,4 +1,4 @@
-package it.units.erallab.robotevo2d.main.builder.mapper;
+package it.units.erallab.robotevo2d.main.builder;
 
 import it.units.erallab.mrsim2d.builder.Param;
 import it.units.malelab.jgea.core.TotalOrderQualityBasedProblem;
@@ -14,7 +14,7 @@ public class ProblemBuilder {
   private ProblemBuilder() {
   }
 
-  public <S,Q, C extends Comparable<C>> Function<Function<S,Q>, TotalOrderQualityBasedProblem<S,Q>> totalOrder(
+  public static <S,Q, C extends Comparable<C>> Function<Function<S,Q>, TotalOrderQualityBasedProblem<S,Q>> totalOrder(
       @Param("cqExtractor") Function<Q, C> cqExtrator
   ) {
     return qFunction -> new TotalOrderQualityBasedProblem<>() {

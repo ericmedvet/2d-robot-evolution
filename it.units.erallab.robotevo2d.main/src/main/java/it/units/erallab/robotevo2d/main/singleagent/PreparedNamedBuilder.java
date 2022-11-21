@@ -18,8 +18,7 @@ package it.units.erallab.robotevo2d.main.singleagent;
 
 import it.units.erallab.mrsim2d.builder.NamedBuilder;
 import it.units.erallab.robotevo2d.main.builder.*;
-import it.units.erallab.robotevo2d.main.builder.mapper.Composition;
-import it.units.erallab.robotevo2d.main.builder.mapper.function.ToParametrized;
+import it.units.erallab.robotevo2d.main.builder.mapper.ParametrizedSupplier;
 
 import java.util.List;
 
@@ -28,18 +27,17 @@ public class PreparedNamedBuilder {
   private final static NamedBuilder<Object> NB = NamedBuilder.empty()
       .and(it.units.erallab.mrsim2d.core.PreparedNamedBuilder.get())
       .and(List.of("randomGenerator", "rg"), NamedBuilder.fromUtilityClass(RandomGeneratorBuilder.class))
-      .and(List.of("comparator", "c"), NamedBuilder.fromUtilityClass(ComparatorBuilder.class))
       .and(List.of("extractor", "e"), NamedBuilder.fromUtilityClass(ExtractorBuilder.class))
       .and(List.of("listener", "l"), NamedBuilder.fromUtilityClass(ListenerBuilder.class))
       .and("engine", NamedBuilder.fromUtilityClass(EngineBuilder.class))
+      .and("misc", NamedBuilder.fromUtilityClass(MiscBuilder.class))
       .and(List.of("namedFunction", "nf"), NamedBuilder.fromUtilityClass(NamedFunctionBuilder.class))
       .and(List.of("drawer", "d"), NamedBuilder.fromUtilityClass(DrawerBuilder.class))
       .and(List.of("mapper", "m"), NamedBuilder.empty()
-          .and(NamedBuilder.fromClass(Composition.class))
-          .and(NamedBuilder.fromClass(ToParametrized.class))
+          .and(NamedBuilder.fromClass(ParametrizedSupplier.class))
       )
       .and(List.of("solver", "so"), NamedBuilder.fromUtilityClass(SolverBuilder.class))
-      .and(List.of("problem", "p"), NamedBuilder.fromUtilityClass(ProcessBuilder.class))
+      .and(List.of("problem", "p"), NamedBuilder.fromUtilityClass(ProblemBuilder.class))
       .and(NamedBuilder.fromClass(VideoSaver.class))
       .and(NamedBuilder.fromClass(NamedTask.class))
       .and(NamedBuilder.fromClass(Run.class))

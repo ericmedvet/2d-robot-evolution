@@ -28,7 +28,7 @@ public class SolverBuilder {
   private SolverBuilder() {
   }
 
-  public <S, Q> StandardEvolver<
+  public static <S, Q> StandardEvolver<
       POSetPopulationState<List<Double>, S, Q>,
       QualityBasedProblem<S, Q>,
       List<Double>, S, Q
@@ -85,7 +85,7 @@ public class SolverBuilder {
     }
   }
 
-  public <S, Q> SimpleEvolutionaryStrategy<S, Q> simpleES(
+  public static <S, Q> SimpleEvolutionaryStrategy<S, Q> simpleES(
       @Param(value = "mapper") InvertibleMapper<List<Double>, S> mapper,
       @Param(value = "initialMinV", dD = -1d) double initialMinV,
       @Param(value = "initialMaxV", dD = 1d) double initialMaxV,

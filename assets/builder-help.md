@@ -212,7 +212,7 @@ Produces <code><abbr title="it.units.erallab.robotevo2d.main.builder.mapper.Comp
 
 `m.toParametrized()`
 
-Produces <code><abbr title="it.units.erallab.robotevo2d.main.builder.mapper.function.ToParametrized">ToParametrized</abbr></code>
+Produces <code><abbr title="it.units.erallab.robotevo2d.main.builder.mapper.ParametrizedSupplier">ToParametrized</abbr></code>
 
 ## Package `namedFunction`
 

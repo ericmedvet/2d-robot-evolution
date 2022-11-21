@@ -17,5 +17,4 @@ module it.units.erallab.robotevo2d.main {
   exports it.units.erallab.robotevo2d.main.builder;
   opens it.units.erallab.robotevo2d.main.builder to it.units.erallab.mrsim2d.builder;
   opens it.units.erallab.robotevo2d.main.builder.mapper to it.units.erallab.mrsim2d.builder;
-  opens it.units.erallab.robotevo2d.main.builder.mapper.function to it.units.erallab.mrsim2d.builder;
 }
