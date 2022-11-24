@@ -101,7 +101,7 @@ It can be described with a string adhering the following human- and machine-read
 where:
 - `<npm>` is a named parameter map;
 - `<n>` is a name, i.e., a string in the format `[A-Za-z][.A-Za-z0-9_]*`;
-- `<s>` is a string in the format `([A-Za-z][A-Za-z0-9_]*)|(\"[./:\-\w]+\")`;
+- `<s>` is a string in the format `([A-Za-z][A-Za-z0-9_]*)|(\"[./:\-\w\s]+\")`;
 - `<d>` is a number in the format `-?[0-9]+(\.[0-9]+)?`;
 - `<i>` is a number in the format `[0-9]+`;
 - `∅` is the empty string.
