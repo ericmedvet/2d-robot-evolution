@@ -44,6 +44,9 @@ public class PreparedNamedBuilder {
       .and(NamedBuilder.fromClass(Experiment.class))
       .and(NamedBuilder.fromClass(Configuration.class));
 
+  private PreparedNamedBuilder() {
+  }
+
   public static NamedBuilder<Object> get() {
     return NB;
   }
