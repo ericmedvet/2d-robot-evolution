@@ -1,22 +1,33 @@
-experiment(
-  runs = [run(
-    solver = so.numGA(
-      mapper = m.parametrizedSupplier(target = misc.supplier(of = s.a.centralizedNumGridVSR(
-        body = s.vsr.gridBody(
-          sensorizingFunction = s.vsr.sf.directional(
-            headSensors = [s.s.sin(f = 0);s.s.d(a = -15; r = 5)];
-            nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
-            sSensors = [s.s.d(a = -90)]
+ea.experiment(
+  runs = (randomGenerator = (seed = [1:1:3]) * [ea.rg.defaultRG()]) * [
+    ea.run(
+      solver = ea.s.numGA(
+        mapper = er.m.parametrized(target = s.a.centralizedNumGridVSR(
+          body = s.vsr.gridBody(
+            sensorizingFunction = s.vsr.sf.directional(
+              headSensors = [s.s.sin(f = 0);s.s.d(a = -15; r = 5)];
+              nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
+              sSensors = [s.s.d(a = -90)]
+            );
+            shape = s.vsr.s.biped(w = 4; h = 3)
           );
-          shape = s.vsr.s.biped(w = 4; h = 3)
-        );
-        function = s.f.mlp()
-      )));
-      nEval = 100;
-      nPop = 25
-    );
-    problem = p.totalOrder(cqExtractor = e.locomotionXVelocity());
-    task = s.task.locomotion(terrain = s.t.flat(); duration = 15);
-    randomGenerator = rg.defaultRG(seed = 1)
-  )]
+          function = s.f.mlp()
+        ));
+        nEval = 500;
+        nPop = 10
+      );
+      problem = ea.p.totalOrder(qFunction = sphere())
+    )
+  ];
+  listeners = [
+    ea.l.tui(
+      functions = [
+        ea.nf.fitness(individual = ea.nf.best(); s = "%6.2f");
+        ea.nf.hist(collection = ea.nf.each(map = ea.nf.fitness(); collection = ea.nf.all()));
+        ea.nf.percentile(collection = ea.nf.each(map = ea.nf.fitness(); collection = ea.nf.all()); p = 0.75; s = "%6.2f")
+      ];
+      runKeys = ["randomGenerator.seed"; "solver"];
+      plots = [ea.plot.fitness()]
+    )
+  ]
 )
