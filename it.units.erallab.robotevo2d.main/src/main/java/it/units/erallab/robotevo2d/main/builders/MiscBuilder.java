@@ -1,4 +1,4 @@
-package it.units.erallab.robotevo2d.main.builder;
+package it.units.erallab.robotevo2d.main.builders;
 
 import it.units.malelab.jnb.core.NamedBuilder;
 import it.units.malelab.jnb.core.Param;

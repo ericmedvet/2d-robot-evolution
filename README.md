@@ -43,7 +43,7 @@ mvn package
 
 At this point, if everything worked smoothly, you should be able to run a first short evolutionary optimization (assume you are in the parent directory of the `2d-robot-evolution` one that has been created after the last clone; this is suggested for real runs, so that you don't pollute your git branch with outcome files):
 ```shell
-java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" it.units.erallab.robotevo2d.main.singleagent.Starter
+java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" it.units.erallab.robotevo2d.main.Starter
 ```
 
 ## Usage
@@ -52,7 +52,7 @@ java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotev
 
 An experiment can be started by invoking:
 ```shell
-java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" it.units.erallab.robotevo2d.main.singleagent.Starter --expFile <exp-file> --nOfThreads <n>
+java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" it.units.erallab.robotevo2d.main.Starter --expFile <exp-file> --nOfThreads <n>
 ```
 where `<exp-file>` is the path to a file with an **experiment description** and `<n>` is the **number of threads** to be used for running the experiment.
 
@@ -66,7 +66,7 @@ The actual degree of concurrency will depend on $n$ and on the evolutionary algo
 
 You can have an overview on the other (few) parameters of `Starter` with:
 ```shell
-java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" it.units.erallab.robotevo2d.main.singleagent.Starter --help
+java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" it.units.erallab.robotevo2d.main.Starter --help
 ```
 
 ### The experiment description

@@ -1,4 +1,4 @@
-package it.units.erallab.robotevo2d.main.singleagent;
+package it.units.erallab.robotevo2d.main;
 
 import it.units.erallab.mrsim2d.viewer.Drawer;
 import it.units.erallab.mrsim2d.viewer.VideoUtils;

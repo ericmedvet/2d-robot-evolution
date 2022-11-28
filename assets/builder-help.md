@@ -1,49 +1,5 @@
 ## Unnamed package
 
-### Builder `configuration()`
-
-`configuration()`
-
-Produces <code><abbr title="it.units.erallab.robotevo2d.main.singleagent.Configuration">Configuration</abbr></code>
-
-### Builder `experiment()`
-
-`experiment(runs; qExtractor; listeners; engine)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `runs` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><? extends <abbr title="it.units.erallab.robotevo2d.main.singleagent.Run">Run</abbr><? extends G, ? extends Q>></code> |
-| `qExtractor` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super Q, <abbr title="java.lang.Double">Double</abbr>></code> |
-| `listeners` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="it.units.erallab.robotevo2d.main.singleagent.Experiment">Experiment</abbr><G, S, Q>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, ? extends <abbr title="it.units.malelab.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><? extends G, ? extends S, ? extends Q>, <abbr title="it.units.erallab.robotevo2d.main.singleagent.Run">Run</abbr><? extends G, ? extends Q>>>></code> |
-| `engine` | npm | `engine.defaultEngine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr><<abbr title="it.units.erallab.mrsim2d.core.engine.Engine">Engine</abbr>></code> |
-
-Produces <code><abbr title="it.units.erallab.robotevo2d.main.singleagent.Experiment">Experiment</abbr></code>
-
-### Builder `namedTask()`
-
-`namedTask(task; )`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `task` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.tasks.Task">Task</abbr><Q, ?></code> |
-
-Produces <code><abbr title="it.units.erallab.robotevo2d.main.singleagent.NamedTask">NamedTask</abbr></code>
-
-### Builder `run()`
-
-`run(solver; mapper; target; task; comparator; randomGenerator; )`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `solver` | npm |  | <code><abbr title="it.units.erallab.robotevo2d.main.builder.solver.SolverBuilder">SolverBuilder</abbr><G></code> |
-| `mapper` | npm |  | <code><abbr title="it.units.erallab.robotevo2d.main.builder.MapperBuilder">MapperBuilder</abbr><G, <abbr title="java.util.function.Supplier">Supplier</abbr><<abbr title="it.units.erallab.mrsim2d.core.EmbodiedAgent">EmbodiedAgent</abbr>>></code> |
-| `target` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.EmbodiedAgent">EmbodiedAgent</abbr></code> |
-| `task` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.tasks.Task">Task</abbr><<abbr title="java.util.function.Supplier">Supplier</abbr><<abbr title="it.units.erallab.mrsim2d.core.EmbodiedAgent">EmbodiedAgent</abbr>>, Q></code> |
-| `comparator` | npm |  | <code><abbr title="it.units.malelab.jgea.core.order.PartialComparator">PartialComparator</abbr><? super Q></code> |
-| `randomGenerator` | npm |  | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.robotevo2d.main.singleagent.Run">Run</abbr></code>
-
 ### Builder `videoSaver()`
 
 `videoSaver(w; h; frameRate; startTime; endTime; codec; drawer)`
@@ -58,31 +14,7 @@ Produces <code><abbr title="it.units.erallab.robotevo2d.main.singleagent.Run">Ru
 | `codec` | e | `JCODEC` | <code><abbr title="it.units.erallab.mrsim2d.viewer.VideoUtils$EncoderFacility">VideoUtils$EncoderFacility</abbr></code> |
 | `drawer` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.String">String</abbr>, <abbr title="it.units.erallab.mrsim2d.viewer.Drawer">Drawer</abbr>></code> |
 
-Produces <code><abbr title="it.units.erallab.robotevo2d.main.singleagent.VideoSaver">VideoSaver</abbr></code>
-
-## Package `comparator`
-
-Aliases: `c`, `comparator`
-
-### Builder `comparator.max()`
-
-`c.max(of)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `of` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.Object">Object</abbr>, <abbr title="java.lang.Double">Double</abbr>></code> |
-
-Produces <code><abbr title="it.units.malelab.jgea.core.order.PartialComparator">PartialComparator</abbr><<abbr title="java.lang.Object">Object</abbr>></code>
-
-### Builder `comparator.min()`
-
-`c.min(of)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `of` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.Object">Object</abbr>, <abbr title="java.lang.Double">Double</abbr>></code> |
-
-Produces <code><abbr title="it.units.malelab.jgea.core.order.PartialComparator">PartialComparator</abbr><<abbr title="java.lang.Object">Object</abbr>></code>
+Produces <code><abbr title="it.units.erallab.robotevo2d.main.VideoSaver">VideoSaver</abbr></code>
 
 ## Package `drawer`
 
@@ -99,6 +31,547 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr t
 `d.basicWithAgentMiniature()`
 
 Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.String">String</abbr>, <abbr title="it.units.erallab.mrsim2d.viewer.Drawer">Drawer</abbr>></code>
+
+## Package `ea`
+
+### Builder `ea.experiment()`
+
+`ea.experiment(name; runs; listeners)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `name` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+| `runs` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.experimenter.Run">Run</abbr><?, ?, ?, ?>></code> |
+| `listeners` | npm[] | `[ea.l.console()]` | <code><abbr title="java.util.List">List</abbr><<abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="it.units.malelab.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="it.units.malelab.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><?, ?, ?>, <abbr title="it.units.malelab.jgea.experimenter.Run">Run</abbr><?, ?, ?, ?>>>></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.experimenter.Experiment">Experiment</abbr></code>
+
+### Builder `ea.run()`
+
+`ea.run(solver; problem; randomGenerator; )`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `solver` | npm |  | <code><abbr title="it.units.malelab.jgea.core.solver.AbstractPopulationBasedIterativeSolver">AbstractPopulationBasedIterativeSolver</abbr><? extends <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, P, G, S, Q></code> |
+| `problem` | npm |  | <code>P</code> |
+| `randomGenerator` | npm |  | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.experimenter.Run">Run</abbr></code>
+
+## Package `ea.function`
+
+Aliases: `ea.f`, `ea.function`
+
+### Builder `ea.function.identity()`
+
+`ea.f.identity()`
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr><T, T></code>
+
+## Package `ea.listener`
+
+Aliases: `ea.l`, `ea.listener`
+
+### Builder `ea.listener.allCsv()`
+
+`ea.l.allCsv(filePath; defaultFunctions; functions; individualFunctions; runKeys; deferred; onlyLast)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `filePath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+| `defaultFunctions` | npm[] | `[ea.nf.iterations()]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ?>></code> |
+| `functions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ?>></code> |
+| `individualFunctions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><G, S, Q>, ?>></code> |
+| `runKeys` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="java.lang.String">String</abbr>></code> |
+| `deferred` | b | `false` | <code>boolean</code> |
+| `onlyLast` | b | `false` | <code>boolean</code> |
+
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="it.units.malelab.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="it.units.malelab.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="it.units.malelab.jgea.experimenter.Run">Run</abbr><?, G, S, Q>>></code>
+
+### Builder `ea.listener.bestCsv()`
+
+`ea.l.bestCsv(filePath; defaultFunctions; functions; runKeys; deferred; onlyLast)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `filePath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+| `defaultFunctions` | npm[] | `[ea.nf.iterations(), ea.nf.evals(), ea.nf.births(), ea.nf.elapsed(), ea.nf.size(f=ea.nf.all()), ea.nf.size(f=ea.nf.firsts()), ea.nf.size(f=ea.nf.lasts()), ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.genotype())), ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.solution())), ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.fitness()))]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ?>></code> |
+| `functions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ?>></code> |
+| `runKeys` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="java.lang.String">String</abbr>></code> |
+| `deferred` | b | `false` | <code>boolean</code> |
+| `onlyLast` | b | `false` | <code>boolean</code> |
+
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="it.units.malelab.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="it.units.malelab.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="it.units.malelab.jgea.experimenter.Run">Run</abbr><?, G, S, Q>>></code>
+
+### Builder `ea.listener.console()`
+
+`ea.l.console(defaultFunctions; functions; runKeys; deferred; onlyLast)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `defaultFunctions` | npm[] | `[ea.nf.iterations(), ea.nf.evals(), ea.nf.births(), ea.nf.elapsed(), ea.nf.size(f=ea.nf.all()), ea.nf.size(f=ea.nf.firsts()), ea.nf.size(f=ea.nf.lasts()), ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.genotype())), ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.solution())), ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.fitness()))]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ?>></code> |
+| `functions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ?>></code> |
+| `runKeys` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="java.lang.String">String</abbr>></code> |
+| `deferred` | b | `false` | <code>boolean</code> |
+| `onlyLast` | b | `false` | <code>boolean</code> |
+
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="it.units.malelab.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="it.units.malelab.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="it.units.malelab.jgea.experimenter.Run">Run</abbr><?, G, S, Q>>></code>
+
+### Builder `ea.listener.telegram()`
+
+`ea.l.telegram(chatId; botIdFilePath; defaultPlots; plots; accumulators; deferred; onlyLast)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `chatId` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+| `botIdFilePath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+| `defaultPlots` | npm[] | `[ea.plot.elapsed(), ea.plot.uniqueness()]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.PlotTableBuilder">PlotTableBuilder</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>>></code> |
+| `plots` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.PlotTableBuilder">PlotTableBuilder</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>>></code> |
+| `accumulators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.AccumulatorFactory">AccumulatorFactory</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ?, <abbr title="it.units.malelab.jgea.experimenter.Run">Run</abbr><?, G, S, Q>>></code> |
+| `deferred` | b | `true` | <code>boolean</code> |
+| `onlyLast` | b | `false` | <code>boolean</code> |
+
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="it.units.malelab.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="it.units.malelab.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="it.units.malelab.jgea.experimenter.Run">Run</abbr><?, G, S, Q>>></code>
+
+### Builder `ea.listener.tui()`
+
+`ea.l.tui(defaultFunctions; functions; runKeys; defaultPlots; plots; deferred; onlyLast)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `defaultFunctions` | npm[] | `[ea.nf.iterations(), ea.nf.evals(), ea.nf.births(), ea.nf.elapsed(), ea.nf.size(f=ea.nf.all()), ea.nf.size(f=ea.nf.firsts()), ea.nf.size(f=ea.nf.lasts()), ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.genotype())), ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.solution())), ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.fitness()))]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ?>></code> |
+| `functions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ?>></code> |
+| `runKeys` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="java.lang.String">String</abbr>></code> |
+| `defaultPlots` | npm[] | `[ea.plot.elapsed(), ea.plot.uniqueness()]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.PlotTableBuilder">PlotTableBuilder</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>>></code> |
+| `plots` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.PlotTableBuilder">PlotTableBuilder</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>>></code> |
+| `deferred` | b | `false` | <code>boolean</code> |
+| `onlyLast` | b | `false` | <code>boolean</code> |
+
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="it.units.malelab.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="it.units.malelab.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="it.units.malelab.jgea.experimenter.Run">Run</abbr><?, G, S, Q>>></code>
+
+## Package `ea.namedFunction`
+
+Aliases: `ea.namedFunction`, `ea.nf`
+
+### Builder `ea.namedFunction.all()`
+
+`ea.nf.all()`
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="java.util.Collection">Collection</abbr><<abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><G, S, Q>>></code>
+
+### Builder `ea.namedFunction.base64()`
+
+`ea.nf.base64(f)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `f` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.io.Serializable">Serializable</abbr>></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.lang.String">String</abbr>></code>
+
+### Builder `ea.namedFunction.best()`
+
+`ea.nf.best()`
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><G, S, Q>></code>
+
+### Builder `ea.namedFunction.births()`
+
+`ea.nf.births()`
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><?, ?, ?>, <abbr title="java.lang.Long">Long</abbr>></code>
+
+### Builder `ea.namedFunction.each()`
+
+`ea.nf.each(map; collection; s)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `map` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><T, R></code> |
+| `collection` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.util.Collection">Collection</abbr><T>></code> |
+| `s` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.util.Collection">Collection</abbr><R>></code>
+
+### Builder `ea.namedFunction.elapsed()`
+
+`ea.nf.elapsed()`
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><?, ?, ?>, <abbr title="java.lang.Double">Double</abbr>></code>
+
+### Builder `ea.namedFunction.evals()`
+
+`ea.nf.evals()`
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><?, ?, ?>, <abbr title="java.lang.Long">Long</abbr>></code>
+
+### Builder `ea.namedFunction.expr()`
+
+`ea.nf.expr(f1; f2; op)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `f1` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.lang.Number">Number</abbr>></code> |
+| `f2` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.lang.Number">Number</abbr>></code> |
+| `op` | e |  | <code><abbr title="it.units.malelab.jgea.experimenter.builders.NamedFunctions$Op">NamedFunctions$Op</abbr></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.lang.Double">Double</abbr>></code>
+
+### Builder `ea.namedFunction.firsts()`
+
+`ea.nf.firsts()`
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="java.util.Collection">Collection</abbr><<abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><G, S, Q>>></code>
+
+### Builder `ea.namedFunction.fitness()`
+
+`ea.nf.fitness(individual; s)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `individual` | npm | `ea.nf.identity()` | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><?, ?, F>></code> |
+| `s` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, F></code>
+
+### Builder `ea.namedFunction.formatted()`
+
+`ea.nf.formatted(s; f)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `s` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+| `f` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><T, R></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><T, R></code>
+
+### Builder `ea.namedFunction.genotype()`
+
+`ea.nf.genotype(individual; s)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `individual` | npm | `ea.nf.identity()` | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><G, ?, ?>></code> |
+| `s` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, G></code>
+
+### Builder `ea.namedFunction.hist()`
+
+`ea.nf.hist(collection; nBins)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `collection` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.util.Collection">Collection</abbr><<abbr title="java.lang.Number">Number</abbr>>></code> |
+| `nBins` | i | `8` | <code>int</code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.lang.String">String</abbr>></code>
+
+### Builder `ea.namedFunction.identity()`
+
+`ea.nf.identity()`
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><T, T></code>
+
+### Builder `ea.namedFunction.iterations()`
+
+`ea.nf.iterations()`
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><?, ?, ?>, <abbr title="java.lang.Long">Long</abbr>></code>
+
+### Builder `ea.namedFunction.lasts()`
+
+`ea.nf.lasts()`
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="java.util.Collection">Collection</abbr><<abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><G, S, Q>>></code>
+
+### Builder `ea.namedFunction.max()`
+
+`ea.nf.max(collection; s)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `collection` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.util.Collection">Collection</abbr><T>></code> |
+| `s` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, T></code>
+
+### Builder `ea.namedFunction.median()`
+
+`ea.nf.median(collection; s)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `collection` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.util.Collection">Collection</abbr><T>></code> |
+| `s` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, T></code>
+
+### Builder `ea.namedFunction.min()`
+
+`ea.nf.min(collection; s)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `collection` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.util.Collection">Collection</abbr><T>></code> |
+| `s` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, T></code>
+
+### Builder `ea.namedFunction.percentile()`
+
+`ea.nf.percentile(collection; p; s)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `collection` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.util.Collection">Collection</abbr><T>></code> |
+| `p` | d |  | <code>double</code> |
+| `s` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, T></code>
+
+### Builder `ea.namedFunction.size()`
+
+`ea.nf.size(f)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `f` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, ?></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.lang.Integer">Integer</abbr>></code>
+
+### Builder `ea.namedFunction.solution()`
+
+`ea.nf.solution(individual; s)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `individual` | npm | `ea.nf.identity()` | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><?, S, ?>></code> |
+| `s` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, S></code>
+
+### Builder `ea.namedFunction.uniqueness()`
+
+`ea.nf.uniqueness(collection)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `collection` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.util.Collection">Collection</abbr><T>></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.lang.Double">Double</abbr>></code>
+
+## Package `ea.plot`
+
+### Builder `ea.plot.dyPlot()`
+
+`ea.plot.dyPlot(x; y; w; h; minX; maxX; minY; maxY)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `x` | npm | `ea.nf.iterations()` | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ? extends <abbr title="java.lang.Number">Number</abbr>></code> |
+| `y` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ? extends <abbr title="java.lang.Number">Number</abbr>></code> |
+| `w` | i | `600` | <code>int</code> |
+| `h` | i | `400` | <code>int</code> |
+| `minX` | d | `-Infinity` | <code>double</code> |
+| `maxX` | d | `-Infinity` | <code>double</code> |
+| `minY` | d | `-Infinity` | <code>double</code> |
+| `maxY` | d | `-Infinity` | <code>double</code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.XYPlotTableBuilder">XYPlotTableBuilder</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>></code>
+
+### Builder `ea.plot.elapsed()`
+
+`ea.plot.elapsed(x; y; w; h; minX; maxX; minY; maxY)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `x` | npm | `ea.nf.iterations()` | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ? extends <abbr title="java.lang.Number">Number</abbr>></code> |
+| `y` | npm | `ea.nf.elapsed()` | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ? extends <abbr title="java.lang.Number">Number</abbr>></code> |
+| `w` | i | `600` | <code>int</code> |
+| `h` | i | `400` | <code>int</code> |
+| `minX` | d | `-Infinity` | <code>double</code> |
+| `maxX` | d | `-Infinity` | <code>double</code> |
+| `minY` | d | `0.0` | <code>double</code> |
+| `maxY` | d | `-Infinity` | <code>double</code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.XYPlotTableBuilder">XYPlotTableBuilder</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>></code>
+
+### Builder `ea.plot.fitness()`
+
+`ea.plot.fitness(x; collection; f; w; h; minX; maxX; minY; maxY; sort; s)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `x` | npm | `ea.nf.iterations()` | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ? extends <abbr title="java.lang.Number">Number</abbr>></code> |
+| `collection` | npm | `ea.nf.all()` | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="java.util.Collection">Collection</abbr><<abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><G, S, Q>>></code> |
+| `f` | npm | `ea.nf.identity()` | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><Q, <abbr title="java.lang.Double">Double</abbr>></code> |
+| `w` | i | `600` | <code>int</code> |
+| `h` | i | `400` | <code>int</code> |
+| `minX` | d | `-Infinity` | <code>double</code> |
+| `maxX` | d | `-Infinity` | <code>double</code> |
+| `minY` | d | `-Infinity` | <code>double</code> |
+| `maxY` | d | `-Infinity` | <code>double</code> |
+| `sort` | e | `MIN` | <code><abbr title="it.units.malelab.jgea.experimenter.builders.Plots$Sorting">Plots$Sorting</abbr></code> |
+| `s` | s | `%.2f` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.XYPlotTableBuilder">XYPlotTableBuilder</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>></code>
+
+### Builder `ea.plot.uniqueness()`
+
+`ea.plot.uniqueness(x; ys; w; h; minX; maxX; minY; maxY)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `x` | npm | `ea.nf.iterations()` | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ? extends <abbr title="java.lang.Number">Number</abbr>></code> |
+| `ys` | npm[] | `[ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.genotype())), ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.solution())), ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.fitness()))]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ? extends <abbr title="java.lang.Number">Number</abbr>>></code> |
+| `w` | i | `600` | <code>int</code> |
+| `h` | i | `400` | <code>int</code> |
+| `minX` | d | `-Infinity` | <code>double</code> |
+| `maxX` | d | `-Infinity` | <code>double</code> |
+| `minY` | d | `0.0` | <code>double</code> |
+| `maxY` | d | `1.0` | <code>double</code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.XYPlotTableBuilder">XYPlotTableBuilder</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>></code>
+
+### Builder `ea.plot.xyPlot()`
+
+`ea.plot.xyPlot(x; y; w; h; minX; maxX; minY; maxY)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `x` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super E, ? extends <abbr title="java.lang.Number">Number</abbr>></code> |
+| `y` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super E, ? extends <abbr title="java.lang.Number">Number</abbr>></code> |
+| `w` | i | `600` | <code>int</code> |
+| `h` | i | `400` | <code>int</code> |
+| `minX` | d | `-Infinity` | <code>double</code> |
+| `maxX` | d | `-Infinity` | <code>double</code> |
+| `minY` | d | `-Infinity` | <code>double</code> |
+| `maxY` | d | `-Infinity` | <code>double</code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.XYPlotTableBuilder">XYPlotTableBuilder</abbr><E></code>
+
+### Builder `ea.plot.xysPlot()`
+
+`ea.plot.xysPlot(x; ys; w; h; minX; maxX; minY; maxY)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `x` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super E, ? extends <abbr title="java.lang.Number">Number</abbr>></code> |
+| `ys` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super E, ? extends <abbr title="java.lang.Number">Number</abbr>>></code> |
+| `w` | i | `600` | <code>int</code> |
+| `h` | i | `400` | <code>int</code> |
+| `minX` | d | `-Infinity` | <code>double</code> |
+| `maxX` | d | `-Infinity` | <code>double</code> |
+| `minY` | d | `-Infinity` | <code>double</code> |
+| `maxY` | d | `-Infinity` | <code>double</code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.XYPlotTableBuilder">XYPlotTableBuilder</abbr><E></code>
+
+### Builder `ea.plot.yPlot()`
+
+`ea.plot.yPlot(x; y; w; h; minX; maxX; minY; maxY)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `x` | npm | `ea.nf.iterations()` | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ? extends <abbr title="java.lang.Number">Number</abbr>></code> |
+| `y` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ? extends <abbr title="java.lang.Number">Number</abbr>></code> |
+| `w` | i | `600` | <code>int</code> |
+| `h` | i | `400` | <code>int</code> |
+| `minX` | d | `-Infinity` | <code>double</code> |
+| `maxX` | d | `-Infinity` | <code>double</code> |
+| `minY` | d | `-Infinity` | <code>double</code> |
+| `maxY` | d | `-Infinity` | <code>double</code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.XYPlotTableBuilder">XYPlotTableBuilder</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>></code>
+
+### Builder `ea.plot.ysPlot()`
+
+`ea.plot.ysPlot(x; ys; w; h; minX; maxX; minY; maxY)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `x` | npm | `ea.nf.iterations()` | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ? extends <abbr title="java.lang.Number">Number</abbr>></code> |
+| `ys` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ? extends <abbr title="java.lang.Number">Number</abbr>>></code> |
+| `w` | i | `600` | <code>int</code> |
+| `h` | i | `400` | <code>int</code> |
+| `minX` | d | `-Infinity` | <code>double</code> |
+| `maxX` | d | `-Infinity` | <code>double</code> |
+| `minY` | d | `-Infinity` | <code>double</code> |
+| `maxY` | d | `-Infinity` | <code>double</code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.XYPlotTableBuilder">XYPlotTableBuilder</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>></code>
+
+## Package `ea.problem`
+
+Aliases: `ea.p`, `ea.problem`
+
+### Builder `ea.problem.totalOrder()`
+
+`ea.p.totalOrder(qFunction; cFunction)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `qFunction` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr><S, Q></code> |
+| `cFunction` | npm | `ea.f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr><Q, C></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.TotalOrderQualityBasedProblem">TotalOrderQualityBasedProblem</abbr><S, Q></code>
+
+## Package `ea.randomGenerator`
+
+Aliases: `ea.randomGenerator`, `ea.rg`
+
+### Builder `ea.randomGenerator.defaultRG()`
+
+`ea.rg.defaultRG(seed)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `seed` | i | `0` | <code>int</code> |
+
+Produces <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code>
+
+## Package `ea.solver`
+
+Aliases: `ea.s`, `ea.solver`
+
+### Builder `ea.solver.numGA()`
+
+`ea.s.numGA(mapper; initialMinV; initialMaxV; crossoverP; sigmaMut; tournamentRate; minNTournament; nPop; nEval; diversity; remap)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `mapper` | npm |  | <code><abbr title="it.units.malelab.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr><<abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>, S></code> |
+| `initialMinV` | d | `-1.0` | <code>double</code> |
+| `initialMaxV` | d | `1.0` | <code>double</code> |
+| `crossoverP` | d | `0.8` | <code>double</code> |
+| `sigmaMut` | d | `0.35` | <code>double</code> |
+| `tournamentRate` | d | `0.05` | <code>double</code> |
+| `minNTournament` | i | `3` | <code>int</code> |
+| `nPop` | i | `100` | <code>int</code> |
+| `nEval` | i |  | <code>int</code> |
+| `diversity` | b | `false` | <code>boolean</code> |
+| `remap` | b | `false` | <code>boolean</code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.solver.StandardEvolver">StandardEvolver</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><<abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>, S, Q>, <abbr title="it.units.malelab.jgea.core.QualityBasedProblem">QualityBasedProblem</abbr><S, Q>, <abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>, S, Q></code>
+
+### Builder `ea.solver.simpleES()`
+
+`ea.s.simpleES(mapper; initialMinV; initialMaxV; sigma; parentsRate; nOfElites; nPop; nEval; remap)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `mapper` | npm |  | <code><abbr title="it.units.malelab.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr><<abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>, S></code> |
+| `initialMinV` | d | `-1.0` | <code>double</code> |
+| `initialMaxV` | d | `1.0` | <code>double</code> |
+| `sigma` | d | `0.35` | <code>double</code> |
+| `parentsRate` | d | `0.33` | <code>double</code> |
+| `nOfElites` | i | `1` | <code>int</code> |
+| `nPop` | i | `30` | <code>int</code> |
+| `nEval` | i |  | <code>int</code> |
+| `remap` | b | `false` | <code>boolean</code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.solver.SimpleEvolutionaryStrategy">SimpleEvolutionaryStrategy</abbr><S, Q></code>
 
 ## Package `engine`
 
@@ -134,152 +607,39 @@ Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">N
 
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.erallab.mrsim2d.core.tasks.piling.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>></code>
 
-## Package `listener`
-
-Aliases: `l`, `listener`
-
-### Builder `listener.allCsv()`
-
-`l.allCsv(filePath; individualFunctions; runKeys; onlyLast)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `filePath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
-| `individualFunctions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><? extends G, ? extends S, ? extends Q>, ?>></code> |
-| `runKeys` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="java.lang.String">String</abbr>></code> |
-| `onlyLast` | b | `false` | <code>boolean</code> |
-
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="it.units.erallab.robotevo2d.main.singleagent.Experiment">Experiment</abbr><G, S, Q>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="it.units.malelab.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="it.units.erallab.robotevo2d.main.singleagent.Run">Run</abbr><G, Q>>></code>
-
-### Builder `listener.bestCsv()`
-
-`l.bestCsv(filePath; popFunctions; individualFunctions; runKeys; onlyLast)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `filePath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
-| `popFunctions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><? extends G, ? extends S, ? extends Q>, ?>></code> |
-| `individualFunctions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><? extends G, ? extends S, ? extends Q>, ?>></code> |
-| `runKeys` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="java.lang.String">String</abbr>></code> |
-| `onlyLast` | b | `false` | <code>boolean</code> |
-
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="it.units.erallab.robotevo2d.main.singleagent.Experiment">Experiment</abbr><G, S, Q>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="it.units.malelab.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="it.units.erallab.robotevo2d.main.singleagent.Run">Run</abbr><G, Q>>></code>
-
-### Builder `listener.lastBestVideo()`
-
-`l.lastBestVideo(dirPath; fileNameTemplate; videoSaver; tasks; deferred)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `dirPath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
-| `fileNameTemplate` | s | `video-%s.mp4` | <code><abbr title="java.lang.String">String</abbr></code> |
-| `videoSaver` | npm | `videoSaver(drawer=d.basicWithAgentMiniature();h=400.0;w=600.0)` | <code><abbr title="it.units.erallab.robotevo2d.main.singleagent.VideoSaver">VideoSaver</abbr></code> |
-| `tasks` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.robotevo2d.main.singleagent.NamedTask">NamedTask</abbr><? super S>></code> |
-| `deferred` | b | `true` | <code>boolean</code> |
-
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="it.units.erallab.robotevo2d.main.singleagent.Experiment">Experiment</abbr><G, S, Q>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="it.units.malelab.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="it.units.erallab.robotevo2d.main.singleagent.Run">Run</abbr><G, Q>>></code>
-
-### Builder `listener.telegram()`
-
-`l.telegram(chatId; botIdFilePath; videoSaver; tasks; deferred)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `chatId` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
-| `botIdFilePath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
-| `videoSaver` | npm | `videoSaver(drawer=d.basicWithAgentMiniature();h=400.0;w=600.0)` | <code><abbr title="it.units.erallab.robotevo2d.main.singleagent.VideoSaver">VideoSaver</abbr></code> |
-| `tasks` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.robotevo2d.main.singleagent.NamedTask">NamedTask</abbr><? super S>></code> |
-| `deferred` | b | `true` | <code>boolean</code> |
-
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="it.units.erallab.robotevo2d.main.singleagent.Experiment">Experiment</abbr><G, S, Q>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="it.units.malelab.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="it.units.erallab.robotevo2d.main.singleagent.Run">Run</abbr><G, Q>>></code>
-
 ## Package `mapper`
 
 Aliases: `m`, `mapper`
 
-### Builder `mapper.composition()`
+### Builder `mapper.parametrizedSupplier()`
 
-`m.composition(first; second)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `first` | npm |  | <code><abbr title="it.units.erallab.robotevo2d.main.builder.MapperBuilder">MapperBuilder</abbr><A, B></code> |
-| `second` | npm |  | <code><abbr title="it.units.erallab.robotevo2d.main.builder.MapperBuilder">MapperBuilder</abbr><B, C></code> |
-
-Produces <code><abbr title="it.units.erallab.robotevo2d.main.builder.mapper.Composition">Composition</abbr></code>
-
-### Builder `mapper.toParametrized()`
-
-`m.toParametrized()`
-
-Produces <code><abbr title="it.units.erallab.robotevo2d.main.builder.mapper.ParametrizedSupplier">ToParametrized</abbr></code>
-
-## Package `namedFunction`
-
-Aliases: `namedFunction`, `nf`
-
-### Builder `namedFunction.base64Serializer()`
-
-`nf.base64Serializer()`
-
-Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><?, <abbr title="java.lang.String">String</abbr>></code>
-
-### Builder `namedFunction.composition()`
-
-`nf.composition(first; second)`
+`m.parametrizedSupplier(target)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `first` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><A, B></code> |
-| `second` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><B, C></code> |
+| `target` | npm |  | <code><abbr title="java.util.function.Supplier">Supplier</abbr><? extends <abbr title="it.units.erallab.mrsim2d.core.util.Parametrized">Parametrized</abbr>></code> |
 
-Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><A, C></code>
+Produces <code><abbr title="it.units.erallab.robotevo2d.main.builders.mapper.ParametrizedSupplier">ParametrizedSupplier</abbr></code>
 
-### Builder `namedFunction.fitness()`
+## Package `misc`
 
-`nf.fitness()`
+### Builder `misc.supplier()`
 
-Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><?, ?, ? extends Q>, Q></code>
-
-### Builder `namedFunction.genotype()`
-
-`nf.genotype()`
-
-Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><? extends G, ?, ?>, G></code>
-
-### Builder `namedFunction.solution()`
-
-`nf.solution()`
-
-Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><?, ? extends S, ?>, S></code>
-
-### Builder `namedFunction.stringSerialized()`
-
-`nf.stringSerialized()`
-
-Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><?, <abbr title="java.lang.String">String</abbr>></code>
-
-## Package `randomGenerator`
-
-Aliases: `randomGenerator`, `rg`
-
-### Builder `randomGenerator.defaultRG()`
-
-`rg.defaultRG(seed)`
+`misc.supplier(of; ; )`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `seed` | i | `0` | <code>int</code> |
+| `of` | npm |  | <code>T</code> |
 
-Produces <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code>
+Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr><T></code>
 
 ## Package `sim`
 
 Aliases: `s`, `sim`
 
-### Builder `sim.range()`
+### Builder `sim.doubleRange()`
 
-`s.range(min; max)`
+`s.doubleRange(min; max)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -417,9 +777,9 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `p` | npm | `sim.doubleRange(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `f` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `a` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 
 Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
@@ -429,9 +789,9 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `p` | npm | `sim.doubleRange(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `f` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `a` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 
 Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
@@ -441,9 +801,9 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `p` | npm | `sim.doubleRange(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `f` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `a` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 
 Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
@@ -453,9 +813,9 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `p` | npm | `sim.doubleRange(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `f` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `a` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 
 Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
@@ -802,46 +1162,4 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr>
 | `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
-
-## Package `solver`
-
-Aliases: `so`, `solver`
-
-### Builder `solver.doublesStandard()`
-
-`so.doublesStandard(initialMinV; initialMaxV; crossoverP; sigmaMut; tournamentRate; minNTournament; nPop; nEval; diversity; remap)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `initialMinV` | d | `-1.0` | <code>double</code> |
-| `initialMaxV` | d | `1.0` | <code>double</code> |
-| `crossoverP` | d | `0.8` | <code>double</code> |
-| `sigmaMut` | d | `0.35` | <code>double</code> |
-| `tournamentRate` | d | `0.05` | <code>double</code> |
-| `minNTournament` | i | `3` | <code>int</code> |
-| `nPop` | i | `100` | <code>int</code> |
-| `nEval` | i |  | <code>int</code> |
-| `diversity` | b | `false` | <code>boolean</code> |
-| `remap` | b | `false` | <code>boolean</code> |
-
-Produces <code><abbr title="it.units.erallab.robotevo2d.main.builder.solver.DoublesStandard">DoublesStandard</abbr></code>
-
-### Builder `solver.simpleES()`
-
-`so.simpleES(initialMinV; initialMaxV; sigma; parentsRate; nOfElites; nPop; nEval; remap; qExtractor; goal)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `initialMinV` | d | `-1.0` | <code>double</code> |
-| `initialMaxV` | d | `1.0` | <code>double</code> |
-| `sigma` | d | `0.35` | <code>double</code> |
-| `parentsRate` | d | `0.33` | <code>double</code> |
-| `nOfElites` | i | `1` | <code>int</code> |
-| `nPop` | i | `30` | <code>int</code> |
-| `nEval` | i |  | <code>int</code> |
-| `remap` | b | `false` | <code>boolean</code> |
-| `qExtractor` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr><?, <abbr title="java.lang.Double">Double</abbr>></code> |
-| `goal` | s | `min` | <code><abbr title="java.lang.String">String</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.robotevo2d.main.builder.solver.SimpleES">SimpleES</abbr></code>
 

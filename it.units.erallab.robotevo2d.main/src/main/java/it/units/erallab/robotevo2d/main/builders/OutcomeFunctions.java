@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo2d.main.builder;
+package it.units.erallab.robotevo2d.main.builders;
 
 import it.units.erallab.mrsim2d.core.tasks.locomotion.Outcome;
 import it.units.erallab.mrsim2d.core.util.DoubleRange;
@@ -24,8 +24,9 @@ import it.units.malelab.jnb.core.Param;
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
-public class ExtractorBuilder {
+public class OutcomeFunctions {
 
+  @SuppressWarnings("unused")
   public static NamedFunction<Outcome, Double> locomotionXVelocity(@Param(value = "transientT", dD = 0d) double transientT) {
     return NamedFunction.build(
         "vx",
@@ -34,6 +35,7 @@ public class ExtractorBuilder {
     );
   }
 
+  @SuppressWarnings("unused")
   public static NamedFunction<it.units.erallab.mrsim2d.core.tasks.piling.Outcome, Double> pilingAverageHeight() {
     return NamedFunction.build(
         "dh",
@@ -42,6 +44,7 @@ public class ExtractorBuilder {
     );
   }
 
+  @SuppressWarnings("unused")
   public static NamedFunction<it.units.erallab.mrsim2d.core.tasks.piling.Outcome, Double> pilingHeightDiff() {
     return NamedFunction.build(
         "dh",

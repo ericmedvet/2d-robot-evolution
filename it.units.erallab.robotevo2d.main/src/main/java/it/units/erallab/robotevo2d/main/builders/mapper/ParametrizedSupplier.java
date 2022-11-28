@@ -1,6 +1,7 @@
-package it.units.erallab.robotevo2d.main.builder.mapper;
+package it.units.erallab.robotevo2d.main.builders.mapper;
 
 import it.units.erallab.mrsim2d.core.util.Parametrized;
+import it.units.malelab.jgea.experimenter.InvertibleMapper;
 import it.units.malelab.jnb.core.BuilderMethod;
 import it.units.malelab.jnb.core.Param;
 
