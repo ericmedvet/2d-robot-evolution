@@ -29,8 +29,9 @@
     <packaging>pom</packaging>
     <properties>
         <revision>1.0.2-dev</revision>
-        <mrsim2d.version>0.6.11-dev</mrsim2d.version>
-        <jgea.version>2.2.3</jgea.version>
+        <mrsim2d.version>0.6.11</mrsim2d.version>
+        <jgea.version>2.3.0</jgea.version>
+        <jnb.version>1.0.1</jnb.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>18</jdk.version>
     </properties>
@@ -93,13 +94,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub ericmedvet Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/ericmedvet/2d-robot-evolution</url>
-        </repository>
-    </distributionManagement>
 
 </project>
