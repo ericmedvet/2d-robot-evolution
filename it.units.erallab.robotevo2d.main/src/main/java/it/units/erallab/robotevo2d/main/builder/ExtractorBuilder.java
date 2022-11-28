@@ -16,10 +16,10 @@
 
 package it.units.erallab.robotevo2d.main.builder;
 
-import it.units.erallab.mrsim2d.builder.Param;
 import it.units.erallab.mrsim2d.core.tasks.locomotion.Outcome;
 import it.units.erallab.mrsim2d.core.util.DoubleRange;
 import it.units.malelab.jgea.core.listener.NamedFunction;
+import it.units.malelab.jnb.core.Param;
 
 /**
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution

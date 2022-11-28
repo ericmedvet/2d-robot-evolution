@@ -16,7 +16,7 @@
 
 package it.units.erallab.robotevo2d.main.builder;
 
-import it.units.erallab.mrsim2d.builder.Param;
+import it.units.malelab.jnb.core.Param;
 
 import java.util.Random;
 import java.util.random.RandomGenerator;

@@ -1,9 +1,5 @@
 package it.units.erallab.robotevo2d.main.builder;
 
-import it.units.erallab.mrsim2d.builder.NamedParamMap;
-import it.units.erallab.mrsim2d.builder.Param;
-import it.units.erallab.mrsim2d.builder.ParamMap;
-import it.units.erallab.mrsim2d.builder.StringNamedParamMap;
 import it.units.erallab.mrsim2d.viewer.VideoBuilder;
 import it.units.erallab.robotevo2d.main.singleagent.Experiment;
 import it.units.erallab.robotevo2d.main.singleagent.NamedTask;
@@ -15,6 +11,10 @@ import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
 import it.units.malelab.jgea.core.util.ImagePlotters;
 import it.units.malelab.jgea.core.util.Misc;
 import it.units.malelab.jgea.telegram.TelegramUpdater;
+import it.units.malelab.jnb.core.NamedParamMap;
+import it.units.malelab.jnb.core.Param;
+import it.units.malelab.jnb.core.ParamMap;
+import it.units.malelab.jnb.core.StringNamedParamMap;
 
 import java.io.BufferedReader;
 import java.io.File;

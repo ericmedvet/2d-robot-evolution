@@ -16,9 +16,9 @@
 
 package it.units.erallab.robotevo2d.main.singleagent;
 
-import it.units.erallab.mrsim2d.builder.NamedBuilder;
 import it.units.erallab.robotevo2d.main.builder.*;
 import it.units.erallab.robotevo2d.main.builder.mapper.ParametrizedSupplier;
+import it.units.malelab.jnb.core.NamedBuilder;
 
 import java.util.List;
 

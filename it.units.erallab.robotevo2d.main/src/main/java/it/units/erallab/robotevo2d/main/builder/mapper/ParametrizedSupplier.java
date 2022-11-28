@@ -1,8 +1,8 @@
 package it.units.erallab.robotevo2d.main.builder.mapper;
 
-import it.units.erallab.mrsim2d.builder.BuilderMethod;
-import it.units.erallab.mrsim2d.builder.Param;
 import it.units.erallab.mrsim2d.core.util.Parametrized;
+import it.units.malelab.jnb.core.BuilderMethod;
+import it.units.malelab.jnb.core.Param;
 
 import java.util.Arrays;
 import java.util.List;

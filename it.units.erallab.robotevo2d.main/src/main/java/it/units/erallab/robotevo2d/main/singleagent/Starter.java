@@ -18,9 +18,6 @@ package it.units.erallab.robotevo2d.main.singleagent;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
-import it.units.erallab.mrsim2d.builder.InfoPrinter;
-import it.units.erallab.mrsim2d.builder.NamedBuilder;
-import it.units.erallab.mrsim2d.builder.StringNamedParamMap;
 import it.units.malelab.jgea.core.listener.ListenerFactory;
 import it.units.malelab.jgea.core.listener.NamedFunction;
 import it.units.malelab.jgea.core.listener.ProgressMonitor;
@@ -29,6 +26,9 @@ import it.units.malelab.jgea.core.solver.SolverException;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
 import it.units.malelab.jgea.core.util.Misc;
 import it.units.malelab.jgea.tui.TerminalMonitor;
+import it.units.malelab.jnb.core.InfoPrinter;
+import it.units.malelab.jnb.core.NamedBuilder;
+import it.units.malelab.jnb.core.StringNamedParamMap;
 
 import java.io.*;
 import java.time.Duration;

@@ -1,9 +1,9 @@
 package it.units.erallab.robotevo2d.main.singleagent;
 
-import it.units.erallab.mrsim2d.builder.Param;
 import it.units.erallab.mrsim2d.core.engine.Engine;
 import it.units.malelab.jgea.core.listener.ListenerFactory;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
+import it.units.malelab.jnb.core.Param;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;

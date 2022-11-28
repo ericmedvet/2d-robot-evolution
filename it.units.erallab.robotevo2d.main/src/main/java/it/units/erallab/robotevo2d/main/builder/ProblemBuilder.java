@@ -1,7 +1,7 @@
 package it.units.erallab.robotevo2d.main.builder;
 
-import it.units.erallab.mrsim2d.builder.Param;
 import it.units.malelab.jgea.core.TotalOrderQualityBasedProblem;
+import it.units.malelab.jnb.core.Param;
 
 import java.util.Comparator;
 import java.util.function.Function;

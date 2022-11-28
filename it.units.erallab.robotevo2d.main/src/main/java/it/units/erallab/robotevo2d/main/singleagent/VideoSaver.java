@@ -1,8 +1,8 @@
 package it.units.erallab.robotevo2d.main.singleagent;
 
-import it.units.erallab.mrsim2d.builder.Param;
 import it.units.erallab.mrsim2d.viewer.Drawer;
 import it.units.erallab.mrsim2d.viewer.VideoUtils;
+import it.units.malelab.jnb.core.Param;
 
 import java.util.function.Function;
 

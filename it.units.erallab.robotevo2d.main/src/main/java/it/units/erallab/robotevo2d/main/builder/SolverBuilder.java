@@ -1,6 +1,5 @@
 package it.units.erallab.robotevo2d.main.builder;
 
-import it.units.erallab.mrsim2d.builder.Param;
 import it.units.erallab.robotevo2d.main.builder.mapper.InvertibleMapper;
 import it.units.malelab.jgea.core.IndependentFactory;
 import it.units.malelab.jgea.core.QualityBasedProblem;
@@ -16,6 +15,7 @@ import it.units.malelab.jgea.core.solver.StandardEvolver;
 import it.units.malelab.jgea.core.solver.StandardWithEnforcedDiversityEvolver;
 import it.units.malelab.jgea.core.solver.StopConditions;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
+import it.units.malelab.jnb.core.Param;
 
 import java.util.List;
 import java.util.Map;

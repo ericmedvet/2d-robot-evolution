@@ -1,7 +1,5 @@
 package it.units.erallab.robotevo2d.main.singleagent;
 
-import it.units.erallab.mrsim2d.builder.Param;
-import it.units.erallab.mrsim2d.builder.ParamMap;
 import it.units.erallab.mrsim2d.core.engine.Engine;
 import it.units.erallab.mrsim2d.core.tasks.Task;
 import it.units.malelab.jgea.core.QualityBasedProblem;
@@ -9,6 +7,8 @@ import it.units.malelab.jgea.core.listener.Listener;
 import it.units.malelab.jgea.core.solver.AbstractPopulationBasedIterativeSolver;
 import it.units.malelab.jgea.core.solver.SolverException;
 import it.units.malelab.jgea.core.solver.state.POSetPopulationState;
+import it.units.malelab.jnb.core.Param;
+import it.units.malelab.jnb.core.ParamMap;
 
 import java.util.Collection;
 import java.util.concurrent.ExecutorService;

@@ -1,9 +1,9 @@
 package it.units.erallab.robotevo2d.main.builder;
 
-import it.units.erallab.mrsim2d.builder.Param;
 import it.units.malelab.jgea.core.listener.NamedFunction;
 import it.units.malelab.jgea.core.listener.NamedFunctions;
 import it.units.malelab.jgea.core.solver.Individual;
+import it.units.malelab.jnb.core.Param;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
