@@ -19,10 +19,8 @@ package it.units.erallab.robotevo2d.main;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
-import it.units.erallab.robotevo2d.main.builders.Drawers;
-import it.units.erallab.robotevo2d.main.builders.Engines;
+import it.units.erallab.mrsim2d.buildable.PreparedNamedBuilder;
 import it.units.erallab.robotevo2d.main.builders.Mappers;
-import it.units.erallab.robotevo2d.main.builders.OutcomeFunctions;
 import it.units.malelab.jgea.experimenter.Experimenter;
 import it.units.malelab.jnb.core.InfoPrinter;
 import it.units.malelab.jnb.core.NamedBuilder;
@@ -82,14 +80,10 @@ public class Starter {
     }
     //prepare local named builder
     NamedBuilder<Object> nb = NamedBuilder.empty()
-        .and(it.units.erallab.mrsim2d.core.PreparedNamedBuilder.get())
+        .and(PreparedNamedBuilder.get())
         .and(it.units.malelab.jgea.experimenter.PreparedNamedBuilder.get())
         .and(List.of("evorobots", "er"), NamedBuilder.empty()
-            .and(List.of("outcomeFunction", "of"), NamedBuilder.fromUtilityClass(OutcomeFunctions.class))
-            .and("engine", NamedBuilder.fromUtilityClass(Engines.class))
-            .and(List.of("drawer", "d"), NamedBuilder.fromUtilityClass(Drawers.class))
             .and(List.of("mapper", "m"), NamedBuilder.fromUtilityClass(Mappers.class))
-            .and(NamedBuilder.fromClass(VideoSaver.class))
         );
     //check if it's just a help invocation
     if (configuration.showExpFileName) {

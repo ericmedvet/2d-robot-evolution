@@ -41,7 +41,7 @@
         </dependency>
         <dependency>
             <groupId>it.units.erallab</groupId>
-            <artifactId>mrsim2d.engine.dyn4j</artifactId>
+            <artifactId>mrsim2d.buildable</artifactId>
             <version>${mrsim2d.version}</version>
         </dependency>
         <dependency>

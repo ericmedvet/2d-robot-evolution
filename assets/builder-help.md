@@ -1,37 +1,3 @@
-## Unnamed package
-
-### Builder `videoSaver()`
-
-`videoSaver(w; h; frameRate; startTime; endTime; codec; drawer)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `w` | i | `400` | <code>int</code> |
-| `h` | i | `250` | <code>int</code> |
-| `frameRate` | d | `30.0` | <code>double</code> |
-| `startTime` | d | `0.0` | <code>double</code> |
-| `endTime` | d | `30.0` | <code>double</code> |
-| `codec` | e | `JCODEC` | <code><abbr title="it.units.erallab.mrsim2d.viewer.VideoUtils$EncoderFacility">VideoUtils$EncoderFacility</abbr></code> |
-| `drawer` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.String">String</abbr>, <abbr title="it.units.erallab.mrsim2d.viewer.Drawer">Drawer</abbr>></code> |
-
-Produces <code><abbr title="it.units.erallab.robotevo2d.main.VideoSaver">VideoSaver</abbr></code>
-
-## Package `drawer`
-
-Aliases: `d`, `drawer`
-
-### Builder `drawer.basic()`
-
-`d.basic()`
-
-Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.String">String</abbr>, <abbr title="it.units.erallab.mrsim2d.viewer.Drawer">Drawer</abbr>></code>
-
-### Builder `drawer.basicWithAgentMiniature()`
-
-`d.basicWithAgentMiniature()`
-
-Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.String">String</abbr>, <abbr title="it.units.erallab.mrsim2d.viewer.Drawer">Drawer</abbr>></code>
-
 ## Package `ea`
 
 ### Builder `ea.experiment()`
@@ -573,73 +539,50 @@ Produces <code><abbr title="it.units.malelab.jgea.core.solver.StandardEvolver">S
 
 Produces <code><abbr title="it.units.malelab.jgea.core.solver.SimpleEvolutionaryStrategy">SimpleEvolutionaryStrategy</abbr><S, Q></code>
 
-## Package `engine`
+## Package `evorobots.mapper`
 
-### Builder `engine.defaultEngine()`
+Aliases: `er.m`, `er.mapper`, `evorobots.m`, `evorobots.mapper`
 
-`engine.defaultEngine()`
+### Builder `evorobots.mapper.parametrized()`
 
-Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr><<abbr title="it.units.erallab.mrsim2d.core.engine.Engine">Engine</abbr>></code>
-
-## Package `extractor`
-
-Aliases: `e`, `extractor`
-
-### Builder `extractor.locomotionXVelocity()`
-
-`e.locomotionXVelocity(transientT)`
+`er.m.parametrized(target; ; )`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `transientT` | d | `0.0` | <code>double</code> |
+| `target` | npm |  | <code>T</code> |
 
-Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.erallab.mrsim2d.core.tasks.locomotion.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>></code>
-
-### Builder `extractor.pilingAverageHeight()`
-
-`e.pilingAverageHeight()`
-
-Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.erallab.mrsim2d.core.tasks.piling.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>></code>
-
-### Builder `extractor.pilingHeightDiff()`
-
-`e.pilingHeightDiff()`
-
-Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.erallab.mrsim2d.core.tasks.piling.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>></code>
-
-## Package `mapper`
-
-Aliases: `m`, `mapper`
-
-### Builder `mapper.parametrizedSupplier()`
-
-`m.parametrizedSupplier(target)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `target` | npm |  | <code><abbr title="java.util.function.Supplier">Supplier</abbr><? extends <abbr title="it.units.erallab.mrsim2d.core.util.Parametrized">Parametrized</abbr>></code> |
-
-Produces <code><abbr title="it.units.erallab.robotevo2d.main.builders.mapper.ParametrizedSupplier">ParametrizedSupplier</abbr></code>
-
-## Package `misc`
-
-### Builder `misc.supplier()`
-
-`misc.supplier(of; ; )`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `of` | npm |  | <code>T</code> |
-
-Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr><T></code>
+Produces <code><abbr title="it.units.malelab.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr><<abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>, <abbr title="java.util.function.Supplier">Supplier</abbr><T>></code>
 
 ## Package `sim`
 
 Aliases: `s`, `sim`
 
-### Builder `sim.doubleRange()`
+### Builder `sim.drawer()`
 
-`s.doubleRange(min; max)`
+`s.drawer(enlargement; followTime; profilingTime; miniWorldEnlargement; miniWorld; miniAgents; engineProfiling; actions)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `enlargement` | d | `1.5` | <code>double</code> |
+| `followTime` | d | `2.0` | <code>double</code> |
+| `profilingTime` | d | `1.0` | <code>double</code> |
+| `miniWorldEnlargement` | d | `10.0` | <code>double</code> |
+| `miniWorld` | b | `false` | <code>boolean</code> |
+| `miniAgents` | b | `true` | <code>boolean</code> |
+| `engineProfiling` | b | `false` | <code>boolean</code> |
+| `actions` | b | `false` | <code>boolean</code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.String">String</abbr>, <abbr title="it.units.erallab.mrsim2d.viewer.Drawer">Drawer</abbr>></code>
+
+### Builder `sim.engine()`
+
+`s.engine()`
+
+Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr><<abbr title="it.units.erallab.mrsim2d.core.engine.Engine">Engine</abbr>></code>
+
+### Builder `sim.range()`
+
+`s.range(min; max)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -647,6 +590,27 @@ Aliases: `s`, `sim`
 | `max` | d |  | <code>double</code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code>
+
+### Builder `sim.supplier()`
+
+`s.supplier(of; ; )`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm |  | <code>T</code> |
+
+Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr><T></code>
+
+### Builder `sim.taskRunner()`
+
+`s.taskRunner(task; engine)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `task` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.tasks.Task">Task</abbr><A, O></code> |
+| `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr><<abbr title="it.units.erallab.mrsim2d.core.engine.Engine">Engine</abbr>></code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr><A, O></code>
 
 ## Package `sim.agent`
 
@@ -659,7 +623,7 @@ Aliases: `s.a`, `s.agent`, `sim.a`, `sim.agent`
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `body` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
-| `function` | npm |  | <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, ? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
+| `function` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><?></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR">CentralizedNumGridVSR</abbr></code>
 
@@ -670,7 +634,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.Central
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `body` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
-| `function` | npm |  | <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, ? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
+| `function` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><?></code> |
 | `signals` | i |  | <code>int</code> |
 | `directional` | b | `false` | <code>boolean</code> |
 
@@ -683,7 +647,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.HeteroD
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `body` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
-| `function` | npm |  | <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, ? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
+| `function` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><?></code> |
 | `signals` | i |  | <code>int</code> |
 | `directional` | b | `false` | <code>boolean</code> |
 
@@ -696,7 +660,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.HomoDis
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `sensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>></code> |
-| `function` | npm |  | <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, ? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
+| `function` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><?></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.independentvoxel.NumIndependentVoxel">NumIndependentVoxel</abbr></code>
 
@@ -707,41 +671,9 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.independentvoxe
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `modules` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Module">AbstractLeggedHybridModularRobot$Module</abbr>></code> |
-| `function` | npm |  | <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, ? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
+| `function` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><?></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.NumLeggedHybridModularRobot">NumLeggedHybridModularRobot</abbr></code>
-
-## Package `sim.agent.legged`
-
-Aliases: `s.a.l`, `s.a.legged`, `s.agent.l`, `s.agent.legged`, `sim.a.l`, `sim.a.legged`, `sim.agent.l`, `sim.agent.legged`
-
-### Builder `sim.agent.legged.legChunk()`
-
-`s.a.l.legChunk(trunkLength; width; mass; upConnector)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `trunkLength` | d | `1.5` | <code>double</code> |
-| `width` | d | `1.0` | <code>double</code> |
-| `mass` | d | `0.375` | <code>double</code> |
-| `upConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Connector">AbstractLeggedHybridModularRobot$Connector</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$LegChunk">AbstractLeggedHybridModularRobot$LegChunk</abbr></code>
-
-### Builder `sim.agent.legged.module()`
-
-`s.a.l.module(trunkLength; trunkWidth; trunkMass; legChunks; downConnector; rightConnector)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `trunkLength` | d | `4.0` | <code>double</code> |
-| `trunkWidth` | d | `1.0` | <code>double</code> |
-| `trunkMass` | d | `1.0` | <code>double</code> |
-| `legChunks` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$LegChunk">AbstractLeggedHybridModularRobot$LegChunk</abbr>></code> |
-| `downConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Connector">AbstractLeggedHybridModularRobot$Connector</abbr></code> |
-| `rightConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Connector">AbstractLeggedHybridModularRobot$Connector</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Module">AbstractLeggedHybridModularRobot$Module</abbr></code>
 
 ## Package `sim.function`
 
@@ -757,7 +689,7 @@ Aliases: `s.f`, `s.function`, `sim.f`, `sim.function`
 | `innerFunction` | npm |  | <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, ? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
 | `types` | e[] | `[CURRENT, TREND, AVG]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.DiffInputTRF$Type">DiffInputTRF$Type</abbr>></code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.DiffInputTRF">DiffInputTRF</abbr>></code>
+Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.DiffInputTRF">DiffInputTRF</abbr>></code>
 
 ### Builder `sim.function.mlp()`
 
@@ -769,7 +701,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 | `nOfInnerLayers` | i | `1` | <code>int</code> |
 | `activationFunction` | e | `TANH` | <code><abbr title="it.units.erallab.mrsim2d.core.functions.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.MultiLayerPerceptron">MultiLayerPerceptron</abbr>></code>
+Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.MultiLayerPerceptron">MultiLayerPerceptron</abbr>></code>
 
 ### Builder `sim.function.sinP()`
 
@@ -781,7 +713,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 | `f` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 | `a` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
+Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
 ### Builder `sim.function.sinPA()`
 
@@ -793,7 +725,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 | `f` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 | `a` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
+Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
 ### Builder `sim.function.sinPF()`
 
@@ -805,7 +737,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 | `f` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 | `a` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
+Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
 ### Builder `sim.function.sinPFA()`
 
@@ -817,7 +749,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 | `f` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 | `a` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
+Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
 ### Builder `sim.function.stepOut()`
 
@@ -828,7 +760,39 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 | `stepT` | d |  | <code>double</code> |
 | `innerFunction` | npm |  | <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, ? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="it.units.erallab.mrsim2d.core.functions.SteppedOutputTRF">SteppedOutputTRF</abbr>></code>
+Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.SteppedOutputTRF">SteppedOutputTRF</abbr>></code>
+
+## Package `sim.legged`
+
+Aliases: `s.legged`, `sim.legged`
+
+### Builder `sim.legged.legChunk()`
+
+`s.legged.legChunk(trunkLength; width; mass; upConnector)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `trunkLength` | d | `1.5` | <code>double</code> |
+| `width` | d | `1.0` | <code>double</code> |
+| `mass` | d | `0.375` | <code>double</code> |
+| `upConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Connector">AbstractLeggedHybridModularRobot$Connector</abbr></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$LegChunk">AbstractLeggedHybridModularRobot$LegChunk</abbr></code>
+
+### Builder `sim.legged.module()`
+
+`s.legged.module(trunkLength; trunkWidth; trunkMass; legChunks; downConnector; rightConnector)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `trunkLength` | d | `4.0` | <code>double</code> |
+| `trunkWidth` | d | `1.0` | <code>double</code> |
+| `trunkMass` | d | `1.0` | <code>double</code> |
+| `legChunks` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$LegChunk">AbstractLeggedHybridModularRobot$LegChunk</abbr>></code> |
+| `downConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Connector">AbstractLeggedHybridModularRobot$Connector</abbr></code> |
+| `rightConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Connector">AbstractLeggedHybridModularRobot$Connector</abbr></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Module">AbstractLeggedHybridModularRobot$Module</abbr></code>
 
 ## Package `sim.sensor`
 
@@ -910,7 +874,7 @@ Aliases: `s.task`, `sim.task`
 
 ### Builder `sim.task.fallPiling()`
 
-`s.task.fallPiling(duration; fallInterval; nOfAgents; xSigmaRatio; randomGenerator; terrain; yGapRatio)`
+`s.task.fallPiling(duration; fallInterval; nOfAgents; xSigmaRatio; randomGenerator; terrain; yGapRatio; xGap)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -919,34 +883,87 @@ Aliases: `s.task`, `sim.task`
 | `nOfAgents` | i |  | <code>int</code> |
 | `xSigmaRatio` | d | `0.1` | <code>double</code> |
 | `randomGenerator` | npm |  | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
-| `terrain` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
+| `terrain` | npm | `sim.terrain.flat()` | <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
 | `yGapRatio` | d | `1.0` | <code>double</code> |
+| `xGap` | d | `10.0` | <code>double</code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.tasks.piling.FallPiling">FallPiling</abbr></code>
 
 ### Builder `sim.task.locomotion()`
 
-`s.task.locomotion(duration; terrain)`
+`s.task.locomotion(duration; terrain; initialXGap; initialYGap)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `duration` | d | `30.0` | <code>double</code> |
-| `terrain` | npm | `terrain.flat()` | <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
+| `terrain` | npm | `sim.terrain.flat()` | <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
+| `initialXGap` | d | `1.0` | <code>double</code> |
+| `initialYGap` | d | `1.0` | <code>double</code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.tasks.locomotion.Locomotion">Locomotion</abbr></code>
 
 ### Builder `sim.task.standPiling()`
 
-`s.task.standPiling(duration; nOfAgents; xGapRatio; terrain)`
+`s.task.standPiling(duration; nOfAgents; xGapRatio; terrain; firstXGap; initialYGap)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `duration` | d | `45.0` | <code>double</code> |
 | `nOfAgents` | i |  | <code>int</code> |
 | `xGapRatio` | d | `1.0` | <code>double</code> |
-| `terrain` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
+| `terrain` | npm | `sim.terrain.flat()` | <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
+| `firstXGap` | d | `10.0` | <code>double</code> |
+| `initialYGap` | d | `0.1` | <code>double</code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.tasks.piling.StandPiling">StandPiling</abbr></code>
+
+## Package `sim.task.locomotion`
+
+Aliases: `s.task.l`, `s.task.locomotion`, `sim.task.l`, `sim.task.locomotion`
+
+### Builder `sim.task.locomotion.xDistance()`
+
+`s.task.l.xDistance(transientTime)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `transientTime` | d | `0.0` | <code>double</code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.erallab.mrsim2d.core.tasks.locomotion.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>></code>
+
+### Builder `sim.task.locomotion.xVelocity()`
+
+`s.task.l.xVelocity(transientTime)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `transientTime` | d | `0.0` | <code>double</code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.erallab.mrsim2d.core.tasks.locomotion.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>></code>
+
+## Package `sim.task.piling`
+
+Aliases: `s.task.p`, `s.task.piling`, `sim.task.p`, `sim.task.piling`
+
+### Builder `sim.task.piling.avgH()`
+
+`s.task.p.avgH(transientTime)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `transientTime` | d | `0.0` | <code>double</code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.erallab.mrsim2d.core.tasks.piling.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>></code>
+
+### Builder `sim.task.piling.maxH()`
+
+`s.task.p.maxH(transientTime)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `transientTime` | d | `0.0` | <code>double</code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.erallab.mrsim2d.core.tasks.piling.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>></code>
 
 ## Package `sim.terrain`
 

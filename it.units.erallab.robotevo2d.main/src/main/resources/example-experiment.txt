@@ -13,21 +13,25 @@ ea.experiment(
           );
           function = s.f.mlp()
         ));
-        nEval = 500;
+        nEval = 100;
         nPop = 10
       );
-      problem = ea.p.totalOrder(qFunction = sphere())
+      problem = ea.p.totalOrder(
+        qFunction = s.taskRunner(task = s.task.locomotion());
+        cFunction = s.task.locomotion.xVelocity();
+        type = maximize
+      )
     )
   ];
   listeners = [
     ea.l.tui(
       functions = [
-        ea.nf.fitness(individual = ea.nf.best(); s = "%6.2f");
-        ea.nf.hist(collection = ea.nf.each(map = ea.nf.fitness(); collection = ea.nf.all()));
-        ea.nf.percentile(collection = ea.nf.each(map = ea.nf.fitness(); collection = ea.nf.all()); p = 0.75; s = "%6.2f")
+        ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.l.xVelocity(); s = "%5.2f"));
+        ea.nf.fitnessHist(f = ea.nf.f(outerF = s.task.l.xVelocity()))
       ];
-      runKeys = ["randomGenerator.seed"; "solver"];
-      plots = [ea.plot.fitness()]
+      plots = [
+        ea.plot.fitness(f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0)
+      ]
     )
   ]
 )
