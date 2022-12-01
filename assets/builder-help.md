@@ -141,6 +141,17 @@ Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">N
 
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><G, S, Q>></code>
 
+### Builder `ea.namedFunction.bestFitness()`
+
+`ea.nf.bestFitness(f; s)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `f` | npm | `ea.nf.identity()` | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><Q, T></code> |
+| `s` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><?, ?, Q>, T></code>
+
 ### Builder `ea.namedFunction.births()`
 
 `ea.nf.births()`
@@ -183,6 +194,19 @@ Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">N
 
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.lang.Double">Double</abbr>></code>
 
+### Builder `ea.namedFunction.f()`
+
+`ea.nf.f(outerF; innerF; name; s; )`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `outerF` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr><T, R></code> |
+| `innerF` | npm | `ea.nf.identity()` | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, T></code> |
+| `name` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+| `s` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, R></code>
+
 ### Builder `ea.namedFunction.firsts()`
 
 `ea.nf.firsts()`
@@ -199,6 +223,17 @@ Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">N
 | `s` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, F></code>
+
+### Builder `ea.namedFunction.fitnessHist()`
+
+`ea.nf.fitnessHist(f; nBins)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `f` | npm | `ea.nf.identity()` | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><Q, <abbr title="java.lang.Number">Number</abbr>></code> |
+| `nBins` | i | `8` | <code>int</code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><?, ?, Q>, <abbr title="java.lang.String">String</abbr>></code>
 
 ### Builder `ea.namedFunction.formatted()`
 
@@ -474,12 +509,13 @@ Aliases: `ea.p`, `ea.problem`
 
 ### Builder `ea.problem.totalOrder()`
 
-`ea.p.totalOrder(qFunction; cFunction)`
+`ea.p.totalOrder(qFunction; cFunction; type)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `qFunction` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr><S, Q></code> |
 | `cFunction` | npm | `ea.f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr><Q, C></code> |
+| `type` | e | `MINIMIZE` | <code><abbr title="it.units.malelab.jgea.experimenter.builders.Problems$OptimizationType">Problems$OptimizationType</abbr></code> |
 
 Produces <code><abbr title="it.units.malelab.jgea.core.TotalOrderQualityBasedProblem">TotalOrderQualityBasedProblem</abbr><S, Q></code>
 
