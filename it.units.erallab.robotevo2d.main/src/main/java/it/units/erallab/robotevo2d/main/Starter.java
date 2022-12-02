@@ -92,6 +92,7 @@ public class Starter {
     }
     if (!configuration.mdHelpFilePath.isEmpty()) {
       try (PrintStream filePS = new PrintStream(configuration.mdHelpFilePath)) {
+        System.out.printf("Writing the builder help file on %s%n", configuration.mdHelpFilePath);
         InfoPrinter infoPrinter = new InfoPrinter();
         infoPrinter.print(nb, filePS);
         System.exit(0);

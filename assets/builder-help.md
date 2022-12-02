@@ -28,6 +28,12 @@ Produces <code><abbr title="it.units.malelab.jgea.experimenter.Run">Run</abbr></
 
 Aliases: `ea.f`, `ea.function`
 
+### Builder `ea.function.fromBase64()`
+
+`ea.f.fromBase64()`
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.String">String</abbr>, <abbr title="java.lang.Object">Object</abbr>></code>
+
 ### Builder `ea.function.identity()`
 
 `ea.f.identity()`
@@ -589,6 +595,16 @@ Aliases: `er.m`, `er.mapper`, `evorobots.m`, `evorobots.mapper`
 
 Produces <code><abbr title="it.units.malelab.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr><<abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>, <abbr title="java.util.function.Supplier">Supplier</abbr><T>></code>
 
+### Builder `evorobots.mapper.parametrizedHeteroBrains()`
+
+`er.m.parametrizedHeteroBrains(target)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `target` | npm |  | <code>T</code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr><<abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>, <abbr title="java.util.function.Supplier">Supplier</abbr><T>></code>
+
 ### Builder `evorobots.mapper.parametrizedHomoBrains()`
 
 `er.m.parametrizedHomoBrains(target)`
@@ -708,6 +724,180 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.independentvoxe
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.NumLeggedHybridModularRobot">NumLeggedHybridModularRobot</abbr></code>
 
+## Package `sim.agent.legged`
+
+Aliases: `s.a.l`, `s.a.legged`, `s.agent.l`, `s.agent.legged`, `sim.a.l`, `sim.a.legged`, `sim.agent.l`, `sim.agent.legged`
+
+### Builder `sim.agent.legged.legChunk()`
+
+`s.a.l.legChunk(trunkLength; width; mass; upConnector; jointSensors)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `trunkLength` | d | `1.5` | <code>double</code> |
+| `width` | d | `1.0` | <code>double</code> |
+| `mass` | d | `0.375` | <code>double</code> |
+| `upConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Connector">AbstractLeggedHybridModularRobot$Connector</abbr></code> |
+| `jointSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><?>></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$LegChunk">AbstractLeggedHybridModularRobot$LegChunk</abbr></code>
+
+### Builder `sim.agent.legged.module()`
+
+`s.a.l.module(trunkLength; trunkWidth; trunkMass; legChunks; downConnector; rightConnector; trunkSensors; rightConnectorSensors; downConnectorSensors)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `trunkLength` | d | `4.0` | <code>double</code> |
+| `trunkWidth` | d | `1.0` | <code>double</code> |
+| `trunkMass` | d | `1.0` | <code>double</code> |
+| `legChunks` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$LegChunk">AbstractLeggedHybridModularRobot$LegChunk</abbr>></code> |
+| `downConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Connector">AbstractLeggedHybridModularRobot$Connector</abbr></code> |
+| `rightConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Connector">AbstractLeggedHybridModularRobot$Connector</abbr></code> |
+| `trunkSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><?>></code> |
+| `rightConnectorSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><?>></code> |
+| `downConnectorSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><?>></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Module">AbstractLeggedHybridModularRobot$Module</abbr></code>
+
+## Package `sim.agent.vsr`
+
+Aliases: `s.a.vsr`, `s.agent.vsr`, `sim.a.vsr`, `sim.agent.vsr`
+
+### Builder `sim.agent.vsr.gridBody()`
+
+`s.a.vsr.gridBody(shape; sensorizingFunction)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `shape` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code> |
+| `sensorizingFunction` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>>, <abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>>>></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code>
+
+## Package `sim.agent.vsr.sensorizingFunction`
+
+Aliases: `s.a.vsr.sensorizingFunction`, `s.a.vsr.sf`, `s.agent.vsr.sensorizingFunction`, `s.agent.vsr.sf`, `sim.a.vsr.sensorizingFunction`, `sim.a.vsr.sf`, `sim.agent.vsr.sensorizingFunction`, `sim.agent.vsr.sf`
+
+### Builder `sim.agent.vsr.sensorizingFunction.directional()`
+
+`s.a.vsr.sf.directional(nSensors; eSensors; sSensors; wSensors; headSensors)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `nSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>></code> |
+| `eSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>></code> |
+| `sSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>></code> |
+| `wSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>></code> |
+| `headSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>></code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>>, <abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>>>></code>
+
+### Builder `sim.agent.vsr.sensorizingFunction.empty()`
+
+`s.a.vsr.sf.empty()`
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>>, <abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>>>></code>
+
+### Builder `sim.agent.vsr.sensorizingFunction.uniform()`
+
+`s.a.vsr.sf.uniform(sensors)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `sensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>></code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>>, <abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>>>></code>
+
+## Package `sim.agent.vsr.shape`
+
+Aliases: `s.a.vsr.s`, `s.a.vsr.shape`, `s.agent.vsr.s`, `s.agent.vsr.shape`, `sim.a.vsr.s`, `sim.a.vsr.shape`, `sim.agent.vsr.s`, `sim.agent.vsr.shape`
+
+### Builder `sim.agent.vsr.shape.ball()`
+
+`s.a.vsr.s.ball(d)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `d` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
+
+### Builder `sim.agent.vsr.shape.biped()`
+
+`s.a.vsr.s.biped(w; h)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
+| `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
+
+### Builder `sim.agent.vsr.shape.comb()`
+
+`s.a.vsr.s.comb(w; h)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
+| `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
+
+### Builder `sim.agent.vsr.shape.free()`
+
+`s.a.vsr.s.free(s)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `s` | s | `111-101` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
+
+### Builder `sim.agent.vsr.shape.t()`
+
+`s.a.vsr.s.t(w; h)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
+| `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
+
+### Builder `sim.agent.vsr.shape.triangle()`
+
+`s.a.vsr.s.triangle(l)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `l` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
+
+### Builder `sim.agent.vsr.shape.tripod()`
+
+`s.a.vsr.s.tripod(w; h)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
+| `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
+
+### Builder `sim.agent.vsr.shape.worm()`
+
+`s.a.vsr.s.worm(w; h)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
+| `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
+
 ## Package `sim.function`
 
 Aliases: `s.f`, `s.function`, `sim.f`, `sim.function`
@@ -794,38 +984,6 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRea
 | `innerFunction` | npm |  | <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, ? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.SteppedOutputTRF">SteppedOutputTRF</abbr>></code>
-
-## Package `sim.legged`
-
-Aliases: `s.legged`, `sim.legged`
-
-### Builder `sim.legged.legChunk()`
-
-`s.legged.legChunk(trunkLength; width; mass; upConnector)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `trunkLength` | d | `1.5` | <code>double</code> |
-| `width` | d | `1.0` | <code>double</code> |
-| `mass` | d | `0.375` | <code>double</code> |
-| `upConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Connector">AbstractLeggedHybridModularRobot$Connector</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$LegChunk">AbstractLeggedHybridModularRobot$LegChunk</abbr></code>
-
-### Builder `sim.legged.module()`
-
-`s.legged.module(trunkLength; trunkWidth; trunkMass; legChunks; downConnector; rightConnector)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `trunkLength` | d | `4.0` | <code>double</code> |
-| `trunkWidth` | d | `1.0` | <code>double</code> |
-| `trunkMass` | d | `1.0` | <code>double</code> |
-| `legChunks` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$LegChunk">AbstractLeggedHybridModularRobot$LegChunk</abbr>></code> |
-| `downConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Connector">AbstractLeggedHybridModularRobot$Connector</abbr></code> |
-| `rightConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Connector">AbstractLeggedHybridModularRobot$Connector</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Module">AbstractLeggedHybridModularRobot$Module</abbr></code>
 
 ## Package `sim.sensor`
 
@@ -1074,142 +1232,4 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terr
 | `a` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>
-
-## Package `sim.vsr`
-
-Aliases: `s.vsr`, `sim.vsr`
-
-### Builder `sim.vsr.gridBody()`
-
-`s.vsr.gridBody(shape; sensorizingFunction)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `shape` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code> |
-| `sensorizingFunction` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>>, <abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>>>></code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code>
-
-## Package `sim.vsr.sensorizingFunction`
-
-Aliases: `s.vsr.sensorizingFunction`, `s.vsr.sf`, `sim.vsr.sensorizingFunction`, `sim.vsr.sf`
-
-### Builder `sim.vsr.sensorizingFunction.directional()`
-
-`s.vsr.sf.directional(nSensors; eSensors; sSensors; wSensors; headSensors)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `nSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>></code> |
-| `eSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>></code> |
-| `sSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>></code> |
-| `wSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>></code> |
-| `headSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>></code> |
-
-Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>>, <abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>>>></code>
-
-### Builder `sim.vsr.sensorizingFunction.empty()`
-
-`s.vsr.sf.empty()`
-
-Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>>, <abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>>>></code>
-
-### Builder `sim.vsr.sensorizingFunction.uniform()`
-
-`s.vsr.sf.uniform(sensors)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `sensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>></code> |
-
-Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>>, <abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="it.units.erallab.mrsim2d.core.bodies.Voxel">Voxel</abbr>>>>></code>
-
-## Package `sim.vsr.shape`
-
-Aliases: `s.vsr.s`, `s.vsr.shape`, `sim.vsr.s`, `sim.vsr.shape`
-
-### Builder `sim.vsr.shape.ball()`
-
-`s.vsr.s.ball(d)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `d` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
-
-### Builder `sim.vsr.shape.biped()`
-
-`s.vsr.s.biped(w; h)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
-| `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
-
-### Builder `sim.vsr.shape.comb()`
-
-`s.vsr.s.comb(w; h)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
-| `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
-
-### Builder `sim.vsr.shape.free()`
-
-`s.vsr.s.free(s)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `s` | s | `111-101` | <code><abbr title="java.lang.String">String</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
-
-### Builder `sim.vsr.shape.t()`
-
-`s.vsr.s.t(w; h)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
-| `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
-
-### Builder `sim.vsr.shape.triangle()`
-
-`s.vsr.s.triangle(l)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `l` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
-
-### Builder `sim.vsr.shape.tripod()`
-
-`s.vsr.s.tripod(w; h)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
-| `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
-
-### Builder `sim.vsr.shape.worm()`
-
-`s.vsr.s.worm(w; h)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
-| `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
 
