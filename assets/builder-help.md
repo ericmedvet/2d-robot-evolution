@@ -14,10 +14,11 @@ Produces <code><abbr title="it.units.malelab.jgea.experimenter.Experiment">Exper
 
 ### Builder `ea.run()`
 
-`ea.run(solver; problem; randomGenerator)`
+`ea.run(name; solver; problem; randomGenerator)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 | `solver` | npm |  | <code><abbr title="it.units.malelab.jgea.core.solver.AbstractPopulationBasedIterativeSolver">AbstractPopulationBasedIterativeSolver</abbr><? extends <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, P, G, S, Q></code> |
 | `problem` | npm |  | <code>P</code> |
 | `randomGenerator` | npm |  | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
@@ -580,6 +581,45 @@ Produces <code><abbr title="it.units.malelab.jgea.core.solver.StandardEvolver">S
 | `remap` | b | `false` | <code>boolean</code> |
 
 Produces <code><abbr title="it.units.malelab.jgea.core.solver.SimpleEvolutionaryStrategy">SimpleEvolutionaryStrategy</abbr><S, Q></code>
+
+## Package `evorobots`
+
+Aliases: `er`, `evorobots`
+
+### Builder `evorobots.video()`
+
+`er.video(dirPath; fileNameTemplate; w; h; frameRate; startTime; endTime; codec; drawer; task; engine; individual)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `dirPath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+| `fileNameTemplate` | s | `video-%s.mp4` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `w` | i | `600` | <code>int</code> |
+| `h` | i | `400` | <code>int</code> |
+| `frameRate` | d | `30.0` | <code>double</code> |
+| `startTime` | d | `0.0` | <code>double</code> |
+| `endTime` | d | `30.0` | <code>double</code> |
+| `codec` | e | `JCODEC` | <code><abbr title="it.units.erallab.mrsim2d.viewer.VideoUtils$EncoderFacility">VideoUtils$EncoderFacility</abbr></code> |
+| `drawer` | npm | `sim.drawer()` | <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.String">String</abbr>, <abbr title="it.units.erallab.mrsim2d.viewer.Drawer">Drawer</abbr>></code> |
+| `task` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.tasks.Task">Task</abbr><A, ?></code> |
+| `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr><<abbr title="it.units.erallab.mrsim2d.core.engine.Engine">Engine</abbr>></code> |
+| `individual` | npm | `ea.nf.best()` | <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><?, A, ?>, <abbr title="it.units.malelab.jgea.core.solver.Individual">Individual</abbr><?, A, ?>></code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.AccumulatorFactory">AccumulatorFactory</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><?, A, ?>, <abbr title="java.io.File">File</abbr>, <abbr title="it.units.malelab.jgea.experimenter.Run">Run</abbr><?, ?, A, ?>></code>
+
+## Package `evorobots.listener`
+
+Aliases: `er.l`, `er.listener`, `evorobots.l`, `evorobots.listener`
+
+### Builder `evorobots.listener.videoSaver()`
+
+`er.l.videoSaver(videos)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `videos` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.AccumulatorFactory">AccumulatorFactory</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><?, A, ?>, <abbr title="java.io.File">File</abbr>, <abbr title="it.units.malelab.jgea.experimenter.Run">Run</abbr><?, ?, A, ?>>></code> |
+
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="it.units.malelab.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="it.units.malelab.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><?, A, ?>, <abbr title="it.units.malelab.jgea.experimenter.Run">Run</abbr><?, ?, A, ?>>></code>
 
 ## Package `evorobots.mapper`
 

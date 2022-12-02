@@ -5,6 +5,7 @@ ea.experiment(
         mapper = er.m.parametrizedHeteroBrains(target = s.a.numLeggedHybridModularRobot(
           modules = 4 * [
             s.a.l.module(
+              trunkLength = 10;
               legChunks = 2 * [s.a.l.legChunk()];
               trunkSensors = [s.s.rv(a = 0); s.s.rv(a = 90)];
               downConnectorSensors = [s.s.d(a = -90; r = 1)]
@@ -12,11 +13,11 @@ ea.experiment(
           ];
           function = s.f.mlp()
         ));
-        nEval = 100;
+        nEval = 30;
         nPop = 10
       );
       problem = ea.p.totalOrder(
-        qFunction = s.taskRunner(task = s.task.locomotion());
+        qFunction = s.taskRunner(task = s.task.locomotion(terrain = sim.terrain.uphill(a = 5)));
         cFunction = s.task.locomotion.xVelocity();
         type = maximize
       )
@@ -30,6 +31,16 @@ ea.experiment(
       ];
       plots = [
         ea.plot.fitness(f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0)
+      ]
+    );
+    ea.l.telegram(
+      chatId = "207490209";
+      botIdFilePath = "/home/eric/Documenti/experiments/vsrs/telegram.txt";
+      plots = [
+        ea.plot.fitness(f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0)
+      ];
+      accumulators = [
+        er.video(task = s.task.locomotion(terrain = sim.terrain.uphill(a = 5)))
       ]
     )
   ]

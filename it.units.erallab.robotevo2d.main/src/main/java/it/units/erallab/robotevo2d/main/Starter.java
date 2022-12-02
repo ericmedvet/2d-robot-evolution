@@ -20,7 +20,9 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
 import it.units.erallab.mrsim2d.buildable.PreparedNamedBuilder;
+import it.units.erallab.robotevo2d.main.builders.Listeners;
 import it.units.erallab.robotevo2d.main.builders.Mappers;
+import it.units.erallab.robotevo2d.main.builders.Misc;
 import it.units.malelab.jgea.experimenter.Experimenter;
 import it.units.malelab.jnb.core.InfoPrinter;
 import it.units.malelab.jnb.core.NamedBuilder;
@@ -83,7 +85,9 @@ public class Starter {
         .and(PreparedNamedBuilder.get())
         .and(it.units.malelab.jgea.experimenter.PreparedNamedBuilder.get())
         .and(List.of("evorobots", "er"), NamedBuilder.empty()
+            .and(NamedBuilder.fromUtilityClass(Misc.class))
             .and(List.of("mapper", "m"), NamedBuilder.fromUtilityClass(Mappers.class))
+            .and(List.of("listener", "l"), NamedBuilder.fromUtilityClass(Listeners.class))
         );
     //check if it's just a help invocation
     if (configuration.showExpFileName) {
