@@ -14,7 +14,7 @@ Produces <code><abbr title="it.units.malelab.jgea.experimenter.Experiment">Exper
 
 ### Builder `ea.run()`
 
-`ea.run(solver; problem; randomGenerator; )`
+`ea.run(solver; problem; randomGenerator)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -196,7 +196,7 @@ Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">N
 
 ### Builder `ea.namedFunction.f()`
 
-`ea.nf.f(outerF; innerF; name; s; )`
+`ea.nf.f(outerF; innerF; name; s)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -581,7 +581,17 @@ Aliases: `er.m`, `er.mapper`, `evorobots.m`, `evorobots.mapper`
 
 ### Builder `evorobots.mapper.parametrized()`
 
-`er.m.parametrized(target; ; )`
+`er.m.parametrized(target)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `target` | npm |  | <code>T</code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr><<abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>, <abbr title="java.util.function.Supplier">Supplier</abbr><T>></code>
+
+### Builder `evorobots.mapper.parametrizedHomoBrains()`
+
+`er.m.parametrizedHomoBrains(target)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -629,7 +639,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">Doub
 
 ### Builder `sim.supplier()`
 
-`s.supplier(of; ; )`
+`s.supplier(of)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -663,22 +673,9 @@ Aliases: `s.a`, `s.agent`, `sim.a`, `sim.agent`
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR">CentralizedNumGridVSR</abbr></code>
 
-### Builder `sim.agent.heteroDistributedNumGridVSR()`
+### Builder `sim.agent.distributedNumGridVSR()`
 
-`s.a.heteroDistributedNumGridVSR(body; function; signals; directional)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `body` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
-| `function` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><?></code> |
-| `signals` | i |  | <code>int</code> |
-| `directional` | b | `false` | <code>boolean</code> |
-
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.HeteroDistributedNumGridVSR">HeteroDistributedNumGridVSR</abbr></code>
-
-### Builder `sim.agent.homoDistributedNumGridVSR()`
-
-`s.a.homoDistributedNumGridVSR(body; function; signals; directional)`
+`s.a.distributedNumGridVSR(body; function; signals; directional)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -687,7 +684,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.HeteroD
 | `signals` | i |  | <code>int</code> |
 | `directional` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.HomoDistributedNumGridVSR">HomoDistributedNumGridVSR</abbr></code>
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR">DistributedNumGridVSR</abbr></code>
 
 ### Builder `sim.agent.numIndependentVoxel()`
 

@@ -2,7 +2,7 @@ ea.experiment(
   runs = (randomGenerator = (seed = [1:1:3]) * [ea.rg.defaultRG()]) * [
     ea.run(
       solver = ea.s.numGA(
-        mapper = er.m.parametrized(target = s.a.centralizedNumGridVSR(
+        mapper = er.m.parametrizedHeteroBrains(target = s.a.centralizedNumGridVSR(
           body = s.vsr.gridBody(
             sensorizingFunction = s.vsr.sf.directional(
               headSensors = [s.s.sin(f = 0);s.s.d(a = -15; r = 5)];
