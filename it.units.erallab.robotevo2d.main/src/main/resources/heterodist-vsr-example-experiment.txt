@@ -3,13 +3,13 @@ ea.experiment(
     ea.run(
       solver = ea.s.numGA(
         mapper = er.m.parametrizedHeteroBrains(target = s.a.centralizedNumGridVSR(
-          body = s.vsr.gridBody(
-            sensorizingFunction = s.vsr.sf.directional(
+          body = s.a.vsr.gridBody(
+            sensorizingFunction = s.a.vsr.sf.directional(
               headSensors = [s.s.sin(f = 0);s.s.d(a = -15; r = 5)];
               nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
               sSensors = [s.s.d(a = -90)]
             );
-            shape = s.vsr.s.biped(w = 4; h = 3)
+            shape = s.a.vsr.s.biped(w = 4; h = 3)
           );
           function = s.f.mlp()
         ));
