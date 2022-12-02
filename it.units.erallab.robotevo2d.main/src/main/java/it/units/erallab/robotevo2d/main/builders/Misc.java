@@ -57,7 +57,7 @@ public class Misc {
       try {
         if (dirPath==null || dirPath.isEmpty()) {
           tempFile = true;
-          file = File.createTempFile("video", "mp4");
+          file = File.createTempFile("video", ".mp4");
           file.deleteOnExit();
         } else {
           String fileName = fileNameTemplate.formatted(UUID.nameUUIDFromBytes(map.npm("task").toString().getBytes()));
@@ -75,10 +75,10 @@ public class Misc {
             file,
             drawer.apply(videoName)
         );
-        L.info("Doing video for %s on file %s".formatted(videoName, tempFile ? "tempo" : file.getAbsolutePath()));
+        L.info("Doing video for %s on file %s".formatted(videoName, tempFile ? "temp" : file.getAbsolutePath()));
         task.run(a, engineSupplier.get(), videoBuilder);
         file = videoBuilder.get();
-        L.info("Video done for %s on file %s".formatted(videoName, tempFile ? "tempo" : file.getAbsolutePath()));
+        L.info("Video done for %s on file %s".formatted(videoName, tempFile ? "temp" : file.getAbsolutePath()));
         return file;
       } catch (IOException ex) {
         L.warning("Cannot make video: %s".formatted(ex));

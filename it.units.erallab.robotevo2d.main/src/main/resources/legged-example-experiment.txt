@@ -13,8 +13,8 @@ ea.experiment(
           ];
           function = s.f.mlp()
         ));
-        nEval = 30;
-        nPop = 10
+        nEval = 20;
+        nPop = 5
       );
       problem = ea.p.totalOrder(
         qFunction = s.taskRunner(task = s.task.locomotion(terrain = sim.terrain.uphill(a = 5)));
@@ -40,7 +40,7 @@ ea.experiment(
         ea.plot.fitness(f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0)
       ];
       accumulators = [
-        er.video(task = s.task.locomotion(terrain = sim.terrain.uphill(a = 5)))
+        er.video(task = s.task.locomotion(terrain = sim.terrain.uphill(a = 5)); endTime = 5)
       ]
     )
   ]
