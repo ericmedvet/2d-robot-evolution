@@ -7,11 +7,11 @@ ea.experiment(
             s.a.l.module(
               trunkLength = 10;
               legChunks = 2 * [s.a.l.legChunk()];
-              trunkSensors = [s.s.rv(a = 0); s.s.rv(a = 90)];
+              trunkSensors = [s.s.rv(a = 0); s.s.rv(a = 90); s.s.sin()];
               downConnectorSensors = [s.s.d(a = -90; r = 1)]
             )
           ];
-          function = s.f.mlp()
+          function = s.f.noised(innerFunction=s.f.mlp();inputSigma=0.25)
         ));
         nEval = 20;
         nPop = 5
