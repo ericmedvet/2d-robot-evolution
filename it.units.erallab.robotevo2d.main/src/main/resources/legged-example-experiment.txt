@@ -13,11 +13,11 @@ ea.experiment(
           ];
           function = s.f.noised(innerFunction=s.f.mlp();inputSigma=0.25)
         ));
-        nEval = 20;
-        nPop = 5
+        nEval = 100;
+        nPop = 10
       );
       problem = ea.p.totalOrder(
-        qFunction = s.taskRunner(task = s.task.locomotion(terrain = sim.terrain.uphill(a = 5)));
+        qFunction = s.taskRunner(task = s.task.locomotion(terrain = sim.terrain.uphill(a = 5); duration = 10));
         cFunction = s.task.locomotion.xVelocity();
         type = maximize
       )
@@ -31,16 +31,6 @@ ea.experiment(
       ];
       plots = [
         ea.plot.fitness(f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0)
-      ]
-    );
-    ea.l.telegram(
-      chatId = "207490209";
-      botIdFilePath = "/home/eric/Documenti/experiments/vsrs/telegram.txt";
-      plots = [
-        ea.plot.fitness(f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0)
-      ];
-      accumulators = [
-        er.video(task = s.task.locomotion(terrain = sim.terrain.uphill(a = 5)); endTime = 5)
       ]
     )
   ]
