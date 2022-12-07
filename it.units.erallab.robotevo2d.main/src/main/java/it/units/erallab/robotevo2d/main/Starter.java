@@ -20,7 +20,6 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
 import it.units.malelab.jgea.experimenter.Experimenter;
-import it.units.malelab.jnb.core.InfoPrinter;
 import it.units.malelab.jnb.core.NamedBuilder;
 
 import java.io.*;
@@ -51,12 +50,6 @@ public class Starter {
         description = "Show a description of available constructs for the experiment file"
     )
     public boolean showExpFileName = false;
-
-    @Parameter(
-        names = {"--outHelpMdFile"},
-        description = "Save the markdown documentation for the available constructs for the experiment file"
-    )
-    public String mdHelpFilePath = "";
   }
 
   public static void main(String[] args) {
@@ -81,16 +74,6 @@ public class Starter {
     if (configuration.showExpFileName) {
       System.out.println(NamedBuilder.prettyToString(nb, true));
       System.exit(0);
-    }
-    if (!configuration.mdHelpFilePath.isEmpty()) {
-      try (PrintStream filePS = new PrintStream(configuration.mdHelpFilePath)) {
-        System.out.printf("Writing the builder help file on %s%n", configuration.mdHelpFilePath);
-        InfoPrinter infoPrinter = new InfoPrinter();
-        infoPrinter.print(nb, filePS);
-        System.exit(0);
-      } catch (FileNotFoundException e) {
-        throw new IllegalArgumentException("Cannot open md file %s: %s".formatted(configuration.mdHelpFilePath, e), e);
-      }
     }
     //read experiment description
     String expDescription;

@@ -659,6 +659,16 @@ Produces <code><abbr title="it.units.malelab.jgea.experimenter.InvertibleMapper"
 
 Aliases: `s`, `sim`
 
+### Builder `sim.defaultRG()`
+
+`s.defaultRG(seed)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `seed` | i | `0` | <code>int</code> |
+
+Produces <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code>
+
 ### Builder `sim.drawer()`
 
 `s.drawer(enlargement; followTime; profilingTime; miniWorldEnlargement; miniWorld; miniAgents; engineProfiling; actions)`
@@ -764,23 +774,58 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.independentvoxe
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.NumLeggedHybridModularRobot">NumLeggedHybridModularRobot</abbr></code>
 
+### Builder `sim.agent.numLeggedHybridRobot()`
+
+`s.a.numLeggedHybridRobot(legs; trunkLength; trunkWidth; trunkMass; headMass; headSensors; function)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `legs` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridRobot$Leg">AbstractLeggedHybridRobot$Leg</abbr>></code> |
+| `trunkLength` | d | `16.0` | <code>double</code> |
+| `trunkWidth` | d | `1.0` | <code>double</code> |
+| `trunkMass` | d | `1.0` | <code>double</code> |
+| `headMass` | d | `0.25` | <code>double</code> |
+| `headSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><?>></code> |
+| `function` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><?></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.NumLeggedHybridRobot">NumLeggedHybridRobot</abbr></code>
+
 ## Package `sim.agent.legged`
 
 Aliases: `s.a.l`, `s.a.legged`, `s.agent.l`, `s.agent.legged`, `sim.a.l`, `sim.a.legged`, `sim.agent.l`, `sim.agent.legged`
 
+### Builder `sim.agent.legged.leg()`
+
+`s.a.l.leg(legChunks; downConnectorMass; downConnector; downConnectorSensors)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `legChunks` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.agents.legged.LegChunk">LegChunk</abbr>></code> |
+| `downConnectorMass` | d | `0.5625` | <code>double</code> |
+| `downConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.ConnectorType">ConnectorType</abbr></code> |
+| `downConnectorSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><?>></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridRobot$Leg">AbstractLeggedHybridRobot$Leg</abbr></code>
+
 ### Builder `sim.agent.legged.legChunk()`
 
-`s.a.l.legChunk(trunkLength; width; mass; upConnector; jointSensors)`
+`s.a.l.legChunk(trunkLength; width; mass; upConnector; jointSensors; motorMaxSpeed; motorMaxTorque; motorControlP; motorControlI; motorControlD; motorAngleTolerance)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `trunkLength` | d | `1.5` | <code>double</code> |
 | `width` | d | `1.0` | <code>double</code> |
 | `mass` | d | `0.375` | <code>double</code> |
-| `upConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Connector">AbstractLeggedHybridModularRobot$Connector</abbr></code> |
+| `upConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.ConnectorType">ConnectorType</abbr></code> |
 | `jointSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><?>></code> |
+| `motorMaxSpeed` | d | `100.0` | <code>double</code> |
+| `motorMaxTorque` | d | `1000.0` | <code>double</code> |
+| `motorControlP` | d | `25.0` | <code>double</code> |
+| `motorControlI` | d | `1.0` | <code>double</code> |
+| `motorControlD` | d | `1.0` | <code>double</code> |
+| `motorAngleTolerance` | d | `0.01` | <code>double</code> |
 
-Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$LegChunk">AbstractLeggedHybridModularRobot$LegChunk</abbr></code>
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.LegChunk">LegChunk</abbr></code>
 
 ### Builder `sim.agent.legged.module()`
 
@@ -791,9 +836,9 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.Abstract
 | `trunkLength` | d | `4.0` | <code>double</code> |
 | `trunkWidth` | d | `1.0` | <code>double</code> |
 | `trunkMass` | d | `1.0` | <code>double</code> |
-| `legChunks` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$LegChunk">AbstractLeggedHybridModularRobot$LegChunk</abbr>></code> |
-| `downConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Connector">AbstractLeggedHybridModularRobot$Connector</abbr></code> |
-| `rightConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Connector">AbstractLeggedHybridModularRobot$Connector</abbr></code> |
+| `legChunks` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.agents.legged.LegChunk">LegChunk</abbr>></code> |
+| `downConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.ConnectorType">ConnectorType</abbr></code> |
+| `rightConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.ConnectorType">ConnectorType</abbr></code> |
 | `trunkSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><?>></code> |
 | `rightConnectorSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><?>></code> |
 | `downConnectorSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><?>></code> |
@@ -949,7 +994,7 @@ Aliases: `s.f`, `s.function`, `sim.f`, `sim.function`
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `windowT` | d |  | <code>double</code> |
-| `innerFunction` | npm |  | <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, ? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
+| `innerFunction` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
 | `types` | e[] | `[CURRENT, TREND, AVG]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.DiffInputTRF$Type">DiffInputTRF$Type</abbr>></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.DiffInputTRF">DiffInputTRF</abbr>></code>
@@ -965,6 +1010,19 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRea
 | `activationFunction` | e | `TANH` | <code><abbr title="it.units.erallab.mrsim2d.core.functions.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.MultiLayerPerceptron">MultiLayerPerceptron</abbr>></code>
+
+### Builder `sim.function.noised()`
+
+`s.f.noised(inputSigma; outputSigma; randomGenerator; innerFunction)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `inputSigma` | d | `0.0` | <code>double</code> |
+| `outputSigma` | d | `0.0` | <code>double</code> |
+| `randomGenerator` | npm | `sim.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
+| `innerFunction` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.NoisedTRF">NoisedTRF</abbr>></code>
 
 ### Builder `sim.function.sinP()`
 
@@ -1021,7 +1079,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRea
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `stepT` | d |  | <code>double</code> |
-| `innerFunction` | npm |  | <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, ? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
+| `innerFunction` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><? extends <abbr title="it.units.erallab.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.SteppedOutputTRF">SteppedOutputTRF</abbr>></code>
 
