@@ -98,7 +98,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 | --- | --- | --- | --- |
 | `chatId` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 | `botIdFilePath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
-| `defaultPlots` | npm[] | `[ea.plot.elapsed(), ea.plot.uniqueness()]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.PlotTableBuilder">PlotTableBuilder</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>>></code> |
+| `defaultPlots` | npm[] | `[ea.plot.elapsed()]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.PlotTableBuilder">PlotTableBuilder</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>>></code> |
 | `plots` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.PlotTableBuilder">PlotTableBuilder</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>>></code> |
 | `accumulators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.AccumulatorFactory">AccumulatorFactory</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ?, <abbr title="it.units.malelab.jgea.experimenter.Run">Run</abbr><?, G, S, Q>>></code> |
 | `deferred` | b | `true` | <code>boolean</code> |
@@ -115,7 +115,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 | `defaultFunctions` | npm[] | `[ea.nf.iterations(), ea.nf.evals(), ea.nf.births(), ea.nf.elapsed(), ea.nf.size(f=ea.nf.all()), ea.nf.size(f=ea.nf.firsts()), ea.nf.size(f=ea.nf.lasts()), ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.genotype())), ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.solution())), ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.fitness()))]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ?>></code> |
 | `functions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ?>></code> |
 | `runKeys` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="java.lang.String">String</abbr>></code> |
-| `defaultPlots` | npm[] | `[ea.plot.elapsed(), ea.plot.uniqueness()]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.PlotTableBuilder">PlotTableBuilder</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>>></code> |
+| `defaultPlots` | npm[] | `[ea.plot.elapsed()]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.PlotTableBuilder">PlotTableBuilder</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>>></code> |
 | `plots` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.malelab.jgea.core.listener.PlotTableBuilder">PlotTableBuilder</abbr><? super <abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>>></code> |
 | `deferred` | b | `false` | <code>boolean</code> |
 | `onlyLast` | b | `false` | <code>boolean</code> |
@@ -338,13 +338,20 @@ Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">N
 
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, T></code>
 
+### Builder `ea.namedFunction.progress()`
+
+`ea.nf.progress()`
+
+Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><?, ?, ?>, <abbr title="java.lang.Double">Double</abbr>></code>
+
 ### Builder `ea.namedFunction.size()`
 
-`ea.nf.size(f)`
+`ea.nf.size(f; s)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `f` | npm |  | <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, ?></code> |
+| `s` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="it.units.malelab.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.lang.Integer">Integer</abbr>></code>
 
