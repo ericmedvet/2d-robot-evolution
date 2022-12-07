@@ -19,16 +19,11 @@ package it.units.erallab.robotevo2d.main;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
-import it.units.erallab.mrsim2d.buildable.PreparedNamedBuilder;
-import it.units.erallab.robotevo2d.main.builders.Listeners;
-import it.units.erallab.robotevo2d.main.builders.Mappers;
-import it.units.erallab.robotevo2d.main.builders.Misc;
 import it.units.malelab.jgea.experimenter.Experimenter;
 import it.units.malelab.jnb.core.InfoPrinter;
 import it.units.malelab.jnb.core.NamedBuilder;
 
 import java.io.*;
-import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -81,14 +76,7 @@ public class Starter {
       System.exit(-1);
     }
     //prepare local named builder
-    NamedBuilder<Object> nb = NamedBuilder.empty()
-        .and(PreparedNamedBuilder.get())
-        .and(it.units.malelab.jgea.experimenter.PreparedNamedBuilder.get())
-        .and(List.of("evorobots", "er"), NamedBuilder.empty()
-            .and(NamedBuilder.fromUtilityClass(Misc.class))
-            .and(List.of("mapper", "m"), NamedBuilder.fromUtilityClass(Mappers.class))
-            .and(List.of("listener", "l"), NamedBuilder.fromUtilityClass(Listeners.class))
-        );
+    NamedBuilder<Object> nb = PreparedNamedBuilder.get();
     //check if it's just a help invocation
     if (configuration.showExpFileName) {
       System.out.println(NamedBuilder.prettyToString(nb, true));
