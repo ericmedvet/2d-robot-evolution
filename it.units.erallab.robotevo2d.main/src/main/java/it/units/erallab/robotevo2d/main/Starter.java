@@ -19,6 +19,7 @@ package it.units.erallab.robotevo2d.main;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
+import it.units.malelab.jgea.experimenter.Experiment;
 import it.units.malelab.jgea.experimenter.Experimenter;
 import it.units.malelab.jnb.core.NamedBuilder;
 
@@ -50,6 +51,13 @@ public class Starter {
         description = "Show a description of available constructs for the experiment file"
     )
     public boolean showExpFileName = false;
+
+    @Parameter(
+        names = {"--checkExpFile", "-c"},
+        description = "Just check the correctness of the experiment description"
+    )
+    public boolean check = false;
+
   }
 
   public static void main(String[] args) {
@@ -100,6 +108,14 @@ public class Starter {
             e
         ));
       }
+    }
+    //check if just check
+    if (configuration.check) {
+      Experiment experiment = (Experiment) nb.build(expDescription);
+      System.out.println("Experiment description is valid");
+      System.out.printf("\t%d runs%n", experiment.runs().size());
+      System.out.printf("\t%d listenerss%n", experiment.listeners().size());
+      System.exit(0);
     }
     //prepare and run experimenter
     Experimenter experimenter = new Experimenter(nb, configuration.nOfThreads);
