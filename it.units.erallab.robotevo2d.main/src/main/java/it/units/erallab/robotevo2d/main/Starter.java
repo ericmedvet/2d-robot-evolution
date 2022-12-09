@@ -87,7 +87,7 @@ public class Starter {
     String expDescription;
     if (configuration.experimentDescriptionFilePath.isEmpty()) {
       L.config("Using default experiment description");
-      InputStream inputStream = Starter.class.getResourceAsStream("/legged-example-experiment.txt");
+      InputStream inputStream = Starter.class.getResourceAsStream("/exp-examples/legged.txt");
       if (inputStream == null) {
         throw new IllegalArgumentException("Cannot find default experiment description");
       } else {
