@@ -14,4 +14,6 @@ module it.units.erallab.robotevo2d.main {
   exports it.units.erallab.robotevo2d.main;
   opens it.units.erallab.robotevo2d.main.builders to it.units.malelab.jnb.core;
   opens it.units.erallab.robotevo2d.main to it.units.malelab.jnb.core;
+  exports it.units.erallab.robotevo2d.main.helper;
+  opens it.units.erallab.robotevo2d.main.helper to it.units.malelab.jnb.core;
 }

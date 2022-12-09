@@ -816,11 +816,11 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.Abstract
 
 ### Builder `sim.agent.legged.legChunk()`
 
-`s.a.l.legChunk(trunkLength; width; mass; upConnector; jointSensors; motorMaxSpeed; motorMaxTorque; motorControlP; motorControlI; motorControlD; motorAngleTolerance)`
+`s.a.l.legChunk(length; width; mass; upConnector; jointSensors; motorMaxSpeed; motorMaxTorque; motorControlP; motorControlI; motorControlD; motorAngleTolerance)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `trunkLength` | d | `1.5` | <code>double</code> |
+| `length` | d | `1.5` | <code>double</code> |
 | `width` | d | `1.0` | <code>double</code> |
 | `mass` | d | `0.375` | <code>double</code> |
 | `upConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.ConnectorType">ConnectorType</abbr></code> |
@@ -1037,9 +1037,9 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRea
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `p` | npm | `sim.doubleRange(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `f` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `a` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
@@ -1049,9 +1049,9 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRea
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `p` | npm | `sim.doubleRange(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `f` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `a` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
@@ -1061,9 +1061,9 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRea
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `p` | npm | `sim.doubleRange(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `f` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `a` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
@@ -1073,9 +1073,9 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRea
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `p` | npm | `sim.doubleRange(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `f` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `a` | npm | `sim.doubleRange(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
