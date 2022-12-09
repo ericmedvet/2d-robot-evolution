@@ -1,0 +1,12 @@
+s.a.centralizedNumGridVSR(
+  body = s.a.vsr.gridBody(
+    shape = s.a.vsr.s.free(s = "001100-001000-001000-111111-111111-010010");
+    sensorizingFunction = s.a.vsr.sf.uniform(
+      sensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90); s.s.a()]
+    )
+  );
+  function = s.f.stepOut(
+    stepT = 0.2;
+    innerFunction = s.f.mlp(nOfInnerLayers = 2)
+  )
+)

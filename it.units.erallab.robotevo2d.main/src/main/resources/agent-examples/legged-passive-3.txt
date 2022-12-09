@@ -1,0 +1,6 @@
+s.a.numLeggedHybridRobot(
+  legs  =  3 * [
+    s.a.l.leg(legChunks = 2 * [s.a.l.legChunk()]; downConnector = soft)
+  ];
+  function = s.f.sinP(a = s.range(min = 0.5; max = 0.5); f = s.range(min = 1.0; max = 1.0))
+)

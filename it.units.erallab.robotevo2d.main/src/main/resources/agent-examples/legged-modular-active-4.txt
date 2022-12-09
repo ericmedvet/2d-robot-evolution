@@ -1,0 +1,15 @@
+s.a.numLeggedHybridModularRobot(
+  modules  =  + 3 * [
+    s.a.l.module(
+      legChunks = 2 * [s.a.l.legChunk(jointSensors = [s.s.ja()])];
+      downConnectorSensors = [s.s.d(a = -90; r = 1)]
+    )
+  ] + [
+    s.a.l.module(
+      legChunks = 2 * [s.a.l.legChunk(jointSensors = [s.s.ja()])];
+      downConnectorSensors = [s.s.d(a = -90; r = 1)];
+      rightConnectorSensors = + [s.s.a()] + (a = [-80:10:-30]) * [s.s.d(r = 10)]
+    )
+  ];
+  function = s.f.mlp(innerLayerRatio = 1.5; nOfInnerLayers = 1)
+)

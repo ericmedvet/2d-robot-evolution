@@ -1,0 +1,12 @@
+s.a.numLeggedHybridRobot(
+  legs  =  4 * [
+    s.a.l.leg(legChunks = 2 * [s.a.l.legChunk(jointSensors = [s.s.ja()])]; downConnector = soft)
+  ];
+  trunkLength = 30;
+  headSensors = + [s.s.a()] + (a = [-80:5:-30]) * [s.s.d(r = 10)];
+  function = s.f.diffIn(
+    windowT = 1.0;
+    innerFunction = s.f.mlp(innerLayerRatio = 1.5; nOfInnerLayers = 2);
+    types = [avg; trend; current]
+  )
+)

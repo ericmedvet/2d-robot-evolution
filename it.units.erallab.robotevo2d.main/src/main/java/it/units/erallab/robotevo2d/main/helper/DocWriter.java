@@ -24,8 +24,11 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
 public class DocWriter {
+
+  private static final String DEFAULT_PATH = "assets/builder-help.md";
+
   public static void main(String[] args) {
-    String mdHelpFilePath = args.length > 1 ? args[0] : "assets/builder-help.md";
+    String mdHelpFilePath = args.length > 1 ? args[0] : DEFAULT_PATH;
     NamedBuilder<?> nb = PreparedNamedBuilder.get();
     try (PrintStream filePS = new PrintStream(mdHelpFilePath)) {
       System.out.printf("Writing the builder help file on %s%n", mdHelpFilePath);
