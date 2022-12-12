@@ -571,6 +571,21 @@ Aliases: `ea.s`, `ea.solver`
 
 Produces <code><abbr title="it.units.malelab.jgea.core.solver.StandardEvolver">StandardEvolver</abbr><<abbr title="it.units.malelab.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><<abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>, S, Q>, <abbr title="it.units.malelab.jgea.core.QualityBasedProblem">QualityBasedProblem</abbr><S, Q>, <abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>, S, Q></code>
 
+### Builder `ea.solver.openAIES()`
+
+`ea.s.openAIES(mapper; initialMinV; initialMaxV; sigma; batchSize; nEval)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `mapper` | npm |  | <code><abbr title="it.units.malelab.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr><<abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>, S></code> |
+| `initialMinV` | d | `-1.0` | <code>double</code> |
+| `initialMaxV` | d | `1.0` | <code>double</code> |
+| `sigma` | d | `0.35` | <code>double</code> |
+| `batchSize` | i | `15` | <code>int</code> |
+| `nEval` | i |  | <code>int</code> |
+
+Produces <code><abbr title="it.units.malelab.jgea.core.solver.OpenAIEvolutionaryStrategy">OpenAIEvolutionaryStrategy</abbr><S, Q></code>
+
 ### Builder `ea.solver.simpleES()`
 
 `ea.s.simpleES(mapper; initialMinV; initialMaxV; sigma; parentsRate; nOfElites; nPop; nEval; remap)`
@@ -687,7 +702,7 @@ Produces <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</a
 | `profilingTime` | d | `1.0` | <code>double</code> |
 | `miniWorldEnlargement` | d | `10.0` | <code>double</code> |
 | `miniWorld` | b | `false` | <code>boolean</code> |
-| `miniAgents` | b | `true` | <code>boolean</code> |
+| `miniAgents` | e | `BRAINS` | <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.Misc$MiniAgentInfo">Misc$MiniAgentInfo</abbr></code> |
 | `engineProfiling` | b | `false` | <code>boolean</code> |
 | `actions` | b | `false` | <code>boolean</code> |
 
@@ -788,10 +803,10 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.NumLegge
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `legs` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.agents.legged.AbstractLeggedHybridRobot$Leg">AbstractLeggedHybridRobot$Leg</abbr>></code> |
-| `trunkLength` | d | `16.0` | <code>double</code> |
+| `trunkLength` | d | `24.0` | <code>double</code> |
 | `trunkWidth` | d | `1.0` | <code>double</code> |
-| `trunkMass` | d | `1.0` | <code>double</code> |
-| `headMass` | d | `0.25` | <code>double</code> |
+| `trunkMass` | d | `24.0` | <code>double</code> |
+| `headMass` | d | `1.0` | <code>double</code> |
 | `headSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><?>></code> |
 | `function` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><?></code> |
 
@@ -808,7 +823,7 @@ Aliases: `s.a.l`, `s.a.legged`, `s.agent.l`, `s.agent.legged`, `sim.a.l`, `sim.a
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `legChunks` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.agents.legged.LegChunk">LegChunk</abbr>></code> |
-| `downConnectorMass` | d | `0.5625` | <code>double</code> |
+| `downConnectorMass` | d | `1.1025` | <code>double</code> |
 | `downConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.ConnectorType">ConnectorType</abbr></code> |
 | `downConnectorSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><?>></code> |
 
@@ -820,17 +835,17 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.Abstract
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `length` | d | `1.5` | <code>double</code> |
+| `length` | d | `1.05` | <code>double</code> |
 | `width` | d | `1.0` | <code>double</code> |
-| `mass` | d | `0.375` | <code>double</code> |
+| `mass` | d | `1.05` | <code>double</code> |
 | `upConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.ConnectorType">ConnectorType</abbr></code> |
 | `jointSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><?>></code> |
-| `motorMaxSpeed` | d | `100.0` | <code>double</code> |
+| `motorMaxSpeed` | d | `20.0` | <code>double</code> |
 | `motorMaxTorque` | d | `1000.0` | <code>double</code> |
-| `motorControlP` | d | `25.0` | <code>double</code> |
-| `motorControlI` | d | `1.0` | <code>double</code> |
-| `motorControlD` | d | `1.0` | <code>double</code> |
-| `motorAngleTolerance` | d | `0.01` | <code>double</code> |
+| `motorControlP` | d | `10.0` | <code>double</code> |
+| `motorControlI` | d | `2.0` | <code>double</code> |
+| `motorControlD` | d | `2.0` | <code>double</code> |
+| `motorAngleTolerance` | d | `0.0` | <code>double</code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.LegChunk">LegChunk</abbr></code>
 
@@ -840,9 +855,9 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.LegChunk
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `trunkLength` | d | `4.0` | <code>double</code> |
+| `trunkLength` | d | `6.0` | <code>double</code> |
 | `trunkWidth` | d | `1.0` | <code>double</code> |
-| `trunkMass` | d | `1.0` | <code>double</code> |
+| `trunkMass` | d | `6.0` | <code>double</code> |
 | `legChunks` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="it.units.erallab.mrsim2d.core.agents.legged.LegChunk">LegChunk</abbr>></code> |
 | `downConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.ConnectorType">ConnectorType</abbr></code> |
 | `rightConnector` | e | `RIGID` | <code><abbr title="it.units.erallab.mrsim2d.core.agents.legged.ConnectorType">ConnectorType</abbr></code> |
@@ -1006,6 +1021,21 @@ Aliases: `s.f`, `s.function`, `sim.f`, `sim.function`
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.DiffInputTRF">DiffInputTRF</abbr>></code>
 
+### Builder `sim.function.groupedSin()`
+
+`s.f.groupedSin(size; p; f; a; b; s)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `size` | i |  | <code>int</code> |
+| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `a` | npm | `sim.range(max=0.5;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `b` | npm | `sim.range(max=0.5;min=-0.5)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `s` | npm | `sim.range(max=0.5;min=-0.5)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.GroupedSinusoidal">GroupedSinusoidal</abbr>></code>
+
 ### Builder `sim.function.mlp()`
 
 `s.f.mlp(innerLayerRatio; nOfInnerLayers; activationFunction)`
@@ -1033,49 +1063,66 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRea
 
 ### Builder `sim.function.sinP()`
 
-`s.f.sinP(p; f; a)`
+`s.f.sinP(p; f; a; b)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 | `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 | `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `b` | npm | `sim.range(max=0.5;min=-0.5)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
 ### Builder `sim.function.sinPA()`
 
-`s.f.sinPA(p; f; a)`
+`s.f.sinPA(p; f; a; b)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 | `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 | `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `b` | npm | `sim.range(max=0.5;min=-0.5)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
 ### Builder `sim.function.sinPF()`
 
-`s.f.sinPF(p; f; a)`
+`s.f.sinPF(p; f; a; b)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 | `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 | `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `b` | npm | `sim.range(max=0.5;min=-0.5)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
 ### Builder `sim.function.sinPFA()`
 
-`s.f.sinPFA(p; f; a)`
+`s.f.sinPFA(p; f; a; b)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 | `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 | `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `b` | npm | `sim.range(max=0.5;min=-0.5)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
+
+### Builder `sim.function.sinPFAB()`
+
+`s.f.sinPFAB(p; f; a; b)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `b` | npm | `sim.range(max=0.5;min=-0.5)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="it.units.erallab.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
 
@@ -1122,6 +1169,12 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><
 | `r` | d | `1.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.Body">Body</abbr>></code>
+
+### Builder `sim.sensor.ja()`
+
+`s.s.ja()`
+
+Produces <code><abbr title="it.units.erallab.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="it.units.erallab.mrsim2d.core.bodies.RotationalJoint">RotationalJoint</abbr>></code>
 
 ### Builder `sim.sensor.rv()`
 
@@ -1194,7 +1247,7 @@ Produces <code><abbr title="it.units.erallab.mrsim2d.core.tasks.piling.FallPilin
 | `duration` | d | `30.0` | <code>double</code> |
 | `terrain` | npm | `sim.terrain.flat()` | <code><abbr title="it.units.erallab.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
 | `initialXGap` | d | `1.0` | <code>double</code> |
-| `initialYGap` | d | `1.0` | <code>double</code> |
+| `initialYGap` | d | `0.1` | <code>double</code> |
 
 Produces <code><abbr title="it.units.erallab.mrsim2d.core.tasks.locomotion.Locomotion">Locomotion</abbr></code>
 

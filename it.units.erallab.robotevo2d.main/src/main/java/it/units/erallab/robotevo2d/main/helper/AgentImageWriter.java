@@ -45,7 +45,7 @@ public class AgentImageWriter {
   );
 
   private static final String ENGINE_DESCRIPTION = "s.engine()";
-  private static final String DRAWER_DESCRIPTION = "s.drawer(actions = true; miniAgents = false; enlargement = 1.5)";
+  private static final String DRAWER_DESCRIPTION = "s.drawer(actions = true; miniAgents = brains; enlargement = 1.5)";
   private static final String IMGS_PATH = "assets/images/agents/";
 
   private static final int W = 400;
