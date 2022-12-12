@@ -7,12 +7,15 @@ Based on [JGEA](https://github.com/ericmedvet/jgea) and [2D-MR-Sim](https://gith
 
 ### Dependencies
 
-This software requires JDK 18 and Maven: if you are using a Unix based system, you can install both easily using [sdkman](https://sdkman.io/).
+This software requires **JDK 18** and **Maven**: if you are using a Unix based system, you can install both easily using [sdkman](https://sdkman.io/).
 
-This software also depends on the following other dependencies: [JGEA](https://github.com/ericmedvet/jgea) and [2D-MR-Sim](https://github.com/ericmedvet/2dmrsim).
-The specific versions are the ones shown in the [pom.xml](pom.xml) at the nodes `<jgea.version>...</jgea.version>` and `<mrsim2d.version>...</mrsim2d.version>`.
+This software also depends on the following other dependencies:
+- [JGEA](https://github.com/ericmedvet/jgea),
+- [2D-MR-Sim](https://github.com/ericmedvet/2dmrsim),
+- [JNB](https://github.com/ericmedvet/jnb)
+The specific versions are the ones shown in the [pom.xml](pom.xml) at the nodes `<jgea.version>...</jgea.version>`, `<mrsim2d.version>...</mrsim2d.version>`, and `<jnb.version>...</jnb.version>`.
 
-At the moment, the two Maven dependencies are not hosted in the central repository.
+At the moment, these three Maven dependencies are not hosted in the central repository.
 You hence need to make them available in your local repository, building them on your machine, before building this software.
 In practice, you need to execute the following commands.
 
@@ -27,6 +30,13 @@ For 2D-MR-Sim (in a different directory than the one in which you cloned JGEA):
 ```shell
 git clone --depth 1 --branch <tag_name> https://github.com/ericmedvet/2dmrsim.git
 cd 2dmrsim
+mvn install
+```
+
+For JNB (in a different directory than the one in which you cloned JGEA and 2D-MR-Sim):
+```shell
+git clone --depth 1 --branch <tag_name> https://github.com/ericmedvet/jnb.git
+cd jnb
 mvn install
 ```
 
@@ -73,15 +83,14 @@ java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotev
 
 An **experiment** consists of one or more runs.
 
-Each **run** is an evolutionary optimization using a **solver** (obtained with a `SolverBuilder`) and a **mapper** (obtained with a `MapperBuilder`), that maps a genotype into a target robot, for solving a `Task`.
-A run is described in `Run`, which also includes other key information as, e.g., the `RandomGenerator`.
+Each **run** is an evolutionary optimization using a **solver** (an `IterativeSolver` of JGEA) on a **problem** with a random generator.
 
-An experiment is described in `Experiment`.
-The description also includes information on if/how/where to store the info about ongoing runs: one reasonable choice is to save one line of a CSV file for each iteration of each run.
+The description of an experiment also includes information on if/how/where to store the info about ongoing runs: zero or more **listeners** can be specified to listen to the ongoing evolutionary runs and save salient information.
+One reasonable choice is to use a [`ea.listener.bestCsv()`](assets/builder-help.md#builder-ealistenerbestcsv) to save one line of a CSV file for each iteration of each run.
 This way you can process the results of the experiment offline after it ended using, e.g., R or Python.
 
 You can describe an experiment through an experiment file containing a textual description of the experiment.
-The description must contain a **named parameter map** for an experiment, i.e., its content has to be something like `experiment(...)` (see the [`experiment()`](assets/builder-help.md#builder-experiment) builder documentation and the [examples](#examples-of-experiment-files) given below). 
+The description must contain a **named parameter map** for an experiment, i.e., its content has to be something like `ea.experiment(...)` (see the [`ea.experiment()`](assets/builder-help.md#builder-eaexperiment) builder documentation and the [examples](#examples-of-experiment-files) given below). 
 
 #### Named parameter map format
 
@@ -91,7 +100,7 @@ It can be described with a string adhering the following human- and machine-read
 <npm> ::= <n>(<nps>)
 <nps> ::= ∅ | <np> | <nps>;<np>
 <np> ::= <n>=<npm> | <n>=<d> | <n>=<s> | <n>=<lnpm> | <n>=<ld> | <n>=<ls>
-<lnmp> ::= (<np>)*<lnpm> | <i>*[<npms>] | [<npms>]
+<lnmp> ::= (<np>)*<lnpm> | <i>*[<npms>] | +[<npms>]+[<npms>] | [<npms>]
 <ld> ::= [<d>:<d>:<d>] | [<ds>]
 <ls> ::= [<ss>]
 <npms> ::= ∅ | <npm> | <npms>;<npm>
@@ -101,7 +110,7 @@ It can be described with a string adhering the following human- and machine-read
 where:
 - `<npm>` is a named parameter map;
 - `<n>` is a name, i.e., a string in the format `[A-Za-z][.A-Za-z0-9_]*`;
-- `<s>` is a string in the format `([A-Za-z][A-Za-z0-9_]*)|(\"[./:\-\w\s]+\")`;
+- `<s>` is a string in the format `([A-Za-z][A-Za-z0-9_]*)|("[^"]+")`;
 - `<d>` is a number in the format `-?[0-9]+(\.[0-9]+)?`;
 - `<i>` is a number in the format `[0-9]+`;
 - `∅` is the empty string.
@@ -129,7 +138,7 @@ office(
 ```
 In this case, the `head` parameter of `office` is valued with another named parameter map: `person(name = "Mario Rossi"; age = 43)`.
 
-##### The `*` operator
+##### The `*` and `+` operators
 
 Note the possible use of `*` for specifying arrays of named parameter maps (broadly speaking, collections of them) in a more compact way.
 For example, `2 * [dog(name = simba); dog(name = gass)]` corresponds to `[dog(name = simba); dog(name = gass); dog(name = simba); dog(name = gass)]`.
@@ -146,13 +155,30 @@ corresponds to:
 ]
 ```
 
+The `+` operator simply concatenates arrays.
+Note that the first array has to be prefixed with `+` too.
+
+An example of combined use of `*` and `+` is:
+```
++ (size = [m; s; xxs]) * [hoodie(color = red)] + [hoodie(color = blue; size = m)]
+```
+that corresponds to:
+```
+[
+  hoodie(color = red; size = m);
+  hoodie(color = red; size = s);
+  hoodie(color = red; size = xxs);
+  hoodie(color = blue; size = m)
+]
+```
+
 #### Specification for the experiment file
 
 You describe an experiment and its components using a named parameter map in a text file: in practice, each map describes a **builder** of a component along with its parameters.
 The complete specification for available maps, parameters, and corresponding values for a valid description of an experiment is available [here](assets/builder-help.md).
 
 In the following sections, we describe the key elements.
-For better organizing them, the builders are grouped in **packages**, whose name are something like `sim.agent`.
+For better organizing them, the builders are grouped in **packages**, whose names are something like `sim.agent`, `ea.solver`, and alike.
 
 ##### Embodied agents
 
@@ -160,29 +186,43 @@ There are five available embodied agents (i.e., **robots**).
 Their builders are grouped in the [`sim.agent`](assets/builder-help.md#package-simagent) package.
 Here we describe the most significant ones.
 
-[`sim.agent.centralizedNumGridVSR()`](assets/builder-help.md#builder-simagentcentralizednumgridvsr) corresponds to a VSR with a single closed-loop controller taking as input the sensor readings and giving as output the activation values, as described in [[1]](#2020-c-mbdf-evolution).
-The controller is a `TimedRealFunction`, i.e., a multivariate function taking the current time $t$ and $m$ real values and giving $n$ real values; formally, it is a $f: \mathbb{R} \times \mathbb{R}^m \to \mathbb{R}^n$.
-Available functions are grouped in the [`sim.function`](assets/builder-help.md#package-simfunction) package: the key ones are described [below](#functions).
+###### Voxel-based Soft Robots
 
-[`sim.agent.heteroDistributedNumGridVSR()`](assets/builder-help.md#builder-simagentheterodistributednumgridvsr) and [`sim.agent.homoDistributedNumGridVSR()`](assets/builder-help.md#builder-simagenthomodistributednumgridvsr) correspond to a VSR with one `TimedRealFunction` inside each one of the voxels.
+[`sim.agent.centralizedNumGridVSR()`](assets/builder-help.md#builder-simagentcentralizednumgridvsr) corresponds to a Voxel-based Soft Robot (VSR) with a single closed-loop controller taking as input the sensor readings and giving as output the activation values, as described in [[1]](#2020-c-mbdf-evolution).
+The controller is a `TimedRealFunction`, i.e., a multivariate function (more appropriately, a dynamical system) taking the current time $t$ and $m$ real values (the sensor readings) and giving $n$ real values (the expansion/contraction values for each one of the $n$ voxels); formally, it is a $f: \mathbb{R} \times \mathbb{R}^m \to \mathbb{R}^n$.
+The sensors and the shape of the body are specified in the `body` parameter of `sim.agent.centralizedNumGridVSR()`.
+Available functions for the controller are grouped in the [`sim.function`](assets/builder-help.md#package-simfunction) package: the key ones are described [below](#functions).
+Here is how an agent built with `sim.agent.centralizedNumGridVSR()` looks like with [this description](it.units.erallab.robotevo2d.main/src/main/resources/agent-examples/vsr-centralized-biped.txt) of a [`sim.agent.vsr.shape.biped()`](assets/builder-help.md#builder-simagentvsrshapebiped) shape.
+
+![Centralized biped VSR](assets/images/agents/vsr-centralized-biped.png)
+
+Here is instead a `sim.agent.centralizedNumGridVSR()` built with [this description](it.units.erallab.robotevo2d.main/src/main/resources/agent-examples/vsr-centralized-free.txt) of a [`sim.agent.vsr.shape.free()`](assets/builder-help.md#builder-simagentvsrshapefree) shape, where `1` and `0` denote, in the `s` parameter, the presence or absence of a voxel in a 2D grid.
+
+![Centralized free VSR](assets/images/agents/vsr-centralized-free.png)
+
+[`sim.agent.distributedNumGridVSR()`](assets/builder-help.md#builder-simagentdistributednumgridvsr) corresponds to a VSR with a distributed controller, i.e., with one `TimedRealFunction` inside each one of the voxels.
 Each `TimedRealFunction` takes as input the local sensor readings and some (exactly `signals` for each one of the 4 adjacent voxels) values coming from adjacent voxels and gives as output the local activation value and some values going to adjacent voxels, as described in [[1]](#2020-c-mbdf-evolution).
-For `sim.agent.homoDistributedNumGridVSR()`, the same function is used in each voxel; for `sim.agent.heteroDistributedNumGridVSR()` different functions are used.
-That is, they for the former case, the functions share the parameters: for using `sim.agent.homoDistributedNumGridVSR()`, each voxel in the body has to have the same number of sensors.
+Depending on the mapper (see below), the same function is used in each voxel (with `evorobots.mapper.parametrizedHeteroBrains()`) or different functions are used (with `evorobots.mapper.parametrizedHomoBrains()`).
+That is, they for the former case, the functions share the parameters: in this case, each voxel in the body has to have the same number of sensors.
+Here is how an agent built with `sim.agent.distributedNumGridVSR()` looks like with [this description](it.units.erallab.robotevo2d.main/src/main/resources/agent-examples/vsr-distributed-worm.txt) of a [`sim.agent.vsr.shape.worm()`](assets/builder-help.md#builder-simagentvsrshapeworm) shape.
+
+![Distributed worm VSR](assets/images/agents/vsr-distributed-worm.png)
 
 ##### Functions
 
 Functions are multivariate functions taking the current time $t$ and $m$ real values and giving $n$ real values (i.e., $f: \mathbb{R} \times \mathbb{R}^m \to \mathbb{R}^n$) and are used inside robots as controllers (or brains).
+More appropriately, these are dynamical systems with an input space $\mathbb{R}^m$ and an output space $\mathbb{R}^n$: the state space depends on the function and may be $\emptyset$, i.e., the system may be stateless (i.e., an actual function).
 Their builders are grouped in the [`sim.function`](assets/builder-help.md#package-simfunction) package.
+Note that all of the builders in this package actually return a builder of a `TimedRealFunction` (precisely something that implements `BiFunction<Integer, Integer, TimedRealFunction>`), rather than a `TimedRealFunction`: when using a builder as a controller of an agent, the builder is invoked with the appropriate values for $m$ and $n$ base, usually, on the body (shape and sensors) of the agent.
 Here we describe the most significant ones.
 
 [`sim.function.mlp()`](assets/builder-help.md#builder-simfunctionmlp) is a Multi-layer Perceptron consisting of `nOfInnerLayers` inner layers in which each neuron has the same `activationFunction`.
 The size (number of neurons) inside each layer is computed based on the size of the first (*input*) and last (*output*) layers using the parameter `innerLayerRatio`: in brief, the $j+1$-th layer size is `innerLayerRatio` times the size of the $j$-th layer.
 As explained above, the size of the first and last layer are determined based on the context the function is used in (this holds for all the functions in this package).
-In facts, their builders return a `BiFunction<Integer, Integer, TimedRealFunction>`, where the two `Integer` parameters of the `BiFunction` are the dimension $m$ and $n$ of the input and output space.
-`sim.function.mlp()` is a `Parametrized` function: its parameters are the weigths of the MLP.
+`sim.function.mlp()` is a `Parametrized` function: its parameters are the weights of the MLP.
 Usually, they are exactly what you want to optimize using an evolutionary algorithm.
 
-[`sim.function.sinP()`](assets/builder-help.md#builder-simfunctionsinp), [`sim.function.sinPA()`](assets/builder-help.md#builder-simfunctionsinpa), [`sim.function.sinPF()`](assets/builder-help.md#builder-simfunctionsinpf), and [`sim.function.sinPFA()`](assets/builder-help.md#builder-simfunctionsinpfa) are simple functions that determine the output in $\mathbb{R}^n$ using an array of $n$ sinusoidal functions, i.e., $a \sin(2 \pi f t + \phi)$.
+[`sim.function.sinP()`](assets/builder-help.md#builder-simfunctionsinp), [`sim.function.sinPA()`](assets/builder-help.md#builder-simfunctionsinpa), [`sim.function.sinPF()`](assets/builder-help.md#builder-simfunctionsinpf), [`sim.function.sinPFA()`](assets/builder-help.md#builder-simfunctionsinpfa), and [`sim.function.sinPFAB()`](assets/builder-help.md#builder-simfunctionsinpfab) are simple functions that determine the output in $\mathbb{R}^n$ using an array of $n$ sinusoidal functions, i.e., $a \sin(2 \pi f t + \phi)+b$.
 Note that the input is not used when computing the output: that is, controllers employing (only) these functions are open-loop controllers, since they do not use the sensor readings.
 The four variants are all `Parametrized` but differ in what is actually an evolvable parameter: for `sinP()`, just the phase $\phi$ for each of the $n$ sinusoidal functions, for `sinPF()`, phase $\phi$ and frequency $f$, and so on.
 When a parameter is evolvable, it is mapped with min-max normalization in the corresponding range; when it is not, it is statically set to the mid point of the corresponding range.
@@ -192,10 +232,27 @@ It takes a input of $n$ values and delivers to the inner function an enlarged in
 Actually, `diffIn()` is a *dynamical system* rather than a *function*, since it has a state.
 
 [`sim.function.stepOut()`](assets/builder-help.md#builder-simfunctionstepout) is a composite function that wraps another `innerFunction`.
-It acts similarly to `diffIn()` but operates on the output instead of on the input.
+It acts similarly to `diffIn()`, but operates on the output instead of on the input; like `diffIn()`, it is a dynamical system, since it has a state.
 It lets `innerFunction` compute the output $\vec{x}$ of $m$ values passing it the untouched input and delivers as output $\vec{x}$ kept constant for consecutive time windows of `stepT` seconds; actually the `innerFunction` is invoked only once at a constant rate each `stepT` seconds and stored internally.
 In other words, `stepOut()` makes `innerFunction` a step function.
 It may be useful for avoiding high-frequency behaviors, like in [[3]](#2022-c-mr-impact), where `stepT` was set to 0.2.
+
+[`sim.function.noised()`](assets/builder-help.md#builder-simfunctionnoised) is a composite function that wraps another `innerFunction`.
+It is a function that adds some Gaussian noise before (with `inputSigma` $> 0$) and/or after (with `inputSigma` $> 0$) invoking the inner function.
+
+##### Problems
+
+There is currently a single kind of problem available, the [`ea.problem.totalOrder()`](assets/builder-help.md#builder-eaproblemtotalorder).
+It represents an optimization problem in which the objective can be sorted with a total order: usually, it is a number.
+This kind of problem is defined by a function `qFunction` for assessing the solution (usually an agent) and producing a quality `Q`, a function `cFunction` for transforming a `Q` in a `C implements Comparable<C>`, and a `type` value specifying if the goal is to minimize or maximize the `C`s.
+In practice, the `qFunction` is a task runner ([`sim.taskRunner()`](assets/builder-help.md#builder-simtaskrunner)) and the `cFunction` specifies how to extract a number out of the task outcome, like in this example (taken from [this example experiment](it.units.erallab.robotevo2d.main/src/main/resources/exp-examples/heterodist-vsr.txt)):
+```
+ea.p.totalOrder(
+  qFunction = s.taskRunner(task = s.task.locomotion());
+  cFunction = s.task.locomotion.xVelocity();
+  type = maximize
+)
+```
 
 ##### Tasks
 
@@ -204,96 +261,142 @@ Their builders are grouped in the [`sim.task`](assets/builder-help.md#package-si
 
 The most significant is [`sim.task.locomotion()`](assets/builder-help.md#builder-simtasklocomotion).
 Here, the robot is put on a `terrain` (see [here](assets/builder-help.md#package-simterrain) for the options) and let move for `duration` simulated seconds.
-The usual goal in terms of optimization is to maximize the velocity of the robot, that can be extracted from the task outcome with [`extractor.locomotionXVelocity()`](assets/builder-help.md#builder-extractorlocomotionxvelocity).
+The usual goal in terms of optimization is to maximize the velocity of the robot, that can be extracted from the task outcome with [`sim.task.locomotion.xVelocity()`](assets/builder-help.md#builder-simtasklocomotionxvelocity).
 
 ##### Solvers
 
 Solvers correspond to evolutionary algorithms.
-In principle, any solver implemented in JGEA might be used.
-In practice, a few are available here.
-Their builders are grouped in the [`solver`](assets/builder-help.md#package-solver) package.
-
-A solver must be compatible with a mapper, since the solver searches a given space $G$, the mapper maps a genotype $g \in G$ to a robot, and the robot fitness is evaluated (through simulation in a task) and used by the solver to drive the search.
+In principle, any solver implemented in JGEA might be used; currently, however, only a few are available here.
+Their builders are grouped in the [`ea.solver`](assets/builder-help.md#package-easolver) package.
+In general, a solver is a way for iteratively search a solution in $S$ (the *solution* oor *phenotype space*) whose quality is defined in $Q$ (the *quality* or *fitness space*): in most cases, the actual search occurs in a third space $G$, the *genotype space*, where it's easier to define some genetic operators.
 See [[2]](#2022-c-mnm-jgea) for a more detailed description of the abstractions of search, solution, and fitness spaces.
-The two most significant solvers are GA and ES: both are able to work with real numbers, i.e., with $G = \mathbb{R}^p$.
-Note that you are not required to say what's the value of $p$: it is inferred automatically from the `target` of a run using the mapper in inverted mode (i.e., given a robot, it gives a prototype genotype $g \in \mathbb{R}^p$, and hence it gives $p$).
+When evolving simulated robotic agents, as in the case of 2d-robot-evolution, a $s \in S$ is a robotic agent (actually a `Supplier<Agent>`), and a genotype $g \in G$ is a more tractable entity, like a vector $\vec{g} \in \\mathbb{R}^p$ (in Java terms, a `List<Double>`).
+For mapping a $g$ into a $s$, the solver uses a genotype-to-phenotype **mapper**, that is a parameter of the solver (`mapper`).
 
-[`solver.doublesStandard()`](assets/builder-help.md#builder-solverdoublesstandard) is a standard GA working on $\mathbb{R}^p$.
+The two most significant solvers are GA and ES: both are able to work with real numbers, i.e., with $G = \mathbb{R}^p$.
+Note that you are not required to say what's the value of $p$: it is inferred automatically from the `mapper`, which is indeed a `InvertibleMapper<List<Double>, S>` that in turn infers the size of a genotype from a target phenotype.
+
+[`ea.solver.numGA()`](assets/builder-help.md#builder-easolvernumga) is a standard GA working on $\mathbb{R}^p$.
 It iteratively evolves `nPop` individuals until `nEval` fitness evaluations have been done.
 Individual genotypes are initially generated randomly with each element in `[initialMinV,initialMaxV]`; then, they are modified by applying a Gaussian mutation with `sigmaMut` after a uniform crossover.
-Selection is done through a tournament with size `tournamentRate*nPop` (clipped to the lowest value of `minNTournament`).
+Selection is done through a tournament with size `tournamentRate` $\times$ `nPop` (clipped to the lowest value of `minNTournament`).
 
-[`solver.simpleES()`](assets/builder-help.md#builder-solversimplees) is a simple version of Evolutionary Strategy (ES).
-After the same initialization of `solver.doublesStandard()`, it evolves by taking, at each iteration, the best `parentsRate` rate of the population, computing their mean value, and producing the next generation by sampling a multivariate Gaussian distribution with the computed mean and `sigma`.
+[`ea.solver.simpleES()`](assets/builder-help.md#builder-easolversimplees) is a simple version of Evolutionary Strategy (ES).
+After the same initialization of `ea.solver.simpleES()`, it evolves by taking, at each iteration, the best `parentsRate` rate of the population, computing their mean value, and producing the next generation by sampling a multivariate Gaussian distribution with the computed mean and `sigma`.
 At each iteration, the `nOfElites` individuals are copied to the next generation.
 
 ##### Mappers
 
 The mapper maps a genotype to a robot, using the `target` of the run "as the starting point".
-Available mappers are in the [`mapper`](assets/builder-help.md#package-mapper) package.
+Available mappers are in the [`evorobots.mapper`](assets/builder-help.md#package-evorobotsmapper) package.
 
-The most significant one is [`mapper.toParametrized()`](assets/builder-help.md#builder-mappertoparametrized).
-It maps a numerical vector to a robot whose controller can be parametrized by a numerical vector, i.e., whose controller is `Parametrized`.
-In general, all the available robots meet this requirement and delegate its actual implementation to the internal `TimedRealFunction` (or the internal functions, if more than one).
-A significant case is [`sim.function.mlp()`](assets/builder-help.md#builder-simfunctionmlp).
+The two most significant mapper are based on the `NumBrained` and `NumMultiBrained` interfaces that model, respectively, agents that have one or many brains, respectively (the former being a particular case of the latter).
+Both the [`evorobots.mapper.parametrizedHomoBrains()`](assets/builder-help.md#builder-evorobotsmapperparametrizedheterobrains) and `evorobots.mapper.parametrizedHomoBrains()`(assets/builder-help.md#builder-evorobotsmapperparametrizedheterobrains) assume that the brain or brains are `Parametrized`, i.e., they work based on a vector of numerical parameters $\vec{\theta} \in \mathbb{R}^p$: hence mapping a `List<Double>` to the robot simply amounts to injecting the parameters in the brains.
+For `evorobots.mapper.parametrizedHomoBrains()`, the same $\vec{\theta}$ is injected in every brain; for `evorobots.mapper.parametrizedHeteroBrains()` one chunk of a larger vector is injected as $\vec{\theta}$ for every brain.
+
+All the [functions](#functions) listed above are `Parametrized`: the composite ones delegate to the inner function.
 
 ##### Listeners
 
 Listeners are notified at each iteration during the evolution and at the end of each run.
 They can be used to save, typically on a file, useful information concerning the evolution.
-Their builders are grouped in the [`listener`](assets/builder-help.md#package-listener) package.
+Their builders are grouped in the [`ea.listener`](assets/builder-help.md#package-ealistener) package.
 Here we describe the most significant ones.
 
-[`listener.bestCsv()`](assets/builder-help.md#builder-listenerbestcsv) writes a single CSV file for the experiment.
+[`ea.listener.bestCsv()`](assets/builder-help.md#builder-ealistenerbestcsv) writes a single CSV file for the experiment.
 If the file at `filePath` already exists, a new file with a similar name is used, without overwriting the existing file.
-The CSV will have one row for each iteration of each run and one column for each of the elements of `popFunctions`, `individualFunctions`, and `runKeys` (plus a few standard columns).
-Values for `popFunctions` and `individualFunctions` are of type `NamedFunction` (i.e., functions with a name) whose builders are in the [`namedFunction`](assets/builder-help.md#package-namedfunction) package.
-Each function in `popFunctions` is applied to the population at the given EA iteration, whereas each function in `individualFunctions` is applied to the best individual of the population.
-`runKeys` are strings specifying elements of the run descritpion to be extracted as cell values, e.g., `target.body.shape`, `randomGenerator.seed`, or `task.terrain`.
+The CSV will have one row for each iteration of each run and one column for each of the elements of `defaultFunctions`, `functions`, and `runKeys`.
+Values for `functions` are of type `NamedFunction` (i.e., functions with a name) whose builders are in the [`ea.namedFunction`](assets/builder-help.md#package-eanamedfunction) package: usually, compose a few of them for obtaining a function that takes a state `POSetPopulationState<G, S, Q>` of the evolution and returns the information of interest.
+For example, for having a column with the size of the best genotype (i.e., $p$ when $\vec{g} \in \mathbb{R}$, i.e., with all the solvers above), you set:
+```
+functions = [
+  ea.nf.size(f = ea.nf.genotype(individual = ea.nf.best()); s = "%5d")
+]
+```
+`runKeys` are strings specifying elements of the run description to be extracted as cell values, e.g., `randomGenerator.seed`, or `problem.qFunction.task.terrain`.
 
-[`listener.telegram()`](assets/builder-help.md#builder-listenertelegram) sends updates about the current run via Telegram.
-In particular, at the end of each run it sends a plot of the fitness during the evolution and zero or more videos of the best individual found upon the evolution performing the tasks described in `tasks`, not necessarily including the one used to drive the evolution.
+[`ea.listener.telegram()`](assets/builder-help.md#builder-ealistenertelegram) sends updates about the current run via Telegram.
+In particular, at the end of each run it can send some plots (see the [`ea.plot`](assets/builder-help.md#package-eaplot) package) and zero or more videos (see [`evorobots.video()`](assets/builder-help.md#builder-evorobotsvideo)) of the best individual found upon the evolution performing the tasks described in `tasks`, not necessarily including the one used to drive the evolution.
 This listener requires a `chatId` and a Telegram botId that has to be the only content of a text file located at `botIdFilePath`.
+The example below shows how to make this listener to send a plot of the fitness of the best individual during the evolution and a video of it performing locomotion on a flat terrain (`XXX` has to be replaced with an actual number).
+```
+ea.l.telegram(
+  chatId = "XXX";
+  botIdFilePath = "../tlg.txt";
+  plots = [
+    ea.plot.fitness(f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0)
+  ];
+  accumulators = [
+    er.video(
+      task = s.task.locomotion(terrain = sim.terrain.flat(); duration = 60; initialYGap = 0.1);
+      endTime = 60
+    )
+  ]
+);
+```
+
+[`ea.listener.tui()`](assets/builder-help.md#builder-ealistenertui) shows a text-based user interface summarizing the progress of the experiments.
 
 #### Examples of experiment files
 
 #### Example 1: 3 runs with a VSR biped
 
 ```
-experiment(
-  runs = (randomGenerator = (seed = [1:1:3]) * [rg.defaultRG()]) * [
-    run(
-      target = s.a.centralizedNumGridVSR(
-        function = s.f.mlp();
-        body = s.vsr.gridBody(
-          shape = s.vsr.s.biped(w = 4; h = 3);
-          sensorizingFunction = s.vsr.sf.directional(
-            headSensors = [s.s.sin(f = 0);s.s.d(a = -15; r = 5)];
-            nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
-            sSensors = [s.s.d(a = -90)]
-          )
-        )
+ea.experiment(
+  runs = (randomGenerator = (seed = [1:1:3]) * [ea.rg.defaultRG()]) * [
+    ea.run(
+      solver = ea.s.numGA(
+        mapper = er.m.parametrizedHeteroBrains(target = s.a.centralizedNumGridVSR(
+          body = s.a.vsr.gridBody(
+            sensorizingFunction = s.a.vsr.sf.directional(
+              headSensors = [s.s.sin(f = 0);s.s.d(a = -15; r = 5)];
+              nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
+              sSensors = [s.s.d(a = -90)]
+            );
+            shape = s.a.vsr.s.biped(w = 4; h = 3)
+          );
+          function = s.f.mlp()
+        ));
+        nEval = 100;
+        nPop = 10
       );
-      solver = so.doublesStandard(nEval = 500; nPop = 25);
-      mapper = m.toParametrized();
-      task = s.task.locomotion(terrain = s.t.flat(); duration = 15);
-      comparator = c.max(of = e.locomotionXVelocity())
+      problem = ea.p.totalOrder(
+        qFunction = s.taskRunner(task = s.task.locomotion());
+        cFunction = s.task.locomotion.xVelocity();
+        type = maximize
+      )
     )
   ];
-  qExtractor = e.locomotionXVelocity();
   listeners = [
-    l.bestCsv(
+    ea.l.tui(
+      functions = [
+        ea.nf.size(f = ea.nf.genotype(individual = ea.nf.best()); s = "%5d");
+        ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.l.xVelocity(); s = "%5.2f"));
+        ea.nf.fitnessHist(f = ea.nf.f(outerF = s.task.l.xVelocity()))
+      ];
+      plots = [
+        ea.plot.fitness(x = ea.nf.progress(); f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0; maxX = 1)
+      ]
+    );
+    ea.l.bestCsv(
       filePath = "experiments/best-biped-mlp.txt";
-      individualFunctions = [
-        nf.composition(first = nf.genotype(); second = nf.base64Serializer())
+      functions = [
+        ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.l.xVelocity(); s = "%5.2f"));
+        ea.nf.base64(f = ea.nf.genotype(individual = ea.nf.best()))
       ];
       runKeys = ["randomGenerator.seed"; solver]
     );
-    l.telegram(
-      chatId = "207490209";
-      botIdFilePath = "experiments/2dmrsim/tlg.txt";
-      tasks = [
-        namedTask(task = s.task.locomotion(terrain = s.t.hilly(); duration = 10))
+    ea.l.telegram(
+      chatId = "XXX";
+      botIdFilePath = "../tlg.txt";
+      plots = [
+        ea.plot.fitness(f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0)
+      ];
+      accumulators = [
+        er.video(
+          task = s.task.locomotion(terrain = sim.terrain.hilly(); duration = 60; initialYGap = 0.1);
+          endTime = 60
+        )
       ]
     )
   ]
@@ -303,7 +406,7 @@ This experiment consists of 3 runs differing only in the randomSeed (`seed = [1:
 Instead of specifying three times the full content of a `run(...)` (that would have been different in just the random seed), here the [`*` operator](#the--operator) is used.
 
 The target robot is a $4 \times 3$ biped with a centralized brain consisting of an MLP; the brain exploits the sensors installed in the body: here distance (`s.s.d()`), area ratio (`s.s.ar()`), rotated velocity (`s.s.rv()`).
-The available sensor builders are grouped in the [`sim.sensor`](assets/builder-help.md#package-simsensor) package (they correspond to methods of the utility class `SensorBuilder` of 2dmrsim.)
+The available sensor builders are grouped in the [`sim.sensor`](assets/builder-help.md#package-simsensor) package (they correspond to methods of the utility class `Sensors` of 2dmrsim.)
 The solver is a simple GA with a population of 25 individuals.
 The task is the one of locomotion on a flat terrain, lasting 15 simulated seconds.
 
@@ -313,7 +416,7 @@ Moreover, it'll contain a column named `best→genotype→base64` with a base64 
 This can be reused later for further analysis of the best individuals.
 
 The experiment also notifies about its progresses via Telegram.
-In particular, after each run, it takes the best individual and lets it run on a different terrain than the one it was evolved on (`s.t.hilly()` instead of `s.t.flat()`): the resulting video is sent on a chat with `chatId = "207490209"` (the double quotes are needed to let interpret it as a string).
+In particular, after each run, it takes the best individual and lets it run on a different terrain than the one it was evolved on (`s.t.hilly()` instead of `s.t.flat()`): the resulting video is sent on a chat with `chatId = "XXX"` (to be replaced with an actual number).
 The received video might look like this:
 ![The text-based UI of `Starter`](assets/images/biped.gif)
 
