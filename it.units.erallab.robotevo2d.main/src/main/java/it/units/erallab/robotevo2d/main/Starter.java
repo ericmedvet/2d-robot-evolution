@@ -51,7 +51,7 @@ public class Starter {
         names = {"--showExpFileHelp", "-d"},
         description = "Show a description of available constructs for the experiment file."
     )
-    public boolean showExpFileName = false;
+    public boolean showExpFileHelp = false;
 
     @Parameter(
         names = {"--checkExpFile", "-c"},
@@ -93,7 +93,7 @@ public class Starter {
     //prepare local named builder
     NamedBuilder<Object> nb = PreparedNamedBuilder.get();
     //check if it's just a help invocation
-    if (configuration.showExpFileName) {
+    if (configuration.showExpFileHelp) {
       System.out.println(NamedBuilder.prettyToString(nb, true));
       System.exit(0);
     }
