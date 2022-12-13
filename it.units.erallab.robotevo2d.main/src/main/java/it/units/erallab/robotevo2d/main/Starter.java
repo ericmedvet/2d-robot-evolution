@@ -21,6 +21,7 @@ import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
 import it.units.malelab.jgea.experimenter.Experiment;
 import it.units.malelab.jgea.experimenter.Experimenter;
+import it.units.malelab.jnb.core.BuilderException;
 import it.units.malelab.jnb.core.NamedBuilder;
 
 import java.io.*;
@@ -37,37 +38,45 @@ public class Starter {
   public static class Configuration {
     @Parameter(
         names = {"--expFile", "-e"},
-        description = "Path of the file with the experiment description"
+        description = "Path of the file with the experiment description."
     )
     public String experimentDescriptionFilePath = "";
     @Parameter(
         names = {"--nOfThreads", "-n"},
-        description = "Number of threads to be used"
+        description = "Number of threads to be used."
     )
     public int nOfThreads = 1;
 
     @Parameter(
         names = {"--showExpFileHelp", "-d"},
-        description = "Show a description of available constructs for the experiment file"
+        description = "Show a description of available constructs for the experiment file."
     )
     public boolean showExpFileName = false;
 
     @Parameter(
         names = {"--checkExpFile", "-c"},
-        description = "Just check the correctness of the experiment description"
+        description = "Just check the correctness of the experiment description."
     )
     public boolean check = false;
+
+    @Parameter(
+        names = {"--help", "-h"},
+        description = "Show this help.",
+        help = true
+    )
+    public boolean help;
 
   }
 
   public static void main(String[] args) {
     //read configuration
     Configuration configuration = new Configuration();
+    JCommander jc = JCommander.newBuilder()
+        .addObject(configuration)
+        .build();
+    jc.setProgramName(Starter.class.getName());
     try {
-      JCommander.newBuilder()
-          .addObject(configuration)
-          .build()
-          .parse(args);
+      jc.parse(args);
     } catch (ParameterException e) {
       e.usage();
       L.severe(String.format("Cannot read command line options: %s", e));
@@ -75,6 +84,11 @@ public class Starter {
     } catch (RuntimeException e) {
       L.severe(e.getClass().getSimpleName() + ": " + e.getMessage());
       System.exit(-1);
+    }
+    //check help
+    if (configuration.help) {
+      jc.usage();
+      System.exit(0);
     }
     //prepare local named builder
     NamedBuilder<Object> nb = PreparedNamedBuilder.get();
@@ -84,17 +98,17 @@ public class Starter {
       System.exit(0);
     }
     //read experiment description
-    String expDescription;
+    String expDescription = null;
     if (configuration.experimentDescriptionFilePath.isEmpty()) {
       L.config("Using default experiment description");
       InputStream inputStream = Starter.class.getResourceAsStream("/exp-examples/legged.txt");
       if (inputStream == null) {
-        throw new IllegalArgumentException("Cannot find default experiment description");
+        System.out.println("Cannot find default experiment description");
       } else {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
           expDescription = br.lines().collect(Collectors.joining());
         } catch (IOException e) {
-          throw new IllegalArgumentException(String.format("Cannot read default experiment description: %s", e));
+          System.out.printf("Cannot read default experiment description: %s%n", e);
         }
       }
     } else {
@@ -102,24 +116,37 @@ public class Starter {
       try (BufferedReader br = new BufferedReader(new FileReader(configuration.experimentDescriptionFilePath))) {
         expDescription = br.lines().collect(Collectors.joining());
       } catch (IOException e) {
-        throw new IllegalArgumentException(String.format(
-            "Cannot read provided experiment description at %s: %s",
+        System.out.printf(
+            "Cannot read provided experiment description at %s: %s%n",
             configuration.experimentDescriptionFilePath,
             e
-        ));
+        );
       }
+    }
+    if (expDescription == null) {
+      System.exit(-1);
     }
     //check if just check
     if (configuration.check) {
-      Experiment experiment = (Experiment) nb.build(expDescription);
-      System.out.println("Experiment description is valid");
-      System.out.printf("\t%d runs%n", experiment.runs().size());
-      System.out.printf("\t%d listenerss%n", experiment.listeners().size());
-      System.exit(0);
+      try {
+        Experiment experiment = (Experiment) nb.build(expDescription);
+        System.out.println("Experiment description is valid");
+        System.out.printf("\t%d runs%n", experiment.runs().size());
+        System.out.printf("\t%d listenerss%n", experiment.listeners().size());
+        System.exit(0);
+      } catch (BuilderException e) {
+        System.out.printf("Cannot build experiment: %s%n", e);
+        System.exit(-1);
+      }
     }
     //prepare and run experimenter
-    Experimenter experimenter = new Experimenter(nb, configuration.nOfThreads);
-    experimenter.run(expDescription);
+    try {
+      Experimenter experimenter = new Experimenter(nb, configuration.nOfThreads);
+      experimenter.run(expDescription);
+    } catch (BuilderException e) {
+      System.out.printf("Cannot build experiment: %s%n", e);
+      System.exit(-1);
+    }
   }
 
 }

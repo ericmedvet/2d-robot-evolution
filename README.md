@@ -78,6 +78,7 @@ You can have an overview on the other (few) parameters of `Starter` with:
 ```shell
 java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" it.units.erallab.robotevo2d.main.Starter --help
 ```
+One parameter that may be handy is `--checkExpFile`, or just `-c`, that can be used to perform a syntactical check on the experiment description file, without actually doing the experiment. 
 
 ### The experiment description
 
@@ -86,7 +87,7 @@ An **experiment** consists of one or more runs.
 Each **run** is an evolutionary optimization using a **solver** (an `IterativeSolver` of JGEA) on a **problem** with a random generator.
 
 The description of an experiment also includes information on if/how/where to store the info about ongoing runs: zero or more **listeners** can be specified to listen to the ongoing evolutionary runs and save salient information.
-One reasonable choice is to use a [`ea.listener.bestCsv()`](assets/builder-help.md#builder-ealistenerbestcsv) to save one line of a CSV file for each iteration of each run.
+One reasonable choice is to use a [`ea.listener.bestCsv()`](assets/builder-help.md#builder-ealistenerbestcsv) (see [below](#listeners)) to save one line of a CSV file for each iteration of each run.
 This way you can process the results of the experiment offline after it ended using, e.g., R or Python.
 
 You can describe an experiment through an experiment file containing a textual description of the experiment.
@@ -336,6 +337,10 @@ ea.l.telegram(
 ```
 
 [`ea.listener.tui()`](assets/builder-help.md#builder-ealistenertui) shows a text-based user interface summarizing the progress of the experiments.
+See the [example below](#example-1--3-runs-with-a-vsr-biped) for the usage of this listener.
+
+[`evorobots.listener.videoSaver()`](assets/builder-help.md#builder-evorobotslistenervideosaver) can be used to save a video of one individual (in the default case, the best of the last generation).
+See the [example below](#example-1--3-runs-with-a-vsr-biped) for the usage of this listener.
 
 #### Examples of experiment files
 
@@ -343,25 +348,24 @@ ea.l.telegram(
 
 ```
 ea.experiment(
-  runs = (randomGenerator = (seed = [1:1:3]) * [ea.rg.defaultRG()]) * [
+  runs = (randomGenerator = (seed = [1:1:10]) * [ea.rg.defaultRG()]) *
+    (solver = (mapper = [
+      er.m.parametrizedHeteroBrains(
+        target = s.a.numLeggedHybridModularRobot(
+        modules = + 4 * [
+          s.a.l.module(trunkLength = 10; legChunks = 2 * [s.a.l.legChunk()]; trunkSensors = [s.s.rv(a = 0); s.s.rv(a = 90)]; downConnectorSensors = [s.s.d(a = -90; r = 1)])
+        ] + [
+          s.a.l.module(trunkLength = 10; legChunks = 2 * [s.a.l.legChunk()]; trunkSensors = [s.s.rv(a = 0); s.s.rv(a = 90)]; downConnectorSensors = [s.s.d(a = -90; r = 1)]; rightConnectorSensors = + [s.s.sin()] + (a = [-80:10:-30]) * [s.s.d(r = 10)])
+        ];
+        function = s.f.noised(innerFunction=s.f.mlp(innerLayerRatio = 1; nOfInnerLayers = 2); inputSigma=0.01)
+      ))
+      
+    ]) * [
+      ea.s.numGA(nEval = 500; nPop = 10)
+    ]) * [
     ea.run(
-      solver = ea.s.numGA(
-        mapper = er.m.parametrizedHeteroBrains(target = s.a.centralizedNumGridVSR(
-          body = s.a.vsr.gridBody(
-            sensorizingFunction = s.a.vsr.sf.directional(
-              headSensors = [s.s.sin(f = 0);s.s.d(a = -15; r = 5)];
-              nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
-              sSensors = [s.s.d(a = -90)]
-            );
-            shape = s.a.vsr.s.biped(w = 4; h = 3)
-          );
-          function = s.f.mlp()
-        ));
-        nEval = 100;
-        nPop = 10
-      );
       problem = ea.p.totalOrder(
-        qFunction = s.taskRunner(task = s.task.locomotion());
+        qFunction = s.taskRunner(task = s.task.locomotion(terrain = sim.terrain.flat(); duration = 60; initialYGap = 0.1));
         cFunction = s.task.locomotion.xVelocity();
         type = maximize
       )
@@ -370,21 +374,12 @@ ea.experiment(
   listeners = [
     ea.l.tui(
       functions = [
-        ea.nf.size(f = ea.nf.genotype(individual = ea.nf.best()); s = "%5d");
         ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.l.xVelocity(); s = "%5.2f"));
         ea.nf.fitnessHist(f = ea.nf.f(outerF = s.task.l.xVelocity()))
       ];
       plots = [
-        ea.plot.fitness(x = ea.nf.progress(); f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0; maxX = 1)
+        ea.plot.fitness(f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0)
       ]
-    );
-    ea.l.bestCsv(
-      filePath = "experiments/best-biped-mlp.txt";
-      functions = [
-        ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.l.xVelocity(); s = "%5.2f"));
-        ea.nf.base64(f = ea.nf.genotype(individual = ea.nf.best()))
-      ];
-      runKeys = ["randomGenerator.seed"; solver]
     );
     ea.l.telegram(
       chatId = "XXX";
@@ -393,17 +388,23 @@ ea.experiment(
         ea.plot.fitness(f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0)
       ];
       accumulators = [
-        er.video(
-          task = s.task.locomotion(terrain = sim.terrain.hilly(); duration = 60; initialYGap = 0.1);
-          endTime = 60
-        )
+        er.video(task = s.task.locomotion(terrain = sim.terrain.flat(); duration = 60; initialYGap = 0.1))
       ]
+    );
+    ea.l.bestCsv(
+      filePath = "best.csv";
+      functions = [
+        ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.l.xVelocity(); s = "%5.2f"));
+        ea.nf.base64(f = ea.nf.genotype(individual = ea.nf.best()))
+      ];
+      runKeys = ["solver.mapper.target"; "solver.mapper.function"]
     )
   ]
 )
 ```
+
 This experiment consists of 3 runs differing only in the randomSeed (`seed = [1:1:3]`).
-Instead of specifying three times the full content of a `run(...)` (that would have been different in just the random seed), here the [`*` operator](#the--operator) is used.
+Instead of specifying three times the full content of a `run(...)` (that would have been different in just the random seed), here the [`*` operator](#the--and--operators) is used.
 
 The target robot is a $4 \times 3$ biped with a centralized brain consisting of an MLP; the brain exploits the sensors installed in the body: here distance (`s.s.d()`), area ratio (`s.s.ar()`), rotated velocity (`s.s.rv()`).
 The available sensor builders are grouped in the [`sim.sensor`](assets/builder-help.md#package-simsensor) package (they correspond to methods of the utility class `Sensors` of 2dmrsim.)
@@ -418,57 +419,68 @@ This can be reused later for further analysis of the best individuals.
 The experiment also notifies about its progresses via Telegram.
 In particular, after each run, it takes the best individual and lets it run on a different terrain than the one it was evolved on (`s.t.hilly()` instead of `s.t.flat()`): the resulting video is sent on a chat with `chatId = "XXX"` (to be replaced with an actual number).
 The received video might look like this:
+
 ![The text-based UI of `Starter`](assets/images/biped.gif)
 
 Note that this is the result of a rather short (`nEval = 500`) evolution; moreover, the best robot is here facing a terrain "it never saw" (more precisely, it and its entire ancestry never saw it) during the evolution.
 
+Finally, the experiments also saves one video for each of the final best individuals: the saved video will be located the `experiments/`.
+
 #### Example 2: 10 runs with 3 VSR bodies on 2 terrains
 
 ```
-experiment(
-  runs =
-    (randomGenerator = (seed = [1:1:10]) * [rg.defaultRG()])
-    * (target =
-        (body =
-          (shape =
-            [
-              s.vsr.s.biped(w = 4; h = 3);
-              s.vsr.s.free(s = "111110-110011");
-              s.vsr.s.worm(w = 5; h = 2)
-            ]
-          ) * [s.vsr.gridBody(
-                 sensorizingFunction = s.vsr.sf.directional(
-                   headSensors = [s.s.sin(f = 0);s.s.d(a = -15; r = 5)];
-                   nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
-                   sSensors = [s.s.d(a = -90)]
-                 )
-               )]
-        ) * [s.a.centralizedNumGridVSR(function = s.f.mlp())])
-    * (task =
-        [
-          s.task.locomotion(terrain = s.t.flat(); duration = 15);
-          s.task.locomotion(terrain = s.t.hilly(); duration = 15)
-        ]
+ea.experiment(
+  runs = (randomGenerator = (seed = [1:1:10]) * [ea.rg.defaultRG()]) *
+  (problem = (qFunction = [
+    s.taskRunner(task = s.task.locomotion(terrain = s.t.flat(); duration = 20));
+    s.taskRunner(task = s.task.locomotion(terrain = s.t.hilly(); duration = 20))
+  ]) * [
+    ea.p.totalOrder(
+      cFunction = s.task.locomotion.xVelocity();
+      type = maximize
+    )
+  ]) * (solver = (mapper = (target = (body = (shape = [
+    s.a.vsr.s.worm(w = 8; h = 3);
+    s.a.vsr.s.free(s = "111110-110011");
+    s.a.vsr.s.worm(w = 5; h = 2)
+  ]) * [
+    s.a.vsr.gridBody(      
+      sensorizingFunction = s.a.vsr.sf.uniform(
+        sensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90); s.s.a()]
       )
-    * [run(
-        solver = so.doublesStandard(nEval = 100; nPop = 25);
-        mapper = m.toParametrized();
-        comparator = c.max(of = e.locomotionXVelocity())
-      )];
-  qExtractor = e.locomotionXVelocity()
+    )
+  ]) * [
+    s.a.distributedNumGridVSR(
+      signals = 2;
+      function = s.f.mlp()
+    )]
+  ) * [er.m.parametrizedHomoBrains()]
+  ) * [ea.s.numGA(nEval = 1000; nPop = 50)]
+  ) * [ea.run()];
+  listeners = [
+    ea.l.tui(
+      functions = [
+        ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.l.xVelocity(); s = "%5.2f"));
+        ea.nf.fitnessHist(f = ea.nf.f(outerF = s.task.l.xVelocity()))
+      ];
+      plots = [
+        ea.plot.fitness(x = ea.nf.progress(); f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0; maxX = 1)
+      ]
+    )
+  ]
 )
 ```
 
-Here there are no listeners, just for simplifying the example; in practice it would be weird to run such a big experiment without saving any data.
+Here there is just one listener, just for simplifying the example; in practice it would be weird to run such a big experiment without saving any data.
 
 A single solver is used to solve two tasks:
-- `s.task.locomotion(terrain = s.t.flat(); duration = 15)`
-- `s.task.locomotion(terrain = s.t.hilly(); duration = 15)`
+- `s.taskRunner(task = s.task.locomotion(terrain = s.t.flat(); duration = 20))`
+- `s.taskRunner(task = s.task.locomotion(terrain = s.t.hilly(); duration = 20));`
 
 with three robot shapes:
-- `s.vsr.s.biped(w = 4; h = 3)`
-- `s.vsr.s.free(s = "111110-110011")`
-- `s.vsr.s.worm(w = 5; h = 2)`
+- `s.a.vsr.s.biped(w = 4; h = 3)`
+- `s.a.vsr.s.free(s = "111110-110011")`
+- `s.a.vsr.s.worm(w = 5; h = 2)`
 
 each time with 10 different random seeds.
 There will hence be 60 runs.
