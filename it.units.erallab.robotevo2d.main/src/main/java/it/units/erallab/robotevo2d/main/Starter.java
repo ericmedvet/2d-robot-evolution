@@ -37,7 +37,7 @@ public class Starter {
 
   public static class Configuration {
     @Parameter(
-        names = {"--expFile", "-e"},
+        names = {"--expFile", "-f"},
         description = "Path of the file with the experiment description."
     )
     public String experimentDescriptionFilePath = "";
@@ -103,12 +103,12 @@ public class Starter {
       L.config("Using default experiment description");
       InputStream inputStream = Starter.class.getResourceAsStream("/exp-examples/legged.txt");
       if (inputStream == null) {
-        System.out.println("Cannot find default experiment description");
+        L.severe("Cannot find default experiment description");
       } else {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
           expDescription = br.lines().collect(Collectors.joining());
         } catch (IOException e) {
-          System.out.printf("Cannot read default experiment description: %s%n", e);
+          L.severe("Cannot read default experiment description: %s%n".formatted(e));
         }
       }
     } else {
@@ -116,11 +116,10 @@ public class Starter {
       try (BufferedReader br = new BufferedReader(new FileReader(configuration.experimentDescriptionFilePath))) {
         expDescription = br.lines().collect(Collectors.joining());
       } catch (IOException e) {
-        System.out.printf(
-            "Cannot read provided experiment description at %s: %s%n",
+        L.severe("Cannot read provided experiment description at %s: %s%n".formatted(
             configuration.experimentDescriptionFilePath,
             e
-        );
+        ));
       }
     }
     if (expDescription == null) {
@@ -135,7 +134,7 @@ public class Starter {
         System.out.printf("\t%d listenerss%n", experiment.listeners().size());
         System.exit(0);
       } catch (BuilderException e) {
-        System.out.printf("Cannot build experiment: %s%n", e);
+        L.severe("Cannot build experiment: %s%n".formatted(e));
         System.exit(-1);
       }
     }
@@ -144,7 +143,7 @@ public class Starter {
       Experimenter experimenter = new Experimenter(nb, configuration.nOfThreads);
       experimenter.run(expDescription);
     } catch (BuilderException e) {
-      System.out.printf("Cannot build experiment: %s%n", e);
+      L.severe("Cannot build experiment: %s%n".formatted(e));
       System.exit(-1);
     }
   }
