@@ -14,7 +14,7 @@ This software also depends on the following other dependencies:
 - [2D-MR-Sim](https://github.com/ericmedvet/2dmrsim),
 - [JNB](https://github.com/ericmedvet/jnb)
 
-- The specific versions are the ones shown in the [pom.xml](pom.xml) at the nodes `<jgea.version>...</jgea.version>`, `<mrsim2d.version>...</mrsim2d.version>`, and `<jnb.version>...</jnb.version>`.
+The specific versions are the ones shown in the [pom.xml](pom.xml) at the nodes `<jgea.version>...</jgea.version>`, `<mrsim2d.version>...</mrsim2d.version>`, and `<jnb.version>...</jnb.version>`.
 
 At the moment, these three Maven dependencies are not hosted in the central repository.
 You hence need to make them available in your local repository, building them on your machine, before building this software.
