@@ -1,7 +1,24 @@
+/*
+ * Copyright 2022 eric
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package it.units.erallab.robotevo2d.main.builders;
 
 import it.units.erallab.mrsim2d.core.engine.Engine;
 import it.units.erallab.mrsim2d.core.tasks.Task;
+import it.units.erallab.mrsim2d.core.util.DoubleRange;
 import it.units.erallab.mrsim2d.viewer.Drawer;
 import it.units.erallab.mrsim2d.viewer.VideoBuilder;
 import it.units.erallab.mrsim2d.viewer.VideoUtils;
@@ -14,22 +31,49 @@ import it.units.malelab.jgea.experimenter.Run;
 import it.units.malelab.jnb.core.Param;
 import it.units.malelab.jnb.core.ParamMap;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.Base64;
+import java.util.List;
 import java.util.UUID;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.logging.Logger;
+import java.util.random.RandomGenerator;
 
 public class Misc {
 
+  public final static int FILE_VIDEO_W = 600;
+  public final static int FILE_VIDEO_H = 400;
   private final static Logger L = Logger.getLogger(Misc.class.getName());
-
-  private final static int FILE_VIDEO_W = 600;
-  private final static int FILE_VIDEO_H = 400;
 
 
   private Misc() {
+  }
+
+  @SuppressWarnings("unused")
+  public static Function<List<Double>, List<Double>> doublesRandomizer(
+      @Param(value = "randomGenerator", dNPM = "sim.defaultRG()") RandomGenerator randomGenerator,
+      @Param(value = "range", dNPM = "sim.range(max=1.0;min=-1.0)") DoubleRange range
+  ) {
+    return values -> values.stream().map(v -> range.denormalize(randomGenerator.nextDouble())).toList();
+  }
+
+  @SuppressWarnings("unused")
+  public static Function<Object, Object> fromBase64(
+      @Param("s") String s
+  ) {
+    return o -> {
+      try (ByteArrayInputStream bais = new ByteArrayInputStream(Base64.getDecoder().decode(s));
+           ObjectInputStream ois = new ObjectInputStream(bais)) {
+        return ois.readObject();
+      } catch (Throwable t) {
+        L.warning("Cannot deserialize: %s".formatted(t));
+        return null;
+      }
+    };
   }
 
   @SuppressWarnings("unused")
@@ -45,7 +89,8 @@ public class Misc {
       @Param(value = "drawer", dNPM = "sim.drawer()") Function<String, Drawer> drawer,
       @Param("task") Task<A, ?> task,
       @Param(value = "engine", dNPM = "sim.engine()") Supplier<Engine> engineSupplier,
-      @Param(value = "individual", dNPM = "ea.nf.best()") Function<POSetPopulationState<?, A, ?>, Individual<?, A, ?>> individualFunction,
+      @Param(value = "individual", dNPM = "ea.nf.best()") Function<POSetPopulationState<?, A, ?>,
+          Individual<?, A, ?>> individualFunction,
       @Param(value = "", injection = Param.Injection.MAP) ParamMap map
   ) {
     return run -> Accumulator.<POSetPopulationState<?, A, ?>>last().then(state -> {
@@ -55,7 +100,7 @@ public class Misc {
       boolean tempFile = false;
       File file;
       try {
-        if (dirPath==null || dirPath.isEmpty()) {
+        if (dirPath == null || dirPath.isEmpty()) {
           tempFile = true;
           file = File.createTempFile("video", ".mp4");
           file.deleteOnExit();
@@ -86,4 +131,5 @@ public class Misc {
       return null;
     });
   }
+
 }
