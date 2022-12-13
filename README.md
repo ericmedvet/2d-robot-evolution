@@ -485,6 +485,39 @@ with three robot shapes:
 each time with 10 different random seeds.
 There will hence be 60 runs.
 
+### Player
+
+You can execute a single task on a single agent, instead of performing an entire experiment consisting of several runs, using [`Player`](it.units.erallab.robotevo2d.main/src/main/java/it/units/erallab/robotevo2d/main/Player.java).
+It can be started with
+```shell
+java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" it.units.erallab.robotevo2d.main.Player --playFile <play-file>
+```
+where `<play-file>` is the path to a file with an **play description** (see [`evorobots.play()`](assets/builder-help.md#builder-evorobotsplay)).
+
+For example, with a play file like this:
+```
+er.play(
+  mapper = er.m.parametrizedHeteroBrains(target = s.a.centralizedNumGridVSR(
+    body = s.a.vsr.gridBody(
+      sensorizingFunction = s.a.vsr.sf.directional(
+        headSensors = [s.s.sin(f = 0);s.s.d(a = -15; r = 5)];
+        nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
+        sSensors = [s.s.d(a = -90)]
+      );
+      shape = s.a.vsr.s.biped(w = 4; h = 3)
+    );
+    function = s.f.noised(outputSigma = 0.01; innerFunction = s.f.sinP())
+  ));
+  task = s.task.locomotion();
+  drawer = sim.drawer(actions = true);
+  genotype = er.doublesRandomizer();
+  videoFilePath = "results/video-after.mp4"
+)
+```
+you run a locomotion task on a biped VSR with a centralized brain consinsting of a `sinP()` function with randomized phases.
+The result is saved as a video at `results/video-after.mp4`.
+If you don't specify the `videoFilePath` parameter, a GUI opens and shows the task as it is performed.
+
 ## References
 
 1. <a name="2020-c-mbdf-evolution"></a> Medvet, Bartoli, De Lorenzo, Fidel; [Evolution of Distributed Neural Controllers for Voxel-based Soft Robots](https://medvet.inginf.units.it/publications/2020-c-mbdf-evolution/); ACM Genetic and Evolutionary Computation Conference (GECCO); 2020

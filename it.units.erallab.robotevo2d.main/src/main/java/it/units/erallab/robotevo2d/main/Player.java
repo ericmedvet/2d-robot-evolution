@@ -125,6 +125,7 @@ public class Player {
         );
       }
       //do task
+      L.info("Executing the task");
       Object outcome = play.task().run(solution, play.engineSupplier().get(), consumer);
       L.info("The outcome of the task is %s".formatted(outcome));
       //possibly save video
