@@ -13,30 +13,31 @@ This software also depends on the following other dependencies:
 - [JGEA](https://github.com/ericmedvet/jgea),
 - [2D-MR-Sim](https://github.com/ericmedvet/2dmrsim),
 - [JNB](https://github.com/ericmedvet/jnb)
-The specific versions are the ones shown in the [pom.xml](pom.xml) at the nodes `<jgea.version>...</jgea.version>`, `<mrsim2d.version>...</mrsim2d.version>`, and `<jnb.version>...</jnb.version>`.
+
+- The specific versions are the ones shown in the [pom.xml](pom.xml) at the nodes `<jgea.version>...</jgea.version>`, `<mrsim2d.version>...</mrsim2d.version>`, and `<jnb.version>...</jnb.version>`.
 
 At the moment, these three Maven dependencies are not hosted in the central repository.
 You hence need to make them available in your local repository, building them on your machine, before building this software.
-In practice, you need to execute the following commands.
+In practice, you need to execute the following commands (starting with JNB, as JGEA and 2d-MR-Sim depend on it).
 
-For JGEA:
+For JNB:
+```shell
+git clone --depth 1 --branch <tag_name> https://github.com/ericmedvet/jnb.git
+cd jnb
+mvn install
+```
+
+For JGEA (in a different directory than the one in which you cloned JNB):
 ```shell
 git clone --depth 1 --branch <tag_name> https://github.com/ericmedvet/jgea.git
 cd jgea
 mvn install
 ```
 
-For 2D-MR-Sim (in a different directory than the one in which you cloned JGEA):
+For 2D-MR-Sim (in a different directory than the one in which you cloned JGEA and JNB):
 ```shell
 git clone --depth 1 --branch <tag_name> https://github.com/ericmedvet/2dmrsim.git
 cd 2dmrsim
-mvn install
-```
-
-For JNB (in a different directory than the one in which you cloned JGEA and 2D-MR-Sim):
-```shell
-git clone --depth 1 --branch <tag_name> https://github.com/ericmedvet/jnb.git
-cd jnb
 mvn install
 ```
 
@@ -120,7 +121,7 @@ The format is reasonably robust to spaces and line-breaks.
 
 An example of a syntactically valid named parameter map is:
 ```
-car(dealer=Ferrari;price=45000)
+car(dealer = Ferrari; price = 45000)
 ```
 where `dealer` and `price` are parameter names and `Ferrari` and `45000` are parameter values.
 `car` is the name of the map.
