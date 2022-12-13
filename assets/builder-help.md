@@ -608,6 +608,49 @@ Produces <code><abbr title="it.units.malelab.jgea.core.solver.SimpleEvolutionary
 
 Aliases: `er`, `evorobots`
 
+### Builder `evorobots.doublesRandomizer()`
+
+`er.doublesRandomizer(randomGenerator; range)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `randomGenerator` | npm | `sim.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
+| `range` | npm | `sim.range(max=1.0;min=-1.0)` | <code><abbr title="it.units.erallab.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>, <abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>></code>
+
+### Builder `evorobots.fromBase64()`
+
+`er.fromBase64(s)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `s` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.Object">Object</abbr>, <abbr title="java.lang.Object">Object</abbr>></code>
+
+### Builder `evorobots.play()`
+
+`er.play(name; genotype; mapper; task; drawer; w; h; frameRate; startTime; endTime; codec; engine; videoFilePath)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `name` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+| `genotype` | npm | `ea.f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr><G, G></code> |
+| `mapper` | npm |  | <code><abbr title="it.units.malelab.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr><G, S></code> |
+| `task` | npm |  | <code><abbr title="it.units.erallab.mrsim2d.core.tasks.Task">Task</abbr><S, O></code> |
+| `drawer` | npm | `sim.drawer()` | <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.String">String</abbr>, <abbr title="it.units.erallab.mrsim2d.viewer.Drawer">Drawer</abbr>></code> |
+| `w` | i | `600` | <code>int</code> |
+| `h` | i | `400` | <code>int</code> |
+| `frameRate` | d | `30.0` | <code>double</code> |
+| `startTime` | d | `0.0` | <code>double</code> |
+| `endTime` | d | `30.0` | <code>double</code> |
+| `codec` | e | `JCODEC` | <code><abbr title="it.units.erallab.mrsim2d.viewer.VideoUtils$EncoderFacility">VideoUtils$EncoderFacility</abbr></code> |
+| `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr><<abbr title="it.units.erallab.mrsim2d.core.engine.Engine">Engine</abbr>></code> |
+| `videoFilePath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="it.units.erallab.robotevo2d.main.Play">Play</abbr></code>
+
 ### Builder `evorobots.video()`
 
 `er.video(dirPath; fileNameTemplate; w; h; frameRate; startTime; endTime; codec; drawer; task; engine; individual)`
