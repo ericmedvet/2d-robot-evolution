@@ -22,26 +22,24 @@ In practice, you need to execute the following commands (starting with JNB, as J
 
 For JNB:
 ```shell
-git clone --depth 1 --branch <tag_name> https://github.com/ericmedvet/jnb.git
+git clone --depth 1 --branch v1.0.2 https://github.com/ericmedvet/jnb.git
 cd jnb
 mvn install
 ```
 
 For JGEA (in a different directory than the one in which you cloned JNB):
 ```shell
-git clone --depth 1 --branch <tag_name> https://github.com/ericmedvet/jgea.git
+git clone --depth 1 --branch v2.3.1 https://github.com/ericmedvet/jgea.git
 cd jgea
 mvn install
 ```
 
 For 2D-MR-Sim (in a different directory than the one in which you cloned JGEA and JNB):
 ```shell
-git clone --depth 1 --branch <tag_name> https://github.com/ericmedvet/2dmrsim.git
+git clone --depth 1 --branch v0.7.1 https://github.com/ericmedvet/2dmrsim.git
 cd 2dmrsim
 mvn install
 ```
-
-Where `<tag_name>` is the tag of the version you need (i.e., `v` followed by the version number), e.g., `v2.2.1`.
 
 ### Clone and build
 
@@ -293,7 +291,7 @@ The mapper maps a genotype to a robot, using the `target` of the run "as the sta
 Available mappers are in the [`evorobots.mapper`](assets/builder-help.md#package-evorobotsmapper) package.
 
 The two most significant mapper are based on the `NumBrained` and `NumMultiBrained` interfaces that model, respectively, agents that have one or many brains, respectively (the former being a particular case of the latter).
-Both the [`evorobots.mapper.parametrizedHomoBrains()`](assets/builder-help.md#builder-evorobotsmapperparametrizedheterobrains) and `evorobots.mapper.parametrizedHomoBrains()`(assets/builder-help.md#builder-evorobotsmapperparametrizedheterobrains) assume that the brain or brains are `Parametrized`, i.e., they work based on a vector of numerical parameters $\vec{\theta} \in \mathbb{R}^p$: hence mapping a `List<Double>` to the robot simply amounts to injecting the parameters in the brains.
+Both the [`evorobots.mapper.parametrizedHomoBrains()`](assets/builder-help.md#builder-evorobotsmapperparametrizedheterobrains) and [`evorobots.mapper.parametrizedHeteroBrains()`](assets/builder-help.md#builder-evorobotsmapperparametrizedheterobrains) assume that the brain or brains are `Parametrized`, i.e., they work based on a vector of numerical parameters $\vec{\theta} \in \mathbb{R}^p$: hence mapping a `List<Double>` to the robot simply amounts to injecting the parameters in the brains.
 For `evorobots.mapper.parametrizedHomoBrains()`, the same $\vec{\theta}$ is injected in every brain; for `evorobots.mapper.parametrizedHeteroBrains()` one chunk of a larger vector is injected as $\vec{\theta}$ for every brain.
 
 All the [functions](#functions) listed above are `Parametrized`: the composite ones delegate to the inner function.
