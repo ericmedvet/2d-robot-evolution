@@ -132,7 +132,11 @@ public class Player {
       if (consumer instanceof VideoBuilder videoBuilder) {
         L.info("Doing video");
         File file = videoBuilder.get();
-        L.info("Video done and saved on file %s".formatted(file.getAbsolutePath()));
+        if (file != null) {
+          L.info("Video done and saved on file %s".formatted(file.getAbsolutePath()));
+        } else {
+          L.warning("Could not save video file");
+        }
       }
     } catch (BuilderException e) {
       L.severe("Cannot build experiment: %s%n".formatted(e));
