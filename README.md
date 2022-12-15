@@ -55,6 +55,10 @@ At this point, if everything worked smoothly, you should be able to run a first 
 java -cp "2d-robot-evolution/it.units.erallab.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" it.units.erallab.robotevo2d.main.Starter
 ```
 
+**For Windows**, it might be possible that by using the command above from the standard terminal you see garbage text output.
+It happens because it is not able to manage the extended charset needed to encode the colored textual UI.
+You can use `javaw` instead of `java` for launching the `Starter` class to circumvent the problem.
+
 ## Usage
 
 ### In a nutshell
