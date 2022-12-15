@@ -36,7 +36,7 @@ mvn install
 
 For 2D-MR-Sim (in a different directory than the one in which you cloned JGEA and JNB):
 ```shell
-git clone --depth 1 --branch v0.7.1 https://github.com/ericmedvet/2dmrsim.git
+git clone --depth 1 --branch v0.7.3 https://github.com/ericmedvet/2dmrsim.git
 cd 2dmrsim
 mvn install
 ```
