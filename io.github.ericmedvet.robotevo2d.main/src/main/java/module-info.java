@@ -1,7 +1,7 @@
 /**
  * @author "Eric Medvet" on 2022/08/28 for robotevo2d
  */
-module it.units.erallab.robotevo2d.main {
+module io.github.ericmedvet.robotevo2d.main {
   requires io.github.ericmedvet.jgea.core;
   requires io.github.ericmedvet.jgea.experimenter;
   requires java.desktop;
