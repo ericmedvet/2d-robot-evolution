@@ -16,7 +16,7 @@ In case you want to use this project inside your project, add this to your `pom.
 <dependency>
     <groupId>io.github.ericmedvet</groupId>
     <artifactId>robotevo2d.main</artifactId>
-    <version>${project.version}</version>
+    <version>1.0.4-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -469,7 +469,7 @@ There will hence be 60 runs.
 
 ### Player
 
-You can execute a single task on a single agent, instead of performing an entire experiment consisting of several runs, using [`Player`](io.github.ericmedvet.robotevo2d.main/src/main/java/it/units/erallab/robotevo2d/main/Player.java).
+You can execute a single task on a single agent, instead of performing an entire experiment consisting of several runs, using [`Player`](io.github.ericmedvet.robotevo2d.main/src/main/java/io/github/ericmedvet/robotevo2d/main/Player.java).
 It can be started with
 ```shell
 java -cp "2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.robotevo2d.main.Player --playFile <play-file>
