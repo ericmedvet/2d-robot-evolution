@@ -33,7 +33,7 @@
         <jgea.version>2.3.3-SNAPSHOT</jgea.version>
         <jnb.version>1.0.3</jnb.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jdk.version>18</jdk.version>
+        <jdk.version>17</jdk.version>
     </properties>
     <dependencies>
     </dependencies>
