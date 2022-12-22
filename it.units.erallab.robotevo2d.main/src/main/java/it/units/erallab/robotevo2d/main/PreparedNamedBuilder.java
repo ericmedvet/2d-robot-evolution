@@ -16,18 +16,18 @@
 
 package it.units.erallab.robotevo2d.main;
 
+import io.github.ericmedvet.jnb.core.NamedBuilder;
 import it.units.erallab.robotevo2d.main.builders.Listeners;
 import it.units.erallab.robotevo2d.main.builders.Mappers;
 import it.units.erallab.robotevo2d.main.builders.Misc;
-import it.units.malelab.jnb.core.NamedBuilder;
 
 import java.util.List;
 
 public class PreparedNamedBuilder {
 
   private final static NamedBuilder<Object> NB = NamedBuilder.empty()
-      .and(it.units.erallab.mrsim2d.buildable.PreparedNamedBuilder.get())
-      .and(it.units.malelab.jgea.experimenter.PreparedNamedBuilder.get())
+      .and(io.github.ericmedvet.mrsim2d.buildable.PreparedNamedBuilder.get())
+      .and(io.github.ericmedvet.jgea.experimenter.PreparedNamedBuilder.get())
       .and(List.of("evorobots", "er"), NamedBuilder.empty()
           .and(NamedBuilder.fromUtilityClass(Misc.class))
           .and(NamedBuilder.fromClass(Play.class))

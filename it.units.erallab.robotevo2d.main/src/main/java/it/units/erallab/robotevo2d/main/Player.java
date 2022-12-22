@@ -19,11 +19,11 @@ package it.units.erallab.robotevo2d.main;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
-import it.units.erallab.mrsim2d.core.Snapshot;
-import it.units.erallab.mrsim2d.viewer.RealtimeViewer;
-import it.units.erallab.mrsim2d.viewer.VideoBuilder;
-import it.units.malelab.jnb.core.BuilderException;
-import it.units.malelab.jnb.core.NamedBuilder;
+import io.github.ericmedvet.jnb.core.BuilderException;
+import io.github.ericmedvet.jnb.core.NamedBuilder;
+import io.github.ericmedvet.mrsim2d.core.Snapshot;
+import io.github.ericmedvet.mrsim2d.viewer.RealtimeViewer;
+import io.github.ericmedvet.mrsim2d.viewer.VideoBuilder;
 
 import java.io.BufferedReader;
 import java.io.File;

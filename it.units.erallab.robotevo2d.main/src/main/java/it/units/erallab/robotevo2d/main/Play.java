@@ -16,13 +16,13 @@
 
 package it.units.erallab.robotevo2d.main;
 
-import it.units.erallab.mrsim2d.core.engine.Engine;
-import it.units.erallab.mrsim2d.core.tasks.Task;
-import it.units.erallab.mrsim2d.viewer.Drawer;
-import it.units.erallab.mrsim2d.viewer.VideoUtils;
+import io.github.ericmedvet.jgea.experimenter.InvertibleMapper;
+import io.github.ericmedvet.jnb.core.Param;
+import io.github.ericmedvet.mrsim2d.core.engine.Engine;
+import io.github.ericmedvet.mrsim2d.core.tasks.Task;
+import io.github.ericmedvet.mrsim2d.viewer.Drawer;
+import io.github.ericmedvet.mrsim2d.viewer.VideoUtils;
 import it.units.erallab.robotevo2d.main.builders.Misc;
-import it.units.malelab.jgea.experimenter.InvertibleMapper;
-import it.units.malelab.jnb.core.Param;
 
 import java.util.function.Function;
 import java.util.function.Supplier;

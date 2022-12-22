@@ -16,9 +16,9 @@
 
 package it.units.erallab.robotevo2d.main.helper;
 
+import io.github.ericmedvet.jnb.core.InfoPrinter;
+import io.github.ericmedvet.jnb.core.NamedBuilder;
 import it.units.erallab.robotevo2d.main.PreparedNamedBuilder;
-import it.units.malelab.jnb.core.InfoPrinter;
-import it.units.malelab.jnb.core.NamedBuilder;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;

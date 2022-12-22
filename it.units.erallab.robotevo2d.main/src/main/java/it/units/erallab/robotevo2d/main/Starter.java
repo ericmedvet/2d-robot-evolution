@@ -19,10 +19,10 @@ package it.units.erallab.robotevo2d.main;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
-import it.units.malelab.jgea.experimenter.Experiment;
-import it.units.malelab.jgea.experimenter.Experimenter;
-import it.units.malelab.jnb.core.BuilderException;
-import it.units.malelab.jnb.core.NamedBuilder;
+import io.github.ericmedvet.jgea.experimenter.Experiment;
+import io.github.ericmedvet.jgea.experimenter.Experimenter;
+import io.github.ericmedvet.jnb.core.BuilderException;
+import io.github.ericmedvet.jnb.core.NamedBuilder;
 
 import java.io.*;
 import java.util.logging.Logger;

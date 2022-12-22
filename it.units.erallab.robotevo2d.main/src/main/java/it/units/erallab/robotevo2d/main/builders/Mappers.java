@@ -16,13 +16,13 @@
 
 package it.units.erallab.robotevo2d.main.builders;
 
-import it.units.erallab.mrsim2d.core.NumMultiBrained;
-import it.units.erallab.mrsim2d.core.functions.TimedRealFunction;
-import it.units.erallab.mrsim2d.core.util.Parametrized;
-import it.units.malelab.jgea.experimenter.InvertibleMapper;
-import it.units.malelab.jnb.core.NamedBuilder;
-import it.units.malelab.jnb.core.Param;
-import it.units.malelab.jnb.core.ParamMap;
+import io.github.ericmedvet.jgea.experimenter.InvertibleMapper;
+import io.github.ericmedvet.jnb.core.NamedBuilder;
+import io.github.ericmedvet.jnb.core.Param;
+import io.github.ericmedvet.jnb.core.ParamMap;
+import io.github.ericmedvet.mrsim2d.core.NumMultiBrained;
+import io.github.ericmedvet.mrsim2d.core.functions.TimedRealFunction;
+import io.github.ericmedvet.mrsim2d.core.util.Parametrized;
 
 import java.util.Arrays;
 import java.util.Collections;
