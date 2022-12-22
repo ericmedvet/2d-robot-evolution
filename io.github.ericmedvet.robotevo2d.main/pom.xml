@@ -25,6 +25,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <name>robotevo2d-main</name>
+    <description>Main components of 2D-Robot-Evolution.</description>
     <artifactId>robotevo2d.main</artifactId>
     <packaging>jar</packaging>
 

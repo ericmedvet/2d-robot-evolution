@@ -25,6 +25,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <name>robotevo2d-assembly</name>
+    <description>Assembly artifact for 2D-Robot-Evolution.</description>
     <artifactId>robotevo2d.assembly</artifactId>
     <packaging>pom</packaging>
 
