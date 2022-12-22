@@ -24,7 +24,7 @@
     <version>${revision}</version>
     <modules>
         <module>it.units.erallab.robotevo2d.main</module>
-        <module>it.units.erallab.robotevo2d.assembly</module>
+        <module>io.github.ericmedvet.robotevo2d.assembly</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
