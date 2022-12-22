@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo2d.main;
+package io.github.ericmedvet.robotevo2d.main;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;

@@ -649,7 +649,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr t
 | `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr><<abbr title="it.units.erallab.mrsim2d.core.engine.Engine">Engine</abbr>></code> |
 | `videoFilePath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="it.units.erallab.robotevo2d.main.Play">Play</abbr></code>
+Produces <code><abbr title="io.github.ericmedvet.robotevo2d.main.Play">Play</abbr></code>
 
 ### Builder `evorobots.video()`
 

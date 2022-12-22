@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo2d.main;
+package io.github.ericmedvet.robotevo2d.main;
 
 import io.github.ericmedvet.jnb.core.NamedBuilder;
-import it.units.erallab.robotevo2d.main.builders.Listeners;
-import it.units.erallab.robotevo2d.main.builders.Mappers;
-import it.units.erallab.robotevo2d.main.builders.Misc;
+import io.github.ericmedvet.robotevo2d.main.builders.Listeners;
+import io.github.ericmedvet.robotevo2d.main.builders.Mappers;
+import io.github.ericmedvet.robotevo2d.main.builders.Misc;
 
 import java.util.List;
 

@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo2d.main.helper;
+package io.github.ericmedvet.robotevo2d.main.helper;
 
 import io.github.ericmedvet.jnb.core.InfoPrinter;
 import io.github.ericmedvet.jnb.core.NamedBuilder;
-import it.units.erallab.robotevo2d.main.PreparedNamedBuilder;
+import io.github.ericmedvet.robotevo2d.main.PreparedNamedBuilder;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;

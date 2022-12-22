@@ -11,9 +11,9 @@ module it.units.erallab.robotevo2d.main {
   requires io.github.ericmedvet.mrsim2d.buildable;
   requires io.github.ericmedvet.jnb.core;
   requires jcommander;
-  opens it.units.erallab.robotevo2d.main.builders to io.github.ericmedvet.jnb.core;
-  opens it.units.erallab.robotevo2d.main to io.github.ericmedvet.jnb.core;
-  opens it.units.erallab.robotevo2d.main.helper to io.github.ericmedvet.jnb.core;
-  exports it.units.erallab.robotevo2d.main;
-  exports it.units.erallab.robotevo2d.main.helper;
+  opens io.github.ericmedvet.robotevo2d.main.builders to io.github.ericmedvet.jnb.core;
+  opens io.github.ericmedvet.robotevo2d.main to io.github.ericmedvet.jnb.core;
+  opens io.github.ericmedvet.robotevo2d.main.helper to io.github.ericmedvet.jnb.core;
+  exports io.github.ericmedvet.robotevo2d.main;
+  exports io.github.ericmedvet.robotevo2d.main.helper;
 }

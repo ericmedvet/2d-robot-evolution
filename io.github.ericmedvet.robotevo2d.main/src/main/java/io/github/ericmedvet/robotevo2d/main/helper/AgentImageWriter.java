@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package it.units.erallab.robotevo2d.main.helper;
+package io.github.ericmedvet.robotevo2d.main.helper;
 
 import io.github.ericmedvet.jnb.core.NamedBuilder;
 import io.github.ericmedvet.mrsim2d.core.Agent;
@@ -22,7 +22,7 @@ import io.github.ericmedvet.mrsim2d.core.engine.Engine;
 import io.github.ericmedvet.mrsim2d.core.tasks.Task;
 import io.github.ericmedvet.mrsim2d.viewer.Drawer;
 import io.github.ericmedvet.mrsim2d.viewer.FramesImageBuilder;
-import it.units.erallab.robotevo2d.main.PreparedNamedBuilder;
+import io.github.ericmedvet.robotevo2d.main.PreparedNamedBuilder;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

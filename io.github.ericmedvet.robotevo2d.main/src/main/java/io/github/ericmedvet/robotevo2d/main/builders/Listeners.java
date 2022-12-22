@@ -1,4 +1,4 @@
-package it.units.erallab.robotevo2d.main.builders;
+package io.github.ericmedvet.robotevo2d.main.builders;
 
 import io.github.ericmedvet.jgea.core.listener.AccumulatorFactory;
 import io.github.ericmedvet.jgea.core.listener.ListenerFactory;
