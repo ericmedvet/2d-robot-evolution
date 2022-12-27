@@ -221,7 +221,7 @@ In other words, `stepOut()` makes `innerFunction` a step function.
 It may be useful for avoiding high-frequency behaviors, like in [[3]](#2022-c-mr-impact), where `stepT` was set to 0.2.
 
 [`sim.function.noised()`](assets/builder-help.md#builder-simfunctionnoised) is a composite function that wraps another `innerFunction`.
-It is a function that adds some Gaussian noise before (with `inputSigma` $> 0$) and/or after (with `inputSigma` $> 0$) invoking the inner function.
+It is a function that adds some Gaussian noise before (with `inputSigma` $> 0$) and/or after (with `ouputSigma` $> 0$) invoking the inner function.
 
 ##### Problems
 
@@ -270,7 +270,7 @@ At each iteration, the `nOfElites` individuals are copied to the next generation
 
 ##### Mappers
 
-The mapper maps a genotype to a robot, using the `target` of the run "as the starting point".
+The mapper maps a genotype to a robot, using the `target` "as the starting point".
 Available mappers are in the [`evorobots.mapper`](assets/builder-help.md#package-evorobotsmapper) package.
 
 The two most significant mapper are based on the `NumBrained` and `NumMultiBrained` interfaces that model, respectively, agents that have one or many brains, respectively (the former being a particular case of the latter).
@@ -470,7 +470,7 @@ There will hence be 60 runs.
 ### Player
 
 You can execute a single task on a single agent, instead of performing an entire experiment consisting of several runs, using [`Player`](io.github.ericmedvet.robotevo2d.main/src/main/java/io/github/ericmedvet/robotevo2d/main/Player.java).
-It can be started with
+It can be started with:
 ```shell
 java -cp "2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.robotevo2d.main.Player --playFile <play-file>
 ```
