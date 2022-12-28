@@ -208,7 +208,7 @@ Usually, they are exactly what you want to optimize using an evolutionary algori
 [`sim.function.sin()`](assets/builder-help.md#builder-simfunctionsin) is a simple functions that determines the output in $\mathbb{R}^n$ using an array of $n$ sinusoidal functions, i.e., $a \sin(2 \pi f t + \phi)+b$.
 Note that the input is not used when computing the output: that is, controllers employing (only) this function are open-loop controllers, since they do not use the sensor readings.
 The function is `Parametrized` but the actual number of parameters depends on $n$ and the `a`, `f`, `p`, and `b` parameters, that are ranges.
-For each one, if the range boundaries do not coincide, the actual value of the corresponding sinusoidal parameter ($a$, $f$, $\phi$, $b$, respectively) is a parameter and is min-max normalized from $[-1,1]$ to the range.
+For each one, if the range boundaries do not coincide, the actual value of the corresponding sinusoidal parameter (i.e., $a$, $f$, $\phi$, $b$, respectively) is a parameter and is min-max normalized from $[-1,1]$ to the range.
 For example, take the following `sin()` for $n=10$:
 ```
 s.f.sin(
@@ -218,7 +218,7 @@ s.f.sin(
   b = s.range(min = 0; max = 0)
 )
 ```
-All the 10 sinusoidal functions will have the same frequency $f=0.3$ and the same bias $b=0$, but they will potentially differ in the amplitude $a \in [0.1, 0.3]$ and the phase $\phi \in [-1,1]$.
+All the 10 sinusoidal functions will have the same frequency $f=0.3$ and the same bias $b=0$, but they will potentially differ in the amplitude $a \in [0.1, 0.3]$ and the phase $\phi \in [-1.57, 1.57]$.
 This function will have $10 \cdot 2 = 20$ parameters.
 
 [`sim.function.diffIn()`](assets/builder-help.md#builder-simfunctiondiffin) is a composite function that wraps another `innerFunction`.
