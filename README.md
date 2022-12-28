@@ -205,10 +205,21 @@ As explained above, the size of the first and last layer are determined based on
 `sim.function.mlp()` is a `Parametrized` function: its parameters are the weights of the MLP.
 Usually, they are exactly what you want to optimize using an evolutionary algorithm.
 
-[`sim.function.sinP()`](assets/builder-help.md#builder-simfunctionsinp), [`sim.function.sinPA()`](assets/builder-help.md#builder-simfunctionsinpa), [`sim.function.sinPF()`](assets/builder-help.md#builder-simfunctionsinpf), [`sim.function.sinPFA()`](assets/builder-help.md#builder-simfunctionsinpfa), and [`sim.function.sinPFAB()`](assets/builder-help.md#builder-simfunctionsinpfab) are simple functions that determine the output in $\mathbb{R}^n$ using an array of $n$ sinusoidal functions, i.e., $a \sin(2 \pi f t + \phi)+b$.
-Note that the input is not used when computing the output: that is, controllers employing (only) these functions are open-loop controllers, since they do not use the sensor readings.
-The four variants are all `Parametrized` but differ in what is actually an evolvable parameter: for `sinP()`, just the phase $\phi$ for each of the $n$ sinusoidal functions, for `sinPF()`, phase $\phi$ and frequency $f$, and so on.
-When a parameter is evolvable, it is mapped with min-max normalization in the corresponding range; when it is not, it is statically set to the mid point of the corresponding range.
+[`sim.function.sin()`](assets/builder-help.md#builder-simfunctionsin) is a simple functions that determines the output in $\mathbb{R}^n$ using an array of $n$ sinusoidal functions, i.e., $a \sin(2 \pi f t + \phi)+b$.
+Note that the input is not used when computing the output: that is, controllers employing (only) this function are open-loop controllers, since they do not use the sensor readings.
+The function is `Parametrized` but the actual number of parameters depends on $n$ and the `a`, `f`, `p`, and `b` parameters, that are ranges.
+For each one, if the range boundaries do not coincide, the actual value of the corresponding sinusoidal parameter ($a$, $f$, $\phi$, $b$, respectively) is a parameter and is min-max normalized from $[-1,1]$ to the range.
+For example, take the following `sin()` for $n=10$:
+```
+s.f.sin(
+  a = s.range(min = 0.1; max = 0.3);
+  f = s.range(min = 0.3; max = 0.3);
+  p = s.range(min = -1.57; max = 1.57);
+  b = s.range(min = 0; max = 0)
+)
+```
+All the 10 sinusoidal functions will have the same frequency $f=0.3$ and the same bias $b=0$, but they will potentially differ in the amplitude $a \in [0.1, 0.3]$ and the phase $\phi \in [-1,1]$.
+This function will have $10 \cdot 2 = 20$ parameters.
 
 [`sim.function.diffIn()`](assets/builder-help.md#builder-simfunctiondiffin) is a composite function that wraps another `innerFunction`.
 It takes a input of $n$ values and delivers to the inner function an enlarged input of (up to, depending on `types` parameter) $3n$ values, consisting of current (at $t$) values (i.e., exactly its $n$ input values), average values in the last `windowT` simulated seconds, and trend values (i.e., newest minus oldest) in the same time window.
@@ -488,7 +499,12 @@ er.play(
       );
       shape = s.a.vsr.s.biped(w = 4; h = 3)
     );
-    function = s.f.noised(outputSigma = 0.01; innerFunction = s.f.sinP())
+    function = s.f.noised(outputSigma = 0.01; innerFunction = s.f.sin(
+      a = s.range(min = 0.5; max = 0.5);
+      f = s.range(min = 0.5; max = 0.5);
+      p = s.range(min = -1.57; max = 1.57);
+      b = s.range(min = 0; max = 0)
+    ))
   ));
   task = s.task.locomotion();
   drawer = sim.drawer(actions = true);
@@ -496,7 +512,7 @@ er.play(
   videoFilePath = "results/video-after.mp4"
 )
 ```
-you run a locomotion task on a biped VSR with a centralized brain consinsting of a `sinP()` function with randomized phases.
+you run a locomotion task on a biped VSR with a centralized brain consinsting of a `sin()` function with randomized phases.
 The result is saved as a video at `results/video-after.mp4`.
 If you don't specify the `videoFilePath` parameter, a GUI opens and shows the task as it is performed.
 
