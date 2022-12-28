@@ -3,6 +3,7 @@ s.a.numLeggedHybridRobot(
     s.a.l.leg(legChunks = 2 * [s.a.l.legChunk(jointSensors = [s.s.ja()])]; downConnector = soft)
   ];
   trunkLength = 30;
+  trunkMass = 5;
   headSensors = + [s.s.a()] + (a = [-80:5:-30]) * [s.s.d(r = 10)];
   function = s.f.diffIn(
     windowT = 1.0;

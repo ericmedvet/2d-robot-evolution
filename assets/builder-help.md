@@ -1104,61 +1104,9 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.Time
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.functions.NoisedTRF">NoisedTRF</abbr>></code>
 
-### Builder `sim.function.sinP()`
+### Builder `sim.function.sin()`
 
-`s.f.sinP(p; f; a; b)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `b` | npm | `sim.range(max=0.5;min=-0.5)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
-
-### Builder `sim.function.sinPA()`
-
-`s.f.sinPA(p; f; a; b)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `b` | npm | `sim.range(max=0.5;min=-0.5)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
-
-### Builder `sim.function.sinPF()`
-
-`s.f.sinPF(p; f; a; b)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `b` | npm | `sim.range(max=0.5;min=-0.5)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
-
-### Builder `sim.function.sinPFA()`
-
-`s.f.sinPFA(p; f; a; b)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `b` | npm | `sim.range(max=0.5;min=-0.5)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
-
-### Builder `sim.function.sinPFAB()`
-
-`s.f.sinPFAB(p; f; a; b)`
+`s.f.sin(p; f; a; b)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
