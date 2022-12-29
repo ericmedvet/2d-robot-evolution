@@ -1064,6 +1064,20 @@ Aliases: `s.f`, `s.function`, `sim.f`, `sim.function`
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.functions.DiffInputTRF">DiffInputTRF</abbr>></code>
 
+### Builder `sim.function.drn()`
+
+`s.f.drn(timeRange; innerNeuronsRatio; activationFunction; threshold; timeResolution)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `timeRange` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `innerNeuronsRatio` | d | `1.0` | <code>double</code> |
+| `activationFunction` | e | `TANH` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.functions.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
+| `threshold` | d | `0.1` | <code>double</code> |
+| `timeResolution` | d | `0.16666` | <code>double</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.functions.DelayedRecurrentNetwork">DelayedRecurrentNetwork</abbr>></code>
+
 ### Builder `sim.function.groupedSin()`
 
 `s.f.groupedSin(size; p; f; a; b; s)`
