@@ -1402,8 +1402,8 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">
 | `h` | d | `25.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderW` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderH` | d | `100.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
-| `chunkW` | d | `2000.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
-| `chunkH` | d | `25.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
+| `chunkW` | d | `5.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
+| `chunkH` | d | `1.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `seed` | i | `1` | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>
