@@ -131,7 +131,7 @@ public class Starter {
         Experiment experiment = (Experiment) nb.build(expDescription);
         System.out.println("Experiment description is valid");
         System.out.printf("\t%d runs%n", experiment.runs().size());
-        System.out.printf("\t%d listenerss%n", experiment.listeners().size());
+        System.out.printf("\t%d listeners%n", experiment.listeners().size());
         System.exit(0);
       } catch (BuilderException e) {
         L.severe("Cannot build experiment: %s%n".formatted(e));
