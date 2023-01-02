@@ -874,7 +874,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.Abst
 
 ### Builder `sim.agent.legged.legChunk()`
 
-`s.a.l.legChunk(length; width; mass; upConnector; jointSensors; motorMaxSpeed; motorMaxTorque; motorControlP; motorControlI; motorControlD; motorAngleTolerance)`
+`s.a.l.legChunk(length; width; mass; upConnector; jointSensors; motorMaxSpeed; motorMaxTorque; motorControlP; motorControlI; motorControlD; motorAngleTolerance; activeAngleRange)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -889,6 +889,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.Abst
 | `motorControlI` | d | `2.0` | <code>double</code> |
 | `motorControlD` | d | `2.0` | <code>double</code> |
 | `motorAngleTolerance` | d | `0.0` | <code>double</code> |
+| `activeAngleRange` | npm | `sim.range(max=1.047;min=-1.047)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.LegChunk">LegChunk</abbr></code>
 
