@@ -1369,7 +1369,7 @@ Aliases: `s.t`, `s.terrain`, `sim.t`, `sim.terrain`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `w` | d | `2000.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
+| `w` | d | `500.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `h` | d | `25.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderW` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderH` | d | `100.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
@@ -1383,7 +1383,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `w` | d | `2000.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
+| `w` | d | `500.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `h` | d | `25.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderW` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderH` | d | `100.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
@@ -1396,7 +1396,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `w` | d | `2000.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
+| `w` | d | `500.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `h` | d | `25.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderW` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderH` | d | `100.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
@@ -1412,7 +1412,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `w` | d | `2000.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
+| `w` | d | `500.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `h` | d | `25.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderW` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderH` | d | `100.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
@@ -1428,7 +1428,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `w` | d | `2000.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
+| `w` | d | `500.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `h` | d | `25.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderW` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderH` | d | `100.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
