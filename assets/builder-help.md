@@ -921,8 +921,8 @@ Aliases: `s.a.vsr`, `s.agent.vsr`, `sim.a.vsr`, `sim.agent.vsr`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `shape` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code> |
-| `sensorizingFunction` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>>, <abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.util.List">List</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel">Voxel</abbr>>>>></code> |
+| `shape` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>></code> |
+| `sensorizingFunction` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>>, <abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.util.List">List</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>>>>></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code>
 
@@ -972,7 +972,7 @@ Aliases: `s.a.vsr.s`, `s.a.vsr.shape`, `s.agent.vsr.s`, `s.agent.vsr.shape`, `si
 | --- | --- | --- | --- |
 | `d` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>></code>
 
 ### Builder `sim.agent.vsr.shape.biped()`
 
@@ -983,7 +983,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</a
 | `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 | `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>></code>
 
 ### Builder `sim.agent.vsr.shape.comb()`
 
@@ -994,7 +994,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</a
 | `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 | `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>></code>
 
 ### Builder `sim.agent.vsr.shape.free()`
 
@@ -1002,9 +1002,9 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</a
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `s` | s | `111-101` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `s` | s | `rsr-s.s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>></code>
 
 ### Builder `sim.agent.vsr.shape.t()`
 
@@ -1015,7 +1015,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</a
 | `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 | `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>></code>
 
 ### Builder `sim.agent.vsr.shape.triangle()`
 
@@ -1025,7 +1025,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</a
 | --- | --- | --- | --- |
 | `l` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>></code>
 
 ### Builder `sim.agent.vsr.shape.tripod()`
 
@@ -1036,7 +1036,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</a
 | `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 | `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>></code>
 
 ### Builder `sim.agent.vsr.shape.worm()`
 
@@ -1047,7 +1047,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</a
 | `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 | `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="java.lang.Boolean">Boolean</abbr>></code>
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>></code>
 
 ## Package `sim.function`
 
@@ -1157,7 +1157,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</ab
 
 `s.s.ar()`
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.SoftBody">SoftBody</abbr>></code>
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>></code>
 
 ### Builder `sim.sensor.c()`
 
