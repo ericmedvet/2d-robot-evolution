@@ -232,7 +232,7 @@ In other words, `stepOut()` makes `innerFunction` a step function.
 It may be useful for avoiding high-frequency behaviors, like in [[3]](#2022-c-mr-impact), where `stepT` was set to 0.2.
 
 [`sim.function.noised()`](assets/builder-help.md#builder-simfunctionnoised) is a composite function that wraps another `innerFunction`.
-It is a function that adds some Gaussian noise before (with `inputSigma` $> 0$) and/or after (with `inputSigma` $> 0$) invoking the inner function.
+It is a function that adds some Gaussian noise before (with `inputSigma` $> 0$) and/or after (with `outputSigma` $> 0$) invoking the inner function.
 
 ##### Problems
 
