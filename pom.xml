@@ -58,8 +58,8 @@
     <packaging>pom</packaging>
     <properties>
         <revision>1.0.5-SNAPSHOT</revision>
-        <mrsim2d.version>0.8.1-SNAPSHOT</mrsim2d.version>
-        <jgea.version>2.3.4-SNAPSHOT</jgea.version>
+        <mrsim2d.version>0.8.0</mrsim2d.version>
+        <jgea.version>2.3.4</jgea.version>
         <jnb.version>1.0.3</jnb.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>17</jdk.version>
