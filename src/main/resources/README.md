@@ -172,6 +172,7 @@ Here we describe the most significant ones.
 ###### Voxel-based Soft Robots
 
 [`sim.agent.centralizedNumGridVSR()`](assets/builder-help.md#builder-simagentcentralizednumgridvsr) corresponds to a Voxel-based Soft Robot (VSR) with a single closed-loop controller taking as input the sensor readings and giving as output the activation values, as described in [[1]](#2020-c-mbdf-evolution).
+Here voxels can either be soft or rigid: hybrid, i.e., including both types of voxels, VSRs can be created with [`sim.agent.vsr.shape.free()`](assets/builder-help.md#builder-simagentvsrshapefree), using `s` for soft and `r` for rigid at each position.
 The controller is a `TimedRealFunction`, i.e., a multivariate function (more appropriately, a dynamical system) taking the current time $t$ and $m$ real values (the sensor readings) and giving $n$ real values (the expansion/contraction values for each one of the $n$ voxels); formally, it is a $f: \mathbb{R} \times \mathbb{R}^m \to \mathbb{R}^n$.
 The sensors and the shape of the body are specified in the `body` parameter of `sim.agent.centralizedNumGridVSR()`.
 Available functions for the controller are grouped in the [`sim.function`](assets/builder-help.md#package-simfunction) package: the key ones are described [below](#functions).
@@ -179,7 +180,7 @@ Here is how an agent built with `sim.agent.centralizedNumGridVSR()` looks like w
 
 ![Centralized biped VSR](assets/images/agents/vsr-centralized-biped.png)
 
-Here is instead a `sim.agent.centralizedNumGridVSR()` built with [this description](io.github.ericmedvet.robotevo2d.main/src/main/resources/agent-examples/vsr-centralized-free.txt) of a [`sim.agent.vsr.shape.free()`](assets/builder-help.md#builder-simagentvsrshapefree) shape, where `1` and `0` denote, in the `s` parameter, the presence or absence of a voxel in a 2D grid.
+Here is instead a `sim.agent.centralizedNumGridVSR()` built with [this description](io.github.ericmedvet.robotevo2d.main/src/main/resources/agent-examples/vsr-centralized-free.txt) of a [`sim.agent.vsr.shape.free()`](assets/builder-help.md#builder-simagentvsrshapefree) shape, where `1` and `0` denote, in the `s` parameter, the presence or absence of a soft voxel in a 2D grid.
 
 ![Centralized free VSR](assets/images/agents/vsr-centralized-free.png)
 
@@ -330,10 +331,9 @@ ea.l.telegram(
 ```
 
 [`ea.listener.tui()`](assets/builder-help.md#builder-ealistenertui) shows a text-based user interface summarizing the progress of the experiments.
-See the [example below](#example-1--3-runs-with-a-vsr-biped) for the usage of this listener.
+See the [example below](#example-1-3-runs-with-a-vsr-biped) for the usage of this listener.
 
 [`evorobots.listener.videoSaver()`](assets/builder-help.md#builder-evorobotslistenervideosaver) can be used to save a video of one individual (in the default case, the best of the last generation).
-See the [example below](#example-1--3-runs-with-a-vsr-biped) for the usage of this listener.
 
 #### Examples of experiment files
 
