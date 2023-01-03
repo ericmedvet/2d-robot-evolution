@@ -1,6 +1,6 @@
 s.a.distributedNumGridVSR(
   body = s.a.vsr.gridBody(
-    shape = s.a.vsr.s.free(s = "rrsrr-rsssr-s...s");
+    shape = s.a.vsr.s.free(s = "rsrsrsr-rsrsrsr-.s.s.s.");
     sensorizingFunction = s.a.vsr.sf.uniform(
       sensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90); s.s.a()]
     )

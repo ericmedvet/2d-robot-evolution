@@ -172,7 +172,6 @@ Here we describe the most significant ones.
 ###### Voxel-based Soft Robots
 
 [`sim.agent.centralizedNumGridVSR()`](assets/builder-help.md#builder-simagentcentralizednumgridvsr) corresponds to a Voxel-based Soft Robot (VSR) with a single closed-loop controller taking as input the sensor readings and giving as output the activation values, as described in [[1]](#2020-c-mbdf-evolution).
-Here voxels can either be soft or rigid: hybrid, i.e., including both types of voxels, VSRs can be created with [`sim.agent.vsr.shape.free()`](assets/builder-help.md#builder-simagentvsrshapefree), using `s` for soft and `r` for rigid at each position.
 The controller is a `TimedRealFunction`, i.e., a multivariate function (more appropriately, a dynamical system) taking the current time $t$ and $m$ real values (the sensor readings) and giving $n$ real values (the expansion/contraction values for each one of the $n$ voxels); formally, it is a $f: \mathbb{R} \times \mathbb{R}^m \to \mathbb{R}^n$.
 The sensors and the shape of the body are specified in the `body` parameter of `sim.agent.centralizedNumGridVSR()`.
 Available functions for the controller are grouped in the [`sim.function`](assets/builder-help.md#package-simfunction) package: the key ones are described [below](#functions).
@@ -191,6 +190,11 @@ That is, they for the former case, the functions share the parameters: in this c
 Here is how an agent built with `sim.agent.distributedNumGridVSR()` looks like with [this description](io.github.ericmedvet.robotevo2d.main/src/main/resources/agent-examples/vsr-distributed-worm.txt) of a [`sim.agent.vsr.shape.worm()`](assets/builder-help.md#builder-simagentvsrshapeworm) shape.
 
 ![Distributed worm VSR](assets/images/agents/vsr-distributed-worm.png)
+
+Finally, note that voxels can either be soft or rigid: hybrid, i.e., including both types of voxels, VSRs can be created with [`sim.agent.vsr.shape.free()`](assets/builder-help.md#builder-simagentvsrshapefree), using `s` for soft and `r` for rigid at each position.
+Here is how an agent built with `sim.agent.distributedNumGridVSR()` looks like with [this description](io.github.ericmedvet.robotevo2d.main/src/main/resources/agent-examples/hybrid-vsr-distributed-tripod.txt) of a tripod-like shape including both rigid and soft voxels.
+
+![Distributed worm VSR](assets/images/agents/hybrid-vsr-distributed-tripod.png)
 
 ##### Functions
 

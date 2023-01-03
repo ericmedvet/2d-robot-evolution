@@ -39,7 +39,7 @@ public class AgentImageWriter {
       "/agent-examples/vsr-centralized-biped.txt",
       "/agent-examples/vsr-centralized-free.txt",
       "/agent-examples/vsr-distributed-worm.txt",
-      "/agent-examples/hybrid-vsr-distributed-biped.txt",
+      "/agent-examples/hybrid-vsr-distributed-tripod.txt",
       "/agent-examples/legged-passive-3.txt",
       "/agent-examples/legged-active-4.txt",
       "/agent-examples/legged-modular-active-4.txt"
