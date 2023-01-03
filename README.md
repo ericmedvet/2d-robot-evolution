@@ -16,7 +16,7 @@ In case you want to use this project inside your project, add this to your `pom.
 <dependency>
     <groupId>io.github.ericmedvet</groupId>
     <artifactId>robotevo2d.main</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.0-SNAPSHOT</version>
 </dependency>
 ```
 
