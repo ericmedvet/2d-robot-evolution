@@ -736,7 +736,7 @@ Produces <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</a
 
 ### Builder `sim.drawer()`
 
-`s.drawer(enlargement; followTime; profilingTime; miniWorldEnlargement; miniWorld; miniAgents; engineProfiling; actions)`
+`s.drawer(enlargement; followTime; profilingTime; miniWorldEnlargement; miniWorld; miniAgents; engineProfiling; actions; nfc)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -748,6 +748,7 @@ Produces <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</a
 | `miniAgents` | e | `BRAINS` | <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.Misc$MiniAgentInfo">Misc$MiniAgentInfo</abbr></code> |
 | `engineProfiling` | b | `false` | <code>boolean</code> |
 | `actions` | b | `false` | <code>boolean</code> |
+| `nfc` | b | `false` | <code>boolean</code> |
 
 Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.lang.String">String</abbr>, <abbr title="io.github.ericmedvet.mrsim2d.viewer.Drawer">Drawer</abbr>></code>
 
@@ -819,11 +820,14 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.Dis
 
 ### Builder `sim.agent.numIndependentVoxel()`
 
-`s.a.numIndependentVoxel(sensors; function)`
+`s.a.numIndependentVoxel(sensors; areaActuation; attachActuation; nOfNFCChannels; function)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `sensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr><? super <abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel">Voxel</abbr>>></code> |
+| `areaActuation` | e | `SIDES` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.independentvoxel.NumIndependentVoxel$AreaActuation">NumIndependentVoxel$AreaActuation</abbr></code> |
+| `attachActuation` | b | `true` | <code>boolean</code> |
+| `nOfNFCChannels` | i | `1` | <code>int</code> |
 | `function` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><?></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.independentvoxel.NumIndependentVoxel">NumIndependentVoxel</abbr></code>
@@ -1256,6 +1260,20 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.piling.FallP
 | `initialYGap` | d | `0.1` | <code>double</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.locomotion.Locomotion">Locomotion</abbr></code>
+
+### Builder `sim.task.prebuiltIndependentLocomotion()`
+
+`s.task.prebuiltIndependentLocomotion(duration; terrain; initialXGap; initialYGap; shape)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `duration` | d | `30.0` | <code>double</code> |
+| `terrain` | npm | `sim.terrain.flat()` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
+| `initialXGap` | d | `1.0` | <code>double</code> |
+| `initialYGap` | d | `0.1` | <code>double</code> |
+| `shape` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.locomotion.PrebuiltIndependentLocomotion">PrebuiltIndependentLocomotion</abbr></code>
 
 ### Builder `sim.task.standPiling()`
 
