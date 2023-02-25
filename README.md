@@ -244,7 +244,7 @@ It is a function that adds some Gaussian noise before (with `inputSigma` $> 0$) 
 There is currently a single kind of problem available, the [`ea.problem.totalOrder()`](assets/builder-help.md#builder-eaproblemtotalorder).
 It represents an optimization problem in which the objective can be sorted with a total order: usually, it is a number.
 This kind of problem is defined by a function `qFunction` for assessing the solution (usually an agent) and producing a quality `Q`, a function `cFunction` for transforming a `Q` in a `C implements Comparable<C>`, and a `type` value specifying if the goal is to minimize or maximize the `C`s.
-In practice, the `qFunction` is a task runner ([`sim.taskRunner()`](assets/builder-help.md#builder-simtaskrunner)) and the `cFunction` specifies how to extract a number out of the task outcome, like in this example (taken from [this example experiment](io.github.ericmedvet.robotevo2d.main/src/main/resources/exp-examples/centralized-vsr.txt)):
+In practice, the `qFunction` is a task runner ([`sim.taskRunner()`](assets/builder-help.md#builder-simtaskrunner)) and the `cFunction` specifies how to extract a number out of the task outcome, like in this example (taken from [this example experiment](io.github.ericmedvet.robotevo2d.main/src/main/resources/exp-examples/heterodist-vsr.txt)):
 ```
 ea.p.totalOrder(
   qFunction = s.taskRunner(task = s.task.locomotion());
