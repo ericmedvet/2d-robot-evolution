@@ -45,7 +45,7 @@ public class Starter {
         names = {"--nOfThreads", "-nt"},
         description = "Number of threads to be used for fitness computation."
     )
-    public int nOfThreads = 1;
+    public int nOfThreads = 2;
 
     @Parameter(
         names = {"--nOfRuns", "-nr"},
