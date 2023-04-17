@@ -5,8 +5,8 @@ s.a.centralizedNumGridVSR(
       sensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90); s.s.a()]
     )
   );
-  function = s.f.stepOut(
+  function = ds.num.outStepped(
     stepT = 0.2;
-    innerFunction = s.f.mlp(nOfInnerLayers = 2)
+    inner = ds.num.mlp(nOfInnerLayers = 2)
   )
 )

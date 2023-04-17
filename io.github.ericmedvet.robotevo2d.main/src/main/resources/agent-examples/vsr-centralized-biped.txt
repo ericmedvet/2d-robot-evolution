@@ -11,11 +11,11 @@ s.a.centralizedNumGridVSR(
       nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)]
     )
   );
-  function = s.f.stepOut(
+  function = ds.num.outStepped(
     stepT = 0.2;
-    innerFunction = s.f.diffIn(
+    inner = ds.num.enhanced(
       windowT = 1.0;
-      innerFunction = s.f.mlp(nOfInnerLayers = 2);
+      inner = ds.num.mlp(nOfInnerLayers = 2);
       types = [avg; current]
     )
   )

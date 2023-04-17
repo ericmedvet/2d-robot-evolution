@@ -11,7 +11,7 @@ ea.experiment(
             );
             shape = s.a.vsr.s.biped(w = 4; h = 3)
           );
-          function = s.f.mlp()
+          function = ds.num.mlp()
         ));
         nEval = 100;
         nPop = 10

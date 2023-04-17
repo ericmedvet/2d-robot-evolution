@@ -42,10 +42,16 @@ public class Starter {
     )
     public String experimentDescriptionFilePath = "";
     @Parameter(
-        names = {"--nOfThreads", "-n"},
-        description = "Number of threads to be used."
+        names = {"--nOfThreads", "-nt"},
+        description = "Number of threads to be used for fitness computation."
     )
     public int nOfThreads = 1;
+
+    @Parameter(
+        names = {"--nOfRuns", "-nr"},
+        description = "Number of concurrent runs."
+    )
+    public int nOfConcurrentRuns = 1;
 
     @Parameter(
         names = {"--showExpFileHelp", "-d"},
@@ -140,7 +146,7 @@ public class Starter {
     }
     //prepare and run experimenter
     try {
-      Experimenter experimenter = new Experimenter(nb, configuration.nOfThreads);
+      Experimenter experimenter = new Experimenter(nb, configuration.nOfThreads, configuration.nOfConcurrentRuns);
       experimenter.run(expDescription);
     } catch (BuilderException e) {
       L.severe("Cannot build experiment: %s%n".formatted(e));
