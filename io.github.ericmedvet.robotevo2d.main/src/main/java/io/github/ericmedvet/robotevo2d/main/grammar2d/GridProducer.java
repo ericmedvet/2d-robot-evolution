@@ -4,12 +4,8 @@ import io.github.ericmedvet.mrsim2d.core.util.ArrayGrid;
 import io.github.ericmedvet.mrsim2d.core.util.Grid;
 import io.github.ericmedvet.mrsim2d.core.util.Grid.Key;
 
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
-import java.util.Map;
-import java.util.Comparator;
-import java.util.Random;
 import java.util.random.RandomGenerator;
 import java.util.stream.Collectors;
 
@@ -52,9 +48,9 @@ public class GridProducer {
     // an illegal arg exc;
     // in case yes, put a try catch and ignore the exception (bc this means we can
     // write there)
-    return !replacement.grid().entries().stream()
+    return replacement.grid().entries().stream()
         .filter(e -> e.value() != null && !e.key().equals(replacement.referenceKey()))
-        .anyMatch(e -> {
+        .noneMatch(e -> {
           Key tK = e.key().at(k.x(), k.y()).at(-replacement.referenceKey().x(), -replacement.referenceKey().y());
           if (!original.isValid(tK)) {
             return false;
@@ -69,7 +65,8 @@ public class GridProducer {
     List<Grid.Entry<T>> repEntries = replacement.grid().entries().stream()
         .map(e -> new Grid.Entry<>(
             e.key().at(k.x(), k.y()).at(-replacement.referenceKey().x(), -replacement.referenceKey().y()),
-            e.value()))
+            e.value()
+        ))
         .toList();
     int minX = Math.min(repEntries.stream().mapToInt(e -> e.key().x()).min().orElse(0), 0);
     int maxX = Math.max(repEntries.stream().mapToInt(e -> e.key().x()).max().orElse(0), original.w() - 1);
@@ -91,14 +88,16 @@ public class GridProducer {
     Grid<Aged<T>> enlarged = Grid.create(maxX - minX + 1, maxY - minY + 1);
     original.entries().forEach(e -> enlarged.set(
         e.key().at(-minX, -minY),
-        e.value()));
+        e.value()
+    ));
     repEntries.stream().filter(e -> e.value() != null).forEach(e -> enlarged.set(
         e.key().at(-minX, -minY),
-        new Aged<>(iteration, e.value())));
+        new Aged<>(iteration, e.value())
+    ));
     return enlarged;
   }
 
-  public <T> Grid<T> produce(GridGrammar<T> gridGrammar, OptionChooser<T> optionChooser) {
+  public <T> Optional<Grid<T>> produce(GridGrammar<T> gridGrammar, OptionChooser<T> optionChooser) {
     Set<T> nonTerminalSymbols = gridGrammar.rules().keySet();
     int i = 0;
     // build a 1x1 grid with the starting symbol
@@ -115,11 +114,12 @@ public class GridProducer {
           .filter(e -> e.value() != null && nonTerminalSymbols.contains(e.value().t()))
           .map(e -> new Grid.Entry<>(e.key(), new Decorated(
               e.value().iteration,
-              freeSides(finalPolyomino, e.key()))))
+              freeSides(finalPolyomino, e.key())
+          )))
           .toList();
       // check if no non-terminal symbols
       if (candidates.isEmpty()) {
-        return polyomino.map(a -> a == null ? null : a.t());
+        return Optional.of(polyomino.map(a -> a == null ? null : a.t()));
       }
       // sort the candidates
       candidates = candidates.stream().sorted(comparator).toList();
@@ -134,7 +134,8 @@ public class GridProducer {
         ReferencedGrid<T> production = optionChooser.choose(symbol, productions);
         System.out.printf("\tcandidate: %s\n", candidate);
         System.out.printf("\twriteable: %s %s%n", candidate, isWriteable(polyomino,
-        production, candidate.key()));
+            production, candidate.key()
+        ));
 
         if (overwriting || isWriteable(polyomino, production, candidate.key())) {
           // modify grid
@@ -146,7 +147,7 @@ public class GridProducer {
       }
 
       if (!modified) {
-        return null;
+        return Optional.empty();
       }
     }
   }
@@ -168,19 +169,24 @@ public class GridProducer {
         Map.ofEntries(Map.entry('a', List.of(
             new ReferencedGrid<Character>(
                 new Key(0, 0),
-                Grid.create(2, 1, 'a')),
+                Grid.create(2, 1, 'a')
+            ),
             new ReferencedGrid<Character>(
                 new Key(0, 0),
-                Grid.create(1, 2, 'a')),
+                Grid.create(1, 2, 'a')
+            ),
             new ReferencedGrid<Character>(
                 new Key(0, 0),
-                Grid.create(1, 1, 'A'))))));
+                Grid.create(1, 1, 'A')
+            )
+        )))
+    );
 
     // System.out.println(g);
     RandomGenerator r = new Random();
     GridProducer gp = new GridProducer(false, List.of());
-    Grid<Character> mapped = gp.produce(g, (s, rules) -> rules.get(r.nextInt(rules.size())));
-    
+    Grid<Character> mapped = gp.produce(g, (s, rules) -> rules.get(r.nextInt(rules.size()))).orElseThrow();
+
   }
 
 }
