@@ -1,3 +1,129 @@
+## Package `dynamicalSystem`
+
+Aliases: `ds`, `dynSys`, `dynamicalSystem`
+
+### Builder `dynamicalSystem.defaultRG()`
+
+`ds.defaultRG(seed)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `seed` | i | `0` | <code>int</code> |
+
+Produces <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code>
+
+### Builder `dynamicalSystem.range()`
+
+`ds.range(min; max)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `min` | d |  | <code>double</code> |
+| `max` | d |  | <code>double</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.core.DoubleRange">DoubleRange</abbr></code>
+
+## Package `dynamicalSystem.numerical`
+
+Aliases: `ds.num`, `ds.numerical`, `dynSys.num`, `dynSys.numerical`, `dynamicalSystem.num`, `dynamicalSystem.numerical`
+
+### Builder `dynamicalSystem.numerical.drn()`
+
+`ds.num.drn(timeRange; innerNeuronsRatio; activationFunction; threshold; timeResolution)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `timeRange` | npm | `ds.range(max=1.0;min=0.0)` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.DoubleRange">DoubleRange</abbr></code> |
+| `innerNeuronsRatio` | d | `1.0` | <code>double</code> |
+| `activationFunction` | e | `TANH` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
+| `threshold` | d | `0.1` | <code>double</code> |
+| `timeResolution` | d | `0.16666` | <code>double</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.DelayedRecurrentNetwork">DelayedRecurrentNetwork</abbr>, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.DelayedRecurrentNetwork$State">DelayedRecurrentNetwork$State</abbr>></code>
+
+### Builder `dynamicalSystem.numerical.enhanced()`
+
+`ds.num.enhanced(windowT; inner; types)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `windowT` | d |  | <code>double</code> |
+| `inner` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><? extends <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr><S>, S></code> |
+| `types` | e[] | `[CURRENT, TREND, AVG]` | <code><abbr title="java.util.List">List</abbr><<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.EnhancedInput$Type">EnhancedInput$Type</abbr>></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.EnhancedInput">EnhancedInput</abbr><S>, S></code>
+
+### Builder `dynamicalSystem.numerical.inStepped()`
+
+`ds.num.inStepped(stepT; inner)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `stepT` | d | `1.0` | <code>double</code> |
+| `inner` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><? extends <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr><S>, S></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr><<abbr title="io.github.ericmedvet.jsdynsym.core.composed.Stepped$State">Stepped$State</abbr><S>>, <abbr title="io.github.ericmedvet.jsdynsym.core.composed.Stepped$State">Stepped$State</abbr><S>></code>
+
+### Builder `dynamicalSystem.numerical.mlp()`
+
+`ds.num.mlp(innerLayerRatio; nOfInnerLayers; activationFunction)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `innerLayerRatio` | d | `0.65` | <code>double</code> |
+| `nOfInnerLayers` | i | `1` | <code>int</code> |
+| `activationFunction` | e | `TANH` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron">MultiLayerPerceptron</abbr>, <abbr title="io.github.ericmedvet.jsdynsym.core.StatelessSystem$State">StatelessSystem$State</abbr>></code>
+
+### Builder `dynamicalSystem.numerical.noised()`
+
+`ds.num.noised(inputSigma; outputSigma; randomGenerator; inner)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `inputSigma` | d | `0.0` | <code>double</code> |
+| `outputSigma` | d | `0.0` | <code>double</code> |
+| `randomGenerator` | npm | `ds.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
+| `inner` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><? extends <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr><S>, S></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.Noised">Noised</abbr><S>, S></code>
+
+### Builder `dynamicalSystem.numerical.outStepped()`
+
+`ds.num.outStepped(stepT; inner)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `stepT` | d | `1.0` | <code>double</code> |
+| `inner` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><? extends <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr><S>, S></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr><<abbr title="io.github.ericmedvet.jsdynsym.core.composed.Stepped$State">Stepped$State</abbr><S>>, <abbr title="io.github.ericmedvet.jsdynsym.core.composed.Stepped$State">Stepped$State</abbr><S>></code>
+
+### Builder `dynamicalSystem.numerical.sin()`
+
+`ds.num.sin(p; f; a; b)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `p` | npm | `ds.range(max=1.57;min=-1.57)` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.DoubleRange">DoubleRange</abbr></code> |
+| `f` | npm | `ds.range(max=1.0;min=0.0)` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.DoubleRange">DoubleRange</abbr></code> |
+| `a` | npm | `ds.range(max=1.0;min=0.0)` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.DoubleRange">DoubleRange</abbr></code> |
+| `b` | npm | `ds.range(max=0.5;min=-0.5)` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.DoubleRange">DoubleRange</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.Sinusoidal">Sinusoidal</abbr>, <abbr title="io.github.ericmedvet.jsdynsym.core.StatelessSystem$State">StatelessSystem$State</abbr>></code>
+
+### Builder `dynamicalSystem.numerical.stepped()`
+
+`ds.num.stepped(stepT; inner)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `stepT` | d | `1.0` | <code>double</code> |
+| `inner` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><? extends <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr><S>, S></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr><<abbr title="io.github.ericmedvet.jsdynsym.core.composed.Stepped$State">Stepped$State</abbr><S>>, <abbr title="io.github.ericmedvet.jsdynsym.core.composed.Stepped$State">Stepped$State</abbr><S>></code>
+
 ## Package `ea`
 
 ### Builder `ea.experiment()`
@@ -87,6 +213,25 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 | `runKeys` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="java.lang.String">String</abbr>></code> |
 | `deferred` | b | `false` | <code>boolean</code> |
 | `onlyLast` | b | `false` | <code>boolean</code> |
+
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><<abbr title="io.github.ericmedvet.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr><?, G, S, Q>>></code>
+
+### Builder `ea.listener.net()`
+
+`ea.l.net(defaultFunctions; functions; defaultPlots; plots; deferred; onlyLast; serverAddress; serverPort; serverKeyFilePath; pollInterval)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `defaultFunctions` | npm[] | `[ea.nf.iterations(), ea.nf.evals(), ea.nf.births(), ea.nf.elapsed(), ea.nf.size(f=ea.nf.all()), ea.nf.size(f=ea.nf.firsts()), ea.nf.size(f=ea.nf.lasts()), ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.genotype())), ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.solution())), ea.nf.uniqueness(collection=ea.nf.each(collection=ea.nf.all();map=ea.nf.fitness()))]` | <code><abbr title="java.util.List">List</abbr><<abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="io.github.ericmedvet.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ?>></code> |
+| `functions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr><? super <abbr title="io.github.ericmedvet.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, ?>></code> |
+| `defaultPlots` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="io.github.ericmedvet.jgea.core.listener.PlotTableBuilder">PlotTableBuilder</abbr><? super <abbr title="io.github.ericmedvet.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>>></code> |
+| `plots` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="io.github.ericmedvet.jgea.core.listener.PlotTableBuilder">PlotTableBuilder</abbr><? super <abbr title="io.github.ericmedvet.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>>></code> |
+| `deferred` | b | `false` | <code>boolean</code> |
+| `onlyLast` | b | `false` | <code>boolean</code> |
+| `serverAddress` | s | `127.0.0.1` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `serverPort` | i | `10979` | <code>int</code> |
+| `serverKeyFilePath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+| `pollInterval` | d | `2.0` | <code>double</code> |
 
 Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr><<abbr title="io.github.ericmedvet.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><G, S, Q>, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr><?, G, S, Q>>></code>
 
@@ -615,7 +760,7 @@ Aliases: `er`, `evorobots`
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `randomGenerator` | npm | `sim.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
-| `range` | npm | `sim.range(max=1.0;min=-1.0)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `range` | npm | `sim.range(max=1.0;min=-1.0)` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.DoubleRange">DoubleRange</abbr></code> |
 
 Produces <code><abbr title="java.util.function.Function">Function</abbr><<abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>, <abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>></code>
 
@@ -690,16 +835,6 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 
 Aliases: `er.m`, `er.mapper`, `evorobots.m`, `evorobots.mapper`
 
-### Builder `evorobots.mapper.parametrized()`
-
-`er.m.parametrized(target)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `target` | npm |  | <code>T</code> |
-
-Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr><<abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>, <abbr title="java.util.function.Supplier">Supplier</abbr><T>></code>
-
 ### Builder `evorobots.mapper.parametrizedHeteroBrains()`
 
 `er.m.parametrizedHeteroBrains(target)`
@@ -767,7 +902,7 @@ Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr><<abbr t
 | `min` | d |  | <code>double</code> |
 | `max` | d |  | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code>
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.core.DoubleRange">DoubleRange</abbr></code>
 
 ### Builder `sim.supplier()`
 
@@ -801,7 +936,7 @@ Aliases: `s.a`, `s.agent`, `sim.a`, `sim.agent`
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `body` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
-| `function` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><?></code> |
+| `function` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><?, ?></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR">CentralizedNumGridVSR</abbr></code>
 
@@ -812,7 +947,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.Cen
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `body` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
-| `function` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><?></code> |
+| `function` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><?, ?></code> |
 | `signals` | i |  | <code>int</code> |
 | `directional` | b | `false` | <code>boolean</code> |
 
@@ -828,7 +963,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.Dis
 | `areaActuation` | e | `SIDES` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.independentvoxel.NumIndependentVoxel$AreaActuation">NumIndependentVoxel$AreaActuation</abbr></code> |
 | `attachActuation` | b | `true` | <code>boolean</code> |
 | `nOfNFCChannels` | i | `1` | <code>int</code> |
-| `function` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><?></code> |
+| `function` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><?, ?></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.independentvoxel.NumIndependentVoxel">NumIndependentVoxel</abbr></code>
 
@@ -839,7 +974,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.independent
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `modules` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Module">AbstractLeggedHybridModularRobot$Module</abbr>></code> |
-| `function` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><?></code> |
+| `function` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><?, ?></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.NumLeggedHybridModularRobot">NumLeggedHybridModularRobot</abbr></code>
 
@@ -855,7 +990,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.NumL
 | `trunkMass` | d | `24.0` | <code>double</code> |
 | `headMass` | d | `1.0` | <code>double</code> |
 | `headSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr><?>></code> |
-| `function` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><?></code> |
+| `function` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><?, ?></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.NumLeggedHybridRobot">NumLeggedHybridRobot</abbr></code>
 
@@ -893,7 +1028,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.Abst
 | `motorControlI` | d | `2.0` | <code>double</code> |
 | `motorControlD` | d | `2.0` | <code>double</code> |
 | `motorAngleTolerance` | d | `0.0` | <code>double</code> |
-| `activeAngleRange` | npm | `sim.range(max=1.047;min=-1.047)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
+| `activeAngleRange` | npm | `sim.range(max=1.047;min=-1.047)` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.DoubleRange">DoubleRange</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.LegChunk">LegChunk</abbr></code>
 
@@ -1052,100 +1187,6 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</a
 | `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>></code>
-
-## Package `sim.function`
-
-Aliases: `s.f`, `s.function`, `sim.f`, `sim.function`
-
-### Builder `sim.function.diffIn()`
-
-`s.f.diffIn(windowT; innerFunction; types)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `windowT` | d |  | <code>double</code> |
-| `innerFunction` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><? extends <abbr title="io.github.ericmedvet.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
-| `types` | e[] | `[CURRENT, TREND, AVG]` | <code><abbr title="java.util.List">List</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.functions.DiffInputTRF$Type">DiffInputTRF$Type</abbr>></code> |
-
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.functions.DiffInputTRF">DiffInputTRF</abbr>></code>
-
-### Builder `sim.function.drn()`
-
-`s.f.drn(timeRange; innerNeuronsRatio; activationFunction; threshold; timeResolution)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `timeRange` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `innerNeuronsRatio` | d | `1.0` | <code>double</code> |
-| `activationFunction` | e | `TANH` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.functions.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
-| `threshold` | d | `0.1` | <code>double</code> |
-| `timeResolution` | d | `0.16666` | <code>double</code> |
-
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.functions.DelayedRecurrentNetwork">DelayedRecurrentNetwork</abbr>></code>
-
-### Builder `sim.function.groupedSin()`
-
-`s.f.groupedSin(size; p; f; a; b; s)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `size` | i |  | <code>int</code> |
-| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `a` | npm | `sim.range(max=0.5;min=0.0)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `b` | npm | `sim.range(max=0.5;min=-0.5)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `s` | npm | `sim.range(max=0.5;min=-0.5)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.functions.GroupedSinusoidal">GroupedSinusoidal</abbr>></code>
-
-### Builder `sim.function.mlp()`
-
-`s.f.mlp(innerLayerRatio; nOfInnerLayers; activationFunction)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `innerLayerRatio` | d | `0.65` | <code>double</code> |
-| `nOfInnerLayers` | i | `1` | <code>int</code> |
-| `activationFunction` | e | `TANH` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.functions.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
-
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.functions.MultiLayerPerceptron">MultiLayerPerceptron</abbr>></code>
-
-### Builder `sim.function.noised()`
-
-`s.f.noised(inputSigma; outputSigma; randomGenerator; innerFunction)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `inputSigma` | d | `0.0` | <code>double</code> |
-| `outputSigma` | d | `0.0` | <code>double</code> |
-| `randomGenerator` | npm | `sim.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
-| `innerFunction` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><? extends <abbr title="io.github.ericmedvet.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
-
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.functions.NoisedTRF">NoisedTRF</abbr>></code>
-
-### Builder `sim.function.sin()`
-
-`s.f.sin(p; f; a; b)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `p` | npm | `sim.range(max=1.57;min=-1.57)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `f` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `a` | npm | `sim.range(max=1.0;min=0.0)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-| `b` | npm | `sim.range(max=0.5;min=-0.5)` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.DoubleRange">DoubleRange</abbr></code> |
-
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.functions.Sinusoidal">Sinusoidal</abbr>></code>
-
-### Builder `sim.function.stepOut()`
-
-`s.f.stepOut(stepT; innerFunction)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `stepT` | d |  | <code>double</code> |
-| `innerFunction` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><? extends <abbr title="io.github.ericmedvet.mrsim2d.core.functions.TimedRealFunction">TimedRealFunction</abbr>></code> |
-
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.TimedRealFunctions$Builder">TimedRealFunctions$Builder</abbr><<abbr title="io.github.ericmedvet.mrsim2d.core.functions.SteppedOutputTRF">SteppedOutputTRF</abbr>></code>
 
 ## Package `sim.sensor`
 

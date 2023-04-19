@@ -6,5 +6,5 @@ s.a.distributedNumGridVSR(
     )
   );
   signals = 2;
-  function = s.f.mlp()
+  function = ds.num.mlp()
 )
