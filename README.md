@@ -44,16 +44,16 @@ You can use `javaw` instead of `java` for launching the `Starter` class to circu
 
 An experiment can be started by invoking:
 ```shell
-java -cp "2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.robotevo2d.main.Starter --expFile <exp-file> --nOfThreads <n>
+java -cp "2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.robotevo2d.main.Starter --expFile <exp-file> --nOfThreads <nt>
 ```
-where `<exp-file>` is the path to a file with an **experiment description** and `<n>` is the **number of threads** to be used for running the experiment.
+where `<exp-file>` is the path to a file with an **experiment description** and `<nt>` is the **number of threads** to be used for running the experiment.
 
 Once started, `Starter` shows a text-based UI giving information about the overall progress of the experiment, the current run, logs, and resources usage.
 `Starter` may be stopped (before conclusion) with <kbd>Ctrl</kbd> + <kbd>C</kbd>.
 
 ![The text-based UI of `Starter`](assets/images/sample-run.png)
 
-For the number of threads `<n>`, it is suggested to use a number $n$ lower or equal to the number of cores on the machine you run the experiment on.
+For the number of threads `<nt>`, it is suggested to use a number $n$ lower or equal to the number of cores on the machine you run the experiment on.
 The actual degree of concurrency will depend on $n$ and on the evolutionary algorithm being used: e.g., a GA with a population of `npop=30` will do at most $\min(30,n)$ fitness evaluations at the same time.
 
 You can have an overview on the other (few) parameters of `Starter` with:
@@ -216,7 +216,7 @@ The function is `Parametrized` but the actual number of parameters depends on $n
 For each one, if the range boundaries do not coincide, the actual value of the corresponding sinusoidal parameter (i.e., $a$, $f$, $\phi$, $b$, respectively) is a parameter and is min-max normalized from $[-1,1]$ to the range.
 For example, take the following `sin()` for $n=10$:
 ```
-s.f.sin(
+ds.num.sin(
   a = s.range(min = 0.1; max = 0.3);
   f = s.range(min = 0.3; max = 0.3);
   p = s.range(min = -1.57; max = 1.57);
@@ -354,7 +354,7 @@ ea.experiment(
         ] + [
           s.a.l.module(trunkLength = 10; legChunks = 2 * [s.a.l.legChunk()]; trunkSensors = [s.s.rv(a = 0); s.s.rv(a = 90)]; downConnectorSensors = [s.s.d(a = -90; r = 1)]; rightConnectorSensors = + [s.s.sin()] + (a = [-80:10:-30]) * [s.s.d(r = 10)])
         ];
-        function = s.f.noised(innerFunction=s.f.mlp(innerLayerRatio = 1; nOfInnerLayers = 2); inputSigma=0.01)
+        function = ds.num.noised(inner = ds.num.mlp(innerLayerRatio = 1; nOfInnerLayers = 2); inputSigma=0.01)
       ))
       
     ]) * [
@@ -449,7 +449,7 @@ ea.experiment(
   ]) * [
     s.a.distributedNumGridVSR(
       signals = 2;
-      function = s.f.mlp()
+      function = ds.num.mlp()
     )]
   ) * [er.m.parametrizedHomoBrains()]
   ) * [ea.s.numGA(nEval = 1000; nPop = 50)]
@@ -503,7 +503,7 @@ er.play(
       );
       shape = s.a.vsr.s.biped(w = 4; h = 3)
     );
-    function = s.f.noised(outputSigma = 0.01; innerFunction = s.f.sin(
+    function = ds.num.noised(outputSigma = 0.01; inner = ds.num.sin(
       a = s.range(min = 0.5; max = 0.5);
       f = s.range(min = 0.5; max = 0.5);
       p = s.range(min = -1.57; max = 1.57);
