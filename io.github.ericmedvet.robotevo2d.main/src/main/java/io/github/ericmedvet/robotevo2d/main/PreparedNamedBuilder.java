@@ -17,9 +17,7 @@
 package io.github.ericmedvet.robotevo2d.main;
 
 import io.github.ericmedvet.jnb.core.NamedBuilder;
-import io.github.ericmedvet.robotevo2d.main.builders.Listeners;
-import io.github.ericmedvet.robotevo2d.main.builders.Mappers;
-import io.github.ericmedvet.robotevo2d.main.builders.Misc;
+import io.github.ericmedvet.robotevo2d.main.builders.*;
 
 import java.util.List;
 
@@ -31,7 +29,12 @@ public class PreparedNamedBuilder {
       .and(List.of("evorobots", "er"), NamedBuilder.empty()
           .and(NamedBuilder.fromUtilityClass(Misc.class))
           .and(NamedBuilder.fromClass(Play.class))
+          .and(List.of("solver", "s"), NamedBuilder.fromUtilityClass(Solvers.class))
           .and(List.of("mapper", "m"), NamedBuilder.fromUtilityClass(Mappers.class))
+          .and(List.of("dynamicalSystem", "dynSys", "ds"), NamedBuilder.empty()
+              .and(List.of("numerical", "num"), NamedBuilder.fromUtilityClass(NumericalDynamicalSystems.class))
+          )
+          .and(List.of("namedFunction", "nf"), NamedBuilder.fromUtilityClass(NamedFunctions.class))
           .and(List.of("listener", "l"), NamedBuilder.fromUtilityClass(Listeners.class))
       );
 

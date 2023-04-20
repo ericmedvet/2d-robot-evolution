@@ -16,18 +16,24 @@
 
 package io.github.ericmedvet.robotevo2d.main.builders;
 
+import io.github.ericmedvet.jgea.core.representation.tree.Tree;
 import io.github.ericmedvet.jgea.experimenter.InvertibleMapper;
+import io.github.ericmedvet.jgea.problem.symbolicregression.Element;
 import io.github.ericmedvet.jnb.core.NamedBuilder;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jnb.core.ParamMap;
 import io.github.ericmedvet.jsdynsym.core.NumericalParametrized;
+import io.github.ericmedvet.jsdynsym.core.Parametrized;
 import io.github.ericmedvet.jsdynsym.core.composed.Composed;
 import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
 import io.github.ericmedvet.mrsim2d.core.NumMultiBrained;
 
+import java.lang.annotation.ElementType;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Supplier;
+import java.util.stream.IntStream;
 
 public class Mappers {
   private Mappers() {
@@ -73,6 +79,33 @@ public class Mappers {
         return Collections.nCopies(overallBrainSize, 0d);
       }
     };
+  }
+
+  public static <T extends NumMultiBrained> InvertibleMapper<List<Tree<Element>>, Supplier<T>> treeBasedHomoBrains(
+      @Param("target") T target,
+      @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
+      @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
+  ) {
+    // probably need to add some checks
+    NumericalDynamicalSystem<?> sampleDynamicalSystem = target.brains().stream().findFirst().orElseThrow();
+    return new InvertibleMapper<>() {
+      @Override
+      public Supplier<T> apply(List<Tree<Element>> trees) {
+        // more checks needed here
+        return () -> {
+          @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
+          t.brains().forEach(b -> Composed.shallowest(b, Parametrized.class).orElseThrow().setParams(trees));
+          return t;
+        };
+      }
+
+      @Override
+      public List<Tree<Element>> exampleInput() {
+        Tree<Element> inputSizeVariableTree = Tree.of(new Element.Variable(String.format("%d", sampleDynamicalSystem.nOfInputs())));
+        return IntStream.range(0, sampleDynamicalSystem.nOfOutputs()).mapToObj(i -> inputSizeVariableTree).toList();
+      }
+    };
+
   }
 
   @SuppressWarnings("unused")
