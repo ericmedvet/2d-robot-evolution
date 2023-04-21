@@ -85,7 +85,7 @@ public class Mappers {
   }
 
   @SuppressWarnings("unused")
-  public static <T extends NumMultiBrained> InvertibleMapper<List<Double>, Supplier<T>> parametrizedHeteroBrains(
+  public static <T extends NumMultiBrained> InvertibleMapper<List<Double>, Supplier<T>> numericalParametrizedHeteroBrains(
       @Param("target") T target,
       @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
       @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
@@ -126,7 +126,7 @@ public class Mappers {
   }
 
   @SuppressWarnings("unused")
-  public static <T extends NumMultiBrained> InvertibleMapper<List<Double>, Supplier<T>> parametrizedHomoBrains(
+  public static <T extends NumMultiBrained> InvertibleMapper<List<Double>, Supplier<T>> numericalParametrizedHomoBrains(
       @Param("target") T target,
       @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
       @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
@@ -164,7 +164,7 @@ public class Mappers {
   }
 
   @SuppressWarnings("unused")
-  public static <T extends NumMultiBrained> InvertibleMapper<List<Tree<Element>>, Supplier<T>> treeBasedHomoBrains(
+  public static <T extends NumMultiBrained> InvertibleMapper<List<Tree<Element>>, Supplier<T>> treeParametrizedHomoBrains(
       @Param("target") T target,
       @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
       @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
