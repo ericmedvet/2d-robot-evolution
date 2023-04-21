@@ -31,7 +31,6 @@ import io.github.ericmedvet.mrsim2d.core.NumMultiBrained;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
-import java.util.stream.IntStream;
 
 public class Mappers {
   private Mappers() {
@@ -187,11 +186,10 @@ public class Mappers {
 
       @Override
       public List<Tree<Element>> exampleInput() {
-        Tree<Element> inputSizeVariableTree = Tree.of(new Element.Variable(String.format(
-            "%d",
-            sampleDynamicalSystem.nOfInputs()
-        )));
-        return IntStream.range(0, sampleDynamicalSystem.nOfOutputs()).mapToObj(i -> inputSizeVariableTree).toList();
+        Tree<Element> tree = Tree.of(new Element.Variable(
+            "x%d".formatted(sampleDynamicalSystem.nOfInputs())
+        ));
+        return Collections.nCopies(sampleDynamicalSystem.nOfOutputs(), tree);
       }
     };
 
