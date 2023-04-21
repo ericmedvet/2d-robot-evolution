@@ -16,50 +16,27 @@
 
 package io.github.ericmedvet.robotevo2d.main.builders;
 
+import io.github.ericmedvet.jgea.core.representation.tree.Tree;
 import io.github.ericmedvet.jgea.experimenter.InvertibleMapper;
+import io.github.ericmedvet.jgea.problem.symbolicregression.Element;
 import io.github.ericmedvet.jnb.core.NamedBuilder;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jnb.core.ParamMap;
+import io.github.ericmedvet.jsdynsym.core.NumericalParametrized;
+import io.github.ericmedvet.jsdynsym.core.Parametrized;
+import io.github.ericmedvet.jsdynsym.core.composed.Composed;
+import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
 import io.github.ericmedvet.mrsim2d.core.NumMultiBrained;
-import io.github.ericmedvet.mrsim2d.core.functions.TimedRealFunction;
-import io.github.ericmedvet.mrsim2d.core.util.Parametrized;
 
-import java.util.Arrays;
+import java.lang.annotation.ElementType;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Supplier;
+import java.util.stream.IntStream;
 
 public class Mappers {
   private Mappers() {
-  }
-
-  @SuppressWarnings("unused")
-  public static <T extends Parametrized> InvertibleMapper<List<Double>, Supplier<T>> parametrized(
-      @Param("target") T target,
-      @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
-      @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
-  ) {
-    return new InvertibleMapper<>() {
-      @Override
-      public Supplier<T> apply(List<Double> values) {
-        if (values.size() != target.getParams().length) {
-          throw new IllegalArgumentException("Wrong number of params: %d expected, %d found".formatted(
-              target.getParams().length,
-              values.size()
-          ));
-        }
-        return () -> {
-          @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
-          t.setParams(values.stream().mapToDouble(d -> d).toArray());
-          return t;
-        };
-      }
-
-      @Override
-      public List<Double> exampleInput() {
-        return Arrays.stream(target.getParams()).boxed().toList();
-      }
-    };
   }
 
   @SuppressWarnings("unused")
@@ -68,12 +45,12 @@ public class Mappers {
       @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
       @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
   ) {
-    if (!target.brains().stream().allMatch(b -> b instanceof Parametrized)) {
+    if (!target.brains().stream().allMatch(b -> Composed.shallowest(b, NumericalParametrized.class).isPresent())) {
       throw new IllegalArgumentException("Some of the %d brains are not parametrized".formatted(target.brains()
           .size()));
     }
     List<Integer> brainSizes = target.brains().stream()
-        .map(b -> ((Parametrized) b).getParams().length)
+        .map(b -> Composed.shallowest(b, NumericalParametrized.class).orElseThrow().getParams().length)
         .toList();
     int overallBrainSize = brainSizes.stream().mapToInt(i -> i).sum();
     return new InvertibleMapper<>() {
@@ -88,9 +65,9 @@ public class Mappers {
         return () -> {
           @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
           int c = 0;
-          for (TimedRealFunction brain : t.brains()) {
-            int brainSize = ((Parametrized) brain).getParams().length;
-            ((Parametrized) brain).setParams(values.subList(c, c + brainSize).stream().mapToDouble(d -> d).toArray());
+          for (NumericalDynamicalSystem<?> brain : t.brains()) {
+            int brainSize = Composed.shallowest(brain, NumericalParametrized.class).orElseThrow().getParams().length;
+            Composed.shallowest(brain, NumericalParametrized.class).orElseThrow().setParams(values.subList(c, c + brainSize).stream().mapToDouble(d -> d).toArray());
             c = c + brainSize;
           }
           return t;
@@ -104,18 +81,45 @@ public class Mappers {
     };
   }
 
+  public static <T extends NumMultiBrained> InvertibleMapper<List<Tree<Element>>, Supplier<T>> treeBasedHomoBrains(
+      @Param("target") T target,
+      @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
+      @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
+  ) {
+    // probably need to add some checks
+    NumericalDynamicalSystem<?> sampleDynamicalSystem = target.brains().stream().findFirst().orElseThrow();
+    return new InvertibleMapper<>() {
+      @Override
+      public Supplier<T> apply(List<Tree<Element>> trees) {
+        // more checks needed here
+        return () -> {
+          @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
+          t.brains().forEach(b -> Composed.shallowest(b, Parametrized.class).orElseThrow().setParams(trees));
+          return t;
+        };
+      }
+
+      @Override
+      public List<Tree<Element>> exampleInput() {
+        Tree<Element> inputSizeVariableTree = Tree.of(new Element.Variable(String.format("%d", sampleDynamicalSystem.nOfInputs())));
+        return IntStream.range(0, sampleDynamicalSystem.nOfOutputs()).mapToObj(i -> inputSizeVariableTree).toList();
+      }
+    };
+
+  }
+
   @SuppressWarnings("unused")
   public static <T extends NumMultiBrained> InvertibleMapper<List<Double>, Supplier<T>> parametrizedHomoBrains(
       @Param("target") T target,
       @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
       @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
   ) {
-    if (!target.brains().stream().allMatch(b -> b instanceof Parametrized)) {
+    if (!target.brains().stream().allMatch(b -> Composed.shallowest(b, NumericalParametrized.class).isPresent())) {
       throw new IllegalArgumentException("Some of the %d brains are not parametrized".formatted(target.brains()
           .size()));
     }
     List<Integer> brainSizes = target.brains().stream()
-        .map(b -> ((Parametrized) b).getParams().length)
+        .map(b -> Composed.shallowest(b, NumericalParametrized.class).orElseThrow().getParams().length)
         .distinct()
         .toList();
     if (brainSizes.size() != 1) {
@@ -134,7 +138,7 @@ public class Mappers {
         }
         return () -> {
           @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
-          t.brains().forEach(b -> ((Parametrized) b).setParams(values.stream().mapToDouble(d -> d).toArray()));
+          t.brains().forEach(b -> Composed.shallowest(b, NumericalParametrized.class).orElseThrow().setParams(values.stream().mapToDouble(d -> d).toArray()));
           return t;
         };
       }

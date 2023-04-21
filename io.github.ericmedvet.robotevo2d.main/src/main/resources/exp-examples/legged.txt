@@ -11,7 +11,7 @@ ea.experiment(
               downConnectorSensors = [s.s.d(a = -90; r = 1)]
             )
           ];
-          function = s.f.noised(innerFunction=s.f.mlp();inputSigma=0.25)
+          function = ds.num.noised(inner=ds.num.mlp();inputSigma=0.25)
         ));
         nEval = 100;
         nPop = 10

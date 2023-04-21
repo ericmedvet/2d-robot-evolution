@@ -3,12 +3,15 @@
  */
 module io.github.ericmedvet.robotevo2d.main {
   requires io.github.ericmedvet.jgea.core;
+  requires io.github.ericmedvet.jgea.problem;
   requires io.github.ericmedvet.jgea.experimenter;
   requires java.desktop;
   requires java.logging;
   requires io.github.ericmedvet.mrsim2d.core;
   requires io.github.ericmedvet.mrsim2d.viewer;
   requires io.github.ericmedvet.mrsim2d.buildable;
+  requires io.github.ericmedvet.jsdynsym.core;
+  requires io.github.ericmedvet.jsdynsym.buildable;
   requires io.github.ericmedvet.jnb.core;
   requires jcommander;
   opens io.github.ericmedvet.robotevo2d.main.builders to io.github.ericmedvet.jnb.core;
