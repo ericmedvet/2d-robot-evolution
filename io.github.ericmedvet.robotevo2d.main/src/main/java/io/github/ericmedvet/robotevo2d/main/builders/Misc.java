@@ -109,7 +109,7 @@ public class Misc {
           file = CSVPrinter.checkExistenceAndChangeName(new File(dirPath + File.separator + fileName));
         }
         //do video
-        String videoName = map.npm("task").toString();
+        String videoName = "run %d".formatted(run.index());
         VideoBuilder videoBuilder = new VideoBuilder(
             w,
             h,
