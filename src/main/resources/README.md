@@ -185,7 +185,7 @@ Here is instead a `sim.agent.centralizedNumGridVSR()` built with [this descripti
 
 [`sim.agent.distributedNumGridVSR()`](assets/builder-help.md#builder-simagentdistributednumgridvsr) corresponds to a VSR with a distributed controller, i.e., with one `TimedRealFunction` inside each one of the voxels.
 Each `TimedRealFunction` takes as input the local sensor readings and some (exactly `signals` for each one of the 4 adjacent voxels) values coming from adjacent voxels and gives as output the local activation value and some values going to adjacent voxels, as described in [[1]](#2020-c-mbdf-evolution).
-Depending on the mapper (see below), the same function is used in each voxel (with `evorobots.mapper.parametrizedHeteroBrains()`) or different functions are used (with `evorobots.mapper.parametrizedHomoBrains()`).
+Depending on the mapper (see below), the same function is used in each voxel (with `evorobots.mapper.numericalParametrizedHeteroBrains()`) or different functions are used (with `evorobots.mapper.numericalParametrizedHomoBrains()`).
 That is, they for the former case, the functions share the parameters: in this case, each voxel in the body has to have the same number of sensors.
 Here is how an agent built with `sim.agent.distributedNumGridVSR()` looks like with [this description](io.github.ericmedvet.robotevo2d.main/src/main/resources/agent-examples/vsr-distributed-worm.txt) of a [`sim.agent.vsr.shape.worm()`](assets/builder-help.md#builder-simagentvsrshapeworm) shape.
 
@@ -290,8 +290,8 @@ The mapper maps a genotype to a robot, using the `target` of the run "as the sta
 Available mappers are in the [`evorobots.mapper`](assets/builder-help.md#package-evorobotsmapper) package.
 
 The two most significant mapper are based on the `NumBrained` and `NumMultiBrained` interfaces that model, respectively, agents that have one or many brains, respectively (the former being a particular case of the latter).
-Both the [`evorobots.mapper.parametrizedHomoBrains()`](assets/builder-help.md#builder-evorobotsmapperparametrizedheterobrains) and [`evorobots.mapper.parametrizedHeteroBrains()`](assets/builder-help.md#builder-evorobotsmapperparametrizedheterobrains) assume that the brain or brains are `Parametrized`, i.e., they work based on a vector of numerical parameters $\vec{\theta} \in \mathbb{R}^p$: hence mapping a `List<Double>` to the robot simply amounts to injecting the parameters in the brains.
-For `evorobots.mapper.parametrizedHomoBrains()`, the same $\vec{\theta}$ is injected in every brain; for `evorobots.mapper.parametrizedHeteroBrains()` one chunk of a larger vector is injected as $\vec{\theta}$ for every brain.
+Both the [`evorobots.mapper.numericalParametrizedHomoBrains()`](assets/builder-help.md#builder-evorobotsmappernumericalparametrizedheterobrains) and [`evorobots.mapper.numericalParametrizedHeteroBrains()`](assets/builder-help.md#builder-evorobotsmappernumericalparametrizedheterobrains) assume that the brain or brains are `Parametrized`, i.e., they work based on a vector of numerical parameters $\vec{\theta} \in \mathbb{R}^p$: hence mapping a `List<Double>` to the robot simply amounts to injecting the parameters in the brains.
+For `evorobots.mapper.numericalParametrizedHomoBrains()`, the same $\vec{\theta}$ is injected in every brain; for `evorobots.mapper.numericalParametrizedHeteroBrains()` one chunk of a larger vector is injected as $\vec{\theta}$ for every brain.
 
 All the [functions](#functions) listed above are `Parametrized`: the composite ones delegate to the inner function.
 
@@ -347,7 +347,7 @@ See the [example below](#example-1-3-runs-with-a-vsr-biped) for the usage of thi
 ea.experiment(
   runs = (randomGenerator = (seed = [1:1:10]) * [ea.rg.defaultRG()]) *
     (solver = (mapper = [
-      er.m.parametrizedHeteroBrains(
+      er.m.numericalParametrizedHeteroBrains(
         target = s.a.numLeggedHybridModularRobot(
         modules = + 4 * [
           s.a.l.module(trunkLength = 10; legChunks = 2 * [s.a.l.legChunk()]; trunkSensors = [s.s.rv(a = 0); s.s.rv(a = 90)]; downConnectorSensors = [s.s.d(a = -90; r = 1)])
@@ -451,7 +451,7 @@ ea.experiment(
       signals = 2;
       function = ds.num.mlp()
     )]
-  ) * [er.m.parametrizedHomoBrains()]
+  ) * [er.m.numericalParametrizedHomoBrains()]
   ) * [ea.s.numGA(nEval = 1000; nPop = 50)]
   ) * [ea.run()];
   listeners = [
@@ -494,7 +494,7 @@ where `<play-file>` is the path to a file with an **play description** (see [`ev
 For example, with a play file like this:
 ```
 er.play(
-  mapper = er.m.parametrizedHeteroBrains(target = s.a.centralizedNumGridVSR(
+  mapper = er.m.numericalParametrizedHeteroBrains(target = s.a.centralizedNumGridVSR(
     body = s.a.vsr.gridBody(
       sensorizingFunction = s.a.vsr.sf.directional(
         headSensors = [s.s.sin(f = 0);s.s.d(a = -15; r = 5)];
