@@ -5,6 +5,7 @@ import io.github.ericmedvet.jgea.problem.symbolicregression.Element;
 import io.github.ericmedvet.jgea.problem.symbolicregression.TreeBasedRealFunction;
 import io.github.ericmedvet.jsdynsym.core.Parametrized;
 import io.github.ericmedvet.jsdynsym.core.numerical.NumericalTimeInvariantStatelessSystem;
+import io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +17,16 @@ public class TreeBasedMultivariateFunction
   private final List<TreeBasedRealFunction> functions;
   private final int nOfInputs;
   private final int nOfOutputs;
+  private final MultiLayerPerceptron.ActivationFunction activationFunction;
 
-  public TreeBasedMultivariateFunction(int nOfInputs, int nOfOutputs) {
+  public TreeBasedMultivariateFunction(
+      int nOfInputs,
+      int nOfOutputs,
+      MultiLayerPerceptron.ActivationFunction activationFunction
+  ) {
     this.nOfInputs = nOfInputs;
     this.nOfOutputs = nOfOutputs;
+    this.activationFunction = activationFunction;
     functions = new ArrayList<>(nOfOutputs);
     String[] varNames = IntStream.range(0, nOfOutputs).mapToObj("x%d"::formatted).toArray(String[]::new);
     for (int i = 0; i < nOfOutputs; i = i + 1) {
@@ -36,25 +43,38 @@ public class TreeBasedMultivariateFunction
   }
 
   @Override
-  public void setParams(List<Tree<Element>> trees) {
-    functions = IntStream.range(0, trees.size())
-        .mapToObj(i -> new TreeBasedRealFunction(trees.get(i), functions.get(i).getVarNames()))
-        .toList();
-  }
-
-  @Override
   public int nOfInputs() {
-    return functions.get(0).getVarNames().length;
+    return nOfInputs;
   }
 
   @Override
   public int nOfOutputs() {
-    return functions.size();
+    return nOfOutputs;
   }
 
   @Override
-  public double[] step(double[] doubles) {
-    return functions.stream().mapToDouble(f -> Math.tanh(f.apply(doubles))).toArray();
+  public void setParams(List<Tree<Element>> trees) {
+    if (trees.size() != nOfOutputs) {
+      throw new IllegalArgumentException("Wrong number of trees: %d expected, %d found".formatted(
+          nOfOutputs,
+          trees.size()
+      ));
+    }
+    String[] varNames = IntStream.range(0, nOfOutputs).mapToObj("x%d"::formatted).toArray(String[]::new);
+    for (int i = 0; i < nOfOutputs; i = i + 1) {
+      functions.set(i, new TreeBasedRealFunction(trees.get(i), varNames));
+    }
+  }
+
+  @Override
+  public double[] step(double[] values) {
+    if (values.length != nOfInputs) {
+      throw new IllegalArgumentException("Wrong input size: %d expected, %d found".formatted(
+          nOfInputs,
+          values.length
+      ));
+    }
+    return functions.stream().mapToDouble(f -> activationFunction.applyAsDouble(f.apply(values))).toArray();
   }
 
 }

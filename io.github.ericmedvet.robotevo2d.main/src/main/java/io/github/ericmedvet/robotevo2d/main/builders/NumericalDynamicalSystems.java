@@ -1,10 +1,9 @@
 package io.github.ericmedvet.robotevo2d.main.builders;
 
-import io.github.ericmedvet.jgea.problem.symbolicregression.TreeBasedRealFunction;
+import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jsdynsym.core.StatelessSystem;
+import io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron;
 import io.github.ericmedvet.robotevo2d.main.dynamicalsystems.TreeBasedMultivariateFunction;
-
-import java.util.stream.IntStream;
 
 public class NumericalDynamicalSystems {
 
@@ -14,11 +13,9 @@ public class NumericalDynamicalSystems {
   @SuppressWarnings("unused")
   public static io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.Builder<TreeBasedMultivariateFunction,
       StatelessSystem.State> tbf(
+      @Param(value = "activationFunction", dS = "tanh") MultiLayerPerceptron.ActivationFunction activationFunction
   ) {
-    return (nOfInputs, nOfOutputs) -> {
-      String[] varNames = IntStream.range(0, nOfInputs).mapToObj(i -> String.format("x%d", i)).toArray(String[]::new);
-      return new TreeBasedMultivariateFunction(IntStream.range(0, nOfOutputs).mapToObj(i -> new TreeBasedRealFunction(null, varNames)).toList());
-    };
+    return (nOfInputs, nOfOutputs) -> new TreeBasedMultivariateFunction(nOfInputs, nOfOutputs, activationFunction);
   }
 
 }
