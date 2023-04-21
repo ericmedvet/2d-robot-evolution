@@ -19,4 +19,5 @@ module io.github.ericmedvet.robotevo2d.main {
   opens io.github.ericmedvet.robotevo2d.main.helper to io.github.ericmedvet.jnb.core;
   exports io.github.ericmedvet.robotevo2d.main;
   exports io.github.ericmedvet.robotevo2d.main.helper;
+  opens io.github.ericmedvet.robotevo2d.main.dynamicalsystems to io.github.ericmedvet.jnb.core;
 }
