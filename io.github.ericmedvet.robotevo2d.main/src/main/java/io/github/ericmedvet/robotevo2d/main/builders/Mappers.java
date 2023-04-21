@@ -37,7 +37,7 @@ public class Mappers {
   private Mappers() {
   }
 
-  private static <T> void checkIOSizeConsistency(NumMultiBrained numMultiBrained) {
+  private static void checkIOSizeConsistency(NumMultiBrained numMultiBrained) {
     List<Integer> inSizes = numMultiBrained.brains().stream()
         .map(NumericalDynamicalSystem::nOfInputs)
         .distinct()
@@ -60,7 +60,7 @@ public class Mappers {
     }
   }
 
-  private static <T> void checkNumericalParametrizedSizeConsistency(NumMultiBrained numMultiBrained) {
+  private static void checkNumericalParametrizedSizeConsistency(NumMultiBrained numMultiBrained) {
     List<Integer> brainSizes = numMultiBrained.brains().stream()
         .map(b -> Composed.shallowest(b, NumericalParametrized.class).orElseThrow().getParams().length)
         .distinct()
