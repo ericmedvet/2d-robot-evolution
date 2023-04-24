@@ -21,6 +21,7 @@ public class NamedFunctions {
     return Arrays.stream(names).reduce(NamedFunction.NAME_COMPOSER::apply).orElseThrow();
   }
 
+  @SuppressWarnings("unused")
   public static <X> NamedFunction<X, String> stringBase64(
       @Param("f") NamedFunction<X, Serializable> f
   ) {
