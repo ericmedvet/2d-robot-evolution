@@ -146,10 +146,10 @@ public class Starter {
     }
     //prepare and run experimenter
     try {
-      Experimenter experimenter = new Experimenter(nb, configuration.nOfThreads, configuration.nOfConcurrentRuns);
+      Experimenter experimenter = new Experimenter(nb, configuration.nOfConcurrentRuns, configuration.nOfThreads);
       experimenter.run(expDescription);
     } catch (BuilderException e) {
-      L.severe("Cannot build experiment: %s%n".formatted(e));
+      L.severe("Cannot run experiment: %s%n".formatted(e));
       System.exit(-1);
     }
   }

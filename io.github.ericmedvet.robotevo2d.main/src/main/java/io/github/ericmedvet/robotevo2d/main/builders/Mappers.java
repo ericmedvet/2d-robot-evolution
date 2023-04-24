@@ -16,11 +16,14 @@
 
 package io.github.ericmedvet.robotevo2d.main.builders;
 
+import io.github.ericmedvet.jgea.core.representation.tree.Tree;
 import io.github.ericmedvet.jgea.experimenter.InvertibleMapper;
+import io.github.ericmedvet.jgea.problem.symbolicregression.Element;
 import io.github.ericmedvet.jnb.core.NamedBuilder;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jnb.core.ParamMap;
 import io.github.ericmedvet.jsdynsym.core.NumericalParametrized;
+import io.github.ericmedvet.jsdynsym.core.Parametrized;
 import io.github.ericmedvet.jsdynsym.core.composed.Composed;
 import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
 import io.github.ericmedvet.mrsim2d.core.NumMultiBrained;
@@ -33,16 +36,60 @@ public class Mappers {
   private Mappers() {
   }
 
+  private static void checkIOSizeConsistency(NumMultiBrained numMultiBrained) {
+    List<Integer> inSizes = numMultiBrained.brains().stream()
+        .map(NumericalDynamicalSystem::nOfInputs)
+        .distinct()
+        .toList();
+    List<Integer> outSizes = numMultiBrained.brains().stream()
+        .map(NumericalDynamicalSystem::nOfOutputs)
+        .distinct()
+        .toList();
+    if (inSizes.size() != 1) {
+      throw new IllegalArgumentException("Not all of the %d brains has the same input size: %s sizes found".formatted(
+          numMultiBrained.brains().size(),
+          inSizes
+      ));
+    }
+    if (outSizes.size() != 1) {
+      throw new IllegalArgumentException("Not all of the %d brains has the same output size: %s sizes found".formatted(
+          numMultiBrained.brains().size(),
+          outSizes
+      ));
+    }
+  }
+
+  private static void checkNumericalParametrizedSizeConsistency(NumMultiBrained numMultiBrained) {
+    List<Integer> brainSizes = numMultiBrained.brains().stream()
+        .map(b -> Composed.shallowest(b, NumericalParametrized.class).orElseThrow().getParams().length)
+        .distinct()
+        .toList();
+    if (brainSizes.size() != 1) {
+      throw new IllegalArgumentException("Not all of the %d brains has the same output size: %s sizes found".formatted(
+          numMultiBrained.brains().size(),
+          brainSizes
+      ));
+    }
+  }
+
+  private static <T> void checkType(NumMultiBrained numMultiBrained, Class<T> clazz) {
+    for (NumericalDynamicalSystem<?> nds : numMultiBrained.brains()) {
+      if (Composed.shallowest(nds, clazz).isEmpty()) {
+        throw new IllegalArgumentException("Some of the %d brains is not a %s".formatted(
+            numMultiBrained.brains().size(),
+            clazz.getSimpleName()
+        ));
+      }
+    }
+  }
+
   @SuppressWarnings("unused")
-  public static <T extends NumMultiBrained> InvertibleMapper<List<Double>, Supplier<T>> parametrizedHeteroBrains(
+  public static <T extends NumMultiBrained> InvertibleMapper<List<Double>, Supplier<T>> numericalParametrizedHeteroBrains(
       @Param("target") T target,
       @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
       @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
   ) {
-    if (!target.brains().stream().allMatch(b -> Composed.shallowest(b, NumericalParametrized.class).isPresent())) {
-      throw new IllegalArgumentException("Some of the %d brains are not parametrized".formatted(target.brains()
-          .size()));
-    }
+    checkType(target, NumericalParametrized.class);
     List<Integer> brainSizes = target.brains().stream()
         .map(b -> Composed.shallowest(b, NumericalParametrized.class).orElseThrow().getParams().length)
         .toList();
@@ -61,7 +108,9 @@ public class Mappers {
           int c = 0;
           for (NumericalDynamicalSystem<?> brain : t.brains()) {
             int brainSize = Composed.shallowest(brain, NumericalParametrized.class).orElseThrow().getParams().length;
-            Composed.shallowest(brain, NumericalParametrized.class).orElseThrow().setParams(values.subList(c, c + brainSize).stream().mapToDouble(d -> d).toArray());
+            Composed.shallowest(brain, NumericalParametrized.class)
+                .orElseThrow()
+                .setParams(values.subList(c, c + brainSize).stream().mapToDouble(d -> d).toArray());
             c = c + brainSize;
           }
           return t;
@@ -76,24 +125,17 @@ public class Mappers {
   }
 
   @SuppressWarnings("unused")
-  public static <T extends NumMultiBrained> InvertibleMapper<List<Double>, Supplier<T>> parametrizedHomoBrains(
+  public static <T extends NumMultiBrained> InvertibleMapper<List<Double>, Supplier<T>> numericalParametrizedHomoBrains(
       @Param("target") T target,
       @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
       @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
   ) {
-    if (!target.brains().stream().allMatch(b -> Composed.shallowest(b, NumericalParametrized.class).isPresent())) {
-      throw new IllegalArgumentException("Some of the %d brains are not parametrized".formatted(target.brains()
-          .size()));
-    }
-    List<Integer> brainSizes = target.brains().stream()
+    checkType(target, NumericalParametrized.class);
+    checkIOSizeConsistency(target);
+    checkNumericalParametrizedSizeConsistency(target);
+    int brainSize = target.brains().stream()
         .map(b -> Composed.shallowest(b, NumericalParametrized.class).orElseThrow().getParams().length)
-        .distinct()
-        .toList();
-    if (brainSizes.size() != 1) {
-      throw new IllegalArgumentException("Some of the %d brains have different sizes (%s sizes found)".formatted(target.brains()
-          .size(), brainSizes));
-    }
-    int brainSize = brainSizes.get(0);
+        .findFirst().orElseThrow();
     return new InvertibleMapper<>() {
       @Override
       public Supplier<T> apply(List<Double> values) {
@@ -105,7 +147,10 @@ public class Mappers {
         }
         return () -> {
           @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
-          t.brains().forEach(b -> Composed.shallowest(b, NumericalParametrized.class).orElseThrow().setParams(values.stream().mapToDouble(d -> d).toArray()));
+          t.brains()
+              .forEach(b -> Composed.shallowest(b, NumericalParametrized.class)
+                  .orElseThrow()
+                  .setParams(values.stream().mapToDouble(d -> d).toArray()));
           return t;
         };
       }
@@ -115,6 +160,39 @@ public class Mappers {
         return Collections.nCopies(brainSize, 0d);
       }
     };
+  }
+
+  @SuppressWarnings("unused")
+  public static <T extends NumMultiBrained> InvertibleMapper<List<Tree<Element>>, Supplier<T>> treeParametrizedHomoBrains(
+      @Param("target") T target,
+      @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
+      @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
+  ) {
+    checkType(target, Parametrized.class);
+    checkIOSizeConsistency(target);
+    // probably need to add some checks
+    NumericalDynamicalSystem<?> sampleDynamicalSystem = target.brains().stream().findFirst().orElseThrow();
+    return new InvertibleMapper<>() {
+      @Override
+      public Supplier<T> apply(List<Tree<Element>> trees) {
+        return () -> {
+          @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
+          //noinspection unchecked
+          t.brains().forEach(b -> ((Parametrized<List<Tree<Element>>>) Composed.shallowest(b, Parametrized.class)
+              .orElseThrow()).setParams(trees));
+          return t;
+        };
+      }
+
+      @Override
+      public List<Tree<Element>> exampleInput() {
+        Tree<Element> tree = Tree.of(new Element.Variable(
+            "x%d".formatted(sampleDynamicalSystem.nOfInputs())
+        ));
+        return Collections.nCopies(sampleDynamicalSystem.nOfOutputs(), tree);
+      }
+    };
+
   }
 
 }
