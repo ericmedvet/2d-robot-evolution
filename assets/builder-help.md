@@ -51,7 +51,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.Num
 | `inner` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><? extends <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr><S>, S></code> |
 | `types` | e[] | `[CURRENT, TREND, AVG]` | <code><abbr title="java.util.List">List</abbr><<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.EnhancedInput$Type">EnhancedInput$Type</abbr>></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.EnhancedInput">EnhancedInput</abbr><S>, S></code>
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.EnhancedInput">EnhancedInput</abbr><S>, S></code>
 
 ### Builder `dynamicalSystem.numerical.inStepped()`
 
@@ -817,6 +817,20 @@ Produces <code><abbr title="io.github.ericmedvet.robotevo2d.main.Play">Play</abb
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.AccumulatorFactory">AccumulatorFactory</abbr><<abbr title="io.github.ericmedvet.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><?, A, ?>, <abbr title="java.io.File">File</abbr>, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr><?, ?, A, ?>></code>
 
+## Package `evorobots.dynamicalSystem.numerical`
+
+Aliases: `er.ds.num`, `er.ds.numerical`, `er.dynSys.num`, `er.dynSys.numerical`, `er.dynamicalSystem.num`, `er.dynamicalSystem.numerical`, `evorobots.ds.num`, `evorobots.ds.numerical`, `evorobots.dynSys.num`, `evorobots.dynSys.numerical`, `evorobots.dynamicalSystem.num`, `evorobots.dynamicalSystem.numerical`
+
+### Builder `evorobots.dynamicalSystem.numerical.tbf()`
+
+`er.ds.num.tbf(activationFunction)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `activationFunction` | e | `TANH` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr><<abbr title="io.github.ericmedvet.robotevo2d.main.dynamicalsystems.TreeBasedMultivariateFunction">TreeBasedMultivariateFunction</abbr>, <abbr title="io.github.ericmedvet.jsdynsym.core.StatelessSystem$State">StatelessSystem$State</abbr>></code>
+
 ## Package `evorobots.listener`
 
 Aliases: `er.l`, `er.listener`, `evorobots.l`, `evorobots.listener`
@@ -835,9 +849,19 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr><<ab
 
 Aliases: `er.m`, `er.mapper`, `evorobots.m`, `evorobots.mapper`
 
-### Builder `evorobots.mapper.parametrizedHeteroBrains()`
+### Builder `evorobots.mapper.numericalParametrizedHeteroBrains()`
 
-`er.m.parametrizedHeteroBrains(target)`
+`er.m.numericalParametrizedHeteroBrains(target)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `target` | npm |  | <code>T</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr><<abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>, <abbr title="java.util.function.Supplier">Supplier</abbr><T>></code>
+
+### Builder `evorobots.mapper.numericalParametrizedHomoBrains()`
+
+`er.m.numericalParametrizedHomoBrains(target)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -845,15 +869,56 @@ Aliases: `er.m`, `er.mapper`, `evorobots.m`, `evorobots.mapper`
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr><<abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>, <abbr title="java.util.function.Supplier">Supplier</abbr><T>></code>
 
-### Builder `evorobots.mapper.parametrizedHomoBrains()`
+### Builder `evorobots.mapper.treeParametrizedHomoBrains()`
 
-`er.m.parametrizedHomoBrains(target)`
+`er.m.treeParametrizedHomoBrains(target)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `target` | npm |  | <code>T</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr><<abbr title="java.util.List">List</abbr><<abbr title="java.lang.Double">Double</abbr>>, <abbr title="java.util.function.Supplier">Supplier</abbr><T>></code>
+Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr><<abbr title="java.util.List">List</abbr><<abbr title="io.github.ericmedvet.jgea.core.representation.tree.Tree">Tree</abbr><<abbr title="io.github.ericmedvet.jgea.problem.symbolicregression.Element">Element</abbr>>>, <abbr title="java.util.function.Supplier">Supplier</abbr><T>></code>
+
+## Package `evorobots.namedFunction`
+
+Aliases: `er.namedFunction`, `er.nf`, `evorobots.namedFunction`, `evorobots.nf`
+
+### Builder `evorobots.namedFunction.stringBase64()`
+
+`er.nf.stringBase64(f)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `f` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.io.Serializable">Serializable</abbr>></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr><X, <abbr title="java.lang.String">String</abbr>></code>
+
+## Package `evorobots.solver`
+
+Aliases: `er.s`, `er.solver`, `evorobots.s`, `evorobots.solver`
+
+### Builder `evorobots.solver.listGP()`
+
+`er.s.listGP(mapper; minConst; maxConst; nConst; operators; minTreeH; maxTreeH; crossoverP; tournamentRate; minNTournament; nPop; nEval; diversity; remap)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `mapper` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr><<abbr title="java.util.List">List</abbr><<abbr title="io.github.ericmedvet.jgea.core.representation.tree.Tree">Tree</abbr><<abbr title="io.github.ericmedvet.jgea.problem.symbolicregression.Element">Element</abbr>>>, S></code> |
+| `minConst` | d | `0.0` | <code>double</code> |
+| `maxConst` | d | `5.0` | <code>double</code> |
+| `nConst` | i | `10` | <code>int</code> |
+| `operators` | e[] | `[+, -, *, p/]` | <code><abbr title="java.util.List">List</abbr><<abbr title="io.github.ericmedvet.jgea.problem.symbolicregression.Element$Operator">Element$Operator</abbr>></code> |
+| `minTreeH` | i | `3` | <code>int</code> |
+| `maxTreeH` | i | `8` | <code>int</code> |
+| `crossoverP` | d | `0.8` | <code>double</code> |
+| `tournamentRate` | d | `0.05` | <code>double</code> |
+| `minNTournament` | i | `3` | <code>int</code> |
+| `nPop` | i | `100` | <code>int</code> |
+| `nEval` | i |  | <code>int</code> |
+| `diversity` | b | `false` | <code>boolean</code> |
+| `remap` | b | `false` | <code>boolean</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.StandardEvolver">StandardEvolver</abbr><<abbr title="io.github.ericmedvet.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr><<abbr title="java.util.List">List</abbr><<abbr title="io.github.ericmedvet.jgea.core.representation.tree.Tree">Tree</abbr><<abbr title="io.github.ericmedvet.jgea.problem.symbolicregression.Element">Element</abbr>>>, S, Q>, <abbr title="io.github.ericmedvet.jgea.core.QualityBasedProblem">QualityBasedProblem</abbr><S, Q>, <abbr title="java.util.List">List</abbr><<abbr title="io.github.ericmedvet.jgea.core.representation.tree.Tree">Tree</abbr><<abbr title="io.github.ericmedvet.jgea.problem.symbolicregression.Element">Element</abbr>>>, S, Q></code>
 
 ## Package `sim`
 
