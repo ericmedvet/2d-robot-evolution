@@ -28,7 +28,7 @@ public class TreeBasedMultivariateFunction
     this.nOfOutputs = nOfOutputs;
     this.activationFunction = activationFunction;
     functions = new ArrayList<>(nOfOutputs);
-    String[] varNames = varNames(nOfOutputs);
+    String[] varNames = varNames(nOfInputs);
     for (int i = 0; i < nOfOutputs; i = i + 1) {
       functions.add(new TreeBasedRealFunction(
           Tree.of(new Element.Constant(0d)),
@@ -37,8 +37,8 @@ public class TreeBasedMultivariateFunction
     }
   }
 
-  public static String[] varNames(int nOfOutputs) {
-    return IntStream.range(0, nOfOutputs).mapToObj(i -> "x%d".formatted(i + 1)).toArray(String[]::new);
+  public static String[] varNames(int n) {
+    return IntStream.range(0, n).mapToObj(i -> "x%d".formatted(i + 1)).toArray(String[]::new);
   }
 
   @Override
