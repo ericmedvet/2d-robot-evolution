@@ -107,7 +107,7 @@ public class Starter {
     String expDescription = null;
     if (configuration.experimentDescriptionFilePath.isEmpty()) {
       L.config("Using default experiment description");
-      InputStream inputStream = Starter.class.getResourceAsStream("/exp-examples/centralized-vsr.txt");
+      InputStream inputStream = Starter.class.getResourceAsStream("/exp-examples/list-gp-vsr.txt");
       if (inputStream == null) {
         L.severe("Cannot find default experiment description");
       } else {
