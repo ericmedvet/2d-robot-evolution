@@ -1,12 +1,14 @@
 package io.github.ericmedvet.robotevo2d.main.grammar2d;
 
-import io.github.ericmedvet.mrsim2d.core.util.ArrayGrid;
 import io.github.ericmedvet.mrsim2d.core.util.Grid;
 import io.github.ericmedvet.mrsim2d.core.util.Grid.Key;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 import java.util.function.Function;
 import java.util.random.RandomGenerator;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class GridProducer {
@@ -73,8 +75,8 @@ public class GridProducer {
     int minY = Math.min(repEntries.stream().mapToInt(e -> e.key().y()).min().orElse(0), 0);
     int maxY = Math.max(repEntries.stream().mapToInt(e -> e.key().y()).max().orElse(0), original.h() - 1);
 
-    System.out.printf("\torig:%n%s%n\trep: %s%n", s(original), replacement);
-    System.out.printf("\tat: %s%n", k);
+    // System.out.printf("\torig:%n%s%n\trep: %s%n", s(original), replacement);
+    // System.out.printf("\tat: %s%n", k);
     // System.out.printf("\tx:%d > x:%d ; y:%d > y:%d\n", maxX, minX, maxY, minY);
 
     if (minX >= 0 && maxX < original.w() && minY >= 0 && maxY < original.h()) {
@@ -98,14 +100,14 @@ public class GridProducer {
   }
 
   public <T> Optional<Grid<T>> produce(GridGrammar<T> gridGrammar, OptionChooser<T> optionChooser) {
-    Set<T> nonTerminalSymbols = gridGrammar.rules().keySet();
+    Set<T> nonTerminalSymbols = gridGrammar.getRules().keySet();
     int i = 0;
     // build a 1x1 grid with the starting symbol
     Grid<Aged<T>> polyomino = Grid.create(1, 1);
-    polyomino.set(0, 0, new Aged<>(i, gridGrammar.startingSymbol()));
+    polyomino.set(0, 0, new Aged<>(i, gridGrammar.getStartingSymbol()));
     while (true) {
 
-      System.out.printf("%ni=%d %s%n%s%n%n", i, gridGrammar.startingSymbol(), s(polyomino));
+      // System.out.printf("%ni=%d %s%n%s%n%n", i, gridGrammar.getStartingSymbol(), s(polyomino));
 
       i = i + 1;
       // find the candidates
@@ -124,22 +126,22 @@ public class GridProducer {
       // sort the candidates
       candidates = candidates.stream().sorted(comparator).toList();
 
-      System.out.printf("candidates:%n%s%n", candidates.stream()
-          .map(c -> "(%d,%d) %s".formatted(c.key().x(), c.key().y(), c.value())).collect(Collectors.joining("\n")));
+      // System.out.printf("candidates:%n%s%n", candidates.stream()
+      //     .map(c -> "(%d,%d) %s".formatted(c.key().x(), c.key().y(), c.value())).collect(Collectors.joining("\n")));
 
       boolean modified = false;
       for (Grid.Entry<Decorated> candidate : candidates) {
         T symbol = polyomino.get(candidate.key()).t();
-        List<ReferencedGrid<T>> productions = gridGrammar.rules().get(symbol);
+        List<ReferencedGrid<T>> productions = gridGrammar.getRules().get(symbol);
         ReferencedGrid<T> production = optionChooser.choose(symbol, productions);
-        System.out.printf("\tcandidate: %s\n", candidate);
-        System.out.printf("\twriteable: %s %s%n", candidate, isWriteable(polyomino,
-            production, candidate.key()
-        ));
+
+        // System.out.printf("\tcandidate: %s\n", candidate);
+        // System.out.printf("\twriteable: %s %s%n", candidate, isWriteable(polyomino,
+        //     production, candidate.key()
+        // ));
 
         if (overwriting || isWriteable(polyomino, production, candidate.key())) {
           // modify grid
-          System.out.println("hello");
           polyomino = modify(polyomino, production, candidate.key(), i);
           modified = true;
           break;
@@ -163,30 +165,48 @@ public class GridProducer {
     });
   }
 
-  public static void main(String[] args) {
-    GridGrammar<Character> g = new GridGrammar<Character>(
-        'a',
-        Map.ofEntries(Map.entry('a', List.of(
-            new ReferencedGrid<Character>(
-                new Key(0, 0),
-                Grid.create(2, 1, 'a')
-            ),
-            new ReferencedGrid<Character>(
-                new Key(0, 0),
-                Grid.create(1, 2, 'a')
-            ),
-            new ReferencedGrid<Character>(
-                new Key(0, 0),
-                Grid.create(1, 1, 'A')
-            )
-        )))
-    );
+  
+  private static <T> String printPolyomino(Grid<T> grid) {
+    StringBuilder sb = new StringBuilder();
+    for (int y = 0; y < grid.h(); y++) {
+        for (int x = 0; x < grid.w(); x++) {
+            if (grid.get(x, y) == null) {
+              sb.append('.');
+            } else {
+              sb.append(grid.get(x, y));
+            }
+            // sb.append(function.apply(new Entry<>(new Key(x, y), grid.get(x, y))));
+        }
+        if (y < grid.h() - 1) {
+            sb.append("\n");
+        }
+    }
+    return sb.toString();
+}
 
-    // System.out.println(g);
-    RandomGenerator r = new Random();
-    GridProducer gp = new GridProducer(false, List.of());
-    Grid<Character> mapped = gp.produce(g, (s, rules) -> rules.get(r.nextInt(rules.size()))).orElseThrow();
 
+  public static void main(String[] args) throws IOException{
+    GridGrammar<String> g = GridGrammar.fromFile(new File("grammars/simple.bnf"));
+
+    int invalids = 0;
+    ArrayList<Grid<String>> population = new ArrayList<>();
+    for (int i = 0; i < 10000; i++) {
+      // TODO: save generator and see how many different we have, then also check length
+      RandomGenerator r = new Random();
+      GridProducer gp = new GridProducer(false, List.of());
+      try {
+        Grid<String> mapped = gp.produce(g, (s, rules) -> rules.get(r.nextInt(rules.size()))).orElseThrow();
+        // System.out.printf("\nIndividual: \n%s\n\n",printPolyomino(mapped));
+        if (!population.contains(mapped)) {
+          population.add(mapped);
+        }
+      } catch (Exception e) {
+        // System.out.printf("Erro: %s", e);
+        invalids += 1;
+      }
+    }
+    System.out.printf("\nInvalids: %d\n", invalids);
+    System.out.printf("Unique: %d\n", population.size());
   }
 
 }
