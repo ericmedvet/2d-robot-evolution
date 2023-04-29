@@ -2,7 +2,7 @@ ea.experiment(
   runs = (randomGenerator = (seed = [1:1:3]) * [ea.rg.defaultRG()]) * [
     ea.run(
       solver = ea.s.numGA(
-        mapper = er.m.parametrizedHeteroBrains(target = s.a.numLeggedHybridModularRobot(
+        mapper = er.m.numericalParametrizedHeteroBrains(target = s.a.numLeggedHybridModularRobot(
           modules = 4 * [
             s.a.l.module(
               trunkLength = 10;
@@ -11,7 +11,7 @@ ea.experiment(
               downConnectorSensors = [s.s.d(a = -90; r = 1)]
             )
           ];
-          function = ds.num.noised(inner=ds.num.mlp();inputSigma=0.25)
+          function = ds.num.noised(inner = ds.num.mlp(); inputSigma = 0.25)
         ));
         nEval = 100;
         nPop = 10

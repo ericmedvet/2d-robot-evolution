@@ -1,0 +1,21 @@
+er.play(
+  mapper = er.m.numericalParametrizedHeteroBrains(target = s.a.centralizedNumGridVSR(
+    body = s.a.vsr.gridBody(
+      sensorizingFunction = s.a.vsr.sf.directional(
+        headSensors = [s.s.sin(f = 0);s.s.d(a = -15; r = 5)];
+        nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
+        sSensors = [s.s.d(a = -90)]
+      );
+      shape = s.a.vsr.s.biped(w = 4; h = 3)
+    );
+    function = ds.num.noised(outputSigma = 0.01; inner = ds.num.sin(
+      a = s.range(min = 0.5; max = 0.5);
+      f = s.range(min = 0.5; max = 0.5);
+      p = s.range(min = -1.57; max = 1.57);
+      b = s.range(min = 0; max = 0)
+    ))
+  ));
+  task = s.task.locomotion();
+  drawer = sim.drawer(actions = true);
+  genotype = er.doublesRandomizer()
+)

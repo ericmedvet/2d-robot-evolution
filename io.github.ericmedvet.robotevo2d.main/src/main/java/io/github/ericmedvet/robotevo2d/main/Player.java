@@ -25,10 +25,7 @@ import io.github.ericmedvet.mrsim2d.core.Snapshot;
 import io.github.ericmedvet.mrsim2d.viewer.RealtimeViewer;
 import io.github.ericmedvet.mrsim2d.viewer.VideoBuilder;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -53,6 +50,12 @@ public class Player {
         help = true
     )
     public boolean help;
+
+    @Parameter(
+        names = {"--default", "-d"},
+        description = "Use default play description."
+    )
+    public boolean defaultPlay;
 
   }
 
@@ -82,7 +85,23 @@ public class Player {
     NamedBuilder<Object> nb = PreparedNamedBuilder.get();
     //read experiment description
     String playDescription = null;
-    if (configuration.playDescriptionFilePath.isEmpty()) {
+    if (configuration.defaultPlay) {
+      String defaultPlayDesc = "/play-examples/vsr-distributed-mlp-random-locomotion.txt";
+      L.config(String.format("Using default play description: %s", defaultPlayDesc));
+      InputStream resourceIS = Player.class.getResourceAsStream(defaultPlayDesc);
+      if (resourceIS == null) {
+        L.info("No default play description: exiting");
+      } else {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(resourceIS))) {
+          playDescription = br.lines().collect(Collectors.joining());
+        } catch (IOException e) {
+          L.severe("Cannot read provided experiment description at %s: %s%n".formatted(
+              configuration.playDescriptionFilePath,
+              e
+          ));
+        }
+      }
+    } else if (configuration.playDescriptionFilePath.isEmpty()) {
       L.info("No play description file: exiting");
     } else {
       L.config(String.format("Using provided play description: %s", configuration.playDescriptionFilePath));

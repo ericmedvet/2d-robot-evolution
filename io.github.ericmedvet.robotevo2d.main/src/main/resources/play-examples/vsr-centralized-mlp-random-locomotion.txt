@@ -1,0 +1,29 @@
+er.play(
+  mapper = er.m.numericalParametrizedHeteroBrains(target = s.a.centralizedNumGridVSR(
+    body = s.a.vsr.gridBody(
+      sensorizingFunction = s.a.vsr.sf.directional(
+        headSensors = [s.s.sin(f = 0);s.s.d(a = -15; r = 5)];
+        nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
+        sSensors = [s.s.d(a = -90)]
+      );
+      shape = s.a.vsr.s.biped(w = 4; h = 3)
+    );
+    function = ds.num.noised(
+      inner = ds.num.outStepped(
+        inner = er.ds.num.ioSaver(
+          inner = ds.num.mlp(
+            innerLayerRatio = 0.65;
+            nOfInnerLayers = 1
+          );
+          filePath = "/home/eric/Documenti/experiments/vsrs/gp-mlp-imitation/rnd.txt"
+        );
+        stepT = 0.2
+      );
+      inputSigma = 0.05;
+      outputSigma = 0
+    )
+  ));
+  task = s.task.locomotion(duration = 31);
+  drawer = sim.drawer(actions = true);
+  genotype = er.doublesRandomizer()
+)

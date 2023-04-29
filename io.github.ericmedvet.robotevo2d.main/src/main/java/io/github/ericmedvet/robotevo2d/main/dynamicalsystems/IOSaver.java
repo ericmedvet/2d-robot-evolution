@@ -2,22 +2,94 @@ package io.github.ericmedvet.robotevo2d.main.dynamicalsystems;
 
 import io.github.ericmedvet.jsdynsym.core.composed.AbstractComposed;
 import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
 
-import java.io.Writer;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Logger;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class IOSaver<S> extends AbstractComposed<NumericalDynamicalSystem<S>> implements NumericalDynamicalSystem<S> {
 
+  private final static Map<PrinterKey, PrinterInfo> PRINTER_MAP = new HashMap<>();
+  private final static Logger L = Logger.getLogger(IOSaver.class.getName());
   private final String filePath;
   private final double initialT;
   private final double finalT;
-
-  private Writer writer;
+  private CSVPrinter printer;
+  private int index;
+  private boolean stopped;
 
   public IOSaver(NumericalDynamicalSystem<S> inner, String filePath, double initialT, double finalT) {
     super(inner);
     this.filePath = filePath;
     this.initialT = initialT;
     this.finalT = finalT;
+    stopped = false;
+  }
+
+  private record PrinterInfo(CSVPrinter printer, AtomicInteger counter) {}
+
+  private record PrinterKey(String filePath, int nOfInputs, int nOfOutputs) {}
+
+  private static void closePrinter(PrinterKey key) {
+    PrinterInfo value = PRINTER_MAP.get(key);
+    if (value == null) {
+      L.warning("Cannot close unopened printer");
+      return;
+    }
+    int count = value.counter().decrementAndGet();
+    if (count <= 0) {
+      // close printer
+      try {
+        value.printer().close(true);
+        L.info("File %s closed".formatted(key.filePath()));
+      } catch (IOException e) {
+        L.warning("Cannot close file due to %s".formatted(e));
+      }
+    }
+  }
+
+  private static PrinterInfo openPrinter(PrinterKey key) {
+    PrinterInfo printerInfo = PRINTER_MAP.get(key);
+    if (printerInfo != null) {
+      printerInfo.counter().incrementAndGet();
+      return printerInfo;
+    }
+    //create printer
+    CSVPrinter printer;
+    try {
+      printer = new CSVPrinter(
+          new PrintStream(new FileOutputStream(key.filePath())),
+          CSVFormat.Builder.create().setDelimiter(";").build()
+      );
+    } catch (IOException e) {
+      L.warning("Cannot write on file due to %s".formatted(e));
+      return null;
+    }
+    // print header
+    try {
+      printer.printRecord(Stream.concat(
+          Stream.of("index", "t"),
+          Stream.concat(
+              IntStream.range(0, key.nOfInputs()).mapToObj("x%d"::formatted),
+              IntStream.range(0, key.nOfOutputs()).mapToObj("y%d"::formatted)
+          )
+      ).toList());
+      L.info("Header written on %s".formatted(key.filePath));
+    } catch (IOException e) {
+      L.warning("Cannot write header due to %s".formatted(e));
+    }
+    printerInfo = new PrinterInfo(printer, new AtomicInteger(1));
+    PRINTER_MAP.put(key, printerInfo);
+    return printerInfo;
   }
 
   @Override
@@ -33,8 +105,38 @@ public class IOSaver<S> extends AbstractComposed<NumericalDynamicalSystem<S>> im
   @Override
   public double[] step(double t, double[] input) {
     double[] output = inner().step(t, input);
-    // TODO
-    // check time, if appropriate write
+    if (t >= initialT && !stopped) {
+      PrinterKey key = new PrinterKey(filePath, input.length, output.length);
+      if (printer == null) {
+        PrinterInfo printerInfo = openPrinter(key);
+        if (printerInfo != null) {
+          printer = printerInfo.printer;
+          index = printerInfo.counter().get();
+        }
+      }
+      if (printer != null) {
+        //write a row
+        try {
+          printer.printRecord(Stream.concat(
+              Stream.of((double) index, t),
+              Stream.concat(
+                  Arrays.stream(input).boxed(),
+                  Arrays.stream(output).boxed()
+              )
+          ).toList());
+        } catch (IOException e) {
+          L.warning("Cannot write row due to %s".formatted(e));
+        }
+        if (t >= finalT) {
+          if (printer != null) {
+            // close printer
+            closePrinter(key);
+            printer = null;
+            stopped = true;
+          }
+        }
+      }
+    }
     return output;
   }
 

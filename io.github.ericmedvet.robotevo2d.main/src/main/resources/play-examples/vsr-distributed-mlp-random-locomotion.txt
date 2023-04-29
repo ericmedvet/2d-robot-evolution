@@ -1,0 +1,34 @@
+er.play(
+  mapper = er.m.numericalParametrizedHomoBrains(target = s.a.distributedNumGridVSR(
+    body = s.a.vsr.gridBody(
+      sensorizingFunction = s.a.vsr.sf.uniform(
+        sensors = [
+          s.s.ar();
+          s.s.rv(a = 0);
+          s.s.rv(a = 90);
+          s.s.d(a = -90; r = 1)
+        ]
+      );
+      shape = s.a.vsr.s.biped(w = 2; h = 1)
+    );
+    function = ds.num.noised(
+      inner = ds.num.stepped(
+        inner = er.ds.num.ioSaver(
+          inner = ds.num.mlp(
+            innerLayerRatio = 0.65;
+            nOfInnerLayers = 1
+          );
+          filePath = "/home/eric/Documenti/experiments/vsrs/gp-mlp-imitation/rnd-dist.txt";
+          finalT = 10
+        );
+        stepT = 0.2
+      );
+      inputSigma = 0.05;
+      outputSigma = 0
+    );
+    signals = 1
+  ));
+  task = s.task.locomotion(duration = 11);
+  drawer = sim.drawer(actions = true);
+  genotype = er.doublesRandomizer()
+)

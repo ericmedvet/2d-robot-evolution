@@ -26,8 +26,8 @@ public class NamedFunctions {
       @Param("f") NamedFunction<X, Serializable> f
   ) {
     return NamedFunction.build(c("stringBase64", f.getName()), x -> {
-      try (ByteArrayOutputStream baos = new ByteArrayOutputStream(); ObjectOutputStream oos = new ObjectOutputStream(
-          baos)) {
+      try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
+           ObjectOutputStream oos = new ObjectOutputStream(baos)) {
         oos.writeObject(f.apply(x).toString());
         oos.flush();
         return Base64.getEncoder().encodeToString(baos.toByteArray());
