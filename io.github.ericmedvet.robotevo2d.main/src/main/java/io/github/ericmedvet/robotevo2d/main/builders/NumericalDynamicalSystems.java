@@ -1,11 +1,17 @@
 package io.github.ericmedvet.robotevo2d.main.builders;
 
+import io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction;
+import io.github.ericmedvet.jgea.core.representation.tree.Tree;
+import io.github.ericmedvet.jgea.core.representation.tree.numeric.Element;
+import io.github.ericmedvet.jgea.core.representation.tree.numeric.TreeBasedMultivariateRealFunction;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jsdynsym.core.StatelessSystem;
 import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
 import io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron;
 import io.github.ericmedvet.robotevo2d.main.dynamicalsystems.IOSaver;
-import io.github.ericmedvet.robotevo2d.main.dynamicalsystems.TreeBasedMultivariateFunction;
+
+import java.util.Collections;
+import java.util.List;
 
 public class NumericalDynamicalSystems {
 
@@ -20,8 +26,8 @@ public class NumericalDynamicalSystems {
           extends NumericalDynamicalSystem<S>, S> inner,
       @Param("filePath") String filePath
   ) {
-    return (nOfInputs, nOfOutputs) -> new IOSaver<>(
-        inner.apply(nOfInputs, nOfOutputs),
+    return (xVarNames, yVarNames) -> new IOSaver<>(
+        inner.apply(xVarNames, yVarNames),
         filePath,
         initT,
         finalT
@@ -29,11 +35,16 @@ public class NumericalDynamicalSystems {
   }
 
   @SuppressWarnings("unused")
-  public static io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.Builder<TreeBasedMultivariateFunction,
-      StatelessSystem.State> tbf(
-      @Param(value = "activationFunction", dS = "tanh") MultiLayerPerceptron.ActivationFunction activationFunction
+  public static io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.Builder<NamedMultivariateRealFunction,
+      StatelessSystem.State> treeMRF(
+      @Param(value = "postOperator", dS = "identity") MultiLayerPerceptron.ActivationFunction postOperator
   ) {
-    return (nOfInputs, nOfOutputs) -> new TreeBasedMultivariateFunction(nOfInputs, nOfOutputs, activationFunction);
+    return (xVarNames, yVarNames) -> new TreeBasedMultivariateRealFunction(
+        Collections.nCopies(yVarNames.size(), Tree.of(new Element.Constant(0d))),
+        xVarNames,
+        yVarNames,
+        postOperator
+    );
   }
 
 

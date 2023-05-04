@@ -9,7 +9,7 @@ Based on [JGEA](https://github.com/ericmedvet/jgea) and [2D-MR-Sim](https://gith
 
 This software requires **JDK 17** and **maven**: if you are using a Unix based system, you can install both easily using [sdkman](https://sdkman.io/).
 
-This software also depends on the following other dependencies ([JGEA](https://github.com/ericmedvet/jgea), [2D-MR-Sim](https://github.com/ericmedvet/2dmrsim), [JNB](https://github.com/ericmedvet/jnb)), that will be fetched automatically by maven.
+This software also depends on the following other dependencies ([JGEA](https://github.com/ericmedvet/jgea), [2D-MR-Sim](https://github.com/ericmedvet/2dmrsim), [JNB](https://github.com/ericmedvet/jnb), [JSDynSys](https://github.com/ericmedvet/jsdynsys)), that will be fetched automatically by maven.
 
 In case you want to use this project inside your project, add this to your `pom.xml`:
 ```xml

@@ -17,8 +17,9 @@
 package io.github.ericmedvet.robotevo2d.main.builders;
 
 import io.github.ericmedvet.jgea.core.representation.tree.Tree;
+import io.github.ericmedvet.jgea.core.representation.tree.numeric.Element;
+import io.github.ericmedvet.jgea.core.representation.tree.numeric.TreeBasedMultivariateRealFunction;
 import io.github.ericmedvet.jgea.experimenter.InvertibleMapper;
-import io.github.ericmedvet.jgea.problem.symbolicregression.Element;
 import io.github.ericmedvet.jnb.core.NamedBuilder;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jnb.core.ParamMap;
@@ -30,6 +31,7 @@ import io.github.ericmedvet.mrsim2d.core.NumMultiBrained;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public class Mappers {
@@ -94,34 +96,29 @@ public class Mappers {
         .map(b -> Composed.shallowest(b, NumericalParametrized.class).orElseThrow().getParams().length)
         .toList();
     int overallBrainSize = brainSizes.stream().mapToInt(i -> i).sum();
-    return new InvertibleMapper<>() {
-      @Override
-      public Supplier<T> apply(List<Double> values) {
-        if (values.size() != overallBrainSize) {
-          throw new IllegalArgumentException("Wrong number of params: %d expected, %d found".formatted(
-              overallBrainSize,
-              values.size()
-          ));
-        }
-        return () -> {
-          @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
-          int c = 0;
-          for (NumericalDynamicalSystem<?> brain : t.brains()) {
-            int brainSize = Composed.shallowest(brain, NumericalParametrized.class).orElseThrow().getParams().length;
-            Composed.shallowest(brain, NumericalParametrized.class)
-                .orElseThrow()
-                .setParams(values.subList(c, c + brainSize).stream().mapToDouble(d -> d).toArray());
-            c = c + brainSize;
+    return InvertibleMapper.from(
+        values -> {
+          if (values.size() != overallBrainSize) {
+            throw new IllegalArgumentException("Wrong number of params: %d expected, %d found".formatted(
+                overallBrainSize,
+                values.size()
+            ));
           }
-          return t;
-        };
-      }
-
-      @Override
-      public List<Double> exampleInput() {
-        return Collections.nCopies(overallBrainSize, 0d);
-      }
-    };
+          return () -> {
+            @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
+            int c = 0;
+            for (NumericalDynamicalSystem<?> brain : t.brains()) {
+              int brainSize = Composed.shallowest(brain, NumericalParametrized.class).orElseThrow().getParams().length;
+              Composed.shallowest(brain, NumericalParametrized.class)
+                  .orElseThrow()
+                  .setParams(values.subList(c, c + brainSize).stream().mapToDouble(d -> d).toArray());
+              c = c + brainSize;
+            }
+            return t;
+          };
+        },
+        Collections.nCopies(overallBrainSize, 0d)
+    );
   }
 
   @SuppressWarnings("unused")
@@ -136,30 +133,25 @@ public class Mappers {
     int brainSize = target.brains().stream()
         .map(b -> Composed.shallowest(b, NumericalParametrized.class).orElseThrow().getParams().length)
         .findFirst().orElseThrow();
-    return new InvertibleMapper<>() {
-      @Override
-      public Supplier<T> apply(List<Double> values) {
-        if (values.size() != brainSize) {
-          throw new IllegalArgumentException("Wrong number of params: %d expected, %d found".formatted(
-              brainSize,
-              values.size()
-          ));
-        }
-        return () -> {
-          @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
-          t.brains()
-              .forEach(b -> Composed.shallowest(b, NumericalParametrized.class)
-                  .orElseThrow()
-                  .setParams(values.stream().mapToDouble(d -> d).toArray()));
-          return t;
-        };
-      }
-
-      @Override
-      public List<Double> exampleInput() {
-        return Collections.nCopies(brainSize, 0d);
-      }
-    };
+    return InvertibleMapper.from(
+        values -> {
+          if (values.size() != brainSize) {
+            throw new IllegalArgumentException("Wrong number of params: %d expected, %d found".formatted(
+                brainSize,
+                values.size()
+            ));
+          }
+          return () -> {
+            @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
+            t.brains()
+                .forEach(b -> Composed.shallowest(b, NumericalParametrized.class)
+                    .orElseThrow()
+                    .setParams(values.stream().mapToDouble(d -> d).toArray()));
+            return t;
+          };
+        },
+        Collections.nCopies(brainSize, 0d)
+    );
   }
 
   @SuppressWarnings("unused")
@@ -170,29 +162,34 @@ public class Mappers {
   ) {
     checkType(target, Parametrized.class);
     checkIOSizeConsistency(target);
-    // probably need to add some checks
-    NumericalDynamicalSystem<?> sampleDynamicalSystem = target.brains().stream().findFirst().orElseThrow();
-    return new InvertibleMapper<>() {
-      @Override
-      public Supplier<T> apply(List<Tree<Element>> trees) {
-        return () -> {
+    Optional<TreeBasedMultivariateRealFunction> optionalTreeMRF = Composed.shallowest(
+        target.brains().stream().findFirst().orElseThrow(),
+        TreeBasedMultivariateRealFunction.class
+    );
+    if (optionalTreeMRF.isEmpty()) {
+      throw new IllegalArgumentException("Cannot use this mapper of trees without a %s".formatted(
+          TreeBasedMultivariateRealFunction.class.getSimpleName()));
+    }
+    List<Tree<Element>> preBuiltTrees = Collections.nCopies(
+        optionalTreeMRF.get().yVarNames().size(),
+        Tree.of(
+            Element.Operator.ADDITION,
+            optionalTreeMRF.get().xVarNames().stream()
+                .map(n -> Tree.of((Element) (new Element.Variable(n))))
+                .toList()
+        )
+    );
+    return InvertibleMapper.from(
+        trees -> () -> {
           @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
-          //noinspection unchecked
-          t.brains().forEach(b -> ((Parametrized<List<Tree<Element>>>) Composed.shallowest(b, Parametrized.class)
-              .orElseThrow()).setParams(trees));
+          t.brains()
+              .forEach(b -> Composed.shallowest(b, TreeBasedMultivariateRealFunction.class)
+                  .orElseThrow()
+                  .setParams(trees));
           return t;
-        };
-      }
-
-      @Override
-      public List<Tree<Element>> exampleInput() {
-        Tree<Element> tree = Tree.of(new Element.Variable(
-            "x%d".formatted(sampleDynamicalSystem.nOfInputs())
-        ));
-        return Collections.nCopies(sampleDynamicalSystem.nOfOutputs(), tree);
-      }
-    };
-
+        },
+        preBuiltTrees
+    );
   }
 
 }

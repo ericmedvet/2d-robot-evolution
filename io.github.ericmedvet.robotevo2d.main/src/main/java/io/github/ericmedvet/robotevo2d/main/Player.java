@@ -86,7 +86,7 @@ public class Player {
     //read experiment description
     String playDescription = null;
     if (configuration.defaultPlay) {
-      String defaultPlayDesc = "/play-examples/vsr-distributed-mlp-random-locomotion.txt";
+      String defaultPlayDesc = "/play-examples/vsr-centralized-mlp-random-locomotion.txt";
       L.config(String.format("Using default play description: %s", defaultPlayDesc));
       InputStream resourceIS = Player.class.getResourceAsStream(defaultPlayDesc);
       if (resourceIS == null) {

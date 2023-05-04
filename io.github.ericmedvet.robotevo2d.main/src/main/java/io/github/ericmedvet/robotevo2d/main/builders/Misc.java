@@ -106,7 +106,7 @@ public class Misc {
           file.deleteOnExit();
         } else {
           String fileName = fileNameTemplate.formatted(UUID.nameUUIDFromBytes(map.npm("task").toString().getBytes()));
-          file = CSVPrinter.checkExistenceAndChangeName(new File(dirPath + File.separator + fileName));
+          file = io.github.ericmedvet.jgea.core.util.Misc.checkExistenceAndChangeName(new File(dirPath + File.separator + fileName));
         }
         //do video
         String videoName = "run %d".formatted(run.index());
