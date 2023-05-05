@@ -48,6 +48,9 @@ ea.experiment(
       plots = [
         ea.plot.fitness(x = ea.nf.progress(); f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0; maxX = 1)
       ]
-    )
+    );
+    er.l.videoSaver(videos = [
+      er.video(task = s.task.locomotion(); w = 300; h = 200)
+    ])
   ]
 )

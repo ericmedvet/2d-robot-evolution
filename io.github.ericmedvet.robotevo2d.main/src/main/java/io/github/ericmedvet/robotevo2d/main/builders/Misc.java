@@ -18,11 +18,11 @@ package io.github.ericmedvet.robotevo2d.main.builders;
 
 import io.github.ericmedvet.jgea.core.listener.Accumulator;
 import io.github.ericmedvet.jgea.core.listener.AccumulatorFactory;
-import io.github.ericmedvet.jgea.core.listener.CSVPrinter;
 import io.github.ericmedvet.jgea.core.solver.Individual;
 import io.github.ericmedvet.jgea.core.solver.state.POSetPopulationState;
 import io.github.ericmedvet.jgea.experimenter.Run;
 import io.github.ericmedvet.jgea.experimenter.RunOutcome;
+import io.github.ericmedvet.jgea.experimenter.Utils;
 import io.github.ericmedvet.jnb.core.NamedBuilder;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jnb.core.ParamMap;
@@ -36,7 +36,6 @@ import io.github.ericmedvet.mrsim2d.viewer.VideoUtils;
 import java.io.*;
 import java.util.Base64;
 import java.util.List;
-import java.util.UUID;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.logging.Logger;
@@ -94,8 +93,8 @@ public class Misc {
 
   @SuppressWarnings("unused")
   public static <A> AccumulatorFactory<POSetPopulationState<?, A, ?>, File, Run<?, ?, A, ?>> video(
-      @Param("dirPath") String dirPath,
-      @Param(value = "fileNameTemplate", dS = "video-%s.mp4") String fileNameTemplate,
+      @Param(value = "filePathTemplate", dS = "video-{index:%04d}.mp4") String filePathTemplate,
+      @Param(value = "titleTemplate", dS = "run.index={index:%04d}") String titleTemplate,
       @Param(value = "w", dI = FILE_VIDEO_W) int w,
       @Param(value = "h", dI = FILE_VIDEO_H) int h,
       @Param(value = "frameRate", dD = 30) double frameRate,
@@ -116,17 +115,16 @@ public class Misc {
       boolean tempFile = false;
       File file;
       try {
-        if (dirPath == null || dirPath.isEmpty()) {
+        if (filePathTemplate.isEmpty()) {
           tempFile = true;
           file = File.createTempFile("video", ".mp4");
           file.deleteOnExit();
         } else {
-          String fileName = fileNameTemplate.formatted(UUID.nameUUIDFromBytes(map.npm("task").toString().getBytes()));
-          file =
-              io.github.ericmedvet.jgea.core.util.Misc.checkExistenceAndChangeName(new File(dirPath + File.separator + fileName));
+          String fileName = Utils.interpolate(filePathTemplate, run);
+          file = io.github.ericmedvet.jgea.core.util.Misc.checkExistenceAndChangeName(new File(fileName));
         }
         //do video
-        String videoName = "run %d".formatted(run.index());
+        String videoName = Utils.interpolate(titleTemplate, run);
         VideoBuilder videoBuilder = new VideoBuilder(
             w,
             h,
@@ -137,10 +135,10 @@ public class Misc {
             file,
             drawer.apply(videoName)
         );
-        L.info("Doing video for %s on file %s".formatted(videoName, tempFile ? "temp" : file.getAbsolutePath()));
+        L.info("Doing video for run %d on file %s".formatted(run.index(), tempFile ? "temp" : file.getAbsolutePath()));
         task.run(a, engineSupplier.get(), videoBuilder);
         file = videoBuilder.get();
-        L.info("Video done for %s on file %s".formatted(videoName, tempFile ? "temp" : file.getAbsolutePath()));
+        L.info("Video done for run %d on file %s".formatted(run.index(), tempFile ? "temp" : file.getAbsolutePath()));
         return file;
       } catch (IOException ex) {
         L.warning("Cannot make video: %s".formatted(ex));
