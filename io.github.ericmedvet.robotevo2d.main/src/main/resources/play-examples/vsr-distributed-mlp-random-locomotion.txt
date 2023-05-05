@@ -13,13 +13,9 @@ er.play(
     );
     function = ds.num.noised(
       inner = ds.num.stepped(
-        inner = er.ds.num.ioSaver(
-          inner = ds.num.mlp(
-            innerLayerRatio = 0.65;
-            nOfInnerLayers = 1
-          );
-          filePath = "/home/eric/Documenti/experiments/vsrs/gp-mlp-imitation/rnd-dist.txt";
-          finalT = 10
+        inner = ds.num.mlp(
+          innerLayerRatio = 0.65;
+          nOfInnerLayers = 1
         );
         stepT = 0.2
       );

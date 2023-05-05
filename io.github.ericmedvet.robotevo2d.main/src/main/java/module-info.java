@@ -14,7 +14,7 @@ module io.github.ericmedvet.robotevo2d.main {
   requires io.github.ericmedvet.jsdynsym.buildable;
   requires io.github.ericmedvet.jnb.core;
   requires jcommander;
-  requires commons.csv;
+  requires org.apache.commons.csv;
   opens io.github.ericmedvet.robotevo2d.main.builders to io.github.ericmedvet.jnb.core;
   opens io.github.ericmedvet.robotevo2d.main to io.github.ericmedvet.jnb.core;
   opens io.github.ericmedvet.robotevo2d.main.helper to io.github.ericmedvet.jnb.core;
