@@ -84,11 +84,11 @@ public class Misc {
   ) {
     try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
       RunOutcome runOutcome = (RunOutcome) builder.build(br.lines().collect(Collectors.joining()));
-      return o -> fromBase64(runOutcome.serializedGenotypes().get(index));
+      return fromBase64(runOutcome.serializedGenotypes().get(index));
     } catch (FileNotFoundException e) {
       throw new RuntimeException("Cannot find run outcome file %s".formatted(filePath));
     } catch (IOException e) {
-      throw new RuntimeException("Cannot read run outcome file %s due to: %d".formatted(filePath, e));
+      throw new RuntimeException("Cannot read run outcome file %s due to: %s".formatted(filePath, e));
     }
   }
 
