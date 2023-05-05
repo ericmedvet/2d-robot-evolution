@@ -1043,6 +1043,17 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 
 Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.Object">Object</abbr>, <abbr title="java.lang.Object">Object</abbr>&gt;</code>
 
+### Builder `evorobots.fromRunOutcome()`
+
+`er.fromRunOutcome(filePath; index)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `filePath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+| `index` | i | `0` | <code>int</code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.Object">Object</abbr>, <abbr title="java.lang.Object">Object</abbr>&gt;</code>
+
 ### Builder `evorobots.play()`
 
 `er.play(name; genotype; mapper; task; drawer; w; h; frameRate; startTime; endTime; codec; engine; videoFilePath)`
@@ -1103,6 +1114,16 @@ Aliases: `er.ds.num`, `er.ds.numerical`, `er.dynSys.num`, `er.dynSys.numerical`,
 
 Produces <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr>&lt;<abbr title="io.github.ericmedvet.robotevo2d.main.dynamicalsystems.IOSaver">IOSaver</abbr>&lt;S&gt;, S&gt;</code>
 
+### Builder `evorobots.dynamicalSystem.numerical.oGraphMRF()`
+
+`er.ds.num.oGraphMRF(postOperator)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `postOperator` | e | `IDENTITY` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>, <abbr title="io.github.ericmedvet.jsdynsym.core.StatelessSystem$State">StatelessSystem$State</abbr>&gt;</code>
+
 ### Builder `evorobots.dynamicalSystem.numerical.treeMRF()`
 
 `er.ds.num.treeMRF(postOperator)`
@@ -1150,6 +1171,16 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMap
 | `target` | npm |  | <code>T</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;T&gt;&gt;</code>
+
+### Builder `evorobots.mapper.oGraphParametrizedHomoBrains()`
+
+`er.m.oGraphParametrizedHomoBrains(target)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `target` | npm |  | <code>T</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.graph.Graph">Graph</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.graph.Node">Node</abbr>, <abbr title="io.github.ericmedvet.jgea.core.representation.graph.numeric.operatorgraph.OperatorGraph$NonValuedArc">OperatorGraph$NonValuedArc</abbr>&gt;, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;T&gt;&gt;</code>
 
 ### Builder `evorobots.mapper.treeParametrizedHomoBrains()`
 
