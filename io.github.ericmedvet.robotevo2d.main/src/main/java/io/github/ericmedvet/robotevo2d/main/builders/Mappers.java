@@ -16,6 +16,9 @@
 
 package io.github.ericmedvet.robotevo2d.main.builders;
 
+import io.github.ericmedvet.jgea.core.representation.graph.Graph;
+import io.github.ericmedvet.jgea.core.representation.graph.Node;
+import io.github.ericmedvet.jgea.core.representation.graph.numeric.operatorgraph.OperatorGraph;
 import io.github.ericmedvet.jgea.core.representation.tree.Tree;
 import io.github.ericmedvet.jgea.core.representation.tree.numeric.Element;
 import io.github.ericmedvet.jgea.core.representation.tree.numeric.TreeBasedMultivariateRealFunction;
@@ -170,15 +173,6 @@ public class Mappers {
       throw new IllegalArgumentException("Cannot use this mapper of trees without a %s".formatted(
           TreeBasedMultivariateRealFunction.class.getSimpleName()));
     }
-    List<Tree<Element>> preBuiltTrees = Collections.nCopies(
-        optionalTreeMRF.get().yVarNames().size(),
-        Tree.of(
-            Element.Operator.ADDITION,
-            optionalTreeMRF.get().xVarNames().stream()
-                .map(n -> Tree.of((Element) (new Element.Variable(n))))
-                .toList()
-        )
-    );
     return InvertibleMapper.from(
         trees -> () -> {
           @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
@@ -188,7 +182,36 @@ public class Mappers {
                   .setParams(trees));
           return t;
         },
-        preBuiltTrees
+        TreeBasedMultivariateRealFunction.sampleFor(optionalTreeMRF.get().xVarNames(), optionalTreeMRF.get().yVarNames())
+    );
+  }
+
+  @SuppressWarnings("unused")
+  public static <T extends NumMultiBrained> InvertibleMapper<Graph<Node, OperatorGraph.NonValuedArc>, Supplier<T>> oGraphParametrizedHomoBrains(
+      @Param("target") T target,
+      @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
+      @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
+  ) {
+    checkType(target, Parametrized.class);
+    checkIOSizeConsistency(target);
+    Optional<OperatorGraph> optionalOGraphMRF = Composed.shallowest(
+        target.brains().stream().findFirst().orElseThrow(),
+        OperatorGraph.class
+    );
+    if (optionalOGraphMRF.isEmpty()) {
+      throw new IllegalArgumentException("Cannot use this mapper of oGraph without a %s".formatted(
+          OperatorGraph.class.getSimpleName()));
+    }
+    return InvertibleMapper.from(
+        g -> () -> {
+          @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
+          t.brains()
+              .forEach(b -> Composed.shallowest(b, OperatorGraph.class)
+                  .orElseThrow()
+                  .setParams(g));
+          return t;
+        },
+        OperatorGraph.sampleFor(optionalOGraphMRF.get().xVarNames(), optionalOGraphMRF.get().yVarNames())
     );
   }
 

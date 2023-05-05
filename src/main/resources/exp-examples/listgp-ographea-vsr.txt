@@ -1,7 +1,7 @@
 ea.experiment(
-  runs = (randomGenerator = (seed = [1:1:1]) * [ea.rg.defaultRG()]) * [
-    ea.run(
-      solver = er.s.listGP(
+  runs = (randomGenerator = (seed = [1:1:1]) * [ea.rg.defaultRG()]) *
+    (solver = [
+      ea.s.multiSRTreeGP(
         mapper = er.m.treeParametrizedHomoBrains(target = s.a.distributedNumGridVSR(
           body = s.a.vsr.gridBody(
             sensorizingFunction = s.a.vsr.sf.uniform(
@@ -9,12 +9,28 @@ ea.experiment(
             );
             shape = s.a.vsr.s.biped(w = 4; h = 3)
           );
-          function = ds.num.outStepped(stepT = 0.2; inner=er.ds.num.tbf());
+          function = ds.num.outStepped(stepT = 0.2; inner = er.ds.num.treeMRF(postOperator = tanh));
           signals = 2
         ));
-        nEval = 50;
-        nPop = 10
+        nEval = 200;
+        nPop = 20
       );
+      ea.s.oGraphea(
+        mapper = er.m.oGraphParametrizedHomoBrains(target = s.a.distributedNumGridVSR(
+          body = s.a.vsr.gridBody(
+            sensorizingFunction = s.a.vsr.sf.uniform(
+              sensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)]
+            );
+            shape = s.a.vsr.s.biped(w = 4; h = 3)
+          );
+          function = ds.num.outStepped(stepT = 0.2; inner = er.ds.num.oGraphMRF(postOperator = tanh));
+          signals = 2
+        ));
+        nEval = 200;
+        nPop = 20
+      )
+    ]) * [
+    ea.run(
       problem = ea.p.totalOrder(
         qFunction = s.taskRunner(task = s.task.locomotion());
         cFunction = s.task.locomotion.xVelocity();

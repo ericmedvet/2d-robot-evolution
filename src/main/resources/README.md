@@ -1,7 +1,7 @@
 # 2D-Robot-Evolution
 A Java framework for experimenting with the evolutionary optimization of 2D simulated robotic agents.
 
-Based on [JGEA](https://github.com/ericmedvet/jgea) and [2D-MR-Sim](https://github.com/ericmedvet/2dmrsim).
+Based mainly on [JGEA](https://github.com/ericmedvet/jgea) and [2D-MR-Sim](https://github.com/ericmedvet/2dmrsim).
 
 ## Installation
 
@@ -31,7 +31,7 @@ mvn clean package
 
 At this point, if everything worked smoothly, you should be able to run a first short evolutionary optimization (assume you are in the parent directory of the `2d-robot-evolution` one that has been created after the last clone; this is suggested for real runs, so that you don't pollute your git branch with outcome files):
 ```shell
-java -cp "2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.robotevo2d.main.Starter
+java -cp "2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.jgea.experimenter.Starter -b io.github.ericmedvet.robotevo2d.main.PreparedNamedBuilder -f 2d-robot-evolution/src/main/resources/exp-examples/centralized-vsr.txt
 ```
 
 **For Windows**, it might be possible that by using the command above from the standard terminal you see garbage text output.
@@ -44,7 +44,7 @@ You can use `javaw` instead of `java` for launching the `Starter` class to circu
 
 An experiment can be started by invoking:
 ```shell
-java -cp "2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.robotevo2d.main.Starter --expFile <exp-file> --nOfThreads <nt>
+java -cp "2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.jgea.experimenter.Starter -b io.github.ericmedvet.robotevo2d.main.PreparedNamedBuilder --expFile <exp-file> --nOfThreads <nt>
 ```
 where `<exp-file>` is the path to a file with an **experiment description** and `<nt>` is the **number of threads** to be used for running the experiment.
 
@@ -58,7 +58,7 @@ The actual degree of concurrency will depend on $n$ and on the evolutionary algo
 
 You can have an overview on the other (few) parameters of `Starter` with:
 ```shell
-java -cp "2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.robotevo2d.main.Starter --help
+java -cp "2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.jgea.experimenter.Starter -b io.github.ericmedvet.robotevo2d.main.PreparedNamedBuilder --help
 ```
 One parameter that may be handy is `--checkExpFile`, or just `-c`, that can be used to perform a syntactical check on the experiment description file, without actually doing the experiment. 
 

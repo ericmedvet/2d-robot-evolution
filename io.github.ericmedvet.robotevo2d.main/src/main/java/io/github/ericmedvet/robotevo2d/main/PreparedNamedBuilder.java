@@ -29,7 +29,6 @@ public class PreparedNamedBuilder {
       .and(List.of("evorobots", "er"), NamedBuilder.empty()
           .and(NamedBuilder.fromUtilityClass(Misc.class))
           .and(NamedBuilder.fromClass(Play.class))
-          .and(List.of("solver", "s"), NamedBuilder.fromUtilityClass(Solvers.class))
           .and(List.of("mapper", "m"), NamedBuilder.fromUtilityClass(Mappers.class))
           .and(List.of("dynamicalSystem", "dynSys", "ds"), NamedBuilder.empty()
               .and(List.of("numerical", "num"), NamedBuilder.fromUtilityClass(NumericalDynamicalSystems.class))

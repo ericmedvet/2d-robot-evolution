@@ -1,6 +1,7 @@
 package io.github.ericmedvet.robotevo2d.main.builders;
 
 import io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction;
+import io.github.ericmedvet.jgea.core.representation.graph.numeric.operatorgraph.OperatorGraph;
 import io.github.ericmedvet.jgea.core.representation.tree.Tree;
 import io.github.ericmedvet.jgea.core.representation.tree.numeric.Element;
 import io.github.ericmedvet.jgea.core.representation.tree.numeric.TreeBasedMultivariateRealFunction;
@@ -40,7 +41,21 @@ public class NumericalDynamicalSystems {
       @Param(value = "postOperator", dS = "identity") MultiLayerPerceptron.ActivationFunction postOperator
   ) {
     return (xVarNames, yVarNames) -> new TreeBasedMultivariateRealFunction(
-        Collections.nCopies(yVarNames.size(), Tree.of(new Element.Constant(0d))),
+        TreeBasedMultivariateRealFunction.sampleFor(xVarNames, yVarNames),
+        xVarNames,
+        yVarNames,
+        postOperator
+    );
+  }
+
+  @SuppressWarnings("unused")
+  public static io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.Builder<NamedMultivariateRealFunction,
+      StatelessSystem.State> oGraphMRF(
+      @Param(value = "postOperator", dS = "identity") MultiLayerPerceptron.ActivationFunction postOperator
+  ) {
+
+    return (xVarNames, yVarNames) -> new OperatorGraph(
+        OperatorGraph.sampleFor(xVarNames, yVarNames),
         xVarNames,
         yVarNames,
         postOperator

@@ -22,6 +22,8 @@ import io.github.ericmedvet.jgea.core.listener.CSVPrinter;
 import io.github.ericmedvet.jgea.core.solver.Individual;
 import io.github.ericmedvet.jgea.core.solver.state.POSetPopulationState;
 import io.github.ericmedvet.jgea.experimenter.Run;
+import io.github.ericmedvet.jgea.experimenter.RunOutcome;
+import io.github.ericmedvet.jnb.core.NamedBuilder;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jnb.core.ParamMap;
 import io.github.ericmedvet.jsdynsym.core.DoubleRange;
@@ -31,10 +33,7 @@ import io.github.ericmedvet.mrsim2d.viewer.Drawer;
 import io.github.ericmedvet.mrsim2d.viewer.VideoBuilder;
 import io.github.ericmedvet.mrsim2d.viewer.VideoUtils;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
@@ -42,6 +41,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.logging.Logger;
 import java.util.random.RandomGenerator;
+import java.util.stream.Collectors;
 
 public class Misc {
 
@@ -77,6 +77,22 @@ public class Misc {
   }
 
   @SuppressWarnings("unused")
+  public static Function<Object, Object> fromRunOutcome(
+      @Param("filePath") String filePath,
+      @Param(value = "index", dI = 0) int index,
+      @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
+  ) {
+    try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+      RunOutcome runOutcome = (RunOutcome) builder.build(br.lines().collect(Collectors.joining()));
+      return o -> fromBase64(runOutcome.serializedGenotypes().get(index));
+    } catch (FileNotFoundException e) {
+      throw new RuntimeException("Cannot find run outcome file %s".formatted(filePath));
+    } catch (IOException e) {
+      throw new RuntimeException("Cannot read run outcome file %s due to: %d".formatted(filePath, e));
+    }
+  }
+
+  @SuppressWarnings("unused")
   public static <A> AccumulatorFactory<POSetPopulationState<?, A, ?>, File, Run<?, ?, A, ?>> video(
       @Param("dirPath") String dirPath,
       @Param(value = "fileNameTemplate", dS = "video-%s.mp4") String fileNameTemplate,
@@ -106,7 +122,8 @@ public class Misc {
           file.deleteOnExit();
         } else {
           String fileName = fileNameTemplate.formatted(UUID.nameUUIDFromBytes(map.npm("task").toString().getBytes()));
-          file = io.github.ericmedvet.jgea.core.util.Misc.checkExistenceAndChangeName(new File(dirPath + File.separator + fileName));
+          file =
+              io.github.ericmedvet.jgea.core.util.Misc.checkExistenceAndChangeName(new File(dirPath + File.separator + fileName));
         }
         //do video
         String videoName = "run %d".formatted(run.index());
