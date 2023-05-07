@@ -2,12 +2,14 @@ package io.github.ericmedvet.robotevo2d.main.builders;
 
 import io.github.ericmedvet.jgea.core.listener.NamedFunction;
 import io.github.ericmedvet.jnb.core.Param;
+import io.github.ericmedvet.jnb.core.ParamMap;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Base64;
+import java.util.function.Function;
 import java.util.logging.Logger;
 
 public class NamedFunctions {
@@ -19,6 +21,19 @@ public class NamedFunctions {
 
   private static String c(String... names) {
     return Arrays.stream(names).reduce(NamedFunction.NAME_COMPOSER::apply).orElseThrow();
+  }
+
+  @SuppressWarnings("unused")
+  public static <T, R> NamedFunction<T, R> f(
+      @Param("inner") Function<T, R> inner,
+      @Param("name") String name,
+      @Param(value = "s", dS = "%s") String s,
+      @Param(value = "", injection = Param.Injection.MAP) ParamMap map
+  ) {
+    if ((name == null) || name.isEmpty()) {
+      name = map.npm("inner").toString();
+    }
+    return NamedFunction.build(name, s, inner);
   }
 
   @SuppressWarnings("unused")

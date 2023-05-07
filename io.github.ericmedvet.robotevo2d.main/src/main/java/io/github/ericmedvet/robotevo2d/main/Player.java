@@ -22,11 +22,11 @@ import com.beust.jcommander.ParameterException;
 import io.github.ericmedvet.jnb.core.BuilderException;
 import io.github.ericmedvet.jnb.core.NamedBuilder;
 import io.github.ericmedvet.mrsim2d.core.Snapshot;
-import io.github.ericmedvet.mrsim2d.viewer.RealtimeViewer;
 import io.github.ericmedvet.mrsim2d.viewer.VideoBuilder;
 
 import java.io.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -57,6 +57,11 @@ public class Player {
     )
     public boolean defaultPlay;
 
+    @Parameter(
+        names = {"--verbose", "-v"},
+        description = "Be verbose on errors (i.e., print stack traces)"
+    )
+    public boolean verbose = false;
   }
 
   public static void main(String[] args) {
@@ -99,6 +104,9 @@ public class Player {
               configuration.playDescriptionFilePath,
               e
           ));
+          if (configuration.verbose) {
+            e.printStackTrace();
+          }
         }
       }
     } else if (configuration.playDescriptionFilePath.isEmpty()) {
@@ -112,6 +120,9 @@ public class Player {
             configuration.playDescriptionFilePath,
             e
         ));
+        if (configuration.verbose) {
+          e.printStackTrace();
+        }
       }
     }
     if (playDescription == null) {
@@ -127,28 +138,20 @@ public class Player {
       L.config("Building solution");
       Object solution = play.mapper().apply(genotype);
       //build consumer
-      Consumer<Snapshot> consumer;
-      String drawerInfo = play.name() == null ? "" : play.name();
-      if (play.videoFilePath() == null || play.videoFilePath().isEmpty()) {
-        consumer = new RealtimeViewer(play.frameRate(), play.drawer().apply(drawerInfo));
-      } else {
-        consumer = new VideoBuilder(
-            play.w(),
-            play.h(),
-            play.startTime(),
-            play.endTime(),
-            play.frameRate(),
-            play.codec(),
-            new File(play.videoFilePath()),
-            play.drawer().apply(drawerInfo)
-        );
-      }
+      Consumer<Snapshot> snapshotConsumer = play.consumers().stream().reduce(Consumer::andThen).orElse(s -> {});
       //do task
       L.info("Executing the task");
-      Object outcome = play.task().run(solution, play.engineSupplier().get(), consumer);
+      Object outcome = play.task().run(solution, play.engineSupplier().get(), snapshotConsumer);
       L.info("The outcome of the task is %s".formatted(outcome));
+      //process outcome
+      //noinspection unchecked,rawtypes
+      play.outcomeFunctions().forEach(f -> System.out.printf(
+          "%s = " + f.getFormat() + "%n",
+          f.getName(),
+          ((Function) f).apply(outcome)
+      ));
       //possibly save video
-      if (consumer instanceof VideoBuilder videoBuilder) {
+      if (snapshotConsumer instanceof VideoBuilder videoBuilder) {
         L.info("Doing video");
         File file = videoBuilder.get();
         if (file != null) {
@@ -159,6 +162,9 @@ public class Player {
       }
     } catch (BuilderException e) {
       L.severe("Cannot build experiment: %s%n".formatted(e));
+      if (configuration.verbose) {
+        e.printStackTrace();
+      }
       System.exit(-1);
     }
   }

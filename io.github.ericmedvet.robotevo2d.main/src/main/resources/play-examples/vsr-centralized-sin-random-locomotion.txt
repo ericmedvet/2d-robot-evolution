@@ -16,6 +16,8 @@ er.play(
     ))
   ));
   task = s.task.locomotion();
-  drawer = sim.drawer(actions = true);
-  genotype = er.doublesRandomizer()
+  genotype = er.doublesRandomizer();
+  consumers = [
+    er.c.rtGUI()
+  ]
 )

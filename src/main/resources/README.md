@@ -511,14 +511,16 @@ er.play(
     ))
   ));
   task = s.task.locomotion();
-  drawer = sim.drawer(actions = true);
   genotype = er.doublesRandomizer();
+  consumers = [
+    er.c.video(filePath = "results/video-after.mp4"; startTime = 5; endTime = 15; w = 300; h = 200)
+  ];
   videoFilePath = "results/video-after.mp4"
 )
 ```
 you run a locomotion task on a biped VSR with a centralized brain consinsting of a `sin()` function with randomized phases.
 The result is saved as a video at `results/video-after.mp4`.
-If you don't specify the `videoFilePath` parameter, a GUI opens and shows the task as it is performed.
+If you don't want to save a video, use `er.c.rtGUI()` as an element of `consumers`.
 
 ## References
 

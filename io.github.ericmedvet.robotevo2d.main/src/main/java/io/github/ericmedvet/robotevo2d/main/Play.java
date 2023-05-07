@@ -16,14 +16,15 @@
 
 package io.github.ericmedvet.robotevo2d.main;
 
+import io.github.ericmedvet.jgea.core.listener.NamedFunction;
 import io.github.ericmedvet.jgea.experimenter.InvertibleMapper;
 import io.github.ericmedvet.jnb.core.Param;
+import io.github.ericmedvet.mrsim2d.core.Snapshot;
 import io.github.ericmedvet.mrsim2d.core.engine.Engine;
 import io.github.ericmedvet.mrsim2d.core.tasks.Task;
-import io.github.ericmedvet.mrsim2d.viewer.Drawer;
-import io.github.ericmedvet.mrsim2d.viewer.VideoUtils;
-import io.github.ericmedvet.robotevo2d.main.builders.Misc;
 
+import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -32,16 +33,8 @@ public record Play<G, S, O>(
     @Param(value = "genotype", dNPM = "ea.f.identity()") Function<G, G> genotype,
     @Param("mapper") InvertibleMapper<G, S> mapper,
     @Param("task") Task<S, O> task,
-    @Param(value = "drawer", dNPM = "sim.drawer()") Function<String, Drawer> drawer,
-    @Param(value = "w", dI = Misc.FILE_VIDEO_W) int w,
-    @Param(value = "h", dI = Misc.FILE_VIDEO_H) int h,
-    @Param(value = "frameRate", dD = 30) double frameRate,
-    @Param(value = "startTime", dD = 0) double startTime,
-    @Param(value = "endTime", dD = 30) double endTime,
-    @Param(value = "codec", dS = "jcodec") VideoUtils.EncoderFacility codec,
     @Param(value = "engine", dNPM = "sim.engine()") Supplier<Engine> engineSupplier,
-    @Param("videoFilePath") String videoFilePath
+    @Param("consumers") List<Consumer<Snapshot>> consumers,
+    @Param("outcomeFunctions") List<NamedFunction<?,?>> outcomeFunctions
 ) {
-
-
 }

@@ -35,6 +35,7 @@ public class PreparedNamedBuilder {
           )
           .and(List.of("namedFunction", "nf"), NamedBuilder.fromUtilityClass(NamedFunctions.class))
           .and(List.of("listener", "l"), NamedBuilder.fromUtilityClass(Listeners.class))
+          .and(List.of("consumer", "c"), NamedBuilder.fromUtilityClass(PlayConsumers.class))
       );
 
   private PreparedNamedBuilder() {
