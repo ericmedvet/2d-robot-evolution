@@ -57,7 +57,7 @@
     </modules>
     <packaging>pom</packaging>
     <properties>
-        <revision>1.2.3</revision>
+        <revision>1.2.4-SNAPSHOT</revision>
         <mrsim2d.version>0.8.4</mrsim2d.version>
         <jgea.version>2.4.2</jgea.version>
         <jnb.version>1.1.6</jnb.version>
