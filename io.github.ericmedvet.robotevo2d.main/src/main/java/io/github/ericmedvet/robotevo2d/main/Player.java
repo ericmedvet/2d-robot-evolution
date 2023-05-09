@@ -19,6 +19,7 @@ package io.github.ericmedvet.robotevo2d.main;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
+import io.github.ericmedvet.jgea.experimenter.Starter;
 import io.github.ericmedvet.jnb.core.BuilderException;
 import io.github.ericmedvet.jnb.core.NamedBuilder;
 import io.github.ericmedvet.mrsim2d.core.Snapshot;
@@ -27,6 +28,8 @@ import io.github.ericmedvet.mrsim2d.viewer.VideoBuilder;
 import java.io.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -34,6 +37,15 @@ import java.util.stream.Collectors;
  * @author "Eric Medvet" on 2022/08/11 for 2d-robot-evolution
  */
 public class Player {
+
+  static {
+    try {
+      LogManager.getLogManager().readConfiguration(Starter.class.getClassLoader()
+          .getResourceAsStream("logging.properties"));
+    } catch (IOException ex) {
+      //ignore
+    }
+  }
 
   private final static Logger L = Logger.getLogger(Player.class.getName());
 
@@ -62,6 +74,12 @@ public class Player {
         description = "Be verbose on errors (i.e., print stack traces)"
     )
     public boolean verbose = false;
+
+    @Parameter(
+        names = {"--justOutput", "-j"},
+        description = "Just show the task output, if any"
+    )
+    public boolean justOutput = false;
   }
 
   public static void main(String[] args) {
@@ -85,6 +103,10 @@ public class Player {
     if (configuration.help) {
       jc.usage();
       System.exit(0);
+    }
+    //check output
+    if (configuration.justOutput) {
+      L.setLevel(Level.SEVERE);
     }
     //prepare local named builder
     NamedBuilder<Object> nb = PreparedNamedBuilder.get();
@@ -144,12 +166,19 @@ public class Player {
       Object outcome = play.task().run(solution, play.engineSupplier().get(), snapshotConsumer);
       L.info("The outcome of the task is %s".formatted(outcome));
       //process outcome
-      //noinspection unchecked,rawtypes
-      play.outcomeFunctions().forEach(f -> System.out.printf(
-          "%s = " + f.getFormat() + "%n",
-          f.getName(),
-          ((Function) f).apply(outcome)
-      ));
+      if (configuration.justOutput) {
+        //noinspection unchecked,rawtypes
+        System.out.println(play.outcomeFunctions().stream()
+            .map(f -> f.getFormat().formatted(((Function) f).apply(outcome)))
+            .collect(Collectors.joining("; ")));
+      } else {
+        //noinspection unchecked,rawtypes
+        play.outcomeFunctions().forEach(f -> System.out.printf(
+            "%s = " + f.getFormat() + "%n",
+            f.getName(),
+            ((Function) f).apply(outcome)
+        ));
+      }
       //possibly save video
       if (snapshotConsumer instanceof VideoBuilder videoBuilder) {
         L.info("Doing video");
