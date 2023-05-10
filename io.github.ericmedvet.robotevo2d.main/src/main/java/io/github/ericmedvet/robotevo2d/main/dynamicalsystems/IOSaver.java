@@ -2,6 +2,7 @@ package io.github.ericmedvet.robotevo2d.main.dynamicalsystems;
 
 import io.github.ericmedvet.jsdynsym.core.composed.AbstractComposed;
 import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
+import io.github.ericmedvet.mrsim2d.buildable.builders.Agents;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
@@ -76,11 +78,12 @@ public class IOSaver<S> extends AbstractComposed<NumericalDynamicalSystem<S>> im
     }
     // print header
     try {
+      // TODO to be replaced with a call to Agents.varNames()
       printer.printRecord(Stream.concat(
           Stream.of("index", "t"),
           Stream.concat(
-              IntStream.range(0, key.nOfInputs()).mapToObj("x%d"::formatted),
-              IntStream.range(0, key.nOfOutputs()).mapToObj("y%d"::formatted)
+              varNames("x", key.nOfInputs()).stream(),
+              varNames("y", key.nOfOutputs()).stream()
           )
       ).toList());
       L.info("Header written on %s".formatted(key.filePath));
@@ -90,6 +93,11 @@ public class IOSaver<S> extends AbstractComposed<NumericalDynamicalSystem<S>> im
     printerInfo = new PrinterInfo(printer, new AtomicInteger(1));
     PRINTER_MAP.put(key, printerInfo);
     return printerInfo;
+  }
+
+  private static List<String> varNames(String name, int number) {
+    int digits = (int) Math.ceil(Math.log10(number + 1));
+    return IntStream.range(1, number + 1).mapToObj((name + "%0" + digits + "d")::formatted).toList();
   }
 
   @Override
