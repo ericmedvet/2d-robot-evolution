@@ -19,12 +19,11 @@ package io.github.ericmedvet.robotevo2d.main;
 import io.github.ericmedvet.jgea.core.listener.NamedFunction;
 import io.github.ericmedvet.jgea.experimenter.InvertibleMapper;
 import io.github.ericmedvet.jnb.core.Param;
-import io.github.ericmedvet.mrsim2d.core.Snapshot;
 import io.github.ericmedvet.mrsim2d.core.engine.Engine;
 import io.github.ericmedvet.mrsim2d.core.tasks.Task;
+import io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers;
 
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -34,7 +33,7 @@ public record Play<G, S, O>(
     @Param("mapper") InvertibleMapper<G, S> mapper,
     @Param("task") Task<S, O> task,
     @Param(value = "engine", dNPM = "sim.engine()") Supplier<Engine> engineSupplier,
-    @Param("consumers") List<Consumer<Snapshot>> consumers,
+    @Param("consumers") List<PlayConsumers.ProducingConsumer> consumers,
     @Param("outcomeFunctions") List<NamedFunction<?,?>> outcomeFunctions
 ) {
 }

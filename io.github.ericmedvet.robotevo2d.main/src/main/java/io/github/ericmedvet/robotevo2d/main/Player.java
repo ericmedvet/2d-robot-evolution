@@ -22,11 +22,10 @@ import com.beust.jcommander.ParameterException;
 import io.github.ericmedvet.jgea.experimenter.Starter;
 import io.github.ericmedvet.jnb.core.BuilderException;
 import io.github.ericmedvet.jnb.core.NamedBuilder;
-import io.github.ericmedvet.mrsim2d.core.Snapshot;
 import io.github.ericmedvet.mrsim2d.viewer.VideoBuilder;
+import io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers;
 
 import java.io.*;
-import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
@@ -38,6 +37,8 @@ import java.util.stream.Collectors;
  */
 public class Player {
 
+  private final static Logger L = Logger.getLogger(Player.class.getName());
+
   static {
     try {
       LogManager.getLogManager().readConfiguration(Starter.class.getClassLoader()
@@ -46,8 +47,6 @@ public class Player {
       //ignore
     }
   }
-
-  private final static Logger L = Logger.getLogger(Player.class.getName());
 
   public static class Configuration {
     @Parameter(
@@ -160,10 +159,12 @@ public class Player {
       L.config("Building solution");
       Object solution = play.mapper().apply(genotype);
       //build consumer
-      Consumer<Snapshot> snapshotConsumer = play.consumers().stream().reduce(Consumer::andThen).orElse(s -> {});
+      PlayConsumers.ProducingConsumer consumer = play.consumers().stream()
+          .reduce(PlayConsumers.ProducingConsumer::andThen)
+          .orElse(PlayConsumers.ProducingConsumer.from(s -> {}, () -> {}));
       //do task
       L.info("Executing the task");
-      Object outcome = play.task().run(solution, play.engineSupplier().get(), snapshotConsumer);
+      Object outcome = play.task().run(solution, play.engineSupplier().get(), consumer);
       L.info("The outcome of the task is %s".formatted(outcome));
       //process outcome
       if (configuration.justOutput) {
@@ -179,8 +180,9 @@ public class Player {
             ((Function) f).apply(outcome)
         ));
       }
+      consumer.run();
       //possibly save video
-      if (snapshotConsumer instanceof VideoBuilder videoBuilder) {
+      if (consumer instanceof VideoBuilder videoBuilder) {
         L.info("Doing video");
         File file = videoBuilder.get();
         if (file != null) {
