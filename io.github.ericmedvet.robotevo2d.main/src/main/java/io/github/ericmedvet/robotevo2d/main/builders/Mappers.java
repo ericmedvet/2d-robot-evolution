@@ -19,6 +19,7 @@ package io.github.ericmedvet.robotevo2d.main.builders;
 import io.github.ericmedvet.jgea.core.representation.graph.Graph;
 import io.github.ericmedvet.jgea.core.representation.graph.Node;
 import io.github.ericmedvet.jgea.core.representation.graph.numeric.operatorgraph.OperatorGraph;
+import io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString;
 import io.github.ericmedvet.jgea.core.representation.tree.Tree;
 import io.github.ericmedvet.jgea.core.representation.tree.numeric.Element;
 import io.github.ericmedvet.jgea.core.representation.tree.numeric.TreeBasedMultivariateRealFunction;
@@ -31,6 +32,8 @@ import io.github.ericmedvet.jsdynsym.core.Parametrized;
 import io.github.ericmedvet.jsdynsym.core.composed.Composed;
 import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
 import io.github.ericmedvet.mrsim2d.core.NumMultiBrained;
+import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR;
+import io.github.ericmedvet.mrsim2d.core.util.Grid;
 
 import java.util.Collections;
 import java.util.List;
@@ -86,6 +89,19 @@ public class Mappers {
         ));
       }
     }
+  }
+
+  @SuppressWarnings("unused")
+  public static InvertibleMapper<IntString, Supplier<ReactiveGridVSR>> intStringReactiveGridVSR(
+      @Param("w") int w,
+      @Param("h") int h,
+      @Param("availableVoxels") List<Supplier<ReactiveGridVSR.ReactiveVoxel>> availableVoxels
+  ) {
+    IntString exampleGenotype = new IntString(0, availableVoxels.size(), w * h);
+    return InvertibleMapper.from(
+        s -> () -> new ReactiveGridVSR(Grid.create(w, h, s).map(i -> availableVoxels.get(i).get())),
+        exampleGenotype
+    );
   }
 
   @SuppressWarnings("unused")
@@ -182,7 +198,10 @@ public class Mappers {
                   .setParams(trees));
           return t;
         },
-        TreeBasedMultivariateRealFunction.sampleFor(optionalTreeMRF.get().xVarNames(), optionalTreeMRF.get().yVarNames())
+        TreeBasedMultivariateRealFunction.sampleFor(
+            optionalTreeMRF.get().xVarNames(),
+            optionalTreeMRF.get().yVarNames()
+        )
     );
   }
 
