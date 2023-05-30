@@ -344,6 +344,28 @@ Aliases: `ea.m`, `ea.mapper`
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.graph.Graph">Graph</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.graph.Node">Node</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>
 
+### Builder `ea.mapper.identityBitString()`
+
+`ea.m.identityBitString(l)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `l` | i | `100` | <code>int</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>&gt;</code>
+
+### Builder `ea.mapper.identityIntString()`
+
+`ea.m.identityIntString(l; lowerBound; upperBound)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `l` | i | `100` | <code>int</code> |
+| `lowerBound` | i | `0` | <code>int</code> |
+| `upperBound` | i | `10` | <code>int</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;</code>
+
 ### Builder `ea.mapper.mlpMRF()`
 
 `ea.m.mlpMRF(dataset; innerLayerRatio; nOfInnerLayers; activationFunction)`
@@ -838,6 +860,22 @@ Aliases: `ea.p.mr`, `ea.p.multivariateRegression`, `ea.problem.mr`, `ea.problem.
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.multivariate.MultivariateRegressionProblem">MultivariateRegressionProblem</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.problem.regression.multivariate.MultivariateRegressionFitness">MultivariateRegressionFitness</abbr>&gt;</code>
 
+## Package `ea.problem.synthetic`
+
+Aliases: `ea.p.s`, `ea.p.synthetic`, `ea.problem.s`, `ea.problem.synthetic`
+
+### Builder `ea.problem.synthetic.intOneMax()`
+
+`ea.p.s.intOneMax()`
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.IntOneMax">IntOneMax</abbr></code>
+
+### Builder `ea.problem.synthetic.oneMax()`
+
+`ea.p.s.oneMax()`
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.OneMax">OneMax</abbr></code>
+
 ## Package `ea.problem.univariateRegression`
 
 Aliases: `ea.p.univariateRegression`, `ea.p.ur`, `ea.problem.univariateRegression`, `ea.problem.ur`
@@ -895,6 +933,24 @@ Produces <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</a
 
 Aliases: `ea.s`, `ea.solver`
 
+### Builder `ea.solver.intGA()`
+
+`ea.s.intGA(mapper; crossoverP; pMut; tournamentRate; minNTournament; nPop; nEval; diversity; remap)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `mapper` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, S&gt;</code> |
+| `crossoverP` | d | `0.8` | <code>double</code> |
+| `pMut` | d | `0.01` | <code>double</code> |
+| `tournamentRate` | d | `0.05` | <code>double</code> |
+| `minNTournament` | i | `3` | <code>int</code> |
+| `nPop` | i | `100` | <code>int</code> |
+| `nEval` | i |  | <code>int</code> |
+| `diversity` | b | `false` | <code>boolean</code> |
+| `remap` | b | `false` | <code>boolean</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.StandardEvolver">StandardEvolver</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, S, Q&gt;, <abbr title="io.github.ericmedvet.jgea.core.QualityBasedProblem">QualityBasedProblem</abbr>&lt;S, Q&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, S, Q&gt;</code>
+
 ### Builder `ea.solver.multiSRTreeGP()`
 
 `ea.s.multiSRTreeGP(mapper; minConst; maxConst; nConst; operators; minTreeH; maxTreeH; crossoverP; tournamentRate; minNTournament; nPop; nEval; diversity; nAttemptsDiversity; remap)`
@@ -905,7 +961,7 @@ Aliases: `ea.s`, `ea.solver`
 | `minConst` | d | `0.0` | <code>double</code> |
 | `maxConst` | d | `5.0` | <code>double</code> |
 | `nConst` | i | `10` | <code>int</code> |
-| `operators` | e[] | `[+, -, *, p/]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element$Operator">Element$Operator</abbr>&gt;</code> |
+| `operators` | e[] | `[+, -, *, p/, plog]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element$Operator">Element$Operator</abbr>&gt;</code> |
 | `minTreeH` | i | `3` | <code>int</code> |
 | `maxTreeH` | i | `8` | <code>int</code> |
 | `crossoverP` | d | `0.8` | <code>double</code> |
@@ -1065,7 +1121,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `mapper` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr>&lt;G, S&gt;</code> |
 | `task` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Task">Task</abbr>&lt;S, O&gt;</code> |
 | `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.engine.Engine">Engine</abbr>&gt;</code> |
-| `consumers` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Consumer">Consumer</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Snapshot">Snapshot</abbr>&gt;&gt;</code> |
+| `consumers` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers$ProducingConsumer">PlayConsumers$ProducingConsumer</abbr>&gt;</code> |
 | `outcomeFunctions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;?, ?&gt;&gt;</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.robotevo2d.main.Play">Play</abbr></code>
@@ -1095,6 +1151,23 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.AccumulatorF
 
 Aliases: `er.c`, `er.consumer`, `evorobots.c`, `evorobots.consumer`
 
+### Builder `evorobots.consumer.frames()`
+
+`er.c.frames(title; drawer; w; h; nOfFrames; deltaT; startTime; filePath)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `title` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+| `drawer` | npm | `sim.drawer()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="io.github.ericmedvet.mrsim2d.viewer.Drawer">Drawer</abbr>&gt;</code> |
+| `w` | i | `600` | <code>int</code> |
+| `h` | i | `400` | <code>int</code> |
+| `nOfFrames` | i | `5` | <code>int</code> |
+| `deltaT` | d | `0.2` | <code>double</code> |
+| `startTime` | d | `0.0` | <code>double</code> |
+| `filePath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers$ProducingConsumer">PlayConsumers$ProducingConsumer</abbr></code>
+
 ### Builder `evorobots.consumer.rtGUI()`
 
 `er.c.rtGUI(title; drawer; frameRate)`
@@ -1105,7 +1178,7 @@ Aliases: `er.c`, `er.consumer`, `evorobots.c`, `evorobots.consumer`
 | `drawer` | npm | `sim.drawer()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="io.github.ericmedvet.mrsim2d.viewer.Drawer">Drawer</abbr>&gt;</code> |
 | `frameRate` | d | `30.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Consumer">Consumer</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Snapshot">Snapshot</abbr>&gt;</code>
+Produces <code><abbr title="io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers$ProducingConsumer">PlayConsumers$ProducingConsumer</abbr></code>
 
 ### Builder `evorobots.consumer.video()`
 
@@ -1179,6 +1252,18 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;
 ## Package `evorobots.mapper`
 
 Aliases: `er.m`, `er.mapper`, `evorobots.m`, `evorobots.mapper`
+
+### Builder `evorobots.mapper.intStringReactiveGridVSR()`
+
+`er.m.intStringReactiveGridVSR(w; h; availableVoxels)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `w` | i |  | <code>int</code> |
+| `h` | i |  | <code>int</code> |
+| `availableVoxels` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr>&gt;&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr>&gt;&gt;</code>
 
 ### Builder `evorobots.mapper.numericalParametrizedHeteroBrains()`
 
@@ -1284,6 +1369,18 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 
 Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.engine.Engine">Engine</abbr>&gt;</code>
 
+### Builder `sim.grid()`
+
+`s.grid(w; h; items)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `w` | i |  | <code>int</code> |
+| `h` | i |  | <code>int</code> |
+| `items` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;T&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr>&lt;T&gt;</code>
+
 ### Builder `sim.range()`
 
 `s.range(min; max)`
@@ -1385,6 +1482,16 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.NumL
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.NumLeggedHybridRobot">NumLeggedHybridRobot</abbr></code>
 
+### Builder `sim.agent.reactiveGridVSR()`
+
+`s.a.reactiveGridVSR(body)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `body` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr>&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr></code>
+
 ## Package `sim.agent.legged`
 
 Aliases: `s.a.l`, `s.a.legged`, `s.agent.l`, `s.agent.legged`, `sim.a.l`, `sim.a.legged`, `sim.agent.l`, `sim.agent.legged`
@@ -1455,6 +1562,74 @@ Aliases: `s.a.vsr`, `s.agent.vsr`, `sim.a.vsr`, `sim.agent.vsr`
 | `sensorizingFunction` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr>&lt;<abbr title="java.lang.Boolean">Boolean</abbr>&gt;, <abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;? super <abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;&gt;&gt;&gt;</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code>
+
+## Package `sim.agent.vsr.reactiveVoxels`
+
+Aliases: `s.a.vsr.reactiveVoxels`, `s.a.vsr.rv`, `s.agent.vsr.reactiveVoxels`, `s.agent.vsr.rv`, `sim.a.vsr.reactiveVoxels`, `sim.a.vsr.rv`, `sim.agent.vsr.reactiveVoxels`, `sim.agent.vsr.rv`
+
+### Builder `sim.agent.vsr.reactiveVoxels.aa()`
+
+`s.a.vsr.rv.aa(angle; action)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `angle` | d | `0.0` | <code>double</code> |
+| `action` | e | `EXPAND` | <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels$Action">ReactiveVoxels$Action</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>
+
+### Builder `sim.agent.vsr.reactiveVoxels.asin()`
+
+`s.a.vsr.rv.asin(f)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `f` | d | `1.0` | <code>double</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>
+
+### Builder `sim.agent.vsr.reactiveVoxels.asld()`
+
+`s.a.vsr.rv.asld(duration; threshold; action)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `duration` | d | `0.2` | <code>double</code> |
+| `threshold` | d | `0.05` | <code>double</code> |
+| `action` | e | `EXPAND` | <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels$Action">ReactiveVoxels$Action</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>
+
+### Builder `sim.agent.vsr.reactiveVoxels.at()`
+
+`s.a.vsr.rv.at(duration; range; side; action)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `duration` | d | `0.2` | <code>double</code> |
+| `range` | d | `1.0` | <code>double</code> |
+| `side` | e | `S` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel$Side">Voxel$Side</abbr></code> |
+| `action` | e | `EXPAND` | <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels$Action">ReactiveVoxels$Action</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>
+
+### Builder `sim.agent.vsr.reactiveVoxels.none()`
+
+`s.a.vsr.rv.none()`
+
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>
+
+### Builder `sim.agent.vsr.reactiveVoxels.ph()`
+
+`s.a.vsr.rv.ph()`
+
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>
+
+### Builder `sim.agent.vsr.reactiveVoxels.ps()`
+
+`s.a.vsr.rv.ps()`
+
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>
 
 ## Package `sim.agent.vsr.sensorizingFunction`
 

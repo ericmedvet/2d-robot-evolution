@@ -31,9 +31,11 @@ import io.github.ericmedvet.jsdynsym.core.NumericalParametrized;
 import io.github.ericmedvet.jsdynsym.core.Parametrized;
 import io.github.ericmedvet.jsdynsym.core.composed.Composed;
 import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
+import io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels;
 import io.github.ericmedvet.mrsim2d.core.NumMultiBrained;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR;
 import io.github.ericmedvet.mrsim2d.core.util.Grid;
+import io.github.ericmedvet.mrsim2d.core.util.GridUtils;
 
 import java.util.Collections;
 import java.util.List;
@@ -97,9 +99,18 @@ public class Mappers {
       @Param("h") int h,
       @Param("availableVoxels") List<Supplier<ReactiveGridVSR.ReactiveVoxel>> availableVoxels
   ) {
-    IntString exampleGenotype = new IntString(0, availableVoxels.size(), w * h);
+    IntString exampleGenotype = new IntString(0, availableVoxels.size() + 1, w * h);
     return InvertibleMapper.from(
-        s -> () -> new ReactiveGridVSR(Grid.create(w, h, s).map(i -> availableVoxels.get(i).get())),
+        s -> {
+          Grid<ReactiveGridVSR.ReactiveVoxel> body = GridUtils.fit(
+                  GridUtils.largestConnected(
+                      Grid.create(w, h, s), i -> i > 0, 0
+                  ),
+                  i -> i > 0
+              )
+              .map(i -> i == 0 ? ReactiveVoxels.none() : availableVoxels.get(i - 1).get());
+          return () -> new ReactiveGridVSR(body);
+        },
         exampleGenotype
     );
   }

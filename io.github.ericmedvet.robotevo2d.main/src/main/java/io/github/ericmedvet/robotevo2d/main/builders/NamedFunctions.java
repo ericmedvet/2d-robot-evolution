@@ -3,6 +3,10 @@ package io.github.ericmedvet.robotevo2d.main.builders;
 import io.github.ericmedvet.jgea.core.listener.NamedFunction;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jnb.core.ParamMap;
+import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.AbstractGridVSR;
+import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody;
+import io.github.ericmedvet.mrsim2d.core.util.Grid;
+import io.github.ericmedvet.mrsim2d.core.util.GridUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
@@ -10,6 +14,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.logging.Logger;
 
 public class NamedFunctions {
@@ -51,6 +56,71 @@ public class NamedFunctions {
         return "not-serializable";
       }
     });
+  }
+
+  @SuppressWarnings("unused")
+  public static <X> NamedFunction<X, Double> compactness(
+      @Param("f") NamedFunction<X, Grid<GridBody.Element>> f
+  ) {
+    return NamedFunction.build(
+        c("compactness", f.getName()),
+        "%4.2f",
+        x -> GridUtils.compactness(f.apply(x), e -> !e.type().equals(GridBody.VoxelType.NONE))
+    );
+  }
+
+  @SuppressWarnings("unused")
+  public static <X> NamedFunction<X, Integer> count(
+      @Param("f") NamedFunction<X, Grid<GridBody.Element>> f
+  ) {
+    return NamedFunction.build(
+        c("count", f.getName()),
+        "%3d",
+        x -> GridUtils.count(f.apply(x), e -> !e.type().equals(GridBody.VoxelType.NONE))
+    );
+  }
+
+  @SuppressWarnings("unused")
+  public static <X> NamedFunction<X, Double> elongation(
+      @Param("f") NamedFunction<X, Grid<GridBody.Element>> f
+  ) {
+    return NamedFunction.build(
+        c("elongation", f.getName()),
+        "%4.1f",
+        x -> GridUtils.elongation(f.apply(x), e -> !e.type().equals(GridBody.VoxelType.NONE))
+    );
+  }
+
+  @SuppressWarnings("unused")
+  public static <X> NamedFunction<X, Grid<GridBody.Element>> gridBody(
+      @Param("f") NamedFunction<X, Supplier<AbstractGridVSR>> f
+  ) {
+    return NamedFunction.build(
+        c("gridBody", f.getName()),
+        x -> f.apply(x).get().getElementGrid()
+    );
+  }
+
+  @SuppressWarnings("unused")
+  public static <X> NamedFunction<X, Integer> h(
+      @Param("f") NamedFunction<X, Grid<GridBody.Element>> f
+  ) {
+    return NamedFunction.build(
+        c("h", f.getName()),
+        "%2d",
+        x -> GridUtils.h(f.apply(x), e -> !e.type().equals(GridBody.VoxelType.NONE))
+    );
+  }
+
+  @SuppressWarnings("unused")
+  public static <X> NamedFunction<X, Integer> w(
+      @Param("f") NamedFunction<X, Grid<GridBody.Element>> f
+  ) {
+    return NamedFunction.build(
+        c("w", f.getName()),
+        "%2d",
+        x -> GridUtils.w(f.apply(x), e -> !e.type().equals(GridBody.VoxelType.NONE))
+    );
   }
 
 }
