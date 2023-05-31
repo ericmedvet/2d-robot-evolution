@@ -8,7 +8,7 @@ public class Main {
         "-v",
         "-b", "io.github.ericmedvet.robotevo2d.main.PreparedNamedBuilder",
         "-nt", "10",
-        "-f", "reactive-gridvsr.txt"
+        "-f", "jumping-centralized-vsr.txt"
     });
   }
 }

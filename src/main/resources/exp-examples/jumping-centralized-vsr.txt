@@ -1,0 +1,38 @@
+ea.experiment(
+  runs = (randomGenerator = (seed = [1:1:1]) * [ea.rg.defaultRG()]) * [
+    ea.run(
+      solver = ea.s.numGA(
+        mapper = er.m.numericalParametrizedHeteroBrains(target = s.a.centralizedNumGridVSR(
+          body = s.a.vsr.gridBody(
+            sensorizingFunction = s.a.vsr.sf.directional(
+              headSensors = [s.s.sin(f = 0);s.s.d(a = -15; r = 5)];
+              nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
+              sSensors = [s.s.d(a = -90)]
+            );
+            shape = s.a.vsr.s.biped(w = 4; h = 3)
+          );
+          function = ds.num.mlp()
+        ));
+        nEval = 500;
+        nPop = 10
+      );
+      problem = ea.p.totalOrder(
+        qFunction = s.taskRunner(task = s.task.jumping());
+        cFunction = s.task.jumping.maxY();
+        type = maximize
+      )
+    )
+  ];
+  listeners = [
+    ea.l.tui(
+      functions = [
+        ea.nf.size(f = ea.nf.genotype(individual = ea.nf.best()); s = "%5d");
+        ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.jumping.maxY(); s = "%5.2f"));
+        ea.nf.fitnessHist(f = ea.nf.f(outerF = s.task.jumping.maxY()))
+      ];
+      plots = [
+        ea.plot.fitness(x = ea.nf.progress(); f = ea.nf.f(outerF = s.task.jumping.maxY()); sort = max; minY = 0; maxX = 1)
+      ]
+    )
+  ]
+)
