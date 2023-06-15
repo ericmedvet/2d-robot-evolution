@@ -27,20 +27,25 @@ import io.github.ericmedvet.jgea.experimenter.InvertibleMapper;
 import io.github.ericmedvet.jnb.core.NamedBuilder;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jnb.core.ParamMap;
+import io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems;
 import io.github.ericmedvet.jsdynsym.core.NumericalParametrized;
 import io.github.ericmedvet.jsdynsym.core.Parametrized;
+import io.github.ericmedvet.jsdynsym.core.StatelessSystem;
 import io.github.ericmedvet.jsdynsym.core.composed.Composed;
 import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
+import io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron;
 import io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels;
 import io.github.ericmedvet.mrsim2d.core.NumMultiBrained;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR;
 import io.github.ericmedvet.mrsim2d.core.util.Grid;
 import io.github.ericmedvet.mrsim2d.core.util.GridUtils;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
+import java.util.stream.IntStream;
 
 public class Mappers {
   private Mappers() {
@@ -113,6 +118,39 @@ public class Mappers {
         },
         exampleGenotype
     );
+  }
+
+  public static InvertibleMapper<List<Double>, Supplier<ReactiveGridVSR>> mlpReactiveGridVSR(
+      @Param("w") int w,
+      @Param("h") int h,
+      @Param("availableVoxels") List<Supplier<ReactiveGridVSR.ReactiveVoxel>> availableVoxels,
+      @Param(value = "innerLayerRatio", dD = 0.65) double innerLayerRatio,
+      @Param(value = "nOfInnerLayers", dI = 1) int nOfInnerLayers,
+      @Param(value = "activationFunction", dS = "tanh") MultiLayerPerceptron.ActivationFunction activationFunction
+  ) {
+    MultiLayerPerceptron mlp = NumericalDynamicalSystems.mlp(
+        innerLayerRatio,
+        nOfInnerLayers,
+        activationFunction
+    ).apply(List.of("x", "y"), varNames("v", availableVoxels.size()));
+    return InvertibleMapper.from(
+        values -> {
+          mlp.setParams(values.stream().mapToDouble(v -> v).toArray());
+          Grid<ReactiveGridVSR.ReactiveVoxel> body = Grid.create(w, h, (x, y) -> {
+            double[] output = mlp.apply(new double[]{(double) x / (double) w, (double) y / (double) h});
+            //TODO: find max, then threshold with 0
+            return ReactiveVoxels.none();
+          });
+          //TODO fit and largest connected
+          return () -> new ReactiveGridVSR(body);
+        },
+        Arrays.stream(mlp.getParams()).boxed().toList()
+    );
+  }
+
+  private static List<String> varNames(String name, int number) { //TODO: to be moved in Builder, all varNames()
+    int digits = (int) Math.ceil(Math.log10(number + 1));
+    return IntStream.range(1, number + 1).mapToObj((name + "%0" + digits + "d")::formatted).toList();
   }
 
   @SuppressWarnings("unused")
