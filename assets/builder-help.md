@@ -946,7 +946,7 @@ Aliases: `ea.s`, `ea.solver`
 | `minNTournament` | i | `3` | <code>int</code> |
 | `nPop` | i | `100` | <code>int</code> |
 | `nEval` | i |  | <code>int</code> |
-| `diversity` | b | `false` | <code>boolean</code> |
+| `diversity` | b | `true` | <code>boolean</code> |
 | `remap` | b | `false` | <code>boolean</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.StandardEvolver">StandardEvolver</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.state.POSetPopulationState">POSetPopulationState</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, S, Q&gt;, <abbr title="io.github.ericmedvet.jgea.core.QualityBasedProblem">QualityBasedProblem</abbr>&lt;S, Q&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, S, Q&gt;</code>
@@ -1265,6 +1265,21 @@ Aliases: `er.m`, `er.mapper`, `evorobots.m`, `evorobots.mapper`
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr>&gt;&gt;</code>
 
+### Builder `evorobots.mapper.mlpReactiveGridVSR()`
+
+`er.m.mlpReactiveGridVSR(w; h; availableVoxels; innerLayerRatio; nOfInnerLayers; activationFunction)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `w` | i |  | <code>int</code> |
+| `h` | i |  | <code>int</code> |
+| `availableVoxels` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr>&gt;&gt;</code> |
+| `innerLayerRatio` | d | `0.65` | <code>double</code> |
+| `nOfInnerLayers` | i | `1` | <code>int</code> |
+| `activationFunction` | e | `TANH` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr>&gt;&gt;</code>
+
 ### Builder `evorobots.mapper.numericalParametrizedHeteroBrains()`
 
 `er.m.numericalParametrizedHeteroBrains(target)`
@@ -1309,6 +1324,36 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMap
 
 Aliases: `er.namedFunction`, `er.nf`, `evorobots.namedFunction`, `evorobots.nf`
 
+### Builder `evorobots.namedFunction.compactness()`
+
+`er.nf.compactness(f)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `f` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$Element">GridBody$Element</abbr>&gt;&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+
+### Builder `evorobots.namedFunction.count()`
+
+`er.nf.count(f)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `f` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$Element">GridBody$Element</abbr>&gt;&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>
+
+### Builder `evorobots.namedFunction.elongation()`
+
+`er.nf.elongation(f)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `f` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$Element">GridBody$Element</abbr>&gt;&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+
 ### Builder `evorobots.namedFunction.f()`
 
 `er.nf.f(inner; name; s)`
@@ -1321,6 +1366,26 @@ Aliases: `er.namedFunction`, `er.nf`, `evorobots.namedFunction`, `evorobots.nf`
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;T, R&gt;</code>
 
+### Builder `evorobots.namedFunction.gridBody()`
+
+`er.nf.gridBody(f)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `f` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.AbstractGridVSR">AbstractGridVSR</abbr>&gt;&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$Element">GridBody$Element</abbr>&gt;&gt;</code>
+
+### Builder `evorobots.namedFunction.h()`
+
+`er.nf.h(f)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `f` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$Element">GridBody$Element</abbr>&gt;&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>
+
 ### Builder `evorobots.namedFunction.stringBase64()`
 
 `er.nf.stringBase64(f)`
@@ -1330,6 +1395,16 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunctio
 | `f` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.io.Serializable">Serializable</abbr>&gt;</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>
+
+### Builder `evorobots.namedFunction.w()`
+
+`er.nf.w(f)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `f` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.util.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$Element">GridBody$Element</abbr>&gt;&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>
 
 ## Package `sim`
 
@@ -1855,6 +1930,17 @@ Aliases: `s.task`, `sim.task`
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.piling.FallPiling">FallPiling</abbr></code>
 
+### Builder `sim.task.jumping()`
+
+`s.task.jumping(duration; initialYGap)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `duration` | d | `10.0` | <code>double</code> |
+| `initialYGap` | d | `0.1` | <code>double</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.jumping.Jumping">Jumping</abbr></code>
+
 ### Builder `sim.task.locomotion()`
 
 `s.task.locomotion(duration; terrain; initialXGap; initialYGap)`
@@ -1896,6 +1982,60 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.locomotion.P
 | `initialYGap` | d | `0.1` | <code>double</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.piling.StandPiling">StandPiling</abbr></code>
+
+## Package `sim.task.jumping`
+
+Aliases: `s.task.j`, `s.task.jumping`, `sim.task.j`, `sim.task.jumping`
+
+### Builder `sim.task.jumping.avgBBMinY()`
+
+`s.task.j.avgBBMinY(transientTime)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `transientTime` | d | `5.0` | <code>double</code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+
+### Builder `sim.task.jumping.avgY()`
+
+`s.task.j.avgY(transientTime)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `transientTime` | d | `5.0` | <code>double</code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+
+### Builder `sim.task.jumping.maxBBMinY()`
+
+`s.task.j.maxBBMinY(transientTime)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `transientTime` | d | `5.0` | <code>double</code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+
+### Builder `sim.task.jumping.maxMaxRelJumpH()`
+
+`s.task.j.maxMaxRelJumpH(transientTime)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `transientTime` | d | `5.0` | <code>double</code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+
+### Builder `sim.task.jumping.maxY()`
+
+`s.task.j.maxY(transientTime)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `transientTime` | d | `5.0` | <code>double</code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
 
 ## Package `sim.task.locomotion`
 
