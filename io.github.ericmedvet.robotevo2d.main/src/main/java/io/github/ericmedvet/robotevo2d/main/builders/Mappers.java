@@ -34,11 +34,11 @@ import io.github.ericmedvet.jsdynsym.core.composed.Composed;
 import io.github.ericmedvet.jsdynsym.core.numerical.MultivariateRealFunction;
 import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
 import io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron;
+import io.github.ericmedvet.jsdynsym.grid.Grid;
+import io.github.ericmedvet.jsdynsym.grid.GridUtils;
 import io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels;
 import io.github.ericmedvet.mrsim2d.core.NumMultiBrained;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR;
-import io.github.ericmedvet.mrsim2d.core.util.Grid;
-import io.github.ericmedvet.mrsim2d.core.util.GridUtils;
 
 import java.util.Arrays;
 import java.util.Collections;
