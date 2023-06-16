@@ -31,6 +31,7 @@ import io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystem
 import io.github.ericmedvet.jsdynsym.core.NumericalParametrized;
 import io.github.ericmedvet.jsdynsym.core.Parametrized;
 import io.github.ericmedvet.jsdynsym.core.composed.Composed;
+import io.github.ericmedvet.jsdynsym.core.numerical.MultivariateRealFunction;
 import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
 import io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron;
 import io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels;
@@ -44,7 +45,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
-import java.util.stream.IntStream;
 
 public class Mappers {
   private Mappers() {
@@ -146,7 +146,7 @@ public class Mappers {
         innerLayerRatio,
         nOfInnerLayers,
         activationFunction
-    ).apply(List.of("x", "y"), varNames("v", availableVoxels.size()));
+    ).apply(List.of("x", "y"), MultivariateRealFunction.varNames("v", availableVoxels.size()));
     return InvertibleMapper.from(
         values -> {
           mlp.setParams(values.stream().mapToDouble(v -> v).toArray());
@@ -296,11 +296,6 @@ public class Mappers {
             optionalTreeMRF.get().yVarNames()
         )
     );
-  }
-
-  private static List<String> varNames(String name, int number) { //TODO: to be moved in Builder, all varNames()
-    int digits = (int) Math.ceil(Math.log10(number + 1));
-    return IntStream.range(1, number + 1).mapToObj((name + "%0" + digits + "d")::formatted).toList();
   }
 
 }
