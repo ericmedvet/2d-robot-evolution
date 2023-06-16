@@ -30,7 +30,6 @@ import io.github.ericmedvet.jnb.core.ParamMap;
 import io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems;
 import io.github.ericmedvet.jsdynsym.core.NumericalParametrized;
 import io.github.ericmedvet.jsdynsym.core.Parametrized;
-import io.github.ericmedvet.jsdynsym.core.StatelessSystem;
 import io.github.ericmedvet.jsdynsym.core.composed.Composed;
 import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
 import io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron;
@@ -49,6 +48,19 @@ import java.util.stream.IntStream;
 
 public class Mappers {
   private Mappers() {
+  }
+
+  private static int argmax(double[] values) {
+    if (values.length == 0) {
+      throw new IllegalArgumentException("Empty array");
+    }
+    int i = 0;
+    for (int j = 1; j < values.length; j++) {
+      if (values[j] > values[i]) {
+        i = j;
+      }
+    }
+    return i;
   }
 
   private static void checkIOSizeConsistency(NumMultiBrained numMultiBrained) {
@@ -107,19 +119,21 @@ public class Mappers {
     IntString exampleGenotype = new IntString(0, availableVoxels.size() + 1, w * h);
     return InvertibleMapper.from(
         s -> {
-          Grid<ReactiveGridVSR.ReactiveVoxel> body = GridUtils.fit(
-                  GridUtils.largestConnected(
-                      Grid.create(w, h, s), i -> i > 0, 0
-                  ),
-                  i -> i > 0
-              )
-              .map(i -> i == 0 ? ReactiveVoxels.none() : availableVoxels.get(i - 1).get());
+          Grid<Integer> indexGrid = Grid.create(w, h, s);
+          Grid<ReactiveGridVSR.ReactiveVoxel> body;
+          if (indexGrid.values().stream().max(Integer::compareTo).orElse(0) == 0) {
+            body = Grid.create(1, 1, ReactiveVoxels.ph());
+          } else {
+            body = GridUtils.fit(GridUtils.largestConnected(indexGrid, i -> i > 0, 0), i -> i > 0)
+                .map(i -> i == 0 ? ReactiveVoxels.none() : availableVoxels.get(i - 1).get());
+          }
           return () -> new ReactiveGridVSR(body);
         },
         exampleGenotype
     );
   }
 
+  @SuppressWarnings("unused")
   public static InvertibleMapper<List<Double>, Supplier<ReactiveGridVSR>> mlpReactiveGridVSR(
       @Param("w") int w,
       @Param("h") int h,
@@ -136,21 +150,22 @@ public class Mappers {
     return InvertibleMapper.from(
         values -> {
           mlp.setParams(values.stream().mapToDouble(v -> v).toArray());
-          Grid<ReactiveGridVSR.ReactiveVoxel> body = Grid.create(w, h, (x, y) -> {
+          Grid<Integer> indexGrid = Grid.create(w, h, (x, y) -> {
             double[] output = mlp.apply(new double[]{(double) x / (double) w, (double) y / (double) h});
-            //TODO: find max, then threshold with 0
-            return ReactiveVoxels.none();
+            int iMax = argmax(output);
+            return output[iMax] > 0 ? iMax + 1 : 0;
           });
-          //TODO fit and largest connected
+          Grid<ReactiveGridVSR.ReactiveVoxel> body;
+          if (indexGrid.values().stream().max(Integer::compareTo).orElse(0) == 0) {
+            body = Grid.create(1, 1, ReactiveVoxels.ph());
+          } else {
+            body = GridUtils.fit(GridUtils.largestConnected(indexGrid, i -> i > 0, 0), i -> i > 0)
+                .map(i -> i == 0 ? ReactiveVoxels.none() : availableVoxels.get(i - 1).get());
+          }
           return () -> new ReactiveGridVSR(body);
         },
         Arrays.stream(mlp.getParams()).boxed().toList()
     );
-  }
-
-  private static List<String> varNames(String name, int number) { //TODO: to be moved in Builder, all varNames()
-    int digits = (int) Math.ceil(Math.log10(number + 1));
-    return IntStream.range(1, number + 1).mapToObj((name + "%0" + digits + "d")::formatted).toList();
   }
 
   @SuppressWarnings("unused")
@@ -223,6 +238,35 @@ public class Mappers {
   }
 
   @SuppressWarnings("unused")
+  public static <T extends NumMultiBrained> InvertibleMapper<Graph<Node, OperatorGraph.NonValuedArc>, Supplier<T>> oGraphParametrizedHomoBrains(
+      @Param("target") T target,
+      @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
+      @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
+  ) {
+    checkType(target, Parametrized.class);
+    checkIOSizeConsistency(target);
+    Optional<OperatorGraph> optionalOGraphMRF = Composed.shallowest(
+        target.brains().stream().findFirst().orElseThrow(),
+        OperatorGraph.class
+    );
+    if (optionalOGraphMRF.isEmpty()) {
+      throw new IllegalArgumentException("Cannot use this mapper of oGraph without a %s".formatted(
+          OperatorGraph.class.getSimpleName()));
+    }
+    return InvertibleMapper.from(
+        g -> () -> {
+          @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
+          t.brains()
+              .forEach(b -> Composed.shallowest(b, OperatorGraph.class)
+                  .orElseThrow()
+                  .setParams(g));
+          return t;
+        },
+        OperatorGraph.sampleFor(optionalOGraphMRF.get().xVarNames(), optionalOGraphMRF.get().yVarNames())
+    );
+  }
+
+  @SuppressWarnings("unused")
   public static <T extends NumMultiBrained> InvertibleMapper<List<Tree<Element>>, Supplier<T>> treeParametrizedHomoBrains(
       @Param("target") T target,
       @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
@@ -254,33 +298,9 @@ public class Mappers {
     );
   }
 
-  @SuppressWarnings("unused")
-  public static <T extends NumMultiBrained> InvertibleMapper<Graph<Node, OperatorGraph.NonValuedArc>, Supplier<T>> oGraphParametrizedHomoBrains(
-      @Param("target") T target,
-      @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
-      @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
-  ) {
-    checkType(target, Parametrized.class);
-    checkIOSizeConsistency(target);
-    Optional<OperatorGraph> optionalOGraphMRF = Composed.shallowest(
-        target.brains().stream().findFirst().orElseThrow(),
-        OperatorGraph.class
-    );
-    if (optionalOGraphMRF.isEmpty()) {
-      throw new IllegalArgumentException("Cannot use this mapper of oGraph without a %s".formatted(
-          OperatorGraph.class.getSimpleName()));
-    }
-    return InvertibleMapper.from(
-        g -> () -> {
-          @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
-          t.brains()
-              .forEach(b -> Composed.shallowest(b, OperatorGraph.class)
-                  .orElseThrow()
-                  .setParams(g));
-          return t;
-        },
-        OperatorGraph.sampleFor(optionalOGraphMRF.get().xVarNames(), optionalOGraphMRF.get().yVarNames())
-    );
+  private static List<String> varNames(String name, int number) { //TODO: to be moved in Builder, all varNames()
+    int digits = (int) Math.ceil(Math.log10(number + 1));
+    return IntStream.range(1, number + 1).mapToObj((name + "%0" + digits + "d")::formatted).toList();
   }
 
 }
