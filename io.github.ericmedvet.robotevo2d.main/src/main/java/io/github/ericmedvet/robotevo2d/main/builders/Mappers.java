@@ -16,6 +16,7 @@
 
 package io.github.ericmedvet.robotevo2d.main.builders;
 
+import io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction;
 import io.github.ericmedvet.jgea.core.representation.graph.Graph;
 import io.github.ericmedvet.jgea.core.representation.graph.Node;
 import io.github.ericmedvet.jgea.core.representation.graph.numeric.operatorgraph.OperatorGraph;
@@ -27,20 +28,17 @@ import io.github.ericmedvet.jgea.experimenter.InvertibleMapper;
 import io.github.ericmedvet.jnb.core.NamedBuilder;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jnb.core.ParamMap;
-import io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems;
 import io.github.ericmedvet.jsdynsym.core.NumericalParametrized;
 import io.github.ericmedvet.jsdynsym.core.Parametrized;
 import io.github.ericmedvet.jsdynsym.core.composed.Composed;
 import io.github.ericmedvet.jsdynsym.core.numerical.MultivariateRealFunction;
 import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
-import io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron;
 import io.github.ericmedvet.jsdynsym.grid.Grid;
 import io.github.ericmedvet.jsdynsym.grid.GridUtils;
 import io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels;
 import io.github.ericmedvet.mrsim2d.core.NumMultiBrained;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -118,7 +116,7 @@ public class Mappers {
   ) {
     IntString exampleGenotype = new IntString(0, availableVoxels.size() + 1, w * h);
     return InvertibleMapper.from(
-        s -> {
+        (supplier, s) -> {
           Grid<Integer> indexGrid = Grid.create(w, h, s);
           Grid<ReactiveGridVSR.ReactiveVoxel> body;
           if (indexGrid.values().stream().max(Integer::compareTo).orElse(0) == 0) {
@@ -129,29 +127,19 @@ public class Mappers {
           }
           return () -> new ReactiveGridVSR(body);
         },
-        exampleGenotype
+        supplier -> exampleGenotype
     );
   }
 
-  @SuppressWarnings("unused")
-  public static InvertibleMapper<List<Double>, Supplier<ReactiveGridVSR>> mlpReactiveGridVSR(
+  public static InvertibleMapper<NamedMultivariateRealFunction, Supplier<ReactiveGridVSR>> nmrfReactiveGridVSR(
       @Param("w") int w,
       @Param("h") int h,
-      @Param("availableVoxels") List<Supplier<ReactiveGridVSR.ReactiveVoxel>> availableVoxels,
-      @Param(value = "innerLayerRatio", dD = 0.65) double innerLayerRatio,
-      @Param(value = "nOfInnerLayers", dI = 1) int nOfInnerLayers,
-      @Param(value = "activationFunction", dS = "tanh") MultiLayerPerceptron.ActivationFunction activationFunction
+      @Param("availableVoxels") List<Supplier<ReactiveGridVSR.ReactiveVoxel>> availableVoxels
   ) {
-    MultiLayerPerceptron mlp = NumericalDynamicalSystems.mlp(
-        innerLayerRatio,
-        nOfInnerLayers,
-        activationFunction
-    ).apply(List.of("x", "y"), MultivariateRealFunction.varNames("v", availableVoxels.size()));
     return InvertibleMapper.from(
-        values -> {
-          mlp.setParams(values.stream().mapToDouble(v -> v).toArray());
+        (supplier, nmrf) -> {
           Grid<Integer> indexGrid = Grid.create(w, h, (x, y) -> {
-            double[] output = mlp.apply(new double[]{(double) x / (double) w, (double) y / (double) h});
+            double[] output = nmrf.apply(new double[]{(double) x / (double) w, (double) y / (double) h});
             int iMax = argmax(output);
             return output[iMax] > 0 ? iMax + 1 : 0;
           });
@@ -163,8 +151,13 @@ public class Mappers {
                 .map(i -> i == 0 ? ReactiveVoxels.none() : availableVoxels.get(i - 1).get());
           }
           return () -> new ReactiveGridVSR(body);
+
         },
-        Arrays.stream(mlp.getParams()).boxed().toList()
+        supplier -> NamedMultivariateRealFunction.from(
+            MultivariateRealFunction.from(vs -> vs, 2, availableVoxels.size()),
+            List.of("x", "y"),
+            MultivariateRealFunction.varNames("v", availableVoxels.size())
+        )
     );
   }
 
@@ -180,7 +173,7 @@ public class Mappers {
         .toList();
     int overallBrainSize = brainSizes.stream().mapToInt(i -> i).sum();
     return InvertibleMapper.from(
-        values -> {
+        (supplier, values) -> {
           if (values.size() != overallBrainSize) {
             throw new IllegalArgumentException("Wrong number of params: %d expected, %d found".formatted(
                 overallBrainSize,
@@ -200,7 +193,7 @@ public class Mappers {
             return t;
           };
         },
-        Collections.nCopies(overallBrainSize, 0d)
+        supplier -> Collections.nCopies(overallBrainSize, 0d)
     );
   }
 
@@ -217,7 +210,7 @@ public class Mappers {
         .map(b -> Composed.shallowest(b, NumericalParametrized.class).orElseThrow().getParams().length)
         .findFirst().orElseThrow();
     return InvertibleMapper.from(
-        values -> {
+        (supplier, values) -> {
           if (values.size() != brainSize) {
             throw new IllegalArgumentException("Wrong number of params: %d expected, %d found".formatted(
                 brainSize,
@@ -233,7 +226,7 @@ public class Mappers {
             return t;
           };
         },
-        Collections.nCopies(brainSize, 0d)
+        supplier -> Collections.nCopies(brainSize, 0d)
     );
   }
 
@@ -254,7 +247,7 @@ public class Mappers {
           OperatorGraph.class.getSimpleName()));
     }
     return InvertibleMapper.from(
-        g -> () -> {
+        (supplier, g) -> () -> {
           @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
           t.brains()
               .forEach(b -> Composed.shallowest(b, OperatorGraph.class)
@@ -262,7 +255,7 @@ public class Mappers {
                   .setParams(g));
           return t;
         },
-        OperatorGraph.sampleFor(optionalOGraphMRF.get().xVarNames(), optionalOGraphMRF.get().yVarNames())
+        supplier -> OperatorGraph.sampleFor(optionalOGraphMRF.get().xVarNames(), optionalOGraphMRF.get().yVarNames())
     );
   }
 
@@ -283,7 +276,7 @@ public class Mappers {
           TreeBasedMultivariateRealFunction.class.getSimpleName()));
     }
     return InvertibleMapper.from(
-        trees -> () -> {
+        (supplier, trees) -> () -> {
           @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
           t.brains()
               .forEach(b -> Composed.shallowest(b, TreeBasedMultivariateRealFunction.class)
@@ -291,7 +284,7 @@ public class Mappers {
                   .setParams(trees));
           return t;
         },
-        TreeBasedMultivariateRealFunction.sampleFor(
+        supplier -> TreeBasedMultivariateRealFunction.sampleFor(
             optionalTreeMRF.get().xVarNames(),
             optionalTreeMRF.get().yVarNames()
         )
