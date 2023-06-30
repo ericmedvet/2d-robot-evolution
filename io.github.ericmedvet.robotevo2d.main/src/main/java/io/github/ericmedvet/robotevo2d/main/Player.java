@@ -153,11 +153,11 @@ public class Player {
     try {
       //build solution
       L.config("Building genotype");
-      @SuppressWarnings("unchecked") Play<Object, Object, Object> play = (Play<Object, Object, Object>) nb.build(
-          playDescription);
-      Object genotype = play.genotype().apply(play.mapper().exampleInput());
+      @SuppressWarnings("unchecked")
+      Play<Object, Object, Object> play = (Play<Object, Object, Object>) nb.build(playDescription);
+      Object genotype = play.genotype().apply(play.mapper().exampleFor(null));
       L.config("Building solution");
-      Object solution = play.mapper().apply(genotype);
+      Object solution = play.mapper().mapperFor(null).apply(genotype);
       //build consumer
       PlayConsumers.ProducingConsumer consumer = play.consumers().stream()
           .reduce(PlayConsumers.ProducingConsumer::andThen)
