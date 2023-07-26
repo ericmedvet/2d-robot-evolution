@@ -87,7 +87,7 @@ public class AgentImageWriter {
             H,
             N,
             D_T,
-            1,
+            T0,
             FramesImageBuilder.Direction.HORIZONTAL,
             true,
             drawer.apply(name)
