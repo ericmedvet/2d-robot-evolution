@@ -114,10 +114,10 @@ public class Mappers {
       @Param("h") int h,
       @Param("availableVoxels") List<Supplier<ReactiveGridVSR.ReactiveVoxel>> availableVoxels
   ) {
-    IntString exampleGenotype = new IntString(0, availableVoxels.size() + 1, w * h);
+    IntString exampleGenotype = new IntString(List.of(), availableVoxels.size() + 1, w * h);
     return InvertibleMapper.from(
         (supplier, s) -> {
-          Grid<Integer> indexGrid = Grid.create(w, h, s);
+          Grid<Integer> indexGrid = Grid.create(w, h, s.genes());
           Grid<ReactiveGridVSR.ReactiveVoxel> body;
           if (indexGrid.values().stream().max(Integer::compareTo).orElse(0) == 0) {
             body = Grid.create(1, 1, ReactiveVoxels.ph());
