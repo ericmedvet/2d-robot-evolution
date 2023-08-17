@@ -115,7 +115,7 @@ public class Mappers {
       @Param("h") int h,
       @Param("availableVoxels") List<Supplier<ReactiveGridVSR.ReactiveVoxel>> availableVoxels
   ) {
-    IntString exampleGenotype = new IntString(List.of(), availableVoxels.size() + 1, w * h);
+    IntString exampleGenotype = new IntString(Collections.nCopies(w * h, 0), 0, availableVoxels.size() + 1);
     return InvertibleMapper.from(
         (supplier, s) -> {
           Grid<Integer> indexGrid = Grid.create(w, h, s.genes());

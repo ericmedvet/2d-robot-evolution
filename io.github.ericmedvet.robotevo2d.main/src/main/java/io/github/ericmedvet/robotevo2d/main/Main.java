@@ -8,7 +8,7 @@ public class Main {
         "-v",
         "-b", "io.github.ericmedvet.robotevo2d.main.PreparedNamedBuilder",
         "-nt", "2",
-        "-f", "src/main/resources/exp-examples/locomotion-centralized-vsr.txt"
+        "-f", "src/main/resources/exp-examples/jumping-centralized-vsr.txt"
     });
   }
 }

@@ -1,7 +1,7 @@
 ea.experiment(
   runs = (randomGenerator = (seed = [1:1:1]) * [ea.rg.defaultRG()]) *
     (solver = [
-      ea.s.multiSRTreeGP(
+      ea.s.multiSRTreeGp(
         mapper = er.m.treeParametrizedHomoBrains(target = s.a.distributedNumGridVSR(
           body = s.a.vsr.gridBody(
             sensorizingFunction = s.a.vsr.sf.uniform(
