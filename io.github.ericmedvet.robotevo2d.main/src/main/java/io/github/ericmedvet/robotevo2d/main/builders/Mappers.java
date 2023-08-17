@@ -26,6 +26,7 @@ import io.github.ericmedvet.jgea.core.representation.tree.numeric.Element;
 import io.github.ericmedvet.jgea.core.representation.tree.numeric.TreeBasedMultivariateRealFunction;
 import io.github.ericmedvet.jgea.experimenter.InvertibleMapper;
 import io.github.ericmedvet.jnb.core.NamedBuilder;
+import io.github.ericmedvet.jnb.core.NamedParamMap;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jnb.core.ParamMap;
 import io.github.ericmedvet.jsdynsym.core.NumericalParametrized;
@@ -181,7 +182,7 @@ public class Mappers {
             ));
           }
           return () -> {
-            @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
+            @SuppressWarnings("unchecked") T t = (T) builder.build((NamedParamMap) map.value("target", ParamMap.Type.NAMED_PARAM_MAP));
             int c = 0;
             for (NumericalDynamicalSystem<?> brain : t.brains()) {
               int brainSize = Composed.shallowest(brain, NumericalParametrized.class).orElseThrow().getParams().length;
@@ -218,7 +219,7 @@ public class Mappers {
             ));
           }
           return () -> {
-            @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
+            @SuppressWarnings("unchecked") T t = (T) builder.build((NamedParamMap) map.value("target", ParamMap.Type.NAMED_PARAM_MAP));
             t.brains()
                 .forEach(b -> Composed.shallowest(b, NumericalParametrized.class)
                     .orElseThrow()
@@ -248,7 +249,7 @@ public class Mappers {
     }
     return InvertibleMapper.from(
         (supplier, g) -> () -> {
-          @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
+          @SuppressWarnings("unchecked") T t = (T) builder.build((NamedParamMap) map.value("target", ParamMap.Type.NAMED_PARAM_MAP));
           t.brains()
               .forEach(b -> Composed.shallowest(b, OperatorGraph.class)
                   .orElseThrow()
@@ -277,7 +278,7 @@ public class Mappers {
     }
     return InvertibleMapper.from(
         (supplier, trees) -> () -> {
-          @SuppressWarnings("unchecked") T t = (T) builder.build(map.npm("target"));
+          @SuppressWarnings("unchecked") T t = (T) builder.build((NamedParamMap) map.value("target", ParamMap.Type.NAMED_PARAM_MAP));
           t.brains()
               .forEach(b -> Composed.shallowest(b, TreeBasedMultivariateRealFunction.class)
                   .orElseThrow()

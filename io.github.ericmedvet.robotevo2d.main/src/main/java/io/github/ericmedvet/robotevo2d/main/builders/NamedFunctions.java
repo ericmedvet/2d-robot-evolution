@@ -69,7 +69,7 @@ public class NamedFunctions {
       @Param(value = "", injection = Param.Injection.MAP) ParamMap map
   ) {
     if ((name == null) || name.isEmpty()) {
-      name = map.npm("inner").toString();
+      name = map.value("inner", ParamMap.Type.NAMED_PARAM_MAP).toString();
     }
     return NamedFunction.build(name, s, inner);
   }

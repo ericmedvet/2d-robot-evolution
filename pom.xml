@@ -60,7 +60,7 @@
         <revision>1.2.6-SNAPSHOT</revision>
         <mrsim2d.version>0.8.6-SNAPSHOT</mrsim2d.version>
         <jgea.version>2.4.5-SNAPSHOT</jgea.version>
-        <jnb.version>1.1.6</jnb.version>
+        <jnb.version>1.1.7-SNAPSHOT</jnb.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>17</jdk.version>
     </properties>
