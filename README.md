@@ -346,24 +346,25 @@ See the [example below](#example-1-3-runs-with-a-vsr-biped) for the usage of thi
 
 ```
 ea.experiment(
-  runs = (randomGenerator = (seed = [1:1:10]) * [ea.rg.defaultRG()]) *
-    (solver = (mapper = [
-      er.m.numericalParametrizedHeteroBrains(
-        target = s.a.numLeggedHybridModularRobot(
-        modules = + 4 * [
-          s.a.l.module(trunkLength = 10; legChunks = 2 * [s.a.l.legChunk()]; trunkSensors = [s.s.rv(a = 0); s.s.rv(a = 90)]; downConnectorSensors = [s.s.d(a = -90; r = 1)])
-        ] + [
-          s.a.l.module(trunkLength = 10; legChunks = 2 * [s.a.l.legChunk()]; trunkSensors = [s.s.rv(a = 0); s.s.rv(a = 90)]; downConnectorSensors = [s.s.d(a = -90; r = 1)]; rightConnectorSensors = + [s.s.sin()] + (a = [-80:10:-30]) * [s.s.d(r = 10)])
-        ];
-        function = ds.num.noised(inner = ds.num.mlp(innerLayerRatio = 1; nOfInnerLayers = 2); inputSigma=0.01)
-      ))
-      
-    ]) * [
-      ea.s.numGA(nEval = 500; nPop = 10)
-    ]) * [
+  runs = (randomGenerator = (seed = [1:1:3]) * [ea.rg.defaultRG()]) * [
     ea.run(
+      solver = ea.s.doubleStringGa(
+        mapper = er.m.numericalParametrizedHeteroBrains(target = s.a.centralizedNumGridVSR(
+          body = s.a.vsr.gridBody(
+            sensorizingFunction = s.a.vsr.sf.directional(
+              headSensors = [s.s.sin(f = 0); s.s.d(a = -15; r = 5)];
+              nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
+              sSensors = [s.s.d(a = -90)]
+            );
+            shape = s.a.vsr.s.biped(w = 4; h = 3)
+          );
+          function = ds.num.mlp()
+        ));
+        nEval = 1000;
+        nPop = 25
+      );
       problem = ea.p.totalOrder(
-        qFunction = s.taskRunner(task = s.task.locomotion(terrain = sim.terrain.flat(); duration = 60; initialYGap = 0.1));
+        qFunction = s.taskRunner(task = s.task.locomotion(duration = 15));
         cFunction = s.task.locomotion.xVelocity();
         type = maximize
       )
@@ -372,21 +373,12 @@ ea.experiment(
   listeners = [
     ea.l.tui(
       functions = [
+        ea.nf.size(f = ea.nf.genotype(individual = ea.nf.best()); s = "%5d");
         ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.l.xVelocity(); s = "%5.2f"));
         ea.nf.fitnessHist(f = ea.nf.f(outerF = s.task.l.xVelocity()))
       ];
       plots = [
-        ea.plot.fitness(f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0)
-      ]
-    );
-    ea.l.telegram(
-      chatId = "XXX";
-      botIdFilePath = "../tlg.txt";
-      plots = [
-        ea.plot.fitness(f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0)
-      ];
-      accumulators = [
-        er.video(task = s.task.locomotion(terrain = sim.terrain.flat(); duration = 60; initialYGap = 0.1))
+        ea.plot.fitness(x = ea.nf.progress(); f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0; maxX = 1)
       ]
     );
     ea.l.bestCsv(
@@ -395,8 +387,11 @@ ea.experiment(
         ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.l.xVelocity(); s = "%5.2f"));
         ea.nf.base64(f = ea.nf.genotype(individual = ea.nf.best()))
       ];
-      runKeys = ["solver.mapper.target"; "solver.mapper.function"]
-    )
+      runKeys = ["randomGenerator.seed"; "solver.mapper.target.body.shape"; "solver.mapper.target.function"]
+    );
+    evorobots.listener.videoSaver(videos = [
+      er.video(task = s.task.locomotion(terrain = sim.terrain.hilly(); duration = 30))
+    ])
   ]
 )
 ```
@@ -404,25 +399,23 @@ ea.experiment(
 This experiment consists of 3 runs differing only in the randomSeed (`seed = [1:1:3]`).
 Instead of specifying three times the full content of a `run(...)` (that would have been different in just the random seed), here the [`*` operator](#the--and--operators) is used.
 
-The target robot is a $4 \times 3$ biped with a centralized brain consisting of an MLP; the brain exploits the sensors installed in the body: here distance (`s.s.d()`), area ratio (`s.s.ar()`), rotated velocity (`s.s.rv()`).
+The target robot is a $4 \times 3$ biped with a centralized brain consisting of an MLP; the brain exploits the sensors installed in the body: here distance (`s.s.d()`), area ratio (`s.s.ar()`), rotated velocity (`s.s.rv()`), and a source for a sinusoidal input (`s.s.sin()`).
 The available sensor builders are grouped in the [`sim.sensor`](assets/builder-help.md#package-simsensor) package (they correspond to methods of the utility class `Sensors` of 2dmrsim).
 The solver is a simple GA with a population of 25 individuals.
 The task is the one of locomotion on a flat terrain, lasting 15 simulated seconds.
 
 The experiment produces a CSV file located at `experiments/best-biped-mlp.txt`.
-The file will include also a column named `randomGenerator.seed` with the random seed of the run and a column `solver` with the solver (with a constant value, here).
+The file will include also a column named `randomGenerator.seed` with the random seed of the run and two columns `solver.mapper.target.body.shape` and `solver.mapper.target.function` with the solver details (each with a constant value, here).
 Moreover, it'll contain a column named `best→genotype→base64` with a base64 serialization of the genotype, i.e., the parameters of the MLP.
 This can be reused later for further analysis of the best individuals.
 
-The experiment also notifies about its progresses via Telegram.
-In particular, after each run, it takes the best individual and lets it run on a different terrain than the one it was evolved on (`s.t.hilly()` instead of `s.t.flat()`): the resulting video is sent on a chat with `chatId = "XXX"` (to be replaced with an actual number).
-The received video might look like this:
+The experiment also produces a video for each of the best individual found at the end of the three runs.
+Each best individual is made run on a different terrain than the one it was evolved on (`s.t.hilly()` instead of `s.t.flat()`): the resulting video is saved in the directory where the application is executed.
+The saved video might look like this:
 
 ![The text-based UI of `Starter`](assets/images/biped.gif)
 
-Note that this is the result of a rather short (`nEval = 500`) evolution; moreover, the best robot is here facing a terrain "it never saw" (more precisely, it and its entire ancestry never saw it) during the evolution.
-
-Finally, the experiments also saves one video for each of the final best individuals: the saved video will be located the `experiments/`.
+Note that this is the result of a rather short (`nEval = 1000`) evolution; moreover, the best robot is here facing a terrain "it never saw" (more precisely, it and its entire ancestry never saw it) during the evolution.
 
 #### Example 2: 10 runs with 3 VSR bodies on 2 terrains
 
@@ -453,7 +446,7 @@ ea.experiment(
       function = ds.num.mlp()
     )]
   ) * [er.m.numericalParametrizedHomoBrains()]
-  ) * [ea.s.numGA(nEval = 1000; nPop = 50)]
+  ) * [ea.s.doubleStringGa(nEval = 1000; nPop = 50)]
   ) * [ea.run()];
   listeners = [
     ea.l.tui(
@@ -495,6 +488,7 @@ where `<play-file>` is the path to a file with an **play description** (see [`ev
 For example, with a play file like this:
 ```
 er.play(
+  name = "example";
   mapper = er.m.numericalParametrizedHeteroBrains(target = s.a.centralizedNumGridVSR(
     body = s.a.vsr.gridBody(
       sensorizingFunction = s.a.vsr.sf.directional(
@@ -513,14 +507,14 @@ er.play(
   ));
   task = s.task.locomotion();
   genotype = er.doublesRandomizer();
-  consumers = [
-    er.c.video(filePath = "results/video-after.mp4"; startTime = 5; endTime = 15; w = 300; h = 200)
-  ];
-  videoFilePath = "results/video-after.mp4"
+  consumers = [er.c.video(
+    title = "Crazy biped!";
+    filePath = "video-after.mp4"; startTime = 5; endTime = 15; w = 300; h = 200
+  )]
 )
 ```
 you run a locomotion task on a biped VSR with a centralized brain consinsting of a `sin()` function with randomized phases.
-The result is saved as a video at `results/video-after.mp4`.
+The result is saved as a video at `video-after.mp4`.
 If you don't want to save a video, use `er.c.rtGUI()` as an element of `consumers`.
 
 ## References
