@@ -7,7 +7,7 @@ public class Main {
     Starter.main(new String[]{
         "-v",
         "-b", "io.github.ericmedvet.robotevo2d.main.PreparedNamedBuilder",
-        "-nt", "2",
+        "-nt", "8",
         "-f", "src/main/resources/exp-examples/jumping-centralized-vsr.txt"
     });
   }

@@ -28,7 +28,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public record Play<G, S, O>(
-    @Param("name") String name,
+    @Param(value = "name", dS = "") String name,
     @Param(value = "genotype", dNPM = "ea.f.identity()") Function<G, G> genotype,
     @Param("mapper") InvertibleMapper<G, S> mapper,
     @Param("task") Task<S, O> task,

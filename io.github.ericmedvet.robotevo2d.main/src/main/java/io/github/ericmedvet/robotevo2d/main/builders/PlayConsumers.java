@@ -102,7 +102,7 @@ public class PlayConsumers {
 
   @SuppressWarnings("unused")
   public static Consumer<Snapshot> video(
-      @Param("title") String title,
+      @Param(value = "title", dS = "") String title,
       @Param(value = "drawer", dNPM = "sim.drawer()") Function<String, Drawer> drawer,
       @Param(value = "w", dI = Misc.FILE_VIDEO_W) int w,
       @Param(value = "h", dI = Misc.FILE_VIDEO_H) int h,
