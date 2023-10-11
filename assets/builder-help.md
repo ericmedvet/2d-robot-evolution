@@ -1302,7 +1302,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `name` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+| `name` | s | `` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `genotype` | npm | `ea.f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;G, G&gt;</code> |
 | `mapper` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr>&lt;G, S&gt;</code> |
 | `task` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Task">Task</abbr>&lt;S, O&gt;</code> |
@@ -1372,7 +1372,7 @@ Produces <code><abbr title="io.github.ericmedvet.robotevo2d.main.builders.PlayCo
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `title` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+| `title` | s | `` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `drawer` | npm | `sim.drawer()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="io.github.ericmedvet.mrsim2d.viewer.Drawer">Drawer</abbr>&gt;</code> |
 | `w` | i | `600` | <code>int</code> |
 | `h` | i | `400` | <code>int</code> |
