@@ -312,7 +312,9 @@ functions = [
   ea.nf.size(f = ea.nf.genotype(individual = ea.nf.best()); s = "%5d")
 ]
 ```
-`runKeys` are strings specifying elements of the run description to be extracted as cell values, e.g., `randomGenerator.seed`, or `problem.qFunction.task.terrain`.
+`runKeys` are strings specifying elements of the run description to be extracted as cell values.
+Each string specifies both which part of the run description to extract and, optionally, the format, using the format specifier of Java `printf()` method (for run elements being named maps, the special format `%#s` just renders the name of the map).
+The format has to be `{NAME[:FORMAT]}`, e.g., `{randomGenerator.seed}`, or `{problem.qFunction.task.terrain:%#s}`.
 
 [`ea.listener.telegram()`](assets/builder-help.md#builder-ealistenertelegram) sends updates about the current run via Telegram.
 In particular, at the end of each run it can send some plots (see the [`ea.plot`](assets/builder-help.md#package-eaplot) package) and zero or more videos (see [`evorobots.video()`](assets/builder-help.md#builder-evorobotsvideo)) of the best individual found upon the evolution performing the tasks described in `tasks`, not necessarily including the one used to drive the evolution.
