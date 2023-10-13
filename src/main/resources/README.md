@@ -394,7 +394,7 @@ ea.experiment(
         ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.l.xVelocity(); s = "%5.2f"));
         ea.nf.base64(f = ea.nf.genotype(individual = ea.nf.best()))
       ];
-      runKeys = ["solver.mapper.target"; "solver.mapper.function"]
+      runKeys = ["{solver.mapper.target:%#s}"; "{solver.mapper.function:%#s}"]
     )
   ]
 )
