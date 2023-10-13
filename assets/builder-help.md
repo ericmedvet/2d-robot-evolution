@@ -995,6 +995,17 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.grid.CharShapeAppr
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.DoublesOneMax">DoublesOneMax</abbr></code>
 
+### Builder `ea.problem.synthetic.doublesVariableTarget()`
+
+`ea.p.s.doublesVariableTarget(p; target)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `p` | i | `100` | <code>int</code> |
+| `target` | d |  | <code>double</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.DoublesVariableTarget">DoublesVariableTarget</abbr></code>
+
 ### Builder `ea.problem.synthetic.intOneMax()`
 
 `ea.p.s.intOneMax(p; upperBound)`
@@ -1133,6 +1144,19 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 
 Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.RandomWalk">RandomWalk</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.problem.QualityBasedProblem">QualityBasedProblem</abbr>&lt;S, Q&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>, S, Q&gt;&gt;</code>
 
+### Builder `ea.solver.cmaEs()`
+
+`ea.s.cmaEs(mapper; initialMinV; initialMaxV; nEval)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `mapper` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, S&gt;</code> |
+| `initialMinV` | d | `-1.0` | <code>double</code> |
+| `initialMaxV` | d | `1.0` | <code>double</code> |
+| `nEval` | i |  | <code>int</code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.CMAEvolutionaryStrategy">CMAEvolutionaryStrategy</abbr>&lt;S, Q&gt;&gt;</code>
+
 ### Builder `ea.solver.doubleStringGa()`
 
 `ea.s.doubleStringGa(mapper; initialMinV; initialMaxV; crossoverP; sigmaMut; tournamentRate; minNTournament; nPop; nEval; diversity; remap)`
@@ -1173,17 +1197,15 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 
 ### Builder `ea.solver.multiSRTreeGp()`
 
-`ea.s.multiSRTreeGp(mapper; minConst; maxConst; nConst; operators; minTreeH; maxTreeH; crossoverP; tournamentRate; minNTournament; nPop; nEval; diversity; nAttemptsDiversity; remap)`
+`ea.s.multiSRTreeGp(mapper; constants; operators; minTreeH; maxTreeH; crossoverP; tournamentRate; minNTournament; nPop; nEval; diversity; nAttemptsDiversity; remap)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `mapper` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;&gt;, S&gt;</code> |
-| `minConst` | d | `0.0` | <code>double</code> |
-| `maxConst` | d | `5.0` | <code>double</code> |
-| `nConst` | i | `10` | <code>int</code> |
+| `constants` | d[] | `[0.1, 1.0, 10.0]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 | `operators` | e[] | `[+, -, *, p/, plog]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element$Operator">Element$Operator</abbr>&gt;</code> |
-| `minTreeH` | i | `3` | <code>int</code> |
-| `maxTreeH` | i | `8` | <code>int</code> |
+| `minTreeH` | i | `4` | <code>int</code> |
+| `maxTreeH` | i | `10` | <code>int</code> |
 | `crossoverP` | d | `0.8` | <code>double</code> |
 | `tournamentRate` | d | `0.05` | <code>double</code> |
 | `minNTournament` | i | `3` | <code>int</code> |
@@ -1252,17 +1274,15 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 
 ### Builder `ea.solver.srTreeGp()`
 
-`ea.s.srTreeGp(mapper; minConst; maxConst; nConst; operators; minTreeH; maxTreeH; crossoverP; tournamentRate; minNTournament; nPop; nEval; diversity; nAttemptsDiversity; remap)`
+`ea.s.srTreeGp(mapper; constants; operators; minTreeH; maxTreeH; crossoverP; tournamentRate; minNTournament; nPop; nEval; diversity; nAttemptsDiversity; remap)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `mapper` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;, S&gt;</code> |
-| `minConst` | d | `0.0` | <code>double</code> |
-| `maxConst` | d | `5.0` | <code>double</code> |
-| `nConst` | i | `10` | <code>int</code> |
+| `constants` | d[] | `[0.1, 1.0, 10.0]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 | `operators` | e[] | `[+, -, *, p/, plog]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element$Operator">Element$Operator</abbr>&gt;</code> |
-| `minTreeH` | i | `3` | <code>int</code> |
-| `maxTreeH` | i | `8` | <code>int</code> |
+| `minTreeH` | i | `4` | <code>int</code> |
+| `maxTreeH` | i | `10` | <code>int</code> |
 | `crossoverP` | d | `0.8` | <code>double</code> |
 | `tournamentRate` | d | `0.05` | <code>double</code> |
 | `minNTournament` | i | `3` | <code>int</code> |
@@ -1276,17 +1296,15 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 
 ### Builder `ea.solver.srTreeRandomWalk()`
 
-`ea.s.srTreeRandomWalk(mapper; minConst; maxConst; nConst; operators; minTreeH; maxTreeH; nEval; remap)`
+`ea.s.srTreeRandomWalk(mapper; constants; operators; minTreeH; maxTreeH; nEval; remap)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `mapper` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.experimenter.InvertibleMapper">InvertibleMapper</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;, S&gt;</code> |
-| `minConst` | d | `0.0` | <code>double</code> |
-| `maxConst` | d | `5.0` | <code>double</code> |
-| `nConst` | i | `10` | <code>int</code> |
+| `constants` | d[] | `[0.1, 1.0, 10.0]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 | `operators` | e[] | `[+, -, *, p/, plog]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element$Operator">Element$Operator</abbr>&gt;</code> |
-| `minTreeH` | i | `3` | <code>int</code> |
-| `maxTreeH` | i | `8` | <code>int</code> |
+| `minTreeH` | i | `4` | <code>int</code> |
+| `maxTreeH` | i | `10` | <code>int</code> |
 | `nEval` | i |  | <code>int</code> |
 | `remap` | b | `false` | <code>boolean</code> |
 
@@ -2116,6 +2134,21 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</ab
 
 Aliases: `s.task`, `sim.task`
 
+### Builder `sim.task.balancing()`
+
+`s.task.balancing(duration; swingLength; swingDensity; supportHeight; initialXGap; initialYGap)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `duration` | d | `10.0` | <code>double</code> |
+| `swingLength` | d | `10.0` | <code>double</code> |
+| `swingDensity` | d | `0.1` | <code>double</code> |
+| `supportHeight` | d | `1.0` | <code>double</code> |
+| `initialXGap` | d | `0.0` | <code>double</code> |
+| `initialYGap` | d | `0.1` | <code>double</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.balancing.Balancing">Balancing</abbr></code>
+
 ### Builder `sim.task.fallPiling()`
 
 `s.task.fallPiling(duration; fallInterval; nOfAgents; xSigmaRatio; randomGenerator; terrain; yGapRatio; xGap)`
@@ -2186,6 +2219,31 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.locomotion.P
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.piling.StandPiling">StandPiling</abbr></code>
 
+## Package `sim.task.balancing`
+
+Aliases: `s.task.b`, `s.task.balancing`, `sim.task.b`, `sim.task.balancing`
+
+### Builder `sim.task.balancing.avgSwingAngle()`
+
+`s.task.b.avgSwingAngle(transientTime)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `transientTime` | d | `5.0` | <code>double</code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.balancing.BalancingOutcome">BalancingOutcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+
+### Builder `sim.task.balancing.avgSwingAngleWithMalus()`
+
+`s.task.b.avgSwingAngleWithMalus(transientTime; malus)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `transientTime` | d | `5.0` | <code>double</code> |
+| `malus` | d | `1.5707963267948966` | <code>double</code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.balancing.BalancingOutcome">BalancingOutcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+
 ## Package `sim.task.jumping`
 
 Aliases: `s.task.j`, `s.task.jumping`, `sim.task.j`, `sim.task.jumping`
@@ -2198,7 +2256,7 @@ Aliases: `s.task.j`, `s.task.jumping`, `sim.task.j`, `sim.task.jumping`
 | --- | --- | --- | --- |
 | `transientTime` | d | `5.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>&lt;?&gt;, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
 
 ### Builder `sim.task.jumping.avgY()`
 
@@ -2208,7 +2266,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `transientTime` | d | `5.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>&lt;?&gt;, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
 
 ### Builder `sim.task.jumping.maxBBMinY()`
 
@@ -2218,7 +2276,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `transientTime` | d | `5.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>&lt;?&gt;, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
 
 ### Builder `sim.task.jumping.maxMaxRelJumpH()`
 
@@ -2228,7 +2286,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `transientTime` | d | `5.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>&lt;?&gt;, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
 
 ### Builder `sim.task.jumping.maxY()`
 
@@ -2238,7 +2296,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `transientTime` | d | `5.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>&lt;?&gt;, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
 
 ## Package `sim.task.locomotion`
 
@@ -2252,7 +2310,7 @@ Aliases: `s.task.l`, `s.task.locomotion`, `sim.task.l`, `sim.task.locomotion`
 | --- | --- | --- | --- |
 | `transientTime` | d | `0.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>&lt;?&gt;, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
 
 ### Builder `sim.task.locomotion.avgTerrainHeight()`
 
@@ -2262,7 +2320,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `transientTime` | d | `0.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>&lt;?&gt;, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
 
 ### Builder `sim.task.locomotion.xDistance()`
 
@@ -2272,7 +2330,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `transientTime` | d | `0.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>&lt;?&gt;, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
 
 ### Builder `sim.task.locomotion.xVelocity()`
 
@@ -2282,7 +2340,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `transientTime` | d | `0.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>&lt;?&gt;, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
 
 ## Package `sim.task.piling`
 
@@ -2296,7 +2354,7 @@ Aliases: `s.task.p`, `s.task.piling`, `sim.task.p`, `sim.task.piling`
 | --- | --- | --- | --- |
 | `transientTime` | d | `0.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>&lt;?&gt;, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
 
 ### Builder `sim.task.piling.avgW()`
 
@@ -2306,7 +2364,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `transientTime` | d | `0.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>&lt;?&gt;, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
 
 ### Builder `sim.task.piling.maxH()`
 
@@ -2316,7 +2374,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `transientTime` | d | `0.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>&lt;?&gt;, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
 
 ### Builder `sim.task.piling.maxW()`
 
@@ -2326,7 +2384,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `transientTime` | d | `0.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Outcome">Outcome</abbr>&lt;?&gt;, <abbr title="java.lang.Double">Double</abbr>&gt;</code>
 
 ## Package `sim.terrain`
 
