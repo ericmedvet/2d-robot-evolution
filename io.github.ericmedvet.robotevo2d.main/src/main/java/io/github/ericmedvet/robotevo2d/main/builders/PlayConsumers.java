@@ -11,10 +11,6 @@ import java.io.IOException;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.logging.Logger;
-
-/**
- * @author "Eric Medvet" on 2023/05/07 for 2d-robot-evolution
- */
 public class PlayConsumers {
 
   private final static Logger L = Logger.getLogger(PlayConsumers.class.getName());
