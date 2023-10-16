@@ -1,3 +1,22 @@
+/*-
+ * ========================LICENSE_START=================================
+ * robotevo2d-main
+ * %%
+ * Copyright (C) 2022 - 2023 Eric Medvet
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =========================LICENSE_END==================================
+ */
 
 package io.github.ericmedvet.robotevo2d.main;
 
@@ -9,65 +28,59 @@ import io.github.ericmedvet.jnb.core.BuilderException;
 import io.github.ericmedvet.jnb.core.NamedBuilder;
 import io.github.ericmedvet.mrsim2d.viewer.VideoBuilder;
 import io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers;
-
 import java.io.*;
 import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+
 public class Player {
 
-  private final static Logger L = Logger.getLogger(Player.class.getName());
+  private static final Logger L = Logger.getLogger(Player.class.getName());
 
   static {
     try {
-      LogManager.getLogManager().readConfiguration(Starter.class.getClassLoader()
-          .getResourceAsStream("logging.properties"));
+      LogManager.getLogManager()
+          .readConfiguration(
+              Starter.class.getClassLoader().getResourceAsStream("logging.properties"));
     } catch (IOException ex) {
-      //ignore
+      // ignore
     }
   }
 
   public static class Configuration {
     @Parameter(
         names = {"--playFile", "-f"},
-        description = "Path of the file with the play description."
-    )
+        description = "Path of the file with the play description.")
     public String playDescriptionFilePath = "";
 
     @Parameter(
         names = {"--help", "-h"},
         description = "Show this help.",
-        help = true
-    )
+        help = true)
     public boolean help;
 
     @Parameter(
         names = {"--default", "-d"},
-        description = "Use default play description."
-    )
+        description = "Use default play description.")
     public boolean defaultPlay;
 
     @Parameter(
         names = {"--verbose", "-v"},
-        description = "Be verbose on errors (i.e., print stack traces)"
-    )
+        description = "Be verbose on errors (i.e., print stack traces)")
     public boolean verbose = false;
 
     @Parameter(
         names = {"--justOutput", "-j"},
-        description = "Just show the task output, if any"
-    )
+        description = "Just show the task output, if any")
     public boolean justOutput = false;
   }
 
   public static void main(String[] args) {
-    //read configuration
+    // read configuration
     Configuration configuration = new Configuration();
-    JCommander jc = JCommander.newBuilder()
-        .addObject(configuration)
-        .build();
+    JCommander jc = JCommander.newBuilder().addObject(configuration).build();
     jc.setProgramName(Player.class.getName());
     try {
       jc.parse(args);
@@ -79,18 +92,18 @@ public class Player {
       L.severe(e.getClass().getSimpleName() + ": " + e.getMessage());
       System.exit(-1);
     }
-    //check help
+    // check help
     if (configuration.help) {
       jc.usage();
       System.exit(0);
     }
-    //check output
+    // check output
     if (configuration.justOutput) {
       L.setLevel(Level.SEVERE);
     }
-    //prepare local named builder
+    // prepare local named builder
     NamedBuilder<Object> nb = PreparedNamedBuilder.get();
-    //read experiment description
+    // read experiment description
     String playDescription = null;
     if (configuration.defaultPlay) {
       String defaultPlayDesc = "/play-examples/vsr-centralized-mlp-random-locomotion.txt";
@@ -102,10 +115,9 @@ public class Player {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(resourceIS))) {
           playDescription = br.lines().collect(Collectors.joining());
         } catch (IOException e) {
-          L.severe("Cannot read provided experiment description at %s: %s%n".formatted(
-              configuration.playDescriptionFilePath,
-              e
-          ));
+          L.severe(
+              "Cannot read provided experiment description at %s: %s%n"
+                  .formatted(configuration.playDescriptionFilePath, e));
           if (configuration.verbose) {
             e.printStackTrace();
           }
@@ -114,14 +126,16 @@ public class Player {
     } else if (configuration.playDescriptionFilePath.isEmpty()) {
       L.info("No play description file: exiting");
     } else {
-      L.config(String.format("Using provided play description: %s", configuration.playDescriptionFilePath));
-      try (BufferedReader br = new BufferedReader(new FileReader(configuration.playDescriptionFilePath))) {
+      L.config(
+          String.format(
+              "Using provided play description: %s", configuration.playDescriptionFilePath));
+      try (BufferedReader br =
+          new BufferedReader(new FileReader(configuration.playDescriptionFilePath))) {
         playDescription = br.lines().collect(Collectors.joining());
       } catch (IOException e) {
-        L.severe("Cannot read provided experiment description at %s: %s%n".formatted(
-            configuration.playDescriptionFilePath,
-            e
-        ));
+        L.severe(
+            "Cannot read provided experiment description at %s: %s%n"
+                .formatted(configuration.playDescriptionFilePath, e));
         if (configuration.verbose) {
           e.printStackTrace();
         }
@@ -130,39 +144,43 @@ public class Player {
     if (playDescription == null) {
       System.exit(-1);
     }
-    //run player
+    // run player
     try {
-      //build solution
+      // build solution
       L.config("Building genotype");
       @SuppressWarnings("unchecked")
       Play<Object, Object, Object> play = (Play<Object, Object, Object>) nb.build(playDescription);
       Object genotype = play.genotype().apply(play.mapper().exampleFor(null));
       L.config("Building solution");
       Object solution = play.mapper().mapperFor(null).apply(genotype);
-      //build consumer
-      PlayConsumers.ProducingConsumer consumer = play.consumers().stream()
-          .reduce(PlayConsumers.ProducingConsumer::andThen)
-          .orElse(PlayConsumers.ProducingConsumer.from(s -> {}, () -> {}));
-      //do task
+      // build consumer
+      PlayConsumers.ProducingConsumer consumer =
+          play.consumers().stream()
+              .reduce(PlayConsumers.ProducingConsumer::andThen)
+              .orElse(PlayConsumers.ProducingConsumer.from(s -> {}, () -> {}));
+      // do task
       L.info("Executing the task");
       Object outcome = play.task().run(solution, play.engineSupplier().get(), consumer);
       L.info("The outcome of the task is %s".formatted(outcome));
-      //process outcome
+      // process outcome
       if (configuration.justOutput) {
         //noinspection unchecked,rawtypes
-        System.out.println(play.outcomeFunctions().stream()
-            .map(f -> f.getFormat().formatted(((Function) f).apply(outcome)))
-            .collect(Collectors.joining("; ")));
+        System.out.println(
+            play.outcomeFunctions().stream()
+                .map(f -> f.getFormat().formatted(((Function) f).apply(outcome)))
+                .collect(Collectors.joining("; ")));
       } else {
         //noinspection unchecked,rawtypes
-        play.outcomeFunctions().forEach(f -> System.out.printf(
-            "%s = " + f.getFormat() + "%n",
-            f.getName(),
-            ((Function) f).apply(outcome)
-        ));
+        play.outcomeFunctions()
+            .forEach(
+                f ->
+                    System.out.printf(
+                        "%s = " + f.getFormat() + "%n",
+                        f.getName(),
+                        ((Function) f).apply(outcome)));
       }
       consumer.run();
-      //possibly save video
+      // possibly save video
       if (consumer instanceof VideoBuilder videoBuilder) {
         L.info("Doing video");
         File file = videoBuilder.get();
@@ -180,5 +198,4 @@ public class Player {
       System.exit(-1);
     }
   }
-
 }

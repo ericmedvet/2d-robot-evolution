@@ -1,11 +1,26 @@
+/*-
+ * ========================LICENSE_START=================================
+ * robotevo2d-main
+ * %%
+ * Copyright (C) 2022 - 2023 Eric Medvet
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =========================LICENSE_END==================================
+ */
 package io.github.ericmedvet.robotevo2d.main.dynamicalsystems;
 
 import io.github.ericmedvet.jsdynsym.core.composed.AbstractComposed;
 import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
-import io.github.ericmedvet.mrsim2d.buildable.builders.Agents;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -17,11 +32,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
 
-public class IOSaver<S> extends AbstractComposed<NumericalDynamicalSystem<S>> implements NumericalDynamicalSystem<S> {
+public class IOSaver<S> extends AbstractComposed<NumericalDynamicalSystem<S>>
+    implements NumericalDynamicalSystem<S> {
 
-  private final static Map<PrinterKey, PrinterInfo> PRINTER_MAP = new HashMap<>();
-  private final static Logger L = Logger.getLogger(IOSaver.class.getName());
+  private static final Map<PrinterKey, PrinterInfo> PRINTER_MAP = new HashMap<>();
+  private static final Logger L = Logger.getLogger(IOSaver.class.getName());
   private final String filePath;
   private final double initialT;
   private final double finalT;
@@ -29,7 +47,8 @@ public class IOSaver<S> extends AbstractComposed<NumericalDynamicalSystem<S>> im
   private int index;
   private boolean stopped;
 
-  public IOSaver(NumericalDynamicalSystem<S> inner, String filePath, double initialT, double finalT) {
+  public IOSaver(
+      NumericalDynamicalSystem<S> inner, String filePath, double initialT, double finalT) {
     super(inner);
     this.filePath = filePath;
     this.initialT = initialT;
@@ -65,13 +84,13 @@ public class IOSaver<S> extends AbstractComposed<NumericalDynamicalSystem<S>> im
       printerInfo.counter().incrementAndGet();
       return printerInfo;
     }
-    //create printer
+    // create printer
     CSVPrinter printer;
     try {
-      printer = new CSVPrinter(
-          new PrintStream(new FileOutputStream(key.filePath())),
-          CSVFormat.Builder.create().setDelimiter(";").build()
-      );
+      printer =
+          new CSVPrinter(
+              new PrintStream(new FileOutputStream(key.filePath())),
+              CSVFormat.Builder.create().setDelimiter(";").build());
     } catch (IOException e) {
       L.warning("Cannot write on file due to %s".formatted(e));
       return null;
@@ -79,13 +98,13 @@ public class IOSaver<S> extends AbstractComposed<NumericalDynamicalSystem<S>> im
     // print header
     try {
       // TODO to be replaced with a call to Agents.varNames()
-      printer.printRecord(Stream.concat(
-          Stream.of("index", "t"),
+      printer.printRecord(
           Stream.concat(
-              varNames("x", key.nOfInputs()).stream(),
-              varNames("y", key.nOfOutputs()).stream()
-          )
-      ).toList());
+                  Stream.of("index", "t"),
+                  Stream.concat(
+                      varNames("x", key.nOfInputs()).stream(),
+                      varNames("y", key.nOfOutputs()).stream()))
+              .toList());
       L.info("Header written on %s".formatted(key.filePath));
     } catch (IOException e) {
       L.warning("Cannot write header due to %s".formatted(e));
@@ -97,7 +116,9 @@ public class IOSaver<S> extends AbstractComposed<NumericalDynamicalSystem<S>> im
 
   private static List<String> varNames(String name, int number) {
     int digits = (int) Math.ceil(Math.log10(number + 1));
-    return IntStream.range(1, number + 1).mapToObj((name + "%0" + digits + "d")::formatted).toList();
+    return IntStream.range(1, number + 1)
+        .mapToObj((name + "%0" + digits + "d")::formatted)
+        .toList();
   }
 
   @Override
@@ -123,15 +144,13 @@ public class IOSaver<S> extends AbstractComposed<NumericalDynamicalSystem<S>> im
         }
       }
       if (printer != null) {
-        //write a row
+        // write a row
         try {
-          printer.printRecord(Stream.concat(
-              Stream.of((double) index, t),
+          printer.printRecord(
               Stream.concat(
-                  Arrays.stream(input).boxed(),
-                  Arrays.stream(output).boxed()
-              )
-          ).toList());
+                      Stream.of((double) index, t),
+                      Stream.concat(Arrays.stream(input).boxed(), Arrays.stream(output).boxed()))
+                  .toList());
         } catch (IOException e) {
           L.warning("Cannot write row due to %s".formatted(e));
         }
