@@ -27,6 +27,7 @@ import io.github.ericmedvet.jgea.core.solver.state.POSetPopulationState;
 import io.github.ericmedvet.jgea.experimenter.Run;
 import io.github.ericmedvet.jgea.experimenter.RunOutcome;
 import io.github.ericmedvet.jgea.experimenter.Utils;
+import io.github.ericmedvet.jnb.core.Discoverable;
 import io.github.ericmedvet.jnb.core.NamedBuilder;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jnb.core.ParamMap;
@@ -45,6 +46,7 @@ import java.util.logging.Logger;
 import java.util.random.RandomGenerator;
 import java.util.stream.Collectors;
 
+@Discoverable(prefixTemplate = "evorobots|er")
 public class Misc {
 
   public static final int FILE_VIDEO_W = 600;

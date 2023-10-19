@@ -20,6 +20,7 @@
 package io.github.ericmedvet.robotevo2d.main.builders;
 
 import io.github.ericmedvet.jgea.core.listener.NamedFunction;
+import io.github.ericmedvet.jnb.core.Discoverable;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jnb.core.ParamMap;
 import io.github.ericmedvet.jsdynsym.grid.Grid;
@@ -35,6 +36,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.logging.Logger;
 
+@Discoverable(prefixTemplate = "evorobots|er.namedFunction|nf")
 public class NamedFunctions {
 
   private static final Logger L = Logger.getLogger(NamedFunctions.class.getName());
