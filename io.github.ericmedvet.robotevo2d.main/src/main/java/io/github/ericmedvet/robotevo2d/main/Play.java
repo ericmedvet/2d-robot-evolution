@@ -22,6 +22,7 @@ package io.github.ericmedvet.robotevo2d.main;
 
 import io.github.ericmedvet.jgea.core.listener.NamedFunction;
 import io.github.ericmedvet.jgea.experimenter.InvertibleMapper;
+import io.github.ericmedvet.jnb.core.Discoverable;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.mrsim2d.core.engine.Engine;
 import io.github.ericmedvet.mrsim2d.core.tasks.Task;
@@ -30,6 +31,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+@Discoverable(prefixTemplate = "evorobots|er")
 public record Play<G, S, O>(
     @Param(value = "name", dS = "") String name,
     @Param(value = "genotype", dNPM = "ea.f.identity()") Function<G, G> genotype,

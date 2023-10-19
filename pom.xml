@@ -43,15 +43,21 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>17</jdk.version>
-        <revision>1.3.0</revision>
-        <mrsim2d.version>1.0.0</mrsim2d.version>
-        <jgea.version>2.4.8</jgea.version>
-        <jnb.version>1.1.8</jnb.version>
+        <revision>1.3.1</revision>
+        <mrsim2d.version>1.0.1</mrsim2d.version>
+        <jgea.version>2.4.9</jgea.version>
+        <jnb.version>1.2.0</jnb.version>
     </properties>
     <dependencies>
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

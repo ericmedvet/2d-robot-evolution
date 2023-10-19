@@ -19,6 +19,7 @@
  */
 package io.github.ericmedvet.robotevo2d.main.builders;
 
+import io.github.ericmedvet.jnb.core.Discoverable;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.mrsim2d.core.Snapshot;
 import io.github.ericmedvet.mrsim2d.viewer.*;
@@ -30,6 +31,7 @@ import java.util.function.Function;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
+@Discoverable(prefixTemplate = "evorobots|er.consumer|c")
 public class PlayConsumers {
 
   private static final Logger L = Logger.getLogger(PlayConsumers.class.getName());

@@ -29,10 +29,7 @@ import io.github.ericmedvet.jgea.core.representation.tree.Tree;
 import io.github.ericmedvet.jgea.core.representation.tree.numeric.Element;
 import io.github.ericmedvet.jgea.core.representation.tree.numeric.TreeBasedMultivariateRealFunction;
 import io.github.ericmedvet.jgea.experimenter.InvertibleMapper;
-import io.github.ericmedvet.jnb.core.NamedBuilder;
-import io.github.ericmedvet.jnb.core.NamedParamMap;
-import io.github.ericmedvet.jnb.core.Param;
-import io.github.ericmedvet.jnb.core.ParamMap;
+import io.github.ericmedvet.jnb.core.*;
 import io.github.ericmedvet.jsdynsym.core.NumericalParametrized;
 import io.github.ericmedvet.jsdynsym.core.Parametrized;
 import io.github.ericmedvet.jsdynsym.core.composed.Composed;
@@ -48,6 +45,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
+@Discoverable(prefixTemplate = "evorobots|er.mapper|m")
 public class Mappers {
   private Mappers() {}
 

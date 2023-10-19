@@ -102,7 +102,7 @@ public class Player {
       L.setLevel(Level.SEVERE);
     }
     // prepare local named builder
-    NamedBuilder<Object> nb = PreparedNamedBuilder.get();
+    NamedBuilder<Object> nb = NamedBuilder.fromDiscovery();
     // read experiment description
     String playDescription = null;
     if (configuration.defaultPlay) {

@@ -22,12 +22,14 @@ package io.github.ericmedvet.robotevo2d.main.builders;
 import io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction;
 import io.github.ericmedvet.jgea.core.representation.graph.numeric.operatorgraph.OperatorGraph;
 import io.github.ericmedvet.jgea.core.representation.tree.numeric.TreeBasedMultivariateRealFunction;
+import io.github.ericmedvet.jnb.core.Discoverable;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jsdynsym.core.StatelessSystem;
 import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
 import io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron;
 import io.github.ericmedvet.robotevo2d.main.dynamicalsystems.IOSaver;
 
+@Discoverable(prefixTemplate = "evorobots|er.dynamicalSystem|dynSys|ds.numerical|num")
 public class NumericalDynamicalSystems {
 
   private NumericalDynamicalSystems() {}
@@ -52,6 +54,18 @@ public class NumericalDynamicalSystems {
   @SuppressWarnings("unused")
   public static io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.Builder<
           NamedMultivariateRealFunction, StatelessSystem.State>
+      oGraphMRF(
+          @Param(value = "postOperator", dS = "identity")
+              MultiLayerPerceptron.ActivationFunction postOperator) {
+
+    return (xVarNames, yVarNames) ->
+        new OperatorGraph(
+            OperatorGraph.sampleFor(xVarNames, yVarNames), xVarNames, yVarNames, postOperator);
+  }
+
+  @SuppressWarnings("unused")
+  public static io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.Builder<
+          NamedMultivariateRealFunction, StatelessSystem.State>
       treeMRF(
           @Param(value = "postOperator", dS = "identity")
               MultiLayerPerceptron.ActivationFunction postOperator) {
@@ -61,17 +75,5 @@ public class NumericalDynamicalSystems {
             xVarNames,
             yVarNames,
             postOperator);
-  }
-
-  @SuppressWarnings("unused")
-  public static io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.Builder<
-          NamedMultivariateRealFunction, StatelessSystem.State>
-      oGraphMRF(
-          @Param(value = "postOperator", dS = "identity")
-              MultiLayerPerceptron.ActivationFunction postOperator) {
-
-    return (xVarNames, yVarNames) ->
-        new OperatorGraph(
-            OperatorGraph.sampleFor(xVarNames, yVarNames), xVarNames, yVarNames, postOperator);
   }
 }

@@ -26,7 +26,6 @@ import io.github.ericmedvet.mrsim2d.core.engine.Engine;
 import io.github.ericmedvet.mrsim2d.core.tasks.Task;
 import io.github.ericmedvet.mrsim2d.viewer.Drawer;
 import io.github.ericmedvet.mrsim2d.viewer.FramesImageBuilder;
-import io.github.ericmedvet.robotevo2d.main.PreparedNamedBuilder;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.List;
@@ -66,7 +65,7 @@ public class AgentImageWriter {
           T0 + (N + 1d) * D_T);
 
   public static void main(String[] args) {
-    NamedBuilder<?> nb = PreparedNamedBuilder.get();
+    NamedBuilder<?> nb = NamedBuilder.fromDiscovery();
     String imgsPath = args.length > 1 ? args[0] : IMGS_PATH;
     List<String> agentResourcePaths = AGENT_DESCRIPTION_RESOURCE_PATHS;
     @SuppressWarnings("unchecked")
