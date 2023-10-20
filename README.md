@@ -174,7 +174,7 @@ Here we describe the most significant ones.
 [`sim.agent.centralizedNumGridVSR()`](assets/builder-help.md#builder-simagentcentralizednumgridvsr) corresponds to a Voxel-based Soft Robot (VSR) with a single closed-loop controller taking as input the sensor readings and giving as output the activation values, as described in [[1]](#2020-c-mbdf-evolution).
 The controller is a `TimedRealFunction`, i.e., a multivariate function (more appropriately, a dynamical system) taking the current time $t$ and $m$ real values (the sensor readings) and giving $n$ real values (the expansion/contraction values for each one of the $n$ voxels); formally, it is a $f: \mathbb{R} \times \mathbb{R}^m \to \mathbb{R}^n$.
 The sensors and the shape of the body are specified in the `body` parameter of `sim.agent.centralizedNumGridVSR()`.
-Available functions for the controller are grouped in the [`sim.function`](assets/builder-help.md#package-simfunction) package: the key ones are described [below](#functions).
+Available functions for the controller are grouped in the [`ds.num`](assets/builder-help.md#package-dsnum) package: the key ones are described [below](#functions).
 Here is how an agent built with `sim.agent.centralizedNumGridVSR()` looks like with [this description](io.github.ericmedvet.robotevo2d.main/src/main/resources/agent-examples/vsr-centralized-biped.txt) of a [`sim.agent.vsr.shape.biped()`](assets/builder-help.md#builder-simagentvsrshapebiped) shape.
 
 ![Centralized biped VSR](assets/images/agents/vsr-centralized-biped.png)
@@ -200,19 +200,19 @@ Here is how an agent built with `sim.agent.distributedNumGridVSR()` looks like w
 
 Functions are multivariate functions taking the current time $t$ and $m$ real values and giving $n$ real values (i.e., $f: \mathbb{R} \times \mathbb{R}^m \to \mathbb{R}^n$) and are used inside robots as controllers (or brains).
 More appropriately, these are dynamical systems with an input space $\mathbb{R}^m$ and an output space $\mathbb{R}^n$: the state space depends on the function and may be $\emptyset$, i.e., the system may be stateless (i.e., an actual function).
-Their builders are grouped in the [`sim.function`](assets/builder-help.md#package-simfunction) package.
-Note that all of the builders in this package actually return a builder of a `TimedRealFunction` (precisely something that implements `BiFunction<Integer, Integer, TimedRealFunction>`), rather than a `TimedRealFunction`: when using a builder as a controller of an agent, the builder is invoked with the appropriate values for $m$ and $n$ base, usually, on the body (shape and sensors) of the agent.
+Their builders are grouped in the [`ds.num.function`](assets/builder-help.md#package-dsnum) package.
+Note that all of the builders in this package actually return a builder of a `NumericalDynamicalSystem` (or something that extends it), rather than a `NumericalDynamicalSystem`: when using a builder as a controller of an agent, the builder is invoked with the appropriate values for $m$ and $n$ base, usually, on the body (shape and sensors) of the agent.
 Here we describe the most significant ones.
 
-[`sim.function.mlp()`](assets/builder-help.md#builder-simfunctionmlp) is a Multi-layer Perceptron consisting of `nOfInnerLayers` inner layers in which each neuron has the same `activationFunction`.
+[`ds.num.mlp()`](assets/builder-help.md#builder-dsnummlp) is a Multi-layer Perceptron consisting of `nOfInnerLayers` inner layers in which each neuron has the same `activationFunction`.
 The size (number of neurons) inside each layer is computed based on the size of the first (*input*) and last (*output*) layers using the parameter `innerLayerRatio`: in brief, the $j+1$-th layer size is `innerLayerRatio` times the size of the $j$-th layer.
 As explained above, the size of the first and last layer are determined based on the context the function is used in (this holds for all the functions in this package).
-`sim.function.mlp()` is a `Parametrized` function: its parameters are the weights of the MLP.
+`ds.num.mlp()` is a `NumericalParametrized` dynamical system (actually a stateless dynamical system, that is, a function): its parameters are the weights of the MLP.
 Usually, they are exactly what you want to optimize using an evolutionary algorithm.
 
-[`sim.function.sin()`](assets/builder-help.md#builder-simfunctionsin) is a simple functions that determines the output in $\mathbb{R}^n$ using an array of $n$ sinusoidal functions, i.e., $a \sin(2 \pi f t + \phi)+b$.
+[`ds.num.sin()`](assets/builder-help.md#builder-dsnumsin) is a simple function that determines the output in $\mathbb{R}^n$ using an array of $n$ sinusoidal functions, i.e., $a \sin(2 \pi f t + \phi)+b$.
 Note that the input is not used when computing the output: that is, controllers employing (only) this function are open-loop controllers, since they do not use the sensor readings.
-The function is `Parametrized` but the actual number of parameters depends on $n$ and the `a`, `f`, `p`, and `b` parameters, that are ranges.
+The function is `NumericalParametrized` but the actual number of parameters depends on $n$ and the `a`, `f`, `p`, and `b` parameters, that are ranges.
 For each one, if the range boundaries do not coincide, the actual value of the corresponding sinusoidal parameter (i.e., $a$, $f$, $\phi$, $b$, respectively) is a parameter and is min-max normalized from $[-1,1]$ to the range.
 For example, take the following `sin()` for $n=10$:
 ```
@@ -226,18 +226,18 @@ ds.num.sin(
 All the 10 sinusoidal functions will have the same frequency $f=0.3$ and the same bias $b=0$, but they will potentially differ in the amplitude $a \in [0.1, 0.3]$ and the phase $\phi \in [-1.57, 1.57]$.
 This function will have $10 \cdot 2 = 20$ parameters.
 
-[`sim.function.diffIn()`](assets/builder-help.md#builder-simfunctiondiffin) is a composite function that wraps another `innerFunction`.
-It takes a input of $n$ values and delivers to the inner function an enlarged input of (up to, depending on `types` parameter) $3n$ values, consisting of current (at $t$) values (i.e., exactly its $n$ input values), average values in the last `windowT` simulated seconds, and trend values (i.e., newest minus oldest) in the same time window.
-Actually, `diffIn()` is a *dynamical system* rather than a *function*, since it has a state.
+[`ds.num.enhanced()`](assets/builder-help.md#builder-dsnumenhanced) is a composite dynamical system that wraps another `inner` dynamical system.
+It takes a input of $n$ values and delivers to the inner dynamical system an enlarged input of (up to, depending on `types` parameter) $3n$ values, consisting of current (at $t$) values (i.e., exactly its $n$ input values), average values in the last `windowT` simulated seconds, and trend values (i.e., newest minus oldest) in the same time window.
 
-[`sim.function.stepOut()`](assets/builder-help.md#builder-simfunctionstepout) is a composite function that wraps another `innerFunction`.
-It acts similarly to `diffIn()`, but operates on the output instead of on the input; like `diffIn()`, it is a dynamical system, since it has a state.
-It lets `innerFunction` compute the output $\vec{x}$ of $m$ values passing it the untouched input and delivers as output $\vec{x}$ kept constant for consecutive time windows of `stepT` seconds; actually the `innerFunction` is invoked only once at a constant rate each `stepT` seconds and stored internally.
-In other words, `stepOut()` makes `innerFunction` a step function.
+[`ds.num.outStepped()`](assets/builder-help.md#builder-dsnumoutstepped) is a composite dynamical system that wraps another `inner` dynamical system.
+It acts similarly to `enhanced()`, but operates on the output instead of on the input.
+It lets `inner` compute the output $\vec{x}$ of $m$ values passing it the untouched input and delivers as output $\vec{x}$ kept constant for consecutive time windows of `stepT` seconds.
+In other words, `outStepped()` makes `inner` a step dynamical system.
 It may be useful for avoiding high-frequency behaviors, like in [[3]](#2022-c-mr-impact), where `stepT` was set to 0.2.
+There is a similar composite dynamical system working on the input, `ds.num.inStepped()`, and one working on both input and output, `ds.num.stepped()`.
 
-[`sim.function.noised()`](assets/builder-help.md#builder-simfunctionnoised) is a composite function that wraps another `innerFunction`.
-It is a function that adds some Gaussian noise before (with `inputSigma` $> 0$) and/or after (with `outputSigma` $> 0$) invoking the inner function.
+[`ds.num.noised()`](assets/builder-help.md#builder-dsnumnoised) is a composite dynamical system that wraps another `inner` dynamical system.
+It is a dynamical system that adds some Gaussian noise before (with `inputSigma` $> 0$) and/or after (with `outputSigma` $> 0$) invoking the inner function.
 
 ##### Problems
 
