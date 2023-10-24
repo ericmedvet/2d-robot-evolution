@@ -26,8 +26,6 @@ public class Main {
     Starter.main(
         new String[] {
           "-v",
-          "-b",
-          "io.github.ericmedvet.robotevo2d.main.PreparedNamedBuilder",
           "-nt",
           "8",
           "-f",
