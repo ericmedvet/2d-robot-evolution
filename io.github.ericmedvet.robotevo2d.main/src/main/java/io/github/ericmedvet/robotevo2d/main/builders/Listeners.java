@@ -38,16 +38,14 @@ public class Listeners {
 
   @SuppressWarnings("unused")
   public static <A>
-      BiFunction<
-              Experiment,
-              ExecutorService,
-              ListenerFactory<POSetPopulationState<?, A, ?>, Run<?, ?, A, ?>>>
+      BiFunction<Experiment, ExecutorService, ListenerFactory<POSetPopulationState<?, A, ?>, Run<?, ?, A, ?>>>
           videoSaver(
               @Param("videos")
                   List<AccumulatorFactory<POSetPopulationState<?, A, ?>, File, Run<?, ?, A, ?>>>
                       accumulators) {
-    return (experiment, executorService) ->
-        ListenerFactory.all(accumulators.stream().map(AccumulatorFactory::withAutoGet).toList())
-            .deferred(executorService);
+    return (experiment, executorService) -> ListenerFactory.all(accumulators.stream()
+            .map(AccumulatorFactory::withAutoGet)
+            .toList())
+        .deferred(executorService);
   }
 }

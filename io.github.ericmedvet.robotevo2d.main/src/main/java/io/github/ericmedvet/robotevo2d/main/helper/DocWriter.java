@@ -38,8 +38,7 @@ public class DocWriter {
       infoPrinter.print(nb, filePS);
       System.exit(0);
     } catch (FileNotFoundException e) {
-      throw new IllegalArgumentException(
-          "Cannot open md file %s: %s".formatted(mdHelpFilePath, e), e);
+      throw new IllegalArgumentException("Cannot open md file %s: %s".formatted(mdHelpFilePath, e), e);
     }
   }
 }

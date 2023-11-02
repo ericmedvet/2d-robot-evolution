@@ -24,12 +24,6 @@ import io.github.ericmedvet.jgea.experimenter.Starter;
 public class Main {
   public static void main(String[] args) {
     Starter.main(
-        new String[] {
-          "-v",
-          "-nt",
-          "8",
-          "-f",
-          "src/main/resources/exp-examples/jumping-centralized-vsr.txt"
-        });
+        new String[] {"-v", "-nt", "8", "-f", "src/main/resources/exp-examples/jumping-centralized-vsr.txt"});
   }
 }

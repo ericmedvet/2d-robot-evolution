@@ -37,19 +37,17 @@ import javax.imageio.ImageIO;
 
 public class AgentImageWriter {
 
-  private static final List<String> AGENT_DESCRIPTION_RESOURCE_PATHS =
-      List.of(
-          "/agent-examples/vsr-centralized-biped.txt",
-          "/agent-examples/vsr-centralized-free.txt",
-          "/agent-examples/vsr-distributed-worm.txt",
-          "/agent-examples/hybrid-vsr-distributed-tripod.txt",
-          "/agent-examples/legged-passive-3.txt",
-          "/agent-examples/legged-active-4.txt",
-          "/agent-examples/legged-modular-active-4.txt");
+  private static final List<String> AGENT_DESCRIPTION_RESOURCE_PATHS = List.of(
+      "/agent-examples/vsr-centralized-biped.txt",
+      "/agent-examples/vsr-centralized-free.txt",
+      "/agent-examples/vsr-distributed-worm.txt",
+      "/agent-examples/hybrid-vsr-distributed-tripod.txt",
+      "/agent-examples/legged-passive-3.txt",
+      "/agent-examples/legged-active-4.txt",
+      "/agent-examples/legged-modular-active-4.txt");
 
   private static final String ENGINE_DESCRIPTION = "s.engine()";
-  private static final String DRAWER_DESCRIPTION =
-      "s.drawer(actions = true; miniAgents = brains; enlargement = 1.5)";
+  private static final String DRAWER_DESCRIPTION = "s.drawer(actions = true; miniAgents = brains; enlargement = 1.5)";
   private static final String IMGS_PATH = "assets/images/agents/";
 
   private static final int W = 400;
@@ -58,11 +56,10 @@ public class AgentImageWriter {
   private static final double D_T = 0.25;
   private static final double T0 = 0.25;
 
-  private static final String TASK_DESCRIPTION =
-      String.format(
-          Locale.ROOT,
-          "s.task.locomotion(terrain = s.t.hilly(chunkW = 1; chunkH = 0.25); duration = %f)",
-          T0 + (N + 1d) * D_T);
+  private static final String TASK_DESCRIPTION = String.format(
+      Locale.ROOT,
+      "s.task.locomotion(terrain = s.t.hilly(chunkW = 1; chunkH = 0.25); duration = %f)",
+      T0 + (N + 1d) * D_T);
 
   public static void main(String[] args) {
     NamedBuilder<?> nb = NamedBuilder.fromDiscovery();
@@ -77,23 +74,16 @@ public class AgentImageWriter {
 
     System.out.printf("Going to generate and save %d images.%n", agentResourcePaths.size());
     for (String agentResourcePath : agentResourcePaths) {
-      String name =
-          agentResourcePath.split("/")[agentResourcePath.split("/").length - 1].split("\\.")[0];
+      String name = agentResourcePath
+          .split("/")[agentResourcePath.split("/").length - 1]
+          .split("\\.")[0];
       System.out.printf("Doing %s.%n", name);
       //noinspection DataFlowIssue
       try (InputStream inputStream = AgentImageWriter.class.getResourceAsStream(agentResourcePath);
           BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
         Supplier<Agent> agent = () -> (Agent) nb.build(br.lines().collect(Collectors.joining()));
-        FramesImageBuilder fib =
-            new FramesImageBuilder(
-                W,
-                H,
-                N,
-                D_T,
-                T0,
-                FramesImageBuilder.Direction.HORIZONTAL,
-                true,
-                drawer.apply(name));
+        FramesImageBuilder fib = new FramesImageBuilder(
+            W, H, N, D_T, T0, FramesImageBuilder.Direction.HORIZONTAL, true, drawer.apply(name));
         task.run(agent, engine.get(), fib);
         BufferedImage bufferedImage = fib.get();
         File imgFile = new File(imgsPath + File.separator + name + ".png");

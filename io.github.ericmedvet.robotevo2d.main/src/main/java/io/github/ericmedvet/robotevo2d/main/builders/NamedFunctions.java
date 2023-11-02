@@ -48,8 +48,7 @@ public class NamedFunctions {
   }
 
   @SuppressWarnings("unused")
-  public static <X> NamedFunction<X, Double> compactness(
-      @Param("f") NamedFunction<X, Grid<GridBody.Element>> f) {
+  public static <X> NamedFunction<X, Double> compactness(@Param("f") NamedFunction<X, Grid<GridBody.Element>> f) {
     return NamedFunction.build(
         c("compactness", f.getName()),
         "%4.2f",
@@ -57,8 +56,7 @@ public class NamedFunctions {
   }
 
   @SuppressWarnings("unused")
-  public static <X> NamedFunction<X, Integer> count(
-      @Param("f") NamedFunction<X, Grid<GridBody.Element>> f) {
+  public static <X> NamedFunction<X, Integer> count(@Param("f") NamedFunction<X, Grid<GridBody.Element>> f) {
     return NamedFunction.build(
         c("count", f.getName()),
         "%3d",
@@ -66,8 +64,7 @@ public class NamedFunctions {
   }
 
   @SuppressWarnings("unused")
-  public static <X> NamedFunction<X, Double> elongation(
-      @Param("f") NamedFunction<X, Grid<GridBody.Element>> f) {
+  public static <X> NamedFunction<X, Double> elongation(@Param("f") NamedFunction<X, Grid<GridBody.Element>> f) {
     return NamedFunction.build(
         c("elongation", f.getName()),
         "%4.1f",
@@ -89,12 +86,12 @@ public class NamedFunctions {
   @SuppressWarnings("unused")
   public static <X> NamedFunction<X, Grid<GridBody.Element>> gridBody(
       @Param("f") NamedFunction<X, Supplier<AbstractGridVSR>> f) {
-    return NamedFunction.build(c("gridBody", f.getName()), x -> f.apply(x).get().getElementGrid());
+    return NamedFunction.build(
+        c("gridBody", f.getName()), x -> f.apply(x).get().getElementGrid());
   }
 
   @SuppressWarnings("unused")
-  public static <X> NamedFunction<X, Integer> h(
-      @Param("f") NamedFunction<X, Grid<GridBody.Element>> f) {
+  public static <X> NamedFunction<X, Integer> h(@Param("f") NamedFunction<X, Grid<GridBody.Element>> f) {
     return NamedFunction.build(
         c("h", f.getName()),
         "%2d",
@@ -102,26 +99,22 @@ public class NamedFunctions {
   }
 
   @SuppressWarnings("unused")
-  public static <X> NamedFunction<X, String> stringBase64(
-      @Param("f") NamedFunction<X, Serializable> f) {
-    return NamedFunction.build(
-        c("stringBase64", f.getName()),
-        x -> {
-          try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
-              ObjectOutputStream oos = new ObjectOutputStream(baos)) {
-            oos.writeObject(f.apply(x).toString());
-            oos.flush();
-            return Base64.getEncoder().encodeToString(baos.toByteArray());
-          } catch (Throwable t) {
-            L.warning("Cannot serialize %s due to %s".formatted(f.getName(), t));
-            return "not-serializable";
-          }
-        });
+  public static <X> NamedFunction<X, String> stringBase64(@Param("f") NamedFunction<X, Serializable> f) {
+    return NamedFunction.build(c("stringBase64", f.getName()), x -> {
+      try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
+          ObjectOutputStream oos = new ObjectOutputStream(baos)) {
+        oos.writeObject(f.apply(x).toString());
+        oos.flush();
+        return Base64.getEncoder().encodeToString(baos.toByteArray());
+      } catch (Throwable t) {
+        L.warning("Cannot serialize %s due to %s".formatted(f.getName(), t));
+        return "not-serializable";
+      }
+    });
   }
 
   @SuppressWarnings("unused")
-  public static <X> NamedFunction<X, Integer> w(
-      @Param("f") NamedFunction<X, Grid<GridBody.Element>> f) {
+  public static <X> NamedFunction<X, Integer> w(@Param("f") NamedFunction<X, Grid<GridBody.Element>> f) {
     return NamedFunction.build(
         c("w", f.getName()),
         "%2d",

@@ -77,30 +77,25 @@ public class PlayConsumers {
       @Param(value = "deltaT", dD = 0.2) double deltaT,
       @Param(value = "startTime", dD = 0) double startTime,
       @Param("filePath") String filePath) {
-    FramesImageBuilder framesImageBuilder =
-        new FramesImageBuilder(
-            w,
-            h,
-            nOfFrames,
-            deltaT,
-            startTime,
-            FramesImageBuilder.Direction.HORIZONTAL,
-            true,
-            drawer.apply(title == null ? "" : title));
-    return ProducingConsumer.from(
-        framesImageBuilder,
-        () -> {
-          BufferedImage bufferedImage = framesImageBuilder.get();
-          try {
-            File file =
-                io.github.ericmedvet.jgea.core.util.Misc.checkExistenceAndChangeName(
-                    new File(filePath));
-            ImageIO.write(bufferedImage, "png", file);
-            L.info("Image done and saved on file %s".formatted(file.getAbsolutePath()));
-          } catch (IOException e) {
-            L.warning("Could not save image file due to: %");
-          }
-        });
+    FramesImageBuilder framesImageBuilder = new FramesImageBuilder(
+        w,
+        h,
+        nOfFrames,
+        deltaT,
+        startTime,
+        FramesImageBuilder.Direction.HORIZONTAL,
+        true,
+        drawer.apply(title == null ? "" : title));
+    return ProducingConsumer.from(framesImageBuilder, () -> {
+      BufferedImage bufferedImage = framesImageBuilder.get();
+      try {
+        File file = io.github.ericmedvet.jgea.core.util.Misc.checkExistenceAndChangeName(new File(filePath));
+        ImageIO.write(bufferedImage, "png", file);
+        L.info("Image done and saved on file %s".formatted(file.getAbsolutePath()));
+      } catch (IOException e) {
+        L.warning("Could not save image file due to: %");
+      }
+    });
   }
 
   @SuppressWarnings("unused")
@@ -123,27 +118,23 @@ public class PlayConsumers {
       @Param(value = "endTime", dD = 30) double endTime,
       @Param(value = "codec", dS = "jcodec") VideoUtils.EncoderFacility codec,
       @Param("filePath") String filePath) {
-    VideoBuilder videoBuilder =
-        new VideoBuilder(
-            w,
-            h,
-            startTime,
-            endTime,
-            frameRate,
-            codec,
-            io.github.ericmedvet.jgea.core.util.Misc.checkExistenceAndChangeName(
-                new File(filePath)),
-            drawer.apply(title == null ? "" : title));
-    return ProducingConsumer.from(
-        videoBuilder,
-        () -> {
-          L.info("Doing video");
-          File file = videoBuilder.get();
-          if (file != null) {
-            L.info("Video done and saved on file %s".formatted(file.getAbsolutePath()));
-          } else {
-            L.warning("Could not save video file");
-          }
-        });
+    VideoBuilder videoBuilder = new VideoBuilder(
+        w,
+        h,
+        startTime,
+        endTime,
+        frameRate,
+        codec,
+        io.github.ericmedvet.jgea.core.util.Misc.checkExistenceAndChangeName(new File(filePath)),
+        drawer.apply(title == null ? "" : title));
+    return ProducingConsumer.from(videoBuilder, () -> {
+      L.info("Doing video");
+      File file = videoBuilder.get();
+      if (file != null) {
+        L.info("Video done and saved on file %s".formatted(file.getAbsolutePath()));
+      } else {
+        L.warning("Could not save video file");
+      }
+    });
   }
 }

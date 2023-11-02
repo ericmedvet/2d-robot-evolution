@@ -42,8 +42,7 @@ public class Player {
   static {
     try {
       LogManager.getLogManager()
-          .readConfiguration(
-              Starter.class.getClassLoader().getResourceAsStream("logging.properties"));
+          .readConfiguration(Starter.class.getClassLoader().getResourceAsStream("logging.properties"));
     } catch (IOException ex) {
       // ignore
     }
@@ -115,9 +114,8 @@ public class Player {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(resourceIS))) {
           playDescription = br.lines().collect(Collectors.joining());
         } catch (IOException e) {
-          L.severe(
-              "Cannot read provided experiment description at %s: %s%n"
-                  .formatted(configuration.playDescriptionFilePath, e));
+          L.severe("Cannot read provided experiment description at %s: %s%n"
+              .formatted(configuration.playDescriptionFilePath, e));
           if (configuration.verbose) {
             e.printStackTrace();
           }
@@ -126,16 +124,12 @@ public class Player {
     } else if (configuration.playDescriptionFilePath.isEmpty()) {
       L.info("No play description file: exiting");
     } else {
-      L.config(
-          String.format(
-              "Using provided play description: %s", configuration.playDescriptionFilePath));
-      try (BufferedReader br =
-          new BufferedReader(new FileReader(configuration.playDescriptionFilePath))) {
+      L.config(String.format("Using provided play description: %s", configuration.playDescriptionFilePath));
+      try (BufferedReader br = new BufferedReader(new FileReader(configuration.playDescriptionFilePath))) {
         playDescription = br.lines().collect(Collectors.joining());
       } catch (IOException e) {
-        L.severe(
-            "Cannot read provided experiment description at %s: %s%n"
-                .formatted(configuration.playDescriptionFilePath, e));
+        L.severe("Cannot read provided experiment description at %s: %s%n"
+            .formatted(configuration.playDescriptionFilePath, e));
         if (configuration.verbose) {
           e.printStackTrace();
         }
@@ -154,10 +148,9 @@ public class Player {
       L.config("Building solution");
       Object solution = play.mapper().mapperFor(null).apply(genotype);
       // build consumer
-      PlayConsumers.ProducingConsumer consumer =
-          play.consumers().stream()
-              .reduce(PlayConsumers.ProducingConsumer::andThen)
-              .orElse(PlayConsumers.ProducingConsumer.from(s -> {}, () -> {}));
+      PlayConsumers.ProducingConsumer consumer = play.consumers().stream()
+          .reduce(PlayConsumers.ProducingConsumer::andThen)
+          .orElse(PlayConsumers.ProducingConsumer.from(s -> {}, () -> {}));
       // do task
       L.info("Executing the task");
       Object outcome = play.task().run(solution, play.engineSupplier().get(), consumer);
@@ -165,19 +158,14 @@ public class Player {
       // process outcome
       if (configuration.justOutput) {
         //noinspection unchecked,rawtypes
-        System.out.println(
-            play.outcomeFunctions().stream()
-                .map(f -> f.getFormat().formatted(((Function) f).apply(outcome)))
-                .collect(Collectors.joining("; ")));
+        System.out.println(play.outcomeFunctions().stream()
+            .map(f -> f.getFormat().formatted(((Function) f).apply(outcome)))
+            .collect(Collectors.joining("; ")));
       } else {
         //noinspection unchecked,rawtypes
         play.outcomeFunctions()
-            .forEach(
-                f ->
-                    System.out.printf(
-                        "%s = " + f.getFormat() + "%n",
-                        f.getName(),
-                        ((Function) f).apply(outcome)));
+            .forEach(f -> System.out.printf(
+                "%s = " + f.getFormat() + "%n", f.getName(), ((Function) f).apply(outcome)));
       }
       consumer.run();
       // possibly save video

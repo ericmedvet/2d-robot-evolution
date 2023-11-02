@@ -1,52 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>io.github.ericmedvet</groupId>
+    <artifactId>robotevo2d</artifactId>
+    <version>${revision}</version>
+  </parent>
+  <artifactId>robotevo2d.assembly</artifactId>
+  <packaging>pom</packaging>
 
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>robotevo2d</artifactId>
-        <groupId>io.github.ericmedvet</groupId>
-        <version>${revision}</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
+  <name>robotevo2d-assembly</name>
+  <description>Assembly artifact for 2D-Robot-Evolution.</description>
 
-    <name>robotevo2d-assembly</name>
-    <description>Assembly artifact for 2D-Robot-Evolution.</description>
-    <artifactId>robotevo2d.assembly</artifactId>
-    <packaging>pom</packaging>
+  <dependencies>
+    <dependency>
+      <groupId>io.github.ericmedvet</groupId>
+      <artifactId>robotevo2d.main</artifactId>
+      <version>${revision}</version>
+    </dependency>
+  </dependencies>
 
-    <dependencies>
-        <dependency>
-            <groupId>io.github.ericmedvet</groupId>
-            <artifactId>robotevo2d.main</artifactId>
-            <version>${revision}</version>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>make-bundles</id>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                        <phase>package</phase>
-                        <configuration>
-                            <descriptors>
-                                <!--<descriptor>zip-assembly.xml</descriptor>-->
-                                <descriptor>dir-assembly.xml</descriptor>
-                            </descriptors>
-                            <finalName>${project.artifactId}-bin</finalName>
-                            <appendAssemblyId>false</appendAssemblyId>
-                            <attach>false</attach>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>make-bundles</id>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <descriptors>
+                <!--<descriptor>zip-assembly.xml</descriptor>-->
+                <descriptor>dir-assembly.xml</descriptor>
+              </descriptors>
+              <finalName>${project.artifactId}-bin</finalName>
+              <appendAssemblyId>false</appendAssemblyId>
+              <attach>false</attach>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
