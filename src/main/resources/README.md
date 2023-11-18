@@ -44,7 +44,7 @@ You can use `javaw` instead of `java` for launching the `Starter` class to circu
 
 An experiment can be started by invoking:
 ```shell
-java -cp "2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.jgea.experimenter.Starter --expFile <exp-file> --nOfThreads <nt>
+java -jar 2d-robot-evolution/io.github.ericmedvet.robotevo2d.main/target/robotevo2d.main-${project.version}-jar.with-dependencies.jar --expFile <exp-file> --nOfThreads <nt>
 ```
 where `<exp-file>` is the path to a file with an **experiment description** and `<nt>` is the **number of threads** to be used for running the experiment.
 
@@ -58,7 +58,7 @@ The actual degree of concurrency will depend on $n$ and on the evolutionary algo
 
 You can have an overview on the other (few) parameters of `Starter` with:
 ```shell
-java -cp "2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.jgea.experimenter.Starter --help
+java -jar 2d-robot-evolution/io.github.ericmedvet.robotevo2d.main/target/robotevo2d.main-${project.version}-jar.with-dependencies.jar --help
 ```
 One parameter that may be handy is `--checkExpFile`, or just `-c`, that can be used to perform a syntactical check on the experiment description file, without actually doing the experiment. 
 
@@ -489,7 +489,7 @@ There will hence be 60 runs.
 You can execute a single task on a single agent, instead of performing an entire experiment consisting of several runs, using [`Player`](io.github.ericmedvet.robotevo2d.main/src/main/java/io/github/ericmedvet/robotevo2d/main/Player.java).
 It can be started with
 ```shell
-java -cp "2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.robotevo2d.main.Player --playFile <play-file>
+java -cp 2d-robot-evolution/io.github.ericmedvet.robotevo2d.main/target/robotevo2d.main-${project.version}-jar.with-dependencies.jar io.github.ericmedvet.robotevo2d.main.Player --playFile <play-file>
 ```
 where `<play-file>` is the path to a file with an **play description** (see [`evorobots.play()`](assets/builder-help.md#builder-evorobotsplay)).
 
