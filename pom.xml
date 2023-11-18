@@ -28,7 +28,6 @@
 
   <modules>
     <module>io.github.ericmedvet.robotevo2d.main</module>
-    <module>io.github.ericmedvet.robotevo2d.assembly</module>
   </modules>
 
   <scm>
