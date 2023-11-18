@@ -31,7 +31,7 @@ mvn clean package
 
 At this point, if everything worked smoothly, you should be able to run a first short evolutionary optimization (assume you are in the parent directory of the `2d-robot-evolution` one that has been created after the last clone; this is suggested for real runs, so that you don't pollute your git branch with outcome files):
 ```shell
-java -cp "2d-robot-evolution/io.github.ericmedvet.robotevo2d.assembly/target/robotevo2d.assembly-bin/modules/*" io.github.ericmedvet.jgea.experimenter.Starter -f 2d-robot-evolution/src/main/resources/exp-examples/locomotion-centralized-vsr.txt
+java -jar 2d-robot-evolution/io.github.ericmedvet.robotevo2d.main/target/robotevo2d.main.jar -f 2d-robot-evolution/src/main/resources/exp-examples/locomotion-centralized-vsr.txt
 ```
 
 **For Windows**, it might be possible that by using the command above from the standard terminal you see garbage text output.
