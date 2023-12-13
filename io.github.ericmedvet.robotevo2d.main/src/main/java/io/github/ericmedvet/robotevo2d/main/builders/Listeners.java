@@ -26,7 +26,6 @@ import io.github.ericmedvet.jgea.experimenter.Experiment;
 import io.github.ericmedvet.jgea.experimenter.Run;
 import io.github.ericmedvet.jnb.core.Discoverable;
 import io.github.ericmedvet.jnb.core.Param;
-
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -35,17 +34,15 @@ import java.util.function.BiFunction;
 @Discoverable(prefixTemplate = "evorobots|er.listener|l")
 public class Listeners {
 
-  private Listeners() {
-  }
+  private Listeners() {}
 
   @SuppressWarnings("unused")
   public static <A>
-  BiFunction<Experiment, ExecutorService, ListenerFactory<POCPopulationState<?, ?, A, ?>, Run<?, ?, A, ?>>>
-  videoSaver(
-      @Param("videos")
-      List<AccumulatorFactory<POCPopulationState<?, ?, A, ?>, File, Run<?, ?, A, ?>>>
-          accumulators
-  ) {
+      BiFunction<Experiment, ExecutorService, ListenerFactory<POCPopulationState<?, ?, A, ?>, Run<?, ?, A, ?>>>
+          videoSaver(
+              @Param("videos")
+                  List<AccumulatorFactory<POCPopulationState<?, ?, A, ?>, File, Run<?, ?, A, ?>>>
+                      accumulators) {
     return (experiment, executorService) -> ListenerFactory.all(accumulators.stream()
             .map(a -> a.thenOnDone((r, f) -> {})) // saving is done by the accumulator
             .toList())
