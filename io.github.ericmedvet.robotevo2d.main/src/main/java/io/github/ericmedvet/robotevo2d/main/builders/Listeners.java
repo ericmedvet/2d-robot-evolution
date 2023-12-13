@@ -44,7 +44,7 @@ public class Listeners {
                   List<AccumulatorFactory<POCPopulationState<?, ?, A, ?>, File, Run<?, ?, A, ?>>>
                       accumulators) {
     return (experiment, executorService) -> ListenerFactory.all(accumulators.stream()
-            .map(AccumulatorFactory::withAutoGet)
+            .map(a -> a.thenOnDone(null))
             .toList())
         .deferred(executorService);
   }
