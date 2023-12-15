@@ -275,13 +275,13 @@ For mapping a $g$ into a $s$, the solver uses a genotype-to-phenotype **mapper**
 The two most significant solvers are GA and ES: both are able to work with real numbers, i.e., with $G = \mathbb{R}^p$.
 Note that you are not required to say what's the value of $p$: it is inferred automatically from the `mapper`, which is indeed a `InvertibleMapper<List<Double>, S>` that in turn infers the size of a genotype from a target phenotype.
 
-[`ea.solver.numGA()`](assets/builder-help.md#builder-easolvernumga) is a standard GA working on $\mathbb{R}^p$.
+[`ea.solver.doubleStringGa()`](assets/builder-help.md#builder-easolverdoublestringga) is a standard GA working on $\mathbb{R}^p$.
 It iteratively evolves `nPop` individuals until `nEval` fitness evaluations have been done.
 Individual genotypes are initially generated randomly with each element in `[initialMinV,initialMaxV]`; then, they are modified by applying a Gaussian mutation with `sigmaMut` after a uniform crossover.
 Selection is done through a tournament with size `tournamentRate` $\times$ `nPop` (clipped to the lowest value of `minNTournament`).
 
-[`ea.solver.simpleES()`](assets/builder-help.md#builder-easolversimplees) is a simple version of Evolutionary Strategy (ES).
-After the same initialization of `ea.solver.simpleES()`, it evolves by taking, at each iteration, the best `parentsRate` rate of the population, computing their mean value, and producing the next generation by sampling a multivariate Gaussian distribution with the computed mean and `sigma`.
+[`ea.solver.simpleEs()`](assets/builder-help.md#builder-easolversimplees) is a simple version of Evolutionary Strategy (ES).
+After the same initialization of `ea.solver.simpleEs()`, it evolves by taking, at each iteration, the best `parentsRate` rate of the population, computing their mean value, and producing the next generation by sampling a multivariate Gaussian distribution with the computed mean and `sigma`.
 At each iteration, the `nOfElites` individuals are copied to the next generation.
 
 ##### Mappers
@@ -312,9 +312,10 @@ functions = [
   ea.nf.size(f = ea.nf.genotype(individual = ea.nf.best()); s = "%5d")
 ]
 ```
-`runKeys` are strings specifying elements of the run description to be extracted as cell values.
-Each string specifies both which part of the run description to extract and, optionally, the format, using the format specifier of Java `printf()` method (for run elements being named maps, the special format `%#s` just renders the name of the map).
-The format has to be `{NAME[:FORMAT]}`, e.g., `{randomGenerator.seed}`, or `{problem.qFunction.task.terrain:%#s}`.
+`runKeys` are pairs of strings specifying elements of the run description to be extracted as cell values (as name and value).
+Each value string specifies both which part of the run description to extract and, optionally, the format, using the format specifier of Java `printf()` method (for run elements being named maps, the special format `%#s` just renders the name of the map).
+The format of the value has to be `{NAME[:FORMAT]}`, e.g., `{randomGenerator.seed}`, or `{problem.qFunction.task.terrain:%#s}`.
+For instance, `ea.misc.sEntry(key = "solver"; value = "{solver:%#s}")` specifies a pair of a name `solver` and a value that will be the `solver` key of the run, only by name (e.g., `ea.solver.doubleStringGa`).
 
 [`ea.listener.telegram()`](assets/builder-help.md#builder-ealistenertelegram) sends updates about the current run via Telegram.
 In particular, at the end of each run it can send some plots (see the [`ea.plot`](assets/builder-help.md#package-eaplot) package) and zero or more videos (see [`evorobots.video()`](assets/builder-help.md#builder-evorobotsvideo)) of the best individual found upon the evolution performing the tasks described in `tasks`, not necessarily including the one used to drive the evolution.
@@ -360,7 +361,7 @@ ea.experiment(
       ))
       
     ]) * [
-      ea.s.numGA(nEval = 500; nPop = 10)
+      ea.s.doubleStringGa(nEval = 500; nPop = 10)
     ]) * [
     ea.run(
       problem = ea.p.totalOrder(
@@ -375,9 +376,6 @@ ea.experiment(
       functions = [
         ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.l.xVelocity(); s = "%5.2f"));
         ea.nf.fitnessHist(f = ea.nf.f(outerF = s.task.l.xVelocity()))
-      ];
-      plots = [
-        ea.plot.fitness(f = ea.nf.f(outerF = s.task.l.xVelocity()); sort = max; minY = 0)
       ]
     );
     ea.l.telegram(
@@ -396,7 +394,10 @@ ea.experiment(
         ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.l.xVelocity(); s = "%5.2f"));
         ea.nf.base64(f = ea.nf.genotype(individual = ea.nf.best()))
       ];
-      runKeys = ["{solver.mapper.target:%#s}"; "{solver.mapper.function:%#s}"]
+      runKeys = [
+        ea.misc.sEntry(key = "mapper.target"; value = "{solver.mapper.target:%#s}");
+        ea.misc.sEntry(key = "mapper.function"; value = "{solver.mapper.function:%#s}")
+      ]
     )
   ]
 )
@@ -454,7 +455,7 @@ ea.experiment(
       function = ds.num.mlp()
     )]
   ) * [er.m.numericalParametrizedHomoBrains()]
-  ) * [ea.s.numGA(nEval = 1000; nPop = 50)]
+  ) * [ea.s.doubleStringGa(nEval = 1000; nPop = 50)]
   ) * [ea.run()];
   listeners = [
     ea.l.tui(
