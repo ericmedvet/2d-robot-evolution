@@ -22,7 +22,7 @@ In case you want to use this project inside your project, add this to your `pom.
 
 ### Clone and build
 
-Now you can clone this project and build it:
+You can clone this project and build it with:
 ```shell
 git clone https://github.com/ericmedvet/2d-robot-evolution.git
 cd 2d-robot-evolution
@@ -35,7 +35,7 @@ java -jar 2d-robot-evolution/io.github.ericmedvet.robotevo2d.main/target/robotev
 ```
 
 **For Windows**, it might be possible that by using the command above from the standard terminal you see garbage text output.
-It happens because it is not able to manage the extended charset needed to encode the colored textual UI.
+It happens because Windows is not able to manage the extended charset needed to encode the colored textual UI.
 You can use `javaw` instead of `java` for launching the `Starter` class to circumvent the problem.
 
 ## Usage
@@ -51,10 +51,10 @@ where `<exp-file>` is the path to a file with an **experiment description** and 
 Once started, `Starter` shows a text-based UI giving information about the overall progress of the experiment, the current run, logs, and resources usage.
 `Starter` may be stopped (before conclusion) with <kbd>Ctrl</kbd> + <kbd>C</kbd>.
 
-![The text-based UI of `Starter`](assets/images/sample-run.png)
+![The text-based UI of `Starter`](/assets/images/sample-run.png)
 
 For the number of threads `<nt>`, it is suggested to use a number $n$ lower or equal to the number of cores on the machine you run the experiment on.
-The actual degree of concurrency will depend on $n$ and on the evolutionary algorithm being used: e.g., a GA with a population of `npop=30` will do at most $\min(30,n)$ fitness evaluations at the same time.
+The actual degree of concurrency will depend on $n$ and on the evolutionary algorithm being used: e.g., a GA with a population of `npop = 30` will do at most $\min(30,n)$ fitness evaluations at the same time.
 
 You can have an overview on the other (few) parameters of `Starter` with:
 ```shell
@@ -69,11 +69,11 @@ An **experiment** consists of one or more runs.
 Each **run** is an evolutionary optimization using a **solver** (an `IterativeSolver` of JGEA) on a **problem** with a random generator.
 
 The description of an experiment also includes information on if/how/where to store the info about ongoing runs: zero or more **listeners** can be specified to listen to the ongoing evolutionary runs and save salient information.
-One reasonable choice is to use a [`ea.listener.bestCsv()`](assets/builder-help.md#builder-ealistenerbestcsv) (see [below](#listeners)) to save one line of a CSV file for each iteration of each run.
+One reasonable choice is to use a [`ea.listener.bestCsv()`](/assets/builder-help.md#builder-ealistenerbestcsv) (see [below](#listeners)) to save one line of a CSV file for each iteration of each run.
 This way you can process the results of the experiment offline after it ended using, e.g., R or Python.
 
 You can describe an experiment through an experiment file containing a textual description of the experiment.
-The description must contain a **named parameter map** for an experiment, i.e., its content has to be something like `ea.experiment(...)` (see the [`ea.experiment()`](assets/builder-help.md#builder-eaexperiment) builder documentation and the [examples](#examples-of-experiment-files) given below). 
+The description must contain a **named parameter map** for an experiment, i.e., its content has to be something like `ea.experiment(...)` (see the [`ea.experiment()`](/assets/builder-help.md#builder-eaexperiment) builder documentation and the [examples](#examples-of-experiment-files) given below). 
 
 #### Named parameter map format
 
@@ -94,7 +94,7 @@ where:
 - `<npm>` is a named parameter map;
 - `<n>` is a name, i.e., a string in the format `[A-Za-z][.A-Za-z0-9_]*`;
 - `<s>` is a string in the format `([A-Za-z][A-Za-z0-9_]*)|("[^"]+")`;
-- `<d>` is a number in the format `-?[0-9]+(\.[0-9]+)?`;
+- `<d>` is a number in the format `-?[0-9]+(\.[0-9]+)?` (or `Infinity` or `-Infinity`);
 - `<i>` is a number in the format `[0-9]+`;
 - `∅` is the empty string.
 
@@ -119,7 +119,7 @@ office(
   roomNumbers = [1:2:10]  
 )
 ```
-In this case, the `head` parameter of `office` is valued with another named parameter map: `person(name = "Mario Rossi"; age = 43)`.
+In this case, the `head` parameter of `office` is valued with another named parameter map: `person(name = "Mario Rossi"; age = 43)`; `staff` is valued with an array of named parameter maps.
 
 ##### The `*` and `+` operators
 
@@ -158,7 +158,7 @@ that corresponds to:
 #### Specification for the experiment file
 
 You describe an experiment and its components using a named parameter map in a text file: in practice, each map describes a **builder** of a component along with its parameters.
-The complete specification for available maps, parameters, and corresponding values for a valid description of an experiment is available [here](assets/builder-help.md).
+The complete specification for available maps, parameters, and corresponding values for a valid description of an experiment is available [here](/assets/builder-help.md).
 
 In the following sections, we describe the key elements.
 For better organizing them, the builders are grouped in **packages**, whose names are something like `sim.agent`, `ea.solver`, and alike.
@@ -166,7 +166,7 @@ For better organizing them, the builders are grouped in **packages**, whose name
 ##### Embodied agents
 
 There are five available embodied agents (i.e., **robots**).
-Their builders are grouped in the [`sim.agent`](assets/builder-help.md#package-simagent) package.
+Their builders are grouped in the [`sim.agent`](/assets/builder-help.md#package-simagent) package.
 Here we describe the most significant ones.
 
 ###### Voxel-based Soft Robots
