@@ -5,7 +5,7 @@ ea.experiment(
         mapper = er.m.numericalParametrizedHeteroBrains(target = s.a.centralizedNumGridVSR(
           body = s.a.vsr.gridBody(
             sensorizingFunction = s.a.vsr.sf.directional(
-              headSensors = [s.s.sin(f = 0);s.s.d(a = -15; r = 5)];
+              headSensors = [s.s.sin(f = 0); s.s.d(a = -15; r = 5)];
               nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
               sSensors = [s.s.d(a = -90)]
             );
@@ -13,11 +13,11 @@ ea.experiment(
           );
           function = ds.num.mlp()
         ));
-        nEval = 100;
-        nPop = 10
+        nEval = 1000;
+        nPop = 25
       );
       problem = ea.p.totalOrder(
-        qFunction = s.taskRunner(task = s.task.locomotion());
+        qFunction = s.taskRunner(task = s.task.locomotion(duration = 15));
         cFunction = s.task.locomotion.xVelocity();
         type = maximize
       )
@@ -29,7 +29,30 @@ ea.experiment(
         ea.nf.size(f = ea.nf.genotype(individual = ea.nf.best()); s = "%5d");
         ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.l.xVelocity(); s = "%5.2f"));
         ea.nf.fitnessHist(f = ea.nf.f(outerF = s.task.l.xVelocity()))
+      ];
+      runKeys = [
+        ea.misc.sEntry(key = "seed"; value = "{randomGenerator.seed}")
       ]
-    )
+    );
+    ea.l.expPlotSaver(
+      filePath = "plot-fitness.png";
+      freeScales = true;
+      plot = ea.plot.fitnessPlotMatrix(
+        yFunction = ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.l.xVelocity(); s = "%5.2f"))
+      )
+    );
+    ea.l.bestCsv(
+      filePath = "best-biped-mlp.txt";
+      functions = [
+        ea.nf.size(f = ea.nf.genotype(individual = ea.nf.best()); s = "%5d");
+        ea.nf.bestFitness(f = ea.nf.f(outerF = s.task.l.xVelocity(); s = "%5.2f"))
+      ];
+      runKeys = [
+        ea.misc.sEntry(key = "seed"; value = "{randomGenerator.seed}")
+      ]
+    );
+    er.l.videoSaver(videos = [
+      er.video(task = s.task.locomotion(duration = 15; terrain = s.t.hilly()); w = 300; h = 200)
+    ])
   ]
 )
