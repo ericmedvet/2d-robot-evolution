@@ -15,11 +15,6 @@
   <dependencies>
     <dependency>
       <groupId>io.github.ericmedvet</groupId>
-      <artifactId>jnb.core</artifactId>
-      <version>${jnb.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>io.github.ericmedvet</groupId>
       <artifactId>mrsim2d.viewer</artifactId>
       <version>${mrsim2d.version}</version>
     </dependency>
