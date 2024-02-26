@@ -23,10 +23,11 @@ import io.github.ericmedvet.jgea.core.listener.NamedFunction;
 import io.github.ericmedvet.jnb.core.Discoverable;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jnb.core.ParamMap;
-import io.github.ericmedvet.jsdynsym.grid.Grid;
-import io.github.ericmedvet.jsdynsym.grid.GridUtils;
+import io.github.ericmedvet.jnb.datastructure.Grid;
+import io.github.ericmedvet.jnb.datastructure.GridUtils;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.AbstractGridVSR;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody;
+import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody.Element;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -48,7 +49,7 @@ public class NamedFunctions {
   }
 
   @SuppressWarnings("unused")
-  public static <X> NamedFunction<X, Double> compactness(@Param("f") NamedFunction<X, Grid<GridBody.Element>> f) {
+  public static <X> NamedFunction<X, Double> compactness(@Param("f") NamedFunction<X, Grid<Element>> f) {
     return NamedFunction.build(
         c("compactness", f.getName()),
         "%4.2f",
