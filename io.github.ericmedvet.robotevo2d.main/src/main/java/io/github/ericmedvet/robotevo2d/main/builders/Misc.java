@@ -94,7 +94,7 @@ public class Misc {
   }
 
   @SuppressWarnings("unused")
-  public static <A> AccumulatorFactory<POCPopulationState<?, ?, A, ?>, File, Run<?, ?, A, ?>> video(
+  public static <A> AccumulatorFactory<POCPopulationState<?, ?, A, ?, ?>, File, Run<?, ?, A, ?>> video(
       @Param(value = "filePathTemplate", dS = "video-{index:%04d}.mp4") String filePathTemplate,
       @Param(value = "titleTemplate", dS = "run.index={index:%04d}") String titleTemplate,
       @Param(value = "w", dI = FILE_VIDEO_W) int w,
@@ -107,9 +107,9 @@ public class Misc {
       @Param("task") Task<A, ?> task,
       @Param(value = "engine", dNPM = "sim.engine()") Supplier<Engine> engineSupplier,
       @Param(value = "individual", dNPM = "ea.nf.best()")
-          Function<POCPopulationState<?, ?, A, ?>, Individual<?, A, ?>> individualFunction,
+          Function<POCPopulationState<?, ?, A, ?, ?>, Individual<?, A, ?>> individualFunction,
       @Param(value = "", injection = Param.Injection.MAP) ParamMap map) {
-    return run -> Accumulator.<POCPopulationState<?, ?, A, ?>>last().then(state -> {
+    return run -> Accumulator.<POCPopulationState<?, ?, A, ?, ?>>last().then(state -> {
       // extract individual
       A a = individualFunction.apply(state).solution();
       // create file

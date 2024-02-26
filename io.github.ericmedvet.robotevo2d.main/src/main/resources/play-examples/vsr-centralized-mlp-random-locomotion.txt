@@ -23,7 +23,7 @@ er.play(
   task = s.task.locomotion(duration = 31);
   genotype = er.doublesRandomizer();
   outcomeFunctions = [
-    er.nf.f(inner = s.task.locomotion.xVelocity())
+    er.nf.f(name = "xVelocity"; inner = s.task.locomotion.xVelocity())
   ];
   consumers = [
     er.c.video(filePath = "prova.mp4"; startTime = 10; endTime = 15; w = 300; h = 200)

@@ -38,10 +38,10 @@ public class Listeners {
 
   @SuppressWarnings("unused")
   public static <A>
-      BiFunction<Experiment, ExecutorService, ListenerFactory<POCPopulationState<?, ?, A, ?>, Run<?, ?, A, ?>>>
+      BiFunction<Experiment, ExecutorService, ListenerFactory<POCPopulationState<?, ?, A, ?, ?>, Run<?, ?, A, ?>>>
           videoSaver(
               @Param("videos")
-                  List<AccumulatorFactory<POCPopulationState<?, ?, A, ?>, File, Run<?, ?, A, ?>>>
+                  List<AccumulatorFactory<POCPopulationState<?, ?, A, ?, ?>, File, Run<?, ?, A, ?>>>
                       accumulators) {
     return (experiment, executorService) -> ListenerFactory.all(accumulators.stream()
             .map(a -> a.thenOnDone((r, f) -> {})) // saving is done by the accumulator
