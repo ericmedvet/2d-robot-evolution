@@ -2,7 +2,7 @@
  * ========================LICENSE_START=================================
  * robotevo2d-main
  * %%
- * Copyright (C) 2022 - 2023 Eric Medvet
+ * Copyright (C) 2018 - 2024 Eric Medvet
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,11 @@ package io.github.ericmedvet.robotevo2d.main.builders;
 import io.github.ericmedvet.jnb.core.Discoverable;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.mrsim2d.core.Snapshot;
-import io.github.ericmedvet.mrsim2d.viewer.*;
+import io.github.ericmedvet.mrsim2d.viewer.Drawer;
+import io.github.ericmedvet.mrsim2d.viewer.FramesImageBuilder;
+import io.github.ericmedvet.mrsim2d.viewer.RealtimeViewer;
+import io.github.ericmedvet.mrsim2d.viewer.VideoBuilder;
+import io.github.ericmedvet.mrsim2d.viewer.VideoUtils;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
