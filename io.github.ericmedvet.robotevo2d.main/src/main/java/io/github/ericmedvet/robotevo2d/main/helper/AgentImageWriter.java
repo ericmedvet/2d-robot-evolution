@@ -27,7 +27,11 @@ import io.github.ericmedvet.mrsim2d.core.tasks.Task;
 import io.github.ericmedvet.mrsim2d.viewer.Drawer;
 import io.github.ericmedvet.mrsim2d.viewer.FramesImageBuilder;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Function;
@@ -47,7 +51,7 @@ public class AgentImageWriter {
       "/agent-examples/legged-modular-active-4.txt");
 
   private static final String ENGINE_DESCRIPTION = "s.engine()";
-  private static final String DRAWER_DESCRIPTION = "s.drawer(actions = true; miniAgents = brains; enlargement = 1.5)";
+  private static final String DRAWER_DESCRIPTION = "s.drawer(actions = true; miniAgents = brains)";
   private static final String IMGS_PATH = "assets/images/agents/";
 
   private static final int W = 400;
