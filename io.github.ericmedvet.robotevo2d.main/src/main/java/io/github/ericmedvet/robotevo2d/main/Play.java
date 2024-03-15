@@ -20,11 +20,12 @@
 
 package io.github.ericmedvet.robotevo2d.main;
 
-import io.github.ericmedvet.jgea.core.listener.NamedFunction;
-import io.github.ericmedvet.jgea.experimenter.InvertibleMapper;
+import io.github.ericmedvet.jgea.core.InvertibleMapper;
 import io.github.ericmedvet.jnb.core.Discoverable;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.mrsim2d.core.engine.Engine;
+import io.github.ericmedvet.mrsim2d.core.tasks.AgentsObservation;
+import io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome;
 import io.github.ericmedvet.mrsim2d.core.tasks.Task;
 import io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers;
 import java.util.List;
@@ -32,11 +33,11 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 @Discoverable(prefixTemplate = "evorobots|er")
-public record Play<G, S, O>(
+public record Play<G, R, S extends AgentsObservation, O extends AgentsOutcome<S>>(
     @Param(value = "name", dS = "") String name,
     @Param(value = "genotype", dNPM = "ea.f.identity()") Function<G, G> genotype,
-    @Param("mapper") InvertibleMapper<G, S> mapper,
-    @Param("task") Task<S, O> task,
+    @Param("mapper") InvertibleMapper<G, R> mapper,
+    @Param("task") Task<R,S, O> task,
     @Param(value = "engine", dNPM = "sim.engine()") Supplier<Engine> engineSupplier,
     @Param("consumers") List<PlayConsumers.ProducingConsumer> consumers,
-    @Param("outcomeFunctions") List<NamedFunction<?, ?>> outcomeFunctions) {}
+    @Param("outcomeFunctions") List<Function<?, ?>> outcomeFunctions) {}

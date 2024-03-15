@@ -50,9 +50,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jdk.version>17</jdk.version>
     <revision>1.4.1-SNAPSHOT</revision>
-    <jgea.version>2.6.0</jgea.version>
-    <jnb.version>1.3.0</jnb.version>
-    <mrsim2d.version>1.1.0</mrsim2d.version>
+    <jgea.version>2.6.2-SNAPSHOT</jgea.version>
+    <jnb.version>1.3.1-SNAPSHOT</jnb.version>
+    <mrsim2d.version>1.1.1-SNAPSHOT</mrsim2d.version>
   </properties>
   <dependencies/>
 

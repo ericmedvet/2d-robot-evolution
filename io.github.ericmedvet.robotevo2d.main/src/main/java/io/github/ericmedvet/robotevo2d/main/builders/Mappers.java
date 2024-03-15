@@ -20,6 +20,7 @@
 
 package io.github.ericmedvet.robotevo2d.main.builders;
 
+import io.github.ericmedvet.jgea.core.InvertibleMapper;
 import io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction;
 import io.github.ericmedvet.jgea.core.representation.graph.Graph;
 import io.github.ericmedvet.jgea.core.representation.graph.Node;
@@ -28,7 +29,6 @@ import io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString;
 import io.github.ericmedvet.jgea.core.representation.tree.Tree;
 import io.github.ericmedvet.jgea.core.representation.tree.numeric.Element;
 import io.github.ericmedvet.jgea.core.representation.tree.numeric.TreeBasedMultivariateRealFunction;
-import io.github.ericmedvet.jgea.experimenter.InvertibleMapper;
 import io.github.ericmedvet.jnb.core.Discoverable;
 import io.github.ericmedvet.jnb.core.NamedBuilder;
 import io.github.ericmedvet.jnb.core.NamedParamMap;
@@ -44,14 +44,18 @@ import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
 import io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels;
 import io.github.ericmedvet.mrsim2d.core.NumMultiBrained;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
+
+//TODO make consistent with Mappers of jgea: 1. of parameter; 2. numerical parametrized
 @Discoverable(prefixTemplate = "evorobots|er.mapper|m")
 public class Mappers {
-  private Mappers() {}
+  private Mappers() {
+  }
 
   private static int argmax(double[] values) {
     if (values.length == 0) {
@@ -87,9 +91,9 @@ public class Mappers {
 
   private static void checkNumericalParametrizedSizeConsistency(NumMultiBrained numMultiBrained) {
     List<Integer> brainSizes = numMultiBrained.brains().stream()
-        .map(b -> Composed.shallowest(b, NumericalParametrized.class)
+        .map(b -> ((double[]) Composed.shallowest(b, NumericalParametrized.class)
             .orElseThrow()
-            .getParams()
+            .getParams())
             .length)
         .distinct()
         .toList();
@@ -109,10 +113,11 @@ public class Mappers {
   }
 
   @SuppressWarnings("unused")
-  public static InvertibleMapper<IntString, Supplier<ReactiveGridVSR>> intStringReactiveGridVSR(
+  public static InvertibleMapper<IntString, Supplier<ReactiveGridVSR>> isToReactiveGridVsr(
       @Param("w") int w,
       @Param("h") int h,
-      @Param("availableVoxels") List<Supplier<ReactiveGridVSR.ReactiveVoxel>> availableVoxels) {
+      @Param("availableVoxels") List<Supplier<ReactiveGridVSR.ReactiveVoxel>> availableVoxels
+  ) {
     IntString exampleGenotype = new IntString(Collections.nCopies(w * h, 0), 0, availableVoxels.size() + 1);
     return InvertibleMapper.from(
         (supplier, s) -> {
@@ -128,17 +133,21 @@ public class Mappers {
           }
           return () -> new ReactiveGridVSR(body);
         },
-        supplier -> exampleGenotype);
+        supplier -> exampleGenotype,
+        "isToReactiveGridVsr[w=%d;h=%d]".formatted(w, h)
+    );
   }
 
-  public static InvertibleMapper<NamedMultivariateRealFunction, Supplier<ReactiveGridVSR>> nmrfReactiveGridVSR(
+  @SuppressWarnings("unused")
+  public static InvertibleMapper<NamedMultivariateRealFunction, Supplier<ReactiveGridVSR>> nmrfToReactiveGridVsr(
       @Param("w") int w,
       @Param("h") int h,
-      @Param("availableVoxels") List<Supplier<ReactiveGridVSR.ReactiveVoxel>> availableVoxels) {
+      @Param("availableVoxels") List<Supplier<ReactiveGridVSR.ReactiveVoxel>> availableVoxels
+  ) {
     return InvertibleMapper.from(
         (supplier, nmrf) -> {
           Grid<Integer> indexGrid = Grid.create(w, h, (x, y) -> {
-            double[] output = nmrf.apply(new double[] {(double) x / (double) w, (double) y / (double) h});
+            double[] output = nmrf.apply(new double[]{(double) x / (double) w, (double) y / (double) h});
             int iMax = argmax(output);
             return output[iMax] > 0 ? iMax + 1 : 0;
           });
@@ -156,20 +165,24 @@ public class Mappers {
         supplier -> NamedMultivariateRealFunction.from(
             MultivariateRealFunction.from(vs -> vs, 2, availableVoxels.size()),
             List.of("x", "y"),
-            MultivariateRealFunction.varNames("v", availableVoxels.size())));
+            MultivariateRealFunction.varNames("v", availableVoxels.size())
+        ),
+        "nmrfToReactiveGridVsr[w=%d;h=%d]".formatted(w, h)
+    );
   }
 
   @SuppressWarnings("unused")
   public static <T extends NumMultiBrained>
-      InvertibleMapper<List<Double>, Supplier<T>> numericalParametrizedHeteroBrains(
-          @Param("target") T target,
-          @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
-          @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder) {
+  InvertibleMapper<List<Double>, Supplier<T>> dsToNpHeteroBrains(
+      @Param("target") T target,
+      @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
+      @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
+  ) {
     checkType(target, NumericalParametrized.class);
     List<Integer> brainSizes = target.brains().stream()
-        .map(b -> Composed.shallowest(b, NumericalParametrized.class)
+        .map(b -> ((double[])Composed.shallowest(b, NumericalParametrized.class)
             .orElseThrow()
-            .getParams()
+            .getParams())
             .length)
         .toList();
     int overallBrainSize = brainSizes.stream().mapToInt(i -> i).sum();
@@ -184,10 +197,11 @@ public class Mappers {
             T t = (T) builder.build((NamedParamMap) map.value("target", ParamMap.Type.NAMED_PARAM_MAP));
             int c = 0;
             for (NumericalDynamicalSystem<?> brain : t.brains()) {
-              int brainSize = Composed.shallowest(brain, NumericalParametrized.class)
+              int brainSize = ((double[])Composed.shallowest(brain, NumericalParametrized.class)
                   .orElseThrow()
-                  .getParams()
+                  .getParams())
                   .length;
+              //noinspection unchecked
               Composed.shallowest(brain, NumericalParametrized.class)
                   .orElseThrow()
                   .setParams(values.subList(c, c + brainSize).stream()
@@ -198,22 +212,25 @@ public class Mappers {
             return t;
           };
         },
-        supplier -> Collections.nCopies(overallBrainSize, 0d));
+        supplier -> Collections.nCopies(overallBrainSize, 0d),
+        "dsToNpHeteroBrains"
+    );
   }
 
   @SuppressWarnings("unused")
   public static <T extends NumMultiBrained>
-      InvertibleMapper<List<Double>, Supplier<T>> numericalParametrizedHomoBrains(
-          @Param("target") T target,
-          @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
-          @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder) {
+  InvertibleMapper<List<Double>, Supplier<T>> dsToNpHomoBrains(
+      @Param("target") T target,
+      @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
+      @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
+  ) {
     checkType(target, NumericalParametrized.class);
     checkIOSizeConsistency(target);
     checkNumericalParametrizedSizeConsistency(target);
     int brainSize = target.brains().stream()
-        .map(b -> Composed.shallowest(b, NumericalParametrized.class)
+        .map(b -> ((double[])Composed.shallowest(b, NumericalParametrized.class)
             .orElseThrow()
-            .getParams()
+            .getParams())
             .length)
         .findFirst()
         .orElseThrow();
@@ -226,21 +243,25 @@ public class Mappers {
           return () -> {
             @SuppressWarnings("unchecked")
             T t = (T) builder.build((NamedParamMap) map.value("target", ParamMap.Type.NAMED_PARAM_MAP));
+            //noinspection unchecked
             t.brains().forEach(b -> Composed.shallowest(b, NumericalParametrized.class)
                 .orElseThrow()
                 .setParams(values.stream().mapToDouble(d -> d).toArray()));
             return t;
           };
         },
-        supplier -> Collections.nCopies(brainSize, 0d));
+        supplier -> Collections.nCopies(brainSize, 0d),
+        "dsToNpHomoBrains"
+    );
   }
 
   @SuppressWarnings("unused")
   public static <T extends NumMultiBrained>
-      InvertibleMapper<Graph<Node, OperatorGraph.NonValuedArc>, Supplier<T>> oGraphParametrizedHomoBrains(
-          @Param("target") T target,
-          @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
-          @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder) {
+  InvertibleMapper<Graph<Node, OperatorGraph.NonValuedArc>, Supplier<T>> oGraphToHomoBrains(
+      @Param("target") T target,
+      @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
+      @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
+  ) {
     checkType(target, Parametrized.class);
     checkIOSizeConsistency(target);
     Optional<OperatorGraph> optionalOGraphMRF =
@@ -260,15 +281,19 @@ public class Mappers {
         },
         supplier -> OperatorGraph.sampleFor(
             optionalOGraphMRF.get().xVarNames(),
-            optionalOGraphMRF.get().yVarNames()));
+            optionalOGraphMRF.get().yVarNames()
+        ),
+        "oGraphToHomoBrains"
+    );
   }
 
   @SuppressWarnings("unused")
   public static <T extends NumMultiBrained>
-      InvertibleMapper<List<Tree<Element>>, Supplier<T>> treeParametrizedHomoBrains(
-          @Param("target") T target,
-          @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
-          @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder) {
+  InvertibleMapper<List<Tree<Element>>, Supplier<T>> srTreeToHomoBrains(
+      @Param("target") T target,
+      @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
+      @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder
+  ) {
     checkType(target, Parametrized.class);
     checkIOSizeConsistency(target);
     Optional<TreeBasedMultivariateRealFunction> optionalTreeMRF = Composed.shallowest(
@@ -287,6 +312,8 @@ public class Mappers {
           return t;
         },
         supplier -> TreeBasedMultivariateRealFunction.sampleFor(
-            optionalTreeMRF.get().xVarNames(), optionalTreeMRF.get().yVarNames()));
+            optionalTreeMRF.get().xVarNames(), optionalTreeMRF.get().yVarNames()),
+        "srTreeToHomoBrains"
+    );
   }
 }

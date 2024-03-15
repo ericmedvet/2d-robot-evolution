@@ -110,7 +110,7 @@ public class Misc {
       @Param(value = "endTime", dD = 30) double endTime,
       @Param(value = "codec", dS = "jcodec") VideoUtils.EncoderFacility codec,
       @Param(value = "drawer", dNPM = "sim.drawer()") Function<String, Drawer> drawer,
-      @Param("task") Task<A, ?> task,
+      @Param("task") Task<A, ?, ?> task,
       @Param(value = "engine", dNPM = "sim.engine()") Supplier<Engine> engineSupplier,
       @Param(value = "individual", dNPM = "ea.nf.best()")
           Function<POCPopulationState<?, ?, A, ?, ?>, Individual<?, A, ?>> individualFunction,

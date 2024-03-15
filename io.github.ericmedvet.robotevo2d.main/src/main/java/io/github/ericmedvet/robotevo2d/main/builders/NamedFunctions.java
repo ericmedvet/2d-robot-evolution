@@ -19,7 +19,6 @@
  */
 package io.github.ericmedvet.robotevo2d.main.builders;
 
-import io.github.ericmedvet.jgea.core.listener.NamedFunction;
 import io.github.ericmedvet.jnb.core.Discoverable;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jnb.core.ParamMap;
