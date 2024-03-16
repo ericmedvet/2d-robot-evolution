@@ -2359,7 +2359,7 @@ Aliases: `er.namedFunction`, `er.nf`, `evorobots.namedFunction`, `evorobots.nf`
 | --- | --- | --- | --- |
 | `f` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$Element">GridBody$Element</abbr>&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.NamedFunctions.compactness()` by robotevo2d-main:1.4.0:2024-02-27T20:20:30Z
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Functions.compactness()` by robotevo2d-main:1.4.0:2024-02-27T20:20:30Z
 
 ### Builder `evorobots.namedFunction.count()`
 
@@ -2369,7 +2369,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunctio
 | --- | --- | --- | --- |
 | `f` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$Element">GridBody$Element</abbr>&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.NamedFunctions.count()` by robotevo2d-main:1.4.0:2024-02-27T20:20:30Z
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Functions.count()` by robotevo2d-main:1.4.0:2024-02-27T20:20:30Z
 
 ### Builder `evorobots.namedFunction.elongation()`
 
@@ -2379,7 +2379,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunctio
 | --- | --- | --- | --- |
 | `f` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$Element">GridBody$Element</abbr>&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.NamedFunctions.elongation()` by robotevo2d-main:1.4.0:2024-02-27T20:20:30Z
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Functions.elongation()` by robotevo2d-main:1.4.0:2024-02-27T20:20:30Z
 
 ### Builder `evorobots.namedFunction.f()`
 
@@ -2391,7 +2391,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunctio
 | `name` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 | `s` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;T, R&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.NamedFunctions.f()` by robotevo2d-main:1.4.0:2024-02-27T20:20:30Z
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;T, R&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Functions.f()` by robotevo2d-main:1.4.0:2024-02-27T20:20:30Z
 
 ### Builder `evorobots.namedFunction.gridBody()`
 
@@ -2401,7 +2401,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunctio
 | --- | --- | --- | --- |
 | `f` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.AbstractGridVSR">AbstractGridVSR</abbr>&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$Element">GridBody$Element</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.NamedFunctions.gridBody()` by robotevo2d-main:1.4.0:2024-02-27T20:20:30Z
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$Element">GridBody$Element</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Functions.gridBody()` by robotevo2d-main:1.4.0:2024-02-27T20:20:30Z
 
 ### Builder `evorobots.namedFunction.h()`
 
@@ -2411,7 +2411,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunctio
 | --- | --- | --- | --- |
 | `f` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$Element">GridBody$Element</abbr>&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.NamedFunctions.h()` by robotevo2d-main:1.4.0:2024-02-27T20:20:30Z
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Functions.h()` by robotevo2d-main:1.4.0:2024-02-27T20:20:30Z
 
 ### Builder `evorobots.namedFunction.stringBase64()`
 
@@ -2421,7 +2421,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunctio
 | --- | --- | --- | --- |
 | `f` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.io.Serializable">Serializable</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.NamedFunctions.stringBase64()` by robotevo2d-main:1.4.0:2024-02-27T20:20:30Z
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Functions.stringBase64()` by robotevo2d-main:1.4.0:2024-02-27T20:20:30Z
 
 ### Builder `evorobots.namedFunction.w()`
 
@@ -2431,7 +2431,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunctio
 | --- | --- | --- | --- |
 | `f` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$Element">GridBody$Element</abbr>&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.NamedFunctions.w()` by robotevo2d-main:1.4.0:2024-02-27T20:20:30Z
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.listener.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Functions.w()` by robotevo2d-main:1.4.0:2024-02-27T20:20:30Z
 
 ## Package `sim`
 

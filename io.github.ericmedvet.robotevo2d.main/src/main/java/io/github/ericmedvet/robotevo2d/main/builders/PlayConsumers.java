@@ -75,8 +75,8 @@ public class PlayConsumers {
   public static ProducingConsumer frames(
       @Param("title") String title,
       @Param(value = "drawer", dNPM = "sim.drawer()") Function<String, Drawer> drawer,
-      @Param(value = "w", dI = Misc.FILE_VIDEO_W) int w,
-      @Param(value = "h", dI = Misc.FILE_VIDEO_H) int h,
+      @Param(value = "w", dI = 500) int w,
+      @Param(value = "h", dI = 300) int h,
       @Param(value = "nOfFrames", dI = 5) int nOfFrames,
       @Param(value = "deltaT", dD = 0.2) double deltaT,
       @Param(value = "startTime", dD = 0) double startTime,
@@ -115,8 +115,8 @@ public class PlayConsumers {
   public static Consumer<Snapshot> video(
       @Param(value = "title", dS = "") String title,
       @Param(value = "drawer", dNPM = "sim.drawer()") Function<String, Drawer> drawer,
-      @Param(value = "w", dI = Misc.FILE_VIDEO_W) int w,
-      @Param(value = "h", dI = Misc.FILE_VIDEO_H) int h,
+      @Param(value = "w", dI = 400) int w,
+      @Param(value = "h", dI = 300) int h,
       @Param(value = "frameRate", dD = 30) double frameRate,
       @Param(value = "startTime", dD = 0) double startTime,
       @Param(value = "endTime", dD = 30) double endTime,

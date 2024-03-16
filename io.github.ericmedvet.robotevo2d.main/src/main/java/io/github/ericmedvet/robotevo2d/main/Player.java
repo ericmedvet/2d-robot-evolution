@@ -26,6 +26,11 @@ import com.beust.jcommander.ParameterException;
 import io.github.ericmedvet.jgea.experimenter.Starter;
 import io.github.ericmedvet.jnb.core.BuilderException;
 import io.github.ericmedvet.jnb.core.NamedBuilder;
+import io.github.ericmedvet.jnb.datastructure.FormattedFunction;
+import io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction;
+import io.github.ericmedvet.jnb.datastructure.NamedFunction;
+import io.github.ericmedvet.mrsim2d.core.tasks.AgentsObservation;
+import io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome;
 import io.github.ericmedvet.mrsim2d.viewer.VideoBuilder;
 import io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers;
 import java.io.BufferedReader;
@@ -148,7 +153,7 @@ public class Player {
       // build solution
       L.config("Building genotype");
       @SuppressWarnings("unchecked")
-      Play<Object, Object, Object> play = (Play<Object, Object, Object>) nb.build(playDescription);
+      Play<Object, Object, AgentsObservation, AgentsOutcome<AgentsObservation>> play = (Play<Object, Object, AgentsObservation, AgentsOutcome<AgentsObservation>>) nb.build(playDescription);
       Object genotype = play.genotype().apply(play.mapper().exampleFor(null));
       L.config("Building solution");
       Object solution = play.mapper().mapperFor(null).apply(genotype);
@@ -158,19 +163,19 @@ public class Player {
           .orElse(PlayConsumers.ProducingConsumer.from(s -> {}, () -> {}));
       // do task
       L.info("Executing the task");
-      Object outcome = play.task().run(solution, play.engineSupplier().get(), consumer);
+      AgentsOutcome<AgentsObservation> outcome = play.task().run(solution, play.engineSupplier().get(), consumer);
       L.info("The outcome of the task is %s".formatted(outcome));
       // process outcome
       if (configuration.justOutput) {
         //noinspection unchecked,rawtypes
         System.out.println(play.outcomeFunctions().stream()
-            .map(f -> f.getFormat().formatted(((Function) f).apply(outcome)))
+            .map(f -> FormattedFunction.format(f).formatted(((Function)f).apply(outcome)))
             .collect(Collectors.joining("; ")));
       } else {
         //noinspection unchecked,rawtypes
         play.outcomeFunctions()
             .forEach(f -> System.out.printf(
-                "%s = " + f.getFormat() + "%n", f.getName(), ((Function) f).apply(outcome)));
+                "%s = " + FormattedFunction.format(f) + "%n", NamedFunction.name(f), ((Function) f).apply(outcome)));
       }
       consumer.run();
       // possibly save video

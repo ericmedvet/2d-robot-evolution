@@ -74,7 +74,7 @@ public class AgentImageWriter {
     @SuppressWarnings("unchecked")
     Supplier<Engine> engine = (Supplier<Engine>) nb.build(ENGINE_DESCRIPTION);
     @SuppressWarnings("unchecked")
-    Task<Supplier<Agent>, ?> task = (Task<Supplier<Agent>, ?>) nb.build(TASK_DESCRIPTION);
+    Task<Supplier<Agent>, ?, ?> task = (Task<Supplier<Agent>, ?, ?>) nb.build(TASK_DESCRIPTION);
 
     System.out.printf("Going to generate and save %d images.%n", agentResourcePaths.size());
     for (String agentResourcePath : agentResourcePaths) {
