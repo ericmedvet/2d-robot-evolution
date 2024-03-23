@@ -23,14 +23,12 @@ import io.github.ericmedvet.jnb.core.Discoverable;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody;
-
 import java.util.function.Function;
 
 @Discoverable(prefixTemplate = "evorobots|er.function|f")
 public class Functions {
 
   private Functions() {}
-
 
   @SuppressWarnings("unused")
   public static <X> FormattedNamedFunction<X, Boolean> nonEmptyVoxel(
@@ -39,7 +37,4 @@ public class Functions {
     Function<GridBody.Element, Boolean> f = e -> !e.type().equals(GridBody.VoxelType.NONE);
     return FormattedNamedFunction.from(f, format, "non.empty.voxel").compose(beforeF);
   }
-
-
-
 }

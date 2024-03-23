@@ -49,7 +49,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-// TODO make consistent with Mappers of jgea: 1. of parameter; 2. numerical parametrized
 @Discoverable(prefixTemplate = "evorobots|er.mapper|m")
 public class Mappers {
   private Mappers() {}
@@ -110,12 +109,13 @@ public class Mappers {
   }
 
   @SuppressWarnings("unused")
-  public static InvertibleMapper<IntString, Supplier<ReactiveGridVSR>> isToReactiveGridVsr(
+  public static <X> InvertibleMapper<X, Supplier<ReactiveGridVSR>> isToReactiveGridVsr(
+      @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, IntString> beforeM,
       @Param("w") int w,
       @Param("h") int h,
       @Param("availableVoxels") List<Supplier<ReactiveGridVSR.ReactiveVoxel>> availableVoxels) {
     IntString exampleGenotype = new IntString(Collections.nCopies(w * h, 0), 0, availableVoxels.size() + 1);
-    return InvertibleMapper.from(
+    return beforeM.andThen(InvertibleMapper.from(
         (supplier, s) -> {
           Grid<Integer> indexGrid = Grid.create(w, h, s.genes());
           Grid<ReactiveGridVSR.ReactiveVoxel> body;
@@ -130,15 +130,16 @@ public class Mappers {
           return () -> new ReactiveGridVSR(body);
         },
         supplier -> exampleGenotype,
-        "isToReactiveGridVsr[w=%d;h=%d]".formatted(w, h));
+        "isToReactiveGridVsr[w=%d;h=%d]".formatted(w, h)));
   }
 
   @SuppressWarnings("unused")
-  public static InvertibleMapper<NamedMultivariateRealFunction, Supplier<ReactiveGridVSR>> nmrfToReactiveGridVsr(
+  public static <X> InvertibleMapper<X, Supplier<ReactiveGridVSR>> nmrfToReactiveGridVsr(
+      @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, NamedMultivariateRealFunction> beforeM,
       @Param("w") int w,
       @Param("h") int h,
       @Param("availableVoxels") List<Supplier<ReactiveGridVSR.ReactiveVoxel>> availableVoxels) {
-    return InvertibleMapper.from(
+    return beforeM.andThen(InvertibleMapper.from(
         (supplier, nmrf) -> {
           Grid<Integer> indexGrid = Grid.create(w, h, (x, y) -> {
             double[] output = nmrf.apply(new double[] {(double) x / (double) w, (double) y / (double) h});
@@ -160,11 +161,12 @@ public class Mappers {
             MultivariateRealFunction.from(vs -> vs, 2, availableVoxels.size()),
             List.of("x", "y"),
             MultivariateRealFunction.varNames("v", availableVoxels.size())),
-        "nmrfToReactiveGridVsr[w=%d;h=%d]".formatted(w, h));
+        "nmrfToReactiveGridVsr[w=%d;h=%d]".formatted(w, h)));
   }
 
   @SuppressWarnings("unused")
-  public static <T extends NumMultiBrained> InvertibleMapper<List<Double>, Supplier<T>> dsToNpHeteroBrains(
+  public static <X, T extends NumMultiBrained> InvertibleMapper<X, Supplier<T>> dsToNpHeteroBrains(
+      @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, List<Double>> beforeM,
       @Param("target") T target,
       @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
       @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder) {
@@ -176,7 +178,7 @@ public class Mappers {
             .length)
         .toList();
     int overallBrainSize = brainSizes.stream().mapToInt(i -> i).sum();
-    return InvertibleMapper.from(
+    return beforeM.andThen(InvertibleMapper.from(
         (supplier, values) -> {
           if (values.size() != overallBrainSize) {
             throw new IllegalArgumentException("Wrong number of params: %d expected, %d found"
@@ -203,11 +205,12 @@ public class Mappers {
           };
         },
         supplier -> Collections.nCopies(overallBrainSize, 0d),
-        "dsToNpHeteroBrains");
+        "dsToNpHeteroBrains"));
   }
 
   @SuppressWarnings("unused")
-  public static <T extends NumMultiBrained> InvertibleMapper<List<Double>, Supplier<T>> dsToNpHomoBrains(
+  public static <X, T extends NumMultiBrained> InvertibleMapper<X, Supplier<T>> dsToNpHomoBrains(
+      @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, List<Double>> beforeM,
       @Param("target") T target,
       @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
       @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder) {
@@ -221,7 +224,7 @@ public class Mappers {
             .length)
         .findFirst()
         .orElseThrow();
-    return InvertibleMapper.from(
+    return beforeM.andThen(InvertibleMapper.from(
         (supplier, values) -> {
           if (values.size() != brainSize) {
             throw new IllegalArgumentException(
@@ -238,9 +241,10 @@ public class Mappers {
           };
         },
         supplier -> Collections.nCopies(brainSize, 0d),
-        "dsToNpHomoBrains");
+        "dsToNpHomoBrains"));
   }
 
+  // TODO maybe replace this and the following with mappers for body+brain given brain mapper
   @SuppressWarnings("unused")
   public static <T extends NumMultiBrained>
       InvertibleMapper<Graph<Node, OperatorGraph.NonValuedArc>, Supplier<T>> oGraphToHomoBrains(
