@@ -1,8 +1,9 @@
 ea.experiment(
   runs = (randomGenerator = (seed = [1:1:3]) * [ea.rg.defaultRG()]) * [
     ea.run(
-      solver = ea.s.doubleStringGa(
-        mapper = er.m.numericalParametrizedHeteroBrains(target = s.a.centralizedNumGridVSR(
+      solver = ea.s.ga(
+        representation = ea.r.doubleString();
+        mapper = er.m.dsToNpHomoBrains(target = s.a.centralizedNumGridVSR(
           body = s.a.vsr.gridBody(
             sensorizingFunction = s.a.vsr.sf.directional(
               headSensors = [s.s.sin(f = 0); s.s.d(a = -15; r = 5)];
