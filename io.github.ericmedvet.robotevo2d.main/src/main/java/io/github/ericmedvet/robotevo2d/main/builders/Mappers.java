@@ -51,6 +51,7 @@ import java.util.function.Supplier;
 
 @Discoverable(prefixTemplate = "evorobots|er.mapper|m")
 public class Mappers {
+
   private Mappers() {}
 
   private static int argmax(double[] values) {
