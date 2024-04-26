@@ -2237,6 +2237,17 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.isToReactiveGridVsr()` by robotevo2d-main:1.4.1-SNAPSHOT
 
+### Builder `evorobots.mapper.ndsToFixedBodyCentralizedVSR()`
+
+`er.m.ndsToFixedBodyCentralizedVSR(of; body)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code> |
+| `body` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR">CentralizedNumGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.ndsToFixedBodyCentralizedVSR()` by robotevo2d-main:1.4.1-SNAPSHOT
+
 ### Builder `evorobots.mapper.nmrfToReactiveGridVsr()`
 
 `er.m.nmrfToReactiveGridVsr(of; w; h; availableVoxels)`
@@ -2648,16 +2659,17 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;A, O
 
 ### Builder `sim.taskVideoBuilder()`
 
-`s.taskVideoBuilder(task; drawer; engine; startTime; endTime; frameRate)`
+`s.taskVideoBuilder(task; title; drawer; engine; startTime; endTime; frameRate)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `task` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Task">Task</abbr>&lt;A, ?, ?&gt;</code> |
-| `drawer` | npm | `sim.drawer()` | <code><abbr title="io.github.ericmedvet.mrsim2d.viewer.Drawer">Drawer</abbr></code> |
+| `title` | s | `` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `drawer` | npm | `sim.drawer()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="io.github.ericmedvet.mrsim2d.viewer.Drawer">Drawer</abbr>&gt;</code> |
 | `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.engine.Engine">Engine</abbr>&gt;</code> |
 | `startTime` | d | `0.0` | <code>double</code> |
 | `endTime` | d | `Infinity` | <code>double</code> |
-| `frameRate` | d | `0.0` | <code>double</code> |
+| `frameRate` | d | `30.0` | <code>double</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.viewer.TaskVideoBuilder">TaskVideoBuilder</abbr>&lt;A&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.taskVideoBuilder()` by robotevo2d-main:1.4.1-SNAPSHOT
 

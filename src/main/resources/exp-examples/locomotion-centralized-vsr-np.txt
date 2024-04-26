@@ -3,7 +3,7 @@ ea.experiment(
     ea.run(
       solver = ea.s.ga(
         representation = ea.r.doubleString();
-        mapper = er.m.ndsToFixedBodyCentralizedVSR(
+        mapper = er.m.dsToNpHomoBrains(target = s.a.centralizedNumGridVSR(
           body = s.a.vsr.gridBody(
             sensorizingFunction = s.a.vsr.sf.directional(
               headSensors = [s.s.sin(f = 0); s.s.d(a = -15; r = 5)];
@@ -12,10 +12,10 @@ ea.experiment(
             );
             shape = s.a.vsr.s.biped(w = 4; h = 3)
           );
-          of = ea.m.dsToNpnds(npnds = ds.num.mlp())
-        );
+          function = ds.num.mlp()
+        ));
         nEval = 1000;
-        nPop = 50
+        nPop = 25
       );
       problem = ea.p.simTo(
         simulation = s.task.locomotion(duration = 15);
