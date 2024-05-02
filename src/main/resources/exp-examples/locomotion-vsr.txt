@@ -1,0 +1,65 @@
+ea.experiment(
+  runs = (randomGenerator = (seed = [1:1:1]) * [m.defaultRG()]) *
+    (solver = (mapper = [
+      er.m.ndsToFixedBodyHomoDistributedVSR(
+        body = s.a.vsr.gridBody(
+          sensorizingFunction = s.a.vsr.sf.uniform(
+            sensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)]
+          );
+          shape = s.a.vsr.s.biped(w = 4; h = 3)
+        );
+        of = ea.m.dsToNpnds(npnds = ds.num.mlp())
+      );
+      er.m.ndsToFixedBodyCentralizedVSR(
+        body = s.a.vsr.gridBody(
+          sensorizingFunction = s.a.vsr.sf.directional(
+            headSensors = [s.s.sin(f = 0); s.s.d(a = -15; r = 5)];
+            nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
+            sSensors = [s.s.d(a = -90)]
+          );
+          shape = s.a.vsr.s.biped(w = 4; h = 3)
+        );
+        of = ea.m.dsToNpnds(npnds = ds.num.mlp())
+      )
+    ]) * [
+      ea.s.ga(
+        representation = ea.r.doubleString();
+        nEval = 250;
+        nPop = 25
+      )
+    ]) * [
+    ea.run(
+      problem = ea.p.simTo(
+        simulation = s.task.locomotion(duration = 6);
+        f = s.f.outcome.faXVelocity();
+        type = maximize
+      )
+    )
+  ];
+  listeners = [
+    ea.l.console(
+      functions = [
+        ea.f.size(of = ea.f.genotype(of = ea.f.best()); format = "%3d");
+        s.f.outcome.faXVelocity(of = ea.f.simOutcome(of = ea.f.quality(of = ea.f.best())); format = "%6.4f");
+        ea.f.hist(of = f.each(of = ea.f.all(); mapF = s.f.outcome.faXVelocity(of = ea.f.simOutcome(of = ea.f.quality()))));
+        f.percentile(of = f.each(of = ea.f.all(); mapF = s.f.outcome.faXVelocity(of = ea.f.simOutcome(of = ea.f.quality()))); p = 75; format = "%6.4f")
+      ];
+      runKeys = [
+        ea.misc.sEntry(key = "seed"; value = "{randomGenerator.seed}");
+        ea.misc.sEntry(key = "mapper"; value = "{solver.mapper:%#s}")
+      ]
+    );
+    ea.l.runLastIterationVideoSaver(
+      video = s.taskVideoBuilder(task = s.task.locomotion(duration = 15));
+      w = 300; h = 200;
+      function = ea.f.solution(of = ea.f.best());
+      filePathTemplate = "../finalBest-{problem.name}-{solver.name}-{randomGenerator.seed:%04d}.mp4";
+      condition = ea.predicate.all(conditions = [
+        ea.predicate.inS(
+          f = ea.f.runKey(runKey = ea.misc.sEntry(key = "seed"; value = "{randomGenerator.seed}"));
+          values = ["1"]
+        )
+      ])
+    )
+  ]
+)

@@ -22,18 +22,11 @@ package io.github.ericmedvet.robotevo2d.main.builders;
 
 import io.github.ericmedvet.jgea.core.InvertibleMapper;
 import io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction;
-import io.github.ericmedvet.jgea.core.representation.graph.Graph;
-import io.github.ericmedvet.jgea.core.representation.graph.Node;
-import io.github.ericmedvet.jgea.core.representation.graph.numeric.operatorgraph.OperatorGraph;
 import io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString;
-import io.github.ericmedvet.jgea.core.representation.tree.Tree;
-import io.github.ericmedvet.jgea.core.representation.tree.numeric.Element;
-import io.github.ericmedvet.jgea.core.representation.tree.numeric.TreeBasedMultivariateRealFunction;
 import io.github.ericmedvet.jnb.core.*;
 import io.github.ericmedvet.jnb.datastructure.Grid;
 import io.github.ericmedvet.jnb.datastructure.GridUtils;
 import io.github.ericmedvet.jnb.datastructure.NumericalParametrized;
-import io.github.ericmedvet.jnb.datastructure.Parametrized;
 import io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems;
 import io.github.ericmedvet.jsdynsym.core.composed.Composed;
 import io.github.ericmedvet.jsdynsym.core.numerical.MultivariateRealFunction;
@@ -41,11 +34,11 @@ import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
 import io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels;
 import io.github.ericmedvet.mrsim2d.core.NumMultiBrained;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR;
+import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Supplier;
 
 @Discoverable(prefixTemplate = "evorobots|er.mapper|m")
@@ -227,6 +220,46 @@ public class Mappers {
   }
 
   @SuppressWarnings("unused")
+  public static <X> InvertibleMapper<X, Supplier<DistributedNumGridVSR>> ndsToFixedBodyHomoDistributedVSR(
+      @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, NumericalDynamicalSystem<?>> beforeM,
+      @Param("body") GridBody body,
+      @Param(value = "nOfSignals", dI = 1) int nOfSignals,
+      @Param(value = "directional", dB = true) boolean directional,
+      @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
+      @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder) {
+    // check consistency
+    List<Integer> inputSizes = body.grid().entries().stream()
+        .filter(e -> !e.value().element().type().equals(GridBody.VoxelType.NONE))
+        .map(e -> DistributedNumGridVSR.nOfInputs(body, e.key(), nOfSignals, directional))
+        .distinct()
+        .toList();
+    List<Integer> outputSizes = body.grid().entries().stream()
+        .filter(e -> !e.value().element().type().equals(GridBody.VoxelType.NONE))
+        .map(e -> DistributedNumGridVSR.nOfOutputs(body, e.key(), nOfSignals, directional))
+        .distinct()
+        .toList();
+    if (inputSizes.size() != 1 || outputSizes.size() != 1) {
+      throw new IllegalArgumentException(
+          "Invalid input/output sizes, some voxels have different size: inputSizes=%s, outputSizes=%s"
+              .formatted(inputSizes, outputSizes));
+    }
+    NumericalDynamicalSystem<?> nds =
+        NumericalDynamicalSystems.Builder.empty().apply(inputSizes.get(0), outputSizes.get(0));
+    return InvertibleMapper.from(
+        (supplier, x) -> () -> new DistributedNumGridVSR(
+            body,
+            body.grid()
+                .map(se -> se.element().type().equals(GridBody.VoxelType.NONE)
+                    ? null
+                    : beforeM.mapperFor(nds).apply(x)),
+            nOfSignals,
+            directional),
+        supplier -> beforeM.exampleFor(nds),
+        "%s→ndsToFixedBodyHomoDistributedVSR[body=%s;signals=%d;directional=%s]"
+            .formatted(beforeM.toString(), map.value("body"), nOfSignals, directional));
+  }
+
+  @SuppressWarnings("unused")
   public static <X> InvertibleMapper<X, Supplier<ReactiveGridVSR>> nmrfToReactiveGridVsr(
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, NamedMultivariateRealFunction> beforeM,
       @Param("w") int w,
@@ -255,62 +288,5 @@ public class Mappers {
             List.of("x", "y"),
             MultivariateRealFunction.varNames("v", availableVoxels.size())),
         "nmrfToReactiveGridVsr[w=%d;h=%d]".formatted(w, h)));
-  }
-
-  // TODO maybe replace this and the following with mappers for body+brain given brain mapper
-  @SuppressWarnings("unused")
-  public static <T extends NumMultiBrained>
-      InvertibleMapper<Graph<Node, OperatorGraph.NonValuedArc>, Supplier<T>> oGraphToHomoBrains(
-          @Param("target") T target,
-          @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
-          @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder) {
-    checkType(target, Parametrized.class);
-    checkIOSizeConsistency(target);
-    Optional<OperatorGraph> optionalOGraphMRF =
-        Composed.shallowest(target.brains().stream().findFirst().orElseThrow(), OperatorGraph.class);
-    if (optionalOGraphMRF.isEmpty()) {
-      throw new IllegalArgumentException(
-          "Cannot use this mapper of oGraph without a %s".formatted(OperatorGraph.class.getSimpleName()));
-    }
-    return InvertibleMapper.from(
-        (supplier, g) -> () -> {
-          @SuppressWarnings("unchecked")
-          T t = (T) builder.build((NamedParamMap) map.value("target", ParamMap.Type.NAMED_PARAM_MAP));
-          t.brains().forEach(b -> Composed.shallowest(b, OperatorGraph.class)
-              .orElseThrow()
-              .setParams(g));
-          return t;
-        },
-        supplier -> OperatorGraph.sampleFor(
-            optionalOGraphMRF.get().xVarNames(),
-            optionalOGraphMRF.get().yVarNames()),
-        "oGraphToHomoBrains");
-  }
-
-  @SuppressWarnings("unused")
-  public static <T extends NumMultiBrained> InvertibleMapper<List<Tree<Element>>, Supplier<T>> srTreeToHomoBrains(
-      @Param("target") T target,
-      @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
-      @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder) {
-    checkType(target, Parametrized.class);
-    checkIOSizeConsistency(target);
-    Optional<TreeBasedMultivariateRealFunction> optionalTreeMRF = Composed.shallowest(
-        target.brains().stream().findFirst().orElseThrow(), TreeBasedMultivariateRealFunction.class);
-    if (optionalTreeMRF.isEmpty()) {
-      throw new IllegalArgumentException("Cannot use this mapper of trees without a %s"
-          .formatted(TreeBasedMultivariateRealFunction.class.getSimpleName()));
-    }
-    return InvertibleMapper.from(
-        (supplier, trees) -> () -> {
-          @SuppressWarnings("unchecked")
-          T t = (T) builder.build((NamedParamMap) map.value("target", ParamMap.Type.NAMED_PARAM_MAP));
-          t.brains().forEach(b -> Composed.shallowest(b, TreeBasedMultivariateRealFunction.class)
-              .orElseThrow()
-              .setParams(trees));
-          return t;
-        },
-        supplier -> TreeBasedMultivariateRealFunction.sampleFor(
-            optionalTreeMRF.get().xVarNames(), optionalTreeMRF.get().yVarNames()),
-        "srTreeToHomoBrains");
   }
 }

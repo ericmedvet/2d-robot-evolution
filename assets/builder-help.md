@@ -2248,6 +2248,19 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR">CentralizedNumGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.ndsToFixedBodyCentralizedVSR()` by robotevo2d-main:1.4.1-SNAPSHOT
 
+### Builder `evorobots.mapper.ndsToFixedBodyHomoDistributedVSR()`
+
+`er.m.ndsToFixedBodyHomoDistributedVSR(of; body; nOfSignals; directional)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code> |
+| `body` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
+| `nOfSignals` | i | `1` | <code>int</code> |
+| `directional` | b | `true` | <code>boolean</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR">DistributedNumGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.ndsToFixedBodyHomoDistributedVSR()` by robotevo2d-main:1.4.1-SNAPSHOT
+
 ### Builder `evorobots.mapper.nmrfToReactiveGridVsr()`
 
 `er.m.nmrfToReactiveGridVsr(of; w; h; availableVoxels)`
@@ -2260,26 +2273,6 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `availableVoxels` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr>&gt;&gt;</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.nmrfToReactiveGridVsr()` by robotevo2d-main:1.4.1-SNAPSHOT
-
-### Builder `evorobots.mapper.oGraphToHomoBrains()`
-
-`er.m.oGraphToHomoBrains(target)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `target` | npm |  | <code>T</code> |
-
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.graph.Graph">Graph</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.graph.Node">Node</abbr>, <abbr title="io.github.ericmedvet.jgea.core.representation.graph.numeric.operatorgraph.OperatorGraph$NonValuedArc">OperatorGraph$NonValuedArc</abbr>&gt;, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.oGraphToHomoBrains()` by robotevo2d-main:1.4.1-SNAPSHOT
-
-### Builder `evorobots.mapper.srTreeToHomoBrains()`
-
-`er.m.srTreeToHomoBrains(target)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `target` | npm |  | <code>T</code> |
-
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;&gt;, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.srTreeToHomoBrains()` by robotevo2d-main:1.4.1-SNAPSHOT
 
 ## Package `function`
 
@@ -2690,13 +2683,13 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.Cen
 
 ### Builder `sim.agent.distributedNumGridVSR()`
 
-`s.a.distributedNumGridVSR(body; function; signals; directional)`
+`s.a.distributedNumGridVSR(body; function; nOfSignals; directional)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `body` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
 | `function` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr>&lt;?, ?&gt;</code> |
-| `signals` | i |  | <code>int</code> |
+| `nOfSignals` | i |  | <code>int</code> |
 | `directional` | b | `false` | <code>boolean</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR">DistributedNumGridVSR</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Agents.distributedNumGridVSR()` by robotevo2d-main:1.4.1-SNAPSHOT
