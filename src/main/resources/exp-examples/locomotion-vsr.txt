@@ -1,15 +1,6 @@
 ea.experiment(
   runs = (randomGenerator = (seed = [1:1:1]) * [m.defaultRG()]) *
     (solver = (mapper = [
-      er.m.ndsToFixedBodyHomoDistributedVSR(
-        body = s.a.vsr.gridBody(
-          sensorizingFunction = s.a.vsr.sf.uniform(
-            sensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)]
-          );
-          shape = s.a.vsr.s.biped(w = 4; h = 3)
-        );
-        of = ea.m.dsToNpnds(npnds = ds.num.mlp())
-      );
       er.m.ndsToFixedBodyCentralizedVSR(
         body = s.a.vsr.gridBody(
           sensorizingFunction = s.a.vsr.sf.directional(
@@ -19,18 +10,27 @@ ea.experiment(
           );
           shape = s.a.vsr.s.biped(w = 4; h = 3)
         );
-        of = ea.m.dsToNpnds(npnds = ds.num.mlp())
+        of = ea.m.noisedNds(of = ea.m.steppedNds(of = ea.m.dsToNpnds(npnds = ds.num.mlp()); stepT = 0.2))
+      );
+      er.m.ndsToFixedBodyHomoDistributedVSR(
+        body = s.a.vsr.gridBody(
+          sensorizingFunction = s.a.vsr.sf.uniform(
+            sensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)]
+          );
+          shape = s.a.vsr.s.biped(w = 4; h = 3)
+        );
+        of = ea.m.steppedNds(of = ea.m.dsToNpnds(npnds = ds.num.mlp()); stepT = 0.2)
       )
     ]) * [
       ea.s.ga(
         representation = ea.r.doubleString();
-        nEval = 250;
-        nPop = 25
+        nEval = 1000;
+        nPop = 50
       )
     ]) * [
     ea.run(
       problem = ea.p.simTo(
-        simulation = s.task.locomotion(duration = 6);
+        simulation = s.task.locomotion(duration = 10);
         f = s.f.outcome.faXVelocity();
         type = maximize
       )
@@ -53,7 +53,7 @@ ea.experiment(
       video = s.taskVideoBuilder(task = s.task.locomotion(duration = 15));
       w = 300; h = 200;
       function = ea.f.solution(of = ea.f.best());
-      filePathTemplate = "../finalBest-{problem.name}-{solver.name}-{randomGenerator.seed:%04d}.mp4";
+      filePathTemplate = "../finalBest-{solver.mapper:%#s}-{solver.name}-{randomGenerator.seed:%04d}.mp4";
       condition = ea.predicate.all(conditions = [
         ea.predicate.inS(
           f = ea.f.runKey(runKey = ea.misc.sEntry(key = "seed"; value = "{randomGenerator.seed}"));

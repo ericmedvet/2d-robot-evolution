@@ -2652,17 +2652,16 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;A, O
 
 ### Builder `sim.taskVideoBuilder()`
 
-`s.taskVideoBuilder(task; title; drawer; engine; startTime; endTime; frameRate)`
+`s.taskVideoBuilder(task; drawer; engine; startTime; endTime; frameRate)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `task` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Task">Task</abbr>&lt;A, ?, ?&gt;</code> |
-| `title` | s | `` | <code><abbr title="java.lang.String">String</abbr></code> |
-| `drawer` | npm | `sim.drawer()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="io.github.ericmedvet.mrsim2d.viewer.Drawer">Drawer</abbr>&gt;</code> |
+| `drawer` | npm | `sim.drawer()` | <code><abbr title="io.github.ericmedvet.mrsim2d.viewer.Drawer">Drawer</abbr></code> |
 | `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.engine.Engine">Engine</abbr>&gt;</code> |
 | `startTime` | d | `0.0` | <code>double</code> |
 | `endTime` | d | `Infinity` | <code>double</code> |
-| `frameRate` | d | `30.0` | <code>double</code> |
+| `frameRate` | d | `0.0` | <code>double</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.viewer.TaskVideoBuilder">TaskVideoBuilder</abbr>&lt;A&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.taskVideoBuilder()` by robotevo2d-main:1.4.1-SNAPSHOT
 
@@ -2683,13 +2682,13 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.Cen
 
 ### Builder `sim.agent.distributedNumGridVSR()`
 
-`s.a.distributedNumGridVSR(body; function; nOfSignals; directional)`
+`s.a.distributedNumGridVSR(body; function; signals; directional)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `body` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
 | `function` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr>&lt;?, ?&gt;</code> |
-| `nOfSignals` | i |  | <code>int</code> |
+| `signals` | i |  | <code>int</code> |
 | `directional` | b | `false` | <code>boolean</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR">DistributedNumGridVSR</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Agents.distributedNumGridVSR()` by robotevo2d-main:1.4.1-SNAPSHOT
