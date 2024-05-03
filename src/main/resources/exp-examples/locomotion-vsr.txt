@@ -24,7 +24,7 @@ ea.experiment(
     ]) * [
       ea.s.ga(
         representation = ea.r.doubleString();
-        nEval = 1000;
+        nEval = 500;
         nPop = 50
       )
     ]) * [
@@ -51,7 +51,7 @@ ea.experiment(
     );
     ea.l.runLastIterationVideoSaver(
       video = s.taskVideoBuilder(task = s.task.locomotion(duration = 15));
-      w = 300; h = 200;
+      w = 300; h = 200; encoder = ffmpeg_small;
       function = ea.f.solution(of = ea.f.best());
       filePathTemplate = "../finalBest-{solver.mapper:%#s}-{solver.name}-{randomGenerator.seed:%04d}.mp4";
       condition = ea.predicate.all(conditions = [
