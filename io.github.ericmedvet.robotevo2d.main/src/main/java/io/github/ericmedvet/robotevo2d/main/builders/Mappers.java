@@ -31,16 +31,20 @@ import io.github.ericmedvet.jnb.core.ParamMap;
 import io.github.ericmedvet.jnb.datastructure.Grid;
 import io.github.ericmedvet.jnb.datastructure.GridUtils;
 import io.github.ericmedvet.jnb.datastructure.NumericalParametrized;
+import io.github.ericmedvet.jnb.datastructure.Pair;
 import io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems;
 import io.github.ericmedvet.jsdynsym.core.composed.Composed;
 import io.github.ericmedvet.jsdynsym.core.numerical.MultivariateRealFunction;
 import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
 import io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels;
 import io.github.ericmedvet.mrsim2d.core.NumMultiBrained;
+import io.github.ericmedvet.mrsim2d.core.Sensor;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR;
+import io.github.ericmedvet.mrsim2d.core.bodies.Body;
+import io.github.ericmedvet.mrsim2d.core.bodies.Voxel;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
@@ -228,9 +232,7 @@ public class Mappers {
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, NumericalDynamicalSystem<?>> beforeM,
       @Param("body") GridBody body,
       @Param(value = "nOfSignals", dI = 1) int nOfSignals,
-      @Param(value = "directional", dB = true) boolean directional,
-      @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
-      @Param(value = "", injection = Param.Injection.BUILDER) NamedBuilder<?> builder) {
+      @Param(value = "directional", dB = true) boolean directional) {
     // check consistency
     List<Integer> inputSizes = body.grid().entries().stream()
         .filter(e -> !e.value().element().type().equals(GridBody.VoxelType.NONE))
@@ -259,8 +261,8 @@ public class Mappers {
             nOfSignals,
             directional),
         supplier -> beforeM.exampleFor(nds),
-        "%s→ndsToFixedBodyHomoDistributedVSR[body=%s;signals=%d;directional=%s]"
-            .formatted(beforeM.toString(), map.value("body"), nOfSignals, directional));
+        "%s→ndsToFixedBodyHomoDistributedVSR[nOfSignals=%d;directional=%s]"
+            .formatted(beforeM, nOfSignals, directional));
   }
 
   @SuppressWarnings("unused")
@@ -292,5 +294,38 @@ public class Mappers {
             List.of("x", "y"),
             MultivariateRealFunction.varNames("v", availableVoxels.size())),
         "nmrfToReactiveGridVsr[w=%d;h=%d]".formatted(w, h)));
+  }
+
+  @SuppressWarnings("unused")
+  public <X> InvertibleMapper<X, Supplier<DistributedNumGridVSR>> bodyBrainHomoDistributedVSR(
+      @Param(value = "of", dNPM = "ea.m.identity()")
+          InvertibleMapper<X, Pair<Grid<GridBody.VoxelType>, NumericalDynamicalSystem<?>>> beforeM,
+      @Param(value = "w", dI = 10) int w,
+      @Param(value = "h", dI = 10) int h,
+      @Param(value = "nOfSignals", dI = 1) int nOfSignals,
+      @Param(value = "directional", dB = true) boolean directional,
+      @Param(value = "sensors") List<Sensor<? super Body>> sensors) {
+    Pair<Grid<GridBody.VoxelType>, NumericalDynamicalSystem<?>> ePair = new Pair<>(
+        Grid.create(w, h, GridBody.VoxelType.SOFT),
+        NumericalDynamicalSystems.Builder.empty()
+            .apply(
+                DistributedNumGridVSR.nOfInputs(sensors, nOfSignals, directional),
+                DistributedNumGridVSR.nOfOutputs(sensors, nOfSignals, directional)));
+    return InvertibleMapper.from(
+        (supplier, x) -> () -> {
+          Grid<GridBody.VoxelType> grid =
+              beforeM.mapperFor(ePair).apply(x).first();
+          return new DistributedNumGridVSR(
+              new GridBody(grid.map(vt -> new GridBody.SensorizedElement(
+                  new GridBody.Element(vt, Voxel.DEFAULT_MATERIAL), sensors))),
+              grid.map(vt -> vt.equals(GridBody.VoxelType.NONE)
+                  ? null
+                  : beforeM.mapperFor(ePair).apply(x).second()),
+              nOfSignals,
+              directional);
+        },
+        supplier -> beforeM.exampleFor(ePair),
+        "%s→bodyBrainHomoDistributedVSR[%dx%d;nOfSignals=%d;directional=%s]"
+            .formatted(beforeM, w, h, nOfSignals, directional));
   }
 }
