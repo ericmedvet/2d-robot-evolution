@@ -1,0 +1,70 @@
+ea.experiment(
+  runs = (randomGenerator = (seed = [1:1:1]) * [m.defaultRG()]) *
+    (solver = (mapper = [
+      er.m.bodyBrainHomoDistributedVSR(
+        w = 5;
+        h = 5;
+        sensors = [s.s.a(); s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
+        of = ea.m.pair(
+          of = ea.m.dsSplit();
+          ofFirst = ea.m.nmrfToGrid(
+            of = ea.m.ntissToNmrf(of = ea.m.dsToNpnds(npnds = ds.num.mlp()));
+            items = [s.a.vsr.voxel(type = none); s.a.vsr.voxel(type = soft); s.a.vsr.voxel(type = rigid)]
+          );
+          ofSecond = ea.m.steppedNds(of = ea.m.dsToNpnds(npnds = ds.num.mlp()); stepT = 0.2)
+        )
+      );
+      er.m.bodyBrainHomoDistributedVSR(
+        w = 8;
+        h = 8;
+        sensors = [s.s.a(); s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
+        of = ea.m.pair(
+          of = ea.m.dsSplit();
+          ofFirst = ea.m.dsToFixedGrid(negItem = s.a.vsr.voxel(type = none); posItem = s.a.vsr.voxel(type = soft));
+          ofSecond = ea.m.steppedNds(of = ea.m.dsToNpnds(npnds = ds.num.mlp()); stepT = 0.2)
+        )
+      )
+    ]) * [
+      ea.s.ga(
+        representation = ea.r.doubleString();
+        nEval = 1000;
+        nPop = 50
+      )
+    ]) * [
+    ea.run(
+      problem = ea.p.simTo(
+        simulation = s.task.locomotion(duration = 15);
+        f = s.f.outcome.faXVelocity();
+        type = maximize
+      )
+    )
+  ];
+  listeners = [
+    ea.l.console(
+      functions = [
+        ea.f.size(of = ea.f.genotype(of = ea.f.best()); format = "%3d");
+        s.f.outcome.faXVelocity(of = ea.f.simOutcome(of = ea.f.quality(of = ea.f.best())); format = "%6.4f");
+        f.gridFitW(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = ea.f.best()))));
+        f.gridFitH(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = ea.f.best()))));
+        ea.f.hist(of = f.each(of = ea.f.all(); mapF = s.f.outcome.faXVelocity(of = ea.f.simOutcome(of = ea.f.quality()))));
+        f.percentile(of = f.each(of = ea.f.all(); mapF = s.f.outcome.faXVelocity(of = ea.f.simOutcome(of = ea.f.quality()))); p = 75; format = "%6.4f")
+      ];
+      runKeys = [
+        ea.misc.sEntry(key = "seed"; value = "{randomGenerator.seed}");
+        ea.misc.sEntry(key = "mapper"; value = "{solver.mapper:%#s}")
+      ]
+    );
+    ea.l.runLastIterationVideoSaver(
+      video = s.taskVideoBuilder(task = s.task.locomotion(duration = 15));
+      w = 300; h = 200; encoder = ffmpeg_small;
+      function = ea.f.solution(of = ea.f.best());
+      filePathTemplate = "../finalBest-{solver.mapper:%#s}-{solver.name}-{randomGenerator.seed:%04d}.mp4";
+      condition = ea.predicate.all(conditions = [
+        ea.predicate.inS(
+          f = ea.f.runKey(runKey = ea.misc.sEntry(key = "seed"; value = "{randomGenerator.seed}"));
+          values = ["1"]
+        )
+      ])
+    )
+  ]
+)

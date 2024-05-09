@@ -568,6 +568,16 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, S&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.solution()` by robotevo2d-main:1.4.1-SNAPSHOT
 
+### Builder `ea.function.supplied()`
+
+`ea.f.supplied(of)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;Z&gt;&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, Z&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.supplied()` by robotevo2d-main:1.4.1-SNAPSHOT
+
 ### Builder `ea.function.targetDistances()`
 
 `ea.f.targetDistances(problem; of; format)`
@@ -2308,6 +2318,21 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;
 
 Aliases: `er.m`, `er.mapper`, `evorobots.m`, `evorobots.mapper`
 
+### Builder `evorobots.mapper.bodyBrainHomoDistributedVSR()`
+
+`er.m.bodyBrainHomoDistributedVSR(of; w; h; nOfSignals; directional; sensors)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;&gt;</code> |
+| `w` | i | `10` | <code>int</code> |
+| `h` | i | `10` | <code>int</code> |
+| `nOfSignals` | i | `1` | <code>int</code> |
+| `directional` | b | `true` | <code>boolean</code> |
+| `sensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;? super <abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR">DistributedNumGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.bodyBrainHomoDistributedVSR()` by robotevo2d-main:1.4.1-SNAPSHOT
+
 ### Builder `evorobots.mapper.dsToNpHeteroBrains()`
 
 `er.m.dsToNpHeteroBrains(of; target)`
@@ -2922,6 +2947,16 @@ Aliases: `s.a.vsr`, `s.agent.vsr`, `sim.a.vsr`, `sim.agent.vsr`
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.VSRMisc.gridBody()` by robotevo2d-main:1.4.1-SNAPSHOT
 
+### Builder `sim.agent.vsr.voxel()`
+
+`s.a.vsr.voxel(type)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `type` | e |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.VSRMisc.voxel()` by robotevo2d-main:1.4.1-SNAPSHOT
+
 ## Package `sim.agent.vsr.reactiveVoxel`
 
 Aliases: `s.a.vsr.reactiveVoxel`, `s.a.vsr.rv`, `s.agent.vsr.reactiveVoxel`, `s.agent.vsr.rv`, `sim.a.vsr.reactiveVoxel`, `sim.a.vsr.rv`, `sim.agent.vsr.reactiveVoxel`, `sim.agent.vsr.rv`
@@ -3112,6 +3147,22 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</a
 | `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.GridShapes.worm()` by robotevo2d-main:1.4.1-SNAPSHOT
+
+## Package `sim.function`
+
+Aliases: `s.f`, `s.function`, `sim.f`, `sim.function`
+
+### Builder `sim.function.vsrBody()`
+
+`s.f.vsrBody(of; nullify; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.AbstractGridVSR">AbstractGridVSR</abbr>&gt;</code> |
+| `nullify` | b | `true` | <code>boolean</code> |
+| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.vsrBody()` by robotevo2d-main:1.4.1-SNAPSHOT
 
 ## Package `sim.function.outcome`
 

@@ -67,6 +67,44 @@ public class Mappers {
     return i;
   }
 
+  @SuppressWarnings("unused")
+  public static <X> InvertibleMapper<X, Supplier<DistributedNumGridVSR>> bodyBrainHomoDistributedVSR(
+      @Param(value = "of", dNPM = "ea.m.identity()")
+          InvertibleMapper<X, Pair<Grid<GridBody.VoxelType>, NumericalDynamicalSystem<?>>> beforeM,
+      @Param(value = "w", dI = 10) int w,
+      @Param(value = "h", dI = 10) int h,
+      @Param(value = "nOfSignals", dI = 1) int nOfSignals,
+      @Param(value = "directional", dB = true) boolean directional,
+      @Param(value = "sensors") List<Sensor<? super Body>> sensors) {
+    Pair<Grid<GridBody.VoxelType>, NumericalDynamicalSystem<?>> ePair = new Pair<>(
+        Grid.create(w, h, GridBody.VoxelType.SOFT),
+        NumericalDynamicalSystems.Builder.empty()
+            .apply(
+                DistributedNumGridVSR.nOfInputs(sensors, nOfSignals, directional),
+                DistributedNumGridVSR.nOfOutputs(sensors, nOfSignals, directional)));
+    return InvertibleMapper.from(
+        (supplier, x) -> () -> {
+          Grid<GridBody.VoxelType> grid = GridUtils.largestConnected(
+              beforeM.mapperFor(ePair).apply(x).first(),
+              vt -> !vt.equals(GridBody.VoxelType.NONE),
+              GridBody.VoxelType.NONE);
+          if (grid.values().stream().allMatch(vt -> vt.equals(GridBody.VoxelType.NONE))) {
+            grid = Grid.create(1, 1, GridBody.VoxelType.RIGID);
+          }
+          return new DistributedNumGridVSR(
+              new GridBody(grid.map(vt -> new GridBody.SensorizedElement(
+                  new GridBody.Element(vt, Voxel.DEFAULT_MATERIAL), sensors))),
+              grid.map(vt -> vt.equals(GridBody.VoxelType.NONE)
+                  ? null
+                  : beforeM.mapperFor(ePair).apply(x).second()),
+              nOfSignals,
+              directional);
+        },
+        supplier -> beforeM.exampleFor(ePair),
+        "%s→bodyBrainHomoDistributedVSR[%dx%d;nOfSignals=%d;directional=%s]"
+            .formatted(beforeM, w, h, nOfSignals, directional));
+  }
+
   private static void checkIOSizeConsistency(NumMultiBrained numMultiBrained) {
     List<Integer> inSizes = numMultiBrained.brains().stream()
         .map(NumericalDynamicalSystem::nOfInputs)
@@ -294,38 +332,5 @@ public class Mappers {
             List.of("x", "y"),
             MultivariateRealFunction.varNames("v", availableVoxels.size())),
         "nmrfToReactiveGridVsr[w=%d;h=%d]".formatted(w, h)));
-  }
-
-  @SuppressWarnings("unused")
-  public <X> InvertibleMapper<X, Supplier<DistributedNumGridVSR>> bodyBrainHomoDistributedVSR(
-      @Param(value = "of", dNPM = "ea.m.identity()")
-          InvertibleMapper<X, Pair<Grid<GridBody.VoxelType>, NumericalDynamicalSystem<?>>> beforeM,
-      @Param(value = "w", dI = 10) int w,
-      @Param(value = "h", dI = 10) int h,
-      @Param(value = "nOfSignals", dI = 1) int nOfSignals,
-      @Param(value = "directional", dB = true) boolean directional,
-      @Param(value = "sensors") List<Sensor<? super Body>> sensors) {
-    Pair<Grid<GridBody.VoxelType>, NumericalDynamicalSystem<?>> ePair = new Pair<>(
-        Grid.create(w, h, GridBody.VoxelType.SOFT),
-        NumericalDynamicalSystems.Builder.empty()
-            .apply(
-                DistributedNumGridVSR.nOfInputs(sensors, nOfSignals, directional),
-                DistributedNumGridVSR.nOfOutputs(sensors, nOfSignals, directional)));
-    return InvertibleMapper.from(
-        (supplier, x) -> () -> {
-          Grid<GridBody.VoxelType> grid =
-              beforeM.mapperFor(ePair).apply(x).first();
-          return new DistributedNumGridVSR(
-              new GridBody(grid.map(vt -> new GridBody.SensorizedElement(
-                  new GridBody.Element(vt, Voxel.DEFAULT_MATERIAL), sensors))),
-              grid.map(vt -> vt.equals(GridBody.VoxelType.NONE)
-                  ? null
-                  : beforeM.mapperFor(ePair).apply(x).second()),
-              nOfSignals,
-              directional);
-        },
-        supplier -> beforeM.exampleFor(ePair),
-        "%s→bodyBrainHomoDistributedVSR[%dx%d;nOfSignals=%d;directional=%s]"
-            .formatted(beforeM, w, h, nOfSignals, directional));
   }
 }
