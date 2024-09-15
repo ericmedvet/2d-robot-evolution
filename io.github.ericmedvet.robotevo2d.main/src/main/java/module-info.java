@@ -19,7 +19,6 @@
  */
 module io.github.ericmedvet.robotevo2d.main {
   requires io.github.ericmedvet.jgea.core;
-  requires io.github.ericmedvet.jgea.problem;
   requires io.github.ericmedvet.jgea.experimenter;
   requires java.desktop;
   requires java.logging;

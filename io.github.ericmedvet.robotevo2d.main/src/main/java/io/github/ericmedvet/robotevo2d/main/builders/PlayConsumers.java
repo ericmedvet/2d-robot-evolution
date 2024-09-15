@@ -91,7 +91,7 @@ public class PlayConsumers {
     return ProducingConsumer.from(framesImageBuilder, () -> {
       BufferedImage bufferedImage = framesImageBuilder.get();
       try {
-        File file = io.github.ericmedvet.jgea.core.util.Misc.checkExistenceAndChangeName(new File(filePath));
+        File file = io.github.ericmedvet.jgea.core.util.Misc.robustGetFile(filePath);
         ImageIO.write(bufferedImage, "png", file);
         L.info("Image done and saved on file %s".formatted(file.getAbsolutePath()));
       } catch (IOException e) {

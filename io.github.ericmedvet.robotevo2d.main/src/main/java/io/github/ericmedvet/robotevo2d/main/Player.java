@@ -31,7 +31,11 @@ import io.github.ericmedvet.jnb.datastructure.NamedFunction;
 import io.github.ericmedvet.mrsim2d.core.tasks.AgentsObservation;
 import io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome;
 import io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
@@ -120,6 +124,7 @@ public class Player {
           L.severe("Cannot read provided experiment description at %s: %s%n"
               .formatted(configuration.playDescriptionFilePath, e));
           if (configuration.verbose) {
+            //noinspection CallToPrintStackTrace
             e.printStackTrace();
           }
         }
@@ -134,6 +139,7 @@ public class Player {
         L.severe("Cannot read provided experiment description at %s: %s%n"
             .formatted(configuration.playDescriptionFilePath, e));
         if (configuration.verbose) {
+          //noinspection CallToPrintStackTrace
           e.printStackTrace();
         }
       }
@@ -179,6 +185,7 @@ public class Player {
     } catch (BuilderException e) {
       L.severe("Cannot build experiment: %s%n".formatted(e));
       if (configuration.verbose) {
+        //noinspection CallToPrintStackTrace
         e.printStackTrace();
       }
       System.exit(-1);
