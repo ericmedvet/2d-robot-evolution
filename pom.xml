@@ -47,8 +47,6 @@
     </snapshotRepository>
   </distributionManagement>
 
-  <dependencies/>
-
   <properties>
     <jdk.version>21</jdk.version>
     <jgea.version>2.7.0</jgea.version>
@@ -56,6 +54,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <revision>1.5.0</revision>
   </properties>
+
+  <dependencies/>
 
   <repositories>
     <repository>
