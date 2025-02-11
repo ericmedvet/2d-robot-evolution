@@ -344,7 +344,7 @@ public class Mappers {
       );
     }
     NumericalDynamicalSystem<?> nds = NumericalDynamicalSystems.Builder.empty()
-        .apply(inputSizes.get(0), outputSizes.get(0));
+        .apply(inputSizes.getFirst(), outputSizes.getFirst());
     return InvertibleMapper.from(
         (supplier, x) -> () -> new DistributedNumGridVSR(
             body,
