@@ -49,8 +49,8 @@
 
   <properties>
     <jdk.version>21</jdk.version>
-    <jgea.version>2.7.0</jgea.version>
-    <mrsim2d.version>1.2.0</mrsim2d.version>
+    <jgea.version>2.7.1-SNAPSHOT</jgea.version>
+    <mrsim2d.version>1.2.1-SNAPSHOT</mrsim2d.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <revision>1.5.1-SNAPSHOT</revision>
   </properties>
