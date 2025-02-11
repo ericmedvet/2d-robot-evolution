@@ -87,7 +87,8 @@ public class IOSaver<S> extends AbstractComposed<NumericalDynamicalSystem<S>> im
     try {
       printer = new CSVPrinter(
           new PrintStream(new FileOutputStream(key.filePath())),
-          CSVFormat.Builder.create().setDelimiter(";").build());
+          CSVFormat.Builder.create().setDelimiter(";").build()
+      );
     } catch (IOException e) {
       L.warning("Cannot write on file due to %s".formatted(e));
       return null;
@@ -95,11 +96,16 @@ public class IOSaver<S> extends AbstractComposed<NumericalDynamicalSystem<S>> im
     // print header
     try {
       // TODO to be replaced with a call to Agents.varNames()
-      printer.printRecord(Stream.concat(
+      printer.printRecord(
+          Stream.concat(
               Stream.of("index", "t"),
               Stream.concat(
-                  varNames("x", key.nOfInputs()).stream(), varNames("y", key.nOfOutputs()).stream()))
-          .toList());
+                  varNames("x", key.nOfInputs()).stream(),
+                  varNames("y", key.nOfOutputs()).stream()
+              )
+          )
+              .toList()
+      );
       L.info("Header written on %s".formatted(key.filePath));
     } catch (IOException e) {
       L.warning("Cannot write header due to %s".formatted(e));
@@ -141,12 +147,16 @@ public class IOSaver<S> extends AbstractComposed<NumericalDynamicalSystem<S>> im
       if (printer != null) {
         // write a row
         try {
-          printer.printRecord(Stream.concat(
+          printer.printRecord(
+              Stream.concat(
                   Stream.of((double) index, t),
                   Stream.concat(
                       Arrays.stream(input).boxed(),
-                      Arrays.stream(output).boxed()))
-              .toList());
+                      Arrays.stream(output).boxed()
+                  )
+              )
+                  .toList()
+          );
         } catch (IOException e) {
           L.warning("Cannot write row due to %s".formatted(e));
         }

@@ -57,29 +57,23 @@ public class Player {
 
   public static class Configuration {
     @Parameter(
-        names = {"--playFile", "-f"},
-        description = "Path of the file with the play description.")
+        names = {"--playFile", "-f"}, description = "Path of the file with the play description.")
     public String playDescriptionFilePath = "";
 
     @Parameter(
-        names = {"--help", "-h"},
-        description = "Show this help.",
-        help = true)
+        names = {"--help", "-h"}, description = "Show this help.", help = true)
     public boolean help;
 
     @Parameter(
-        names = {"--default", "-d"},
-        description = "Use default play description.")
+        names = {"--default", "-d"}, description = "Use default play description.")
     public boolean defaultPlay;
 
     @Parameter(
-        names = {"--verbose", "-v"},
-        description = "Be verbose on errors (i.e., print stack traces)")
+        names = {"--verbose", "-v"}, description = "Be verbose on errors (i.e., print stack traces)")
     public boolean verbose = false;
 
     @Parameter(
-        names = {"--justOutput", "-j"},
-        description = "Just show the task output, if any")
+        names = {"--justOutput", "-j"}, description = "Just show the task output, if any")
     public boolean justOutput = false;
   }
 
@@ -121,8 +115,10 @@ public class Player {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(resourceIS))) {
           playDescription = br.lines().collect(Collectors.joining());
         } catch (IOException e) {
-          L.severe("Cannot read provided experiment description at %s: %s%n"
-              .formatted(configuration.playDescriptionFilePath, e));
+          L.severe(
+              "Cannot read provided experiment description at %s: %s%n"
+                  .formatted(configuration.playDescriptionFilePath, e)
+          );
           if (configuration.verbose) {
             //noinspection CallToPrintStackTrace
             e.printStackTrace();
@@ -136,8 +132,10 @@ public class Player {
       try (BufferedReader br = new BufferedReader(new FileReader(configuration.playDescriptionFilePath))) {
         playDescription = br.lines().collect(Collectors.joining());
       } catch (IOException e) {
-        L.severe("Cannot read provided experiment description at %s: %s%n"
-            .formatted(configuration.playDescriptionFilePath, e));
+        L.severe(
+            "Cannot read provided experiment description at %s: %s%n"
+                .formatted(configuration.playDescriptionFilePath, e)
+        );
         if (configuration.verbose) {
           //noinspection CallToPrintStackTrace
           e.printStackTrace();
@@ -151,35 +149,39 @@ public class Player {
     try {
       // build solution
       L.config("Building genotype");
-      @SuppressWarnings("unchecked")
-      Play<Object, Object, AgentsObservation, AgentsOutcome<AgentsObservation>> play =
-          (Play<Object, Object, AgentsObservation, AgentsOutcome<AgentsObservation>>)
-              nb.build(playDescription);
+      @SuppressWarnings("unchecked") Play<Object, Object, AgentsObservation, AgentsOutcome<AgentsObservation>> play = (Play<Object, Object, AgentsObservation, AgentsOutcome<AgentsObservation>>) nb
+          .build(playDescription);
       Object genotype = play.genotype().apply(play.mapper().exampleFor(null));
       L.config("Building solution");
       Object solution = play.mapper().mapperFor(null).apply(genotype);
       // build consumer
-      PlayConsumers.ProducingConsumer consumer = play.consumers().stream()
+      PlayConsumers.ProducingConsumer consumer = play.consumers()
+          .stream()
           .reduce(PlayConsumers.ProducingConsumer::andThen)
           .orElse(PlayConsumers.ProducingConsumer.from(s -> {}, () -> {}));
       // do task
       L.info("Executing the task");
-      AgentsOutcome<AgentsObservation> outcome =
-          play.task().run(solution, play.engineSupplier().get(), consumer);
+      AgentsOutcome<AgentsObservation> outcome = play.task().run(solution, play.engineSupplier().get(), consumer);
       L.info("The outcome of the task is %s".formatted(outcome));
       // process outcome
       if (configuration.justOutput) {
         //noinspection unchecked,rawtypes
-        System.out.println(play.outcomeFunctions().stream()
-            .map(f -> FormattedFunction.format(f).formatted(((Function) f).apply(outcome)))
-            .collect(Collectors.joining("; ")));
+        System.out.println(
+            play.outcomeFunctions()
+                .stream()
+                .map(f -> FormattedFunction.format(f).formatted(((Function) f).apply(outcome)))
+                .collect(Collectors.joining("; "))
+        );
       } else {
         //noinspection unchecked,rawtypes
         play.outcomeFunctions()
-            .forEach(f -> System.out.printf(
-                "%s = " + FormattedFunction.format(f) + "%n",
-                NamedFunction.name(f),
-                ((Function) f).apply(outcome)));
+            .forEach(
+                f -> System.out.printf(
+                    "%s = " + FormattedFunction.format(f) + "%n",
+                    NamedFunction.name(f),
+                    ((Function) f).apply(outcome)
+                )
+            );
       }
       consumer.run();
     } catch (BuilderException e) {

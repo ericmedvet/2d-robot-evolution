@@ -40,4 +40,5 @@ public record Play<G, R, S extends AgentsObservation, O extends AgentsOutcome<S>
     @Param("task") Task<R, S, O> task,
     @Param(value = "engine", dNPM = "sim.engine()") Supplier<Engine> engineSupplier,
     @Param("consumers") List<PlayConsumers.ProducingConsumer> consumers,
-    @Param("outcomeFunctions") List<Function<?, ?>> outcomeFunctions) {}
+    @Param("outcomeFunctions") List<Function<?, ?>> outcomeFunctions
+) {}

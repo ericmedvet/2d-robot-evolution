@@ -28,12 +28,14 @@ import java.util.function.Function;
 @Discoverable(prefixTemplate = "evorobots|er.function|f")
 public class Functions {
 
-  private Functions() {}
+  private Functions() {
+  }
 
   @SuppressWarnings("unused")
   public static <X> FormattedNamedFunction<X, Boolean> nonEmptyVoxel(
       @Param(value = "of", dNPM = "f.identity()") Function<X, GridBody.Element> beforeF,
-      @Param(value = "format", dS = "%s") String format) {
+      @Param(value = "format", dS = "%s") String format
+  ) {
     Function<GridBody.Element, Boolean> f = e -> !e.type().equals(GridBody.VoxelType.NONE);
     return FormattedNamedFunction.from(f, format, "non.empty.voxel").compose(beforeF);
   }

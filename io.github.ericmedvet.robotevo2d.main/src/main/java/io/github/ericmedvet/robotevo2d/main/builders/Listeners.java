@@ -34,18 +34,18 @@ import java.util.function.BiFunction;
 @Discoverable(prefixTemplate = "evorobots|er.listener|l")
 public class Listeners {
 
-  private Listeners() {}
+  private Listeners() {
+  }
 
   @SuppressWarnings("unused")
-  public static <A>
-      BiFunction<Experiment, ExecutorService, ListenerFactory<POCPopulationState<?, ?, A, ?, ?>, Run<?, ?, A, ?>>>
-          videoSaver(
-              @Param("videos")
-                  List<AccumulatorFactory<POCPopulationState<?, ?, A, ?, ?>, File, Run<?, ?, A, ?>>>
-                      accumulators) {
-    return (experiment, executorService) -> ListenerFactory.all(accumulators.stream()
+  public static <A> BiFunction<Experiment, ExecutorService, ListenerFactory<POCPopulationState<?, ?, A, ?, ?>, Run<?, ?, A, ?>>> videoSaver(
+      @Param("videos") List<AccumulatorFactory<POCPopulationState<?, ?, A, ?, ?>, File, Run<?, ?, A, ?>>> accumulators
+  ) {
+    return (experiment, executorService) -> ListenerFactory.all(
+        accumulators.stream()
             .map(a -> a.thenOnDone((r, f) -> {})) // saving is done by the accumulator
-            .toList())
+            .toList()
+    )
         .deferred(executorService);
   }
 }

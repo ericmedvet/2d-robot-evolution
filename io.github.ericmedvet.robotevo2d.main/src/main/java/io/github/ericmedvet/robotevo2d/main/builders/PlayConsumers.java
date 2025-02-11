@@ -38,7 +38,8 @@ public class PlayConsumers {
 
   private static final Logger L = Logger.getLogger(PlayConsumers.class.getName());
 
-  private PlayConsumers() {}
+  private PlayConsumers() {
+  }
 
   public interface ProducingConsumer extends Consumer<Snapshot>, Runnable {
     static ProducingConsumer from(Consumer<Snapshot> consumer, Runnable runnable) {
@@ -65,7 +66,8 @@ public class PlayConsumers {
           () -> {
             thisProducingConsumer.run();
             other.run();
-          });
+          }
+      );
     }
   }
 
@@ -78,7 +80,8 @@ public class PlayConsumers {
       @Param(value = "nOfFrames", dI = 5) int nOfFrames,
       @Param(value = "deltaT", dD = 0.2) double deltaT,
       @Param(value = "startTime", dD = 0) double startTime,
-      @Param("filePath") String filePath) {
+      @Param("filePath") String filePath
+  ) {
     FramesImageBuilder framesImageBuilder = new FramesImageBuilder(
         w,
         h,
@@ -87,7 +90,8 @@ public class PlayConsumers {
         startTime,
         FramesImageBuilder.Direction.HORIZONTAL,
         true,
-        drawer.apply(title == null ? "" : title));
+        drawer.apply(title == null ? "" : title)
+    );
     return ProducingConsumer.from(framesImageBuilder, () -> {
       BufferedImage bufferedImage = framesImageBuilder.get();
       try {
@@ -104,8 +108,11 @@ public class PlayConsumers {
   public static ProducingConsumer rtGUI(
       @Param("title") String title,
       @Param(value = "drawer", dNPM = "sim.drawer()") Function<String, Drawer> drawer,
-      @Param(value = "frameRate", dD = 30) double frameRate) {
+      @Param(value = "frameRate", dD = 30) double frameRate
+  ) {
     return ProducingConsumer.from(
-        new RealtimeViewer(frameRate, drawer.apply(title == null ? "" : title)), () -> {});
+        new RealtimeViewer(frameRate, drawer.apply(title == null ? "" : title)),
+        () -> {}
+    );
   }
 }
