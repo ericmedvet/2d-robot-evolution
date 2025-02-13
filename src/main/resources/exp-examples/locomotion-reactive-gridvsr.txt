@@ -1,7 +1,13 @@
 ea.experiment(
-  runs = (randomGenerator = (seed = [1:1:1]) * [m.defaultRG()]) * [
-    ea.run(
-      solver = ea.s.ga(
+  runs = (randomGenerator = (seed = [1:1:1]) * [m.defaultRG()]) *
+    (problem = [
+      ea.p.simToSbbmo(
+        simulation = s.task.locomotion(duration = 15);
+        toMaxObjectives = [s.f.outcome.faXVelocity()]
+      )
+    ]) *
+    (solver = (nEval = [500]) * (nPop = [10]) * [
+      ea.s.ga(
         representation = ea.r.intString();
         mapper = er.m.isToReactiveGridVsr(
           w = 5;
@@ -14,23 +20,27 @@ ea.experiment(
             m.supplier(of = s.a.vsr.rv.ph());
             m.supplier(of = s.a.vsr.rv.ps())
           ]
-        );
-        nEval = 100;
-        nPop = 10
+        )
       );
-      problem = ea.p.simTo(
-        simulation = s.task.locomotion(duration = 15);
-        f = s.f.outcome.faXVelocity();
-        type = maximize
+      ea.s.ga(
+        representation = ea.r.bitString();
+        mapper = er.m.cGridToReactiveGridVsr(
+          of = ea.m.bsToGrammarGrid(grammar = ea.grammar.gridBundled(name = "dog-shape"));
+          availableVoxels = ea.misc.map(entries = [
+            ea.misc.entry(key = ea.misc.ch(s = "s"); value = m.supplier(of = s.a.vsr.rv.ps()));
+            ea.misc.entry(key = ea.misc.ch(s = "a"); value = m.supplier(of = s.a.vsr.rv.asin()));
+            ea.misc.entry(key = ea.misc.ch(s = "h"); value = m.supplier(of = s.a.vsr.rv.ph()))
+          ])
+        )
       )
-    )
-  ];
+    ]) *
+    [ea.run()];
   listeners = [
     ea.l.console(
       functions = [
         ea.f.size(of = ea.f.genotype(of = ea.f.best()); format = "%3d");
-        ea.f.hist(of = f.each(of = ea.f.all(); mapF = ea.f.size(of = ea.f.genotype())));
-        s.f.outcome.faXVelocity(of = ea.f.simOutcome(of = ea.f.quality(of = ea.f.best())); format = "%6.4f");
+        ea.f.hist(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.behaviorQuality(of = ea.f.quality()))));
+        f.mapValue(key = "first.agent.velocity.x"; of = ea.f.behaviorQuality(of = ea.f.quality(of = ea.f.best())); format = "%6.4f");
         f.gridFitW(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = ea.f.best()))));
         f.gridFitH(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = ea.f.best()))));
         f.gridCount(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = ea.f.best()))));
@@ -43,8 +53,13 @@ ea.experiment(
       path = "../../Documenti/experiments/{name}/{startTime}/best-fitness";
       plot = ea.plot.multi.quality(
         x = ea.f.nOfEvals();
-        q = s.f.outcome.faXVelocity(of = ea.f.simOutcome())
+        q = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.behaviorQuality())
       )
+    );
+    ea.l.saveForRun(
+      path = "../../Documenti/experiments/{name}/{startTime}/best-video-{run.solver.name}-{run.randomGenerator.seed:%04d}";
+      of = ea.acc.lastBest();
+      processor = f.composition(of = ea.f.solution(); then = s.taskVideoBuilder(task = s.task.locomotion(duration = 15)))
     )
   ]
 )

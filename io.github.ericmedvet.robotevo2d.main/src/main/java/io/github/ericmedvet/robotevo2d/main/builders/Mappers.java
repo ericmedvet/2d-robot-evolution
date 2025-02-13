@@ -23,6 +23,7 @@ package io.github.ericmedvet.robotevo2d.main.builders;
 import io.github.ericmedvet.jgea.core.InvertibleMapper;
 import io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction;
 import io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString;
+import io.github.ericmedvet.jnb.core.Cacheable;
 import io.github.ericmedvet.jnb.core.Discoverable;
 import io.github.ericmedvet.jnb.core.NamedBuilder;
 import io.github.ericmedvet.jnb.core.NamedParamMap;
@@ -43,10 +44,13 @@ import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR;
+import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR.ReactiveVoxel;
 import io.github.ericmedvet.mrsim2d.core.bodies.Body;
 import io.github.ericmedvet.mrsim2d.core.bodies.Voxel;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 @Discoverable(prefixTemplate = "evorobots|er.mapper|m")
@@ -69,6 +73,7 @@ public class Mappers {
   }
 
   @SuppressWarnings("unused")
+  @Cacheable
   public static <X> InvertibleMapper<X, Supplier<DistributedNumGridVSR>> bodyBrainHomoDistributedVSR(
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, Pair<Grid<GridBody.VoxelType>, NumericalDynamicalSystem<?>>> beforeM,
       @Param(value = "w", dI = 10) int w,
@@ -170,6 +175,30 @@ public class Mappers {
   }
 
   @SuppressWarnings("unused")
+  @Cacheable
+  public static <X> InvertibleMapper<X, Supplier<ReactiveGridVSR>> cGridToReactiveGridVsr(
+      @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, Grid<Character>> beforeM,
+      @Param("availableVoxels") Map<Character, Supplier<ReactiveVoxel>> availableVoxels
+  ) {
+    // TODO return a single hard passive voxel in case of null grid
+    Function<Character, Supplier<ReactiveVoxel>> cMapper = c -> {
+      if (c == null) {
+        return ReactiveVoxels::none;
+      }
+      return availableVoxels.getOrDefault(c, ReactiveVoxels::none);
+    };
+    Grid<Character> exampleGrid = Grid.create(availableVoxels.size(), 1, availableVoxels.keySet().stream().toList());
+    return beforeM.andThen(
+        InvertibleMapper.from(
+            (supplier, grid) -> () -> new ReactiveGridVSR(grid.map(cMapper).map(Supplier::get)),
+            supplier -> exampleGrid,
+            "cGridToReactiveGridVsr[n=%d]".formatted(availableVoxels.size())
+        )
+    );
+  }
+
+  @SuppressWarnings("unused")
+  @Cacheable
   public static <X, T extends NumMultiBrained> InvertibleMapper<X, Supplier<T>> dsToNpHeteroBrains(
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, List<Double>> beforeM,
       @Param("target") T target,
@@ -201,7 +230,10 @@ public class Mappers {
                 );
                 int c = 0;
                 for (NumericalDynamicalSystem<?> brain : t.brains()) {
-                  int brainSize = ((double[]) Composed.shallowest(brain, NumericalParametrized.class)
+                  int brainSize = ((double[]) Composed.shallowest(
+                      brain,
+                      NumericalParametrized.class
+                  )
                       .orElseThrow()
                       .getParams()).length;
                   //noinspection unchecked
@@ -225,6 +257,7 @@ public class Mappers {
   }
 
   @SuppressWarnings("unused")
+  @Cacheable
   public static <X, T extends NumMultiBrained> InvertibleMapper<X, Supplier<T>> dsToNpHomoBrains(
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, List<Double>> beforeM,
       @Param("target") T target,
@@ -248,7 +281,10 @@ public class Mappers {
             (supplier, values) -> {
               if (values.size() != brainSize) {
                 throw new IllegalArgumentException(
-                    "Wrong number of params: %d expected, %d found".formatted(brainSize, values.size())
+                    "Wrong number of params: %d expected, %d found".formatted(
+                        brainSize,
+                        values.size()
+                    )
                 );
               }
               return () -> {
@@ -272,13 +308,18 @@ public class Mappers {
   }
 
   @SuppressWarnings("unused")
+  @Cacheable
   public static <X> InvertibleMapper<X, Supplier<ReactiveGridVSR>> isToReactiveGridVsr(
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, IntString> beforeM,
       @Param("w") int w,
       @Param("h") int h,
       @Param("availableVoxels") List<Supplier<ReactiveGridVSR.ReactiveVoxel>> availableVoxels
   ) {
-    IntString exampleGenotype = new IntString(Collections.nCopies(w * h, 0), 0, availableVoxels.size() + 1);
+    IntString exampleIS = new IntString(
+        Collections.nCopies(w * h, 0),
+        0,
+        availableVoxels.size() + 1
+    );
     return beforeM.andThen(
         InvertibleMapper.from(
             (supplier, s) -> {
@@ -287,18 +328,22 @@ public class Mappers {
               if (indexGrid.values().stream().max(Integer::compareTo).orElse(0) == 0) {
                 body = Grid.create(1, 1, ReactiveVoxels.ph());
               } else {
-                body = GridUtils.fit(GridUtils.largestConnected(indexGrid, i -> i > 0, 0), i -> i > 0)
+                body = GridUtils.fit(
+                    GridUtils.largestConnected(indexGrid, i -> i > 0, 0),
+                    i -> i > 0
+                )
                     .map(i -> i == 0 ? ReactiveVoxels.none() : availableVoxels.get(i - 1).get());
               }
               return () -> new ReactiveGridVSR(body);
             },
-            supplier -> exampleGenotype,
+            supplier -> exampleIS,
             "isToReactiveGridVsr[w=%d;h=%d]".formatted(w, h)
         )
     );
   }
 
   @SuppressWarnings("unused")
+  @Cacheable
   public static <X> InvertibleMapper<X, Supplier<CentralizedNumGridVSR>> ndsToFixedBodyCentralizedVSR(
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, NumericalDynamicalSystem<?>> beforeM,
       @Param("body") GridBody body,
@@ -309,13 +354,17 @@ public class Mappers {
         InvertibleMapper.from(
             (supplier, nds) -> () -> new CentralizedNumGridVSR(body, nds),
             supplier -> NumericalDynamicalSystems.Builder.empty()
-                .apply(CentralizedNumGridVSR.nOfInputs(body), CentralizedNumGridVSR.nOfOutputs(body)),
+                .apply(
+                    CentralizedNumGridVSR.nOfInputs(body),
+                    CentralizedNumGridVSR.nOfOutputs(body)
+                ),
             "nmrfToCentralizedVSR[body=%s]".formatted(map.value("body"))
         )
     );
   }
 
   @SuppressWarnings("unused")
+  @Cacheable
   public static <X> InvertibleMapper<X, Supplier<DistributedNumGridVSR>> ndsToFixedBodyHomoDistributedVSR(
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, NumericalDynamicalSystem<?>> beforeM,
       @Param("body") GridBody body,
@@ -362,6 +411,7 @@ public class Mappers {
   }
 
   @SuppressWarnings("unused")
+  @Cacheable
   public static <X> InvertibleMapper<X, Supplier<ReactiveGridVSR>> nmrfToReactiveGridVsr(
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, NamedMultivariateRealFunction> beforeM,
       @Param("w") int w,
@@ -372,7 +422,9 @@ public class Mappers {
         InvertibleMapper.from(
             (supplier, nmrf) -> {
               Grid<Integer> indexGrid = Grid.create(w, h, (x, y) -> {
-                double[] output = nmrf.apply(new double[]{(double) x / (double) w, (double) y / (double) h});
+                double[] output = nmrf.apply(
+                    new double[]{(double) x / (double) w, (double) y / (double) h}
+                );
                 int iMax = argmax(output);
                 return output[iMax] > 0 ? iMax + 1 : 0;
               });
@@ -380,7 +432,10 @@ public class Mappers {
               if (indexGrid.values().stream().max(Integer::compareTo).orElse(0) == 0) {
                 body = Grid.create(1, 1, ReactiveVoxels.ph());
               } else {
-                body = GridUtils.fit(GridUtils.largestConnected(indexGrid, i -> i > 0, 0), i -> i > 0)
+                body = GridUtils.fit(
+                    GridUtils.largestConnected(indexGrid, i -> i > 0, 0),
+                    i -> i > 0
+                )
                     .map(i -> i == 0 ? ReactiveVoxels.none() : availableVoxels.get(i - 1).get());
               }
               return () -> new ReactiveGridVSR(body);

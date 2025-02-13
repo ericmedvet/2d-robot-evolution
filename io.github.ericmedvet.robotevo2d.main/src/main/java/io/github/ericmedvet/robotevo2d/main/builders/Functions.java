@@ -19,6 +19,7 @@
  */
 package io.github.ericmedvet.robotevo2d.main.builders;
 
+import io.github.ericmedvet.jnb.core.Cacheable;
 import io.github.ericmedvet.jnb.core.Discoverable;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction;
@@ -32,6 +33,7 @@ public class Functions {
   }
 
   @SuppressWarnings("unused")
+  @Cacheable
   public static <X> FormattedNamedFunction<X, Boolean> nonEmptyVoxel(
       @Param(value = "of", dNPM = "f.identity()") Function<X, GridBody.Element> beforeF,
       @Param(value = "format", dS = "%s") String format
