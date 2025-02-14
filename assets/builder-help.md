@@ -1425,6 +1425,16 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.gramma
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.grammar.grid.GridGrammar">GridGrammar</abbr>&lt;<abbr title="java.lang.Character">Character</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Grammars.gridBundled()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+### Builder `ea.grammar.gridFile()`
+
+`ea.grammar.gridFile(path)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `path` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.grammar.grid.GridGrammar">GridGrammar</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Grammars.gridFile()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ### Builder `ea.grammar.regression()`
 
 `ea.grammar.regression(constants; operators; problem)`
@@ -2095,6 +2105,17 @@ Produces <code><abbr title="java.awt.image.BufferedImage">BufferedImage</abbr></
 
 Produces <code><abbr title="java.util.Map">Map</abbr>&lt;K, V&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.map()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+### Builder `ea.misc.mapFromLists()`
+
+`ea.misc.mapFromLists(keys; values)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `keys` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;K&gt;</code> |
+| `values` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;V&gt;</code> |
+
+Produces <code><abbr title="java.util.Map">Map</abbr>&lt;K, V&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.mapFromLists()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ### Builder `ea.misc.sEntry()`
 
 `ea.misc.sEntry(key; value)`
@@ -2102,9 +2123,20 @@ Produces <code><abbr title="java.util.Map">Map</abbr>&lt;K, V&gt;</code>; built 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `key` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
-| `value` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+| `value` | npm |  | <code>V</code> |
 
-Produces <code><abbr title="java.util.Map$Entry">Map$Entry</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.sEntry()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="java.util.Map$Entry">Map$Entry</abbr>&lt;<abbr title="java.lang.String">String</abbr>, V&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.sEntry()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `ea.misc.sMapFromLists()`
+
+`ea.misc.sMapFromLists(keys; values)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `keys` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code> |
+| `values` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;V&gt;</code> |
+
+Produces <code><abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.String">String</abbr>, V&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.sMapFromLists()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.misc.toVideo()`
 
@@ -3818,17 +3850,6 @@ Aliases: `er.m`, `er.mapper`, `evorobots.m`, `evorobots.mapper`
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR">DistributedNumGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.bodyBrainHomoDistributedVSR()` by robotevo2d-main:1.5.1-SNAPSHOT
 
-### Builder `evorobots.mapper.cGridToReactiveGridVsr()`
-
-`er.m.cGridToReactiveGridVsr(of; availableVoxels)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.lang.Character">Character</abbr>&gt;&gt;</code> |
-| `availableVoxels` | npm |  | <code><abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.Character">Character</abbr>, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr>&gt;&gt;</code> |
-
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.cGridToReactiveGridVsr()` by robotevo2d-main:1.5.1-SNAPSHOT
-
 ### Builder `evorobots.mapper.dsToNpHeteroBrains()`
 
 `er.m.dsToNpHeteroBrains(of; target)`
@@ -3900,6 +3921,17 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `availableVoxels` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr>&gt;&gt;</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.nmrfToReactiveGridVsr()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `evorobots.mapper.sGridToReactiveGridVsr()`
+
+`er.m.sGridToReactiveGridVsr(of; availableVoxels)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code> |
+| `availableVoxels` | npm |  | <code><abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr>&gt;&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.sGridToReactiveGridVsr()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ## Package `function`
 
@@ -4774,10 +4806,11 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;A, <
 
 ### Builder `sim.taskRunner()`
 
-`s.taskRunner(task; engine)`
+`s.taskRunner(name; task; engine)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `{task.name}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `task` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Task">Task</abbr>&lt;A, S, O&gt;</code> |
 | `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.engine.Engine">Engine</abbr>&gt;</code> |
 
@@ -5619,10 +5652,11 @@ Aliases: `s.task`, `sim.task`
 
 ### Builder `sim.task.balancing()`
 
-`s.task.balancing(duration; swingLength; swingDensity; supportHeight; initialXGap; initialYGap)`
+`s.task.balancing(name; duration; swingLength; swingDensity; supportHeight; initialXGap; initialYGap)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | `balancing` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `duration` | d | `10.0` | <code>double</code> |
 | `swingLength` | d | `10.0` | <code>double</code> |
 | `swingDensity` | d | `0.1` | <code>double</code> |
@@ -5634,10 +5668,11 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.balancing.Ba
 
 ### Builder `sim.task.fallPiling()`
 
-`s.task.fallPiling(duration; fallInterval; nOfAgents; xSigmaRatio; randomGenerator; terrain; yGapRatio; xGap)`
+`s.task.fallPiling(name; duration; fallInterval; nOfAgents; xSigmaRatio; randomGenerator; terrain; yGapRatio; xGap)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | `fallPiling` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `duration` | d | `45.0` | <code>double</code> |
 | `fallInterval` | d | `5.0` | <code>double</code> |
 | `nOfAgents` | i |  | <code>int</code> |
@@ -5651,10 +5686,11 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.piling.FallP
 
 ### Builder `sim.task.jumping()`
 
-`s.task.jumping(duration; initialYGap)`
+`s.task.jumping(name; duration; initialYGap)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | `jumping` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `duration` | d | `10.0` | <code>double</code> |
 | `initialYGap` | d | `0.1` | <code>double</code> |
 
@@ -5662,10 +5698,11 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.jumping.Jump
 
 ### Builder `sim.task.locomotion()`
 
-`s.task.locomotion(duration; terrain; initialXGap; initialYGap)`
+`s.task.locomotion(name; duration; terrain; initialXGap; initialYGap)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `locomotion[{terrain.name}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `duration` | d | `30.0` | <code>double</code> |
 | `terrain` | npm | `sim.terrain.flat()` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
 | `initialXGap` | d | `1.0` | <code>double</code> |
@@ -5675,10 +5712,11 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.locomotion.L
 
 ### Builder `sim.task.prebuiltIndependentLocomotion()`
 
-`s.task.prebuiltIndependentLocomotion(duration; terrain; initialXGap; initialYGap; shape)`
+`s.task.prebuiltIndependentLocomotion(name; duration; terrain; initialXGap; initialYGap; shape)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `piLocomotion[{terrain.name}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `duration` | d | `30.0` | <code>double</code> |
 | `terrain` | npm | `sim.terrain.flat()` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
 | `initialXGap` | d | `1.0` | <code>double</code> |
@@ -5689,10 +5727,11 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.locomotion.P
 
 ### Builder `sim.task.standPiling()`
 
-`s.task.standPiling(duration; nOfAgents; xGapRatio; terrain; firstXGap; initialYGap)`
+`s.task.standPiling(name; duration; nOfAgents; xGapRatio; terrain; firstXGap; initialYGap)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | `standPiling` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `duration` | d | `45.0` | <code>double</code> |
 | `nOfAgents` | i |  | <code>int</code> |
 | `xGapRatio` | d | `1.0` | <code>double</code> |
@@ -5704,20 +5743,22 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.piling.Stand
 
 ### Builder `sim.task.sumo()`
 
-`s.task.sumo(duration)`
+`s.task.sumo(name; duration)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | `sumo` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `duration` | d | `60.0` | <code>double</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.sumo.Sumo">Sumo</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.sumo()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `sim.task.trainingFight()`
 
-`s.task.trainingFight(duration; terrain)`
+`s.task.trainingFight(name; duration; terrain)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | `trainingFight` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `duration` | d | `60.0` | <code>double</code> |
 | `terrain` | npm | `sim.terrain.sumoArena()` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
 
@@ -5725,10 +5766,11 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.trainingfigh
 
 ### Builder `sim.task.trainingSumo()`
 
-`s.task.trainingSumo(duration; terrain)`
+`s.task.trainingSumo(name; duration; terrain)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | `trainingSumo` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `duration` | d | `60.0` | <code>double</code> |
 | `terrain` | npm | `sim.terrain.sumoArena()` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
 
@@ -5740,10 +5782,11 @@ Aliases: `s.t`, `s.terrain`, `sim.t`, `sim.terrain`
 
 ### Builder `sim.terrain.downhill()`
 
-`s.t.downhill(w; h; borderW; borderH; a)`
+`s.t.downhill(name; w; h; borderW; borderH; a)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `downhill[{a}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `w` | d | `500.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `h` | d | `25.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderW` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
@@ -5754,10 +5797,11 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">
 
 ### Builder `sim.terrain.flat()`
 
-`s.t.flat(w; h; borderW; borderH)`
+`s.t.flat(name; w; h; borderW; borderH)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | `flat` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `w` | d | `500.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `h` | d | `25.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderW` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
@@ -5767,10 +5811,11 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">
 
 ### Builder `sim.terrain.hilly()`
 
-`s.t.hilly(w; h; borderW; borderH; chunkW; chunkH; seed)`
+`s.t.hilly(name; w; h; borderW; borderH; chunkW; chunkH; seed)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `hilly[{chunkW}-{chunkH}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `w` | d | `500.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `h` | d | `25.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderW` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
@@ -5783,10 +5828,11 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">
 
 ### Builder `sim.terrain.holed()`
 
-`s.t.holed(startW; holeH; holeWs; holeDisW; endW; borderW; borderH)`
+`s.t.holed(name; startW; holeH; holeWs; holeDisW; endW; borderW; borderH)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | `holed` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `startW` | d | `30.0` | <code>double</code> |
 | `holeH` | d | `10.0` | <code>double</code> |
 | `holeWs` | d[] | `[5.0]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;</code> |
@@ -5799,10 +5845,11 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">
 
 ### Builder `sim.terrain.steppy()`
 
-`s.t.steppy(w; h; borderW; borderH; chunkW; chunkH; seed)`
+`s.t.steppy(name; w; h; borderW; borderH; chunkW; chunkH; seed)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `steppy[{chunkW}-{chunkH}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `w` | d | `500.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `h` | d | `25.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderW` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
@@ -5815,10 +5862,11 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">
 
 ### Builder `sim.terrain.sumoArena()`
 
-`s.t.sumoArena(h; borderW; borderH; holeW; flatW; flatH)`
+`s.t.sumoArena(name; h; borderW; borderH; holeW; flatW; flatH)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | `sumoArena` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `h` | d | `20.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderW` | d | `1.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderH` | d | `25.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
@@ -5830,10 +5878,11 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">
 
 ### Builder `sim.terrain.uphill()`
 
-`s.t.uphill(w; h; borderW; borderH; a)`
+`s.t.uphill(name; w; h; borderW; borderH; a)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `uphill[{a}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `w` | d | `500.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `h` | d | `25.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderW` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |

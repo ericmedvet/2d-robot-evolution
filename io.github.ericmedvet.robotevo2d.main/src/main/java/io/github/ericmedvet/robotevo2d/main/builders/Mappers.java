@@ -176,18 +176,17 @@ public class Mappers {
 
   @SuppressWarnings("unused")
   @Cacheable
-  public static <X> InvertibleMapper<X, Supplier<ReactiveGridVSR>> cGridToReactiveGridVsr(
-      @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, Grid<Character>> beforeM,
-      @Param("availableVoxels") Map<Character, Supplier<ReactiveVoxel>> availableVoxels
+  public static <X> InvertibleMapper<X, Supplier<ReactiveGridVSR>> sGridToReactiveGridVsr(
+      @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, Grid<String>> beforeM,
+      @Param("availableVoxels") Map<String, Supplier<ReactiveVoxel>> availableVoxels
   ) {
-    // TODO return a single hard passive voxel in case of null grid
-    Function<Character, Supplier<ReactiveVoxel>> cMapper = c -> {
-      if (c == null) {
+    Function<String, Supplier<ReactiveVoxel>> cMapper = s -> {
+      if (s == null) {
         return ReactiveVoxels::none;
       }
-      return availableVoxels.getOrDefault(c, ReactiveVoxels::none);
+      return availableVoxels.getOrDefault(s, ReactiveVoxels::none);
     };
-    Grid<Character> exampleGrid = Grid.create(availableVoxels.size(), 1, availableVoxels.keySet().stream().toList());
+    Grid<String> exampleGrid = Grid.create(1, 1, availableVoxels.keySet().stream().sorted().findFirst().orElseThrow());
     return beforeM.andThen(
         InvertibleMapper.from(
             (supplier, grid) -> () -> new ReactiveGridVSR(grid.map(cMapper).map(Supplier::get)),

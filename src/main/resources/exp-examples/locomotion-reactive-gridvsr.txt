@@ -6,31 +6,39 @@ ea.experiment(
         toMaxObjectives = [s.f.outcome.faXVelocity()]
       )
     ]) *
-    (solver = (nEval = [500]) * (nPop = [10]) * [
+    (solver = (nEval = [500]) * (nPop = [50]) * [
       ea.s.ga(
+        name = "ga-grid";
         representation = ea.r.intString();
         mapper = er.m.isToReactiveGridVsr(
           w = 5;
           h = 5;
           availableVoxels = [
+            m.supplier(of = s.a.vsr.rv.ph());
+            m.supplier(of = s.a.vsr.rv.ps());
             m.supplier(of = s.a.vsr.rv.aa());
             m.supplier(of = s.a.vsr.rv.asin());
             m.supplier(of = s.a.vsr.rv.asld());
-            m.supplier(of = s.a.vsr.rv.at());
-            m.supplier(of = s.a.vsr.rv.ph());
-            m.supplier(of = s.a.vsr.rv.ps())
+            m.supplier(of = s.a.vsr.rv.at())
           ]
         )
       );
       ea.s.ga(
+        name = "ga-grammar-dog";
         representation = ea.r.bitString();
-        mapper = er.m.cGridToReactiveGridVsr(
-          of = ea.m.bsToGrammarGrid(grammar = ea.grammar.gridBundled(name = "dog-shape"));
-          availableVoxels = ea.misc.map(entries = [
-            ea.misc.entry(key = ea.misc.ch(s = "s"); value = m.supplier(of = s.a.vsr.rv.ps()));
-            ea.misc.entry(key = ea.misc.ch(s = "a"); value = m.supplier(of = s.a.vsr.rv.asin()));
-            ea.misc.entry(key = ea.misc.ch(s = "h"); value = m.supplier(of = s.a.vsr.rv.ph()))
-          ])
+        mapper = er.m.sGridToReactiveGridVsr(
+          of = ea.m.bsToGrammarGrid(grammar = ea.grammar.gridFile(path = "src/main/resources/grammars/dog-3.bnf"));
+          availableVoxels = ea.misc.sMapFromLists(
+            keys = [h; s; aa; asin; asld; at];
+            values = [
+              m.supplier(of = s.a.vsr.rv.ph());
+              m.supplier(of = s.a.vsr.rv.ps());
+              m.supplier(of = s.a.vsr.rv.aa());
+              m.supplier(of = s.a.vsr.rv.asin());
+              m.supplier(of = s.a.vsr.rv.asld());
+              m.supplier(of = s.a.vsr.rv.at())
+            ]
+          )
         )
       )
     ]) *
