@@ -50,6 +50,7 @@ import io.github.ericmedvet.mrsim2d.core.bodies.Voxel;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -178,18 +179,33 @@ public class Mappers {
   @Cacheable
   public static <X> InvertibleMapper<X, Supplier<ReactiveGridVSR>> sGridToReactiveGridVsr(
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, Grid<String>> beforeM,
-      @Param("availableVoxels") Map<String, Supplier<ReactiveVoxel>> availableVoxels
+      @Param("availableVoxels") Map<String, Supplier<ReactiveVoxel>> availableVoxels,
+      @Param(value = "maxW", dI = 10) int maxW,
+      @Param(value = "maxH", dI = 10) int maxH,
+      @Param(value = "yMirror", dB = true) boolean yMirror
   ) {
-    Function<String, Supplier<ReactiveVoxel>> cMapper = s -> {
+    Function<String, ReactiveVoxel> sMapper = s -> {
       if (s == null) {
-        return ReactiveVoxels::none;
+        return null;
       }
-      return availableVoxels.getOrDefault(s, ReactiveVoxels::none);
+      return availableVoxels.containsKey(s) ? availableVoxels.get(s).get() : null;
     };
     Grid<String> exampleGrid = Grid.create(1, 1, availableVoxels.keySet().stream().sorted().findFirst().orElseThrow());
     return beforeM.andThen(
         InvertibleMapper.from(
-            (supplier, grid) -> () -> new ReactiveGridVSR(grid.map(cMapper).map(Supplier::get)),
+            (supplier, grid) -> () -> {
+              Grid<ReactiveVoxel> body = Grid.create(
+                  grid.w(),
+                  grid.h(),
+                  (x, y) -> sMapper.apply(grid.get(x, yMirror ? (grid.h() - 1 - y) : y))
+              );
+              body = GridUtils.fit(body, Objects::nonNull);
+              if (body.w() > maxW || body.h() > maxH) {
+                body = Grid.create(1, 1, ReactiveVoxels.ph());
+              }
+              body = body.map(v -> v == null ? ReactiveVoxels.none() : v);
+              return new ReactiveGridVSR(body);
+            },
             supplier -> exampleGrid,
             "cGridToReactiveGridVsr[n=%d]".formatted(availableVoxels.size())
         )
@@ -420,13 +436,17 @@ public class Mappers {
     return beforeM.andThen(
         InvertibleMapper.from(
             (supplier, nmrf) -> {
-              Grid<Integer> indexGrid = Grid.create(w, h, (x, y) -> {
-                double[] output = nmrf.apply(
-                    new double[]{(double) x / (double) w, (double) y / (double) h}
-                );
-                int iMax = argmax(output);
-                return output[iMax] > 0 ? iMax + 1 : 0;
-              });
+              Grid<Integer> indexGrid = Grid.create(
+                  w,
+                  h,
+                  (x, y) -> {
+                    double[] output = nmrf.apply(
+                        new double[]{(double) x / (double) w, (double) y / (double) h}
+                    );
+                    int iMax = argmax(output);
+                    return output[iMax] > 0 ? iMax + 1 : 0;
+                  }
+              );
               Grid<ReactiveGridVSR.ReactiveVoxel> body;
               if (indexGrid.values().stream().max(Integer::compareTo).orElse(0) == 0) {
                 body = Grid.create(1, 1, ReactiveVoxels.ph());
