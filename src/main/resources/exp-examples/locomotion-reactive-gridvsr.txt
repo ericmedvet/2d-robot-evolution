@@ -1,7 +1,7 @@
 ea.experiment(
   runs = (randomGenerator = (seed = [1:1:1]) * [m.defaultRG()]) *
     (problem = [
-      ea.p.simToSbbmo(
+      ea.p.simToSmo(
         simulation = s.task.locomotion(duration = 15);
         toMaxObjectives = [s.f.outcome.faXVelocity()]
       )
@@ -65,8 +65,8 @@ ea.experiment(
     ea.l.console(
       functions = [
         ea.f.size(of = ea.f.genotype(of = ea.f.best()); format = "%3d");
-        ea.f.hist(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.behaviorQuality(of = ea.f.quality()))));
-        f.mapValue(key = "first.agent.velocity.x"; of = ea.f.behaviorQuality(of = ea.f.quality(of = ea.f.best())); format = "%6.4f");
+        ea.f.hist(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality())));
+        f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = ea.f.best()); format = "%6.4f");
         f.gridFitW(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = ea.f.best()))));
         f.gridFitH(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = ea.f.best()))));
         f.gridCount(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = ea.f.best()))));
@@ -79,7 +79,7 @@ ea.experiment(
       path = "../../Documenti/experiments/{name}/{startTime}/best-fitness";
       plot = ea.plot.multi.quality(
         x = ea.f.nOfEvals();
-        q = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.behaviorQuality())
+        q = f.mapValue(key = "first.agent.velocity.x")
       )
     );
     ea.l.saveForRun(
