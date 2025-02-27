@@ -4767,7 +4767,7 @@ Aliases: `s`, `sim`
 | `enlargement` | d | `1.5` | <code>double</code> |
 | `followTime` | d | `2.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.viewer.Framer">Framer</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Snapshot">Snapshot</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.allAgentsFramer()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.viewer.Framer">Framer</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Snapshot">Snapshot</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.allAgentsFramer()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `sim.drawer()`
 
@@ -4775,7 +4775,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.viewer.Framer">Framer</
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `framer` | npm | `s.allAgentsFramer()` | <code><abbr title="io.github.ericmedvet.mrsim2d.viewer.Framer">Framer</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Snapshot">Snapshot</abbr>&gt;</code> |
+| `framer` | npm | `sim.allAgentsFramer()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.viewer.Framer">Framer</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Snapshot">Snapshot</abbr>&gt;&gt;</code> |
 | `profilingTime` | d | `1.0` | <code>double</code> |
 | `miniWorldEnlargement` | d | `10.0` | <code>double</code> |
 | `miniWorld` | b | `false` | <code>boolean</code> |
@@ -4806,7 +4806,7 @@ Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abb
 | `minY` | d |  | <code>double</code> |
 | `maxY` | d |  | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.viewer.Framer">Framer</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Snapshot">Snapshot</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.staticFramer()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.viewer.Framer">Framer</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Snapshot">Snapshot</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.staticFramer()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `sim.taskMultiRunner()`
 
@@ -5439,6 +5439,18 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faAvgBBMinY()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `sim.function.outcome.faAvgPower()`
+
+`s.f.o.faAvgPower(transientTime; of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `transientTime` | d | `5.0` | <code>double</code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
+| `format` | s | `%.2f` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faAvgPower()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `sim.function.outcome.faAvgTerrainHeight()`
 

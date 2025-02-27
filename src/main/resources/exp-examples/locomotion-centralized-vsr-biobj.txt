@@ -1,0 +1,53 @@
+ea.experiment(
+  runs = (randomGenerator = (seed = [1:1:1]) * [m.defaultRG()]) * [
+    ea.run(
+      solver = ea.s.ga(
+        representation = ea.r.doubleString();
+        mapper = er.m.ndsToFixedBodyCentralizedVSR(
+          body = s.a.vsr.gridBody(
+            sensorizingFunction = s.a.vsr.sf.directional(
+              headSensors = [s.s.sin(f = 0); s.s.d(a = -15; r = 5)];
+              nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
+              sSensors = [s.s.d(a = -90)]
+            );
+            shape = s.a.vsr.s.biped(w = 4; h = 3)
+          );
+          of = ea.m.dsToNpnds(npnds = ds.num.mlp())
+        );
+        nEval = 500;
+        nPop = 50
+      );
+      problem = ea.p.simToSmo(
+        simulation = s.task.locomotion(duration = 15);
+        toMaxObjectives = [s.f.outcome.faXVelocity()];
+        toMinObjectives = [s.f.outcome.faAvgPower()]
+      )
+    )
+  ];
+  listeners = [
+    ea.l.console(
+      functions = [
+        ea.f.size(of = ea.f.genotype(of = ea.f.best()); format = "%3d");
+        ea.f.hist(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality())));
+        f.max(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality())); format = "%5.2f");
+        ea.f.hist(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality())));
+        f.min(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality())); format = "%5.2f")
+      ];
+      logExceptions = true
+    );
+    ea.l.savePlotForExp(
+      path = "../../Documenti/experiments/{name}/{startTime}/best-velocity";
+      plot = ea.plot.multi.xyExp(
+        x = ea.f.nOfEvals();
+        y = f.max(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality())))
+      )
+    );
+    ea.l.savePlotForExp(
+      path = "../../Documenti/experiments/{name}/{startTime}/best-power";
+      plot = ea.plot.multi.xyExp(
+        x = ea.f.nOfEvals();
+        y = f.min(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality())))
+      )
+    )
+  ]
+)
