@@ -1,26 +1,29 @@
 ea.experiment(
-  runs = (randomGenerator = (seed = [1:1:1]) * [m.defaultRG()]) * [
-    ea.run(
-      solver = ea.s.ga(
-        representation = ea.r.doubleString();
-        mapper = er.m.ndsToFixedBodyCentralizedVSR(
-          body = s.a.vsr.gridBody(
-            sensorizingFunction = s.a.vsr.sf.directional(
-              headSensors = [s.s.sin(f = 0); s.s.d(a = -15; r = 5)];
-              nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
-              sSensors = [s.s.d(a = -90)]
-            );
-            shape = s.a.vsr.s.biped(w = 4; h = 3)
+  runs = (randomGenerator = (seed = [1:1:10]) * [m.defaultRG()]) * (
+    solver = (mapper = [
+      er.m.ndsToFixedBodyCentralizedVSR(
+        body = s.a.vsr.gridBody(
+          sensorizingFunction = s.a.vsr.sf.directional(
+            headSensors = [s.s.sin(f = 0); s.s.d(a = -15; r = 5)];
+            nSensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
+            sSensors = [s.s.d(a = -90)]
           );
-          of = ea.m.dsToNpnds(npnds = ds.num.mlp())
+          shape = s.a.vsr.s.biped(w = 4; h = 3)
         );
-        nEval = 500;
-        nPop = 50
-      );
-      problem = ea.p.simToSmo(
-        simulation = s.task.locomotion(duration = 15);
-        toMaxObjectives = [s.f.outcome.faXVelocity()];
-        toMinObjectives = [s.f.outcome.faAvgPower()]
+        of = ea.m.dsToNpnds(npnds = ds.num.mlp())
+      )
+    ]) * (nEval = [20000]) * (representation = [ea.r.doubleString()]) * [
+      ea.s.nsga2();
+      ea.s.ga()
+    ]) * [
+    ea.run(
+      problem = ea.p.smoToSubsettedSmo(
+        smoProblem = ea.p.simToSmo(
+          simulation = s.task.locomotion(duration = 15);
+          toMaxObjectives = [s.f.outcome.faXVelocity()];
+          toMinObjectives = [s.f.outcome.faAvgPower()]
+        );
+        objectives = ["first.agent.velocity.x"; "first.agent.avg.power"]
       )
     )
   ];
@@ -48,6 +51,14 @@ ea.experiment(
         x = ea.f.nOfEvals();
         y = f.min(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality())))
       )
+    );
+    ea.l.savePlotForRun(
+      path = "../../Documenti/experiments/{name}/{startTime}/objectives-{run.solver.name}-{run.randomGenerator.seed:%03d}";
+      plot = ea.plot.single.biObjectivePopulation(
+        x = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality());
+        y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality())
+      );
+      processor = ea.f.imagePlotter(secondary = true)
     )
   ]
 )
