@@ -39,10 +39,10 @@ ea.experiment(
         f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = f.percentile(p = 75; of = ea.f.all(); by = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality()))); format = "%5.2f");
         f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = f.percentile(p = 75; of = ea.f.all(); by = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality()))); format = "%5.2f");
         ea.f.hist(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality())));
-        f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = f.percentile(p = 0; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality()))); format = "%5.2f");
-        f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = f.percentile(p = 0; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality()))); format = "%5.2f");
         f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = f.percentile(p = 25; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality()))); format = "%5.2f");
-        f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = f.percentile(p = 25; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality()))); format = "%5.2f")
+        f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = f.percentile(p = 25; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality()))); format = "%5.2f");
+        f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = f.percentile(p = 50; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality()))); format = "%5.2f");
+        f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = f.percentile(p = 50; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality()))); format = "%5.2f")
       ];
       logExceptions = true
     );
