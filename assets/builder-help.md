@@ -4265,36 +4265,40 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 ### Builder `function.max()`
 
-`f.max(of; format)`
+`f.max(of; by; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;C&gt;&gt;</code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;</code> |
+| `by` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;T, C&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, C&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.max()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.max()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `function.median()`
 
-`f.median(of; format)`
+`f.median(p; by; of; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;C&gt;&gt;</code> |
+| `p` | d | `50` | <code>double</code> |
+| `by` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;T, C&gt;</code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, C&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.median()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.percentile()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `function.min()`
 
-`f.min(of; format)`
+`f.min(of; by; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;C&gt;&gt;</code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;</code> |
+| `by` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;T, C&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, C&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.min()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.min()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `function.nTh()`
 
@@ -4368,15 +4372,16 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 ### Builder `function.percentile()`
 
-`f.percentile(p; of; format)`
+`f.percentile(p; by; of; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `p` | d |  | <code>double</code> |
-| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;C&gt;&gt;</code> |
+| `by` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;T, C&gt;</code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, C&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.percentile()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.percentile()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `function.quantized()`
 

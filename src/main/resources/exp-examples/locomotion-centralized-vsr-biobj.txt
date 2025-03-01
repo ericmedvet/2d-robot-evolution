@@ -1,3 +1,5 @@
+$DURATION = 20
+
 ea.experiment(
   runs = (randomGenerator = (seed = [1:1:10]) * [m.defaultRG()]) * (
     solver = (mapper = [
@@ -12,14 +14,14 @@ ea.experiment(
         );
         of = ea.m.dsToNpnds(npnds = ds.num.mlp())
       )
-    ]) * (nEval = [20000]) * (representation = [ea.r.doubleString()]) * [
+    ]) * (nEval = [10000]) * (representation = [ea.r.doubleString()]) * [
       ea.s.nsga2();
       ea.s.ga()
     ]) * [
     ea.run(
       problem = ea.p.smoToSubsettedSmo(
         smoProblem = ea.p.simToSmo(
-          simulation = s.task.locomotion(duration = 15);
+          simulation = s.task.locomotion(duration = $DURATION);
           toMaxObjectives = [s.f.outcome.faXVelocity()];
           toMinObjectives = [s.f.outcome.faAvgPower()]
         );
@@ -32,24 +34,72 @@ ea.experiment(
       functions = [
         ea.f.size(of = ea.f.genotype(of = ea.f.best()); format = "%3d");
         ea.f.hist(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality())));
-        f.max(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality())); format = "%5.2f");
+        f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = f.percentile(p = 100; of = ea.f.all(); by = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality()))); format = "%5.2f");
+        f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = f.percentile(p = 100; of = ea.f.all(); by = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality()))); format = "%5.2f");
+        f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = f.percentile(p = 75; of = ea.f.all(); by = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality()))); format = "%5.2f");
+        f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = f.percentile(p = 75; of = ea.f.all(); by = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality()))); format = "%5.2f");
         ea.f.hist(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality())));
-        f.min(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality())); format = "%5.2f")
+        f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = f.percentile(p = 0; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality()))); format = "%5.2f");
+        f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = f.percentile(p = 0; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality()))); format = "%5.2f");
+        f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = f.percentile(p = 25; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality()))); format = "%5.2f");
+        f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = f.percentile(p = 25; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality()))); format = "%5.2f")
       ];
       logExceptions = true
     );
     ea.l.savePlotForExp(
-      path = "../../Documenti/experiments/{name}/{startTime}/best-velocity";
+      path = "../../Documenti/experiments/{name}/{startTime}/v100-v";
       plot = ea.plot.multi.xyExp(
         x = ea.f.nOfEvals();
-        y = f.max(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality())))
+        y = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = f.percentile(p = 100; of = ea.f.all(); by = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality()))))
       )
     );
     ea.l.savePlotForExp(
-      path = "../../Documenti/experiments/{name}/{startTime}/best-power";
+      path = "../../Documenti/experiments/{name}/{startTime}/v100-p";
       plot = ea.plot.multi.xyExp(
         x = ea.f.nOfEvals();
-        y = f.min(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality())))
+        y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = f.percentile(p = 100; of = ea.f.all(); by = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality()))))
+      )
+    );
+    ea.l.savePlotForExp(
+      path = "../../Documenti/experiments/{name}/{startTime}/v075-v";
+      plot = ea.plot.multi.xyExp(
+        x = ea.f.nOfEvals();
+        y = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = f.percentile(p = 75; of = ea.f.all(); by = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality()))))
+      )
+    );
+    ea.l.savePlotForExp(
+      path = "../../Documenti/experiments/{name}/{startTime}/v075-p";
+      plot = ea.plot.multi.xyExp(
+        x = ea.f.nOfEvals();
+        y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = f.percentile(p = 75; of = ea.f.all(); by = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality()))))
+      )
+    );
+    ea.l.savePlotForExp(
+      path = "../../Documenti/experiments/{name}/{startTime}/p025-v";
+      plot = ea.plot.multi.xyExp(
+        x = ea.f.nOfEvals();
+        y = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = f.percentile(p = 25; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality()))))
+      )
+    );
+    ea.l.savePlotForExp(
+      path = "../../Documenti/experiments/{name}/{startTime}/p025-p";
+      plot = ea.plot.multi.xyExp(
+        x = ea.f.nOfEvals();
+        y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = f.percentile(p = 25; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality()))))
+      )
+    );
+    ea.l.savePlotForExp(
+      path = "../../Documenti/experiments/{name}/{startTime}/p050-v";
+      plot = ea.plot.multi.xyExp(
+        x = ea.f.nOfEvals();
+        y = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = f.percentile(p = 50; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality()))))
+      )
+    );
+    ea.l.savePlotForExp(
+      path = "../../Documenti/experiments/{name}/{startTime}/p050-p";
+      plot = ea.plot.multi.xyExp(
+        x = ea.f.nOfEvals();
+        y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = f.percentile(p = 50; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality()))))
       )
     );
     ea.l.savePlotForRun(
@@ -59,6 +109,38 @@ ea.experiment(
         y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality())
       );
       processor = ea.f.imagePlotter(secondary = true)
+    );
+    ea.l.saveForRun(
+      path = "../../Documenti/experiments/{name}/{startTime}/v100-video-{run.solver.name}-{run.randomGenerator.seed:%04d}";
+      of = ea.acc.last();
+      processor = f.composition(
+        of = ea.f.solution(of = f.percentile(p = 100; of = ea.f.all(); by = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality())));
+        then = s.taskVideoBuilder(task = s.task.locomotion(duration = $DURATION))
+      )
+    );
+    ea.l.saveForRun(
+      path = "../../Documenti/experiments/{name}/{startTime}/v075-video-{run.solver.name}-{run.randomGenerator.seed:%04d}";
+      of = ea.acc.last();
+      processor = f.composition(
+        of = ea.f.solution(of = f.percentile(p = 75; of = ea.f.all(); by = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality())));
+        then = s.taskVideoBuilder(task = s.task.locomotion(duration = $DURATION))
+      )
+    );
+    ea.l.saveForRun(
+      path = "../../Documenti/experiments/{name}/{startTime}/p025-video-{run.solver.name}-{run.randomGenerator.seed:%04d}";
+      of = ea.acc.last();
+      processor = f.composition(
+        of = ea.f.solution(of = f.percentile(p = 25; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality())));
+        then = s.taskVideoBuilder(task = s.task.locomotion(duration = $DURATION))
+      )
+    );
+    ea.l.saveForRun(
+      path = "../../Documenti/experiments/{name}/{startTime}/p050-video-{run.solver.name}-{run.randomGenerator.seed:%04d}";
+      of = ea.acc.last();
+      processor = f.composition(
+        of = ea.f.solution(of = f.percentile(p = 50; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality())));
+        then = s.taskVideoBuilder(task = s.task.locomotion(duration = $DURATION))
+      )
     )
   ]
 )
