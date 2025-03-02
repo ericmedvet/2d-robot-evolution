@@ -1,63 +1,59 @@
+$DURATION = 20
+
+$V100 = f.percentile(p = 100; of = ea.f.all(); by = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality()))
+$V075 = f.percentile(p = 75; of = ea.f.all(); by = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality()))
+$P050 = f.percentile(p = 50; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality()))
+$P025 = f.percentile(p = 25; of = ea.f.all(); by = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality()))
+
+$GRID_MAPPER = er.m.isToReactiveGridVsr(
+  w = 8;
+  h = 6;
+  availableVoxels = [
+    m.supplier(of = s.a.vsr.rv.ph());
+    m.supplier(of = s.a.vsr.rv.ps());
+    m.supplier(of = s.a.vsr.rv.aa());
+    m.supplier(of = s.a.vsr.rv.asin());
+    m.supplier(of = s.a.vsr.rv.asld());
+    m.supplier(of = s.a.vsr.rv.at())
+  ]
+)
+$GRAMMAR_MAPPER = er.m.sGridToReactiveGridVsr(
+  of = ea.m.bsToGrammarGrid(
+    l = 1024;
+    grammar = ea.grammar.gridFile(path = "src/main/resources/grammars/biped-small.bnf")
+  );
+  availableVoxels = ea.misc.sMapFromLists(
+    keys = [h; s; aa; asin; asld; at];
+    values = [
+      m.supplier(of = s.a.vsr.rv.ph());
+      m.supplier(of = s.a.vsr.rv.ps());
+      m.supplier(of = s.a.vsr.rv.aa());
+      m.supplier(of = s.a.vsr.rv.asin());
+      m.supplier(of = s.a.vsr.rv.asld());
+      m.supplier(of = s.a.vsr.rv.at())
+    ]
+  )
+)
+
 ea.experiment(
   runs = (randomGenerator = (seed = [1:1:1]) * [m.defaultRG()]) *
     (problem = [
       ea.p.simToSmo(
-        simulation = s.task.locomotion(duration = 15);
-        toMaxObjectives = [s.f.outcome.faXVelocity()]
+        simulation = s.task.locomotion(duration = $DURATION);
+        toMaxObjectives = [s.f.outcome.faXVelocity()];
+        toMinObjectives = [s.f.outcome.faAvgPower()]
       )
     ]) *
     (solver = (nEval = [300]) * (nPop = [50]) * [
-      ea.s.ga(
-        name = "ga-grid";
+      ea.s.nsga2(
+        name = "nsga2-grid";
         representation = ea.r.intString();
-        mapper = er.m.isToReactiveGridVsr(
-          w = 3;
-          h = 2;
-          availableVoxels = [
-            m.supplier(of = s.a.vsr.rv.ph());
-            m.supplier(of = s.a.vsr.rv.ps());
-            m.supplier(of = s.a.vsr.rv.aa());
-            m.supplier(of = s.a.vsr.rv.asin());
-            m.supplier(of = s.a.vsr.rv.asld());
-            m.supplier(of = s.a.vsr.rv.at())
-          ]
-        )
+        mapper = $GRID_MAPPER
       );
-      ea.s.ga(
-        name = "ga-grammar-biped";
+      ea.s.nsga2(
+        name = "nsga2-grammar-biped";
         representation = ea.r.bitString();
-        mapper = er.m.sGridToReactiveGridVsr(
-          of = ea.m.bsToGrammarGrid(grammar = ea.grammar.gridFile(path = "src/main/resources/grammars/biped.bnf"));
-          availableVoxels = ea.misc.sMapFromLists(
-            keys = [h; s; aa; asin; asld; at];
-            values = [
-              m.supplier(of = s.a.vsr.rv.ph());
-              m.supplier(of = s.a.vsr.rv.ps());
-              m.supplier(of = s.a.vsr.rv.aa());
-              m.supplier(of = s.a.vsr.rv.asin());
-              m.supplier(of = s.a.vsr.rv.asld());
-              m.supplier(of = s.a.vsr.rv.at())
-            ]
-          )
-        )
-      );
-      ea.s.ga(
-        name = "ga-grammar-dog";
-        representation = ea.r.bitString();
-        mapper = er.m.sGridToReactiveGridVsr(
-          of = ea.m.bsToGrammarGrid(grammar = ea.grammar.gridFile(path = "src/main/resources/grammars/dog-3.bnf"));
-          availableVoxels = ea.misc.sMapFromLists(
-            keys = [h; s; aa; asin; asld; at];
-            values = [
-              m.supplier(of = s.a.vsr.rv.ph());
-              m.supplier(of = s.a.vsr.rv.ps());
-              m.supplier(of = s.a.vsr.rv.aa());
-              m.supplier(of = s.a.vsr.rv.asin());
-              m.supplier(of = s.a.vsr.rv.asld());
-              m.supplier(of = s.a.vsr.rv.at())
-            ]
-          )
-        )
+        mapper = $GRAMMAR_MAPPER
       )
     ]) *
     [ea.run()];
@@ -66,26 +62,182 @@ ea.experiment(
       functions = [
         ea.f.size(of = ea.f.genotype(of = ea.f.best()); format = "%3d");
         ea.f.hist(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality())));
-        f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = ea.f.best()); format = "%6.4f");
-        f.gridFitW(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = ea.f.best()))));
-        f.gridFitH(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = ea.f.best()))));
-        f.gridCount(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = ea.f.best()))));
-        f.gridCompactness(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = ea.f.best()))); format = "%6.4f");
-        f.gridElongation(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = ea.f.best()))); format = "%6.4f")
+        f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $V100); format = "%5.3f");
+        f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $V100); format = "%5.3f");
+        f.gridFitW(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $V100))));
+        f.gridFitH(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $V100))))
       ];
       logExceptions = true
     );
-    ea.l.savePlotForExp(
-      path = "../../Documenti/experiments/{name}/{startTime}/best-fitness";
-      plot = ea.plot.multi.quality(
+    ea.l.bestCsv(
+      path = "../../Documenti/experiments/{name}/{startTime}/iterations.txt";
+      functions = [
+        ea.f.size(of = ea.f.genotype(of = ea.f.best()); format = "%3d");
+        f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $V100));
+        f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $V100));
+        f.gridFitW(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $V100))));
+        f.gridFitH(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $V100))));
+        f.gridCount(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $V100))));
+        f.gridCompactness(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $V100))));
+        f.gridElongation(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $V100))));
+        f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $V075));
+        f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $V075));
+        f.gridFitW(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $V075))));
+        f.gridFitH(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $V075))));
+        f.gridCount(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $V075))));
+        f.gridCompactness(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $V075))));
+        f.gridElongation(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $V075))));
+        f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $P050));
+        f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $P050));
+        f.gridFitW(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $P050))));
+        f.gridFitH(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $P050))));
+        f.gridCount(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $P050))));
+        f.gridCompactness(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $P050))));
+        f.gridElongation(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $P050))));
+        f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $P025));
+        f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $P025));
+        f.gridFitW(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $P025))));
+        f.gridFitH(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $P025))));
+        f.gridCount(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $P025))));
+        f.gridCompactness(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $P025))));
+        f.gridElongation(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $P025))))
+      ]
+    );
+    ea.l.bestCsv(
+      path = "../../Documenti/experiments/{name}/{startTime}/lasts.txt";
+      functions = [
+        s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $V100)));
+        s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $V075)));
+        s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $P050)));
+        s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution(of = $P025)));
+        ea.f.genotype(of = $V100);
+        ea.f.genotype(of = $V075);
+        ea.f.genotype(of = $P050);
+        ea.f.genotype(of = $P025)
+      ];
+      onlyLast = true
+    );
+    ea.l.onExpDone(
+      of = ea.plot.multi.xyExp(
         x = ea.f.nOfEvals();
-        q = f.mapValue(key = "first.agent.velocity.x")
+        y = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $V100))
+      );
+      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/v100-v"]) * [
+        ea.c.saver(of = ea.f.imagePlotter());
+        ea.c.saver(of = ea.f.csvPlotter())
+      ]
+    );
+    ea.l.onExpDone(
+      of = ea.plot.multi.xyExp(
+        x = ea.f.nOfEvals();
+        y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $V100))
+      );
+      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/v100-p"]) * [
+        ea.c.saver(of = ea.f.imagePlotter());
+        ea.c.saver(of = ea.f.csvPlotter())
+      ]
+    );
+    ea.l.onExpDone(
+      of = ea.plot.multi.xyExp(
+        x = ea.f.nOfEvals();
+        y = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $V075))
+      );
+      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/v075-v"]) * [
+        ea.c.saver(of = ea.f.imagePlotter());
+        ea.c.saver(of = ea.f.csvPlotter())
+      ]
+    );
+    ea.l.onExpDone(
+      of = ea.plot.multi.xyExp(
+        x = ea.f.nOfEvals();
+        y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $V075))
+      );
+      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/v075-p"]) * [
+        ea.c.saver(of = ea.f.imagePlotter());
+        ea.c.saver(of = ea.f.csvPlotter())
+      ]
+    );
+    ea.l.onExpDone(
+      of = ea.plot.multi.xyExp(
+        x = ea.f.nOfEvals();
+        y = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $P050))
+      );
+      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/p050-v"]) * [
+        ea.c.saver(of = ea.f.imagePlotter());
+        ea.c.saver(of = ea.f.csvPlotter())
+      ]
+    );
+    ea.l.onExpDone(
+      of = ea.plot.multi.xyExp(
+        x = ea.f.nOfEvals();
+        y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $P050))
+      );
+      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/p050-p"]) * [
+        ea.c.saver(of = ea.f.imagePlotter());
+        ea.c.saver(of = ea.f.csvPlotter())
+      ]
+    );
+    ea.l.onExpDone(
+      of = ea.plot.multi.xyExp(
+        x = ea.f.nOfEvals();
+        y = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $P025))
+      );
+      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/p025-v"]) * [
+        ea.c.saver(of = ea.f.imagePlotter());
+        ea.c.saver(of = ea.f.csvPlotter())
+      ]
+    );
+    ea.l.onExpDone(
+      of = ea.plot.multi.xyExp(
+        x = ea.f.nOfEvals();
+        y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $P025))
+      );
+      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/p025-p"]) * [
+        ea.c.saver(of = ea.f.imagePlotter());
+        ea.c.saver(of = ea.f.csvPlotter())
+      ]
+    );
+    ea.l.onRunDone(
+      of = ea.plot.single.biObjectivePopulation(
+        x = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality());
+        y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality())
+      );
+      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/objectives-{run.solver.name}-{run.randomGenerator.seed:%03d}"]) * [
+        ea.c.saver(of = ea.f.imagePlotter(secondary = true));
+        ea.c.saver(of = ea.f.csvPlotter())
+      ]
+    );
+    ea.l.saveForRun(
+      path = "../../Documenti/experiments/{name}/{startTime}/v100-video-{run.solver.name}-{run.randomGenerator.seed:%04d}";
+      of = ea.acc.last();
+      processor = f.composition(
+        of = ea.f.solution(of = $V100);
+        then = s.taskVideoBuilder(task = s.task.locomotion(duration = $DURATION))
       )
     );
     ea.l.saveForRun(
-      path = "../../Documenti/experiments/{name}/{startTime}/best-video-{run.solver.name}-{run.randomGenerator.seed:%04d}";
-      of = ea.acc.lastBest();
-      processor = f.composition(of = ea.f.solution(); then = s.taskVideoBuilder(task = s.task.locomotion(duration = 15)))
+      path = "../../Documenti/experiments/{name}/{startTime}/v075-video-{run.solver.name}-{run.randomGenerator.seed:%04d}";
+      of = ea.acc.last();
+      processor = f.composition(
+        of = ea.f.solution(of = $V075);
+        then = s.taskVideoBuilder(task = s.task.locomotion(duration = $DURATION))
+      )
+    );
+    ea.l.saveForRun(
+      path = "../../Documenti/experiments/{name}/{startTime}/p050-video-{run.solver.name}-{run.randomGenerator.seed:%04d}";
+      of = ea.acc.last();
+      processor = f.composition(
+        of = ea.f.solution(of = $P050);
+        then = s.taskVideoBuilder(task = s.task.locomotion(duration = $DURATION))
+      )
+    );
+    ea.l.saveForRun(
+      path = "../../Documenti/experiments/{name}/{startTime}/p025-video-{run.solver.name}-{run.randomGenerator.seed:%04d}";
+      of = ea.acc.last();
+      processor = f.composition(
+        of = ea.f.solution(of = $P025);
+        then = s.taskVideoBuilder(task = s.task.locomotion(duration = $DURATION))
+      )
     )
   ]
 )
