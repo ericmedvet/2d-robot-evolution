@@ -5028,6 +5028,16 @@ Aliases: `s.a.vsr.reactiveVoxel`, `s.a.vsr.rv`, `s.agent.vsr.reactiveVoxel`, `s.
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.aa()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+### Builder `sim.agent.vsr.reactiveVoxel.ahsin()`
+
+`s.a.vsr.rv.ahsin(f)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `f` | d | `1.0` | <code>double</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.ahsin()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ### Builder `sim.agent.vsr.reactiveVoxel.asin()`
 
 `s.a.vsr.rv.asin(f)`
@@ -5062,6 +5072,16 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.Rea
 | `action` | e | `EXPAND` | <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels$Action">ReactiveVoxels$Action</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.at()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `sim.agent.vsr.reactiveVoxel.avsin()`
+
+`s.a.vsr.rv.avsin(f)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `f` | d | `1.0` | <code>double</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.avsin()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `sim.agent.vsr.reactiveVoxel.none()`
 
@@ -5701,7 +5721,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.balancing.Ba
 
 ### Builder `sim.task.fallPiling()`
 
-`s.task.fallPiling(name; duration; fallInterval; nOfAgents; xSigmaRatio; randomGenerator; terrain; yGapRatio; xGap)`
+`s.task.fallPiling(name; duration; fallInterval; nOfAgents; xSigmaRatio; randomGenerator; terrain; terrainAttachableDistance; yGapRatio; xGap)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -5712,6 +5732,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.balancing.Ba
 | `xSigmaRatio` | d | `0.1` | <code>double</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 | `terrain` | npm | `sim.terrain.flat()` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
+| `terrainAttachableDistance` | d | `Infinity` | <code>double</code> |
 | `yGapRatio` | d | `1.0` | <code>double</code> |
 | `xGap` | d | `10.0` | <code>double</code> |
 
@@ -5731,13 +5752,14 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.jumping.Jump
 
 ### Builder `sim.task.locomotion()`
 
-`s.task.locomotion(name; duration; terrain; initialXGap; initialYGap)`
+`s.task.locomotion(name; duration; terrain; terrainAttachableDistance; initialXGap; initialYGap)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `name` | s | interpolate `locomotion[{terrain.name}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `duration` | d | `30.0` | <code>double</code> |
 | `terrain` | npm | `sim.terrain.flat()` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
+| `terrainAttachableDistance` | d | `Infinity` | <code>double</code> |
 | `initialXGap` | d | `1.0` | <code>double</code> |
 | `initialYGap` | d | `0.1` | <code>double</code> |
 
@@ -5745,13 +5767,14 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.locomotion.L
 
 ### Builder `sim.task.prebuiltIndependentLocomotion()`
 
-`s.task.prebuiltIndependentLocomotion(name; duration; terrain; initialXGap; initialYGap; shape)`
+`s.task.prebuiltIndependentLocomotion(name; duration; terrain; terrainAttachableDistance; initialXGap; initialYGap; shape)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `name` | s | interpolate `piLocomotion[{terrain.name}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `duration` | d | `30.0` | <code>double</code> |
 | `terrain` | npm | `sim.terrain.flat()` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
+| `terrainAttachableDistance` | d | `Infinity` | <code>double</code> |
 | `initialXGap` | d | `1.0` | <code>double</code> |
 | `initialYGap` | d | `0.1` | <code>double</code> |
 | `shape` | npm |  | <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code> |
@@ -5760,7 +5783,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.locomotion.P
 
 ### Builder `sim.task.standPiling()`
 
-`s.task.standPiling(name; duration; nOfAgents; xGapRatio; terrain; firstXGap; initialYGap)`
+`s.task.standPiling(name; duration; nOfAgents; xGapRatio; terrain; terrainAttachableDistance; firstXGap; initialYGap)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -5769,6 +5792,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.locomotion.P
 | `nOfAgents` | i |  | <code>int</code> |
 | `xGapRatio` | d | `1.0` | <code>double</code> |
 | `terrain` | npm | `sim.terrain.flat()` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
+| `terrainAttachableDistance` | d | `Infinity` | <code>double</code> |
 | `firstXGap` | d | `10.0` | <code>double</code> |
 | `initialYGap` | d | `0.1` | <code>double</code> |
 
@@ -5787,25 +5811,29 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.sumo.Sumo">S
 
 ### Builder `sim.task.trainingFight()`
 
-`s.task.trainingFight(name; duration; terrain)`
+`s.task.trainingFight(name; duration; terrain; terrainAttachableDistance; initialYGap)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `name` | s | `trainingFight` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `duration` | d | `60.0` | <code>double</code> |
 | `terrain` | npm | `sim.terrain.sumoArena()` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
+| `terrainAttachableDistance` | d | `Infinity` | <code>double</code> |
+| `initialYGap` | d | `0.25` | <code>double</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.trainingfight.TrainingFight">TrainingFight</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.trainingFight()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `sim.task.trainingSumo()`
 
-`s.task.trainingSumo(name; duration; terrain)`
+`s.task.trainingSumo(name; duration; terrain; terrainAttachableDistance; initialYGap)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `name` | s | `trainingSumo` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `duration` | d | `60.0` | <code>double</code> |
 | `terrain` | npm | `sim.terrain.sumoArena()` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code> |
+| `terrainAttachableDistance` | d | `Infinity` | <code>double</code> |
+| `initialYGap` | d | `0.25` | <code>double</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.trainingsumo.TrainingSumo">TrainingSumo</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.trainingSumo()` by robotevo2d-main:1.5.1-SNAPSHOT
 
