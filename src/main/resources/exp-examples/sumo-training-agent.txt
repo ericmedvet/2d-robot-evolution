@@ -1,0 +1,144 @@
+$SIMULATION = s.task.sumo()
+
+$VS_SELF = ds.f.selfBiSimulator(
+  of = ea.f.solution();
+  simulation = $SIMULATION
+)
+
+$VS_OPPONENT = ds.f.opponentBiSimulator(
+  of = ea.f.solution();
+  opponent = m.supplier(of = s.a.dummyBox());
+  simulation = $SIMULATION
+)
+
+ea.experiment(
+  runs =
+    (randomGenerator = (seed = [1:1:10]) * [m.defaultRG()]) *
+    (solver = (nEval = [50000]) * [
+      % ea.s.ga(
+      %   name = "trainer-ga-tree";
+      %   representation = ea.r.srTree();
+      %   mapper = er.m.bodyBrainHomoDistributedVSR(
+      %     w = 8;
+      %     h = 8;
+      %     sensors = [s.s.a(); s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
+      %     of = ea.m.pair(
+      %       of = ea.m.dsSplit();
+      %       first = ea.m.dsToFixedGrid(negItem = s.a.vsr.voxel(type = none); posItem = s.a.vsr.voxel(type = soft));
+      %       second = ea.m.steppedNds(of = ea.m.nurfToNds(of = ea.m.srTreeToNurf()); stepT = 0.2)
+      %     )
+      %   )
+      % );
+      ea.s.ga(
+        name = "trainer-ga-ann";
+        representation = ea.r.doubleString();
+        mapper = er.m.bodyBrainHomoDistributedVSR(
+          w = 8;
+          h = 8;
+          sensors = [s.s.a(); s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
+          of = ea.m.pair(
+            of = ea.m.dsSplit();
+            first = ea.m.dsToFixedGrid(negItem = s.a.vsr.voxel(type = none); posItem = s.a.vsr.voxel(type = soft));
+            second = ea.m.steppedNds(of = ea.m.dsToNpnds(npnds = ds.num.mlp(innerLayerRatio = 4; nOfInnerLayers = 1)); stepT = 0.2)
+          )
+        )
+      );
+      ea.s.mapElites(
+        name = "trainer-me-ann";
+        representation = ea.r.doubleString();
+        mapper = er.m.bodyBrainHomoDistributedVSR(
+          w = 8;
+          h = 8;
+          sensors = [s.s.a(); s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
+          of = ea.m.pair(
+            of = ea.m.dsSplit();
+            first = ea.m.dsToFixedGrid(negItem = s.a.vsr.voxel(type = none); posItem = s.a.vsr.voxel(type = soft));
+            second = ea.m.steppedNds(of = ea.m.dsToNpnds(npnds = ds.num.mlp(innerLayerRatio = 4; nOfInnerLayers = 1)); stepT = 0.2)
+          )
+        );
+        descriptors = [
+          ea.s.me.d.descriptor(f = f.avg(of = f.nkTh(of = ea.f.genotype(); n = 2; k = 0)); min = -1; max = 1);
+          ea.s.me.d.descriptor(f = f.avg(of = f.nkTh(of = ea.f.genotype(); n = 2; k = 1)); min = -1; max = 1)
+        ]
+      ) % ;
+      % ea.s.mapElites(
+      %   name = "trainer-me-tree";
+      %   representation = ea.r.srTree();
+      %   mapper = er.m.bodyBrainHomoDistributedVSR(
+      %     w = 8;
+      %     h = 8;
+      %     sensors = [s.s.a(); s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
+      %     of = ea.m.pair(
+      %       of = ea.m.dsSplit();
+      %       first = ea.m.dsToFixedGrid(negItem = s.a.vsr.voxel(type = none); posItem = s.a.vsr.voxel(type = soft));
+      %       second = ea.m.steppedNds(of = ea.m.nurfToNds(of = ea.m.srTreeToNurf()); stepT = 0.2)
+      %     )
+      %   );
+      %   descriptors = [
+      %     ea.s.me.d.descriptor(f = ea.f.treeSize(of = ea.f.genotype()); min = 0; max = 250; nOfBins = 10);
+      %     ea.s.me.d.descriptor(f = f.size(of = f.filter(of = ea.f.treeLeaves(of = ea.f.genotype()); condition = predicate.matches(f = f.toString(); regex = "i[0-9]+"))); min = 0; max = 30; nOfBins = 10)
+      %   ]
+      % )
+    ]) *
+    (problem = [ea.p.biSimToQb(
+      simulation = $SIMULATION;
+      qFunction = s.f.outcome.scoreSumoAgent1();
+      trainingOpponent = m.supplier(of = s.a.dummyBox());
+      type = maximize
+    )]) *
+    [ea.run()];
+  listeners = [
+    ea.l.console(
+      functions = [
+        ea.f.size(of = ea.f.genotype(of = ea.f.best()); format = "%3d");
+        ea.f.quality(of = ea.f.best(); format = "%4.1f");
+        s.f.outcome.scoreSumoAgent1(of = f.composition(of = ea.f.best(); then = $VS_SELF); format = "%4.1f");
+        s.f.outcome.scoreSumoAgent1(of = f.composition(of = ea.f.best(); then = $VS_OPPONENT); format = "%4.1f")
+      ];
+      onlyLast = false
+    );
+    ea.l.saveLastPopulationForRun(
+      path = "../results/{name}/{startTime}/last-pop-{run.solver.name}-{run.randomGenerator.seed:%04d}"
+    );
+    ea.l.savePlotForExp(
+      path = "../results/{name}/{startTime}/best-q";
+      plot = ea.plot.multi.quality(x = ea.f.nOfEvals())
+    );
+    ea.l.savePlotForExp(
+      path = "../results/{name}/{startTime}/best-vs-self";
+      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.scoreSumoAgent1(of = f.composition(of = ea.f.best(); then = $VS_SELF)))
+    );
+    ea.l.savePlotForExp(
+      path = "../results/{name}/{startTime}/best-vs-opponent";
+      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.scoreSumoAgent1(of = f.composition(of = ea.f.best(); then = $VS_OPPONENT)))
+    );
+    ea.l.savePlotForExp(
+      path = "../results/{name}/{startTime}/avg-q";
+      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = ea.f.quality(); of = ea.f.all())))
+    );
+    ea.l.savePlotForExp(
+      path = "../results/{name}/{startTime}/avg-vs-self";
+      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.scoreSumoAgent1(of = f.composition(then = $VS_SELF)); of = ea.f.all())))
+    );
+    ea.l.savePlotForExp(
+      path = "../results/{name}/{startTime}/avg-vs-opponent";
+      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.scoreSumoAgent1(of = f.composition(then = $VS_OPPONENT)); of = ea.f.all())))
+    );
+    ea.l.savePlotForRun(
+      path = "../results/{name}/{startTime}/archive-{run.problem.name}-{run.solver.name}-{run.randomGenerator.seed:%03d}";
+      plot = ea.plot.single.me();
+      condition = predicate.matches(f = ea.f.runKey(key = "run.solver.name"); regex = "biMe")
+    );
+    ea.l.bestCsv(
+        path = "../results/{name}/{startTime}/allBest.csv";
+        runFunctions = [
+          ea.f.runKey(key = "run.problem.simulation.environment");
+          ea.f.runKey(key = "run.solver.mapper")
+        ];
+        functions = [
+          f.toBase64(of = ea.f.genotype(of = ea.f.best()))
+        ];
+        onlyLast = true
+    )
+  ]
+)
