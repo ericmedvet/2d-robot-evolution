@@ -77,6 +77,7 @@ public class PlayConsumers {
       @Param(value = "drawer", dNPM = "sim.drawer()") Function<String, Drawer> drawer,
       @Param(value = "w", dI = 500) int w,
       @Param(value = "h", dI = 300) int h,
+      @Param(value = "gap", dI = 10) int gap,
       @Param(value = "nOfFrames", dI = 5) int nOfFrames,
       @Param(value = "deltaT", dD = 0.2) double deltaT,
       @Param(value = "startTime", dD = 0) double startTime,
@@ -85,6 +86,7 @@ public class PlayConsumers {
     FramesImageBuilder framesImageBuilder = new FramesImageBuilder(
         w,
         h,
+        gap,
         nOfFrames,
         deltaT,
         startTime,

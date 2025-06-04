@@ -57,6 +57,7 @@ public class AgentImageWriter {
 
   private static final int W = 400;
   private static final int H = 300;
+  private static final int GAP = 5;
   private static final int N = 3;
   private static final double D_T = 0.25;
   private static final double T0 = 0.25;
@@ -93,6 +94,7 @@ public class AgentImageWriter {
         FramesImageBuilder fib = new FramesImageBuilder(
             W,
             H,
+            GAP,
             N,
             D_T,
             T0,

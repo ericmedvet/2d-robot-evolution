@@ -12,21 +12,25 @@ $GRID_MAPPER = er.m.isToReactiveGridVsr(
       m.supplier(of = s.a.vsr.rv.ph());
       m.supplier(of = s.a.vsr.rv.ps());
       m.supplier(of = s.a.vsr.rv.avsin());
-      m.supplier(of = s.a.vsr.rv.ahsin())
+      m.supplier(of = s.a.vsr.rv.ahsin());
+      m.supplier(of = s.a.vsr.rv.asin());
+      m.supplier(of = s.a.vsr.rv.asin(phase = 3.14))
   ]
 )
 $GRAMMAR_MAPPER = er.m.sGridToReactiveGridVsr(
   of = ea.m.bsToGrammarGrid(
     l = 1024;
-    grammar = ea.grammar.gridFile(path = "src/main/resources/grammars/biped-vh123.bnf")
+    grammar = ea.grammar.gridFile(path = "src/main/resources/grammars/biped-vh123-improved.bnf")
   );
   availableVoxels = ea.misc.sMapFromLists(
-    keys = [h; s; avsin; ahsin];
+    keys = [h; s; avsin; ahsin; asin; acos];
     values = [
       m.supplier(of = s.a.vsr.rv.ph());
       m.supplier(of = s.a.vsr.rv.ps());
       m.supplier(of = s.a.vsr.rv.avsin());
-      m.supplier(of = s.a.vsr.rv.ahsin())
+      m.supplier(of = s.a.vsr.rv.ahsin());
+      m.supplier(of = s.a.vsr.rv.asin());
+      m.supplier(of = s.a.vsr.rv.asin(phase = 3.14))
     ]
   )
 )
@@ -50,22 +54,13 @@ ea.experiment(
         name = "nsga2-grammar-biped";
         representation = ea.r.bitString();
         mapper = $GRAMMAR_MAPPER
-      );
-      ea.s.mapElites(
-        name = "me-grammar-biped";
-        representation = ea.r.bitString();
-        mapper = $GRAMMAR_MAPPER;
-        descriptors = [
-          ea.s.me.d.descriptor(f = f.gridCount(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution()))); min = 1; max = 20; nOfBins = 10);
-          ea.s.me.d.descriptor(f = f.gridElongation(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution()))); min = 0; max = 1; nOfBins = 10)
-        ]
       )
     ]) *
     [ea.run()];
   listeners = [
     ea.l.console(
       functions = [
-        ea.f.size(of = ea.f.genotype(of = ea.f.best()); format = "%3d");
+        ea.f.size(of = ea.f.genotype(of = ea.f.best()); format = "%4d");
         ea.f.hist(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality())));
         f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $V100); format = "%5.3f");
         f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $V100); format = "%5.3f");
@@ -122,106 +117,53 @@ ea.experiment(
       ];
       onlyLast = true
     );
-    ea.l.onExpDone(
-      of = ea.plot.multi.xyExp(
-        x = ea.f.nOfEvals();
-        y = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $V100))
-      );
-      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/v100-v"]) * [
-        ea.c.saver(of = ea.f.imagePlotter());
-        ea.c.saver(of = ea.f.csvPlotter())
-      ]
+    ea.l.savePlotAndCsvForRun(
+      plot = ea.plot.multi.xyExp(y = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $V100)));
+      overwrite = true;
+      path = "../../Documenti/experiments/{name}/{startTime}/v100-v"
     );
-    ea.l.onExpDone(
-      of = ea.plot.multi.xyExp(
-        x = ea.f.nOfEvals();
-        y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $V100))
-      );
-      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/v100-p"]) * [
-        ea.c.saver(of = ea.f.imagePlotter());
-        ea.c.saver(of = ea.f.csvPlotter())
-      ]
+    ea.l.savePlotAndCsvForRun(
+      plot = ea.plot.multi.xyExp(y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $V100)));
+      overwrite = true;
+      path = "../../Documenti/experiments/{name}/{startTime}/v100-p"
     );
-    ea.l.onExpDone(
-      of = ea.plot.multi.xyExp(
-        x = ea.f.nOfEvals();
-        y = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $V075))
-      );
-      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/v075-v"]) * [
-        ea.c.saver(of = ea.f.imagePlotter());
-        ea.c.saver(of = ea.f.csvPlotter())
-      ]
+    ea.l.savePlotAndCsvForRun(
+      plot = ea.plot.multi.xyExp(y = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $V075)));
+      overwrite = true;
+      path = "../../Documenti/experiments/{name}/{startTime}/v075-v"
     );
-    ea.l.onExpDone(
-      of = ea.plot.multi.xyExp(
-        x = ea.f.nOfEvals();
-        y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $V075))
-      );
-      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/v075-p"]) * [
-        ea.c.saver(of = ea.f.imagePlotter());
-        ea.c.saver(of = ea.f.csvPlotter())
-      ]
+    ea.l.savePlotAndCsvForRun(
+      plot = ea.plot.multi.xyExp(y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $V075)));
+      overwrite = true;
+      path = "../../Documenti/experiments/{name}/{startTime}/v075-p"
     );
-    ea.l.onExpDone(
-      of = ea.plot.multi.xyExp(
-        x = ea.f.nOfEvals();
-        y = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $P050))
-      );
-      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/p050-v"]) * [
-        ea.c.saver(of = ea.f.imagePlotter());
-        ea.c.saver(of = ea.f.csvPlotter())
-      ]
+    ea.l.savePlotAndCsvForRun(
+      plot = ea.plot.multi.xyExp(y = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $P050)));
+      overwrite = true;
+      path = "../../Documenti/experiments/{name}/{startTime}/p050-v"
     );
-    ea.l.onExpDone(
-      of = ea.plot.multi.xyExp(
-        x = ea.f.nOfEvals();
-        y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $P050))
-      );
-      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/p050-p"]) * [
-        ea.c.saver(of = ea.f.imagePlotter());
-        ea.c.saver(of = ea.f.csvPlotter())
-      ]
+    ea.l.savePlotAndCsvForRun(
+      plot = ea.plot.multi.xyExp(y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $P050)));
+      overwrite = true;
+      path = "../../Documenti/experiments/{name}/{startTime}/p050-p"
     );
-    ea.l.onExpDone(
-      of = ea.plot.multi.xyExp(
-        x = ea.f.nOfEvals();
-        y = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $P025))
-      );
-      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/p025-v"]) * [
-        ea.c.saver(of = ea.f.imagePlotter());
-        ea.c.saver(of = ea.f.csvPlotter())
-      ]
+    ea.l.savePlotAndCsvForRun(
+      plot = ea.plot.multi.xyExp(y = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = $P025)));
+      overwrite = true;
+      path = "../../Documenti/experiments/{name}/{startTime}/p025-v"
     );
-    ea.l.onExpDone(
-      of = ea.plot.multi.xyExp(
-        x = ea.f.nOfEvals();
-        y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $P025))
-      );
-      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/p025-p"]) * [
-        ea.c.saver(of = ea.f.imagePlotter());
-        ea.c.saver(of = ea.f.csvPlotter())
-      ]
+    ea.l.savePlotAndCsvForRun(
+      plot = ea.plot.multi.xyExp(y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality(of = $P025)));
+      overwrite = true;
+      path = "../../Documenti/experiments/{name}/{startTime}/p025-p"
     );
-    ea.l.onRunDone(
-      of = ea.plot.single.biObjectivePopulation(
+    ea.l.savePlotAndCsvForRun(
+      plot = ea.plot.single.biObjectivePopulation(
         x = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality());
         y = f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality())
       );
-      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/objectives-{run.solver.name}-{run.randomGenerator.seed:%03d}"]) * [
-        ea.c.saver(of = ea.f.imagePlotter(secondary = true));
-        ea.c.saver(of = ea.f.csvPlotter())
-      ]
-    );
-    ea.l.onRunDone(
-      of = ea.plot.single.me(values = [
-        f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality());
-        f.mapValue(key = "first.agent.avg.power"; of = ea.f.quality())
-      ]);
-      consumers = (path = ["../../Documenti/experiments/{name}/{startTime}/archive-{run.solver.name}-{run.randomGenerator.seed:%03d}"]) * [
-        ea.c.saver(of = ea.f.imagePlotter());
-        ea.c.saver(of = ea.f.csvPlotter())
-      ];
-      condition = predicate.matches(f = ea.f.runKey(key = "run.solver.name"); regex = "me-.*")
+      secondary = true;
+      path = "../../Documenti/experiments/{name}/{startTime}/objectives-{run.solver.name}-{run.randomGenerator.seed:%03d}"
     );
     ea.l.saveForRun(
       path = "../../Documenti/experiments/{name}/{startTime}/v100-video-{run.solver.name}-{run.randomGenerator.seed:%04d}";
