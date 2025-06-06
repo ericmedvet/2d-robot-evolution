@@ -18,6 +18,8 @@
  * =========================LICENSE_END==================================
  */
 module io.github.ericmedvet.robotevo2d.main {
+  uses io.github.ericmedvet.mrsim2d.core.engine.Engine;
+
   requires io.github.ericmedvet.jgea.core;
   requires io.github.ericmedvet.jgea.experimenter;
   requires java.desktop;
