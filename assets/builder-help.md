@@ -315,6 +315,52 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.scoreDiff2()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+### Builder `dynamicalSystem.environment.pong.shiftedScoreDiff1()`
+
+`ds.e.pong.shiftedScoreDiff1(of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.HomogeneousBiAgentTask$Step">HomogeneousBiAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongEnvironment$State">PongEnvironment$State</abbr>&gt;&gt;&gt;</code> |
+| `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.shiftedScoreDiff1()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `dynamicalSystem.environment.pong.shiftedScoreDiff2()`
+
+`ds.e.pong.shiftedScoreDiff2(of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.HomogeneousBiAgentTask$Step">HomogeneousBiAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongEnvironment$State">PongEnvironment$State</abbr>&gt;&gt;&gt;</code> |
+| `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.shiftedScoreDiff2()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `dynamicalSystem.environment.pong.yOffsetFromBall1()`
+
+`ds.e.pong.yOffsetFromBall1(of; format; ballXProximityThreshold)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.HomogeneousBiAgentTask$Step">HomogeneousBiAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongEnvironment$State">PongEnvironment$State</abbr>&gt;&gt;&gt;</code> |
+| `format` | s | `%5.0f` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `ballXProximityThreshold` | d | `0.2` | <code>double</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.yOffsetFromBall1()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `dynamicalSystem.environment.pong.yOffsetFromBall2()`
+
+`ds.e.pong.yOffsetFromBall2(of; format; ballXProximityThreshold)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.HomogeneousBiAgentTask$Step">HomogeneousBiAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongEnvironment$State">PongEnvironment$State</abbr>&gt;&gt;&gt;</code> |
+| `format` | s | `%5.0f` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `ballXProximityThreshold` | d | `0.2` | <code>double</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.yOffsetFromBall2()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ## Package `dynamicalSystem.function`
 
 Aliases: `ds.f`, `ds.function`, `dynSys.f`, `dynSys.function`, `dynamicalSystem.f`, `dynamicalSystem.function`
@@ -962,6 +1008,18 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, G&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.genotype()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `ea.function.getLayerWeights()`
+
+`ea.f.getLayerWeights(indexOfLayer; of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `indexOfLayer` | i | `0` | <code>int</code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron">MultiLayerPerceptron</abbr>&gt;</code> |
+| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.getLayerWeights()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.function.hist()`
 
@@ -2115,6 +2173,16 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 ## Package `ea.misc`
 
+### Builder `ea.misc.bestMESelector()`
+
+`ea.misc.bestMESelector(nOfOpponents)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `nOfOpponents` | i | `1` | <code>int</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.mapelites.MapElitesBiEvolver$OpponentSelector">MapElitesBiEvolver$OpponentSelector</abbr>&lt;G, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.bestMESelector()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ### Builder `ea.misc.caVideo()`
 
 `ea.misc.caVideo(gray; caStateRange; nOfSteps; sizeRate; marginRate; frameRate; fontSize)`
@@ -2173,6 +2241,16 @@ Produces <code><abbr title="java.awt.Color">Color</abbr></code>; built from `io.
 | `value` | npm |  | <code>V</code> |
 
 Produces <code><abbr title="java.util.Map$Entry">Map$Entry</abbr>&lt;K, V&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.entry()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `ea.misc.farthestMESelector()`
+
+`ea.misc.farthestMESelector(nOfOpponents)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `nOfOpponents` | i | `1` | <code>int</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.mapelites.MapElitesBiEvolver$OpponentSelector">MapElitesBiEvolver$OpponentSelector</abbr>&lt;G, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.farthestMESelector()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.misc.imgByName()`
 
@@ -2233,6 +2311,42 @@ Produces <code><abbr title="java.util.Map">Map</abbr>&lt;K, V&gt;</code>; built 
 | `values` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;V&gt;</code> |
 
 Produces <code><abbr title="java.util.Map">Map</abbr>&lt;K, V&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.mapFromLists()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `ea.misc.minValue()`
+
+`ea.misc.minValue()`
+
+Produces <code><abbr title="java.util.function.BinaryOperator">BinaryOperator</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.minValue()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `ea.misc.nearestMESelector()`
+
+`ea.misc.nearestMESelector(nOfOpponents)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `nOfOpponents` | i | `1` | <code>int</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.mapelites.MapElitesBiEvolver$OpponentSelector">MapElitesBiEvolver$OpponentSelector</abbr>&lt;G, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.nearestMESelector()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `ea.misc.oldestMESelector()`
+
+`ea.misc.oldestMESelector(nOfOpponents)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `nOfOpponents` | i | `1` | <code>int</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.mapelites.MapElitesBiEvolver$OpponentSelector">MapElitesBiEvolver$OpponentSelector</abbr>&lt;G, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.oldestMESelector()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `ea.misc.randomMESelector()`
+
+`ea.misc.randomMESelector(nOfOpponents)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `nOfOpponents` | i | `1` | <code>int</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.mapelites.MapElitesBiEvolver$OpponentSelector">MapElitesBiEvolver$OpponentSelector</abbr>&lt;G, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.randomMESelector()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.misc.sEntry()`
 
@@ -3355,7 +3469,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 
 ### Builder `ea.solver.biMapElites()`
 
-`ea.s.biMapElites(name; representation; mapper; nPop; nEval; descriptors; fitnessReducer; emptyArchive; additionalIndividualComparators)`
+`ea.s.biMapElites(name; representation; mapper; nPop; nEval; descriptors; fitnessReducer; emptyArchive; additionalIndividualComparators; opponentsSelector; fitnessAggregator)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -3368,6 +3482,8 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `fitnessReducer` | npm |  | <code><abbr title="java.util.function.BinaryOperator">BinaryOperator</abbr>&lt;Q&gt;</code> |
 | `emptyArchive` | b | `false` | <code>boolean</code> |
 | `additionalIndividualComparators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code> |
+| `opponentsSelector` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.mapelites.MapElitesBiEvolver$OpponentSelector">MapElitesBiEvolver$OpponentSelector</abbr>&lt;G, S, Q, O&gt;</code> |
+| `fitnessAggregator` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;Q&gt;, Q&gt;</code> |
 
 Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.bi.mapelites.MapElitesBiEvolver">MapElitesBiEvolver</abbr>&lt;G, S, Q, O&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.biMapElites()` by robotevo2d-main:1.5.1-SNAPSHOT
 

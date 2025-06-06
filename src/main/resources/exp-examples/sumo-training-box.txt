@@ -1,4 +1,4 @@
-$SIMULATION = s.task.sumo()
+$SIMULATION = s.task.sumo(duration = 15)
 
 $VS_SELF = ds.f.selfBiSimulator(
   of = ea.f.solution();
@@ -11,79 +11,42 @@ $VS_OPPONENT = ds.f.opponentBiSimulator(
   simulation = $SIMULATION
 )
 
+$MAPPER = er.m.bodyBrainHomoDistributedVSR(
+  w = 8;
+  h = 8;
+  sensors = [s.s.a(); s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90); s.s.d(r = 5)];
+  of = ea.m.pair(
+    of = ea.m.splitter();
+    first = ea.m.dsToFixedGrid(negItem = s.a.vsr.voxel(type = none); posItem = s.a.vsr.voxel(type = soft));
+    second = ea.m.steppedNds(of = ea.m.dsToNpnds(npnds = ds.num.mlp(innerLayerRatio = 2; nOfInnerLayers = 2)); stepT = 0.2)
+  )
+)
+
+$BODY_DESCRIPTORS = [
+  ea.s.me.d.descriptor(f = f.gridCount(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution()))); min = 1; max = 64; nOfBins = 10);
+  ea.s.me.d.descriptor(f = f.gridElongation(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution()))); min = 0; max = 1; nOfBins = 10)
+]
+
 ea.experiment(
   runs =
-    (randomGenerator = (seed = [1:1:10]) * [m.defaultRG()]) *
-    (solver = (nEval = [50000]) * [
-      % ea.s.ga(
-      %   name = "trainer-ga-tree";
-      %   representation = ea.r.srTree();
-      %   mapper = er.m.bodyBrainHomoDistributedVSR(
-      %     w = 8;
-      %     h = 8;
-      %     sensors = [s.s.a(); s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
-      %     of = ea.m.pair(
-      %       of = ea.m.dsSplit();
-      %       first = ea.m.dsToFixedGrid(negItem = s.a.vsr.voxel(type = none); posItem = s.a.vsr.voxel(type = soft));
-      %       second = ea.m.steppedNds(of = ea.m.nurfToNds(of = ea.m.srTreeToNurf()); stepT = 0.2)
-      %     )
-      %   )
-      % );
+    (randomGenerator = (seed = [1:1:1]) * [m.defaultRG()]) *
+    (solver = (nEval = [200]) * [
       ea.s.ga(
-        name = "trainer-ga-ann";
+        name = "box-ga-ann";
         representation = ea.r.doubleString();
-        mapper = er.m.bodyBrainHomoDistributedVSR(
-          w = 8;
-          h = 8;
-          sensors = [s.s.a(); s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
-          of = ea.m.pair(
-            of = ea.m.dsSplit();
-            first = ea.m.dsToFixedGrid(negItem = s.a.vsr.voxel(type = none); posItem = s.a.vsr.voxel(type = soft));
-            second = ea.m.steppedNds(of = ea.m.dsToNpnds(npnds = ds.num.mlp(innerLayerRatio = 4; nOfInnerLayers = 1)); stepT = 0.2)
-          )
-        )
+        mapper = $MAPPER
       );
       ea.s.mapElites(
-        name = "trainer-me-ann";
+        name = "box-me-ann";
         representation = ea.r.doubleString();
-        mapper = er.m.bodyBrainHomoDistributedVSR(
-          w = 8;
-          h = 8;
-          sensors = [s.s.a(); s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
-          of = ea.m.pair(
-            of = ea.m.dsSplit();
-            first = ea.m.dsToFixedGrid(negItem = s.a.vsr.voxel(type = none); posItem = s.a.vsr.voxel(type = soft));
-            second = ea.m.steppedNds(of = ea.m.dsToNpnds(npnds = ds.num.mlp(innerLayerRatio = 4; nOfInnerLayers = 1)); stepT = 0.2)
-          )
-        );
-        descriptors = [
-          ea.s.me.d.descriptor(f = f.avg(of = f.nkTh(of = ea.f.genotype(); n = 2; k = 0)); min = -1; max = 1);
-          ea.s.me.d.descriptor(f = f.avg(of = f.nkTh(of = ea.f.genotype(); n = 2; k = 1)); min = -1; max = 1)
-        ]
-      ) % ;
-      % ea.s.mapElites(
-      %   name = "trainer-me-tree";
-      %   representation = ea.r.srTree();
-      %   mapper = er.m.bodyBrainHomoDistributedVSR(
-      %     w = 8;
-      %     h = 8;
-      %     sensors = [s.s.a(); s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)];
-      %     of = ea.m.pair(
-      %       of = ea.m.dsSplit();
-      %       first = ea.m.dsToFixedGrid(negItem = s.a.vsr.voxel(type = none); posItem = s.a.vsr.voxel(type = soft));
-      %       second = ea.m.steppedNds(of = ea.m.nurfToNds(of = ea.m.srTreeToNurf()); stepT = 0.2)
-      %     )
-      %   );
-      %   descriptors = [
-      %     ea.s.me.d.descriptor(f = ea.f.treeSize(of = ea.f.genotype()); min = 0; max = 250; nOfBins = 10);
-      %     ea.s.me.d.descriptor(f = f.size(of = f.filter(of = ea.f.treeLeaves(of = ea.f.genotype()); condition = predicate.matches(f = f.toString(); regex = "i[0-9]+"))); min = 0; max = 30; nOfBins = 10)
-      %   ]
-      % )
+        mapper = $MAPPER;
+        descriptors = $BODY_DESCRIPTORS
+      )
     ]) *
     (problem = [ea.p.biSimToQb(
       simulation = $SIMULATION;
       qFunction = s.f.outcome.scoreSumoAgent1();
-      trainingOpponent = m.supplier(of = s.a.dummyBox());
+      trainingOpponent = m.supplier(of = m.supplier(of = s.a.dummyBox()));
       type = maximize
     )]) *
     [ea.run()];
@@ -139,6 +102,17 @@ ea.experiment(
           f.toBase64(of = ea.f.genotype(of = ea.f.best()))
         ];
         onlyLast = true
+    );
+    ea.l.saveForRun(
+      of = ea.acc.lastBest();
+      processor = f.composition(
+        of = f.pairerFirst(of = ea.f.solution(); second = m.supplier(of = s.a.dummyBox()));
+        then = sim.biTaskVideoBuilder(
+          drawer = sim.drawer(framer = sim.staticFramer(minX = 10.0; maxX = 35.0; minY = 10; maxY = 20.0));
+          task = $SIMULATION
+        )
+      );
+      path = "../results/{name}/{startTime}/best-vs-box-{run.solver.name}-{run.randomGenerator.seed:%04d}"
     )
   ]
 )
