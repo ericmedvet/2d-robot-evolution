@@ -54,20 +54,20 @@ public class SumoCupFights {
 
   private static final String DRAWER = """
       sim.drawer(
-        framer = sim.staticFramer(minX = 10.0; maxX = 35.0; minY = 10; maxY = 20.0);
+        framer = framer = sim.staticFramer(minX = 4; maxX = 36; minY = 3; maxY = 24);
         actions = true
       )
       """;
 
   @SuppressWarnings("unchecked")
   public static void main(String[] args) throws IOException {
-    int nThreads = 5;
+    int nThreads = 19;
     String folder = "/home/il_bello/IdeaProjects/results/sumo-cup-fights-ranking/";
     String CSVPath1 = folder + "allBest_bi.csv";
     String CSVPath2 = folder + "allBest_box.csv";
     String delimiter = ";";
     boolean singleCSV = false;
-    boolean saveVideo = false;
+    boolean saveVideo = true;
 
     Function<SumoAgentsOutcome, Double> getScore1 = (Function<SumoAgentsOutcome, Double>) BUILDER.build(
         "s.f.outcome.sumoShiftedScoreDifference1()"
@@ -95,7 +95,7 @@ public class SumoCupFights {
 
     List<String> lines1 = Files.readAllLines(Paths.get(CSVPath1));
     List<String> mergedLines = new ArrayList<>(lines1);
-    List<String> lines2 = new ArrayList<>();
+    List<String> lines2;
     if (!singleCSV) {
       lines2 = Files.readAllLines(Paths.get(CSVPath2));
       System.out.println("Removing header, check if correct: " + lines2.getFirst());
