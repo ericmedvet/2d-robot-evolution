@@ -54,20 +54,20 @@ public class SumoCupFights {
 
   private static final String DRAWER = """
       sim.drawer(
-        framer = framer = sim.staticFramer(minX = 4; maxX = 36; minY = 3; maxY = 24);
+        framer = sim.staticFramer(minX = 4; maxX = 36; minY = 3; maxY = 24);
         actions = true
       )
       """;
 
   @SuppressWarnings("unchecked")
   public static void main(String[] args) throws IOException {
-    int nThreads = 19;
+    int nThreads = 18;
     String folder = "/home/il_bello/IdeaProjects/results/sumo-cup-fights-ranking/";
     String CSVPath1 = folder + "allBest_bi.csv";
     String CSVPath2 = folder + "allBest_box.csv";
     String delimiter = ";";
     boolean singleCSV = false;
-    boolean saveVideo = true;
+    boolean saveVideo = false;
 
     Function<SumoAgentsOutcome, Double> getScore1 = (Function<SumoAgentsOutcome, Double>) BUILDER.build(
         "s.f.outcome.sumoShiftedScoreDifference1()"
