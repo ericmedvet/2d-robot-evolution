@@ -29,8 +29,8 @@ $BODY_DESCRIPTORS = [
 
 ea.experiment(
   runs =
-    (randomGenerator = (seed = [1:1:1]) * [m.defaultRG()]) *
-    (solver = (nEval = [200]) * [
+    (randomGenerator = (seed = [1:1:10]) * [m.defaultRG()]) *
+    (solver = (nEval = [20000]) * [
       ea.s.biGa(
         name = "bi-ga-ann";
         fitnessReducer = ea.misc.lossyAverage();
@@ -83,10 +83,12 @@ ea.experiment(
       plot = ea.plot.multi.quality(x = ea.f.nOfEvals())
     );
     ea.l.savePlotForExp(
+      deferred = true;
       path = "../results/{name}/{startTime}/best-vs-self";
       plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.scoreSumoAgent1(of = f.composition(of = ea.f.best(); then = $VS_SELF)))
     );
     ea.l.savePlotForExp(
+      deferred = true;
       path = "../results/{name}/{startTime}/best-vs-opponent";
       plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.scoreSumoAgent1(of = f.composition(of = ea.f.best(); then = $VS_OPPONENT)))
     );
@@ -95,10 +97,12 @@ ea.experiment(
       plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = ea.f.quality(); of = ea.f.all())))
     );
     ea.l.savePlotForExp(
+      deferred = true;
       path = "../results/{name}/{startTime}/avg-vs-self";
       plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.scoreSumoAgent1(of = f.composition(then = $VS_SELF)); of = ea.f.all())))
     );
     ea.l.savePlotForExp(
+      deferred = true;
       path = "../results/{name}/{startTime}/avg-vs-opponent";
       plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.scoreSumoAgent1(of = f.composition(then = $VS_OPPONENT)); of = ea.f.all())))
     );
