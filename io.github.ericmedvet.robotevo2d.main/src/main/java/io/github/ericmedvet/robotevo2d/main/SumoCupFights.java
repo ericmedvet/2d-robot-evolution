@@ -27,9 +27,14 @@ import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR;
 import io.github.ericmedvet.mrsim2d.core.engine.Engine;
 import io.github.ericmedvet.mrsim2d.core.tasks.sumo.Sumo;
 import io.github.ericmedvet.mrsim2d.core.tasks.sumo.SumoAgentsOutcome;
+import io.github.ericmedvet.mrsim2d.core.tasks.sumo.SumoCup;
 import io.github.ericmedvet.mrsim2d.viewer.Drawer;
 import io.github.ericmedvet.mrsim2d.viewer.OnlineVideoBuilder;
 import io.github.ericmedvet.mrsim2d.viewer.VideoUtils;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
@@ -44,11 +49,8 @@ import java.util.concurrent.Future;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.random.RandomGenerator;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
 
-public class SumoFights {
+public class SumoCupFights {
 
   private static final NamedBuilder<Object> BUILDER = NamedBuilder.fromDiscovery();
 
@@ -69,10 +71,10 @@ public class SumoFights {
     boolean saveVideo = false;
 
     Function<SumoAgentsOutcome, Double> getScore1 = (Function<SumoAgentsOutcome, Double>) BUILDER.build(
-        "s.f.outcome.scoreSumoAgent1()"
+        "s.f.outcome.sumoShiftedScoreDifference1()"
     );
     Function<SumoAgentsOutcome, Double> getScore2 = (Function<SumoAgentsOutcome, Double>) BUILDER.build(
-        "s.f.outcome.scoreSumoAgent2()"
+        "s.f.outcome.sumoShiftedScoreDifference2()"
     );
     String mapper = """
             er.m.bodyBrainHomoDistributedVSR(
@@ -178,7 +180,7 @@ public class SumoFights {
             int index1 = opponentIndices.get(opponent1.first());
             int index2 = opponentIndices.get(opponent2.first());
 
-            Sumo sumo = (Sumo) BUILDER.build("s.task.sumo(duration = 15)");
+            SumoCup sumo = (SumoCup) BUILDER.build("s.task.sumoCup(duration = 15)");
             Drawer drawer = ((Function<String, Drawer>) BUILDER.build(DRAWER)).apply(
                 opponent1.first() + " vs. " + opponent2.first()
             );
