@@ -1009,18 +1009,6 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, G&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.genotype()` by robotevo2d-main:1.5.1-SNAPSHOT
 
-### Builder `ea.function.getLayerWeights()`
-
-`ea.f.getLayerWeights(indexOfLayer; of; format)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `indexOfLayer` | i | `0` | <code>int</code> |
-| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron">MultiLayerPerceptron</abbr>&gt;</code> |
-| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
-
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.getLayerWeights()` by robotevo2d-main:1.5.1-SNAPSHOT
-
 ### Builder `ea.function.hist()`
 
 `ea.f.hist(nOfBins; of)`
@@ -2173,16 +2161,6 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 ## Package `ea.misc`
 
-### Builder `ea.misc.bestMESelector()`
-
-`ea.misc.bestMESelector(nOfOpponents)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `nOfOpponents` | i | `1` | <code>int</code> |
-
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.mapelites.MapElitesBiEvolver$OpponentSelector">MapElitesBiEvolver$OpponentSelector</abbr>&lt;G, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.bestMESelector()` by robotevo2d-main:1.5.1-SNAPSHOT
-
 ### Builder `ea.misc.caVideo()`
 
 `ea.misc.caVideo(gray; caStateRange; nOfSteps; sizeRate; marginRate; frameRate; fontSize)`
@@ -2241,16 +2219,6 @@ Produces <code><abbr title="java.awt.Color">Color</abbr></code>; built from `io.
 | `value` | npm |  | <code>V</code> |
 
 Produces <code><abbr title="java.util.Map$Entry">Map$Entry</abbr>&lt;K, V&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.entry()` by robotevo2d-main:1.5.1-SNAPSHOT
-
-### Builder `ea.misc.farthestMESelector()`
-
-`ea.misc.farthestMESelector(nOfOpponents)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `nOfOpponents` | i | `1` | <code>int</code> |
-
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.mapelites.MapElitesBiEvolver$OpponentSelector">MapElitesBiEvolver$OpponentSelector</abbr>&lt;G, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.farthestMESelector()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.misc.imgByName()`
 
@@ -2311,42 +2279,6 @@ Produces <code><abbr title="java.util.Map">Map</abbr>&lt;K, V&gt;</code>; built 
 | `values` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;V&gt;</code> |
 
 Produces <code><abbr title="java.util.Map">Map</abbr>&lt;K, V&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.mapFromLists()` by robotevo2d-main:1.5.1-SNAPSHOT
-
-### Builder `ea.misc.minValue()`
-
-`ea.misc.minValue()`
-
-Produces <code><abbr title="java.util.function.BinaryOperator">BinaryOperator</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.minValue()` by robotevo2d-main:1.5.1-SNAPSHOT
-
-### Builder `ea.misc.nearestMESelector()`
-
-`ea.misc.nearestMESelector(nOfOpponents)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `nOfOpponents` | i | `1` | <code>int</code> |
-
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.mapelites.MapElitesBiEvolver$OpponentSelector">MapElitesBiEvolver$OpponentSelector</abbr>&lt;G, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.nearestMESelector()` by robotevo2d-main:1.5.1-SNAPSHOT
-
-### Builder `ea.misc.oldestMESelector()`
-
-`ea.misc.oldestMESelector(nOfOpponents)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `nOfOpponents` | i | `1` | <code>int</code> |
-
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.mapelites.MapElitesBiEvolver$OpponentSelector">MapElitesBiEvolver$OpponentSelector</abbr>&lt;G, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.oldestMESelector()` by robotevo2d-main:1.5.1-SNAPSHOT
-
-### Builder `ea.misc.randomMESelector()`
-
-`ea.misc.randomMESelector(nOfOpponents)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `nOfOpponents` | i | `1` | <code>int</code> |
-
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.mapelites.MapElitesBiEvolver$OpponentSelector">MapElitesBiEvolver$OpponentSelector</abbr>&lt;G, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.randomMESelector()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.misc.sEntry()`
 
@@ -3586,7 +3518,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 
 ### Builder `ea.solver.biMapElites()`
 
-`ea.s.biMapElites(name; representation; mapper; nPop; nEval; descriptors; fitnessReducer; emptyArchive; additionalIndividualComparators; opponentsSelector; fitnessAggregator)`
+`ea.s.biMapElites(name; representation; mapper; nPop; nEval; descriptors; fitnessReducer; emptyArchive; additionalIndividualComparators)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -3599,8 +3531,6 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `fitnessReducer` | npm |  | <code><abbr title="java.util.function.BinaryOperator">BinaryOperator</abbr>&lt;Q&gt;</code> |
 | `emptyArchive` | b | `false` | <code>boolean</code> |
 | `additionalIndividualComparators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code> |
-| `opponentsSelector` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.mapelites.MapElitesBiEvolver$OpponentSelector">MapElitesBiEvolver$OpponentSelector</abbr>&lt;G, S, Q, O&gt;</code> |
-| `fitnessAggregator` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;Q&gt;, Q&gt;</code> |
 
 Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.bi.mapelites.MapElitesBiEvolver">MapElitesBiEvolver</abbr>&lt;G, S, Q, O&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.biMapElites()` by robotevo2d-main:1.5.1-SNAPSHOT
 
