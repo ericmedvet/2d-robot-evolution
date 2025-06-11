@@ -25,16 +25,11 @@ import io.github.ericmedvet.jnb.datastructure.Pair;
 import io.github.ericmedvet.mrsim2d.core.EmbodiedAgent;
 import io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR;
 import io.github.ericmedvet.mrsim2d.core.engine.Engine;
-import io.github.ericmedvet.mrsim2d.core.tasks.sumo.Sumo;
 import io.github.ericmedvet.mrsim2d.core.tasks.sumo.SumoAgentsOutcome;
 import io.github.ericmedvet.mrsim2d.core.tasks.sumo.SumoCup;
 import io.github.ericmedvet.mrsim2d.viewer.Drawer;
 import io.github.ericmedvet.mrsim2d.viewer.OnlineVideoBuilder;
 import io.github.ericmedvet.mrsim2d.viewer.VideoUtils;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
@@ -49,6 +44,9 @@ import java.util.concurrent.Future;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.random.RandomGenerator;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 
 public class SumoCupFights {
 
@@ -63,7 +61,8 @@ public class SumoCupFights {
 
   @SuppressWarnings("unchecked")
   public static void main(String[] args) throws IOException {
-    String folder = "/home/il_bello/IdeaProjects/results/sumo-fights-ranking/";
+    int nThreads = 5;
+    String folder = "/home/il_bello/IdeaProjects/results/sumo-cup-fights-ranking/";
     String CSVPath1 = folder + "allBest_bi.csv";
     String CSVPath2 = folder + "allBest_box.csv";
     String delimiter = ";";
@@ -171,7 +170,7 @@ public class SumoCupFights {
       Supplier<Engine> engineSupplier = () -> ServiceLoader.load(Engine.class).findFirst().orElseThrow();
 
       int nt = Runtime.getRuntime().availableProcessors();
-      ExecutorService executor = Executors.newFixedThreadPool(19);
+      ExecutorService executor = Executors.newFixedThreadPool(nThreads);
       List<Future<?>> futures = new ArrayList<>();
 
       for (Pair<String, Supplier<EmbodiedAgent>> opponent1 : opponents) {
@@ -207,7 +206,8 @@ public class SumoCupFights {
             double fitness2 = getScore2.apply(outcome);
 
             if (fitness1 > fitness2) {
-              if (saveVideo) ovb.get();
+              if (saveVideo)
+                ovb.get();
             }
 
             synchronized (totalScore1) {

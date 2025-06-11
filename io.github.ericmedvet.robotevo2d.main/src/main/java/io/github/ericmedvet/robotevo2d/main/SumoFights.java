@@ -205,7 +205,8 @@ public class SumoFights {
             double fitness2 = getScore2.apply(outcome);
 
             if (fitness1 > fitness2) {
-              if (saveVideo) ovb.get();
+              if (saveVideo)
+                ovb.get();
             }
 
             synchronized (totalScore1) {
