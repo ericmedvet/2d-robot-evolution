@@ -84,11 +84,13 @@ ea.experiment(
     );
     ea.l.savePlotForExp(
       path = "../results/{name}/{startTime}/best-vs-self";
-      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.scoreSumoAgent1(of = f.composition(of = ea.f.best(); then = $VS_SELF)))
+      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.scoreSumoAgent1(of = f.composition(of = ea.f.best(); then = $VS_SELF)));
+      deferred = true
     );
     ea.l.savePlotForExp(
       path = "../results/{name}/{startTime}/best-vs-opponent";
-      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.scoreSumoAgent1(of = f.composition(of = ea.f.best(); then = $VS_OPPONENT)))
+      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.scoreSumoAgent1(of = f.composition(of = ea.f.best(); then = $VS_OPPONENT)));
+      deferred = true
     );
     ea.l.savePlotForExp(
       path = "../results/{name}/{startTime}/avg-q";
@@ -96,11 +98,13 @@ ea.experiment(
     );
     ea.l.savePlotForExp(
       path = "../results/{name}/{startTime}/avg-vs-self";
-      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.scoreSumoAgent1(of = f.composition(then = $VS_SELF)); of = ea.f.all())))
+      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.scoreSumoAgent1(of = f.composition(then = $VS_SELF)); of = ea.f.all())));
+      deferred = true
     );
     ea.l.savePlotForExp(
       path = "../results/{name}/{startTime}/avg-vs-opponent";
-      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.scoreSumoAgent1(of = f.composition(then = $VS_OPPONENT)); of = ea.f.all())))
+      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.scoreSumoAgent1(of = f.composition(then = $VS_OPPONENT)); of = ea.f.all())));
+      deferred = true
     );
     ea.l.savePlotForRun(
       path = "../results/{name}/{startTime}/archive-{run.problem.name}-{run.solver.name}-{run.randomGenerator.seed:%03d}";

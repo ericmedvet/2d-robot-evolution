@@ -1,4 +1,4 @@
-$SIMULATION = s.task.sumo(duration = 10)
+$SIMULATION = s.task.sumoCup(duration = 10)
 
 $VS_SELF = ds.f.selfBiSimulator(
   of = ea.f.solution();
@@ -29,13 +29,8 @@ $BODY_DESCRIPTORS = [
 
 ea.experiment(
   runs =
-    (randomGenerator = (seed = [1:1:1]) * [m.defaultRG()]) *
-    (solver = (nEval = [200]) * [
-    ea.s.ga(
-        name = "box-ga-ann";
-        representation = ea.r.doubleString();
-        mapper = $MAPPER
-      );
+    (randomGenerator = (seed = [1:1:5]) * [m.defaultRG()]) *
+    (solver = (nEval = [1000]) * [
       ea.s.mapElites(
         name = "box-me-ann";
         representation = ea.r.doubleString();
@@ -45,7 +40,7 @@ ea.experiment(
     ]) *
     (problem = [ea.p.biSimToQb(
       simulation = $SIMULATION;
-      qFunction = s.f.outcome.scoreSumoAgent1();
+      qFunction = s.f.outcome.sumoShiftedScoreDifference1();
       trainingOpponent = m.supplier(of = m.supplier(of = s.a.dummyBox()));
       type = maximize
     )]) *
@@ -63,33 +58,31 @@ ea.experiment(
     );
     ea.l.savePlotAndCsvForExp(
       path = "../results/{name}/{startTime}/best-q";
-      plot = ea.plot.multi.quality(x = ea.f.nOfEvals());
-      overwrite = true
+      plot = ea.plot.multi.quality(x = ea.f.nOfEvals())
     );
     ea.l.savePlotAndCsvForExp(
       path = "../results/{name}/{startTime}/best-vs-self";
-      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.scoreSumoAgent1(of = f.composition(of = ea.f.best(); then = $VS_SELF)));
-      overwrite = true
+      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(of = ea.f.best(); then = $VS_SELF)));
+      deferred = true
     );
     ea.l.savePlotAndCsvForExp(
       path = "../results/{name}/{startTime}/best-vs-opponent";
-      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.scoreSumoAgent1(of = f.composition(of = ea.f.best(); then = $VS_OPPONENT)));
-      overwrite = true
+      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(of = ea.f.best(); then = $VS_OPPONENT)));
+      deferred = true
     );
     ea.l.savePlotAndCsvForExp(
       path = "../results/{name}/{startTime}/avg-q";
-      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = ea.f.quality(); of = ea.f.all())));
-      overwrite = true
+      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = ea.f.quality(); of = ea.f.all())))
     );
     ea.l.savePlotAndCsvForExp(
       path = "../results/{name}/{startTime}/avg-vs-self";
-      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.scoreSumoAgent1(of = f.composition(then = $VS_SELF)); of = ea.f.all())));
-      overwrite = true
+      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(then = $VS_SELF)); of = ea.f.all())));
+      deferred = true
     );
     ea.l.savePlotAndCsvForExp(
       path = "../results/{name}/{startTime}/avg-vs-opponent";
-      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.scoreSumoAgent1(of = f.composition(then = $VS_OPPONENT)); of = ea.f.all())));
-      overwrite = true
+      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(then = $VS_OPPONENT)); of = ea.f.all())));
+      deferred = true
     );
     ea.l.savePlotAndCsvForRun(
       path = "../results/{name}/{startTime}/archive-{run.problem.name}-{run.solver.name}-{run.randomGenerator.seed:%03d}";
@@ -101,7 +94,7 @@ ea.experiment(
       processor = f.composition(
         of = f.pairerFirst(of = ea.f.solution(); second = m.supplier(of = s.a.dummyBox()));
         then = sim.biTaskVideoBuilder(
-          drawer = sim.drawer(framer = sim.staticFramer(minX = 10.0; maxX = 35.0; minY = 10; maxY = 20.0));
+          drawer = sim.drawer(framer = sim.staticFramer(minX = 0; maxX = 40; minY = 0; maxY = 25); actions = true);
           task = $SIMULATION
         )
       );

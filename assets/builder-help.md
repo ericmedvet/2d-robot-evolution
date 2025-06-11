@@ -6027,6 +6027,30 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 
 Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.scoreSumoAgent2()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+### Builder `sim.function.outcome.sumoShiftedScoreDifference1()`
+
+`s.f.o.sumoShiftedScoreDifference1(transientTime; of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `transientTime` | d | `0.0` | <code>double</code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.sumo.SumoAgentsOutcome">SumoAgentsOutcome</abbr>&gt;</code> |
+| `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.sumoShiftedScoreDifference1()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `sim.function.outcome.sumoShiftedScoreDifference2()`
+
+`s.f.o.sumoShiftedScoreDifference2(transientTime; of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `transientTime` | d | `0.0` | <code>double</code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.sumo.SumoAgentsOutcome">SumoAgentsOutcome</abbr>&gt;</code> |
+| `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.sumoShiftedScoreDifference2()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ## Package `sim.sensors`
 
 Aliases: `s.s`, `s.sensors`, `sim.s`, `sim.sensors`
@@ -6226,6 +6250,17 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.piling.Stand
 | `duration` | d | `60.0` | <code>double</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.sumo.Sumo">Sumo</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.sumo()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `sim.task.sumoCup()`
+
+`s.task.sumoCup(name; duration)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `name` | s | `sumoCup` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `duration` | d | `60.0` | <code>double</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.sumo.SumoCup">SumoCup</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.sumoCup()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ## Package `sim.terrain`
 
