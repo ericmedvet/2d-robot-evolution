@@ -61,13 +61,13 @@ public class SumoCupFights {
 
   @SuppressWarnings("unchecked")
   public static void main(String[] args) throws IOException {
-    int nThreads = 18;
+    int nThreads = 20;
     String folder = "/home/il_bello/IdeaProjects/results/sumo-cup-fights-ranking/";
     String CSVPath1 = folder + "allBest_bi.csv";
     String CSVPath2 = folder + "allBest_box.csv";
     String delimiter = ";";
     boolean singleCSV = false;
-    boolean saveVideo = false;
+    boolean saveVideo = true;
 
     Function<SumoAgentsOutcome, Double> getScore1 = (Function<SumoAgentsOutcome, Double>) BUILDER.build(
         "s.f.outcome.sumoShiftedScoreDifference1()"
@@ -154,10 +154,12 @@ public class SumoCupFights {
         opponents.add(new Pair<>(name, embodiedOpponent));
       }
 
+      /*
       int numOpponents = opponentNames.size();
       int[][] matchCounts = new int[numOpponents][numOpponents];
       double[][] totalScore1 = new double[numOpponents][numOpponents];
       double[][] totalScore2 = new double[numOpponents][numOpponents];
+       */
 
       Map<String, Integer> winsMap = new HashMap<>();
       Map<String, Integer> matchesPlayed = new HashMap<>();
@@ -210,16 +212,24 @@ public class SumoCupFights {
                 ovb.get();
             }
 
+            /*
             synchronized (totalScore1) {
               totalScore1[index1][index2] += fitness1;
+            }
+            synchronized (totalScore2) {
               totalScore2[index1][index2] += fitness2;
+            }
+            synchronized (matchCounts) {
               matchCounts[index1][index2] += 1;
+            }
+             */
+
+            synchronized (matchesPlayed) {
+              matchesPlayed.put(opponent1.first(), matchesPlayed.get(opponent1.first()) + 1);
+              matchesPlayed.put(opponent2.first(), matchesPlayed.get(opponent2.first()) + 1);
             }
 
             synchronized (winsMap) {
-              matchesPlayed.put(opponent1.first(), matchesPlayed.get(opponent1.first()) + 1);
-              matchesPlayed.put(opponent2.first(), matchesPlayed.get(opponent2.first()) + 1);
-
               if (fitness1 > fitness2) {
                 winsMap.put(opponent1.first(), winsMap.get(opponent1.first()) + 1);
               } else if (fitness2 > fitness1) {

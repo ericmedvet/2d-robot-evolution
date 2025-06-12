@@ -30,7 +30,7 @@ $BODY_DESCRIPTORS = [
 ea.experiment(
   runs =
     (randomGenerator = (seed = [1:1:5]) * [m.defaultRG()]) *
-    (solver = (nEval = [10000]) * [
+    (solver = (nEval = [20000]) * [
       ea.s.ga(
         name = "box-ga-ann";
         representation = ea.r.doubleString();
@@ -94,7 +94,7 @@ ea.experiment(
     ea.l.savePlotForRun(
       path = "../results/{name}/{startTime}/archive-{run.problem.name}-{run.solver.name}-{run.randomGenerator.seed:%03d}";
       plot = ea.plot.single.me();
-      condition = predicate.matches(f = ea.f.runKey(key = "run.solver.name"); regex = "biMe")
+      condition = predicate.matches(f = ea.f.runKey(key = "run.solver.name"); regex = ".*-me-.*")
     );
     ea.l.bestCsv(
         path = "../results/{name}/{startTime}/allBest.csv";
@@ -110,7 +110,7 @@ ea.experiment(
     ea.l.saveForRun(
       of = ea.acc.lastBest();
       processor = f.composition(
-        of = f.pairerFirst(of = ea.f.solution(); second = m.supplier(of = s.a.dummyBox()));
+        of = f.pairerFirst(of = ea.f.solution(); second = ea.f.solution());
         then = sim.biTaskVideoBuilder(
           drawer = sim.drawer(framer = sim.staticFramer(minX = 4; maxX = 36; minY = 3; maxY = 24); actions = true);
           task = $SIMULATION

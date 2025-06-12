@@ -94,7 +94,7 @@ ea.experiment(
     ea.l.savePlotForRun(
       path = "../results/{name}/{startTime}/archive-{run.problem.name}-{run.solver.name}-{run.randomGenerator.seed:%03d}";
       plot = ea.plot.single.me();
-      condition = predicate.matches(f = ea.f.runKey(key = "run.solver.name"); regex = "biMe")
+      condition = predicate.matches(f = ea.f.runKey(key = "run.solver.name"); regex = ".*-me-.*")
     );
     ea.l.bestCsv(
         path = "../results/{name}/{startTime}/allBest.csv";
