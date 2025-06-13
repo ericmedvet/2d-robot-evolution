@@ -121,17 +121,18 @@ ea.experiment(
           f.toBase64(of = ea.f.genotype(of = ea.f.best()))
         ];
         onlyLast = true
-    );
-    ea.l.saveForRun(
-      of = ea.acc.lastBest();
-      processor = f.composition(
-        of = f.pairerFirst(of = ea.f.solution(); second = ea.f.solution());
-        then = sim.biTaskVideoBuilder(
-          drawer = sim.drawer(framer = sim.staticFramer(minX = 4; maxX = 36; minY = 3; maxY = 24));
-          task = $SIMULATION
-        )
-      );
-      path = "../results/{name}/{startTime}/best-{run.solver.name}-vs-self-{run.randomGenerator.seed:%04d}"
     )
+    % ;
+    % ea.l.saveForRun(
+    %   of = ea.acc.lastBest();
+    %   processor = f.composition(
+    %     of = f.pairerFirst(of = ea.f.solution(); second = ea.f.solution());
+    %     then = sim.biTaskVideoBuilder(
+    %       drawer = sim.drawer(framer = sim.staticFramer(minX = 4; maxX = 36; minY = 3; maxY = 24));
+    %       task = $SIMULATION
+    %     )
+    %   );
+    %   path = "../results/{name}/{startTime}/best-{run.solver.name}-vs-self-{run.randomGenerator.seed:%04d}"
+    % )
   ]
 )
