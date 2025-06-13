@@ -54,8 +54,7 @@ public class SumoCupFights {
 
   private static final String DRAWER = """
       sim.drawer(
-        framer = sim.staticFramer(minX = 4; maxX = 36; minY = 3; maxY = 24);
-        actions = true
+        framer = sim.staticFramer(minX = 4; maxX = 36; minY = 3; maxY = 24)
       )
       """;
 

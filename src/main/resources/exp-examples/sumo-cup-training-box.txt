@@ -12,8 +12,8 @@ $VS_OPPONENT = ds.f.opponentBiSimulator(
 )
 
 $MAPPER = er.m.bodyBrainHomoDistributedVSR(
-  w = 8;
-  h = 8;
+  w = 4;
+  h = 3;
   sensors = [s.s.a(); s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90); s.s.d(r = 5)];
   of = ea.m.pair(
     of = ea.m.splitter();
@@ -23,13 +23,13 @@ $MAPPER = er.m.bodyBrainHomoDistributedVSR(
 )
 
 $BODY_DESCRIPTORS = [
-  ea.s.me.d.descriptor(f = f.gridCount(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution()))); min = 1; max = 64; nOfBins = 10);
+  ea.s.me.d.descriptor(f = f.gridCount(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution()))); min = 1; max = 12; nOfBins = 12);
   ea.s.me.d.descriptor(f = f.gridElongation(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution()))); min = 0; max = 1; nOfBins = 10)
 ]
 
 ea.experiment(
   runs =
-    (randomGenerator = (seed = [1:1:5]) * [m.defaultRG()]) *
+    (randomGenerator = (seed = [1:1:10]) * [m.defaultRG()]) *
     (solver = (nEval = [20000]) * [
       ea.s.ga(
         name = "box-ga-ann";
@@ -107,17 +107,17 @@ ea.experiment(
         ];
         onlyLast = true
     )
-    % ;
-    % ea.l.saveForRun(
-    %   of = ea.acc.lastBest();
-    %   processor = f.composition(
-    %     of = f.pairerFirst(of = ea.f.solution(); second = m.supplier(of = s.a.dummyBox()));
-    %     then = sim.biTaskVideoBuilder(
-    %       drawer = sim.drawer(framer = sim.staticFramer(minX = 4; maxX = 36; minY = 3; maxY = 24); actions = true);
-    %       task = $SIMULATION
-    %     )
-    %   );
-    %   path = "../results/{name}/{startTime}/best-vs-box-{run.solver.name}-{run.randomGenerator.seed:%04d}"
-    % )
+    ;
+    ea.l.saveForRun(
+      of = ea.acc.lastBest();
+      processor = f.composition(
+        of = f.pairerFirst(of = ea.f.solution(); second = m.supplier(of = s.a.dummyBox()));
+        then = sim.biTaskVideoBuilder(
+          drawer = sim.drawer(framer = sim.staticFramer(minX = 4; maxX = 36; minY = 3; maxY = 24); actions = true);
+          task = $SIMULATION
+        )
+      );
+      path = "../results/{name}/{startTime}/best-vs-box-{run.solver.name}-{run.randomGenerator.seed:%04d}"
+    )
   ]
 )
