@@ -13,7 +13,7 @@ $VS_OPPONENT = ds.f.opponentBiSimulator(
 
 $MAPPER = er.m.bodyBrainHomoDistributedVSR(
   w = 4;
-  h = 3;
+  h = 4;
   sensors = [s.s.a(); s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90); s.s.d(r = 5)];
   of = ea.m.pair(
     of = ea.m.splitter();
@@ -27,6 +27,11 @@ $BODY_DESCRIPTORS = [
   ea.s.me.d.descriptor(f = f.gridElongation(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution()))); min = 0; max = 1; nOfBins = 10)
 ]
 
+$BRAIN_DESCRIPTORS = [
+  ea.s.me.d.descriptor(f = ea.f.treeSize(of = ea.f.genotype()); min = 0; max = 250; nOfBins = 10);
+  ea.s.me.d.descriptor(f = f.size(of = f.filter(of = ea.f.treeLeaves(of = ea.f.genotype()); condition = predicate.matches(f = f.toString(); regex = "i[0-9]+"))); min = 0; max = 30; nOfBins = 10)
+]
+
 ea.experiment(
   runs =
     (randomGenerator = (seed = [1:1:10]) * [m.defaultRG()]) *
@@ -35,14 +40,25 @@ ea.experiment(
         name = "bi-ga-ann";
         fitnessReducer = ea.misc.lossyAverage();
         representation = ea.r.doubleString();
-        mapper = $MAPPER
+        mapper = $MAPPER;
+        opponentsSelector = ea.misc.randomSelector(nOfOpponents = 2);
+        fitnessAggregator = f.avg()
       );
       ea.s.biMapElites(
-        name = "bi-me-ann";
+        name = "bi-me-ann-bodyDescriptors";
         fitnessReducer = ea.misc.lossyAverage();
         representation = ea.r.doubleString();
         mapper = $MAPPER;
         descriptors = $BODY_DESCRIPTORS;
+        opponentsSelector = ea.misc.randomMESelector(nOfOpponents = 2);
+        fitnessAggregator = f.avg()
+      );
+      ea.s.biMapElites(
+        name = "bi-me-ann-brainDescriptors";
+        fitnessReducer = ea.misc.lossyAverage();
+        representation = ea.r.doubleString();
+        mapper = $MAPPER;
+        descriptors = $BRAIN_DESCRIPTORS;
         opponentsSelector = ea.misc.randomMESelector(nOfOpponents = 2);
         fitnessAggregator = f.avg()
       );
@@ -52,10 +68,16 @@ ea.experiment(
         mapper = $MAPPER
       );
       ea.s.mapElites(
-        name = "self-me-ann";
+        name = "self-me-ann-bodyDescriptors";
         representation = ea.r.doubleString();
         mapper = $MAPPER;
         descriptors = $BODY_DESCRIPTORS
+      );
+      ea.s.mapElites(
+        name = "self-me-ann-brainDescriptors";
+        representation = ea.r.doubleString();
+        mapper = $MAPPER;
+        descriptors = $BRAIN_DESCRIPTORS
       )
     ]) *
     (problem = [ea.p.biSimToBqb(
