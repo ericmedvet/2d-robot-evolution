@@ -28,8 +28,32 @@ $BODY_DESCRIPTORS = [
 ]
 
 $BRAIN_DESCRIPTORS = [
-  ea.s.me.d.descriptor(f = ea.f.treeSize(of = ea.f.genotype()); min = 0; max = 250; nOfBins = 10);
-  ea.s.me.d.descriptor(f = f.size(of = f.filter(of = ea.f.treeLeaves(of = ea.f.genotype()); condition = predicate.matches(f = f.toString(); regex = "i[0-9]+"))); min = 0; max = 30; nOfBins = 10)
+  ea.s.me.d.descriptor(
+    %f = f.size(of = f.filter(of = ea.f.getLayerWeights(of = ea.f.solution(); indexOfLayer = 0); condition = predicate.all(conditions = [predicate.lt(t = $THRESHOLD); predicate.gt(t = $NEG_THRESHOLD)])));
+    f = f.mathOp(
+      op = divide;
+      args = [
+        f.size(of = f.filter(of = ea.f.getLayerWeights(of = ea.f.solution(); indexOfLayer = 0); condition = predicate.all(conditions = [predicate.lt(t = $THRESHOLD); predicate.gt(t = $NEG_THRESHOLD)])));
+        f.size(of = ea.f.getLayerWeights(of = ea.f.solution(); indexOfLayer = 0))
+      ]
+    );
+    min = 0.0;
+    max = 1.0;
+    nOfBins = 10
+  );
+  ea.s.me.d.descriptor(
+    %f = f.size(of = f.filter(of = ea.f.getLayerWeights(of = ea.f.solution(); indexOfLayer = 1); condition = predicate.all(conditions = [predicate.lt(t = $THRESHOLD); predicate.gt(t = $NEG_THRESHOLD)])));
+    f = f.mathOp(
+      op = divide;
+      args = [
+        f.size(of = f.filter(of = ea.f.getLayerWeights(of = ea.f.solution(); indexOfLayer = 1); condition = predicate.all(conditions = [predicate.lt(t = $THRESHOLD); predicate.gt(t = $NEG_THRESHOLD)])));
+        f.size(of = ea.f.getLayerWeights(of = ea.f.solution(); indexOfLayer = 1))
+      ]
+    );
+    min = 0.0;
+    max = 1.0;
+    nOfBins = 10
+  )
 ]
 
 ea.experiment(
