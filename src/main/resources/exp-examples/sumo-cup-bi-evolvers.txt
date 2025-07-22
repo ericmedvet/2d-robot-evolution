@@ -27,6 +27,9 @@ $BODY_DESCRIPTORS = [
   ea.s.me.d.descriptor(f = f.gridElongation(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution()))); min = 0; max = 1; nOfBins = 10)
 ]
 
+$THRESHOLD = 0.5
+$NEG_THRESHOLD = -0.5
+
 $BRAIN_DESCRIPTORS = [
   ea.s.me.d.descriptor(
     %f = f.size(of = f.filter(of = ea.f.getLayerWeights(of = ea.f.solution(); indexOfLayer = 0); condition = predicate.all(conditions = [predicate.lt(t = $THRESHOLD); predicate.gt(t = $NEG_THRESHOLD)])));
