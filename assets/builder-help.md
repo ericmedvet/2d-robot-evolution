@@ -985,6 +985,20 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;I&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.firsts()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+### Builder `ea.function.fromMapper()`
+
+`ea.f.fromMapper(of; mapper; example; name; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, G&gt;</code> |
+| `mapper` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;G, S&gt;</code> |
+| `example` | npm |  | <code>S</code> |
+| `name` | s | interpolate `{mapper.name}` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, S&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.fromMapper()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ### Builder `ea.function.fromProblem()`
 
 `ea.f.fromProblem(of; problem; name; format)`
@@ -2327,6 +2341,12 @@ Produces <code><abbr title="java.util.function.BinaryOperator">BinaryOperator</a
 | `nOfOpponents` | i | `1` | <code>int</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiEvolver$OpponentsSelector">AbstractBiEvolver$OpponentsSelector</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.nearestMESelector()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `ea.misc.nullValue()`
+
+`ea.misc.nullValue()`
+
+Produces <code><abbr title="java.lang.Object">Object</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.nullValue()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.misc.oldestMESelector()`
 
