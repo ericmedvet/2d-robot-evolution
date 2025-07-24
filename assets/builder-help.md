@@ -377,6 +377,16 @@ Aliases: `ds.f`, `ds.function`, `dynSys.f`, `dynSys.function`, `dynamicalSystem.
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.doubleOp()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+### Builder `dynamicalSystem.function.inner()`
+
+`ds.f.inner(of)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.composed.Composed">Composed</abbr>&lt;C&gt;&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, C&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.inner()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ### Builder `dynamicalSystem.function.opponentBiSimulator()`
 
 `ds.f.opponentBiSimulator(of; simulation; opponent; home; format)`
@@ -5656,6 +5666,17 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</a
 
 Aliases: `s.f`, `s.function`, `sim.f`, `sim.function`
 
+### Builder `sim.function.numBrains()`
+
+`s.f.numBrains(of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.NumMultiBrained">NumMultiBrained</abbr>&gt;</code> |
+| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.numBrains()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ### Builder `sim.function.vsrBody()`
 
 `s.f.vsrBody(of; nullify; format)`
@@ -5666,7 +5687,7 @@ Aliases: `s.f`, `s.function`, `sim.f`, `sim.function`
 | `nullify` | b | `true` | <code>boolean</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.vsrBody()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.vsrBody()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ## Package `sim.function.outcome`
 

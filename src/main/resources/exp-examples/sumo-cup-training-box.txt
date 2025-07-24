@@ -30,14 +30,15 @@ $BODY_DESCRIPTORS = [
 $THRESHOLD = 0.5
 $NEG_THRESHOLD = -0.5
 
+$BRAIN_EXTRACTOR = ds.f.inner(of = f.first(of = s.f.numBrains(of = ea.f.supplied(of = ea.f.solution()))))
+
 $BRAIN_DESCRIPTORS = [
   ea.s.me.d.descriptor(
-    %f = f.size(of = f.filter(of = ea.f.getLayerWeights(of = ea.f.solution(); indexOfLayer = 0); condition = predicate.all(conditions = [predicate.lt(t = $THRESHOLD); predicate.gt(t = $NEG_THRESHOLD)])));
     f = f.mathOp(
       op = divide;
       args = [
-        f.size(of = f.filter(of = ea.f.getLayerWeights(of = ea.f.solution(); indexOfLayer = 0); condition = predicate.all(conditions = [predicate.lt(t = $THRESHOLD); predicate.gt(t = $NEG_THRESHOLD)])));
-        f.size(of = ea.f.getLayerWeights(of = ea.f.solution(); indexOfLayer = 0))
+        f.size(of = f.filter(of = ea.f.getLayerWeights(of = $BRAIN_EXTRACTOR; indexOfLayer = 0); condition = predicate.all(conditions = [predicate.lt(t = $THRESHOLD); predicate.gt(t = $NEG_THRESHOLD)])));
+        f.size(of = ea.f.getLayerWeights(of = $BRAIN_EXTRACTOR; indexOfLayer = 0))
       ]
     );
     min = 0.0;
@@ -45,12 +46,11 @@ $BRAIN_DESCRIPTORS = [
     nOfBins = 10
   );
   ea.s.me.d.descriptor(
-    %f = f.size(of = f.filter(of = ea.f.getLayerWeights(of = ea.f.solution(); indexOfLayer = 1); condition = predicate.all(conditions = [predicate.lt(t = $THRESHOLD); predicate.gt(t = $NEG_THRESHOLD)])));
     f = f.mathOp(
       op = divide;
       args = [
-        f.size(of = f.filter(of = ea.f.getLayerWeights(of = ea.f.solution(); indexOfLayer = 1); condition = predicate.all(conditions = [predicate.lt(t = $THRESHOLD); predicate.gt(t = $NEG_THRESHOLD)])));
-        f.size(of = ea.f.getLayerWeights(of = ea.f.solution(); indexOfLayer = 1))
+        f.size(of = f.filter(of = ea.f.getLayerWeights(of = $BRAIN_EXTRACTOR; indexOfLayer = 1); condition = predicate.all(conditions = [predicate.lt(t = $THRESHOLD); predicate.gt(t = $NEG_THRESHOLD)])));
+        f.size(of = ea.f.getLayerWeights(of = $BRAIN_EXTRACTOR; indexOfLayer = 1))
       ]
     );
     min = 0.0;
