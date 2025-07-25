@@ -61,7 +61,7 @@ public class SumoCupFights {
   @SuppressWarnings("unchecked")
   public static void main(String[] args) throws IOException {
     int nThreads = 20;
-    String folder = "/home/il_bello/IdeaProjects/results/sumo-cup-fights-ranking/";
+    String folder = "/home/michelelsaliby/paper_003/sumo_fights/";
     String CSVPath1 = folder + "allBest_bi.csv";
     String CSVPath2 = folder + "allBest_box.csv";
     String delimiter = ";";
@@ -153,13 +153,6 @@ public class SumoCupFights {
         opponents.add(new Pair<>(name, embodiedOpponent));
       }
 
-      /*
-      int numOpponents = opponentNames.size();
-      int[][] matchCounts = new int[numOpponents][numOpponents];
-      double[][] totalScore1 = new double[numOpponents][numOpponents];
-      double[][] totalScore2 = new double[numOpponents][numOpponents];
-       */
-
       Map<String, Integer> winsMap = new HashMap<>();
       Map<String, Integer> matchesPlayed = new HashMap<>();
 
@@ -206,22 +199,8 @@ public class SumoCupFights {
             double fitness1 = getScore1.apply(outcome);
             double fitness2 = getScore2.apply(outcome);
 
-            if (fitness1 > fitness2) {
-              if (saveVideo)
-                ovb.get();
-            }
-
-            /*
-            synchronized (totalScore1) {
-              totalScore1[index1][index2] += fitness1;
-            }
-            synchronized (totalScore2) {
-              totalScore2[index1][index2] += fitness2;
-            }
-            synchronized (matchCounts) {
-              matchCounts[index1][index2] += 1;
-            }
-             */
+            if (saveVideo)
+              ovb.get();
 
             synchronized (matchesPlayed) {
               matchesPlayed.put(opponent1.first(), matchesPlayed.get(opponent1.first()) + 1);
