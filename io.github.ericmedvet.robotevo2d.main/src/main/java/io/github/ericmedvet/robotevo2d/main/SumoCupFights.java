@@ -76,8 +76,8 @@ public class SumoCupFights {
     );
     String mapper = """
             er.m.bodyBrainHomoDistributedVSR(
-              w = 8;
-              h = 8;
+              w = 4;
+              h = 4;
               sensors = [s.s.a(); s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90); s.s.d(r = 5)];
               of = ea.m.pair(
                 of = ea.m.splitter();
