@@ -1,22 +1,3 @@
-/*-
- * ========================LICENSE_START=================================
- * robotevo2d-main
- * %%
- * Copyright (C) 2018 - 2025 Eric Medvet
- * %%
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * =========================LICENSE_END==================================
- */
 package io.github.ericmedvet.robotevo2d.main;
 
 import io.github.ericmedvet.jgea.core.InvertibleMapper;
@@ -37,18 +18,16 @@ import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger; // MODIFICA: Import aggiunto
+import java.util.concurrent.atomic.AtomicLong; // MODIFICA: Import per nomi file univoci
 import java.util.function.Function;
 import java.util.function.Supplier;
-import java.util.random.RandomGenerator;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
-public class SumoCupFights {
+public class SumoCupFightsOptimized {
 
   private static final NamedBuilder<Object> BUILDER = NamedBuilder.fromDiscovery();
 
@@ -126,7 +105,6 @@ public class SumoCupFights {
         }
       }
 
-
       Function<String, Object> deserializer = (Function<String, Object>) BUILDER.build("f.fromBase64()");
 
       InvertibleMapper<List<Double>, Supplier<DistributedNumGridVSR>> invertibleMapper = (InvertibleMapper<List<Double>, Supplier<DistributedNumGridVSR>>) BUILDER
@@ -138,12 +116,7 @@ public class SumoCupFights {
         Supplier<DistributedNumGridVSR> opponent = supplierFunction.apply(
             (List<Double>) deserializer.apply(record.get(genotypeColumnIndex))
         );
-        Supplier<EmbodiedAgent> embodiedOpponent = new Supplier<EmbodiedAgent>() {
-          @Override
-          public EmbodiedAgent get() {
-            return (EmbodiedAgent) opponent.get();
-          }
-        };
+        Supplier<EmbodiedAgent> embodiedOpponent = opponent::get;
         String name = record.get(nameColumnIndex);
         maxSeed = Math.max(maxSeed, Integer.parseInt(record.get(seedColumnIndex)));
         if (!opponentIndices.containsKey(name)) {
@@ -153,29 +126,31 @@ public class SumoCupFights {
         opponents.add(new Pair<>(name, embodiedOpponent));
       }
 
-      Map<String, Integer> winsMap = new HashMap<>();
-      Map<String, Integer> matchesPlayed = new HashMap<>();
+      Map<String, AtomicInteger> winsMap = new ConcurrentHashMap<>();
+      Map<String, AtomicInteger> matchesPlayed = new ConcurrentHashMap<>();
 
       for (String name : opponentNames) {
-        winsMap.put(name, 0);
-        matchesPlayed.put(name, 0);
+        winsMap.put(name, new AtomicInteger(0));
+        matchesPlayed.put(name, new AtomicInteger(0));
       }
 
       Supplier<Engine> engineSupplier = () -> ServiceLoader.load(Engine.class).findFirst().orElseThrow();
 
-      int nt = Runtime.getRuntime().availableProcessors();
       ExecutorService executor = Executors.newFixedThreadPool(nThreads);
       List<Future<?>> futures = new ArrayList<>();
+      AtomicLong videoCounter = new AtomicLong(0);
 
       for (Pair<String, Supplier<EmbodiedAgent>> opponent1 : opponents) {
         for (Pair<String, Supplier<EmbodiedAgent>> opponent2 : opponents) {
+          if (opponent1 == opponent2) {
+            continue;
+          }
           futures.add(executor.submit(() -> {
-            int index1 = opponentIndices.get(opponent1.first());
-            int index2 = opponentIndices.get(opponent2.first());
-
             SumoCup sumo = (SumoCup) BUILDER.build("s.task.sumoCup(duration = 15)");
-            Drawer drawer = ((Function<String, Drawer>) BUILDER.build(DRAWER)).apply(
-                opponent1.first() + " vs. " + opponent2.first()
+            String videoName = String.format("%s_vs_%s-%d.mp4",
+                opponent1.first(),
+                opponent2.first(),
+                videoCounter.incrementAndGet()
             );
             OnlineVideoBuilder ovb = new OnlineVideoBuilder(
                 400,
@@ -184,60 +159,58 @@ public class SumoCupFights {
                 15,
                 24,
                 VideoUtils.EncoderFacility.FFMPEG_SMALL,
-                new File(
-                    folder + "video/" + opponent1.first() + "-" + opponent2.first() + "-" + RandomGenerator.getDefault()
-                        .nextInt() + ".mp4"
-                ),
-                drawer
+                new File(folder + "video/" + videoName),
+                ((Function<String, Drawer>) BUILDER.build(DRAWER)).apply(videoName)
             );
+
             SumoAgentsOutcome outcome = sumo.run(
                 opponent1.second(),
                 opponent2.second(),
                 engineSupplier.get(),
-                ovb
+                saveVideo ? ovb : null
             );
             double fitness1 = getScore1.apply(outcome);
             double fitness2 = getScore2.apply(outcome);
 
-            if (saveVideo)
+            if (saveVideo) {
               ovb.get();
-
-            synchronized (matchesPlayed) {
-              matchesPlayed.put(opponent1.first(), matchesPlayed.get(opponent1.first()) + 1);
-              matchesPlayed.put(opponent2.first(), matchesPlayed.get(opponent2.first()) + 1);
             }
 
-            synchronized (winsMap) {
-              if (fitness1 > fitness2) {
-                winsMap.put(opponent1.first(), winsMap.get(opponent1.first()) + 1);
-              } else if (fitness2 > fitness1) {
-                winsMap.put(opponent2.first(), winsMap.get(opponent2.first()) + 1);
-              }
+            // MODIFICA: Operazioni atomiche senza 'synchronized'
+            matchesPlayed.get(opponent1.first()).incrementAndGet();
+            matchesPlayed.get(opponent2.first()).incrementAndGet();
+
+            if (fitness1 > fitness2) {
+              winsMap.get(opponent1.first()).incrementAndGet();
+            } else if (fitness2 > fitness1) {
+              winsMap.get(opponent2.first()).incrementAndGet();
             }
           }));
         }
       }
-
       for (Future<?> f : futures) {
         f.get();
       }
       executor.shutdown();
-
       List<String> rankingLines = new ArrayList<>();
-      rankingLines.add("Name;Wins;Matches");
+      rankingLines.add("Name;Wins;Matches;WinRate");
       List<String> finalNames = new ArrayList<>(opponentNames);
-      finalNames.sort(
-          Comparator.comparingDouble(name -> -1.0 * winsMap.get(name) / (double) matchesPlayed.get(name))
-      );
+      finalNames.sort(Comparator.comparingDouble(name -> {
+        int played = matchesPlayed.get(name).get();
+        if (played == 0) return 0.0;
+        return -1.0 * winsMap.get(name).get() / (double) played;
+      }));
       for (String name : finalNames) {
-        int wins = winsMap.get(name);
-        int played = matchesPlayed.get(name);
-        rankingLines.add(String.format("%s;%d;%d", name, wins, played));
+        int wins = winsMap.get(name).get();
+        int played = matchesPlayed.get(name).get();
+        double winRate = (played > 0) ? (double) wins / played : 0.0;
+        rankingLines.add(String.format("%s;%d;%d;%.4f", name, wins, played, winRate));
       }
       String rankingPath = folder + "ranking.csv";
       Files.write(Paths.get(rankingPath), rankingLines);
       System.out.println("Ranking saved in: " + rankingPath);
     } catch (ExecutionException | InterruptedException e) {
+      Thread.currentThread().interrupt();
       throw new RuntimeException(e);
     }
   }

@@ -62,17 +62,42 @@ $BRAIN_DESCRIPTORS = [
 ea.experiment(
   runs =
     (randomGenerator = (seed = [1:1:10]) * [m.defaultRG()]) *
-    (solver = (nEval = [20000]) * [
+    (solver = (nEval = [50000]) * [
       ea.s.biGa(
-        name = "bi-ga-ann";
+        name = "bi-ga-1-ann";
+        fitnessReducer = ea.misc.lossyAverage();
+        representation = ea.r.doubleString();
+        mapper = $MAPPER;
+        opponentsSelector = ea.misc.randomSelector(nOfOpponents = 1);
+        fitnessAggregator = f.avg()
+      );
+      ea.s.biGa(
+        name = "bi-ga-2-ann";
         fitnessReducer = ea.misc.lossyAverage();
         representation = ea.r.doubleString();
         mapper = $MAPPER;
         opponentsSelector = ea.misc.randomSelector(nOfOpponents = 2);
         fitnessAggregator = f.avg()
       );
+      ea.s.biGa(
+        name = "bi-ga-3-ann";
+        fitnessReducer = ea.misc.lossyAverage();
+        representation = ea.r.doubleString();
+        mapper = $MAPPER;
+        opponentsSelector = ea.misc.randomSelector(nOfOpponents = 3);
+        fitnessAggregator = f.avg()
+      );
       ea.s.biMapElites(
-        name = "bi-me-ann-bodyDescriptors";
+        name = "bi-me-1-ann-bodyDescriptors";
+        fitnessReducer = ea.misc.lossyAverage();
+        representation = ea.r.doubleString();
+        mapper = $MAPPER;
+        descriptors = $BODY_DESCRIPTORS;
+        opponentsSelector = ea.misc.randomMESelector(nOfOpponents = 1);
+        fitnessAggregator = f.avg()
+      );
+      ea.s.biMapElites(
+        name = "bi-me-2-ann-bodyDescriptors";
         fitnessReducer = ea.misc.lossyAverage();
         representation = ea.r.doubleString();
         mapper = $MAPPER;
@@ -81,12 +106,39 @@ ea.experiment(
         fitnessAggregator = f.avg()
       );
       ea.s.biMapElites(
-        name = "bi-me-ann-brainDescriptors";
+        name = "bi-me-3-ann-bodyDescriptors";
+        fitnessReducer = ea.misc.lossyAverage();
+        representation = ea.r.doubleString();
+        mapper = $MAPPER;
+        descriptors = $BODY_DESCRIPTORS;
+        opponentsSelector = ea.misc.randomMESelector(nOfOpponents = 3);
+        fitnessAggregator = f.avg()
+      );
+      ea.s.biMapElites(
+        name = "bi-me-1-ann-brainDescriptors";
+        fitnessReducer = ea.misc.lossyAverage();
+        representation = ea.r.doubleString();
+        mapper = $MAPPER;
+        descriptors = $BRAIN_DESCRIPTORS;
+        opponentsSelector = ea.misc.randomMESelector(nOfOpponents = 1);
+        fitnessAggregator = f.avg()
+      );
+      ea.s.biMapElites(
+        name = "bi-me-2-ann-brainDescriptors";
         fitnessReducer = ea.misc.lossyAverage();
         representation = ea.r.doubleString();
         mapper = $MAPPER;
         descriptors = $BRAIN_DESCRIPTORS;
         opponentsSelector = ea.misc.randomMESelector(nOfOpponents = 2);
+        fitnessAggregator = f.avg()
+      );
+      ea.s.biMapElites(
+        name = "bi-me-3-ann-brainDescriptors";
+        fitnessReducer = ea.misc.lossyAverage();
+        representation = ea.r.doubleString();
+        mapper = $MAPPER;
+        descriptors = $BRAIN_DESCRIPTORS;
+        opponentsSelector = ea.misc.randomMESelector(nOfOpponents = 3);
         fitnessAggregator = f.avg()
       );
       ea.s.ga(
