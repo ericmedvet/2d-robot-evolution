@@ -30,6 +30,7 @@ import io.github.ericmedvet.mrsim2d.core.tasks.sumo.SumoCup;
 import io.github.ericmedvet.mrsim2d.viewer.Drawer;
 import io.github.ericmedvet.mrsim2d.viewer.OnlineVideoBuilder;
 import io.github.ericmedvet.mrsim2d.viewer.VideoUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
@@ -44,6 +45,7 @@ import java.util.concurrent.Future;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.random.RandomGenerator;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -66,7 +68,7 @@ public class SumoCupFights {
     String CSVPath2 = folder + "allBest_box.csv";
     String delimiter = ";";
     boolean singleCSV = false;
-    boolean saveVideo = true;
+    boolean saveVideo = false;
 
     Function<SumoAgentsOutcome, Double> getScore1 = (Function<SumoAgentsOutcome, Double>) BUILDER.build(
         "s.f.outcome.sumoShiftedScoreDifference1()"
@@ -153,8 +155,8 @@ public class SumoCupFights {
         opponents.add(new Pair<>(name, embodiedOpponent));
       }
 
-      Map<String, Integer> winsMap = new HashMap<>();
-      Map<String, Integer> matchesPlayed = new HashMap<>();
+      Map<String, Integer> winsMap = Collections.synchronizedMap(new HashMap<>());
+      Map<String, Integer> matchesPlayed = Collections.synchronizedMap(new HashMap<>());
 
       for (String name : opponentNames) {
         winsMap.put(name, 0);
@@ -202,17 +204,14 @@ public class SumoCupFights {
             if (saveVideo)
               ovb.get();
 
-            synchronized (matchesPlayed) {
-              matchesPlayed.put(opponent1.first(), matchesPlayed.get(opponent1.first()) + 1);
-              matchesPlayed.put(opponent2.first(), matchesPlayed.get(opponent2.first()) + 1);
-            }
+            matchesPlayed.put(opponent1.first(), matchesPlayed.get(opponent1.first()) + 1);
+            matchesPlayed.put(opponent2.first(), matchesPlayed.get(opponent2.first()) + 1);
 
-            synchronized (winsMap) {
-              if (fitness1 > fitness2) {
-                winsMap.put(opponent1.first(), winsMap.get(opponent1.first()) + 1);
-              } else if (fitness2 > fitness1) {
-                winsMap.put(opponent2.first(), winsMap.get(opponent2.first()) + 1);
-              }
+
+            if (fitness1 > fitness2) {
+              winsMap.put(opponent1.first(), winsMap.get(opponent1.first()) + 1);
+            } else if (fitness2 > fitness1) {
+              winsMap.put(opponent2.first(), winsMap.get(opponent2.first()) + 1);
             }
           }));
         }

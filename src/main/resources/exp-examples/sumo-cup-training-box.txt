@@ -12,8 +12,8 @@ $VS_OPPONENT = ds.f.opponentBiSimulator(
 )
 
 $MAPPER = er.m.bodyBrainHomoDistributedVSR(
-  w = 4;
-  h = 4;
+  w = 8;
+  h = 8;
   sensors = [s.s.a(); s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90); s.s.d(r = 5)];
   of = ea.m.pair(
     of = ea.m.splitter();
@@ -23,8 +23,8 @@ $MAPPER = er.m.bodyBrainHomoDistributedVSR(
 )
 
 $BODY_DESCRIPTORS = [
-  ea.s.me.d.descriptor(f = f.gridCount(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution()))); min = 1; max = 16; nOfBins = 10);
-  ea.s.me.d.descriptor(f = f.gridElongation(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution()))); min = 0; max = 1; nOfBins = 10)
+  ea.s.me.d.descriptor(f = f.gridCount(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution()))); min = 1; max = 16; nOfBins = 8);
+  ea.s.me.d.descriptor(f = f.gridElongation(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution()))); min = 0; max = 1; nOfBins = 8)
 ]
 
 $THRESHOLD = 0.5
@@ -43,7 +43,7 @@ $BRAIN_DESCRIPTORS = [
     );
     min = 0.0;
     max = 1.0;
-    nOfBins = 10
+    nOfBins = 8
   );
   ea.s.me.d.descriptor(
     f = f.mathOp(
@@ -55,7 +55,7 @@ $BRAIN_DESCRIPTORS = [
     );
     min = 0.0;
     max = 1.0;
-    nOfBins = 10
+    nOfBins = 8
   )
 ]
 
