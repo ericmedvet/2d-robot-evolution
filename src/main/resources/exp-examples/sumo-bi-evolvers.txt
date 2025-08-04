@@ -30,7 +30,7 @@ $BODY_DESCRIPTORS = [
 ea.experiment(
   runs =
     (randomGenerator = (seed = [1:1:10]) * [m.defaultRG()]) *
-    (solver = (stop = [ea.sc.nOfQualityEvaluations(n = 2000)]) * [
+    (solver = (stop = [ea.sc.nOfQualityEvaluations(n = 50000)]) * [
       ea.s.biGa(
         name = "bi-ga-ann";
         fitnessReducer = ea.misc.lossyAverage();
