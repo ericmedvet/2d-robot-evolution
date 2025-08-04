@@ -1,4 +1,4 @@
-$SIMULATION = s.task.sumo(duration = 15)
+$SIMULATION = s.task.sumoCup(duration = 15)
 
 $VS_SELF = ds.f.selfBiSimulator(
   of = ea.f.solution();
@@ -23,45 +23,68 @@ $MAPPER = er.m.bodyBrainHomoDistributedVSR(
 )
 
 $BODY_DESCRIPTORS = [
-  ea.s.me.d.descriptor(f = f.gridCount(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution()))); min = 1; max = 64; nOfBins = 10);
-  ea.s.me.d.descriptor(f = f.gridElongation(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution()))); min = 0; max = 1; nOfBins = 10)
+  ea.s.me.d.descriptor(f = f.gridCount(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution()))); min = 1; max = 16; nOfBins = 8);
+  ea.s.me.d.descriptor(f = f.gridElongation(of = s.f.vsrBody(of = ea.f.supplied(of = ea.f.solution()))); min = 0; max = 1; nOfBins = 8)
+]
+
+$THRESHOLD = 0.5
+$NEG_THRESHOLD = -0.5
+
+$BRAIN_EXTRACTOR = ds.f.inner(of = f.first(of = s.f.numBrains(of = ea.f.supplied(of = ea.f.solution()))))
+
+$BRAIN_DESCRIPTORS = [
+  ea.s.me.d.descriptor(
+    f = f.mathOp(
+      op = divide;
+      args = [
+        f.size(of = f.filter(of = ea.f.getLayerWeights(of = $BRAIN_EXTRACTOR; indexOfLayer = 0); condition = predicate.all(conditions = [predicate.lt(t = $THRESHOLD); predicate.gt(t = $NEG_THRESHOLD)])));
+        f.size(of = ea.f.getLayerWeights(of = $BRAIN_EXTRACTOR; indexOfLayer = 0))
+      ]
+    );
+    min = 0.0;
+    max = 1.0;
+    nOfBins = 8
+  );
+  ea.s.me.d.descriptor(
+    f = f.mathOp(
+      op = divide;
+      args = [
+        f.size(of = f.filter(of = ea.f.getLayerWeights(of = $BRAIN_EXTRACTOR; indexOfLayer = 1); condition = predicate.all(conditions = [predicate.lt(t = $THRESHOLD); predicate.gt(t = $NEG_THRESHOLD)])));
+        f.size(of = ea.f.getLayerWeights(of = $BRAIN_EXTRACTOR; indexOfLayer = 1))
+      ]
+    );
+    min = 0.0;
+    max = 1.0;
+    nOfBins = 8
+  )
 ]
 
 ea.experiment(
   runs =
     (randomGenerator = (seed = [1:1:10]) * [m.defaultRG()]) *
-    (solver = (nEval = [20000]) * [
-      ea.s.biGa(
-        name = "bi-ga-ann";
-        fitnessReducer = ea.misc.lossyAverage();
-        representation = ea.r.doubleString();
-        mapper = $MAPPER
-      );
-      ea.s.biMapElites(
-        name = "bi-me-ann";
-        fitnessReducer = ea.misc.lossyAverage();
-        representation = ea.r.doubleString();
-        mapper = $MAPPER;
-        descriptors = $BODY_DESCRIPTORS;
-        opponentsSelector = ea.misc.randomMESelector(nOfOpponents = 2);
-        fitnessAggregator = f.avg()
-      );
+    (solver = (nEval = [50000]) * [
       ea.s.ga(
-        name = "self-ga-ann";
+        name = "box-ga-ann";
         representation = ea.r.doubleString();
         mapper = $MAPPER
       );
       ea.s.mapElites(
-        name = "self-me-ann";
+        name = "box-me-ann-bodyD";
         representation = ea.r.doubleString();
         mapper = $MAPPER;
         descriptors = $BODY_DESCRIPTORS
+      );
+      ea.s.mapElites(
+        name = "box-me-ann-brainD";
+        representation = ea.r.doubleString();
+        mapper = $MAPPER;
+        descriptors = $BRAIN_DESCRIPTORS
       )
     ]) *
-    (problem = [ea.p.biSimToBqb(
+    (problem = [ea.p.biSimToQb(
       simulation = $SIMULATION;
-      qFunction1 = s.f.outcome.scoreSumoAgent1();
-      qFunction2 = s.f.outcome.scoreSumoAgent2();
+      qFunction = s.f.outcome.sumoShiftedScoreDifference1();
+      trainingOpponent = m.supplier(of = m.supplier(of = s.a.dummyBox()));
       type = maximize
     )]) *
     [ea.run()];
@@ -70,8 +93,8 @@ ea.experiment(
       functions = [
         ea.f.size(of = ea.f.genotype(of = ea.f.best()); format = "%3d");
         ea.f.quality(of = ea.f.best(); format = "%4.1f");
-        s.f.outcome.scoreSumoAgent1(of = f.composition(of = ea.f.best(); then = $VS_SELF); format = "%4.1f");
-        s.f.outcome.scoreSumoAgent1(of = f.composition(of = ea.f.best(); then = $VS_OPPONENT); format = "%4.1f")
+        s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(of = ea.f.best(); then = $VS_SELF); format = "%4.1f");
+        s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(of = ea.f.best(); then = $VS_OPPONENT); format = "%4.1f")
       ];
       onlyLast = false
     );
@@ -85,14 +108,12 @@ ea.experiment(
     ea.l.savePlotForExp(
       deferred = true;
       path = "../results/{name}/{startTime}/best-vs-self";
-      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.scoreSumoAgent1(of = f.composition(of = ea.f.best(); then = $VS_SELF)));
-      deferred = true
+      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(of = ea.f.best(); then = $VS_SELF)))
     );
     ea.l.savePlotForExp(
       deferred = true;
       path = "../results/{name}/{startTime}/best-vs-opponent";
-      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.scoreSumoAgent1(of = f.composition(of = ea.f.best(); then = $VS_OPPONENT)));
-      deferred = true
+      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(of = ea.f.best(); then = $VS_OPPONENT)))
     );
     ea.l.savePlotForExp(
       path = "../results/{name}/{startTime}/avg-q";
@@ -101,19 +122,17 @@ ea.experiment(
     ea.l.savePlotForExp(
       deferred = true;
       path = "../results/{name}/{startTime}/avg-vs-self";
-      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.scoreSumoAgent1(of = f.composition(then = $VS_SELF)); of = ea.f.all())));
-      deferred = true
+      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(then = $VS_SELF)); of = ea.f.all())))
     );
     ea.l.savePlotForExp(
       deferred = true;
       path = "../results/{name}/{startTime}/avg-vs-opponent";
-      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.scoreSumoAgent1(of = f.composition(then = $VS_OPPONENT)); of = ea.f.all())));
-      deferred = true
+      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(then = $VS_OPPONENT)); of = ea.f.all())))
     );
     ea.l.savePlotForRun(
       path = "../results/{name}/{startTime}/archive-{run.problem.name}-{run.solver.name}-{run.randomGenerator.seed:%03d}";
       plot = ea.plot.single.me();
-      condition = predicate.matches(f = ea.f.runKey(key = "run.solver.name"); regex = "biMe")
+      condition = predicate.matches(f = ea.f.runKey(key = "run.solver.name"); regex = ".*-me-.*")
     );
     ea.l.bestCsv(
         path = "../results/{name}/{startTime}/allBest.csv";
@@ -125,13 +144,14 @@ ea.experiment(
           f.toBase64(of = ea.f.genotype(of = ea.f.best()))
         ];
         onlyLast = true
-    );
+    )
+    ;
     ea.l.saveForRun(
       of = ea.acc.lastBest();
       processor = f.composition(
         of = f.pairerFirst(of = ea.f.solution(); second = m.supplier(of = s.a.dummyBox()));
         then = sim.biTaskVideoBuilder(
-          drawer = sim.drawer(framer = sim.staticFramer(minX = 10.0; maxX = 35.0; minY = 10; maxY = 20.0));
+          drawer = sim.drawer(framer = sim.staticFramer(minX = 4; maxX = 36; minY = 3; maxY = 24); actions = true);
           task = $SIMULATION
         )
       );
