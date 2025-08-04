@@ -30,7 +30,6 @@ import io.github.ericmedvet.mrsim2d.core.tasks.sumo.SumoCup;
 import io.github.ericmedvet.mrsim2d.viewer.Drawer;
 import io.github.ericmedvet.mrsim2d.viewer.OnlineVideoBuilder;
 import io.github.ericmedvet.mrsim2d.viewer.VideoUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
@@ -45,7 +44,6 @@ import java.util.concurrent.Future;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.random.RandomGenerator;
-
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;

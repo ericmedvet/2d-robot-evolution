@@ -1,3 +1,22 @@
+/*-
+ * ========================LICENSE_START=================================
+ * robotevo2d-main
+ * %%
+ * Copyright (C) 2018 - 2025 Eric Medvet
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =========================LICENSE_END==================================
+ */
 package io.github.ericmedvet.robotevo2d.main;
 
 import io.github.ericmedvet.jgea.core.InvertibleMapper;
@@ -19,8 +38,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger; // MODIFICA: Import aggiunto
-import java.util.concurrent.atomic.AtomicLong; // MODIFICA: Import per nomi file univoci
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import org.apache.commons.csv.CSVFormat;
@@ -147,7 +166,8 @@ public class SumoCupFightsOptimized {
           }
           futures.add(executor.submit(() -> {
             SumoCup sumo = (SumoCup) BUILDER.build("s.task.sumoCup(duration = 15)");
-            String videoName = String.format("%s_vs_%s-%d.mp4",
+            String videoName = String.format(
+                "%s_vs_%s-%d.mp4",
                 opponent1.first(),
                 opponent2.first(),
                 videoCounter.incrementAndGet()
@@ -197,7 +217,8 @@ public class SumoCupFightsOptimized {
       List<String> finalNames = new ArrayList<>(opponentNames);
       finalNames.sort(Comparator.comparingDouble(name -> {
         int played = matchesPlayed.get(name).get();
-        if (played == 0) return 0.0;
+        if (played == 0)
+          return 0.0;
         return -1.0 * winsMap.get(name).get() / (double) played;
       }));
       for (String name : finalNames) {
