@@ -1,15 +1,15 @@
-$SIMULATION = s.task.sumo(duration = 15)
+$SIMULATION = s.task.sumo(duration = 45)
 
-$VS_SELF = ds.f.selfBiSimulator(
+$VS_SELF = ea.f.cached(of = ds.f.selfBiSimulator(
   of = ea.f.solution();
   simulation = $SIMULATION
-)
+))
 
-$VS_OPPONENT = ds.f.opponentBiSimulator(
+$VS_OPPONENT = ea.f.cached(of = ds.f.opponentBiSimulator(
   of = ea.f.solution();
   opponent = m.supplier(of = s.a.dummyBox());
   simulation = $SIMULATION
-)
+))
 
 $MAPPER = er.m.bodyBrainHomoDistributedVSR(
   w = 8;
@@ -97,18 +97,6 @@ ea.experiment(
     ea.l.savePlotForExp(
       path = "../results/{name}/{startTime}/avg-q";
       plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = ea.f.quality(); of = ea.f.all())))
-    );
-    ea.l.savePlotForExp(
-      deferred = true;
-      path = "../results/{name}/{startTime}/avg-vs-self";
-      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.scoreSumoAgent1(of = f.composition(then = $VS_SELF)); of = ea.f.all())));
-      deferred = true
-    );
-    ea.l.savePlotForExp(
-      deferred = true;
-      path = "../results/{name}/{startTime}/avg-vs-opponent";
-      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.scoreSumoAgent1(of = f.composition(then = $VS_OPPONENT)); of = ea.f.all())));
-      deferred = true
     );
     ea.l.savePlotForRun(
       path = "../results/{name}/{startTime}/archive-{run.problem.name}-{run.solver.name}-{run.randomGenerator.seed:%03d}";
