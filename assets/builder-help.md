@@ -893,6 +893,16 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, I&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.best()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+### Builder `ea.function.cached()`
+
+`ea.f.cached(of)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;T, R&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;T, R&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.cached()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ### Builder `ea.function.coMeArchive1()`
 
 `ea.f.coMeArchive1(of)`
@@ -5150,6 +5160,30 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, S&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.pairSecond()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+### Builder `function.pairerFirst()`
+
+`f.pairerFirst(of; second; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, F&gt;</code> |
+| `second` | npm |  | <code>S</code> |
+| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;F, S&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.pairerFirst()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `function.pairerSecond()`
+
+`f.pairerSecond(of; first; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, S&gt;</code> |
+| `first` | npm |  | <code>F</code> |
+| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;F, S&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.pairerSecond()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ### Builder `function.percentile()`
 
 `f.percentile(p; by; of; format)`
@@ -5385,6 +5419,17 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;?&
 | `conditions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;&gt;</code> |
 
 Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.any()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `predicate.divisibleBy()`
+
+`predicate.divisibleBy(f; divisor)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
+| `divisor` | d |  | <code>double</code> |
+
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.divisibleBy()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `predicate.eq()`
 
