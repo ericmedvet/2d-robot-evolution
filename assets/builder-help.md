@@ -424,18 +424,31 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.SortedMap">SortedMap</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.simOutcome()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+### Builder `dynamicalSystem.function.weights()`
+
+`ds.f.weights(indexOfLayer; of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `indexOfLayer` | i | `0` | <code>int</code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron">MultiLayerPerceptron</abbr>&gt;</code> |
+| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.weights()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ## Package `dynamicalSystem.num`
 
 Aliases: `ds.num`, `dynSys.num`, `dynamicalSystem.num`
 
 ### Builder `dynamicalSystem.num.drn()`
 
-`ds.num.drn(timeRange; innerNeuronsRatio; activationFunction; threshold; timeResolution)`
+`ds.num.drn(timeRange; innerNeuronsRatio; innerNeurons; activationFunction; threshold; timeResolution)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `timeRange` | npm | `m.range(min = 0; max = 1)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `innerNeuronsRatio` | d | `1.0` | <code>double</code> |
+| `innerNeurons` | i |  | <code>int</code> |
 | `activationFunction` | e | `TANH` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
 | `threshold` | d | `0.1` | <code>double</code> |
 | `timeResolution` | d | `0.16666` | <code>double</code> |
@@ -467,12 +480,13 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.Num
 
 ### Builder `dynamicalSystem.num.mlp()`
 
-`ds.num.mlp(innerLayerRatio; nOfInnerLayers; activationFunction)`
+`ds.num.mlp(innerLayerRatio; nOfInnerLayers; innerLayers; activationFunction)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `innerLayerRatio` | d | `0.65` | <code>double</code> |
 | `nOfInnerLayers` | i | `1` | <code>int</code> |
+| `innerLayers` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
 | `activationFunction` | e | `TANH` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron">MultiLayerPerceptron</abbr>, <abbr title="io.github.ericmedvet.jsdynsym.core.StatelessSystem$State">StatelessSystem$State</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.mlp()` by robotevo2d-main:1.5.1-SNAPSHOT
@@ -840,13 +854,24 @@ Aliases: `ea.f`, `ea.function`
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;I&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.all()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+### Builder `ea.function.archiveContents()`
+
+`ea.f.archiveContents(of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.Archive">Archive</abbr>&lt;T&gt;&gt;</code> |
+| `format` | s | `%4.2f` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.archiveContents()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ### Builder `ea.function.archiveCoverage()`
 
 `ea.f.archiveCoverage(of; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.Archive">Archive</abbr>&lt;G&gt;&gt;</code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.Archive">Archive</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%4.2f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.archiveCoverage()` by robotevo2d-main:1.5.1-SNAPSHOT
@@ -857,9 +882,20 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.Archive">Archive</abbr>&lt;G&gt;&gt;</code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.Archive">Archive</abbr>&lt;T&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;G&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.archiveToGrid()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.archiveToGrid()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `ea.function.asDouble()`
+
+`ea.f.asDouble(of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code> |
+| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.asDouble()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.function.behavior()`
 
@@ -945,6 +981,18 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.coMeStrategy2Field()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+### Builder `ea.function.computedArchive()`
+
+`ea.f.computedArchive(of; descriptors; qComparator)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;I&gt;&gt;</code> |
+| `descriptors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MapElites$Descriptor">MapElites$Descriptor</abbr>&lt;G, S, Q&gt;&gt;</code> |
+| `qComparator` | npm | `ea.f.qualityComparator(of = ea.f.problem())` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super Q&gt;&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.Archive">Archive</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.computedArchive()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ### Builder `ea.function.crossEpistasis()`
 
 `ea.f.crossEpistasis(of; startOffset; endOffset; splitOffset; format)`
@@ -980,7 +1028,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.MultiFidelityPOCPopulationState">MultiFidelityPOCPopulationState</abbr>&lt;?, ?, ?, ?, ?&gt;&gt;</code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, ?, ?, ?, ?&gt;&gt;</code> |
 | `format` | s | `%8.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.cumulativeFidelity()` by robotevo2d-main:1.5.1-SNAPSHOT
@@ -1056,18 +1104,6 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, G&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.genotype()` by robotevo2d-main:1.5.1-SNAPSHOT
 
-### Builder `ea.function.getLayerWeights()`
-
-`ea.f.getLayerWeights(indexOfLayer; of; format)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `indexOfLayer` | i | `0` | <code>int</code> |
-| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron">MultiLayerPerceptron</abbr>&gt;</code> |
-| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
-
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.getLayerWeights()` by robotevo2d-main:1.5.1-SNAPSHOT
-
 ### Builder `ea.function.hist()`
 
 `ea.f.hist(nOfBins; of)`
@@ -1105,16 +1141,14 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 ### Builder `ea.function.imagePlotter()`
 
-`ea.f.imagePlotter(of; w; h; axesShow; titlesShow; independences; secondary; type)`
+`ea.f.imagePlotter(of; w; h; configuration; secondary; type)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, P&gt;</code> |
 | `w` | i | `-1` | <code>int</code> |
 | `h` | i | `-1` | <code>int</code> |
-| `axesShow` | e | `BORDER` | <code><abbr title="io.github.ericmedvet.jviz.core.plot.image.Configuration$PlotMatrix$Show">Configuration$PlotMatrix$Show</abbr></code> |
-| `titlesShow` | e | `BORDER` | <code><abbr title="io.github.ericmedvet.jviz.core.plot.image.Configuration$PlotMatrix$Show">Configuration$PlotMatrix$Show</abbr></code> |
-| `independences` | e[] | `[ROWS, COLS]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jviz.core.plot.image.Configuration$PlotMatrix$Independence">Configuration$PlotMatrix$Independence</abbr>&gt;</code> |
+| `configuration` | npm | `ea.plot.configuration.image()` | <code><abbr title="io.github.ericmedvet.jviz.core.plot.image.Configuration">Configuration</abbr></code> |
 | `secondary` | b | `false` | <code>boolean</code> |
 | `type` | s | `png` | <code><abbr title="java.lang.String">String</abbr></code> |
 
@@ -1361,6 +1395,27 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.quality()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+### Builder `ea.function.qualityComparator()`
+
+`ea.f.qualityComparator(of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.problem.QualityBasedProblem">QualityBasedProblem</abbr>&lt;?, Q&gt;&gt;</code> |
+| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.qualityComparator()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `ea.function.qualityFunction()`
+
+`ea.f.qualityFunction(of)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, P&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.function.Function">Function</abbr>&lt;S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.qualityFunction()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ### Builder `ea.function.rate()`
 
 `ea.f.rate(of)`
@@ -1450,6 +1505,16 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `format` | s | `%.2f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.targetDistances()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `ea.function.timestamp()`
+
+`ea.f.timestamp(format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `format` | s | `%1$tH:%1$tM:%1$tS` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.time.LocalDateTime">LocalDateTime</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.timestamp()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.function.toDoubleString()`
 
@@ -1592,9 +1657,19 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.validationQuality()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+### Builder `ea.function.validationQualityFunction()`
+
+`ea.f.validationQualityFunction(of)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, P&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.function.Function">Function</abbr>&lt;S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.validationQualityFunction()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ### Builder `ea.function.videoPlotter()`
 
-`ea.f.videoPlotter(of; w; h; encoder; frameRate; freeScales; secondary)`
+`ea.f.videoPlotter(of; w; h; encoder; frameRate; configuration; secondary)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -1603,7 +1678,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `h` | i | `-1` | <code>int</code> |
 | `encoder` | e | `DEFAULT` | <code><abbr title="io.github.ericmedvet.jviz.core.util.VideoUtils$EncoderFacility">VideoUtils$EncoderFacility</abbr></code> |
 | `frameRate` | d | `10.0` | <code>double</code> |
-| `freeScales` | b | `false` | <code>boolean</code> |
+| `configuration` | npm | `ea.plot.configuration.image()` | <code><abbr title="io.github.ericmedvet.jviz.core.plot.image.Configuration">Configuration</abbr></code> |
 | `secondary` | b | `false` | <code>boolean</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.drawer.Video">Video</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.videoPlotter()` by robotevo2d-main:1.5.1-SNAPSHOT
@@ -1648,7 +1723,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.gramma
 | --- | --- | --- | --- |
 | `constants` | d[] | `[0.1, 1.0, 10.0]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 | `operators` | e[] | `[+, -, *, p÷, plog]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element$Operator">Element$Operator</abbr>&gt;</code> |
-| `problem` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.problem.Problem">Problem</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.NamedUnivariateRealFunction">NamedUnivariateRealFunction</abbr>&gt;</code> |
+| `problem` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.problem.Problem">Problem</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedUnivariateRealFunction">NamedUnivariateRealFunction</abbr>&gt;</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.grammar.string.StringGrammar">StringGrammar</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Grammars.regression()` by robotevo2d-main:1.5.1-SNAPSHOT
 
@@ -1676,7 +1751,7 @@ Aliases: `ea.l`, `ea.listener`
 | `runCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;</code> |
 | `stateCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.allCsv()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.allCsv()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.listener.bestCsv()`
 
@@ -1697,7 +1772,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;
 | `runCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;</code> |
 | `stateCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.bestCsv()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.bestCsv()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.listener.console()`
 
@@ -1715,7 +1790,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;
 | `stateCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;&gt;</code> |
 | `logExceptions` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.console()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.console()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.listener.net()`
 
@@ -1733,7 +1808,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;
 | `pollInterval` | d | `1.0` | <code>double</code> |
 | `condition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.net()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.net()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.listener.onExpDone()`
 
@@ -1747,7 +1822,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;
 | `deferred` | b | `false` | <code>boolean</code> |
 | `condition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onExpDone()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onExpDone()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.listener.onRunDone()`
 
@@ -1761,7 +1836,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;
 | `deferred` | b | `false` | <code>boolean</code> |
 | `condition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onRunDone()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onRunDone()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.listener.saveForExp()`
 
@@ -1778,7 +1853,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;
 | `processor` | npm | `` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `overwrite` | b | `false` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onExpDone()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onExpDone()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.listener.saveForRun()`
 
@@ -1795,7 +1870,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;
 | `overwrite` | b | `false` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `processor` | npm | `` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onRunDone()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onRunDone()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.listener.saveLastPopulationForRun()`
 
@@ -1812,17 +1887,17 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;
 | `overwrite` | b | `false` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `processor` | npm | `f.identity()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onRunDone()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onRunDone()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.listener.savePlotAndCsvForExp()`
 
-`ea.l.savePlotAndCsvForExp(of; preprocessor; consumers; deferred; condition; secondary; overwrite; path; plot; type)`
+`ea.l.savePlotAndCsvForExp(of; preprocessor; consumers; deferred; condition; secondary; overwrite; path; plot; type; configuration)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `of` | npm | `null` | <code><abbr title="io.github.ericmedvet.jgea.core.listener.AccumulatorFactory">AccumulatorFactory</abbr>&lt;E, O, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;</code> |
 | `preprocessor` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super O, ? extends P&gt;</code> |
-| `consumers` | npm[] | `[ea.c.saver(path = "{experiment.name}"; of = ea.f.imagePlotter(secondary = false; type = png); overwrite = false), ea.c.saver(path = "{experiment.name}"; of = ea.f.csvPlotter(); suffix = ".tsv"; overwrite = false)]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.TriConsumer">TriConsumer</abbr>&lt;? super P, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>&gt;&gt;</code> |
+| `consumers` | npm[] | `[ea.c.saver(path = "{experiment.name}"; of = ea.f.imagePlotter(secondary = false; configuration = ea.plot.configuration.image(); type = png); overwrite = false), ea.c.saver(path = "{experiment.name}"; of = ea.f.csvPlotter(); suffix = ".tsv"; overwrite = false)]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.TriConsumer">TriConsumer</abbr>&lt;? super P, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>&gt;&gt;</code> |
 | `deferred` | b | `false` | <code>boolean</code> |
 | `condition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;</code> |
 | `secondary` | b | `false` | <code><abbr title="java.lang.String">String</abbr></code> |
@@ -1830,18 +1905,19 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;
 | `path` | s | `{experiment.name}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `plot` | npm | `` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `type` | s | `png` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `configuration` | npm | `ea.plot.configuration.image()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onExpDone()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onExpDone()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.listener.savePlotAndCsvForRun()`
 
-`ea.l.savePlotAndCsvForRun(of; preprocessor; consumers; deferred; condition; secondary; overwrite; path; plot; type)`
+`ea.l.savePlotAndCsvForRun(of; preprocessor; consumers; deferred; condition; secondary; overwrite; path; plot; type; configuration)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `of` | npm | `null` | <code><abbr title="io.github.ericmedvet.jgea.core.listener.AccumulatorFactory">AccumulatorFactory</abbr>&lt;E, O, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;</code> |
 | `preprocessor` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super O, ? extends P&gt;</code> |
-| `consumers` | npm[] | `[ea.c.saver(path = "{experiment.name}"; of = ea.f.imagePlotter(secondary = false; type = png); overwrite = false), ea.c.saver(path = "{experiment.name}"; of = ea.f.csvPlotter(); suffix = ".tsv"; overwrite = false)]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.TriConsumer">TriConsumer</abbr>&lt;? super P, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>&gt;&gt;</code> |
+| `consumers` | npm[] | `[ea.c.saver(path = "{experiment.name}"; of = ea.f.imagePlotter(secondary = false; configuration = ea.plot.configuration.image(); type = png); overwrite = false), ea.c.saver(path = "{experiment.name}"; of = ea.f.csvPlotter(); suffix = ".tsv"; overwrite = false)]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.TriConsumer">TriConsumer</abbr>&lt;? super P, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>&gt;&gt;</code> |
 | `deferred` | b | `false` | <code>boolean</code> |
 | `condition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;</code> |
 | `secondary` | b | `false` | <code><abbr title="java.lang.String">String</abbr></code> |
@@ -1849,12 +1925,13 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;
 | `path` | s | `{experiment.name}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `plot` | npm | `` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `type` | s | `png` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `configuration` | npm | `ea.plot.configuration.image()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onRunDone()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onRunDone()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.listener.savePlotForExp()`
 
-`ea.l.savePlotForExp(of; preprocessor; consumers; deferred; condition; path; processor; overwrite; plot; secondary; type)`
+`ea.l.savePlotForExp(of; preprocessor; consumers; deferred; condition; path; processor; overwrite; plot; secondary; type; configuration)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -1864,17 +1941,18 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;
 | `deferred` | b | `false` | <code>boolean</code> |
 | `condition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;</code> |
 | `path` | s | `{experiment.name}` | <code><abbr title="java.lang.String">String</abbr></code> |
-| `processor` | npm | `ea.f.imagePlotter(secondary = false; type = png)` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `processor` | npm | `ea.f.imagePlotter(secondary = false; configuration = ea.plot.configuration.image(); type = png)` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `overwrite` | b | `false` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `plot` | npm | `` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `secondary` | b | `false` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `type` | s | `png` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `configuration` | npm | `ea.plot.configuration.image()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onExpDone()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onExpDone()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.listener.savePlotForRun()`
 
-`ea.l.savePlotForRun(of; preprocessor; consumers; deferred; condition; path; overwrite; processor; secondary; plot; type)`
+`ea.l.savePlotForRun(of; preprocessor; consumers; deferred; condition; path; overwrite; processor; secondary; plot; type; configuration)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -1885,12 +1963,13 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;
 | `condition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;</code> |
 | `path` | s | `run-{run.index:%04d}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `overwrite` | b | `false` | <code><abbr title="java.lang.String">String</abbr></code> |
-| `processor` | npm | `ea.f.imagePlotter(secondary = false; type = png)` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `processor` | npm | `ea.f.imagePlotter(secondary = false; configuration = ea.plot.configuration.image(); type = png)` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `secondary` | b | `false` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `plot` | npm | `` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `type` | s | `png` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `configuration` | npm | `ea.plot.configuration.image()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onRunDone()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;E, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.onRunDone()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.listener.tui()`
 
@@ -1904,7 +1983,7 @@ Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;
 | `runFunctions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;, ?&gt;&gt;</code> |
 | `condition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.tui()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiFunction">BiFunction</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr>, <abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jgea.core.listener.ListenerFactory">ListenerFactory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.tui()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ## Package `ea.mapper`
 
@@ -1985,6 +2064,17 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.dsToIs()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+### Builder `ea.mapper.dsToNmrf()`
+
+`ea.m.dsToNmrf(of; npmrf)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code> |
+| `npmrf` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems$Builder">NumericalDynamicalSystems$Builder</abbr>&lt;P, <abbr title="io.github.ericmedvet.jsdynsym.core.StatelessSystem$State">StatelessSystem$State</abbr>&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.dsToNmrf()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ### Builder `ea.mapper.dsToNpnds()`
 
 `ea.m.dsToNpnds(of; npnds)`
@@ -2030,7 +2120,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.graph.Graph">Graph</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.graph.Node">Node</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code> |
 | `postOperator` | npm | `ds.f.doubleOp(activationF = identity)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.fGraphToNmrf()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.fGraphToNmrf()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.mapper.grammarTreeBP()`
 
@@ -2109,14 +2199,15 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 ### Builder `ea.mapper.multiSrTreeToNmrf()`
 
-`ea.m.multiSrTreeToNmrf(of; postOperator)`
+`ea.m.multiSrTreeToNmrf(of; simplify; postOperator)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;&gt;&gt;</code> |
+| `simplify` | b | `false` | <code>boolean</code> |
 | `postOperator` | npm | `ds.f.doubleOp(activationF = identity)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.multiSrTreeToNmrf()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.multiSrTreeToNmrf()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.mapper.nmrfToGrid()`
 
@@ -2124,7 +2215,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code> |
+| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code> |
 | `items` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;T&gt;</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.nmrfToGrid()` by robotevo2d-main:1.5.1-SNAPSHOT
@@ -2135,7 +2226,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code> |
+| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code> |
 | `nOfAdditionalChannels` | i | `1` | <code>int</code> |
 | `kernels` | e[] | `[IDENTITY, LAPLACIAN, SOBEL_EDGES]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.problem.ca.MultivariateRealGridCellularAutomaton$Kernel">MultivariateRealGridCellularAutomaton$Kernel</abbr>&gt;</code> |
 | `initializer` | e | `CENTER_ALL` | <code><abbr title="io.github.ericmedvet.jgea.problem.ca.MultivariateRealGridCellularAutomaton$Initializer">MultivariateRealGridCellularAutomaton$Initializer</abbr></code> |
@@ -2152,7 +2243,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code> |
+| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.nmrfToNds()` by robotevo2d-main:1.5.1-SNAPSHOT
 
@@ -2162,9 +2253,9 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code> |
+| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.NamedUnivariateRealFunction">NamedUnivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.nmrfToNurf()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedUnivariateRealFunction">NamedUnivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.nmrfToNurf()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.mapper.noisedNds()`
 
@@ -2185,11 +2276,11 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code> |
+| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code> |
 | `sigma` | d | `0.0` | <code>double</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.noisedNmrf()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.noisedNmrf()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.mapper.ntissToNmrf()`
 
@@ -2199,7 +2290,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | --- | --- | --- | --- |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalTimeInvariantStatelessSystem">NumericalTimeInvariantStatelessSystem</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.ntissToNmrf()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.ntissToNmrf()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.mapper.nurfToNds()`
 
@@ -2207,7 +2298,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.NamedUnivariateRealFunction">NamedUnivariateRealFunction</abbr>&gt;</code> |
+| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedUnivariateRealFunction">NamedUnivariateRealFunction</abbr>&gt;</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.nurfToNds()` by robotevo2d-main:1.5.1-SNAPSHOT
 
@@ -2220,7 +2311,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.graph.Graph">Graph</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.graph.Node">Node</abbr>, <abbr title="io.github.ericmedvet.jgea.core.representation.graph.numeric.operatorgraph.OperatorGraph$NonValuedArc">OperatorGraph$NonValuedArc</abbr>&gt;&gt;</code> |
 | `postOperator` | npm | `ds.f.doubleOp(activationF = identity)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.oGraphToNmrf()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.oGraphToNmrf()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.mapper.pair()`
 
@@ -2251,10 +2342,10 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.tree.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;&gt;</code> |
-| `simplify` | b | `true` | <code>boolean</code> |
+| `simplify` | b | `false` | <code>boolean</code> |
 | `postOperator` | npm | `ds.f.doubleOp(activationF = identity)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.NamedUnivariateRealFunction">NamedUnivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.srTreeToNurf()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedUnivariateRealFunction">NamedUnivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.srTreeToNurf()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.mapper.steppedNds()`
 
@@ -2507,26 +2598,55 @@ Produces <code><abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.
 
 Produces <code><abbr title="io.github.ericmedvet.jviz.core.drawer.VideoBuilder">VideoBuilder</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;S&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.toVideo()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+## Package `ea.plot.configuration`
+
+Aliases: `ea.plot.c`, `ea.plot.conf`, `ea.plot.configuration`
+
+### Builder `ea.plot.configuration.image()`
+
+`ea.plot.c.image(axesShow; titleShow; axesIndependences; fontSizeRate; fontName; strokeSizeRate; markerSizeRate; alpha; linesMarkers; boxplotExtremeType; boxplotMidType; boxplotMarkers; marker; debug)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `axesShow` | e | `BORDER` | <code><abbr title="io.github.ericmedvet.jviz.core.plot.image.Configuration$PlotMatrix$Show">Configuration$PlotMatrix$Show</abbr></code> |
+| `titleShow` | e | `BORDER` | <code><abbr title="io.github.ericmedvet.jviz.core.plot.image.Configuration$PlotMatrix$Show">Configuration$PlotMatrix$Show</abbr></code> |
+| `axesIndependences` | e[] | `[ROWS, COLS]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jviz.core.plot.image.Configuration$PlotMatrix$Independence">Configuration$PlotMatrix$Independence</abbr>&gt;</code> |
+| `fontSizeRate` | d | `1.0` | <code>double</code> |
+| `fontName` | s | `SansSerif` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `strokeSizeRate` | d | `1.0` | <code>double</code> |
+| `markerSizeRate` | d | `1.0` | <code>double</code> |
+| `alpha` | d | `0.3` | <code>double</code> |
+| `linesMarkers` | b | `false` | <code>boolean</code> |
+| `boxplotExtremeType` | e | `IQR_1_5` | <code><abbr title="io.github.ericmedvet.jviz.core.plot.image.Configuration$BoxPlot$ExtremeType">Configuration$BoxPlot$ExtremeType</abbr></code> |
+| `boxplotMidType` | e | `MEDIAN` | <code><abbr title="io.github.ericmedvet.jviz.core.plot.image.Configuration$BoxPlot$MidType">Configuration$BoxPlot$MidType</abbr></code> |
+| `boxplotMarkers` | b | `false` | <code>boolean</code> |
+| `marker` | e | `CIRCLE` | <code><abbr title="io.github.ericmedvet.jviz.core.plot.image.XYPlotDrawer$Marker">XYPlotDrawer$Marker</abbr></code> |
+| `debug` | b | `false` | <code>boolean</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.image.Configuration">Configuration</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.PlotConfigurations.image()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ## Package `ea.plot.multi`
 
 Aliases: `ea.plot.m`, `ea.plot.multi`
 
 ### Builder `ea.plot.multi.quality()`
 
-`ea.plot.m.quality(xSubplot; ySubplot; line; x; y; valueAggregator; minAggregator; maxAggregator; xRange; yRange; xQuantization; q)`
+`ea.plot.m.quality(xSubplot; ySubplot; line; x; y; valueAggregator; minAggregator; maxAggregator; xRange; yRange; limitOneYForRun; useRunForX; xQuantization; q)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `xSubplot` | npm | `ea.f.runString(s = "{run.problem.name}"; name = problem)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super R, <abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `ySubplot` | npm | `ea.f.runString(s = "_"; name = none)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super R, <abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `line` | npm | `ea.f.runString(s = "{run.solver.name}"; name = solver)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super R, <abbr title="java.lang.String">String</abbr>&gt;</code> |
-| `x` | npm | `f.quantized(q = 1; of = ea.f.nOfEvals())` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super E, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
+| `x` | npm | `f.quantized(q = 1; of = ea.f.nOfEvals())` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;?, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `y` | npm | `f.composition(of = ea.f.quality(of = ea.f.best()); then = f.identity())` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super E, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `valueAggregator` | npm | `f.median()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Number">Number</abbr>&gt;, <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `minAggregator` | npm | `f.percentile(p = 25)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Number">Number</abbr>&gt;, <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `maxAggregator` | npm | `f.percentile(p = 75)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Number">Number</abbr>&gt;, <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `xRange` | npm | `m.range(min = -Infinity; max = Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `yRange` | npm | `m.range(min = -Infinity; max = Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
+| `limitOneYForRun` | b | `true` | <code>boolean</code> |
+| `useRunForX` | b | `false` | <code>boolean</code> |
 | `xQuantization` | i | `1` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `q` | npm | `f.identity()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
@@ -2534,7 +2654,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.listener.plot
 
 ### Builder `ea.plot.multi.qualityBoxplot()`
 
-`ea.plot.m.qualityBoxplot(xSubplot; ySubplot; box; y; predicateValue; condition; yRange; q)`
+`ea.plot.m.qualityBoxplot(xSubplot; ySubplot; box; y; predicateValue; condition; yRange; limitOneYForRun; q)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -2545,13 +2665,14 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.listener.plot
 | `predicateValue` | npm | `ea.f.rate(of = ea.f.progress())` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;E, X&gt;</code> |
 | `condition` | npm | `predicate.gtEq(t = 1)` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code> |
 | `yRange` | npm | `m.range(min = -Infinity; max = Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
+| `limitOneYForRun` | b | `true` | <code>boolean</code> |
 | `q` | npm | `f.identity()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.listener.plot.DistributionMRPAF">DistributionMRPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.MultiPlots.yBoxplot()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.plot.multi.scatter()`
 
-`ea.plot.m.scatter(xSubplot; ySubplot; group; x; y; predicateValue; condition; xRange; yRange)`
+`ea.plot.m.scatter(xSubplot; ySubplot; group; x; y; predicateValue; condition; xRange; yRange; limitOneYForRun)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -2564,12 +2685,13 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.listener.plot
 | `condition` | npm | `predicate.gtEq(t = 1)` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code> |
 | `xRange` | npm | `m.range(min = -Infinity; max = Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `yRange` | npm | `m.range(min = -Infinity; max = Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
+| `limitOneYForRun` | b | `true` | <code>boolean</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.listener.plot.ScatterMRPAF">ScatterMRPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.MultiPlots.scatter()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.plot.multi.scatterExp()`
 
-`ea.plot.m.scatterExp(xSubplot; ySubplot; group; x; y; predicateValue; condition; xRange; yRange)`
+`ea.plot.m.scatterExp(xSubplot; ySubplot; group; x; y; predicateValue; condition; xRange; yRange; limitOneYForRun)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -2582,32 +2704,35 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.listener.plot
 | `condition` | npm | `predicate.gtEq(t = 1)` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code> |
 | `xRange` | npm | `m.range(min = -Infinity; max = Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `yRange` | npm | `m.range(min = -Infinity; max = Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
+| `limitOneYForRun` | b | `true` | <code>boolean</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.listener.plot.ScatterMRPAF">ScatterMRPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.MultiPlots.scatter()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.plot.multi.uniqueness()`
 
-`ea.plot.m.uniqueness(xSubplot; ySubplot; line; x; y; valueAggregator; minAggregator; maxAggregator; xRange; yRange; xQuantization)`
+`ea.plot.m.uniqueness(xSubplot; ySubplot; line; x; y; valueAggregator; minAggregator; maxAggregator; xRange; yRange; limitOneYForRun; useRunForX; xQuantization)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `xSubplot` | npm | `ea.f.runString(s = "{run.problem.name}"; name = problem)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super R, <abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `ySubplot` | npm | `ea.f.runString(s = "_"; name = none)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super R, <abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `line` | npm | `ea.f.runString(s = "{run.solver.name}"; name = solver)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super R, <abbr title="java.lang.String">String</abbr>&gt;</code> |
-| `x` | npm | `f.quantized(q = 1; of = ea.f.nOfEvals())` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super E, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
+| `x` | npm | `f.quantized(q = 1; of = ea.f.nOfEvals())` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;?, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `y` | npm | `f.uniqueness(of = f.each(of = ea.f.all(); mapF = ea.f.genotype()))` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super E, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `valueAggregator` | npm | `f.median()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Number">Number</abbr>&gt;, <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `minAggregator` | npm | `f.percentile(p = 25)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Number">Number</abbr>&gt;, <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `maxAggregator` | npm | `f.percentile(p = 75)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Number">Number</abbr>&gt;, <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `xRange` | npm | `m.range(min = -Infinity; max = Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `yRange` | npm | `m.range(min = -Infinity; max = Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
+| `limitOneYForRun` | b | `true` | <code>boolean</code> |
+| `useRunForX` | b | `false` | <code>boolean</code> |
 | `xQuantization` | i | `1` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.listener.plot.AggregatedXYDataSeriesMRPAF">AggregatedXYDataSeriesMRPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.MultiPlots.xy()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.plot.multi.uniquenessBoxplot()`
 
-`ea.plot.m.uniquenessBoxplot(xSubplot; ySubplot; box; y; predicateValue; condition; yRange)`
+`ea.plot.m.uniquenessBoxplot(xSubplot; ySubplot; box; y; predicateValue; condition; yRange; limitOneYForRun)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -2618,51 +2743,56 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.listener.plot
 | `predicateValue` | npm | `ea.f.rate(of = ea.f.progress())` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;E, X&gt;</code> |
 | `condition` | npm | `predicate.gtEq(t = 1)` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code> |
 | `yRange` | npm | `m.range(min = -Infinity; max = Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
+| `limitOneYForRun` | b | `true` | <code>boolean</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.listener.plot.DistributionMRPAF">DistributionMRPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.MultiPlots.yBoxplot()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.plot.multi.xy()`
 
-`ea.plot.m.xy(xSubplot; ySubplot; line; x; y; valueAggregator; minAggregator; maxAggregator; xRange; yRange)`
+`ea.plot.m.xy(xSubplot; ySubplot; line; x; y; valueAggregator; minAggregator; maxAggregator; xRange; yRange; limitOneYForRun; useRunForX)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `xSubplot` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super R, <abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `ySubplot` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super R, <abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `line` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super R, <abbr title="java.lang.String">String</abbr>&gt;</code> |
-| `x` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super E, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
+| `x` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;?, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `y` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super E, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `valueAggregator` | npm | `f.median()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Number">Number</abbr>&gt;, <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `minAggregator` | npm | `f.percentile(p = 25)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Number">Number</abbr>&gt;, <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `maxAggregator` | npm | `f.percentile(p = 75)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Number">Number</abbr>&gt;, <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `xRange` | npm | `m.range(min = -Infinity; max = Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `yRange` | npm | `m.range(min = -Infinity; max = Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
+| `limitOneYForRun` | b | `true` | <code>boolean</code> |
+| `useRunForX` | b | `false` | <code>boolean</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.listener.plot.AggregatedXYDataSeriesMRPAF">AggregatedXYDataSeriesMRPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.MultiPlots.xy()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.plot.multi.xyExp()`
 
-`ea.plot.m.xyExp(xSubplot; ySubplot; line; x; y; valueAggregator; minAggregator; maxAggregator; xRange; yRange; xQuantization)`
+`ea.plot.m.xyExp(xSubplot; ySubplot; line; x; y; valueAggregator; minAggregator; maxAggregator; xRange; yRange; limitOneYForRun; useRunForX; xQuantization)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `xSubplot` | npm | `ea.f.runString(s = "{run.problem.name}"; name = problem)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super R, <abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `ySubplot` | npm | `ea.f.runString(s = "_"; name = none)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super R, <abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `line` | npm | `ea.f.runString(s = "{run.solver.name}"; name = solver)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super R, <abbr title="java.lang.String">String</abbr>&gt;</code> |
-| `x` | npm | `f.quantized(q = 1; of = ea.f.nOfEvals())` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super E, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
+| `x` | npm | `f.quantized(q = 1; of = ea.f.nOfEvals())` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;?, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `y` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super E, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `valueAggregator` | npm | `f.median()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Number">Number</abbr>&gt;, <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `minAggregator` | npm | `f.percentile(p = 25)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Number">Number</abbr>&gt;, <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `maxAggregator` | npm | `f.percentile(p = 75)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Number">Number</abbr>&gt;, <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `xRange` | npm | `m.range(min = -Infinity; max = Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `yRange` | npm | `m.range(min = -Infinity; max = Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
+| `limitOneYForRun` | b | `true` | <code>boolean</code> |
+| `useRunForX` | b | `false` | <code>boolean</code> |
 | `xQuantization` | i | `1` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.listener.plot.AggregatedXYDataSeriesMRPAF">AggregatedXYDataSeriesMRPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.MultiPlots.xy()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.plot.multi.yBoxplot()`
 
-`ea.plot.m.yBoxplot(xSubplot; ySubplot; box; y; predicateValue; condition; yRange)`
+`ea.plot.m.yBoxplot(xSubplot; ySubplot; box; y; predicateValue; condition; yRange; limitOneYForRun)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -2673,12 +2803,13 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.listener.plot
 | `predicateValue` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;E, X&gt;</code> |
 | `condition` | npm | `predicate.gtEq(t = 1)` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code> |
 | `yRange` | npm | `m.range(min = -Infinity; max = Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
+| `limitOneYForRun` | b | `true` | <code>boolean</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.listener.plot.DistributionMRPAF">DistributionMRPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.MultiPlots.yBoxplot()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.plot.multi.yBoxplotExp()`
 
-`ea.plot.m.yBoxplotExp(xSubplot; ySubplot; box; y; predicateValue; condition; yRange)`
+`ea.plot.m.yBoxplotExp(xSubplot; ySubplot; box; y; predicateValue; condition; yRange; limitOneYForRun)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -2689,6 +2820,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.listener.plot
 | `predicateValue` | npm | `ea.f.rate(of = ea.f.progress())` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;E, X&gt;</code> |
 | `condition` | npm | `predicate.gtEq(t = 1)` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code> |
 | `yRange` | npm | `m.range(min = -Infinity; max = Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
+| `limitOneYForRun` | b | `true` | <code>boolean</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.listener.plot.DistributionMRPAF">DistributionMRPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.MultiPlots.yBoxplot()` by robotevo2d-main:1.5.1-SNAPSHOT
 
@@ -3831,17 +3963,18 @@ Aliases: `ea.s`, `ea.solver`
 
 ### Builder `ea.solver.asyncScheduledMfMapElites()`
 
-`ea.s.asyncScheduledMfMapElites(name; representation; mapper; nOfBirthsForIteration; stop; iComparators; descriptors; schedule)`
+`ea.s.asyncScheduledMfMapElites(name; representation; mapper; nOfBirthsForIteration; stop; iComparators; descriptors; recomputationRatio; schedule)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `name` | s | interpolate `asyncScheduledMfMapElites[{schedule.name}]` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `name` | s | interpolate `asyncScheduledMfMapElites[{schedule.name};rr={recomputationRatio:%0.2f}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `representation` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;G, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;G&gt;&gt;</code> |
 | `mapper` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;G, S&gt;</code> |
 | `nOfBirthsForIteration` | i | `100` | <code>int</code> |
 | `stop` | npm | `ea.sc.nOfQualityEvaluations()` | <code><abbr title="io.github.ericmedvet.jgea.core.solver.ProgressBasedStopCondition">ProgressBasedStopCondition</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MultiFidelityMEPopulationState">MultiFidelityMEPopulationState</abbr>&lt;G, S, Q, <abbr title="io.github.ericmedvet.jgea.core.problem.MultifidelityQualityBasedProblem">MultifidelityQualityBasedProblem</abbr>&lt;S, Q&gt;&gt;&gt;</code> |
 | `iComparators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code> |
 | `descriptors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MapElites$Descriptor">MapElites$Descriptor</abbr>&lt;G, S, Q&gt;&gt;</code> |
+| `recomputationRatio` | d | `0.5` | <code>double</code> |
 | `schedule` | npm | `ea.schedule.flat()` | <code><abbr title="java.util.function.DoubleUnaryOperator">DoubleUnaryOperator</abbr></code> |
 
 Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.AsynchronousScheduledMFMapElites">AsynchronousScheduledMFMapElites</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.asyncScheduledMfMapElites()` by robotevo2d-main:1.5.1-SNAPSHOT
@@ -4250,7 +4383,7 @@ Aliases: `ea.sc`, `ea.stoppingCriterion`
 | --- | --- | --- | --- |
 | `v` | i |  | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.ProgressBasedStopCondition">ProgressBasedStopCondition</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.MultiFidelityPOCPopulationState">MultiFidelityPOCPopulationState</abbr>&lt;I, G, S, Q, P&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StoppingCriteria.cumulativeFidelity()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.ProgressBasedStopCondition">ProgressBasedStopCondition</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;I, G, S, Q, P&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StoppingCriteria.cumulativeFidelity()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `ea.stoppingCriterion.elapsed()`
 
@@ -4718,7 +4851,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code> |
+| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code> |
 | `w` | i |  | <code>int</code> |
 | `h` | i |  | <code>int</code> |
 | `availableVoxels` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr>&gt;&gt;</code> |
@@ -4894,6 +5027,17 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.nTh()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+### Builder `function.flat()`
+
+`f.flat(of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;? extends <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;&gt;</code> |
+| `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.flat()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ### Builder `function.fromBase64()`
 
 `f.fromBase64(of; format)`
@@ -4998,6 +5142,29 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `format` | s | `%2d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridW()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `function.iComposition()`
+
+`f.iComposition(of; before; then)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.function.Function">Function</abbr>&lt;B, C&gt;&gt;</code> |
+| `before` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;A, B&gt;</code> |
+| `then` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;C, D&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.function.Function">Function</abbr>&lt;A, D&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.iComposition()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `function.iEach()`
+
+`f.iEach(iMapF; of)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `iMapF` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.function.Function">Function</abbr>&lt;T, R&gt;&gt;</code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;R&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.iEach()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `function.identity()`
 
@@ -5301,6 +5468,17 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.subList()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `function.sum()`
+
+`f.sum(of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;? extends <abbr title="java.lang.Number">Number</abbr>&gt;&gt;</code> |
+| `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.sum()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `function.toBase64()`
 
