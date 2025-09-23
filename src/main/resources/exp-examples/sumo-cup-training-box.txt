@@ -1,15 +1,15 @@
-$SIMULATION = s.task.sumoCup(duration = 15)
+$SIMULATION = s.task.sumoCup(duration = 45)
 
-$VS_SELF = ds.f.selfBiSimulator(
+$VS_SELF = ea.f.cached(of = ds.f.selfBiSimulator(
   of = ea.f.solution();
   simulation = $SIMULATION
-)
+))
 
-$VS_OPPONENT = ds.f.opponentBiSimulator(
+$VS_OPPONENT = ea.f.cached(of = ds.f.opponentBiSimulator(
   of = ea.f.solution();
   opponent = m.supplier(of = s.a.dummyBox());
   simulation = $SIMULATION
-)
+))
 
 $MAPPER = er.m.bodyBrainHomoDistributedVSR(
   w = 8;
@@ -37,8 +37,13 @@ $BRAIN_DESCRIPTORS = [
     f = f.mathOp(
       op = divide;
       args = [
-        f.size(of = f.filter(of = ea.f.getLayerWeights(of = $BRAIN_EXTRACTOR; indexOfLayer = 0); condition = predicate.all(conditions = [predicate.lt(t = $THRESHOLD); predicate.gt(t = $NEG_THRESHOLD)])));
-        f.size(of = ea.f.getLayerWeights(of = $BRAIN_EXTRACTOR; indexOfLayer = 0))
+        f.size(of = f.filter(
+          of = f.flat(of = f.nTh(of = ds.f.weights(of = $BRAIN_EXTRACTOR); n = 0));
+          condition = predicate.all(conditions = [predicate.lt(t = $THRESHOLD); predicate.gt(t = $NEG_THRESHOLD)])
+        ));
+        f.size(
+          of = f.flat(of = f.nTh(of = ds.f.weights(of = $BRAIN_EXTRACTOR); n = 0))
+        )
       ]
     );
     min = 0.0;
@@ -49,8 +54,13 @@ $BRAIN_DESCRIPTORS = [
     f = f.mathOp(
       op = divide;
       args = [
-        f.size(of = f.filter(of = ea.f.getLayerWeights(of = $BRAIN_EXTRACTOR; indexOfLayer = 1); condition = predicate.all(conditions = [predicate.lt(t = $THRESHOLD); predicate.gt(t = $NEG_THRESHOLD)])));
-        f.size(of = ea.f.getLayerWeights(of = $BRAIN_EXTRACTOR; indexOfLayer = 1))
+        f.size(of = f.filter(
+          of = f.flat(of = f.nTh(of = ds.f.weights(of = $BRAIN_EXTRACTOR); n = 1));
+          condition = predicate.all(conditions = [predicate.lt(t = $THRESHOLD); predicate.gt(t = $NEG_THRESHOLD)])
+        ));
+        f.size(
+          of = f.flat(of = f.nTh(of = ds.f.weights(of = $BRAIN_EXTRACTOR); n = 1))
+        )
       ]
     );
     min = 0.0;
@@ -62,7 +72,8 @@ $BRAIN_DESCRIPTORS = [
 ea.experiment(
   runs =
     (randomGenerator = (seed = [1:1:10]) * [m.defaultRG()]) *
-    (solver = (stop = [ea.sc.nOfQualityEvaluations(n = 50000)]) * [
+    (solver = (stop = [ea.sc.nOfQualityEvaluations(n = 30000)]) * [
+
       ea.s.ga(
         name = "box-ga-ann";
         representation = ea.r.doubleString();
@@ -80,6 +91,7 @@ ea.experiment(
         mapper = $MAPPER;
         descriptors = $BRAIN_DESCRIPTORS
       )
+
     ]) *
     (problem = [ea.p.biSimToQb(
       simulation = $SIMULATION;
@@ -88,64 +100,75 @@ ea.experiment(
       type = maximize
     )]) *
     [ea.run()];
+
   listeners = [
     ea.l.console(
       functions = [
+        ea.f.timestamp();
         ea.f.size(of = ea.f.genotype(of = ea.f.best()); format = "%3d");
-        ea.f.quality(of = ea.f.best(); format = "%4.1f");
-        s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(of = ea.f.best(); then = $VS_SELF); format = "%4.1f");
-        s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(of = ea.f.best(); then = $VS_OPPONENT); format = "%4.1f")
-      ];
-      onlyLast = false
-    );
-    ea.l.saveLastPopulationForRun(
-      path = "../results/{name}/{startTime}/last-pop-{run.solver.name}-{run.randomGenerator.seed:%04d}"
-    );
-    ea.l.savePlotForExp(
-      path = "../results/{name}/{startTime}/best-q";
-      plot = ea.plot.multi.quality(x = ea.f.nOfEvals())
-    );
-    ea.l.savePlotForExp(
-      deferred = true;
-      path = "../results/{name}/{startTime}/best-vs-self";
-      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(of = ea.f.best(); then = $VS_SELF)))
-    );
-    ea.l.savePlotForExp(
-      deferred = true;
-      path = "../results/{name}/{startTime}/best-vs-opponent";
-      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(of = ea.f.best(); then = $VS_OPPONENT)))
-    );
-    ea.l.savePlotForExp(
-      path = "../results/{name}/{startTime}/avg-q";
-      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = ea.f.quality(); of = ea.f.all())))
-    );
-    ea.l.savePlotForExp(
-      deferred = true;
-      path = "../results/{name}/{startTime}/avg-vs-self";
-      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(then = $VS_SELF)); of = ea.f.all())))
-    );
-    ea.l.savePlotForExp(
-      deferred = true;
-      path = "../results/{name}/{startTime}/avg-vs-opponent";
-      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(then = $VS_OPPONENT)); of = ea.f.all())))
-    );
-    ea.l.savePlotForRun(
-      path = "../results/{name}/{startTime}/archive-{run.problem.name}-{run.solver.name}-{run.randomGenerator.seed:%03d}";
-      plot = ea.plot.single.me();
-      condition = predicate.matches(f = ea.f.runKey(key = "run.solver.name"); regex = ".*-me-.*")
+        ea.f.quality(of = ea.f.best(); format = "%4.1f")
+      ]
     );
     ea.l.bestCsv(
-        path = "../results/{name}/{startTime}/allBest.csv";
+      path = "./results/{name}/{startTime}/all.csv";
+      runFunctions = [
+        ea.f.runKey(key = "run.problem.simulation.environment");
+        ea.f.runKey(key = "run.solver.mapper")
+      ];
+      functions = [
+        ea.f.timestamp();
+	    ea.f.quality(of = ea.f.best(); format = "%4.1f");
+	    s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(of = ea.f.best(); then = $VS_SELF); format = "%4.1f");
+	    s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(of = ea.f.best(); then = $VS_OPPONENT); format = "%4.1f")
+      ]
+    );
+    ea.l.saveLastPopulationForRun(
+      path = "./results/{name}/{startTime}/last-pop-{run.solver.name}-{run.randomGenerator.seed:%04d}"
+    );
+    ea.l.savePlotAndCsvForRun(
+      path = "./results/{name}/{startTime}/best-q.svg";
+      plot = ea.plot.multi.quality(x = ea.f.nOfEvals());
+      overwrite = true;
+      type = svg
+    );
+    ea.l.savePlotAndCsvForRun(
+      deferred = true;
+      path = "./results/{name}/{startTime}/best-vs-self.svg";
+      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(of = ea.f.best(); then = $VS_SELF)));
+      overwrite = true;
+      type = svg
+    );
+    ea.l.savePlotAndCsvForRun(
+      deferred = true;
+      path = "./results/{name}/{startTime}/best-vs-opponent.svg";
+      plot = ea.plot.multi.quality(x = ea.f.nOfEvals(); y = s.f.outcome.sumoShiftedScoreDifference1(of = f.composition(of = ea.f.best(); then = $VS_OPPONENT)));
+      overwrite = true;
+      type = svg
+    );
+    ea.l.savePlotAndCsvForRun(
+      path = "./results/{name}/{startTime}/avg-q.svg";
+      plot = ea.plot.multi.xyExp(x = ea.f.nOfEvals(); y = f.avg(of = f.each(mapF = ea.f.quality(); of = ea.f.all())));
+      overwrite = true;
+      type = svg
+    );
+    ea.l.savePlotAndCsvForRun(
+      path = "./results/{name}/{startTime}/archive-{run.problem.name}-{run.solver.name}-{run.randomGenerator.seed:%03d}.svg";
+      plot = ea.plot.single.me();
+      condition = predicate.matches(f = ea.f.runKey(key = "run.solver.name"); regex = ".*-me-.*");
+      type = svg
+    );
+    ea.l.bestCsv(
+        path = "./results/{name}/{startTime}/final-best.csv";
         runFunctions = [
           ea.f.runKey(key = "run.problem.simulation.environment");
           ea.f.runKey(key = "run.solver.mapper")
         ];
         functions = [
+          ea.f.timestamp();
           f.toBase64(of = ea.f.genotype(of = ea.f.best()))
         ];
         onlyLast = true
-    )
-    ;
+    );
     ea.l.saveForRun(
       of = ea.acc.lastBest();
       processor = f.composition(
@@ -155,7 +178,7 @@ ea.experiment(
           task = $SIMULATION
         )
       );
-      path = "../results/{name}/{startTime}/best-vs-box-{run.solver.name}-{run.randomGenerator.seed:%04d}"
+      path = "./results/{name}/{startTime}/best-vs-box-{run.solver.name}-{run.randomGenerator.seed:%04d}.mp4"
     )
   ]
 )
