@@ -33,7 +33,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
-import java.util.Locale;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -61,12 +60,9 @@ public class AgentImageWriter {
   private static final int N = 3;
   private static final double D_T = 0.25;
   private static final double T0 = 0.25;
+  private static final double DURATION = T0 + (N + 1d) * D_T;
 
-  private static final String TASK_DESCRIPTION = String.format(
-      Locale.ROOT,
-      "s.task.locomotion(terrain = s.t.hilly(chunkW = 1; chunkH = 0.25); duration = %f)",
-      T0 + (N + 1d) * D_T
-  );
+  private static final String TASK_DESCRIPTION = "s.task.locomotion(terrain = s.t.hilly(chunkW = 1; chunkH = 0.25))";
 
   public static void main(String[] args) {
     NamedBuilder<?> nb = NamedBuilder.fromDiscovery();
@@ -75,7 +71,9 @@ public class AgentImageWriter {
     @SuppressWarnings("unchecked") Function<String, Drawer> drawer = (Function<String, Drawer>) nb.build(
         DRAWER_DESCRIPTION
     );
-    @SuppressWarnings("unchecked") Supplier<Engine> engine = (Supplier<Engine>) nb.build(ENGINE_DESCRIPTION);
+    @SuppressWarnings("unchecked") Supplier<Engine> engine = (Supplier<Engine>) nb.build(
+        ENGINE_DESCRIPTION
+    );
     @SuppressWarnings("unchecked") Task<Supplier<Agent>, ?, ?> task = (Task<Supplier<Agent>, ?, ?>) nb.build(
         TASK_DESCRIPTION
     );
@@ -102,7 +100,7 @@ public class AgentImageWriter {
             true,
             drawer.apply(name)
         );
-        task.run(agent, engine.get(), fib);
+        task.run(agent, DURATION, engine.get(), fib);
         BufferedImage bufferedImage = fib.get();
         File imgFile = new File(imgsPath + File.separator + name + ".png");
         ImageIO.write(bufferedImage, "png", imgFile);

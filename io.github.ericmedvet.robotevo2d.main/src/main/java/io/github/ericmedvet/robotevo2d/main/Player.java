@@ -161,7 +161,8 @@ public class Player {
           .orElse(PlayConsumers.ProducingConsumer.from(s -> {}, () -> {}));
       // do task
       L.info("Executing the task");
-      AgentsOutcome<AgentsObservation> outcome = play.task().run(solution, play.engineSupplier().get(), consumer);
+      AgentsOutcome<AgentsObservation> outcome = play.task()
+          .run(solution, play.duration(), play.engineSupplier().get(), consumer);
       L.info("The outcome of the task is %s".formatted(outcome));
       // process outcome
       if (configuration.justOutput) {

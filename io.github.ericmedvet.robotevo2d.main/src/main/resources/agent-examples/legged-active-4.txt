@@ -1,10 +1,10 @@
 s.a.numLeggedHybridRobot(
-  legs  =  4 * [
+  legs = 4 * [
     s.a.l.leg(legChunks = 2 * [s.a.l.legChunk(jointSensors = [s.s.ja()])]; downConnector = soft)
   ];
   trunkLength = 30;
   trunkMass = 5;
-  headSensors = + [s.s.a()] + (a = [-80:5:-30]) * [s.s.d(r = 10)];
+  headSensors = [s.s.a()] + (a = [-80:5:-30]) * [s.s.d(r = 10)];
   function = ds.num.enhanced(
     windowT = 1.0;
     inner = ds.num.mlp(innerLayerRatio = 1.5; nOfInnerLayers = 2);

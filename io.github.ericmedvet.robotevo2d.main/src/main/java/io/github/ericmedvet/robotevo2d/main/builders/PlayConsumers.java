@@ -21,6 +21,7 @@ package io.github.ericmedvet.robotevo2d.main.builders;
 
 import io.github.ericmedvet.jnb.core.Discoverable;
 import io.github.ericmedvet.jnb.core.Param;
+import io.github.ericmedvet.jnb.datastructure.Utils;
 import io.github.ericmedvet.mrsim2d.core.Snapshot;
 import io.github.ericmedvet.mrsim2d.viewer.Drawer;
 import io.github.ericmedvet.mrsim2d.viewer.FramesImageBuilder;
@@ -97,7 +98,7 @@ public class PlayConsumers {
     return ProducingConsumer.from(framesImageBuilder, () -> {
       BufferedImage bufferedImage = framesImageBuilder.get();
       try {
-        File file = io.github.ericmedvet.jgea.core.util.Misc.robustGetFile(filePath, false);
+        File file = Utils.robustGetFile(filePath, false);
         ImageIO.write(bufferedImage, "png", file);
         L.info("Image done and saved on file %s".formatted(file.getAbsolutePath()));
       } catch (IOException e) {

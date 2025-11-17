@@ -38,6 +38,7 @@ public record Play<G, R, S extends AgentsObservation, O extends AgentsOutcome<S>
     @Param(value = "genotype", dNPM = "ea.f.identity()") Function<G, G> genotype,
     @Param("mapper") InvertibleMapper<G, R> mapper,
     @Param("task") Task<R, S, O> task,
+    @Param("duration") double duration,
     @Param(value = "engine", dNPM = "sim.engine()") Supplier<Engine> engineSupplier,
     @Param("consumers") List<PlayConsumers.ProducingConsumer> consumers,
     @Param("outcomeFunctions") List<Function<?, ?>> outcomeFunctions

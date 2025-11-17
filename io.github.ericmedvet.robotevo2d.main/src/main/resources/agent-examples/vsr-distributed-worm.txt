@@ -5,6 +5,6 @@ s.a.distributedNumGridVSR(
       sensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90); s.s.a()]
     )
   );
-  signals = 2;
+  nOfSignals = 2;
   function = ds.num.mlp()
 )

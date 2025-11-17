@@ -1,3 +1,5 @@
+$basePath = ''../../Documenti/experiments/{^^.name}/{^^.startTime}/''
+
 ea.experiment(
   runs = (randomGenerator = (seed = [1:1:1]) * [m.defaultRG()]) *
     (solver = (mapper = [
@@ -24,29 +26,28 @@ ea.experiment(
     ]) * [
       ea.s.ga(
         representation = ea.r.doubleString();
-        nEval = 500;
+        stop = ea.sc.nOfQualityEvaluations(n = 500);
         nPop = 50
       )
     ]) * [
     ea.run(
-      problem = ea.p.simTo(
+      problem = ea.p.simToSmo(
         simulation = s.task.locomotion(duration = 10);
-        f = s.f.outcome.faXVelocity();
-        type = maximize
+        toMaxObjectives = [s.f.outcome.faXVelocity()];
+        dT =
       )
     )
   ];
   listeners = [
     ea.l.console(
-      functions = [
+      eFunctions = [
         ea.f.size(of = ea.f.genotype(of = ea.f.best()); format = "%3d");
         s.f.outcome.faXVelocity(of = ea.f.simOutcome(of = ea.f.quality(of = ea.f.best())); format = "%6.4f");
         ea.f.hist(of = f.each(of = ea.f.all(); mapF = s.f.outcome.faXVelocity(of = ea.f.simOutcome(of = ea.f.quality()))));
         f.percentile(of = f.each(of = ea.f.all(); mapF = s.f.outcome.faXVelocity(of = ea.f.simOutcome(of = ea.f.quality()))); p = 75; format = "%6.4f")
       ];
-      runKeys = [
-        ea.misc.sEntry(key = "seed"; value = "{randomGenerator.seed}");
-        ea.misc.sEntry(key = "mapper"; value = "{solver.mapper:%#s}")
+      kFunctions = [
+        f.mappableKey(key = "solver.mapper"; format = "%#s")
       ]
     );
     ea.l.runLastIterationVideoSaver(
