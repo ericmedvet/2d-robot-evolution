@@ -75,7 +75,8 @@ public class Mappers {
 
   @SuppressWarnings("unused")
   @Cacheable
-  public static <X> InvertibleMapper<X, Supplier<DistributedNumGridVSR>> bodyBrainHomoDistributedVSR(
+  public static <X> InvertibleMapper<X, Supplier<DistributedNumGridVSR>> bodyBrainHomoDistributedVsr(
+      @Param(value = "name", iS = "pairToBodyBrainHomoDistributedVsr[{w}x{h}]") String name,
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, Pair<Grid<GridBody.VoxelType>, NumericalDynamicalSystem<?>>> beforeM,
       @Param(value = "w", dI = 10) int w,
       @Param(value = "h", dI = 10) int h,
@@ -116,8 +117,7 @@ public class Mappers {
           );
         },
         supplier -> beforeM.exampleFor(ePair),
-        "%s→bodyBrainHomoDistributedVSR[%dx%d;nOfSignals=%d;directional=%s]"
-            .formatted(beforeM, w, h, nOfSignals, directional)
+        name
     );
   }
 
@@ -178,6 +178,7 @@ public class Mappers {
   @SuppressWarnings("unused")
   @Cacheable
   public static <X> InvertibleMapper<X, Supplier<ReactiveGridVSR>> sGridToReactiveGridVsr(
+      @Param(value = "name", iS = "sGridToReactiveGridVsr") String name,
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, Grid<String>> beforeM,
       @Param("availableVoxels") Map<String, Supplier<ReactiveVoxel>> availableVoxels,
       @Param(value = "maxW", dI = 10) int maxW,
@@ -207,7 +208,7 @@ public class Mappers {
               return new ReactiveGridVSR(body);
             },
             supplier -> exampleGrid,
-            "cGridToReactiveGridVsr[n=%d]".formatted(availableVoxels.size())
+            name
         )
     );
   }
@@ -215,6 +216,7 @@ public class Mappers {
   @SuppressWarnings("unused")
   @Cacheable
   public static <X, T extends NumMultiBrained> InvertibleMapper<X, Supplier<T>> dsToNpHeteroBrains(
+      @Param(value = "name", iS = "dsToHeteroBrains") String name,
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, List<Double>> beforeM,
       @Param("target") T target,
       @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
@@ -266,7 +268,7 @@ public class Mappers {
               };
             },
             supplier -> Collections.nCopies(overallBrainSize, 0d),
-            "dsToNpHeteroBrains"
+            name
         )
     );
   }
@@ -274,6 +276,7 @@ public class Mappers {
   @SuppressWarnings("unused")
   @Cacheable
   public static <X, T extends NumMultiBrained> InvertibleMapper<X, Supplier<T>> dsToNpHomoBrains(
+      @Param(value = "name", iS = "dsToHomoBrains") String name,
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, List<Double>> beforeM,
       @Param("target") T target,
       @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
@@ -317,7 +320,7 @@ public class Mappers {
               };
             },
             supplier -> Collections.nCopies(brainSize, 0d),
-            "dsToNpHomoBrains"
+            name
         )
     );
   }
@@ -325,6 +328,7 @@ public class Mappers {
   @SuppressWarnings("unused")
   @Cacheable
   public static <X> InvertibleMapper<X, Supplier<ReactiveGridVSR>> isToReactiveGridVsr(
+      @Param(value = "name", iS = "isToReactiveGridVsr[{w}x{h}]") String name,
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, IntString> beforeM,
       @Param("w") int w,
       @Param("h") int h,
@@ -352,14 +356,15 @@ public class Mappers {
               return () -> new ReactiveGridVSR(body);
             },
             supplier -> exampleIS,
-            "isToReactiveGridVsr[w=%d;h=%d]".formatted(w, h)
+            name
         )
     );
   }
 
   @SuppressWarnings("unused")
   @Cacheable
-  public static <X> InvertibleMapper<X, Supplier<CentralizedNumGridVSR>> ndsToFixedBodyCentralizedVSR(
+  public static <X> InvertibleMapper<X, Supplier<CentralizedNumGridVSR>> ndsToFixedBodyCentralizedVsr(
+      @Param(value = "name", iS = "ndsToCentralizedVsr") String name,
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, NumericalDynamicalSystem<?>> beforeM,
       @Param("body") GridBody body,
       @Param(value = "", injection = Param.Injection.MAP) ParamMap map,
@@ -373,14 +378,15 @@ public class Mappers {
                     CentralizedNumGridVSR.nOfInputs(body),
                     CentralizedNumGridVSR.nOfOutputs(body)
                 ),
-            "nmrfToCentralizedVSR[body=%s]".formatted(map.value("body"))
+            name
         )
     );
   }
 
   @SuppressWarnings("unused")
   @Cacheable
-  public static <X> InvertibleMapper<X, Supplier<DistributedNumGridVSR>> ndsToFixedBodyHomoDistributedVSR(
+  public static <X> InvertibleMapper<X, Supplier<DistributedNumGridVSR>> ndsToFixedBodyHomoDistributedVsr(
+      @Param(value = "name", iS = "ndsToDistributedVsr[n={nOfSignals}]") String name,
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, NumericalDynamicalSystem<?>> beforeM,
       @Param("body") GridBody body,
       @Param(value = "nOfSignals", dI = 1) int nOfSignals,
@@ -420,14 +426,14 @@ public class Mappers {
             directional
         ),
         supplier -> beforeM.exampleFor(nds),
-        "%s→ndsToFixedBodyHomoDistributedVSR[nOfSignals=%d;directional=%s]"
-            .formatted(beforeM, nOfSignals, directional)
+        name
     );
   }
 
   @SuppressWarnings("unused")
   @Cacheable
   public static <X> InvertibleMapper<X, Supplier<ReactiveGridVSR>> nmrfToReactiveGridVsr(
+      @Param(value = "name", iS = "nmrfToReactiveVsr[{w}x{h}]") String name,
       @Param(value = "of", dNPM = "ea.m.identity()") InvertibleMapper<X, NamedMultivariateRealFunction> beforeM,
       @Param("w") int w,
       @Param("h") int h,
@@ -464,7 +470,7 @@ public class Mappers {
                 List.of("x", "y"),
                 MultivariateRealFunction.varNames("v", availableVoxels.size())
             ),
-            "nmrfToReactiveGridVsr[w=%d;h=%d]".formatted(w, h)
+            name
         )
     );
   }

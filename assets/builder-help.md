@@ -4864,12 +4864,13 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 Aliases: `er.m`, `er.mapper`, `evorobots.m`, `evorobots.mapper`
 
-### Builder `evorobots.mapper.bodyBrainHomoDistributedVSR()`
+### Builder `evorobots.mapper.bodyBrainHomoDistributedVsr()`
 
-`er.m.bodyBrainHomoDistributedVSR(of; w; h; nOfSignals; directional; sensors)`
+`er.m.bodyBrainHomoDistributedVsr(name; of; w; h; nOfSignals; directional; sensors)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `pairToBodyBrainHomoDistributedVsr[{w}x{h}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;&gt;</code> |
 | `w` | i | `10` | <code>int</code> |
 | `h` | i | `10` | <code>int</code> |
@@ -4877,14 +4878,15 @@ Aliases: `er.m`, `er.mapper`, `evorobots.m`, `evorobots.mapper`
 | `directional` | b | `true` | <code>boolean</code> |
 | `sensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;? super <abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR">DistributedNumGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.bodyBrainHomoDistributedVSR()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR">DistributedNumGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.bodyBrainHomoDistributedVsr()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `evorobots.mapper.dsToNpHeteroBrains()`
 
-`er.m.dsToNpHeteroBrains(of; target)`
+`er.m.dsToNpHeteroBrains(name; of; target)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `dsToHeteroBrains` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code> |
 | `target` | npm |  | <code>T</code> |
 
@@ -4892,10 +4894,11 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 ### Builder `evorobots.mapper.dsToNpHomoBrains()`
 
-`er.m.dsToNpHomoBrains(of; target)`
+`er.m.dsToNpHomoBrains(name; of; target)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `dsToHomoBrains` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code> |
 | `target` | npm |  | <code>T</code> |
 
@@ -4903,10 +4906,11 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 ### Builder `evorobots.mapper.isToReactiveGridVsr()`
 
-`er.m.isToReactiveGridVsr(of; w; h; availableVoxels)`
+`er.m.isToReactiveGridVsr(name; of; w; h; availableVoxels)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `isToReactiveGridVsr[{w}x{h}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;</code> |
 | `w` | i |  | <code>int</code> |
 | `h` | i |  | <code>int</code> |
@@ -4914,36 +4918,39 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.isToReactiveGridVsr()` by robotevo2d-main:1.5.1-SNAPSHOT
 
-### Builder `evorobots.mapper.ndsToFixedBodyCentralizedVSR()`
+### Builder `evorobots.mapper.ndsToFixedBodyCentralizedVsr()`
 
-`er.m.ndsToFixedBodyCentralizedVSR(of; body)`
+`er.m.ndsToFixedBodyCentralizedVsr(name; of; body)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `ndsToCentralizedVsr` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code> |
 | `body` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR">CentralizedNumGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.ndsToFixedBodyCentralizedVSR()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR">CentralizedNumGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.ndsToFixedBodyCentralizedVsr()` by robotevo2d-main:1.5.1-SNAPSHOT
 
-### Builder `evorobots.mapper.ndsToFixedBodyHomoDistributedVSR()`
+### Builder `evorobots.mapper.ndsToFixedBodyHomoDistributedVsr()`
 
-`er.m.ndsToFixedBodyHomoDistributedVSR(of; body; nOfSignals; directional)`
+`er.m.ndsToFixedBodyHomoDistributedVsr(name; of; body; nOfSignals; directional)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `ndsToDistributedVsr[n={nOfSignals}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code> |
 | `body` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
 | `nOfSignals` | i | `1` | <code>int</code> |
 | `directional` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR">DistributedNumGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.ndsToFixedBodyHomoDistributedVSR()` by robotevo2d-main:1.5.1-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR">DistributedNumGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.ndsToFixedBodyHomoDistributedVsr()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ### Builder `evorobots.mapper.nmrfToReactiveGridVsr()`
 
-`er.m.nmrfToReactiveGridVsr(of; w; h; availableVoxels)`
+`er.m.nmrfToReactiveGridVsr(name; of; w; h; availableVoxels)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `nmrfToReactiveVsr[{w}x{h}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code> |
 | `w` | i |  | <code>int</code> |
 | `h` | i |  | <code>int</code> |
@@ -4953,10 +4960,11 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 ### Builder `evorobots.mapper.sGridToReactiveGridVsr()`
 
-`er.m.sGridToReactiveGridVsr(of; availableVoxels; maxW; maxH; yMirror)`
+`er.m.sGridToReactiveGridVsr(name; of; availableVoxels; maxW; maxH; yMirror)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `sGridToReactiveGridVsr` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code> |
 | `availableVoxels` | npm |  | <code><abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr>&gt;&gt;</code> |
 | `maxW` | i | `10` | <code>int</code> |
@@ -6013,22 +6021,6 @@ Aliases: `s`, `sim`
 
 Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.viewer.Framer">Framer</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Snapshot">Snapshot</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.allAgentsFramer()` by robotevo2d-main:1.5.1-SNAPSHOT
 
-### Builder `sim.biTaskVideoBuilder()`
-
-`s.biTaskVideoBuilder(task; title; drawer; engine; startTime; endTime; frameRate)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `task` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.BiTask">BiTask</abbr>&lt;A1, A2, ?, ?&gt;</code> |
-| `title` | s | `` | <code><abbr title="java.lang.String">String</abbr></code> |
-| `drawer` | npm | `sim.drawer()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="io.github.ericmedvet.mrsim2d.viewer.Drawer">Drawer</abbr>&gt;</code> |
-| `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.engine.Engine">Engine</abbr>&gt;</code> |
-| `startTime` | d | `0.0` | <code>double</code> |
-| `endTime` | d | `Infinity` | <code>double</code> |
-| `frameRate` | d | `30.0` | <code>double</code> |
-
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.viewer.BiTaskVideoBuilder">BiTaskVideoBuilder</abbr>&lt;A1, A2&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.biTaskVideoBuilder()` by robotevo2d-main:1.5.1-SNAPSHOT
-
 ### Builder `sim.drawer()`
 
 `s.drawer(framer; profilingTime; miniWorldEnlargement; miniWorld; components; miniAgents; engineProfiling; actions; info; nfc; parts)`
@@ -6067,48 +6059,6 @@ Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abb
 | `maxY` | d |  | <code>double</code> |
 
 Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.viewer.Framer">Framer</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Snapshot">Snapshot</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.staticFramer()` by robotevo2d-main:1.5.1-SNAPSHOT
-
-### Builder `sim.taskMultiRunner()`
-
-`s.taskMultiRunner(task; repetitions; duration; engine)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `task` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Task">Task</abbr>&lt;A, S, O&gt;</code> |
-| `repetitions` | i |  | <code>int</code> |
-| `duration` | d |  | <code>double</code> |
-| `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.engine.Engine">Engine</abbr>&gt;</code> |
-
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;A, <abbr title="java.util.List">List</abbr>&lt;O&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.taskMultiRunner()` by robotevo2d-main:1.5.1-SNAPSHOT
-
-### Builder `sim.taskRunner()`
-
-`s.taskRunner(name; task; duration; engine)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `name` | s | interpolate `{task.name}` | <code><abbr title="java.lang.String">String</abbr></code> |
-| `task` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Task">Task</abbr>&lt;A, S, O&gt;</code> |
-| `duration` | d |  | <code>double</code> |
-| `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.engine.Engine">Engine</abbr>&gt;</code> |
-
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;A, O&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.taskRunner()` by robotevo2d-main:1.5.1-SNAPSHOT
-
-### Builder `sim.taskVideoBuilder()`
-
-`s.taskVideoBuilder(task; title; drawer; engine; startTime; endTime; frameRate)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `task` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Task">Task</abbr>&lt;A, ?, ?&gt;</code> |
-| `title` | s | `` | <code><abbr title="java.lang.String">String</abbr></code> |
-| `drawer` | npm | `sim.drawer()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="io.github.ericmedvet.mrsim2d.viewer.Drawer">Drawer</abbr>&gt;</code> |
-| `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.engine.Engine">Engine</abbr>&gt;</code> |
-| `startTime` | d | `0.0` | <code>double</code> |
-| `endTime` | d | `Infinity` | <code>double</code> |
-| `frameRate` | d | `30.0` | <code>double</code> |
-
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.viewer.TaskVideoBuilder">TaskVideoBuilder</abbr>&lt;A&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.taskVideoBuilder()` by robotevo2d-main:1.5.1-SNAPSHOT
 
 ## Package `sim.agent`
 
@@ -6500,24 +6450,91 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</a
 
 Aliases: `s.f`, `s.function`, `sim.f`, `sim.function`
 
+### Builder `sim.function.biTaskVideo()`
+
+`s.f.biTaskVideo(of; name; task; title; drawer; engine; startTime; endTime; frameRate)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;A1, A2&gt;&gt;</code> |
+| `name` | s | interpolate `video[{title}]` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `task` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.BiTask">BiTask</abbr>&lt;A1, A2, ?, ?&gt;</code> |
+| `title` | s | interpolate `{task.name}` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `drawer` | npm | `sim.drawer()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="io.github.ericmedvet.mrsim2d.viewer.Drawer">Drawer</abbr>&gt;</code> |
+| `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.engine.Engine">Engine</abbr>&gt;</code> |
+| `startTime` | d | `0.0` | <code>double</code> |
+| `endTime` | d | `Infinity` | <code>double</code> |
+| `frameRate` | d | `30.0` | <code>double</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.drawer.Video">Video</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.biTaskVideo()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ### Builder `sim.function.numBrains()`
 
-`s.f.numBrains(of; format)`
+`s.f.numBrains(of; name; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.NumMultiBrained">NumMultiBrained</abbr>&gt;</code> |
+| `name` | s | `n.brains` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.numBrains()` by robotevo2d-main:1.5.1-SNAPSHOT
 
+### Builder `sim.function.taskRun()`
+
+`s.f.taskRun(of; name; task; duration; engine)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, A&gt;</code> |
+| `name` | s | interpolate `run[{task.name}]` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `task` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Task">Task</abbr>&lt;A, S, O&gt;</code> |
+| `duration` | d |  | <code>double</code> |
+| `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.engine.Engine">Engine</abbr>&gt;</code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, O&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.taskRun()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `sim.function.taskRuns()`
+
+`s.f.taskRuns(of; name; task; repetitions; duration; engine)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, A&gt;</code> |
+| `name` | s | interpolate `run[{task.name};x{repetitions}]` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `task` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Task">Task</abbr>&lt;A, S, O&gt;</code> |
+| `repetitions` | i |  | <code>int</code> |
+| `duration` | d |  | <code>double</code> |
+| `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.engine.Engine">Engine</abbr>&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;O&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.taskRuns()` by robotevo2d-main:1.5.1-SNAPSHOT
+
+### Builder `sim.function.taskVideo()`
+
+`s.f.taskVideo(of; name; task; title; drawer; engine; startTime; endTime; frameRate)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, A&gt;</code> |
+| `name` | s | interpolate `video[{title}]` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `task` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.Task">Task</abbr>&lt;A, ?, ?&gt;</code> |
+| `title` | s | interpolate `{task.name}` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `drawer` | npm | `sim.drawer()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="io.github.ericmedvet.mrsim2d.viewer.Drawer">Drawer</abbr>&gt;</code> |
+| `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.engine.Engine">Engine</abbr>&gt;</code> |
+| `startTime` | d | `0.0` | <code>double</code> |
+| `endTime` | d | `10.0` | <code>double</code> |
+| `frameRate` | d | `30.0` | <code>double</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.drawer.Video">Video</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.taskVideo()` by robotevo2d-main:1.5.1-SNAPSHOT
+
 ### Builder `sim.function.vsrBody()`
 
-`s.f.vsrBody(of; nullify; format)`
+`s.f.vsrBody(of; name; nullify; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.AbstractGridVSR">AbstractGridVSR</abbr>&gt;</code> |
+| `name` | s | `body` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `nullify` | b | `true` | <code>boolean</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 

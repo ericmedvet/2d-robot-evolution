@@ -1,9 +1,10 @@
 $basePath = ''../../Documenti/experiments/{^^.name}/{^^.startTime}/''
 
 ea.experiment(
-  runs = (randomGenerator = (seed = [1:1:1]) * [m.defaultRG()]) *
+  runs = (randomGenerator = (seed = [1:1:3]) * [m.defaultRG()]) *
     (solver = (mapper = [
-      er.m.ndsToFixedBodyCentralizedVSR(
+      er.m.ndsToFixedBodyCentralizedVsr(
+        name = "centralized-mlp";
         body = s.a.vsr.gridBody(
           sensorizingFunction = s.a.vsr.sf.directional(
             headSensors = [s.s.sin(f = 0); s.s.d(a = -15; r = 5)];
@@ -12,29 +13,37 @@ ea.experiment(
           );
           shape = s.a.vsr.s.biped(w = 4; h = 3)
         );
-        of = ea.m.noisedNds(of = ea.m.steppedNds(of = ea.m.dsToNpnds(npnds = ds.num.mlp()); stepT = 0.2))
+        of = ea.m.noisedNds(
+          of = ea.m.steppedNds(of = ea.m.dsToNpnds(npnds = ds.num.mlp()); stepT = 0.2);
+          randomGenerator = m.sharedRG()
+        )
       );
-      er.m.ndsToFixedBodyHomoDistributedVSR(
+      er.m.ndsToFixedBodyHomoDistributedVsr(
+        name = "distributed-mlp";
         body = s.a.vsr.gridBody(
           sensorizingFunction = s.a.vsr.sf.uniform(
             sensors = [s.s.ar(); s.s.rv(a = 0); s.s.rv(a = 90)]
           );
           shape = s.a.vsr.s.biped(w = 4; h = 3)
         );
-        of = ea.m.steppedNds(of = ea.m.dsToNpnds(npnds = ds.num.mlp()); stepT = 0.2)
+        of = ea.m.noisedNds(
+          of = ea.m.steppedNds(of = ea.m.dsToNpnds(npnds = ds.num.mlp()); stepT = 0.2);
+          randomGenerator = m.sharedRG()
+        )
       )
     ]) * [
       ea.s.ga(
         representation = ea.r.doubleString();
-        stop = ea.sc.nOfQualityEvaluations(n = 500);
+        stop = ea.sc.nOfQualityEvaluations(n = 2000);
         nPop = 50
       )
     ]) * [
     ea.run(
       problem = ea.p.simToSmo(
-        simulation = s.task.locomotion(duration = 10);
+        simulation = s.task.locomotion();
         toMaxObjectives = [s.f.outcome.faXVelocity()];
-        dT =
+        dT = 0.016666;
+        tRange = m.range(min = 0; max = 10)
       )
     )
   ];
@@ -42,25 +51,29 @@ ea.experiment(
     ea.l.console(
       eFunctions = [
         ea.f.size(of = ea.f.genotype(of = ea.f.best()); format = "%3d");
-        s.f.outcome.faXVelocity(of = ea.f.simOutcome(of = ea.f.quality(of = ea.f.best())); format = "%6.4f");
-        ea.f.hist(of = f.each(of = ea.f.all(); mapF = s.f.outcome.faXVelocity(of = ea.f.simOutcome(of = ea.f.quality()))));
-        f.percentile(of = f.each(of = ea.f.all(); mapF = s.f.outcome.faXVelocity(of = ea.f.simOutcome(of = ea.f.quality()))); p = 75; format = "%6.4f")
+        f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality(of = ea.f.best()); format = "%5.3f");
+        ea.f.hist(of = f.each(of = ea.f.all(); mapF = f.mapValue(key = "first.agent.velocity.x"; of = ea.f.quality())))
       ];
       kFunctions = [
-        f.mappableKey(key = "solver.mapper"; format = "%#s")
+        f.mappableKey(key = "solver.mapper.name")
       ]
     );
-    ea.l.runLastIterationVideoSaver(
-      video = s.taskVideoBuilder(task = s.task.locomotion(duration = 15));
-      w = 300; h = 200; encoder = ffmpeg_small;
-      function = ea.f.solution(of = ea.f.best());
-      filePathTemplate = "../finalBest-{solver.mapper:%#s}-{solver.name}-{randomGenerator.seed:%04d}.mp4";
-      condition = ea.predicate.all(conditions = [
-        ea.predicate.inS(
-          f = ea.f.runKey(runKey = ea.misc.sEntry(key = "seed"; value = "{randomGenerator.seed}"));
-          values = ["1"]
-        )
-      ])
+    ea.l.saveForRun(
+      path = $basePath + "{solver.mapper.name}/behavior-{randomGenerator.seed:%02d}.mp4";
+      of = ea.acc.lastBest();
+      processor = s.f.taskVideo(
+        of = ea.f.solution();
+        endTime = 10;
+        task = s.task.locomotion()
+      )
+    );
+    ea.l.savePlotForExp(
+      path = $basePath + "best-fitness.svg";
+      plot = ea.plot.multi.quality(
+        q = f.mapValue(key = "first.agent.velocity.x");
+        line = f.interpolated(name = solver; s = "{solver.mapper.name}")
+      );
+      type = svg
     )
   ]
 )
