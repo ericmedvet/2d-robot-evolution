@@ -32,7 +32,6 @@ module io.github.ericmedvet.robotevo2d.main {
   requires io.github.ericmedvet.jnb.core;
   requires io.github.ericmedvet.jnb.datastructure;
   requires jcommander;
-  requires org.apache.commons.csv;
   requires io.github.ericmedvet.jsdynsym.control;
   requires io.github.ericmedvet.jviz.core;
 
@@ -42,6 +41,4 @@ module io.github.ericmedvet.robotevo2d.main {
 
   exports io.github.ericmedvet.robotevo2d.main;
   exports io.github.ericmedvet.robotevo2d.main.helper;
-
-  opens io.github.ericmedvet.robotevo2d.main.dynamicalsystems to io.github.ericmedvet.jnb.core;
 }

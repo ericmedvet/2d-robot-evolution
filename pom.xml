@@ -7,7 +7,8 @@
   <packaging>pom</packaging>
 
   <name>robotevo2d</name>
-  <description>2D-Robot-Evolution, a framework for the evolutionary optimization of simulated (in 2D) robotic agents.</description>
+  <description>2D-Robot-Evolution, a framework for the evolutionary optimization of simulated (in 2D) robotic
+        agents.</description>
   <url>https://github.com/ericmedvet/2d-robot-evolution</url>
 
   <licenses>
@@ -44,11 +45,11 @@
   </distributionManagement>
 
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jdk.version>21</jdk.version>
+    <revision>1.5.1-SNAPSHOT</revision>
     <jgea.version>2.7.1-SNAPSHOT</jgea.version>
     <mrsim2d.version>1.2.1-SNAPSHOT</mrsim2d.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <revision>1.5.1-SNAPSHOT</revision>
   </properties>
 
   <dependencies/>
@@ -87,7 +88,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>3.6.0</version>
+        <version>3.7.0</version>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
