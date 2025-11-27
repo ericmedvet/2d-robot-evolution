@@ -49,8 +49,8 @@
     <jdk.version>21</jdk.version>
     <maven.version>3.9.11</maven.version>
     <revision>1.6.1-SNAPSHOT</revision>
-    <jgea.version>2.8.1-SNAPSHOT</jgea.version>
-    <mrsim2d.version>1.3.1-SNAPSHOT</mrsim2d.version>
+    <jgea.version>2.8.1</jgea.version>
+    <mrsim2d.version>1.3.1</mrsim2d.version>
   </properties>
 
   <dependencies/>
