@@ -29,7 +29,6 @@ import io.github.ericmedvet.jnb.core.NamedParamMap;
 import io.github.ericmedvet.jnb.core.Param;
 import io.github.ericmedvet.jnb.core.ParamMap;
 import io.github.ericmedvet.jnb.datastructure.*;
-import io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems;
 import io.github.ericmedvet.jsdynsym.core.numerical.MultivariateRealFunction;
 import io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem;
 import io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction;
@@ -82,11 +81,10 @@ public class Mappers {
   ) {
     Pair<Grid<GridBody.VoxelType>, NumericalDynamicalSystem<?>> ePair = new Pair<>(
         Grid.create(w, h, GridBody.VoxelType.SOFT),
-        NumericalDynamicalSystems.Builder.empty()
-            .apply(
-                DistributedNumGridVSR.nOfInputs(sensors, nOfSignals, directional),
-                DistributedNumGridVSR.nOfOutputs(sensors, nOfSignals, directional)
-            )
+        MultivariateRealFunction.from(
+            DistributedNumGridVSR.nOfInputs(sensors, nOfSignals, directional),
+            DistributedNumGridVSR.nOfOutputs(sensors, nOfSignals, directional)
+        )
     );
     return InvertibleMapper.from(
         (supplier, x) -> () -> {
@@ -187,7 +185,11 @@ public class Mappers {
       }
       return availableVoxels.containsKey(s) ? availableVoxels.get(s).get() : null;
     };
-    Grid<String> exampleGrid = Grid.create(1, 1, availableVoxels.keySet().stream().sorted().findFirst().orElseThrow());
+    Grid<String> exampleGrid = Grid.create(
+        1,
+        1,
+        availableVoxels.keySet().stream().sorted().findFirst().orElseThrow()
+    );
     return beforeM.andThen(
         InvertibleMapper.from(
             (supplier, grid) -> () -> {
@@ -369,11 +371,10 @@ public class Mappers {
     return beforeM.andThen(
         InvertibleMapper.from(
             (supplier, nds) -> () -> new CentralizedNumGridVSR(body, nds),
-            supplier -> NumericalDynamicalSystems.Builder.empty()
-                .apply(
-                    CentralizedNumGridVSR.nOfInputs(body),
-                    CentralizedNumGridVSR.nOfOutputs(body)
-                ),
+            supplier -> MultivariateRealFunction.from(
+                CentralizedNumGridVSR.nOfInputs(body),
+                CentralizedNumGridVSR.nOfOutputs(body)
+            ),
             name
         )
     );
@@ -409,8 +410,7 @@ public class Mappers {
               .formatted(inputSizes, outputSizes)
       );
     }
-    NumericalDynamicalSystem<?> nds = NumericalDynamicalSystems.Builder.empty()
-        .apply(inputSizes.getFirst(), outputSizes.getFirst());
+    NumericalDynamicalSystem<?> nds = MultivariateRealFunction.from(inputSizes.getFirst(), outputSizes.getFirst());
     return InvertibleMapper.from(
         (supplier, x) -> () -> new DistributedNumGridVSR(
             body,
