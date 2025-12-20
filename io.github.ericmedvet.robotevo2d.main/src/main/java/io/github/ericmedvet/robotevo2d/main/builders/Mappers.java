@@ -186,8 +186,8 @@ public class Mappers {
       return availableVoxels.containsKey(s) ? availableVoxels.get(s).get() : null;
     };
     Grid<String> exampleGrid = Grid.create(
-        1,
-        1,
+        maxW,
+        maxH,
         availableVoxels.keySet().stream().sorted().findFirst().orElseThrow()
     );
     return beforeM.andThen(
