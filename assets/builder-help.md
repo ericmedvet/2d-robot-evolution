@@ -149,6 +149,17 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.Poi
 
 Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongDrawer">PongDrawer</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Drawers.pong()` by robotevo2d-main:1.6.2-SNAPSHOT
 
+### Builder `dynamicalSystem.drawer.sequentialXor()`
+
+`ds.d.sequentialXor(configuration; rewardTypes)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `configuration` | npm | `viz.plot.configuration.image()` | <code><abbr title="io.github.ericmedvet.jviz.core.plot.image.Configuration">Configuration</abbr></code> |
+| `rewardTypes` | e[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.SequentialXor$RewardType">SequentialXor$RewardType</abbr>&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.SequentialXorDrawer">SequentialXorDrawer</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Drawers.sequentialXor()` by robotevo2d-main:1.6.2-SNAPSHOT
+
 ### Builder `dynamicalSystem.drawer.vectorField()`
 
 `ds.d.vectorField(arena)`
@@ -157,7 +168,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongDrawe
 | --- | --- | --- | --- |
 | `arena` | e |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.Arena$Prepared">Arena$Prepared</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.VectorFieldDrawer">VectorFieldDrawer</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Drawers.vectorField()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.drawer.VectorFieldDrawer">VectorFieldDrawer</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Drawers.vectorField()` by robotevo2d-main:1.6.2-SNAPSHOT
 
 ## Package `dynamicalSystem.environment`
 
@@ -165,24 +176,24 @@ Aliases: `ds.e`, `ds.env`, `ds.environment`, `dynSys.e`, `dynSys.env`, `dynSys.e
 
 ### Builder `dynamicalSystem.environment.navigation()`
 
-`ds.e.navigation(name; initialRobotDirectionRange; robotRadius; robotMaxV; sensorsAngleRange; nOfSensors; sensorRange; senseTarget; arena; rescaleInput; relativeV; randomGenerator)`
+`ds.e.navigation(name; initialRobotDirectionRange; robotRadius; robotMaxV; sensorsAngleRange; nOfSensors; sensorRange; targetSensing; arena; rescaleInput; relativeV; randomGenerator)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `name` | s | interpolate `nav-{arena.name}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `initialRobotDirectionRange` | npm | `m.range(max = 0; min = 0)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `robotRadius` | d | `0.05` | <code>double</code> |
-| `robotMaxV` | d | `0.01` | <code>double</code> |
+| `robotMaxV` | d | `0.1` | <code>double</code> |
 | `sensorsAngleRange` | npm | `m.range(max = 1.57; min = -1.57)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `nOfSensors` | i | `5` | <code>int</code> |
 | `sensorRange` | d | `0.5` | <code>double</code> |
-| `senseTarget` | b | `true` | <code>boolean</code> |
+| `targetSensing` | e | `LIMITED` | <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationEnvironment$Configuration$TargetSensing">NavigationEnvironment$Configuration$TargetSensing</abbr></code> |
 | `arena` | npm | `ds.arena.prepared()` | <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationArena">NavigationArena</abbr></code> |
 | `rescaleInput` | b | `true` | <code>boolean</code> |
-| `relativeV` | b | `false` | <code>boolean</code> |
+| `relativeV` | b | `true` | <code>boolean</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.Environment">Environment</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationEnvironment$State">NavigationEnvironment$State</abbr>, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Environments.navigation()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.Environment">Environment</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationEnvironment$State">NavigationEnvironment$State</abbr>, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;CS&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Environments.navigation()` by robotevo2d-main:1.6.2-SNAPSHOT
 
 ### Builder `dynamicalSystem.environment.pointNavigation()`
 
@@ -197,7 +208,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.Environment">E
 | `rescaleInput` | b | `true` | <code>boolean</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.Environment">Environment</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.PointNavigationEnvironment$State">PointNavigationEnvironment$State</abbr>, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Environments.pointNavigation()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.Environment">Environment</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.PointNavigationEnvironment$State">PointNavigationEnvironment$State</abbr>, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;CS&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Environments.pointNavigation()` by robotevo2d-main:1.6.2-SNAPSHOT
 
 ### Builder `dynamicalSystem.environment.pong()`
 
@@ -227,10 +238,11 @@ Aliases: `ds.e.n`, `ds.e.nav`, `ds.e.navigation`, `ds.env.n`, `ds.env.nav`, `ds.
 
 ### Builder `dynamicalSystem.environment.navigation.arenaCoverage()`
 
-`ds.e.n.arenaCoverage(of; xBins; yBins; format)`
+`ds.e.n.arenaCoverage(name; of; xBins; yBins; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `arena.coverage[{xBins}x{yBins}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;&gt;&gt;</code> |
 | `xBins` | i | `10` | <code>int</code> |
 | `yBins` | i | `10` | <code>int</code> |
@@ -240,21 +252,36 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 ### Builder `dynamicalSystem.environment.navigation.avgD()`
 
-`ds.e.n.avgD(of; format)`
+`ds.e.n.avgD(name; of; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `avg.dist` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.avgD()` by robotevo2d-main:1.6.2-SNAPSHOT
 
-### Builder `dynamicalSystem.environment.navigation.closestRobotP()`
+### Builder `dynamicalSystem.environment.navigation.avgGapToObstacle()`
 
-`ds.e.n.closestRobotP(of; normalized)`
+`ds.e.n.avgGapToObstacle(name; of; direction; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `avg.gap[d={direction:%.2f}]` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationEnvironment$State">NavigationEnvironment$State</abbr>&gt;&gt;&gt;</code> |
+| `direction` | d | `-1.5707963267948966` | <code>double</code> |
+| `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.avgGapToObstacle()` by robotevo2d-main:1.6.2-SNAPSHOT
+
+### Builder `dynamicalSystem.environment.navigation.closestRobotP()`
+
+`ds.e.n.closestRobotP(name; of; normalized)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `name` | s | interpolate `closest.pos` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;&gt;&gt;</code> |
 | `normalized` | b | `true` | <code>boolean</code> |
 
@@ -262,10 +289,11 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 
 ### Builder `dynamicalSystem.environment.navigation.distanceFromTarget()`
 
-`ds.e.n.distanceFromTarget(of; format)`
+`ds.e.n.distanceFromTarget(name; of; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `dist` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
@@ -273,10 +301,11 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 ### Builder `dynamicalSystem.environment.navigation.finalD()`
 
-`ds.e.n.finalD(of; format)`
+`ds.e.n.finalD(name; of; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `final.dist` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
@@ -284,21 +313,35 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 ### Builder `dynamicalSystem.environment.navigation.finalRobotP()`
 
-`ds.e.n.finalRobotP(of; normalized)`
+`ds.e.n.finalRobotP(name; of; normalized)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `final.robot.pos` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;&gt;&gt;</code> |
 | `normalized` | b | `true` | <code>boolean</code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.geometry.Point">Point</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.finalRobotP()` by robotevo2d-main:1.6.2-SNAPSHOT
 
-### Builder `dynamicalSystem.environment.navigation.finalTime()`
+### Builder `dynamicalSystem.environment.navigation.finalTargetP()`
 
-`ds.e.n.finalTime(of; format)`
+`ds.e.n.finalTargetP(name; of; normalized)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `final.target.pos` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;&gt;&gt;</code> |
+| `normalized` | b | `true` | <code>boolean</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.geometry.Point">Point</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.finalTargetP()` by robotevo2d-main:1.6.2-SNAPSHOT
+
+### Builder `dynamicalSystem.environment.navigation.finalTime()`
+
+`ds.e.n.finalTime(name; of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `name` | s | interpolate `final.time` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
@@ -306,10 +349,11 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 ### Builder `dynamicalSystem.environment.navigation.finalTimePlusD()`
 
-`ds.e.n.finalTimePlusD(of; epsilon; format)`
+`ds.e.n.finalTimePlusD(name; of; epsilon; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `final.td` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;&gt;&gt;</code> |
 | `epsilon` | d | `0.01` | <code>double</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
@@ -318,21 +362,47 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 ### Builder `dynamicalSystem.environment.navigation.minD()`
 
-`ds.e.n.minD(of; format)`
+`ds.e.n.minD(name; of; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `min.dist` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.minD()` by robotevo2d-main:1.6.2-SNAPSHOT
 
-### Builder `dynamicalSystem.environment.navigation.x()`
+### Builder `dynamicalSystem.environment.navigation.symbolicTrajectory()`
 
-`ds.e.n.x(of; format)`
+`ds.e.n.symbolicTrajectory(name; of; movTRate; turnT; forwardSymbol; backwardSymbol; forwardLeftSymbol; forwardRightSymbol; backwardLeftSymbol; backwardRightSymbol; rotateLeftSymbol; rotateRightSymbol; stopSymbol; collapse; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `symbolic.trajectory[{collapse}]` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationEnvironment$State">NavigationEnvironment$State</abbr>&gt;&gt;&gt;</code> |
+| `movTRate` | d | `0.1` | <code>double</code> |
+| `turnT` | d | `0.25` | <code>double</code> |
+| `forwardSymbol` | s | `↑` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `backwardSymbol` | s | `↓` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `forwardLeftSymbol` | s | `↖` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `forwardRightSymbol` | s | `↗` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `backwardLeftSymbol` | s | `↙` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `backwardRightSymbol` | s | `↘` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `rotateLeftSymbol` | s | `↶` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `rotateRightSymbol` | s | `↷` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `stopSymbol` | s | `o` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `collapse` | b | `false` | <code>boolean</code> |
+| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.symbolicTrajectory()` by robotevo2d-main:1.6.2-SNAPSHOT
+
+### Builder `dynamicalSystem.environment.navigation.x()`
+
+`ds.e.n.x(name; of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `name` | s | interpolate `x` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.geometry.Point">Point</abbr>&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
@@ -340,10 +410,11 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 ### Builder `dynamicalSystem.environment.navigation.y()`
 
-`ds.e.n.y(of; format)`
+`ds.e.n.y(name; of; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `y` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.geometry.Point">Point</abbr>&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
@@ -355,15 +426,17 @@ Aliases: `ds.e.n.reward`, `ds.e.nav.reward`, `ds.e.navigation.reward`, `ds.env.n
 
 ### Builder `dynamicalSystem.environment.navigation.reward.reaching()`
 
-`ds.e.n.reward.reaching(of; targetProximityRadius; targetProximityReward; collisionPenalty; distanceWeight; format)`
+`ds.e.n.reward.reaching(name; of; targetProximityRadius; targetProximityReward; collisionPenalty; distanceWeight; distanceDecreaseWeight; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `reaching[{targetProximityRadius:%.2f}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;</code> |
-| `targetProximityRadius` | d | `0.1` | <code>double</code> |
+| `targetProximityRadius` | d | `0.05` | <code>double</code> |
 | `targetProximityReward` | d | `1.0` | <code>double</code> |
 | `collisionPenalty` | d | `0.01` | <code>double</code> |
-| `distanceWeight` | d | `0.1` | <code>double</code> |
+| `distanceWeight` | d | `-0.01` | <code>double</code> |
+| `distanceDecreaseWeight` | d | `0.1` | <code>double</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationRewards.reaching()` by robotevo2d-main:1.6.2-SNAPSHOT
@@ -484,16 +557,104 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.yOffsetFromBall2()` by robotevo2d-main:1.6.2-SNAPSHOT
 
+## Package `dynamicalSystem.environment.sxor`
+
+Aliases: `ds.e.sxor`, `ds.env.sxor`, `ds.environment.sxor`, `dynSys.e.sxor`, `dynSys.env.sxor`, `dynSys.environment.sxor`, `dynamicalSystem.e.sxor`, `dynamicalSystem.env.sxor`, `dynamicalSystem.environment.sxor`
+
+### Builder `dynamicalSystem.environment.sxor.avgScore()`
+
+`ds.e.sxor.avgScore(name; of; format; rewardType; caseIndexes)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `name` | s | interpolate `avg[{rewardType}]` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.ReinforcementLearningAgent$RewardedInput">ReinforcementLearningAgent$RewardedInput</abbr>&lt;double[]&gt;, double[], <abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.SequentialXor$State">SequentialXor$State</abbr>&gt;&gt;&gt;</code> |
+| `format` | s | `%+5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `rewardType` | e | `UNLIMITED` | <code><abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.SequentialXor$RewardType">SequentialXor$RewardType</abbr></code> |
+| `caseIndexes` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SequentialXorFunctions.avgScore()` by robotevo2d-main:1.6.2-SNAPSHOT
+
+### Builder `dynamicalSystem.environment.sxor.avgScoreDelta()`
+
+`ds.e.sxor.avgScoreDelta(name; of; format; rewardType; firstIndexes; secondIndexes)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `name` | s | interpolate `avg.delta[{rewardType}]` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.ReinforcementLearningAgent$RewardedInput">ReinforcementLearningAgent$RewardedInput</abbr>&lt;double[]&gt;, double[], <abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.SequentialXor$State">SequentialXor$State</abbr>&gt;&gt;&gt;</code> |
+| `format` | s | `%+5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `rewardType` | e | `UNLIMITED` | <code><abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.SequentialXor$RewardType">SequentialXor$RewardType</abbr></code> |
+| `firstIndexes` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
+| `secondIndexes` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SequentialXorFunctions.avgScoreDelta()` by robotevo2d-main:1.6.2-SNAPSHOT
+
+### Builder `dynamicalSystem.environment.sxor.avgScoreVariation()`
+
+`ds.e.sxor.avgScoreVariation(name; of; format; rewardType; indexes)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `name` | s | interpolate `avg.delta[{rewardType}]` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.ReinforcementLearningAgent$RewardedInput">ReinforcementLearningAgent$RewardedInput</abbr>&lt;double[]&gt;, double[], <abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.SequentialXor$State">SequentialXor$State</abbr>&gt;&gt;&gt;</code> |
+| `format` | s | `%+5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `rewardType` | e | `UNLIMITED` | <code><abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.SequentialXor$RewardType">SequentialXor$RewardType</abbr></code> |
+| `indexes` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SequentialXorFunctions.avgScoreVariation()` by robotevo2d-main:1.6.2-SNAPSHOT
+
 ## Package `dynamicalSystem.function`
 
 Aliases: `ds.f`, `ds.function`, `dynSys.f`, `dynSys.function`, `dynamicalSystem.f`, `dynamicalSystem.function`
 
-### Builder `dynamicalSystem.function.cumulatedReward()`
+### Builder `dynamicalSystem.function.agentStateTrajectory()`
 
-`ds.f.cumulatedReward(of; format)`
+`ds.f.agentStateTrajectory(name; of; stateF; sat; tRange; dT; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `states.in[{simulation.name}]` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, C&gt;</code> |
+| `stateF` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;CS, double[]&gt;</code> |
+| `sat` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask">SingleAgentTask</abbr>&lt;C, ?, ?, CS, ?&gt;</code> |
+| `tRange` | npm |  | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
+| `dT` | d |  | <code>double</code> |
+| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.SortedMap">SortedMap</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, double[]&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.agentStateTrajectory()` by robotevo2d-main:1.6.2-SNAPSHOT
+
+### Builder `dynamicalSystem.function.asNumericalRLAgent()`
+
+`ds.f.asNumericalRLAgent(name; of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `name` | s | `as.numrl.agent` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;S&gt;&gt;</code> |
+| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.rl.NumericalReinforcementLearningAgent">NumericalReinforcementLearningAgent</abbr>&lt;S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.asNumericalRLAgent()` by robotevo2d-main:1.6.2-SNAPSHOT
+
+### Builder `dynamicalSystem.function.asRLAgent()`
+
+`ds.f.asRLAgent(name; of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `name` | s | `as.rl.agent` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.DynamicalSystem">DynamicalSystem</abbr>&lt;I, O, S&gt;&gt;</code> |
+| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.rl.ReinforcementLearningAgent">ReinforcementLearningAgent</abbr>&lt;I, O, S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.asRLAgent()` by robotevo2d-main:1.6.2-SNAPSHOT
+
+### Builder `dynamicalSystem.function.cumulatedReward()`
+
+`ds.f.cumulatedReward(name; of; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `name` | s | interpolate `cumulated.reward` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.ReinforcementLearningAgent$RewardedInput">ReinforcementLearningAgent$RewardedInput</abbr>&lt;?&gt;, ?, ?&gt;&gt;&gt;</code> |
 | `format` | s | `%+6.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
@@ -501,10 +662,11 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 ### Builder `dynamicalSystem.function.doubleOp()`
 
-`ds.f.doubleOp(of; activationF; format)`
+`ds.f.doubleOp(name; of; activationF; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `{activationF}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 | `activationF` | e | `IDENTITY` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
@@ -525,10 +687,11 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 ### Builder `dynamicalSystem.function.opponentBiSimulator()`
 
-`ds.f.opponentBiSimulator(of; simulation; opponent; home; tRange; dT; format)`
+`ds.f.opponentBiSimulator(name; of; simulation; opponent; home; tRange; dT; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `opponent.sim` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, S&gt;</code> |
 | `simulation` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.HomogeneousBiSimulation">HomogeneousBiSimulation</abbr>&lt;S, SS, B&gt;</code> |
 | `opponent` | npm |  | <code>S</code> |
@@ -537,39 +700,54 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `dT` | d |  | <code>double</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;SS&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.opponentBiSimulator()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;SS&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.opponentBiSimulator()` by robotevo2d-main:1.6.2-SNAPSHOT
 
-### Builder `dynamicalSystem.function.selfBiSimulator()`
+### Builder `dynamicalSystem.function.params()`
 
-`ds.f.selfBiSimulator(of; simulation; tRange; dT; format)`
+`ds.f.params(name; of; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `params` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Parametrized">Parametrized</abbr>&lt;?, P&gt;&gt;</code> |
+| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, P&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.params()` by robotevo2d-main:1.6.2-SNAPSHOT
+
+### Builder `dynamicalSystem.function.selfBiSimulator()`
+
+`ds.f.selfBiSimulator(name; of; simulation; tRange; dT; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `name` | s | interpolate `self.sim` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, S&gt;</code> |
 | `simulation` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.HomogeneousBiSimulation">HomogeneousBiSimulation</abbr>&lt;S, SS, B&gt;</code> |
 | `tRange` | npm |  | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `dT` | d |  | <code>double</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;SS&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.selfBiSimulator()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;SS&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.selfBiSimulator()` by robotevo2d-main:1.6.2-SNAPSHOT
 
 ### Builder `dynamicalSystem.function.simOutcome()`
 
-`ds.f.simOutcome(of; format)`
+`ds.f.simOutcome(name; of; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `sim.outcome` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;S&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.SortedMap">SortedMap</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.simOutcome()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.SortedMap">SortedMap</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.simOutcome()` by robotevo2d-main:1.6.2-SNAPSHOT
 
 ### Builder `dynamicalSystem.function.simulate()`
 
-`ds.f.simulate(of; simulation; tRange; dT; format)`
+`ds.f.simulate(name; of; simulation; tRange; dT; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `sim[{simulation.name}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, T&gt;</code> |
 | `simulation` | npm |  | <code>S</code> |
 | `tRange` | npm |  | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
@@ -592,21 +770,23 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 
 ### Builder `dynamicalSystem.function.unwrappedRl()`
 
-`ds.f.unwrappedRl(of; name)`
+`ds.f.unwrappedRl(name; of; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.ReinforcementLearningAgent$RewardedInput">ReinforcementLearningAgent$RewardedInput</abbr>&lt;O&gt;, A, S&gt;&gt;&gt;</code> |
 | `name` | s | `unwrapped.rl` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.ReinforcementLearningAgent$RewardedInput">ReinforcementLearningAgent$RewardedInput</abbr>&lt;O&gt;, A, S&gt;&gt;&gt;</code> |
+| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;O, A, S&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.unwrappedRl()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;O, A, S&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.unwrappedRl()` by robotevo2d-main:1.6.2-SNAPSHOT
 
 ### Builder `dynamicalSystem.function.weights()`
 
-`ds.f.weights(of; format)`
+`ds.f.weights(name; of; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | interpolate `weights` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron">MultiLayerPerceptron</abbr>&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
@@ -629,6 +809,18 @@ Produces <code>T</code>; built from `io.github.ericmedvet.jsdynsym.buildable.bui
 ## Package `dynamicalSystem.num`
 
 Aliases: `ds.num`, `dynSys.num`, `dynamicalSystem.num`
+
+### Builder `dynamicalSystem.num.composition()`
+
+`ds.num.composition(first; second; nOfInternalIOs)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `first` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;S1&gt;&gt;</code> |
+| `second` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;S2&gt;&gt;</code> |
+| `nOfInternalIOs` | i |  | <code>int</code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;S1, S2&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.composition()` by robotevo2d-main:1.6.2-SNAPSHOT
 
 ### Builder `dynamicalSystem.num.drn()`
 
@@ -657,16 +849,26 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 
 Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.EnhancedInput">EnhancedInput</abbr>&lt;S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.enhanced()` by robotevo2d-main:1.6.2-SNAPSHOT
 
-### Builder `dynamicalSystem.num.hebbianMlp()`
+### Builder `dynamicalSystem.num.fromFunctions()`
 
-`ds.num.hebbianMlp(innerLayerRatio; nOfInnerLayers; innerLayers; learningRate; activationFunction; initialWeightRange; randomGenerator; parametrizationType; weightInitializationType)`
+`ds.num.fromFunctions(name; functions)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `innerLayerRatio` | d | `0.65` | <code>double</code> |
-| `nOfInnerLayers` | i | `1` | <code>int</code> |
+| `name` | s | interpolate `{functions}` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `functions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.MultivariateRealFunction">MultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.fromFunctions()` by robotevo2d-main:1.6.2-SNAPSHOT
+
+### Builder `dynamicalSystem.num.hebbianMlp()`
+
+`ds.num.hebbianMlp(innerLayers; learningRate; weightsUpdateInterval; activationFunction; initialWeightRange; randomGenerator; parametrizationType; weightInitializationType)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
 | `innerLayers` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
 | `learningRate` | d | `0.01` | <code>double</code> |
+| `weightsUpdateInterval` | i | `1` | <code>int</code> |
 | `activationFunction` | e | `TANH` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
 | `initialWeightRange` | npm | `m.range(max = 0.1; min = -0.1)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
@@ -703,7 +905,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `innerLayerRatio` | d | `0.65` | <code>double</code> |
-| `nOfInnerLayers` | i | `1` | <code>int</code> |
+| `nOfInnerLayers` | i | `0` | <code>int</code> |
 | `innerLayers` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
 | `activationFunction` | e | `TANH` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
 
@@ -771,13 +973,31 @@ Aliases: `ds.opponent.pong`, `dynSys.opponent.pong`, `dynamicalSystem.opponent.p
 
 Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongAgent">PongAgent</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongOpponents.simple()` by robotevo2d-main:1.6.2-SNAPSHOT
 
-## Package `dynamicalSystem.rl`
+## Package `dynamicalSystem.rl.num`
 
-Aliases: `ds.rl`, `dynSys.rl`, `dynamicalSystem.rl`
+Aliases: `ds.rl.num`, `dynSys.rl.num`, `dynamicalSystem.rl.num`
 
-### Builder `dynamicalSystem.rl.linearActorCritic()`
+### Builder `dynamicalSystem.rl.num.freeFormMlp()`
 
-`ds.rl.linearActorCritic(name; actorLearningRate; criticLearningRate; actorWeightDecay; criticWeightDecay; discountFactor; explorationNoise; maxGradLogProb; initialWeightRange; randomGenerator)`
+`ds.rl.num.freeFormMlp(innerLayerRatio; nOfInnerLayers; innerLayers; activationFunction; historyLength; weightsUpdateInterval; initialWeightRange; randomGenerator; weightInitializationType)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `innerLayerRatio` | d | `0.65` | <code>double</code> |
+| `nOfInnerLayers` | i | `1` | <code>int</code> |
+| `innerLayers` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
+| `activationFunction` | e | `TANH` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
+| `historyLength` | i | `10` | <code>int</code> |
+| `weightsUpdateInterval` | i | `1` | <code>int</code> |
+| `initialWeightRange` | npm | `m.range(max = 0.1; min = -0.1)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
+| `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
+| `weightInitializationType` | e | `RANDOM` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.HebbianMultiLayerPerceptron$WeightInitializationType">HebbianMultiLayerPerceptron$WeightInitializationType</abbr></code> |
+
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.NumericalReinforcementLearningAgent">NumericalReinforcementLearningAgent</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.rl.FreeFormPlasticMLPRLAgent">FreeFormPlasticMLPRLAgent</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalRLAgents.freeFormMlp()` by robotevo2d-main:1.6.2-SNAPSHOT
+
+### Builder `dynamicalSystem.rl.num.linearActorCritic()`
+
+`ds.rl.num.linearActorCritic(name; actorLearningRate; criticLearningRate; actorWeightDecay; criticWeightDecay; discountFactor; explorationNoise; maxGradLogProb; initialWeightRange; randomGenerator)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -792,48 +1012,28 @@ Aliases: `ds.rl`, `dynSys.rl`, `dynamicalSystem.rl`
 | `initialWeightRange` | npm | `m.range(max = 0.2; min = -0.2)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="java.util.function.UnaryOperator">UnaryOperator</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.NumericalReinforcementLearningAgent">NumericalReinforcementLearningAgent</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.LinearActorCritic$State">LinearActorCritic$State</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.RLAgents.linearActorCritic()` by robotevo2d-main:1.6.2-SNAPSHOT
-
-## Package `dynamicalSystem.rl.num`
-
-Aliases: `ds.rl.num`, `dynSys.rl.num`, `dynamicalSystem.rl.num`
-
-### Builder `dynamicalSystem.rl.num.freeFormMlp()`
-
-`ds.rl.num.freeFormMlp(innerLayerRatio; nOfInnerLayers; innerLayers; activationFunction; historyLength; initialWeightRange; randomGenerator; weightInitializationType)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `innerLayerRatio` | d | `0.65` | <code>double</code> |
-| `nOfInnerLayers` | i | `1` | <code>int</code> |
-| `innerLayers` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
-| `activationFunction` | e | `TANH` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
-| `historyLength` | i | `10` | <code>int</code> |
-| `initialWeightRange` | npm | `m.range(max = 0.1; min = -0.1)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
-| `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
-| `weightInitializationType` | e | `RANDOM` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.HebbianMultiLayerPerceptron$WeightInitializationType">HebbianMultiLayerPerceptron$WeightInitializationType</abbr></code> |
-
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.rl.FreeFormPlasticMLPRLAgent">FreeFormPlasticMLPRLAgent</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalRLAgents.freeFormMlp()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.NumericalReinforcementLearningAgent">NumericalReinforcementLearningAgent</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.rl.LinearActorCritic">LinearActorCritic</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalRLAgents.linearActorCritic()` by robotevo2d-main:1.6.2-SNAPSHOT
 
 ## Package `dynamicalSystem.simulation`
 
 Aliases: `ds.s`, `ds.sim`, `ds.simulation`, `dynSys.s`, `dynSys.sim`, `dynSys.simulation`, `dynamicalSystem.s`, `dynamicalSystem.sim`, `dynamicalSystem.simulation`
 
-### Builder `dynamicalSystem.simulation.composed()`
+### Builder `dynamicalSystem.simulation.sequentialXor()`
 
-`ds.s.composed(name; function; simulation)`
+`ds.s.sequentialXor(name; cases; resetAgent; rewardType)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
-| `name` | s | interpolate `{simulation.name}[{function.name}]` | <code><abbr title="java.lang.String">String</abbr></code> |
-| `function` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, S&gt;</code> |
-| `simulation` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.Simulation">Simulation</abbr>&lt;S, BS, B&gt;</code> |
+| `name` | s | interpolate `sequentialXor` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `cases` | s[] | `[00, 01, 10, 11]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code> |
+| `resetAgent` | b | `false` | <code>boolean</code> |
+| `rewardType` | e | `UNLIMITED` | <code><abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.SequentialXor$RewardType">SequentialXor$RewardType</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.Simulation">Simulation</abbr>&lt;X, BS, B&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Simulations.composed()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.SequentialXor">SequentialXor</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Simulations.sequentialXor()` by robotevo2d-main:1.6.2-SNAPSHOT
 
 ### Builder `dynamicalSystem.simulation.variableSensorPositionsNavigation()`
 
-`ds.s.variableSensorPositionsNavigation(name; initialRobotDirectionRange; robotRadius; robotMaxV; nOfSensors; sensorRange; senseTarget; arena; rescaleInput; relativeV; sortAngles; randomGenerator)`
+`ds.s.variableSensorPositionsNavigation(name; initialRobotDirectionRange; robotRadius; robotMaxV; nOfSensors; sensorRange; targetSensing; arena; rescaleInput; relativeV; sortAngles; randomGenerator)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
@@ -843,7 +1043,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.Simulation">Si
 | `robotMaxV` | d | `0.01` | <code>double</code> |
 | `nOfSensors` | i | `5` | <code>int</code> |
 | `sensorRange` | d | `0.5` | <code>double</code> |
-| `senseTarget` | b | `true` | <code>boolean</code> |
+| `targetSensing` | e | `LIMITED` | <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationEnvironment$Configuration$TargetSensing">NavigationEnvironment$Configuration$TargetSensing</abbr></code> |
 | `arena` | npm | `ds.arena.prepared()` | <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationArena">NavigationArena</abbr></code> |
 | `rescaleInput` | b | `true` | <code>boolean</code> |
 | `relativeV` | b | `false` | <code>boolean</code> |
@@ -863,11 +1063,11 @@ Aliases: `ds.saTask`, `ds.sat`, `ds.singleAgentTask`, `dynSys.saTask`, `dynSys.s
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `name` | s | interpolate `{environment.name}` | <code><abbr title="java.lang.String">String</abbr></code> |
-| `environment` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.Environment">Environment</abbr>&lt;O, A, S, C&gt;</code> |
-| `stopCondition` | npm | `predicate.not(condition = predicate.always())` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;S&gt;</code> |
+| `environment` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.Environment">Environment</abbr>&lt;O, A, ES, C&gt;</code> |
+| `stopCondition` | npm | `predicate.not(condition = predicate.always())` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;ES&gt;</code> |
 | `resetAgent` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask">SingleAgentTask</abbr>&lt;C, O, A, S&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SingleAgentTasks.fromEnvironment()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask">SingleAgentTask</abbr>&lt;C, O, A, CS, ES&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SingleAgentTasks.fromEnvironment()` by robotevo2d-main:1.6.2-SNAPSHOT
 
 ## Package `dynamicalSystem.singleRLAgentTask`
 
@@ -880,12 +1080,12 @@ Aliases: `ds.saRLTask`, `ds.singleRLAgentTask`, `ds.srlat`, `dynSys.saRLTask`, `
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `name` | s | interpolate `{environment.name}` | <code><abbr title="java.lang.String">String</abbr></code> |
-| `environment` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.Environment">Environment</abbr>&lt;double[], double[], S, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code> |
-| `stopCondition` | npm | `predicate.not(condition = predicate.always())` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;S&gt;</code> |
+| `environment` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.Environment">Environment</abbr>&lt;double[], double[], ES, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;? extends CS&gt;&gt;</code> |
+| `stopCondition` | npm | `predicate.not(condition = predicate.always())` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;ES&gt;</code> |
 | `resetAgent` | b | `false` | <code>boolean</code> |
-| `reward` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="java.lang.Double">Double</abbr>&gt;</code> |
+| `reward` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;ES, <abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.SingleRLAgentTask">SingleRLAgentTask</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.NumericalReinforcementLearningAgent">NumericalReinforcementLearningAgent</abbr>&lt;?&gt;, double[], double[], S&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SingleRLAgentTasks.fromNumericalEnvironment()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.SingleRLAgentTask">SingleRLAgentTask</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.NumericalReinforcementLearningAgent">NumericalReinforcementLearningAgent</abbr>&lt;? extends CS&gt;, double[], double[], CS, ES&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SingleRLAgentTasks.fromNumericalEnvironment()` by robotevo2d-main:1.6.2-SNAPSHOT
 
 ## Package `ea`
 
@@ -1056,7 +1256,7 @@ Aliases: `ea.d`, `ea.drawer`
 | --- | --- | --- | --- |
 | `maxW` | i | `0` | <code>int</code> |
 | `maxH` | i | `0` | <code>int</code> |
-| `colors` | npm | `ea.misc.map(entries = [])` | <code><abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.Character">Character</abbr>, <abbr title="java.awt.Color">Color</abbr>&gt;</code> |
+| `colors` | npm |  | <code><abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.Character">Character</abbr>, <abbr title="java.awt.Color">Color</abbr>&gt;</code> |
 | `borderColor` | npm | `ea.misc.colorByName(name = white)` | <code><abbr title="java.awt.Color">Color</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.drawer.PolyominoDrawer">PolyominoDrawer</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Drawers.polyomino()` by robotevo2d-main:1.6.2-SNAPSHOT
@@ -1533,6 +1733,20 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `format` | s | `%4d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Long">Long</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.nOfIterations()` by robotevo2d-main:1.6.2-SNAPSHOT
+
+### Builder `ea.function.numExpr()`
+
+`ea.f.numExpr(name; of; args; expr; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `name` | s | interpolate `[{expr}]` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, Z&gt;</code> |
+| `args` | npm[] | `[f.identity()]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;Z, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;&gt;</code> |
+| `expr` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
+| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.numExpr()` by robotevo2d-main:1.6.2-SNAPSHOT
 
 ### Builder `ea.function.overallTargetDistance()`
 
@@ -2133,6 +2347,18 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.bsToGrammarGrid()` by robotevo2d-main:1.6.2-SNAPSHOT
 
+### Builder `ea.mapper.composedNds()`
+
+`ea.m.composedNds(of; then; nOfInternalIOs)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code> |
+| `then` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code> |
+| `nOfInternalIOs` | i |  | <code>int</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.composedNds()` by robotevo2d-main:1.6.2-SNAPSHOT
+
 ### Builder `ea.mapper.dsToBitString()`
 
 `ea.m.dsToBitString(of; t)`
@@ -2591,17 +2817,6 @@ Produces <code><abbr title="java.awt.Color">Color</abbr></code>; built from `io.
 
 Produces <code><abbr title="java.awt.Color">Color</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.colorByRgb()` by robotevo2d-main:1.6.2-SNAPSHOT
 
-### Builder `ea.misc.entry()`
-
-`ea.misc.entry(key; value)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `key` | npm |  | <code>K</code> |
-| `value` | npm |  | <code>V</code> |
-
-Produces <code><abbr title="java.util.Map$Entry">Map$Entry</abbr>&lt;K, V&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.entry()` by robotevo2d-main:1.6.2-SNAPSHOT
-
 ### Builder `ea.misc.farthestMESelector()`
 
 `ea.misc.farthestMESelector(name; nOfOpponents)`
@@ -2662,27 +2877,6 @@ Produces <code><abbr title="java.awt.image.BufferedImage">BufferedImage</abbr></
 | `memoryFactor` | d | `0.5` | <code>double</code> |
 
 Produces <code><abbr title="java.util.function.BinaryOperator">BinaryOperator</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.lossyAverage()` by robotevo2d-main:1.6.2-SNAPSHOT
-
-### Builder `ea.misc.map()`
-
-`ea.misc.map(entries)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `entries` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.Map$Entry">Map$Entry</abbr>&lt;K, V&gt;&gt;</code> |
-
-Produces <code><abbr title="java.util.Map">Map</abbr>&lt;K, V&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.map()` by robotevo2d-main:1.6.2-SNAPSHOT
-
-### Builder `ea.misc.mapFromLists()`
-
-`ea.misc.mapFromLists(keys; values)`
-
-| Param | Type | Default | Java type |
-| --- | --- | --- | --- |
-| `keys` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;K&gt;</code> |
-| `values` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;V&gt;</code> |
-
-Produces <code><abbr title="java.util.Map">Map</abbr>&lt;K, V&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.mapFromLists()` by robotevo2d-main:1.6.2-SNAPSHOT
 
 ### Builder `ea.misc.minValue()`
 
@@ -3194,6 +3388,20 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQua
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleCBMOProblem">SimpleCBMOProblem</abbr>&lt;S, <abbr title="java.util.function.Function">Function</abbr>&lt;S, CQ&gt;, CQ, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.functionsToScbmo()` by robotevo2d-main:1.6.2-SNAPSHOT
 
+### Builder `ea.problem.manyToCbto()`
+
+`ea.p.manyToCbto(name; problems; validationProblems; aggregator; comparator)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `name` | s | interpolate `{problems}` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `problems` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.problem.QualityBasedProblem">QualityBasedProblem</abbr>&lt;S, PQ&gt;&gt;</code> |
+| `validationProblems` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.problem.QualityBasedProblem">QualityBasedProblem</abbr>&lt;S, PQ&gt;&gt;</code> |
+| `aggregator` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;PQ&gt;, AQ&gt;</code> |
+| `comparator` | npm |  | <code><abbr title="java.util.Comparator">Comparator</abbr>&lt;AQ&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.CBTOProblem">CBTOProblem</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.problem.QualityBasedProblem">QualityBasedProblem</abbr>&lt;S, PQ&gt;, PQ, AQ&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.manyToCbto()` by robotevo2d-main:1.6.2-SNAPSHOT
+
 ### Builder `ea.problem.moToSo()`
 
 `ea.p.moToSo(name; objective; moProblem)`
@@ -3290,6 +3498,21 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleBBMOPro
 
 Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMOProblem">SimpleMOProblem</abbr>&lt;S, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.simToSmo()` by robotevo2d-main:1.6.2-SNAPSHOT
 
+### Builder `ea.problem.simToTo()`
+
+`ea.p.simToTo(name; simulation; dT; tRange; comparator; qFunction)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `name` | s | interpolate `{simulation.name}->{qFunction}` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `simulation` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.Simulation">Simulation</abbr>&lt;S, BS, B&gt;</code> |
+| `dT` | d |  | <code>double</code> |
+| `tRange` | npm |  | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
+| `comparator` | npm |  | <code><abbr title="java.util.Comparator">Comparator</abbr>&lt;Q&gt;</code> |
+| `qFunction` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;B, Q&gt;</code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQualityBasedProblem">TotalOrderQualityBasedProblem</abbr>&lt;S, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.simToTo()` by robotevo2d-main:1.6.2-SNAPSHOT
+
 ### Builder `ea.problem.smoToSubsettedSmo()`
 
 `ea.p.smoToSubsettedSmo(name; objectives; smoProblem)`
@@ -3309,7 +3532,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMOProbl
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `name` | s | interpolate `{task.name}` | <code><abbr title="java.lang.String">String</abbr></code> |
-| `task` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.SingleRLAgentTask">SingleRLAgentTask</abbr>&lt;C, O, A, TS&gt;</code> |
+| `task` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.SingleRLAgentTask">SingleRLAgentTask</abbr>&lt;C, O, A, CS, TS&gt;</code> |
 | `dT` | d |  | <code>double</code> |
 | `tRange` | npm |  | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 
@@ -3322,7 +3545,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.BBTOProblem">
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `name` | s | interpolate `{task.name}` | <code><abbr title="java.lang.String">String</abbr></code> |
-| `task` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.SingleRLAgentTask">SingleRLAgentTask</abbr>&lt;C, O, A, ?&gt;</code> |
+| `task` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.SingleRLAgentTask">SingleRLAgentTask</abbr>&lt;C, O, A, CS, ?&gt;</code> |
 | `dT` | d |  | <code>double</code> |
 | `tRange` | npm |  | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 
@@ -5000,6 +5223,18 @@ Aliases: `f`, `function`
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.all()` by robotevo2d-main:1.6.2-SNAPSHOT
 
+### Builder `function.allNamed()`
+
+`f.allNamed(of; fs; format)`
+
+| Param | Type | Default | Java type |
+| --- | --- | --- | --- |
+| `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, T&gt;</code> |
+| `fs` | npm |  | <code><abbr title="java.util.SequencedMap">SequencedMap</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="java.util.function.Function">Function</abbr>&lt;T, K&gt;&gt;</code> |
+| `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
+
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.SequencedMap">SequencedMap</abbr>&lt;<abbr title="java.lang.String">String</abbr>, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.allNamed()` by robotevo2d-main:1.6.2-SNAPSHOT
+
 ### Builder `function.any()`
 
 `f.any(of; format)`
@@ -5768,11 +6003,14 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 
 ### Builder `function.toString()`
 
-`f.toString(of; format)`
+`f.toString(name; of; nullString; keepNull; format)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
+| `name` | s | `to.string` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Object">Object</abbr>&gt;</code> |
+| `nullString` | s | `` | <code><abbr title="java.lang.String">String</abbr></code> |
+| `keepNull` | b | `false` | <code>boolean</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
 Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.toString()` by robotevo2d-main:1.6.2-SNAPSHOT
@@ -5898,16 +6136,16 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</a
 
 Produces <code><abbr title="java.util.Map">Map</abbr>&lt;K, V&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.map()` by robotevo2d-main:1.6.2-SNAPSHOT
 
-### Builder `misc.nth()`
+### Builder `misc.nTh()`
 
-`m.nth(n; values)`
+`m.nTh(n; values)`
 
 | Param | Type | Default | Java type |
 | --- | --- | --- | --- |
 | `n` | i |  | <code>int</code> |
 | `values` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;T&gt;</code> |
 
-Produces <code>T</code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.nth()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code>T</code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.nTh()` by robotevo2d-main:1.6.2-SNAPSHOT
 
 ### Builder `misc.nullValue()`
 
