@@ -46,7 +46,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <jdk.version>21</jdk.version>
+    <jdk.version>25</jdk.version>
     <maven.version>3.9.11</maven.version>
     <revision>1.6.2-SNAPSHOT</revision>
     <jgea.version>2.8.2-SNAPSHOT</jgea.version>
