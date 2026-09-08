@@ -11,7 +11,7 @@ Aliases: `acc`, `accumulator`
 | `eFunction` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;E, F&gt;</code> |
 | `listFunction` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;F&gt;, O&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.AccumulatorFactory">AccumulatorFactory</abbr>&lt;E, O, K&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Accumulators.all()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.AccumulatorFactory">AccumulatorFactory</abbr>&lt;E, O, K&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Accumulators.all()` by robotevo2d-main:1.6.2
 
 ### Builder `accumulator.first()`
 
@@ -21,7 +21,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.AccumulatorFa
 | --- | --- | --- | --- |
 | `function` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;E, O&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.AccumulatorFactory">AccumulatorFactory</abbr>&lt;E, O, K&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Accumulators.first()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.AccumulatorFactory">AccumulatorFactory</abbr>&lt;E, O, K&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Accumulators.first()` by robotevo2d-main:1.6.2
 
 ### Builder `accumulator.last()`
 
@@ -31,7 +31,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.AccumulatorFa
 | --- | --- | --- | --- |
 | `function` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;E, O&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.AccumulatorFactory">AccumulatorFactory</abbr>&lt;E, O, K&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Accumulators.last()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.AccumulatorFactory">AccumulatorFactory</abbr>&lt;E, O, K&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Accumulators.last()` by robotevo2d-main:1.6.2
 
 ## Package `consumer`
 
@@ -44,13 +44,13 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.AccumulatorFa
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, O&gt;</code> |
 | `consumer` | npm |  | <code><abbr title="java.util.function.BiConsumer">BiConsumer</abbr>&lt;O, K&gt;</code> |
 
-Produces <code><abbr title="java.util.function.BiConsumer">BiConsumer</abbr>&lt;X, K&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Consumers.composed()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiConsumer">BiConsumer</abbr>&lt;X, K&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Consumers.composed()` by robotevo2d-main:1.6.2
 
 ### Builder `consumer.deaf()`
 
 `consumer.deaf()`
 
-Produces <code><abbr title="java.util.function.BiConsumer">BiConsumer</abbr>&lt;?, ?&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Consumers.deaf()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiConsumer">BiConsumer</abbr>&lt;?, ?&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Consumers.deaf()` by robotevo2d-main:1.6.2
 
 ### Builder `consumer.saver()`
 
@@ -64,7 +64,7 @@ Produces <code><abbr title="java.util.function.BiConsumer">BiConsumer</abbr>&lt;
 | `suffix` | s | `` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `verbose` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="java.util.function.BiConsumer">BiConsumer</abbr>&lt;X, K&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Consumers.saver()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiConsumer">BiConsumer</abbr>&lt;X, K&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Consumers.saver()` by robotevo2d-main:1.6.2
 
 ## Package `dynamicalSystem.arena`
 
@@ -86,7 +86,7 @@ Aliases: `ds.arena`, `dynSys.arena`, `dynamicalSystem.arena`
 | `targetChar` | s | `t` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `separatorChar` | s | `|` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationArena">NavigationArena</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Arenas.fromString()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationArena">NavigationArena</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Arenas.fromString()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.arena.prepared()`
 
@@ -100,7 +100,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.Nav
 | `targetXRange` | npm | `m.range(max = 0.5; min = 0.5)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `targetYRange` | npm | `m.range(max = 0.15; min = 0.15)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationArena">NavigationArena</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Arenas.prepared()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationArena">NavigationArena</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Arenas.prepared()` by robotevo2d-main:1.6.2
 
 ## Package `dynamicalSystem.biAgentTask`
 
@@ -116,7 +116,7 @@ Aliases: `ds.baTask`, `ds.bat`, `ds.biAgentTask`, `dynSys.baTask`, `dynSys.bat`,
 | `environment` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.HomogeneousBiEnvironment">HomogeneousBiEnvironment</abbr>&lt;O, A, S, C&gt;</code> |
 | `stopCondition` | npm |  | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;S&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.HomogeneousBiAgentTask">HomogeneousBiAgentTask</abbr>&lt;C, O, A, S&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.HomogeneousBiAgentTasks.fromEnvironment()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.HomogeneousBiAgentTask">HomogeneousBiAgentTask</abbr>&lt;C, O, A, S&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.HomogeneousBiAgentTasks.fromEnvironment()` by robotevo2d-main:1.6.2
 
 ## Package `dynamicalSystem.drawer`
 
@@ -131,7 +131,7 @@ Aliases: `ds.d`, `ds.drawer`, `dynSys.d`, `dynSys.drawer`, `dynamicalSystem.d`, 
 | `ioType` | e | `GRAPHIC` | <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationDrawer$Configuration$IOType">NavigationDrawer$Configuration$IOType</abbr></code> |
 | `showSensors` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationDrawer">NavigationDrawer</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Drawers.navigation()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationDrawer">NavigationDrawer</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Drawers.navigation()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.drawer.pointNavigation()`
 
@@ -141,13 +141,13 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.Nav
 | --- | --- | --- | --- |
 | `ioType` | e | `GRAPHIC` | <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationDrawer$Configuration$IOType">NavigationDrawer$Configuration$IOType</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.PointNavigationDrawer">PointNavigationDrawer</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Drawers.pointNavigation()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.PointNavigationDrawer">PointNavigationDrawer</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Drawers.pointNavigation()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.drawer.pong()`
 
 `ds.d.pong()`
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongDrawer">PongDrawer</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Drawers.pong()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongDrawer">PongDrawer</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Drawers.pong()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.drawer.sequentialBf()`
 
@@ -158,7 +158,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongDrawe
 | `configuration` | npm | `viz.plot.configuration.image()` | <code><abbr title="io.github.ericmedvet.jviz.core.plot.image.Configuration">Configuration</abbr></code> |
 | `scoreTypes` | e[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.BooleanUtils$ScoreType">BooleanUtils$ScoreType</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.SequentialBooleanFunctionDrawer">SequentialBooleanFunctionDrawer</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Drawers.sequentialBf()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.SequentialBooleanFunctionDrawer">SequentialBooleanFunctionDrawer</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Drawers.sequentialBf()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.drawer.vectorField()`
 
@@ -168,7 +168,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.Sequ
 | --- | --- | --- | --- |
 | `arena` | e |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.Arena$Prepared">Arena$Prepared</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.drawer.VectorFieldDrawer">VectorFieldDrawer</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Drawers.vectorField()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.drawer.VectorFieldDrawer">VectorFieldDrawer</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Drawers.vectorField()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.drawer.vectorialTrajectory()`
 
@@ -179,7 +179,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.drawer.VectorF
 | `configuration` | npm | `viz.plot.configuration.image()` | <code><abbr title="io.github.ericmedvet.jviz.core.plot.image.Configuration">Configuration</abbr></code> |
 | `reductionType` | e | `PCA` | <code><abbr title="io.github.ericmedvet.jviz.core.plot.TrajectoryPlot$Data$ReductionType">TrajectoryPlot$Data$ReductionType</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.drawer.VectorialTrajectoryDrawer">VectorialTrajectoryDrawer</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Drawers.vectorialTrajectory()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.drawer.VectorialTrajectoryDrawer">VectorialTrajectoryDrawer</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Drawers.vectorialTrajectory()` by robotevo2d-main:1.6.2
 
 ## Package `dynamicalSystem.environment`
 
@@ -204,7 +204,7 @@ Aliases: `ds.e`, `ds.env`, `ds.environment`, `dynSys.e`, `dynSys.env`, `dynSys.e
 | `relativeV` | b | `true` | <code>boolean</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.Environment">Environment</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationEnvironment$State">NavigationEnvironment$State</abbr>, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;CS&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Environments.navigation()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.Environment">Environment</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.NavigationEnvironment$State">NavigationEnvironment$State</abbr>, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;CS&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Environments.navigation()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.pointNavigation()`
 
@@ -219,7 +219,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.Environment">E
 | `rescaleInput` | b | `true` | <code>boolean</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.Environment">Environment</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.PointNavigationEnvironment$State">PointNavigationEnvironment$State</abbr>, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;CS&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Environments.pointNavigation()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.Environment">Environment</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.PointNavigationEnvironment$State">PointNavigationEnvironment$State</abbr>, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;CS&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Environments.pointNavigation()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.pong()`
 
@@ -241,7 +241,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.Environment">E
 | `precision` | d | `1.0E-5` | <code>double</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongEnvironment">PongEnvironment</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Environments.pong()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongEnvironment">PongEnvironment</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Environments.pong()` by robotevo2d-main:1.6.2
 
 ## Package `dynamicalSystem.environment.navigation`
 
@@ -259,7 +259,7 @@ Aliases: `ds.e.n`, `ds.e.nav`, `ds.e.navigation`, `ds.env.n`, `ds.env.nav`, `ds.
 | `yBins` | i | `10` | <code>int</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.arenaCoverage()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.arenaCoverage()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.navigation.avgD()`
 
@@ -271,7 +271,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.avgD()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.avgD()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.navigation.avgGapToObstacle()`
 
@@ -284,7 +284,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `direction` | d | `-1.5707963267948966` | <code>double</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.avgGapToObstacle()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.avgGapToObstacle()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.navigation.closestRobotP()`
 
@@ -296,7 +296,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;&gt;&gt;</code> |
 | `normalized` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.geometry.Point">Point</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.closestRobotP()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.geometry.Point">Point</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.closestRobotP()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.navigation.distanceFromTarget()`
 
@@ -308,7 +308,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.distanceFromTarget()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.distanceFromTarget()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.navigation.finalD()`
 
@@ -320,7 +320,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.finalD()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.finalD()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.navigation.finalRobotP()`
 
@@ -332,7 +332,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;&gt;&gt;</code> |
 | `normalized` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.geometry.Point">Point</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.finalRobotP()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.geometry.Point">Point</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.finalRobotP()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.navigation.finalTargetP()`
 
@@ -344,7 +344,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;&gt;&gt;</code> |
 | `normalized` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.geometry.Point">Point</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.finalTargetP()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.geometry.Point">Point</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.finalTargetP()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.navigation.finalTime()`
 
@@ -356,7 +356,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.finalTime()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.finalTime()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.navigation.finalTimePlusD()`
 
@@ -369,7 +369,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `epsilon` | d | `0.01` | <code>double</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.finalTimePlusD()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.finalTimePlusD()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.navigation.minD()`
 
@@ -381,7 +381,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.navigation.State">State</abbr>&gt;&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.minD()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.minD()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.navigation.symbolicTrajectory()`
 
@@ -405,7 +405,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `collapse` | b | `false` | <code>boolean</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.symbolicTrajectory()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.symbolicTrajectory()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.navigation.x()`
 
@@ -417,7 +417,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.geometry.Point">Point</abbr>&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.x()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.x()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.navigation.y()`
 
@@ -429,7 +429,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.geometry.Point">Point</abbr>&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.y()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationFunctions.y()` by robotevo2d-main:1.6.2
 
 ## Package `dynamicalSystem.environment.navigation.reward`
 
@@ -450,7 +450,7 @@ Aliases: `ds.e.n.reward`, `ds.e.nav.reward`, `ds.e.navigation.reward`, `ds.env.n
 | `distanceDecreaseWeight` | d | `0.1` | <code>double</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationRewards.reaching()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NavigationRewards.reaching()` by robotevo2d-main:1.6.2
 
 ## Package `dynamicalSystem.environment.pong`
 
@@ -465,7 +465,7 @@ Aliases: `ds.e.pong`, `ds.env.pong`, `ds.environment.pong`, `dynSys.e.pong`, `dy
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.HomogeneousBiAgentTask$Step">HomogeneousBiAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongEnvironment$State">PongEnvironment$State</abbr>&gt;&gt;&gt;</code> |
 | `format` | s | `%5.0f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.numberOfCollisionsWithBall1()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.numberOfCollisionsWithBall1()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.pong.numberOfCollisionsWithBall2()`
 
@@ -476,7 +476,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.HomogeneousBiAgentTask$Step">HomogeneousBiAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongEnvironment$State">PongEnvironment$State</abbr>&gt;&gt;&gt;</code> |
 | `format` | s | `%5.0f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.numberOfCollisionsWithBall2()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.numberOfCollisionsWithBall2()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.pong.score1()`
 
@@ -487,7 +487,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.HomogeneousBiAgentTask$Step">HomogeneousBiAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongEnvironment$State">PongEnvironment$State</abbr>&gt;&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.score1()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.score1()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.pong.score2()`
 
@@ -498,7 +498,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.HomogeneousBiAgentTask$Step">HomogeneousBiAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongEnvironment$State">PongEnvironment$State</abbr>&gt;&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.score2()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.score2()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.pong.scoreDiff1()`
 
@@ -509,7 +509,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.HomogeneousBiAgentTask$Step">HomogeneousBiAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongEnvironment$State">PongEnvironment$State</abbr>&gt;&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.scoreDiff1()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.scoreDiff1()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.pong.scoreDiff2()`
 
@@ -520,7 +520,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.HomogeneousBiAgentTask$Step">HomogeneousBiAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongEnvironment$State">PongEnvironment$State</abbr>&gt;&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.scoreDiff2()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.scoreDiff2()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.pong.shiftedScoreDiff1()`
 
@@ -531,7 +531,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.HomogeneousBiAgentTask$Step">HomogeneousBiAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongEnvironment$State">PongEnvironment$State</abbr>&gt;&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.shiftedScoreDiff1()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.shiftedScoreDiff1()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.pong.shiftedScoreDiff2()`
 
@@ -542,7 +542,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.HomogeneousBiAgentTask$Step">HomogeneousBiAgentTask$Step</abbr>&lt;double[], double[], <abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongEnvironment$State">PongEnvironment$State</abbr>&gt;&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.shiftedScoreDiff2()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.shiftedScoreDiff2()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.pong.yOffsetFromBall1()`
 
@@ -554,7 +554,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `format` | s | `%5.0f` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `ballXProximityThreshold` | d | `0.2` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.yOffsetFromBall1()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.yOffsetFromBall1()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.pong.yOffsetFromBall2()`
 
@@ -566,7 +566,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `format` | s | `%5.0f` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `ballXProximityThreshold` | d | `0.2` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.yOffsetFromBall2()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongFunctions.yOffsetFromBall2()` by robotevo2d-main:1.6.2
 
 ## Package `dynamicalSystem.environment.sequentialBoolean`
 
@@ -584,7 +584,7 @@ Aliases: `ds.e.sBool`, `ds.e.sequentialBoolean`, `ds.env.sBool`, `ds.env.sequent
 | `scoreType` | e | `UNLIMITED` | <code><abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.BooleanUtils$ScoreType">BooleanUtils$ScoreType</abbr></code> |
 | `caseIndexes` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SequentialBooleanFunctions.avgScore()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SequentialBooleanFunctions.avgScore()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.sequentialBoolean.avgScoreDelta()`
 
@@ -599,7 +599,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `firstIndexes` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
 | `secondIndexes` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SequentialBooleanFunctions.avgScoreDelta()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SequentialBooleanFunctions.avgScoreDelta()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.environment.sequentialBoolean.sdScore()`
 
@@ -613,7 +613,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `scoreType` | e | `UNLIMITED` | <code><abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.BooleanUtils$ScoreType">BooleanUtils$ScoreType</abbr></code> |
 | `indexes` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SequentialBooleanFunctions.sdScore()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SequentialBooleanFunctions.sdScore()` by robotevo2d-main:1.6.2
 
 ## Package `dynamicalSystem.function`
 
@@ -633,7 +633,7 @@ Aliases: `ds.f`, `ds.function`, `dynSys.f`, `dynSys.function`, `dynamicalSystem.
 | `dT` | d |  | <code>double</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.SortedMap">SortedMap</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, double[]&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.agentStateTrajectory()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.SortedMap">SortedMap</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, double[]&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.agentStateTrajectory()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.function.asNumericalRLAgent()`
 
@@ -645,7 +645,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;S&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.rl.NumericalReinforcementLearningAgent">NumericalReinforcementLearningAgent</abbr>&lt;S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.asNumericalRLAgent()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.rl.NumericalReinforcementLearningAgent">NumericalReinforcementLearningAgent</abbr>&lt;S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.asNumericalRLAgent()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.function.asRLAgent()`
 
@@ -657,7 +657,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.DynamicalSystem">DynamicalSystem</abbr>&lt;I, O, S&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.rl.ReinforcementLearningAgent">ReinforcementLearningAgent</abbr>&lt;I, O, S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.asRLAgent()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.rl.ReinforcementLearningAgent">ReinforcementLearningAgent</abbr>&lt;I, O, S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.asRLAgent()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.function.biLevelHighInnerNds()`
 
@@ -668,7 +668,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `name` | s | interpolate `high` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.BiLevelNumericalDynamicalSystem">BiLevelNumericalDynamicalSystem</abbr>&lt;SH, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;SH&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.biLevelHighInnerNds()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;SH&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.biLevelHighInnerNds()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.function.biLevelLowInnerNds()`
 
@@ -679,7 +679,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `name` | s | interpolate `low` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.BiLevelNumericalDynamicalSystem">BiLevelNumericalDynamicalSystem</abbr>&lt;?, SL&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;SL&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.biLevelLowInnerNds()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;SL&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.biLevelLowInnerNds()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.function.cumulatedReward()`
 
@@ -691,7 +691,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.ReinforcementLearningAgent$RewardedInput">ReinforcementLearningAgent$RewardedInput</abbr>&lt;?&gt;, ?, ?&gt;&gt;&gt;</code> |
 | `format` | s | `%+6.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.cumulatedReward()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.cumulatedReward()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.function.doubleOp()`
 
@@ -704,7 +704,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `activationF` | e | `IDENTITY` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.doubleOp()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.doubleOp()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.function.nonLearning()`
 
@@ -716,7 +716,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.rl.FrozenableRLAgent">FrozenableRLAgent</abbr>&lt;I, O, ?&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.DynamicalSystem">DynamicalSystem</abbr>&lt;I, O, ?&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.nonLearning()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.DynamicalSystem">DynamicalSystem</abbr>&lt;I, O, ?&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.nonLearning()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.function.opponentBiSimulator()`
 
@@ -733,7 +733,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `dT` | d |  | <code>double</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;SS&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.opponentBiSimulator()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;SS&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.opponentBiSimulator()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.function.params()`
 
@@ -745,7 +745,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Parametrized">Parametrized</abbr>&lt;?, P&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, P&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.params()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, P&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.params()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.function.rewards()`
 
@@ -757,7 +757,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.ReinforcementLearningAgent$RewardedInput">ReinforcementLearningAgent$RewardedInput</abbr>&lt;?&gt;, ?, ?&gt;&gt;&gt;</code> |
 | `format` | s | `s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.rewards()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.rewards()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.function.selfBiSimulator()`
 
@@ -772,7 +772,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `dT` | d |  | <code>double</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;SS&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.selfBiSimulator()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;SS&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.selfBiSimulator()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.function.simOutcome()`
 
@@ -784,7 +784,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;S&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.SortedMap">SortedMap</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.simOutcome()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.SortedMap">SortedMap</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.simOutcome()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.function.simulate()`
 
@@ -799,7 +799,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `dT` | d |  | <code>double</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, O&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.simulate()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, O&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.simulate()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.function.stateless()`
 
@@ -811,7 +811,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, O
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.FrozenableDynamicalSystem">FrozenableDynamicalSystem</abbr>&lt;I, O, ?&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.StatelessSystem">StatelessSystem</abbr>&lt;I, O&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.stateless()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.StatelessSystem">StatelessSystem</abbr>&lt;I, O&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.stateless()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.function.unwrappedRl()`
 
@@ -823,7 +823,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.ReinforcementLearningAgent$RewardedInput">ReinforcementLearningAgent$RewardedInput</abbr>&lt;O&gt;, A, S&gt;&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;O, A, S&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.unwrappedRl()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;O, A, S&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.unwrappedRl()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.function.weights()`
 
@@ -835,7 +835,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron">MultiLayerPerceptron</abbr>&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.weights()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Functions.weights()` by robotevo2d-main:1.6.2
 
 ## Package `dynamicalSystem.misc`
 
@@ -849,7 +849,7 @@ Aliases: `ds.misc`, `dynSys.misc`, `dynamicalSystem.misc`
 | --- | --- | --- | --- |
 | `simulation` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.Simulation">Simulation</abbr>&lt;T, ?, ?&gt;</code> |
 
-Produces <code>T</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Miscs.simExample()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code>T</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Miscs.simExample()` by robotevo2d-main:1.6.2
 
 ## Package `dynamicalSystem.num`
 
@@ -865,7 +865,7 @@ Aliases: `ds.num`, `dynSys.num`, `dynamicalSystem.num`
 | `second` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;S2&gt;&gt;</code> |
 | `nOfInternalIOs` | i |  | <code>int</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;S1, S2&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.composition()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;S1, S2&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.composition()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.num.drn()`
 
@@ -880,7 +880,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `threshold` | d | `0.1` | <code>double</code> |
 | `timeResolution` | d | `0.16666` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.DelayedRecurrentNetwork">DelayedRecurrentNetwork</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.drn()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.DelayedRecurrentNetwork">DelayedRecurrentNetwork</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.drn()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.num.enhanced()`
 
@@ -892,7 +892,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `inner` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;S&gt;&gt;</code> |
 | `types` | e[] | `[CURRENT, TREND, AVG]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.EnhancedInput$Type">EnhancedInput$Type</abbr>&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.EnhancedInput">EnhancedInput</abbr>&lt;S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.enhanced()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.EnhancedInput">EnhancedInput</abbr>&lt;S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.enhanced()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.num.fromFunctions()`
 
@@ -903,7 +903,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `name` | s | interpolate `{functions}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `functions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.MultivariateRealFunction">MultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.fromFunctions()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.MultivariateRealFunction">MultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.fromFunctions()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.num.hebbianMlp()`
 
@@ -921,7 +921,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `parametrizationType` | e | `SYNAPSE` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.HebbianMultiLayerPerceptron$ParametrizationType">HebbianMultiLayerPerceptron$ParametrizationType</abbr></code> |
 | `weightInitializationType` | e | `PARAMS` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.HebbianMultiLayerPerceptron$WeightInitializationType">HebbianMultiLayerPerceptron$WeightInitializationType</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.HebbianMultiLayerPerceptron">HebbianMultiLayerPerceptron</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.hebbianMlp()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.HebbianMultiLayerPerceptron">HebbianMultiLayerPerceptron</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.hebbianMlp()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.num.inStepped()`
 
@@ -932,7 +932,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `stepT` | d | `1.0` | <code>double</code> |
 | `inner` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;S&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.composed.Stepped$State">Stepped$State</abbr>&lt;S&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.inStepped()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.composed.Stepped$State">Stepped$State</abbr>&lt;S&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.inStepped()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.num.linear()`
 
@@ -942,7 +942,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `zeroQ` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.LinearCombination">LinearCombination</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.linear()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.LinearCombination">LinearCombination</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.linear()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.num.mlp()`
 
@@ -955,7 +955,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `innerLayers` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
 | `activationFunction` | e | `TANH` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron$ActivationFunction">MultiLayerPerceptron$ActivationFunction</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron">MultiLayerPerceptron</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.mlp()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.MultiLayerPerceptron">MultiLayerPerceptron</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.mlp()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.num.noised()`
 
@@ -968,7 +968,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 | `inner` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;S&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.Noised">Noised</abbr>&lt;S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.noised()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.Noised">Noised</abbr>&lt;S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.noised()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.num.outStepped()`
 
@@ -979,7 +979,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `stepT` | d | `1.0` | <code>double</code> |
 | `inner` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;S&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.composed.Stepped$State">Stepped$State</abbr>&lt;S&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.outStepped()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.composed.Stepped$State">Stepped$State</abbr>&lt;S&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.outStepped()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.num.sin()`
 
@@ -992,7 +992,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `a` | npm | `m.range(max = 1; min = 0)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `b` | npm | `m.range(max = 0.5; min = -0.5)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.Sinusoidal">Sinusoidal</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.sin()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.Sinusoidal">Sinusoidal</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.sin()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.num.stepped()`
 
@@ -1003,7 +1003,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `stepT` | d | `0.1` | <code>double</code> |
 | `inner` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;S&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.composed.Stepped$State">Stepped$State</abbr>&lt;S&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.stepped()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.composed.Stepped$State">Stepped$State</abbr>&lt;S&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalDynamicalSystems.stepped()` by robotevo2d-main:1.6.2
 
 ## Package `dynamicalSystem.opponent.pong`
 
@@ -1017,7 +1017,7 @@ Aliases: `ds.opponent.pong`, `dynSys.opponent.pong`, `dynamicalSystem.opponent.p
 | --- | --- | --- | --- |
 | `deltaPosition` | d | `1.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongAgent">PongAgent</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongOpponents.simple()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.pong.PongAgent">PongAgent</abbr></code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.PongOpponents.simple()` by robotevo2d-main:1.6.2
 
 ## Package `dynamicalSystem.rl.num`
 
@@ -1040,7 +1040,7 @@ Aliases: `ds.rl.num`, `dynSys.rl.num`, `dynamicalSystem.rl.num`
 | `maxWeightMagnitude` | d | `10.0` | <code>double</code> |
 | `weightInitializationType` | e | `RANDOM` | <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.ann.HebbianMultiLayerPerceptron$WeightInitializationType">HebbianMultiLayerPerceptron$WeightInitializationType</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.NumericalReinforcementLearningAgent">NumericalReinforcementLearningAgent</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.rl.FreeFormPlasticMLPRLAgent">FreeFormPlasticMLPRLAgent</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalRLAgents.freeFormMlp()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.NumericalReinforcementLearningAgent">NumericalReinforcementLearningAgent</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.rl.FreeFormPlasticMLPRLAgent">FreeFormPlasticMLPRLAgent</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalRLAgents.freeFormMlp()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.rl.num.linearActorCritic()`
 
@@ -1059,7 +1059,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `initialWeightRange` | npm | `m.range(max = 0.2; min = -0.2)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.NumericalReinforcementLearningAgent">NumericalReinforcementLearningAgent</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.rl.LinearActorCritic">LinearActorCritic</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalRLAgents.linearActorCritic()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.NumericalReinforcementLearningAgent">NumericalReinforcementLearningAgent</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.rl.LinearActorCritic">LinearActorCritic</abbr>&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.NumericalRLAgents.linearActorCritic()` by robotevo2d-main:1.6.2
 
 ## Package `dynamicalSystem.simulation`
 
@@ -1074,7 +1074,7 @@ Aliases: `ds.s`, `ds.sim`, `ds.simulation`, `dynSys.s`, `dynSys.sim`, `dynSys.si
 | `name` | s | interpolate `seq.sims` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `relativeV` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;? extends <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation">Simulation</abbr>&lt;T, S, O&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.Simulation">Simulation</abbr>&lt;T, S, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Simulations.sequential()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.Simulation">Simulation</abbr>&lt;T, S, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;S&gt;&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Simulations.sequential()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.simulation.sequentialBf()`
 
@@ -1090,7 +1090,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.Simulation">Si
 | `shuffle` | b | `false` | <code>boolean</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.SequentialBooleanFunction">SequentialBooleanFunction</abbr>&lt;?&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Simulations.sequentialBf()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.SequentialBooleanFunction">SequentialBooleanFunction</abbr>&lt;?&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Simulations.sequentialBf()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.simulation.sequentialXor()`
 
@@ -1105,7 +1105,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.Sequ
 | `shuffle` | b | `false` | <code>boolean</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.SequentialXor">SequentialXor</abbr>&lt;?&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Simulations.sequentialXor()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.SequentialXor">SequentialXor</abbr>&lt;?&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Simulations.sequentialXor()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.simulation.variableSensorPositionsNavigation()`
 
@@ -1126,7 +1126,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.synthetic.Sequ
 | `sortAngles` | b | `true` | <code>boolean</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.VariableSensorPositionsNavigation">VariableSensorPositionsNavigation</abbr>&lt;?&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Simulations.variableSensorPositionsNavigation()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.navigation.VariableSensorPositionsNavigation">VariableSensorPositionsNavigation</abbr>&lt;?&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.Simulations.variableSensorPositionsNavigation()` by robotevo2d-main:1.6.2
 
 ## Package `dynamicalSystem.singleAgentTask`
 
@@ -1143,7 +1143,7 @@ Aliases: `ds.saTask`, `ds.sat`, `ds.singleAgentTask`, `dynSys.saTask`, `dynSys.s
 | `stopCondition` | npm | `predicate.not(condition = predicate.always())` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;ES&gt;</code> |
 | `resetAgent` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask">SingleAgentTask</abbr>&lt;C, O, A, CS, ES&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SingleAgentTasks.fromEnvironment()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask">SingleAgentTask</abbr>&lt;C, O, A, CS, ES&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SingleAgentTasks.fromEnvironment()` by robotevo2d-main:1.6.2
 
 ### Builder `dynamicalSystem.singleAgentTask.sequential()`
 
@@ -1156,7 +1156,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTas
 | `resetFirst` | b | `false` | <code>boolean</code> |
 | `resetAll` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask">SingleAgentTask</abbr>&lt;C, O, A, CS, TS&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SingleAgentTasks.sequential()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask">SingleAgentTask</abbr>&lt;C, O, A, CS, TS&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SingleAgentTasks.sequential()` by robotevo2d-main:1.6.2
 
 ## Package `dynamicalSystem.singleRLAgentTask`
 
@@ -1175,7 +1175,7 @@ Aliases: `ds.saRLTask`, `ds.singleRLAgentTask`, `ds.srlat`, `dynSys.saRLTask`, `
 | `initialReward` | d | `0.0` | <code>double</code> |
 | `reward` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;ES, <abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.SingleRLAgentTask">SingleRLAgentTask</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.NumericalReinforcementLearningAgent">NumericalReinforcementLearningAgent</abbr>&lt;? extends CS&gt;, double[], double[], CS, ES&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SingleRLAgentTasks.fromNumericalEnvironment()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.SingleRLAgentTask">SingleRLAgentTask</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.NumericalReinforcementLearningAgent">NumericalReinforcementLearningAgent</abbr>&lt;? extends CS&gt;, double[], double[], CS, ES&gt;</code>; built from `io.github.ericmedvet.jsdynsym.buildable.builders.SingleRLAgentTasks.fromNumericalEnvironment()` by robotevo2d-main:1.6.2
 
 ## Package `ea`
 
@@ -1190,7 +1190,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.control.SingleRLAgentT
 | `runs` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;</code> |
 | `listeners` | npm[] | `[ea.l.console()]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.ExecutorService">ExecutorService</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, ?, ?, ?, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.Experiment()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">Experiment</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.Experiment()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.run()`
 
@@ -1204,7 +1204,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.Experiment">E
 | `randomGenerator` | npm |  | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 | `nOfThreads` | i | `-1` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.Run()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.Run()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.runOutcome()`
 
@@ -1216,7 +1216,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abb
 | `run` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;</code> |
 | `serializedGenotypes` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.RunOutcome">RunOutcome</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.RunOutcome()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.RunOutcome">RunOutcome</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.RunOutcome()` by robotevo2d-main:1.6.2
 
 ## Package `ea.accumulator`
 
@@ -1231,7 +1231,7 @@ Aliases: `ea.a`, `ea.acc`, `ea.accumulator`
 | `eFunction` | npm | `ea.f.best()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;E, F&gt;</code> |
 | `listFunction` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;F&gt;, O&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.AccumulatorFactory">AccumulatorFactory</abbr>&lt;E, O, K&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Accumulators.all()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.AccumulatorFactory">AccumulatorFactory</abbr>&lt;E, O, K&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Accumulators.all()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.accumulator.lastBest()`
 
@@ -1241,7 +1241,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.AccumulatorFa
 | --- | --- | --- | --- |
 | `function` | npm | `ea.f.best()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;E, O&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.AccumulatorFactory">AccumulatorFactory</abbr>&lt;E, O, K&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Accumulators.last()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.AccumulatorFactory">AccumulatorFactory</abbr>&lt;E, O, K&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Accumulators.last()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.accumulator.lastPopulationMap()`
 
@@ -1251,7 +1251,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.AccumulatorFa
 | --- | --- | --- | --- |
 | `serializerF` | npm | `f.toBase64()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.Object">Object</abbr>, <abbr title="java.lang.String">String</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.AccumulatorFactory">AccumulatorFactory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, ?, ?, ?&gt;, <abbr title="io.github.ericmedvet.jnb.core.NamedParamMap">NamedParamMap</abbr>, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, ?, ?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Accumulators.lastPopulationMap()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.AccumulatorFactory">AccumulatorFactory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, ?, ?, ?&gt;, <abbr title="io.github.ericmedvet.jnb.core.NamedParamMap">NamedParamMap</abbr>, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, ?, ?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Accumulators.lastPopulationMap()` by robotevo2d-main:1.6.2
 
 ## Package `ea.biproblem.synthetic`
 
@@ -1268,7 +1268,7 @@ Aliases: `ea.biproblem.s`, `ea.biproblem.synthetic`, `ea.bp.s`, `ea.bp.synthetic
 | `b` | i | `100` | <code>int</code> |
 | `k` | i | `100` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.BoundedSumBiProblem">BoundedSumBiProblem</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticBiProblems.boundedSumBiProblem()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.BoundedSumBiProblem">BoundedSumBiProblem</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticBiProblems.boundedSumBiProblem()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.biproblem.synthetic.pointAimingBiProblem()`
 
@@ -1280,7 +1280,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerica
 | `p` | i | `100` | <code>int</code> |
 | `target` | d | `1.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.PointAimingBiProblem">PointAimingBiProblem</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticBiProblems.pointAimingBiProblem()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.PointAimingBiProblem">PointAimingBiProblem</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticBiProblems.pointAimingBiProblem()` by robotevo2d-main:1.6.2
 
 ## Package `ea.comparator`
 
@@ -1292,7 +1292,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerica
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super X, ? extends T&gt;</code> |
 
-Produces <code><abbr title="java.util.Comparator">Comparator</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Comparators.ascending()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.Comparator">Comparator</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Comparators.ascending()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.comparator.descending()`
 
@@ -1302,7 +1302,7 @@ Produces <code><abbr title="java.util.Comparator">Comparator</abbr>&lt;X&gt;</co
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super X, ? extends T&gt;</code> |
 
-Produces <code><abbr title="java.util.Comparator">Comparator</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Comparators.descending()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.Comparator">Comparator</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Comparators.descending()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.comparator.pAscending()`
 
@@ -1312,7 +1312,7 @@ Produces <code><abbr title="java.util.Comparator">Comparator</abbr>&lt;X&gt;</co
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super X, ? extends T&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Comparators.pAscending()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Comparators.pAscending()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.comparator.pDescending()`
 
@@ -1322,7 +1322,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.order.PartialComparat
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;? super X, ? extends T&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Comparators.pDescending()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Comparators.pDescending()` by robotevo2d-main:1.6.2
 
 ## Package `ea.consumer`
 
@@ -1345,7 +1345,7 @@ Run {index}:
 | `chatId` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 | `botIdFilePath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.BiConsumer">BiConsumer</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Consumers.telegram()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.BiConsumer">BiConsumer</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Consumers.telegram()` by robotevo2d-main:1.6.2
 
 ## Package `ea.drawer`
 
@@ -1360,7 +1360,7 @@ Aliases: `ea.d`, `ea.drawer`
 | `scale` | d | `1.0` | <code>double</code> |
 | `simplify` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.drawer.Drawer">Drawer</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Drawers.formula()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.drawer.Drawer">Drawer</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Drawers.formula()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.drawer.polyomino()`
 
@@ -1373,7 +1373,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.drawer.Drawer">Drawer
 | `colors` | npm |  | <code><abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.Character">Character</abbr>, <abbr title="java.awt.Color">Color</abbr>&gt;</code> |
 | `borderColor` | npm | `ea.misc.colorByName(name = white)` | <code><abbr title="java.awt.Color">Color</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.drawer.PolyominoDrawer">PolyominoDrawer</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Drawers.polyomino()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.drawer.PolyominoDrawer">PolyominoDrawer</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Drawers.polyomino()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.drawer.tree()`
 
@@ -1383,7 +1383,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.drawer.Polyom
 | --- | --- | --- | --- |
 | `scale` | d | `1.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.drawer.TreeDrawer">TreeDrawer</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Drawers.tree()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.experimenter.drawer.TreeDrawer">TreeDrawer</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Drawers.tree()` by robotevo2d-main:1.6.2
 
 ## Package `ea.function`
 
@@ -1397,7 +1397,7 @@ Aliases: `ea.f`, `ea.function`
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;I, G, S, Q, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;I&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.all()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;I&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.all()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.archiveContents()`
 
@@ -1408,7 +1408,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.Archive">Archive</abbr>&lt;?, ?, T&gt;&gt;</code> |
 | `format` | s | `%4.2f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.archiveContents()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.archiveContents()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.archiveCoverage()`
 
@@ -1419,7 +1419,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.Archive">Archive</abbr>&lt;?, ?, ?&gt;&gt;</code> |
 | `format` | s | `%4.2f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.archiveCoverage()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.archiveCoverage()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.archiveToPolygons()`
 
@@ -1429,7 +1429,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.TwoDKeyArchive">TwoDKeyArchive</abbr>&lt;?, T&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Map">Map</abbr>&lt;<abbr title="io.github.ericmedvet.jviz.core.geometry.Polygon">Polygon</abbr>, T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.archiveToPolygons()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Map">Map</abbr>&lt;<abbr title="io.github.ericmedvet.jviz.core.geometry.Polygon">Polygon</abbr>, T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.archiveToPolygons()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.asDouble()`
 
@@ -1440,7 +1440,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.asDouble()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.asDouble()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.behavior()`
 
@@ -1451,7 +1451,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.problem.BehaviorBasedProblem$Outcome">BehaviorBasedProblem$Outcome</abbr>&lt;B, ?&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, B&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.behavior()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, B&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.behavior()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.behaviorQuality()`
 
@@ -1462,7 +1462,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.problem.BehaviorBasedProblem$Outcome">BehaviorBasedProblem$Outcome</abbr>&lt;?, BQ&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, BQ&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.behaviorQuality()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, BQ&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.behaviorQuality()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.best()`
 
@@ -1472,7 +1472,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;I, G, S, Q, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, I&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.best()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, I&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.best()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.coMeArchive1()`
 
@@ -1482,7 +1482,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.CoMEPopulationState">CoMEPopulationState</abbr>&lt;G, ?, S, ?, ?, Q, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive">NumericalKeyArchive</abbr>&lt;? extends <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;, ? extends <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.coMeArchive1()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive">NumericalKeyArchive</abbr>&lt;? extends <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;, ? extends <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.coMeArchive1()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.coMeArchive2()`
 
@@ -1492,7 +1492,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.CoMEPopulationState">CoMEPopulationState</abbr>&lt;?, G, ?, S, ?, Q, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive">NumericalKeyArchive</abbr>&lt;? extends <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;, ? extends <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.coMeArchive2()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive">NumericalKeyArchive</abbr>&lt;? extends <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;, ? extends <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.coMeArchive2()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.coMeStrategy1Field()`
 
@@ -1503,7 +1503,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.CoMEPopulationState">CoMEPopulationState</abbr>&lt;?, ?, ?, ?, ?, ?, ?&gt;&gt;</code> |
 | `relative` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.coMeStrategy1Field()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.coMeStrategy1Field()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.coMeStrategy2Field()`
 
@@ -1514,7 +1514,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.CoMEPopulationState">CoMEPopulationState</abbr>&lt;?, ?, ?, ?, ?, ?, ?&gt;&gt;</code> |
 | `relative` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.coMeStrategy2Field()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.coMeStrategy2Field()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.computedArchive()`
 
@@ -1527,7 +1527,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `archive` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive$Provider">NumericalKeyArchive$Provider</abbr></code> |
 | `qComparator` | npm | `ea.f.qualityComparator(of = ea.f.problem())` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super Q&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive">NumericalKeyArchive</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.computedArchive()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive">NumericalKeyArchive</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.computedArchive()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.crossEpistasis()`
 
@@ -1541,7 +1541,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `splitOffset` | i | `0` | <code>int</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.crossEpistasis()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.crossEpistasis()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.cumulativeFidelity()`
 
@@ -1552,7 +1552,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, ?, ?, ?, ?&gt;&gt;</code> |
 | `format` | s | `%8.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.cumulativeFidelity()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.cumulativeFidelity()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.elapsedSecs()`
 
@@ -1563,7 +1563,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.State">State</abbr>&lt;?, ?&gt;&gt;</code> |
 | `format` | s | `%6.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.elapsedSecs()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.elapsedSecs()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.firsts()`
 
@@ -1573,7 +1573,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;I, G, S, Q, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;I&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.firsts()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;I&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.firsts()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.fromMapper()`
 
@@ -1587,7 +1587,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `name` | s | interpolate `{mapper.name}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, S&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.fromMapper()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, S&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.fromMapper()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.fromProblem()`
 
@@ -1600,7 +1600,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `name` | s | interpolate `{problem.name}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.fromProblem()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.fromProblem()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.genotype()`
 
@@ -1611,7 +1611,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, ?, ?&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, G&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.genotype()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, G&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.genotype()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.globalProgress()`
 
@@ -1622,7 +1622,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `name` | s | `global.progress` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `l` | i | `8` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;<abbr title="java.lang.Object">Object</abbr>, <abbr title="io.github.ericmedvet.jgea.core.util.TextPlotter$Miniplot">TextPlotter$Miniplot</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.globalProgress()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;<abbr title="java.lang.Object">Object</abbr>, <abbr title="io.github.ericmedvet.jgea.core.util.TextPlotter$Miniplot">TextPlotter$Miniplot</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.globalProgress()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.globalProgressRate()`
 
@@ -1633,7 +1633,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `name` | s | `global.progress.rate` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `format` | s | `%4.2f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;<abbr title="java.lang.Object">Object</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.globalProgressRate()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;<abbr title="java.lang.Object">Object</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.globalProgressRate()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.hist()`
 
@@ -1644,7 +1644,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `nOfBins` | i | `8` | <code>int</code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;<abbr title="java.lang.Number">Number</abbr>&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.util.TextPlotter$Miniplot">TextPlotter$Miniplot</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.hist()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.util.TextPlotter$Miniplot">TextPlotter$Miniplot</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.hist()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.hypervolume2D()`
 
@@ -1657,7 +1657,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code> |
 | `format` | s | `%.2f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.hypervolume2D()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.hypervolume2D()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.id()`
 
@@ -1668,7 +1668,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;?, ?, ?&gt;&gt;</code> |
 | `format` | s | `%6d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Long">Long</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.id()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Long">Long</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.id()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.isCrossRedundancy()`
 
@@ -1682,7 +1682,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `splitOffset` | i | `0` | <code>int</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.isCrossRedundancy()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.isCrossRedundancy()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.isLb()`
 
@@ -1694,7 +1694,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;</code> |
 | `format` | s | `%2d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.isLb()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.isLb()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.isParameter()`
 
@@ -1707,7 +1707,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `parameter` | s | `size` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `format` | s | `%2d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.isParameter()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.isParameter()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.isRedundancy()`
 
@@ -1720,7 +1720,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `endOffset` | i | `0` | <code>int</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.isRedundancy()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.isRedundancy()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.isToBoundedSumPhenotype()`
 
@@ -1732,7 +1732,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;</code> |
 | `format` | s | `%3d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.isToBoundedSumPhenotype()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.isToBoundedSumPhenotype()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.isToList()`
 
@@ -1744,7 +1744,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;</code> |
 | `format` | s | `%3d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.isToList()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.isToList()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.isUb()`
 
@@ -1756,7 +1756,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;</code> |
 | `format` | s | `%2d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.isUb()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.isUb()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.lasts()`
 
@@ -1766,7 +1766,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;I, G, S, Q, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;I&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.lasts()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;I&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.lasts()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.maMeArchive()`
 
@@ -1777,7 +1777,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MAMEPopulationState">MAMEPopulationState</abbr>&lt;G, S, Q, ?&gt;&gt;</code> |
 | `n` | i |  | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive">NumericalKeyArchive</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.maMeArchive()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive">NumericalKeyArchive</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.maMeArchive()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.meArchive()`
 
@@ -1787,7 +1787,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEPopulationState">MEPopulationState</abbr>&lt;G, S, Q, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive">NumericalKeyArchive</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.meArchive()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive">NumericalKeyArchive</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.meArchive()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.mfMeFidelityArchive()`
 
@@ -1797,7 +1797,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MultiFidelityMEPopulationState">MultiFidelityMEPopulationState</abbr>&lt;G, S, Q, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive">NumericalKeyArchive</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MultiFidelityMEPopulationState$LocalState">MultiFidelityMEPopulationState$LocalState</abbr>&lt;G, S, Q&gt;, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MultiFidelityMEPopulationState$LocalState">MultiFidelityMEPopulationState$LocalState</abbr>&lt;G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.mfMeFidelityArchive()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive">NumericalKeyArchive</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MultiFidelityMEPopulationState$LocalState">MultiFidelityMEPopulationState$LocalState</abbr>&lt;G, S, Q&gt;, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MultiFidelityMEPopulationState$LocalState">MultiFidelityMEPopulationState$LocalState</abbr>&lt;G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.mfMeFidelityArchive()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.mfMeLsCumulativeFidelity()`
 
@@ -1808,7 +1808,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MultiFidelityMEPopulationState$LocalState">MultiFidelityMEPopulationState$LocalState</abbr>&lt;?, ?, ?&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.mfMeLsCumulativeFidelity()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.mfMeLsCumulativeFidelity()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.mfMeLsFidelity()`
 
@@ -1819,7 +1819,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MultiFidelityMEPopulationState$LocalState">MultiFidelityMEPopulationState$LocalState</abbr>&lt;?, ?, ?&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.mfMeLsFidelity()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.mfMeLsFidelity()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.mfMeLsNOfEvals()`
 
@@ -1830,7 +1830,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MultiFidelityMEPopulationState$LocalState">MultiFidelityMEPopulationState$LocalState</abbr>&lt;?, ?, ?&gt;&gt;</code> |
 | `format` | s | `%4d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Long">Long</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.mfMeLsNOfEvals()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Long">Long</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.mfMeLsNOfEvals()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.mids()`
 
@@ -1840,7 +1840,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;I, G, S, Q, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;I&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.mids()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;I&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.mids()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.nOfBirths()`
 
@@ -1851,7 +1851,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, ?, ?, ?, ?&gt;&gt;</code> |
 | `format` | s | `%5d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Long">Long</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.nOfBirths()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Long">Long</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.nOfBirths()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.nOfEvals()`
 
@@ -1862,7 +1862,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, ?, ?, ?, ?&gt;&gt;</code> |
 | `format` | s | `%5d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Long">Long</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.nOfEvals()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Long">Long</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.nOfEvals()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.nOfIterations()`
 
@@ -1873,7 +1873,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.State">State</abbr>&lt;?, ?&gt;&gt;</code> |
 | `format` | s | `%4d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Long">Long</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.nOfIterations()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Long">Long</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.nOfIterations()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.numExpr()`
 
@@ -1887,7 +1887,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `expr` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.numExpr()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.numExpr()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.overallTargetDistance()`
 
@@ -1898,7 +1898,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, ?, S, ?, P&gt;&gt;</code> |
 | `format` | s | `%.2f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.overallTargetDistance()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.overallTargetDistance()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.parentIds()`
 
@@ -1909,7 +1909,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;?, ?, ?&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;<abbr title="java.lang.Long">Long</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.parentIds()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;<abbr title="java.lang.Long">Long</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.parentIds()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.popTargetDistances()`
 
@@ -1920,7 +1920,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, ?, S, ?, P&gt;&gt;</code> |
 | `format` | s | `%.2f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.popTargetDistances()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.popTargetDistances()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.problem()`
 
@@ -1930,7 +1930,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.State">State</abbr>&lt;P, S&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, P&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.problem()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, P&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.problem()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.progress()`
 
@@ -1940,7 +1940,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.State">State</abbr>&lt;?, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.util.Progress">Progress</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.progress()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.util.Progress">Progress</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.progress()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.quality()`
 
@@ -1951,7 +1951,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;?, ?, Q&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.quality()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.quality()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.qualityComparator()`
 
@@ -1962,7 +1962,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.problem.QualityBasedProblem">QualityBasedProblem</abbr>&lt;?, Q&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.qualityComparator()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.qualityComparator()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.qualityFunction()`
 
@@ -1972,7 +1972,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, P&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.function.Function">Function</abbr>&lt;S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.qualityFunction()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.function.Function">Function</abbr>&lt;S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.qualityFunction()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.rate()`
 
@@ -1982,7 +1982,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.util.Progress">Progress</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.rate()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.rate()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.runs()`
 
@@ -1994,7 +1994,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `name` | s | `runs` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.runs()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, ?, ?, ?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.runs()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.simplifiedBTree()`
 
@@ -2006,7 +2006,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.bool.Element">Element</abbr>&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.bool.Element">Element</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.simplifiedBTree()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.bool.Element">Element</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.simplifiedBTree()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.simplifiedSrTree()`
 
@@ -2018,7 +2018,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.simplifiedSrTree()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.simplifiedSrTree()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.size()`
 
@@ -2029,7 +2029,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Object">Object</abbr>&gt;</code> |
 | `format` | s | `%d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.size()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.size()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.solution()`
 
@@ -2040,7 +2040,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;?, S, ?&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, S&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.solution()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, S&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.solution()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.srTreeShortVarName()`
 
@@ -2055,7 +2055,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `findRegex` | s | `(([a-zA-Z])[a-z]++_?)` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `replaceExpr` | s | `$2` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.srTreeVarNameChange()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.srTreeVarNameChange()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.srTreeVarNameChange()`
 
@@ -2070,7 +2070,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `findRegex` | s | `` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `replaceExpr` | s | `` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.srTreeVarNameChange()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.srTreeVarNameChange()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.stateGrid()`
 
@@ -2080,7 +2080,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.cabea.GridPopulationState">GridPopulationState</abbr>&lt;G, S, Q, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.stateGrid()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.stateGrid()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.supplied()`
 
@@ -2090,7 +2090,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;Z&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, Z&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.supplied()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, Z&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.supplied()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.targetDistances()`
 
@@ -2102,7 +2102,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;?, S, ?&gt;&gt;</code> |
 | `format` | s | `%.2f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.targetDistances()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.targetDistances()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.toDoubleString()`
 
@@ -2112,7 +2112,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, Z&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.toDoubleString()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.toDoubleString()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.treeHeight()`
 
@@ -2123,7 +2123,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;C&gt;&gt;</code> |
 | `format` | s | `%3d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.treeHeight()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.treeHeight()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.treeLabels()`
 
@@ -2134,7 +2134,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;C&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;C&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.treeLabels()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;C&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.treeLabels()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.treeLeafLabels()`
 
@@ -2145,7 +2145,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;C&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;C&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.treeLeafLabels()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;C&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.treeLeafLabels()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.treeSize()`
 
@@ -2156,7 +2156,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;C&gt;&gt;</code> |
 | `format` | s | `%3d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.treeSize()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.treeSize()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.ttpnDeadGatesRate()`
 
@@ -2167,7 +2167,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Network">Network</abbr>&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.ttpnDeadGatesRate()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.ttpnDeadGatesRate()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.ttpnDeadOrIUnwiredOutputGatesRate()`
 
@@ -2178,7 +2178,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Network">Network</abbr>&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.ttpnDeadOrIUnwiredOutputGatesRate()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.ttpnDeadOrIUnwiredOutputGatesRate()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.ttpnNOfTypes()`
 
@@ -2189,7 +2189,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Network">Network</abbr>&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.ttpnNOfTypes()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.ttpnNOfTypes()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.uniformSample()`
 
@@ -2202,7 +2202,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `ranges` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr>&gt;</code> |
 | `nOfPoints` | i | `10` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.uniformSample()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.uniformSample()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.validationQuality()`
 
@@ -2214,7 +2214,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `individual` | npm | `ea.f.best()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, ?, S, Q, P&gt;, <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;?, S, Q&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.validationQuality()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.validationQuality()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.function.validationQualityFunction()`
 
@@ -2224,7 +2224,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, P&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.function.Function">Function</abbr>&lt;S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.validationQualityFunction()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.function.Function">Function</abbr>&lt;S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Functions.validationQualityFunction()` by robotevo2d-main:1.6.2
 
 ## Package `ea.grammar.grid`
 
@@ -2236,7 +2236,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | --- | --- | --- | --- |
 | `name` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.grammar.grid.GridGrammar">GridGrammar</abbr>&lt;<abbr title="java.lang.Character">Character</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GridGrammars.bundled()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.grammar.grid.GridGrammar">GridGrammar</abbr>&lt;<abbr title="java.lang.Character">Character</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GridGrammars.bundled()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.grammar.grid.fromFile()`
 
@@ -2246,7 +2246,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `path` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.grammar.grid.GridGrammar">GridGrammar</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GridGrammars.fromFile()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.grammar.grid.GridGrammar">GridGrammar</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GridGrammars.fromFile()` by robotevo2d-main:1.6.2
 
 ## Package `ea.grammar.string`
 
@@ -2258,7 +2258,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `operators` | e[] | `[and, or, not]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.bool.Element$Operator">Element$Operator</abbr>&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.grammar.string.StringGrammar">StringGrammar</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StringGrammars.booleanRegression()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.grammar.string.StringGrammar">StringGrammar</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StringGrammars.booleanRegression()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.grammar.string.bundled()`
 
@@ -2268,7 +2268,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `name` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.grammar.string.StringGrammar">StringGrammar</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StringGrammars.bundled()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.grammar.string.StringGrammar">StringGrammar</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StringGrammars.bundled()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.grammar.string.fromFile()`
 
@@ -2278,7 +2278,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `path` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.grammar.string.StringGrammar">StringGrammar</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StringGrammars.fromFile()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.grammar.string.StringGrammar">StringGrammar</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StringGrammars.fromFile()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.grammar.string.fromProblem()`
 
@@ -2288,7 +2288,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `problem` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.representation.grammar.string.StringGrammarBasedProblem">StringGrammarBasedProblem</abbr>&lt;N, ?&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.grammar.string.StringGrammar">StringGrammar</abbr>&lt;N&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StringGrammars.fromProblem()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.grammar.string.StringGrammar">StringGrammar</abbr>&lt;N&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StringGrammars.fromProblem()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.grammar.string.regression()`
 
@@ -2299,7 +2299,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `constants` | d[] | `[0.1, 1.0, 10.0]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 | `operators` | e[] | `[+, -, *, p÷, plog]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element$Operator">Element$Operator</abbr>&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.grammar.string.StringGrammar">StringGrammar</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StringGrammars.regression()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.grammar.string.StringGrammar">StringGrammar</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StringGrammars.regression()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.grammar.string.simpleFixedArity()`
 
@@ -2309,7 +2309,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `arity` | i |  | <code>int</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.grammar.string.StringGrammar">StringGrammar</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StringGrammars.simpleFixedArity()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.grammar.string.StringGrammar">StringGrammar</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StringGrammars.simpleFixedArity()` by robotevo2d-main:1.6.2
 
 ## Package `ea.listener`
 
@@ -2347,7 +2347,7 @@ Aliases: `ea.l`, `ea.listener`
 | `intFormat` | s | `%d` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `doubleFormat` | s | `%.5e` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;OE, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.splitPair()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;OE, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.splitPair()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.listener.console()`
 
@@ -2365,7 +2365,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `kCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;K&gt;</code> |
 | `logExceptions` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.console()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.console()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.listener.csv()`
 
@@ -2386,7 +2386,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `intFormat` | s | `%d` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `doubleFormat` | s | `%.5e` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.csv()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.csv()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.listener.firstsCsv()`
 
@@ -2420,7 +2420,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `intFormat` | s | `%d` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `doubleFormat` | s | `%.5e` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;OE, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.splitPair()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;OE, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.splitPair()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.listener.individualCsv()`
 
@@ -2454,7 +2454,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `intFormat` | s | `%d` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `doubleFormat` | s | `%.5e` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;OE, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.splitPair()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;OE, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.splitPair()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.listener.net()`
 
@@ -2473,7 +2473,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `runCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;</code> |
 | `stateCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.net()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.net()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.listener.saveForExp()`
 
@@ -2492,7 +2492,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `overwrite` | b | `false` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `verbose` | b | `false` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onDone()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onDone()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.listener.saveForRun()`
 
@@ -2511,7 +2511,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `processor` | npm | `` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `verbose` | b | `false` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onKDone()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onKDone()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.listener.saveLastPopulationForRun()`
 
@@ -2530,7 +2530,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `processor` | npm | `f.identity()` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `verbose` | b | `false` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onKDone()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onKDone()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.listener.savePlotAndCsvForExp()`
 
@@ -2551,7 +2551,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `type` | s | `png` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `configuration` | npm | `viz.plot.configuration.image()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onDone()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onDone()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.listener.savePlotAndCsvForRun()`
 
@@ -2573,7 +2573,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `configuration` | npm | `viz.plot.configuration.image()` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `verbose` | b | `false` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onKDone()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onKDone()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.listener.savePlotForExp()`
 
@@ -2596,7 +2596,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `type` | s | `png` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `configuration` | npm | `viz.plot.configuration.image()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onDone()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onDone()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.listener.savePlotForRun()`
 
@@ -2619,7 +2619,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `type` | s | `png` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `configuration` | npm | `viz.plot.configuration.image()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onKDone()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onKDone()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.listener.tui()`
 
@@ -2634,7 +2634,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `runCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;</code> |
 | `stateCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.tui()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;?, G, S, Q, ?&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, G, S, Q&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Listeners.tui()` by robotevo2d-main:1.6.2
 
 ## Package `ea.mapper`
 
@@ -2650,7 +2650,7 @@ Aliases: `ea.m`, `ea.mapper`
 | `types` | e[] | `[CURRENT, TREND]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.AggregatedInput$Type">AggregatedInput$Type</abbr>&gt;</code> |
 | `windowT` | d | `1.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.aggregatedInputNds()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.aggregatedInputNds()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.bsToGeCfgTree()`
 
@@ -2665,7 +2665,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `codonLengthRate` | d | `1.0` | <code>double</code> |
 | `maxWraps` | i | `1` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;L&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.bsToGeCfgTree()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;L&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.bsToGeCfgTree()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.bsToGrammarGrid()`
 
@@ -2679,7 +2679,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `overwrite` | b | `false` | <code>boolean</code> |
 | `criteria` | e[] | `[LEAST_RECENT, LOWEST_Y, LOWEST_X]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.grammar.grid.StandardGridDeveloper$SortingCriterion">StandardGridDeveloper$SortingCriterion</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.bsToGrammarGrid()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.bsToGrammarGrid()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.bsToHgeCfgTree()`
 
@@ -2693,7 +2693,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `recursive` | b | `true` | <code>boolean</code> |
 | `length` | i | `1024` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;L&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.bsToHgeCfgTree()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;L&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.bsToHgeCfgTree()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.bsToWhgeCfgTree()`
 
@@ -2710,7 +2710,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `weightChildren` | b | `true` | <code>boolean</code> |
 | `length` | i | `1024` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;L&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.bsToWhgeCfgTree()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;L&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.bsToWhgeCfgTree()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.cfgTreeToMultiBTree()`
 
@@ -2720,7 +2720,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | --- | --- | --- | --- |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.bool.Element">Element</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.cfgTreeToMultiBTree()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.bool.Element">Element</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.cfgTreeToMultiBTree()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.cfgTreeToPb()`
 
@@ -2731,7 +2731,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;N&gt;&gt;</code> |
 | `problem` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.representation.grammar.string.StringGrammarBasedProblem">StringGrammarBasedProblem</abbr>&lt;N, S&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, S&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.cfgTreeToPb()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, S&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.cfgTreeToPb()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.cfgTreeToSrTree()`
 
@@ -2741,7 +2741,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | --- | --- | --- | --- |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.cfgTreeToSrTree()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.cfgTreeToSrTree()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.composedNds()`
 
@@ -2753,7 +2753,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `then` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code> |
 | `nOfInternalIOs` | i |  | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.composedNds()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.composedNds()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.dsToBitString()`
 
@@ -2764,7 +2764,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code> |
 | `t` | d | `0.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.dsToBitString()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.dsToBitString()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.dsToDa()`
 
@@ -2774,7 +2774,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | --- | --- | --- | --- |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, double[]&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.dsToDa()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, double[]&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.dsToDa()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.dsToFillingRateGrid()`
 
@@ -2787,7 +2787,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `negItem` | npm |  | <code>T</code> |
 | `posItem` | npm |  | <code>T</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.dsToFillingRateGrid()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.dsToFillingRateGrid()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.dsToGrammarGrid()`
 
@@ -2801,7 +2801,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `overwrite` | b | `false` | <code>boolean</code> |
 | `criteria` | e[] | `[LEAST_RECENT, LOWEST_Y, LOWEST_X]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.grammar.grid.StandardGridDeveloper$SortingCriterion">StandardGridDeveloper$SortingCriterion</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.dsToGrammarGrid()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.dsToGrammarGrid()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.dsToIs()`
 
@@ -2812,7 +2812,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code> |
 | `range` | npm | `ds.range(max = 1; min = -1)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.dsToIs()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.dsToIs()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.dsToParametrized()`
 
@@ -2824,7 +2824,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `parametrized` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;E, Y&gt;</code> |
 | `innerOf` | npm | `ea.m.identity()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, E&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.parametrized()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, E&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.parametrized()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.dsToThresholdedGrid()`
 
@@ -2837,7 +2837,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `negItem` | npm |  | <code>T</code> |
 | `posItem` | npm |  | <code>T</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.dsToThresholdedGrid()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.dsToThresholdedGrid()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.enhancedNds()`
 
@@ -2849,7 +2849,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `windowT` | d |  | <code>double</code> |
 | `types` | e[] | `[CURRENT, TREND, AVG]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.EnhancedInput$Type">EnhancedInput$Type</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.enhancedNds()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.enhancedNds()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.fGraphToNmrf()`
 
@@ -2860,7 +2860,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.graph.Graph">Graph</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.graph.Node">Node</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code> |
 | `postOperator` | npm | `ds.f.doubleOp(activationF = identity)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.fGraphToNmrf()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.fGraphToNmrf()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.gridToGrid()`
 
@@ -2875,13 +2875,13 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `defaultElement` | npm | `m.nullValue()` | <code>K</code> |
 | `onlyLargestConnected` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;K&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.gridToGrid()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;K&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.gridToGrid()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.identity()`
 
 `ea.m.identity()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.identity()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.identity()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.isIndexed()`
 
@@ -2892,7 +2892,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;T&gt;, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;&gt;</code> |
 | `relativeLength` | d | `1.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.isIndexed()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.isIndexed()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.isToGrammarGrid()`
 
@@ -2907,7 +2907,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `overwrite` | b | `false` | <code>boolean</code> |
 | `criteria` | e[] | `[LEAST_RECENT, LOWEST_Y, LOWEST_X]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.grammar.grid.StandardGridDeveloper$SortingCriterion">StandardGridDeveloper$SortingCriterion</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.isToGrammarGrid()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.isToGrammarGrid()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.isToSGrid()`
 
@@ -2921,7 +2921,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `nullItem` | b | `true` | <code>boolean</code> |
 | `items` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.isToSGrid()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.isToSGrid()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.isToString()`
 
@@ -2932,7 +2932,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;</code> |
 | `alphabet` | s | `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.isToString()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.isToString()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.multiBTreeToBf()`
 
@@ -2943,7 +2943,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `name` | s | `bf` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.bool.Element">Element</abbr>&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.bool.BooleanFunction">BooleanFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.multiBTreeToBf()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.bool.BooleanFunction">BooleanFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.multiBTreeToBf()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.multiSrTreeToNmrf()`
 
@@ -2955,7 +2955,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `simplify` | b | `false` | <code>boolean</code> |
 | `postOperator` | npm | `ds.f.doubleOp(activationF = identity)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.multiSrTreeToNmrf()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.multiSrTreeToNmrf()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.ndsPairToBiLevelNds()`
 
@@ -2971,7 +2971,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `lowIndexes` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
 | `averageEnabled` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.ndsPairToBiLevelNds()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.ndsPairToBiLevelNds()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.ndsToNrla()`
 
@@ -2981,7 +2981,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | --- | --- | --- | --- |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.rl.NumericalReinforcementLearningAgent">NumericalReinforcementLearningAgent</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.ndsToNrla()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.rl.NumericalReinforcementLearningAgent">NumericalReinforcementLearningAgent</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.ndsToNrla()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.nmrfToGrid()`
 
@@ -2992,7 +2992,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code> |
 | `items` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;T&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.nmrfToGrid()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.nmrfToGrid()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.nmrfToMrca()`
 
@@ -3009,7 +3009,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `alivenessThreshold` | d | `0.0` | <code>double</code> |
 | `toroidal` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.problem.ca.MultivariateRealGridCellularAutomaton">MultivariateRealGridCellularAutomaton</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.nmrfToMrca()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.problem.ca.MultivariateRealGridCellularAutomaton">MultivariateRealGridCellularAutomaton</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.nmrfToMrca()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.nmrfToNds()`
 
@@ -3019,7 +3019,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | --- | --- | --- | --- |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.nmrfToNds()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.nmrfToNds()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.nmrfToNurf()`
 
@@ -3029,7 +3029,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | --- | --- | --- | --- |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedUnivariateRealFunction">NamedUnivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.nmrfToNurf()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedUnivariateRealFunction">NamedUnivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.nmrfToNurf()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.noisedNds()`
 
@@ -3042,7 +3042,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `outputSigma` | d | `0.0` | <code>double</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.noisedNds()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.noisedNds()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.noisedNmrf()`
 
@@ -3054,7 +3054,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `sigma` | d | `0.0` | <code>double</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.noisedNmrf()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.noisedNmrf()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.ntissToNmrf()`
 
@@ -3064,7 +3064,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | --- | --- | --- | --- |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalTimeInvariantStatelessSystem">NumericalTimeInvariantStatelessSystem</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.ntissToNmrf()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.ntissToNmrf()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.nurfToNds()`
 
@@ -3074,7 +3074,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | --- | --- | --- | --- |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedUnivariateRealFunction">NamedUnivariateRealFunction</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.nurfToNds()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.nurfToNds()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.oGraphToNmrf()`
 
@@ -3085,7 +3085,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.graph.Graph">Graph</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.graph.Node">Node</abbr>, <abbr title="io.github.ericmedvet.jgea.core.representation.graph.numeric.operatorgraph.OperatorGraph$NonValuedArc">OperatorGraph$NonValuedArc</abbr>&gt;&gt;</code> |
 | `postOperator` | npm | `ds.f.doubleOp(activationF = identity)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.oGraphToNmrf()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.oGraphToNmrf()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.pair()`
 
@@ -3097,7 +3097,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `first` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;F1, F2&gt;</code> |
 | `second` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;S1, S2&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;F2, S2&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.pair()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;F2, S2&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.pair()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.parametrized()`
 
@@ -3108,7 +3108,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, P&gt;</code> |
 | `parametrized` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;E, Y&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, E&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.parametrized()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, E&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.parametrized()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.splitter()`
 
@@ -3118,7 +3118,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | --- | --- | --- | --- |
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;T&gt;, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.splitter()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;T&gt;, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.splitter()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.srTreeToNurf()`
 
@@ -3130,7 +3130,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `simplify` | b | `false` | <code>boolean</code> |
 | `postOperator` | npm | `ds.f.doubleOp(activationF = identity)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedUnivariateRealFunction">NamedUnivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.srTreeToNurf()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedUnivariateRealFunction">NamedUnivariateRealFunction</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.srTreeToNurf()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.steppedNds()`
 
@@ -3141,7 +3141,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code> |
 | `stepT` | d | `1.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.steppedNds()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.steppedNds()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.mapper.ttpnToProgram()`
 
@@ -3156,7 +3156,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `maxSingleTokenSize` | i | `128` | <code>int</code> |
 | `skipBlocked` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.Program">Program</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.ttpnToProgram()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.Program">Program</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Mappers.ttpnToProgram()` by robotevo2d-main:1.6.2
 
 ## Package `ea.misc`
 
@@ -3169,7 +3169,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `name` | s | interpolate `best[{nOfOpponents}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `nOfOpponents` | i | `1` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiEvolver$OpponentsSelector">AbstractBiEvolver$OpponentsSelector</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.bestSelector()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiEvolver$OpponentsSelector">AbstractBiEvolver$OpponentsSelector</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.bestSelector()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.bf()`
 
@@ -3179,7 +3179,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiE
 | --- | --- | --- | --- |
 | `exprs` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.core.bool.BooleanFunction">BooleanFunction</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.bf()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.core.bool.BooleanFunction">BooleanFunction</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.bf()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.caVideo()`
 
@@ -3195,7 +3195,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.core.bool.BooleanFunct
 | `frameRate` | d | `10.0` | <code>double</code> |
 | `fontSize` | d | `10.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.drawer.VideoBuilder">VideoBuilder</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.problem.ca.MultivariateRealGridCellularAutomaton">MultivariateRealGridCellularAutomaton</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.caVideo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.drawer.VideoBuilder">VideoBuilder</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.problem.ca.MultivariateRealGridCellularAutomaton">MultivariateRealGridCellularAutomaton</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.caVideo()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.ch()`
 
@@ -3205,7 +3205,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.drawer.VideoBuilder">
 | --- | --- | --- | --- |
 | `s` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.lang.Character">Character</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.ch()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.lang.Character">Character</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.ch()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.colorByName()`
 
@@ -3215,7 +3215,7 @@ Produces <code><abbr title="java.lang.Character">Character</abbr></code>; built 
 | --- | --- | --- | --- |
 | `name` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.awt.Color">Color</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.colorByName()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.awt.Color">Color</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.colorByName()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.colorByRgb()`
 
@@ -3227,7 +3227,7 @@ Produces <code><abbr title="java.awt.Color">Color</abbr></code>; built from `io.
 | `g` | i |  | <code>int</code> |
 | `b` | i |  | <code>int</code> |
 
-Produces <code><abbr title="java.awt.Color">Color</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.colorByRgb()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.awt.Color">Color</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.colorByRgb()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.evenParityBf()`
 
@@ -3237,7 +3237,7 @@ Produces <code><abbr title="java.awt.Color">Color</abbr></code>; built from `io.
 | --- | --- | --- | --- |
 | `n` | i |  | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.core.bool.BooleanFunction">BooleanFunction</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.evenParityBf()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.core.bool.BooleanFunction">BooleanFunction</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.evenParityBf()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.farthestMESelector()`
 
@@ -3248,7 +3248,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.core.bool.BooleanFunct
 | `name` | s | interpolate `farthest[{nOfOpponents}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `nOfOpponents` | i | `1` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiEvolver$OpponentsSelector">AbstractBiEvolver$OpponentsSelector</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.farthestMESelector()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiEvolver$OpponentsSelector">AbstractBiEvolver$OpponentsSelector</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.farthestMESelector()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.fromTextFile()`
 
@@ -3259,7 +3259,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiE
 | `path` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.String">String</abbr>, X&gt;</code> |
 
-Produces <code>X</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.fromTextFile()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code>X</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.fromTextFile()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.imgByName()`
 
@@ -3273,7 +3273,7 @@ Produces <code>X</code>; built from `io.github.ericmedvet.jgea.experimenter.buil
 | `h` | i | `15` | <code>int</code> |
 | `marginRate` | d | `0.1` | <code>double</code> |
 
-Produces <code><abbr title="java.awt.image.BufferedImage">BufferedImage</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.imgByName()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.awt.image.BufferedImage">BufferedImage</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.imgByName()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.imgFromString()`
 
@@ -3288,7 +3288,7 @@ Produces <code><abbr title="java.awt.image.BufferedImage">BufferedImage</abbr></
 | `h` | i | `15` | <code>int</code> |
 | `marginRate` | d | `0.1` | <code>double</code> |
 
-Produces <code><abbr title="java.awt.image.BufferedImage">BufferedImage</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.imgFromString()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.awt.image.BufferedImage">BufferedImage</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.imgFromString()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.lossyAverage()`
 
@@ -3298,13 +3298,13 @@ Produces <code><abbr title="java.awt.image.BufferedImage">BufferedImage</abbr></
 | --- | --- | --- | --- |
 | `memoryFactor` | d | `0.5` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.BinaryOperator">BinaryOperator</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.lossyAverage()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.BinaryOperator">BinaryOperator</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.lossyAverage()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.minValue()`
 
 `ea.misc.minValue()`
 
-Produces <code><abbr title="java.util.function.BinaryOperator">BinaryOperator</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.minValue()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.BinaryOperator">BinaryOperator</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.minValue()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.mopmBf()`
 
@@ -3314,7 +3314,7 @@ Produces <code><abbr title="java.util.function.BinaryOperator">BinaryOperator</a
 | --- | --- | --- | --- |
 | `n` | i |  | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.core.bool.BooleanFunction">BooleanFunction</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.mopmBf()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.core.bool.BooleanFunction">BooleanFunction</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.mopmBf()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.nearestMESelector()`
 
@@ -3325,7 +3325,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.core.bool.BooleanFunct
 | `name` | s | interpolate `nearest[{nOfOpponents}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `nOfOpponents` | i | `1` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiEvolver$OpponentsSelector">AbstractBiEvolver$OpponentsSelector</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.nearestMESelector()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiEvolver$OpponentsSelector">AbstractBiEvolver$OpponentsSelector</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.nearestMESelector()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.nmrf()`
 
@@ -3336,7 +3336,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiE
 | `exprs` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `yVarNames` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.nmrf()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedMultivariateRealFunction">NamedMultivariateRealFunction</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.nmrf()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.nurf()`
 
@@ -3350,7 +3350,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.N
 | `postOperator` | npm | `ds.f.doubleOp(activationF = identity)` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 | `simplify` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedUnivariateRealFunction">NamedUnivariateRealFunction</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.nurf()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.NamedUnivariateRealFunction">NamedUnivariateRealFunction</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.nurf()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.oldestSelector()`
 
@@ -3361,7 +3361,7 @@ Produces <code><abbr title="io.github.ericmedvet.jsdynsym.core.numerical.named.N
 | `name` | s | interpolate `oldest[{nOfOpponents}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `nOfOpponents` | i | `1` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiEvolver$OpponentsSelector">AbstractBiEvolver$OpponentsSelector</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.oldestSelector()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiEvolver$OpponentsSelector">AbstractBiEvolver$OpponentsSelector</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.oldestSelector()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.randomSelector()`
 
@@ -3372,7 +3372,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiE
 | `name` | s | interpolate `random[{nOfOpponents}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `nOfOpponents` | i | `1` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiEvolver$OpponentsSelector">AbstractBiEvolver$OpponentsSelector</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.randomSelector()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiEvolver$OpponentsSelector">AbstractBiEvolver$OpponentsSelector</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;, S, Q, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.randomSelector()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.sEntry()`
 
@@ -3383,7 +3383,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiE
 | `key` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 | `value` | npm |  | <code>V</code> |
 
-Produces <code><abbr title="java.util.Map$Entry">Map$Entry</abbr>&lt;<abbr title="java.lang.String">String</abbr>, V&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.sEntry()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.Map$Entry">Map$Entry</abbr>&lt;<abbr title="java.lang.String">String</abbr>, V&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.sEntry()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.misc.toVideo()`
 
@@ -3393,7 +3393,7 @@ Produces <code><abbr title="java.util.Map$Entry">Map$Entry</abbr>&lt;<abbr title
 | --- | --- | --- | --- |
 | `drawer` | npm |  | <code><abbr title="io.github.ericmedvet.jsdynsym.control.SimulationOutcomeDrawer">SimulationOutcomeDrawer</abbr>&lt;S&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.drawer.VideoBuilder">VideoBuilder</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;S&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.toVideo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.drawer.VideoBuilder">VideoBuilder</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;S&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Miscs.toVideo()` by robotevo2d-main:1.6.2
 
 ## Package `ea.plot.multi`
 
@@ -3420,7 +3420,7 @@ Aliases: `ea.plot.m`, `ea.plot.multi`
 | `xQuantization` | i | `1` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `q` | npm | `f.identity()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.AggregatedXYDataSeriesMKPAF">AggregatedXYDataSeriesMKPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.xy()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.AggregatedXYDataSeriesMKPAF">AggregatedXYDataSeriesMKPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.xy()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.multi.qualityBoxplot()`
 
@@ -3438,7 +3438,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Aggr
 | `limitOneYForK` | b | `true` | <code>boolean</code> |
 | `q` | npm | `f.identity()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.DistributionMKPAF">DistributionMKPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.yBoxplot()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.DistributionMKPAF">DistributionMKPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.yBoxplot()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.multi.scatterExp()`
 
@@ -3457,7 +3457,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Dist
 | `yRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `limitOneYForK` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.ScatterMKPAF">ScatterMKPAF</abbr>&lt;E, K, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.scatter()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.ScatterMKPAF">ScatterMKPAF</abbr>&lt;E, K, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.scatter()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.multi.uniqueness()`
 
@@ -3479,7 +3479,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Scat
 | `useKForX` | b | `false` | <code>boolean</code> |
 | `xQuantization` | i | `1` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.AggregatedXYDataSeriesMKPAF">AggregatedXYDataSeriesMKPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.xy()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.AggregatedXYDataSeriesMKPAF">AggregatedXYDataSeriesMKPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.xy()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.multi.uniquenessBoxplot()`
 
@@ -3496,7 +3496,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Aggr
 | `yRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `limitOneYForK` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.DistributionMKPAF">DistributionMKPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.yBoxplot()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.DistributionMKPAF">DistributionMKPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.yBoxplot()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.multi.xyExp()`
 
@@ -3518,7 +3518,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Dist
 | `useKForX` | b | `false` | <code>boolean</code> |
 | `xQuantization` | i | `1` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.AggregatedXYDataSeriesMKPAF">AggregatedXYDataSeriesMKPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.xy()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.AggregatedXYDataSeriesMKPAF">AggregatedXYDataSeriesMKPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.xy()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.multi.yBoxplotExp()`
 
@@ -3535,7 +3535,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Aggr
 | `yRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `limitOneYForK` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.DistributionMKPAF">DistributionMKPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.yBoxplot()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.DistributionMKPAF">DistributionMKPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.yBoxplot()` by robotevo2d-main:1.6.2
 
 ## Package `ea.plot.single`
 
@@ -3557,7 +3557,7 @@ Aliases: `ea.plot.s`, `ea.plot.single`
 | `xRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `yRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDataSeriesSEPAF">XYDataSeriesSEPAF</abbr>&lt;E, K, X, P&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.xyes()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDataSeriesSEPAF">XYDataSeriesSEPAF</abbr>&lt;E, K, X, P&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.xyes()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.single.coMe()`
 
@@ -3574,7 +3574,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDa
 | `unique` | b | `true` | <code>boolean</code> |
 | `q` | npm | `f.identity()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.HeatPolyMapSEPAF">HeatPolyMapSEPAF</abbr>&lt;E, K, X, V&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.heat()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.HeatPolyMapSEPAF">HeatPolyMapSEPAF</abbr>&lt;E, K, X, V&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.heat()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.single.coMeStrategies()`
 
@@ -3589,7 +3589,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Heat
 | `condition` | npm | `predicate.inD(values = [0.0; 0.1; 0.25; 0.5; 1.0])` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code> |
 | `unique` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.VectorialFieldSEPAF">VectorialFieldSEPAF</abbr>&lt;E, K, X, F&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.field()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.VectorialFieldSEPAF">VectorialFieldSEPAF</abbr>&lt;E, K, X, F&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.field()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.single.fieldRun()`
 
@@ -3604,7 +3604,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Vect
 | `condition` | npm | `predicate.inD(values = [0.0; 0.1; 0.25; 0.5; 1.0])` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code> |
 | `unique` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.VectorialFieldSEPAF">VectorialFieldSEPAF</abbr>&lt;E, K, X, F&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.field()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.VectorialFieldSEPAF">VectorialFieldSEPAF</abbr>&lt;E, K, X, F&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.field()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.single.gridRun()`
 
@@ -3620,7 +3620,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Vect
 | `valueRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `unique` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.UnivariateGridSEPAF">UnivariateGridSEPAF</abbr>&lt;E, K, X, G&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.grid()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.UnivariateGridSEPAF">UnivariateGridSEPAF</abbr>&lt;E, K, X, G&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.grid()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.single.gridState()`
 
@@ -3637,7 +3637,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Univ
 | `unique` | b | `true` | <code>boolean</code> |
 | `q` | npm | `f.identity()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.UnivariateGridSEPAF">UnivariateGridSEPAF</abbr>&lt;E, K, X, G&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.grid()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.UnivariateGridSEPAF">UnivariateGridSEPAF</abbr>&lt;E, K, X, G&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.grid()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.single.heatRun()`
 
@@ -3653,7 +3653,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Univ
 | `valueRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `unique` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.HeatPolyMapSEPAF">HeatPolyMapSEPAF</abbr>&lt;E, K, X, V&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.heat()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.HeatPolyMapSEPAF">HeatPolyMapSEPAF</abbr>&lt;E, K, X, V&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.heat()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.single.landscape()`
 
@@ -3673,7 +3673,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Heat
 | `valueRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `unique` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.LandscapeSEPAF">LandscapeSEPAF</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, S, Q&gt;, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, S, Q, P&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, S, Q&gt;, X, <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SinglePlots.landscape()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.LandscapeSEPAF">LandscapeSEPAF</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, S, Q&gt;, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, S, Q, P&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Run">Run</abbr>&lt;?, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, S, Q&gt;, X, <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SinglePlots.landscape()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.single.maMe2()`
 
@@ -3690,7 +3690,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Land
 | `unique` | b | `true` | <code>boolean</code> |
 | `q` | npm | `f.identity()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.HeatPolyMapSEPAF">HeatPolyMapSEPAF</abbr>&lt;E, K, X, V&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.heat()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.HeatPolyMapSEPAF">HeatPolyMapSEPAF</abbr>&lt;E, K, X, V&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.heat()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.single.me()`
 
@@ -3707,7 +3707,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Heat
 | `unique` | b | `true` | <code>boolean</code> |
 | `q` | npm | `f.identity()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.HeatPolyMapSEPAF">HeatPolyMapSEPAF</abbr>&lt;E, K, X, V&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.heat()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.HeatPolyMapSEPAF">HeatPolyMapSEPAF</abbr>&lt;E, K, X, V&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.heat()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.single.populationValidation()`
 
@@ -3727,7 +3727,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Heat
 | `q` | npm | `f.identity()` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `v` | npm | `` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDataSeriesSEPAF">XYDataSeriesSEPAF</abbr>&lt;E, K, X, P&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.xyes()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDataSeriesSEPAF">XYDataSeriesSEPAF</abbr>&lt;E, K, X, P&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.xyes()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.single.quality()`
 
@@ -3742,7 +3742,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDa
 | `yRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `q` | npm | `f.identity()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDataSeriesSRPAF">XYDataSeriesSRPAF</abbr>&lt;E, K&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.xyrs()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDataSeriesSRPAF">XYDataSeriesSRPAF</abbr>&lt;E, K&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.xyrs()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.single.uniqueness()`
 
@@ -3756,7 +3756,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDa
 | `xRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `yRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDataSeriesSRPAF">XYDataSeriesSRPAF</abbr>&lt;E, K&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.xyrs()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDataSeriesSRPAF">XYDataSeriesSRPAF</abbr>&lt;E, K&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.xyrs()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.plot.single.xyrsRun()`
 
@@ -3770,7 +3770,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDa
 | `xRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `yRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDataSeriesSRPAF">XYDataSeriesSRPAF</abbr>&lt;E, K&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.xyrs()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDataSeriesSRPAF">XYDataSeriesSRPAF</abbr>&lt;E, K&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.xyrs()` by robotevo2d-main:1.6.2
 
 ## Package `ea.predicate`
 
@@ -3782,7 +3782,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDa
 | --- | --- | --- | --- |
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, ? extends <abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Predicates.isSrConstant()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Predicates.isSrConstant()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.predicate.isSrVariable()`
 
@@ -3792,7 +3792,7 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&
 | --- | --- | --- | --- |
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, ? extends <abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Predicates.isSrVariable()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Predicates.isSrVariable()` by robotevo2d-main:1.6.2
 
 ## Package `ea.problem`
 
@@ -3813,7 +3813,7 @@ Aliases: `ea.p`, `ea.problem`
 | `dT` | d |  | <code>double</code> |
 | `tRange` | npm |  | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQualityBasedBiProblem">TotalOrderQualityBasedBiProblem</abbr>&lt;S, B, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.biSimToBiTo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQualityBasedBiProblem">TotalOrderQualityBasedBiProblem</abbr>&lt;S, B, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.biSimToBiTo()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.biSimToTo()`
 
@@ -3830,7 +3830,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQua
 | `dT` | d |  | <code>double</code> |
 | `tRange` | npm |  | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQualityBasedProblem">TotalOrderQualityBasedProblem</abbr>&lt;S, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.biSimToTo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQualityBasedProblem">TotalOrderQualityBasedProblem</abbr>&lt;S, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.biSimToTo()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.functionToTo()`
 
@@ -3844,7 +3844,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQua
 | `type` | e | `MINIMIZE` | <code><abbr title="io.github.ericmedvet.jgea.experimenter.builders.Problems$OptimizationType">Problems$OptimizationType</abbr></code> |
 | `example` | npm | `misc.nullValue()` | <code>S</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQualityBasedProblem">TotalOrderQualityBasedProblem</abbr>&lt;S, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.functionToTo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQualityBasedProblem">TotalOrderQualityBasedProblem</abbr>&lt;S, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.functionToTo()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.functionsToScbmo()`
 
@@ -3859,7 +3859,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQua
 | `toMaxObjectives` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;CQ&gt;, O&gt;&gt;</code> |
 | `example` | npm | `misc.nullValue()` | <code>S</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleCBMOProblem">SimpleCBMOProblem</abbr>&lt;S, <abbr title="java.util.function.Function">Function</abbr>&lt;S, CQ&gt;, CQ, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.functionsToScbmo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleCBMOProblem">SimpleCBMOProblem</abbr>&lt;S, <abbr title="java.util.function.Function">Function</abbr>&lt;S, CQ&gt;, CQ, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.functionsToScbmo()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.manyToCbto()`
 
@@ -3873,7 +3873,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleCBMOPro
 | `aggregator` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;PQ&gt;, AQ&gt;</code> |
 | `comparator` | npm |  | <code><abbr title="java.util.Comparator">Comparator</abbr>&lt;AQ&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.CBTOProblem">CBTOProblem</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.problem.QualityBasedProblem">QualityBasedProblem</abbr>&lt;S, PQ&gt;, PQ, AQ&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.manyToCbto()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.CBTOProblem">CBTOProblem</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.problem.QualityBasedProblem">QualityBasedProblem</abbr>&lt;S, PQ&gt;, PQ, AQ&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.manyToCbto()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.moToSo()`
 
@@ -3885,7 +3885,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.CBTOProblem">
 | `objective` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 | `moProblem` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.problem.MultiObjectiveProblem">MultiObjectiveProblem</abbr>&lt;S, Q, O&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQualityBasedProblem">TotalOrderQualityBasedProblem</abbr>&lt;S, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.moToSo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQualityBasedProblem">TotalOrderQualityBasedProblem</abbr>&lt;S, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.moToSo()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.mtToMo()`
 
@@ -3896,7 +3896,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQua
 | `name` | s | interpolate `mt2mo[{mtProblem.name}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `mtProblem` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.problem.MultiTargetProblem">MultiTargetProblem</abbr>&lt;S&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMOProblem">SimpleMOProblem</abbr>&lt;S, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.mtToMo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMOProblem">SimpleMOProblem</abbr>&lt;S, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.mtToMo()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.preMapped()`
 
@@ -3908,7 +3908,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMOProbl
 | `mapper` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;T, S&gt;</code> |
 | `problem` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.problem.Problem">Problem</abbr>&lt;S&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.Problem">Problem</abbr>&lt;T&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.preMapped()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.Problem">Problem</abbr>&lt;T&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.preMapped()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.simToDurationSmfbbmo()`
 
@@ -3924,7 +3924,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.Problem">Prob
 | `toMinObjectives` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;B, O&gt;&gt;</code> |
 | `toMaxObjectives` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;B, O&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMFBBMOProblem">SimpleMFBBMOProblem</abbr>&lt;S, B, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.simToDurationSmfbbmo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMFBBMOProblem">SimpleMFBBMOProblem</abbr>&lt;S, B, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.simToDurationSmfbbmo()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.simToResolutionSmfbbmo()`
 
@@ -3939,7 +3939,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMFBBMOP
 | `toMinObjectives` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;B, O&gt;&gt;</code> |
 | `toMaxObjectives` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;B, O&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMFBBMOProblem">SimpleMFBBMOProblem</abbr>&lt;S, B, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.simToResolutionSmfbbmo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMFBBMOProblem">SimpleMFBBMOProblem</abbr>&lt;S, B, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.simToResolutionSmfbbmo()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.simToSbbmo()`
 
@@ -3954,7 +3954,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMFBBMOP
 | `toMinObjectives` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;B, O&gt;&gt;</code> |
 | `toMaxObjectives` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;B, O&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleBBMOProblem">SimpleBBMOProblem</abbr>&lt;S, B, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.simToSbbmo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleBBMOProblem">SimpleBBMOProblem</abbr>&lt;S, B, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.simToSbbmo()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.simToSmo()`
 
@@ -3969,7 +3969,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleBBMOPro
 | `toMinObjectives` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;B, O&gt;&gt;</code> |
 | `toMaxObjectives` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;B, O&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMOProblem">SimpleMOProblem</abbr>&lt;S, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.simToSmo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMOProblem">SimpleMOProblem</abbr>&lt;S, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.simToSmo()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.simToTo()`
 
@@ -3984,7 +3984,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMOProbl
 | `comparator` | npm |  | <code><abbr title="java.util.Comparator">Comparator</abbr>&lt;Q&gt;</code> |
 | `qFunction` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;B, Q&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQualityBasedProblem">TotalOrderQualityBasedProblem</abbr>&lt;S, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.simToTo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQualityBasedProblem">TotalOrderQualityBasedProblem</abbr>&lt;S, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.simToTo()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.simsToTo()`
 
@@ -4000,7 +4000,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQua
 | `aggregator` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;Q&gt;, Q&gt;</code> |
 | `qFunction` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;B, Q&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQualityBasedProblem">TotalOrderQualityBasedProblem</abbr>&lt;S, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.simsToTo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQualityBasedProblem">TotalOrderQualityBasedProblem</abbr>&lt;S, Q&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.simsToTo()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.smoToSubsettedSmo()`
 
@@ -4012,7 +4012,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQua
 | `objectives` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `smoProblem` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMOProblem">SimpleMOProblem</abbr>&lt;S, O&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMOProblem">SimpleMOProblem</abbr>&lt;S, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.smoToSubsettedSmo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMOProblem">SimpleMOProblem</abbr>&lt;S, O&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.smoToSubsettedSmo()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.srlatToBbto()`
 
@@ -4025,7 +4025,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.SimpleMOProbl
 | `dT` | d |  | <code>double</code> |
 | `tRange` | npm |  | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.BBTOProblem">BBTOProblem</abbr>&lt;C, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.ReinforcementLearningAgent$RewardedInput">ReinforcementLearningAgent$RewardedInput</abbr>&lt;O&gt;, A, TS&gt;&gt;, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.srlatToBbto()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.BBTOProblem">BBTOProblem</abbr>&lt;C, <abbr title="io.github.ericmedvet.jsdynsym.control.Simulation$Outcome">Simulation$Outcome</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.control.SingleAgentTask$Step">SingleAgentTask$Step</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.rl.ReinforcementLearningAgent$RewardedInput">ReinforcementLearningAgent$RewardedInput</abbr>&lt;O&gt;, A, TS&gt;&gt;, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.srlatToBbto()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.srlatToTo()`
 
@@ -4038,7 +4038,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.BBTOProblem">
 | `dT` | d |  | <code>double</code> |
 | `tRange` | npm |  | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQualityBasedProblem">TotalOrderQualityBasedProblem</abbr>&lt;C, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.srlatToTo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQualityBasedProblem">TotalOrderQualityBasedProblem</abbr>&lt;C, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Problems.srlatToTo()` by robotevo2d-main:1.6.2
 
 ## Package `ea.problem.booleanRegression`
 
@@ -4055,7 +4055,7 @@ Aliases: `ea.p.booleanRegression`, `ea.p.br`, `ea.problem.booleanRegression`, `e
 | `metrics` | e[] | `[avg_dissimilarity]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.problem.bool.BooleanRegressionProblem$Metric">BooleanRegressionProblem$Metric</abbr>&gt;</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.bool.synthetic.EvenParity">EvenParity</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.BooleanRegressionProblems.evenParity()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.bool.synthetic.EvenParity">EvenParity</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.BooleanRegressionProblems.evenParity()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.booleanRegression.mopm()`
 
@@ -4068,7 +4068,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.bool.synthetic.Eve
 | `metrics` | e[] | `[avg_dissimilarity]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.problem.bool.BooleanRegressionProblem$Metric">BooleanRegressionProblem$Metric</abbr>&gt;</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.bool.synthetic.MultipleOutputParallelMultiplier">MultipleOutputParallelMultiplier</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.BooleanRegressionProblems.mopm()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.bool.synthetic.MultipleOutputParallelMultiplier">MultipleOutputParallelMultiplier</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.BooleanRegressionProblems.mopm()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.booleanRegression.targetBased()`
 
@@ -4082,7 +4082,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.bool.synthetic.Mul
 | `metrics` | e[] | `[avg_dissimilarity]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.problem.bool.BooleanRegressionProblem$Metric">BooleanRegressionProblem$Metric</abbr>&gt;</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.bool.synthetic.PrecomputedSyntheticBRProblem">PrecomputedSyntheticBRProblem</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.BooleanRegressionProblems.targetBased()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.bool.synthetic.PrecomputedSyntheticBRProblem">PrecomputedSyntheticBRProblem</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.BooleanRegressionProblems.targetBased()` by robotevo2d-main:1.6.2
 
 ## Package `ea.problem.multivariateRegression`
 
@@ -4100,7 +4100,7 @@ Aliases: `ea.p.mr`, `ea.p.multivariateRegression`, `ea.problem.mr`, `ea.problem.
 | `nFolds` | i | `10` | <code>int</code> |
 | `testFold` | i | `0` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.multivariate.MultivariateRegressionProblem">MultivariateRegressionProblem</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.MultivariateRegressionProblems.fromData()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.multivariate.MultivariateRegressionProblem">MultivariateRegressionProblem</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.MultivariateRegressionProblems.fromData()` by robotevo2d-main:1.6.2
 
 ## Package `ea.problem.programSynthesis`
 
@@ -4127,7 +4127,7 @@ Aliases: `ea.p.programSynthesis`, `ea.p.ps`, `ea.problem.programSynthesis`, `ea.
 | `stringLengthRange` | npm | `m.range(max = 20; min = 2)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `sequenceSizeRange` | npm | `m.range(max = 8; min = 1)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.programsynthesis.ProgramSynthesisProblem">ProgramSynthesisProblem</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.ProgramSynthesisProblems.synthetic()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.programsynthesis.ProgramSynthesisProblem">ProgramSynthesisProblem</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.ProgramSynthesisProblems.synthetic()` by robotevo2d-main:1.6.2
 
 ## Package `ea.problem.synthetic`
 
@@ -4142,7 +4142,7 @@ Aliases: `ea.p.s`, `ea.p.synthetic`, `ea.problem.s`, `ea.problem.synthetic`
 | `name` | s | interpolate `ackley-{p}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `p` | i | `100` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.Ackley">Ackley</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.ackley()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.Ackley">Ackley</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.ackley()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.bentCigar()`
 
@@ -4153,7 +4153,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerica
 | `name` | s | interpolate `bentCigar-{p}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `p` | i | `100` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.BentCigar">BentCigar</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.bentCigar()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.BentCigar">BentCigar</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.bentCigar()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.charShapeApproximation()`
 
@@ -4167,7 +4167,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerica
 | `smoothed` | b | `true` | <code>boolean</code> |
 | `weighted` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.grid.CharShapeApproximation">CharShapeApproximation</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.charShapeApproximation()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.grid.CharShapeApproximation">CharShapeApproximation</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.charShapeApproximation()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.circularPointsAiming()`
 
@@ -4182,7 +4182,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.grid.CharShapeAppr
 | `center` | d | `1.0` | <code>double</code> |
 | `seed` | i | `1` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.CircularPointsAiming">CircularPointsAiming</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.circularPointsAiming()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.CircularPointsAiming">CircularPointsAiming</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.circularPointsAiming()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.discus()`
 
@@ -4193,7 +4193,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerica
 | `name` | s | interpolate `discus-{p}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `p` | i | `100` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.Discus">Discus</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.discus()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.Discus">Discus</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.discus()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.gaussianMixture2D()`
 
@@ -4205,7 +4205,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerica
 | `targets` | d[] | `[-3.0, -2.0, 2.0, 2.0, 2.0, 1.0]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 | `c` | d | `1.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.GaussianMixture2D">GaussianMixture2D</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.gaussianMixture2D()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.GaussianMixture2D">GaussianMixture2D</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.gaussianMixture2D()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.grammarText()`
 
@@ -4216,7 +4216,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerica
 | `name` | s | interpolate `s({target})` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `target` | s | `The white dog!` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.Text">Text</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.grammarText()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.Text">Text</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.grammarText()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.highConditionedElliptic()`
 
@@ -4227,7 +4227,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.Text">Te
 | `name` | s | interpolate `highConditionedElliptic-{p}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `p` | i | `100` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.HighConditionedElliptic">HighConditionedElliptic</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.highConditionedElliptic()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.HighConditionedElliptic">HighConditionedElliptic</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.highConditionedElliptic()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.intOneMax()`
 
@@ -4239,7 +4239,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerica
 | `p` | i | `100` | <code>int</code> |
 | `upperBound` | i | `100` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.IntOneMax">IntOneMax</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.intOneMax()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.IntOneMax">IntOneMax</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.intOneMax()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.lettersMax()`
 
@@ -4251,7 +4251,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.IntOneMa
 | `letters` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `l` | i | `32` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.LettersMax">LettersMax</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.lettersMax()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.LettersMax">LettersMax</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.lettersMax()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.linearPoints()`
 
@@ -4262,7 +4262,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.LettersM
 | `name` | s | interpolate `lPoints-{p}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `p` | i | `100` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.LinearPoints">LinearPoints</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.linearPoints()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.LinearPoints">LinearPoints</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.linearPoints()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.mrCaMorphogenesis()`
 
@@ -4278,7 +4278,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerica
 | `caStateRange` | npm | `m.range(max = 1; min = -1)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `targetRange` | npm | `m.range(max = 1; min = 0)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.ca.MRCAMorphogenesis">MRCAMorphogenesis</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.mrCaMorphogenesis()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.ca.MRCAMorphogenesis">MRCAMorphogenesis</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.mrCaMorphogenesis()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.mrCaNamedImageMorphogenesis()`
 
@@ -4297,7 +4297,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.ca.MRCAMorphogenes
 | `w` | i | `15` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `h` | i | `15` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.ca.MRCAMorphogenesis">MRCAMorphogenesis</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.mrCaMorphogenesis()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.ca.MRCAMorphogenesis">MRCAMorphogenesis</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.mrCaMorphogenesis()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.mrCaStringMorphogenesis()`
 
@@ -4316,7 +4316,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.ca.MRCAMorphogenes
 | `w` | i | `15` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `h` | i | `15` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.ca.MRCAMorphogenesis">MRCAMorphogenesis</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.mrCaMorphogenesis()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.ca.MRCAMorphogenesis">MRCAMorphogenesis</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.mrCaMorphogenesis()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.multiModalIntOneMax()`
 
@@ -4329,7 +4329,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.ca.MRCAMorphogenes
 | `upperBound` | i | `10` | <code>int</code> |
 | `nOfTargets` | i | `3` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.MultiModalIntOneMax">MultiModalIntOneMax</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.multiModalIntOneMax()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.MultiModalIntOneMax">MultiModalIntOneMax</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.multiModalIntOneMax()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.multiObjectiveIntOneMax()`
 
@@ -4341,7 +4341,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.MultiMod
 | `p` | i | `100` | <code>int</code> |
 | `upperBound` | i | `3` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.MultiObjectiveIntOneMax">MultiObjectiveIntOneMax</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.multiObjectiveIntOneMax()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.MultiObjectiveIntOneMax">MultiObjectiveIntOneMax</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.multiObjectiveIntOneMax()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.oneMax()`
 
@@ -4352,7 +4352,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.MultiObj
 | `name` | s | interpolate `oneMax-{p}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `p` | i | `100` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.OneMax">OneMax</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.oneMax()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.OneMax">OneMax</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.oneMax()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.pointAiming()`
 
@@ -4364,7 +4364,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.OneMax">
 | `p` | i | `100` | <code>int</code> |
 | `target` | d | `1.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.PointsAiming">PointsAiming</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.pointAiming()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.PointsAiming">PointsAiming</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.pointAiming()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.pointsAiming2D()`
 
@@ -4376,7 +4376,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerica
 | `targetY` | d | `2.0` | <code>double</code> |
 | `targetXs` | d[] | `[-2.0, 2.0]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.PointsAiming">PointsAiming</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.pointsAiming2D()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.PointsAiming">PointsAiming</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.pointsAiming2D()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.rastrigin()`
 
@@ -4387,7 +4387,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerica
 | `name` | s | interpolate `rastrigin-{p}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `p` | i | `100` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.Rastrigin">Rastrigin</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.rastrigin()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.Rastrigin">Rastrigin</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.rastrigin()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.rosenbrock()`
 
@@ -4398,7 +4398,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerica
 | `name` | s | interpolate `rosenbrock-{p}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `p` | i | `100` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.Rosenbrock">Rosenbrock</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.rosenbrock()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.Rosenbrock">Rosenbrock</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.rosenbrock()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.synthetic.sphere()`
 
@@ -4409,7 +4409,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerica
 | `name` | s | interpolate `sphere-{p}` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `p` | i | `100` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.Sphere">Sphere</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.sphere()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.synthetic.numerical.Sphere">Sphere</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.SyntheticProblems.sphere()` by robotevo2d-main:1.6.2
 
 ## Package `ea.problem.univariateRegression`
 
@@ -4431,7 +4431,7 @@ Aliases: `ea.p.univariateRegression`, `ea.p.ur`, `ea.problem.univariateRegressio
 | `xScaling` | s | `none` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `yScaling` | s | `none` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.univariate.UnivariateRegressionProblem">UnivariateRegressionProblem</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.UnivariateRegressionProblems.fromData()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.univariate.UnivariateRegressionProblem">UnivariateRegressionProblem</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.UnivariateRegressionProblems.fromData()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.univariateRegression.fromData()`
 
@@ -4446,7 +4446,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.univari
 | `shuffle` | b | `true` | <code>boolean</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.univariate.UnivariateRegressionProblem">UnivariateRegressionProblem</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.UnivariateRegressionProblems.fromData()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.univariate.UnivariateRegressionProblem">UnivariateRegressionProblem</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.UnivariateRegressionProblems.fromData()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.problem.univariateRegression.synthetic()`
 
@@ -4458,7 +4458,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.univari
 | `metrics` | e[] | `[mse]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.problem.regression.univariate.UnivariateRegressionProblem$Metric">UnivariateRegressionProblem$Metric</abbr>&gt;</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.univariate.synthetic.SyntheticURProblem">SyntheticURProblem</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.UnivariateRegressionProblems.synthetic()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.univariate.synthetic.SyntheticURProblem">SyntheticURProblem</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.UnivariateRegressionProblems.synthetic()` by robotevo2d-main:1.6.2
 
 ## Package `ea.provider.numerical`
 
@@ -4473,7 +4473,7 @@ Aliases: `ea.provider.num`, `ea.provider.numerical`
 | `xVars` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `yVars` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.NumericalDataset">NumericalDataset</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NumericalIndexedProviders.empty()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.NumericalDataset">NumericalDataset</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NumericalIndexedProviders.empty()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.provider.numerical.fromBundled()`
 
@@ -4486,7 +4486,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.Numeric
 | `yScaling` | e | `NONE` | <code><abbr title="io.github.ericmedvet.jgea.problem.regression.NumericalDataset$Scaling">NumericalDataset$Scaling</abbr></code> |
 | `limit` | i | `2147483647` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.NumericalDataset">NumericalDataset</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NumericalIndexedProviders.fromBundled()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.NumericalDataset">NumericalDataset</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NumericalIndexedProviders.fromBundled()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.provider.numerical.fromFile()`
 
@@ -4500,7 +4500,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.Numeric
 | `yVarNamePattern` | s | `y.*` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `limit` | i | `2147483647` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.NumericalDataset">NumericalDataset</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NumericalIndexedProviders.fromFile()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.NumericalDataset">NumericalDataset</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NumericalIndexedProviders.fromFile()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.provider.numerical.scaled()`
 
@@ -4512,7 +4512,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.Numeric
 | `xScaling` | e | `NONE` | <code><abbr title="io.github.ericmedvet.jgea.problem.regression.NumericalDataset$Scaling">NumericalDataset$Scaling</abbr></code> |
 | `yScaling` | e | `NONE` | <code><abbr title="io.github.ericmedvet.jgea.problem.regression.NumericalDataset$Scaling">NumericalDataset$Scaling</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.NumericalDataset">NumericalDataset</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NumericalIndexedProviders.scaled()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.problem.regression.NumericalDataset">NumericalDataset</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NumericalIndexedProviders.scaled()` by robotevo2d-main:1.6.2
 
 ## Package `ea.representation`
 
@@ -4529,7 +4529,7 @@ Aliases: `ea.r`, `ea.representation`
 | `minTreeH` | i | `4` | <code>int</code> |
 | `maxTreeH` | i | `10` | <code>int</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.bool.Element">Element</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.bool.Element">Element</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.bTree()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.bool.Element">Element</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.bool.Element">Element</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.bTree()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.bitString()`
 
@@ -4541,7 +4541,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `mutations` | npm[] | `[ea.r.go.bsFlipMutation()]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>&gt;&gt;&gt;</code> |
 | `xovers` | npm[] | `[ea.r.go.composedXover(mutation = ea.r.go.bsFlipMutation(); xover = ea.r.go.bsUniformXover())]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.bitString()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.bitString()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.cfgTree()`
 
@@ -4553,7 +4553,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `minTreeH` | i | `4` | <code>int</code> |
 | `maxTreeH` | i | `16` | <code>int</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;N&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;N&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.cfgTree()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;N&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;N&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.cfgTree()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.doubleString()`
 
@@ -4565,7 +4565,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `mutations` | npm[] | `[ea.r.go.dsGaussianMutation()]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;&gt;</code> |
 | `xovers` | npm[] | `[ea.r.go.composedXover(mutation = ea.r.go.dsGaussianMutation(); xover = ea.r.go.dsSegmentGeometricXover())]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.doubleString()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.doubleString()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.intString()`
 
@@ -4577,7 +4577,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `mutations` | npm[] | `[ea.r.go.isFlipMutation()]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;&gt;&gt;</code> |
 | `xovers` | npm[] | `[ea.r.go.composedXover(mutation = ea.r.go.isFlipMutation(); xover = ea.r.go.isUniformXover())]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.intString()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.intString()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.list()`
 
@@ -4590,7 +4590,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `altXovers` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;&gt;&gt;&gt;</code> |
 | `uniformCrossover` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.list()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.list()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.multiBTree()`
 
@@ -4603,7 +4603,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `altXovers` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;&gt;&gt;&gt;</code> |
 | `uniformCrossover` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.list()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.list()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.multiSRTree()`
 
@@ -4616,7 +4616,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `altXovers` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;&gt;&gt;&gt;</code> |
 | `uniformCrossover` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.list()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;G&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.list()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.pair()`
 
@@ -4627,7 +4627,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `first` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;G1, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;G1&gt;&gt;</code> |
 | `second` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;G2, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;G2&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;G1, G2&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;G1, G2&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.pair()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;G1, G2&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;G1, G2&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.pair()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.seeded()`
 
@@ -4640,7 +4640,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `seededRate` | d | `0.01` | <code>double</code> |
 | `mutatedRate` | d | `0.49` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;G, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;G&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.seeded()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;G, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;G&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.seeded()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.srTree()`
 
@@ -4659,7 +4659,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;G, <
 | `includeVarNameRegex` | s | `.*` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `excludeVarNameRegex` | s | `` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.srTree()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Tree">Tree</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element">Element</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.srTree()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.ttpn()`
 
@@ -4674,7 +4674,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `forbiddenGates` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr>&gt;</code> |
 | `avoidDeadGates` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Network">Network</abbr>, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Network">Network</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.ttpn()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Network">Network</abbr>, <abbr title="io.github.ericmedvet.jgea.experimenter.Representation">Representation</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Network">Network</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Representations.ttpn()` by robotevo2d-main:1.6.2
 
 ## Package `ea.representation.factory`
 
@@ -4684,7 +4684,7 @@ Aliases: `ea.r.f`, `ea.r.factory`, `ea.representation.f`, `ea.representation.fac
 
 `ea.r.f.bsUniform()`
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.Factory">Factory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Factories.bsUniform()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.Factory">Factory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Factories.bsUniform()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.factory.dsUniform()`
 
@@ -4695,25 +4695,25 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `initialMinV` | d | `-1.0` | <code>double</code> |
 | `initialMaxV` | d | `1.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.Factory">Factory</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Factories.dsUniform()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.Factory">Factory</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Factories.dsUniform()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.factory.isSequential()`
 
 `ea.r.f.isSequential()`
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.Factory">Factory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Factories.isSequential()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.Factory">Factory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Factories.isSequential()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.factory.isUniform()`
 
 `ea.r.f.isUniform()`
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.Factory">Factory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Factories.isUniform()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.Factory">Factory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Factories.isUniform()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.factory.isUniformUnique()`
 
 `ea.r.f.isUniformUnique()`
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.Factory">Factory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Factories.isUniformUnique()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.Factory">Factory</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Factories.isUniformUnique()` by robotevo2d-main:1.6.2
 
 ## Package `ea.representation.geneticOperator`
 
@@ -4727,13 +4727,13 @@ Aliases: `ea.r.geneticOperator`, `ea.r.go`, `ea.representation.geneticOperator`,
 | --- | --- | --- | --- |
 | `pMutRate` | d | `1.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.bsFlipMutation()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.bsFlipMutation()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.geneticOperator.bsUniformXover()`
 
 `ea.r.go.bsUniformXover()`
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.bsUniformXover()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.bit.BitString">BitString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.bsUniformXover()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.geneticOperator.composedMutation()`
 
@@ -4744,7 +4744,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `mutation1` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;X&gt;&gt;</code> |
 | `mutation2` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;X&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;X&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.composedMutation()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;X&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.composedMutation()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.geneticOperator.composedXover()`
 
@@ -4755,7 +4755,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `xover` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;X&gt;&gt;</code> |
 | `mutation` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;X&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;X&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.composedXover()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;X&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.composedXover()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.geneticOperator.deterministicXover()`
 
@@ -4765,7 +4765,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | --- | --- | --- | --- |
 | `first` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;X&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.deterministicXover()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;X&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.deterministicXover()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.geneticOperator.dsGaussianMutation()`
 
@@ -4775,7 +4775,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | --- | --- | --- | --- |
 | `sigmaMut` | d | `0.35` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.dsGaussianMutation()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.dsGaussianMutation()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.geneticOperator.dsHypercubeGeometricXover()`
 
@@ -4785,7 +4785,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `ext` | d | `1.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.dsHypercubeGeometricXover()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.dsHypercubeGeometricXover()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.geneticOperator.dsSegmentGeometricXover()`
 
@@ -4795,7 +4795,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `ext` | d | `1.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.dsSegmentGeometricXover()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.dsSegmentGeometricXover()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.geneticOperator.isFlipMutation()`
 
@@ -4805,19 +4805,19 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `pMutRate` | d | `1.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.isFlipMutation()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.isFlipMutation()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.geneticOperator.isSymbolCopyMutation()`
 
 `ea.r.go.isSymbolCopyMutation()`
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.isSymbolCopyMutation()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.isSymbolCopyMutation()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.geneticOperator.isUniformXover()`
 
 `ea.r.go.isUniformXover()`
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.isUniformXover()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.sequence.integer.IntString">IntString</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.isUniformXover()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.geneticOperator.listCrossover()`
 
@@ -4827,7 +4827,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `crossover` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;X&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;X&gt;, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;X&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.listCrossover()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;X&gt;, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;X&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.listCrossover()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.geneticOperator.listMutation()`
 
@@ -4837,7 +4837,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `mutation` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;X&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;X&gt;, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;X&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.listMutation()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;X&gt;, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;X&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.listMutation()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.geneticOperator.oneMutation()`
 
@@ -4847,7 +4847,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `mutations` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;X&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;X&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.oneMutation()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Mutation">Mutation</abbr>&lt;X&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.oneMutation()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.representation.geneticOperator.oneXover()`
 
@@ -4857,7 +4857,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | --- | --- | --- | --- |
 | `xovers` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;X&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;X&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.oneXover()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jgea.core.operator.Crossover">Crossover</abbr>&lt;X&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.GeneticOperators.oneXover()` by robotevo2d-main:1.6.2
 
 ## Package `ea.schedule`
 
@@ -4870,7 +4870,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `name` | s | interpolate `evenPiecewise[{values}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `values` | d[] | `[0.0, 1.0]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 
-Produces <code><abbr title="java.util.function.DoubleUnaryOperator">DoubleUnaryOperator</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Schedules.evenPiecewise()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.DoubleUnaryOperator">DoubleUnaryOperator</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Schedules.evenPiecewise()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.schedule.flat()`
 
@@ -4881,7 +4881,7 @@ Produces <code><abbr title="java.util.function.DoubleUnaryOperator">DoubleUnaryO
 | `name` | s | interpolate `flat[{value}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `value` | d | `1.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.DoubleUnaryOperator">DoubleUnaryOperator</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Schedules.flat()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.DoubleUnaryOperator">DoubleUnaryOperator</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Schedules.flat()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.schedule.linear()`
 
@@ -4893,7 +4893,7 @@ Produces <code><abbr title="java.util.function.DoubleUnaryOperator">DoubleUnaryO
 | `min` | d | `0.0` | <code>double</code> |
 | `max` | d | `1.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.DoubleUnaryOperator">DoubleUnaryOperator</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Schedules.linear()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.DoubleUnaryOperator">DoubleUnaryOperator</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Schedules.linear()` by robotevo2d-main:1.6.2
 
 ## Package `ea.solver`
 
@@ -4916,7 +4916,7 @@ Aliases: `ea.s`, `ea.solver`
 | `recomputationRatio` | d | `0.5` | <code>double</code> |
 | `schedule` | npm | `ea.schedule.flat()` | <code><abbr title="java.util.function.DoubleUnaryOperator">DoubleUnaryOperator</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.AsynchronousScheduledMFMapElites">AsynchronousScheduledMFMapElites</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.asyncScheduledMfMapElites()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.AsynchronousScheduledMFMapElites">AsynchronousScheduledMFMapElites</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.asyncScheduledMfMapElites()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.biGa()`
 
@@ -4938,7 +4938,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `opponentsSelector` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiEvolver$OpponentsSelector">AbstractBiEvolver$OpponentsSelector</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;, S, Q, O&gt;</code> |
 | `fitnessAggregator` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;Q&gt;, Q&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.bi.StandardBiEvolver">StandardBiEvolver</abbr>&lt;G, S, Q, O&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.biGa()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.bi.StandardBiEvolver">StandardBiEvolver</abbr>&lt;G, S, Q, O&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.biGa()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.biMapElites()`
 
@@ -4959,7 +4959,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `opponentsSelector` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.solver.bi.AbstractBiEvolver$OpponentsSelector">AbstractBiEvolver$OpponentsSelector</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;, S, Q, O&gt;</code> |
 | `fitnessAggregator` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;Q&gt;, Q&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.bi.mapelites.MapElitesBiEvolver">MapElitesBiEvolver</abbr>&lt;G, S, Q, O&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.biMapElites()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.bi.mapelites.MapElitesBiEvolver">MapElitesBiEvolver</abbr>&lt;G, S, Q, O&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.biMapElites()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.cabea()`
 
@@ -4980,7 +4980,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `substrate` | e | `EMPTY` | <code><abbr title="io.github.ericmedvet.jgea.core.solver.cabea.SubstrateFiller$Predefined">SubstrateFiller$Predefined</abbr></code> |
 | `iComparators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.cabea.CellularAutomataBasedSolver">CellularAutomataBasedSolver</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.cabea()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.cabea.CellularAutomataBasedSolver">CellularAutomataBasedSolver</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.cabea()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.cmaEs()`
 
@@ -4993,7 +4993,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `factory` | npm | `ea.r.f.dsUniform()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, <abbr title="io.github.ericmedvet.jgea.core.Factory">Factory</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;&gt;</code> |
 | `stop` | npm | `ea.sc.nOfQualityEvaluations()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.es.CMAESState">CMAESState</abbr>&lt;S, Q&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.es.CMAEvolutionaryStrategy">CMAEvolutionaryStrategy</abbr>&lt;S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.cmaEs()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.es.CMAEvolutionaryStrategy">CMAEvolutionaryStrategy</abbr>&lt;S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.cmaEs()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.coMapElites()`
 
@@ -5019,7 +5019,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `maxNOfNeighbors` | i | `2` | <code>int</code> |
 | `iComparators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.CoMEIndividual">CoMEIndividual</abbr>&lt;G1, G2, S1, S2, S, Q&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.CoMapElites">CoMapElites</abbr>&lt;G1, G2, S1, S2, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.coMapElites()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.CoMapElites">CoMapElites</abbr>&lt;G1, G2, S1, S2, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.coMapElites()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.differentialEvolution()`
 
@@ -5036,7 +5036,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `crossoverP` | d | `0.8` | <code>double</code> |
 | `remap` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.DifferentialEvolution">DifferentialEvolution</abbr>&lt;S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.differentialEvolution()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.DifferentialEvolution">DifferentialEvolution</abbr>&lt;S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.differentialEvolution()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.elitistGa()`
 
@@ -5057,7 +5057,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `remap` | b | `false` | <code>boolean</code> |
 | `iComparators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.StandardEvolver">StandardEvolver</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.elitistGa()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.StandardEvolver">StandardEvolver</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.elitistGa()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.ga()`
 
@@ -5077,7 +5077,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `remap` | b | `false` | <code>boolean</code> |
 | `iComparators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.StandardEvolver">StandardEvolver</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.ga()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.StandardEvolver">StandardEvolver</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.ga()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.maMapElites2()`
 
@@ -5095,7 +5095,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `archive` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive$Provider">NumericalKeyArchive$Provider</abbr></code> |
 | `iComparators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MultiArchiveMapElites">MultiArchiveMapElites</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.maMapElites2()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MultiArchiveMapElites">MultiArchiveMapElites</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.maMapElites2()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.mapElites()`
 
@@ -5112,7 +5112,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `archive` | npm |  | <code><abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive$Provider">NumericalKeyArchive$Provider</abbr></code> |
 | `iComparators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MEIndividual">MEIndividual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MapElites">MapElites</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.mapElites()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.MapElites">MapElites</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.mapElites()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.nsga2()`
 
@@ -5130,7 +5130,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `remap` | b | `false` | <code>boolean</code> |
 | `iComparators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.NsgaII">NsgaII</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.nsga2()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.NsgaII">NsgaII</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.nsga2()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.oGraphea()`
 
@@ -5154,7 +5154,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `remap` | b | `false` | <code>boolean</code> |
 | `iComparators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.graph.Graph">Graph</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.graph.Node">Node</abbr>, <abbr title="io.github.ericmedvet.jgea.core.representation.graph.numeric.operatorgraph.OperatorGraph$NonValuedArc">OperatorGraph$NonValuedArc</abbr>&gt;, S, Q&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.speciation.SpeciatedEvolver">SpeciatedEvolver</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.graph.Graph">Graph</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.graph.Node">Node</abbr>, <abbr title="io.github.ericmedvet.jgea.core.representation.graph.numeric.operatorgraph.OperatorGraph$NonValuedArc">OperatorGraph$NonValuedArc</abbr>&gt;, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.oGraphea()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.speciation.SpeciatedEvolver">SpeciatedEvolver</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.graph.Graph">Graph</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.representation.graph.Node">Node</abbr>, <abbr title="io.github.ericmedvet.jgea.core.representation.graph.numeric.operatorgraph.OperatorGraph$NonValuedArc">OperatorGraph$NonValuedArc</abbr>&gt;, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.oGraphea()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.openAiEs()`
 
@@ -5173,7 +5173,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `epsilon` | d | `1.0E-8` | <code>double</code> |
 | `stop` | npm | `ea.sc.nOfQualityEvaluations()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.es.OpenAIESState">OpenAIESState</abbr>&lt;S, Q&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.es.OpenAIEvolutionaryStrategy">OpenAIEvolutionaryStrategy</abbr>&lt;S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.openAiEs()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.es.OpenAIEvolutionaryStrategy">OpenAIEvolutionaryStrategy</abbr>&lt;S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.openAiEs()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.pso()`
 
@@ -5190,7 +5190,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `phiParticle` | d | `1.5` | <code>double</code> |
 | `phiGlobal` | d | `1.5` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.pso.ParticleSwarmOptimization">ParticleSwarmOptimization</abbr>&lt;S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.pso()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.pso.ParticleSwarmOptimization">ParticleSwarmOptimization</abbr>&lt;S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.pso()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.randomSearch()`
 
@@ -5204,7 +5204,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `stop` | npm | `ea.sc.nOfQualityEvaluations()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;, G, S, Q, <abbr title="io.github.ericmedvet.jgea.core.problem.QualityBasedProblem">QualityBasedProblem</abbr>&lt;S, Q&gt;&gt;&gt;</code> |
 | `iComparators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.RandomSearch">RandomSearch</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.randomSearch()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.RandomSearch">RandomSearch</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.randomSearch()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.randomWalk()`
 
@@ -5218,7 +5218,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `stop` | npm | `ea.sc.nOfQualityEvaluations()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;, G, S, Q, <abbr title="io.github.ericmedvet.jgea.core.problem.QualityBasedProblem">QualityBasedProblem</abbr>&lt;S, Q&gt;&gt;&gt;</code> |
 | `iComparators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.RandomWalk">RandomWalk</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.randomWalk()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.RandomWalk">RandomWalk</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.randomWalk()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.scheduledMfGa()`
 
@@ -5238,7 +5238,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `iComparators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code> |
 | `schedule` | npm | `ea.schedule.flat()` | <code><abbr title="java.util.function.DoubleUnaryOperator">DoubleUnaryOperator</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.multifidelity.ScheduledFidelityStandardEvolver">ScheduledFidelityStandardEvolver</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.scheduledMfGa()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.multifidelity.ScheduledFidelityStandardEvolver">ScheduledFidelityStandardEvolver</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.scheduledMfGa()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.simpleEs()`
 
@@ -5256,7 +5256,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `stop` | npm | `ea.sc.nOfQualityEvaluations()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.ListPopulationState">ListPopulationState</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, S, Q&gt;, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;, S, Q, <abbr title="io.github.ericmedvet.jgea.core.problem.TotalOrderQualityBasedProblem">TotalOrderQualityBasedProblem</abbr>&lt;S, Q&gt;&gt;&gt;</code> |
 | `remap` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.es.SimpleEvolutionaryStrategy">SimpleEvolutionaryStrategy</abbr>&lt;S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.simpleEs()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.es.SimpleEvolutionaryStrategy">SimpleEvolutionaryStrategy</abbr>&lt;S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.simpleEs()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.srGp()`
 
@@ -5276,7 +5276,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `remap` | b | `false` | <code>boolean</code> |
 | `iComparators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.StandardEvolver">StandardEvolver</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.ga()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.StandardEvolver">StandardEvolver</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.ga()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.ttpnGp()`
 
@@ -5296,7 +5296,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <
 | `remap` | b | `false` | <code>boolean</code> |
 | `iComparators` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.order.PartialComparator">PartialComparator</abbr>&lt;? super <abbr title="io.github.ericmedvet.jgea.core.solver.Individual">Individual</abbr>&lt;G, S, Q&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.StandardEvolver">StandardEvolver</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.ga()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;S, <abbr title="io.github.ericmedvet.jgea.core.solver.StandardEvolver">StandardEvolver</abbr>&lt;G, S, Q&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.Solvers.ga()` by robotevo2d-main:1.6.2
 
 ## Package `ea.solver.mapelites.archive`
 
@@ -5311,7 +5311,7 @@ Aliases: `ea.s.mapelites.a`, `ea.s.mapelites.archive`, `ea.s.me.a`, `ea.s.me.arc
 | `ranges` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr>&gt;</code> |
 | `nsOfBins` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive$Provider">NumericalKeyArchive$Provider</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.ArchiveProviders.grid()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive$Provider">NumericalKeyArchive$Provider</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.ArchiveProviders.grid()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.mapelites.archive.grid2d()`
 
@@ -5324,7 +5324,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.arch
 | `nOfBins1` | i |  | <code>int</code> |
 | `nOfBins2` | i |  | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive$Provider">NumericalKeyArchive$Provider</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.ArchiveProviders.grid2d()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive$Provider">NumericalKeyArchive$Provider</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.ArchiveProviders.grid2d()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.solver.mapelites.archive.voronoi()`
 
@@ -5337,7 +5337,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.arch
 | `nOfPoints` | i | `100` | <code>int</code> |
 | `randomGenerator` | npm | `m.defaultRG()` | <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive$Provider">NumericalKeyArchive$Provider</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.ArchiveProviders.voronoi()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.mapelites.archive.NumericalKeyArchive$Provider">NumericalKeyArchive$Provider</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.ArchiveProviders.voronoi()` by robotevo2d-main:1.6.2
 
 ## Package `ea.stoppingCriterion`
 
@@ -5351,7 +5351,7 @@ Aliases: `ea.sc`, `ea.stoppingCriterion`
 | --- | --- | --- | --- |
 | `v` | i |  | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.ProgressBasedStopCondition">ProgressBasedStopCondition</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;I, G, S, Q, P&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StoppingCriteria.cumulativeFidelity()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.ProgressBasedStopCondition">ProgressBasedStopCondition</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;I, G, S, Q, P&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StoppingCriteria.cumulativeFidelity()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.stoppingCriterion.elapsed()`
 
@@ -5361,7 +5361,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.ProgressBasedS
 | --- | --- | --- | --- |
 | `v` | d | `10.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.ProgressBasedStopCondition">ProgressBasedStopCondition</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.State">State</abbr>&lt;P, S&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StoppingCriteria.elapsed()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.ProgressBasedStopCondition">ProgressBasedStopCondition</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.State">State</abbr>&lt;P, S&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StoppingCriteria.elapsed()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.stoppingCriterion.nOfIterations()`
 
@@ -5371,7 +5371,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.ProgressBasedS
 | --- | --- | --- | --- |
 | `n` | i | `100` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.ProgressBasedStopCondition">ProgressBasedStopCondition</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.State">State</abbr>&lt;P, S&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StoppingCriteria.nOfIterations()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.ProgressBasedStopCondition">ProgressBasedStopCondition</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.State">State</abbr>&lt;P, S&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StoppingCriteria.nOfIterations()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.stoppingCriterion.nOfQualityEvaluations()`
 
@@ -5381,7 +5381,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.ProgressBasedS
 | --- | --- | --- | --- |
 | `n` | i | `1000` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.ProgressBasedStopCondition">ProgressBasedStopCondition</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;I, G, S, Q, P&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StoppingCriteria.nOfQualityEvaluations()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.ProgressBasedStopCondition">ProgressBasedStopCondition</abbr>&lt;<abbr title="io.github.ericmedvet.jgea.core.solver.POCPopulationState">POCPopulationState</abbr>&lt;I, G, S, Q, P&gt;&gt;</code>; built from `io.github.ericmedvet.jgea.experimenter.builders.StoppingCriteria.nOfQualityEvaluations()` by robotevo2d-main:1.6.2
 
 ## Package `ea.ttpn.gate`
 
@@ -5389,7 +5389,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.solver.ProgressBasedS
 
 `ea.ttpn.gate.bAnd()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.bAnd()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.bAnd()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.bConst()`
 
@@ -5399,43 +5399,43 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.progra
 | --- | --- | --- | --- |
 | `value` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.bConst()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.bConst()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.bNot()`
 
 `ea.ttpn.gate.bNot()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.bNot()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.bNot()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.bOr()`
 
 `ea.ttpn.gate.bOr()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.bOr()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.bOr()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.bXor()`
 
 `ea.ttpn.gate.bXor()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.bXor()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.bXor()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.concat()`
 
 `ea.ttpn.gate.concat()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.concat()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.concat()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.equal()`
 
 `ea.ttpn.gate.equal()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.equal()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.equal()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.iBefore()`
 
 `ea.ttpn.gate.iBefore()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iBefore()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iBefore()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.iConst()`
 
@@ -5445,7 +5445,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.progra
 | --- | --- | --- | --- |
 | `value` | i |  | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iConst()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iConst()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.iPMathOperator()`
 
@@ -5455,79 +5455,79 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.progra
 | --- | --- | --- | --- |
 | `operator` | e |  | <code><abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element$Operator">Element$Operator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iPMathOperator()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iPMathOperator()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.iRange()`
 
 `ea.ttpn.gate.iRange()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iRange()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iRange()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.iSMult()`
 
 `ea.ttpn.gate.iSMult()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iSMult()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iSMult()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.iSPMult()`
 
 `ea.ttpn.gate.iSPMult()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iSPMult()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iSPMult()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.iSPSum()`
 
 `ea.ttpn.gate.iSPSum()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iSPSum()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iSPSum()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.iSSum()`
 
 `ea.ttpn.gate.iSSum()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iSSum()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iSSum()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.iTh()`
 
 `ea.ttpn.gate.iTh()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iTh()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iTh()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.iToR()`
 
 `ea.ttpn.gate.iToR()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iToR()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.iToR()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.length()`
 
 `ea.ttpn.gate.length()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.length()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.length()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.noop()`
 
 `ea.ttpn.gate.noop()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.noop()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.noop()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.pairer()`
 
 `ea.ttpn.gate.pairer()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.pairer()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.pairer()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.queuer()`
 
 `ea.ttpn.gate.queuer()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.queuer()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.queuer()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.rBefore()`
 
 `ea.ttpn.gate.rBefore()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.rBefore()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.rBefore()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.rConst()`
 
@@ -5537,7 +5537,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.progra
 | --- | --- | --- | --- |
 | `value` | d |  | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.rConst()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.rConst()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.rPMathOperator()`
 
@@ -5547,55 +5547,55 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.progra
 | --- | --- | --- | --- |
 | `operator` | e |  | <code><abbr title="io.github.ericmedvet.jgea.core.representation.tree.numeric.Element$Operator">Element$Operator</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.rPMathOperator()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.rPMathOperator()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.rSMult()`
 
 `ea.ttpn.gate.rSMult()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.rSMult()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.rSMult()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.rSPMult()`
 
 `ea.ttpn.gate.rSPMult()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.rSPMult()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.rSPMult()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.rSPSum()`
 
 `ea.ttpn.gate.rSPSum()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.rSPSum()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.rSPSum()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.rSSum()`
 
 `ea.ttpn.gate.rSSum()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.rSSum()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.rSSum()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.rToI()`
 
 `ea.ttpn.gate.rToI()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.rToI()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.rToI()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.repeater()`
 
 `ea.ttpn.gate.repeater()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.repeater()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.repeater()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.sBefore()`
 
 `ea.ttpn.gate.sBefore()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.sBefore()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.sBefore()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.sConcat()`
 
 `ea.ttpn.gate.sConcat()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.sConcat()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.sConcat()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.sConst()`
 
@@ -5605,49 +5605,49 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.progra
 | --- | --- | --- | --- |
 | `value` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.sConst()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.sConst()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.sPSequencer()`
 
 `ea.ttpn.gate.sPSequencer()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.sPSequencer()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.sPSequencer()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.sSplitter()`
 
 `ea.ttpn.gate.sSplitter()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.sSplitter()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.sSplitter()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.select()`
 
 `ea.ttpn.gate.select()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.select()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.select()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.sequencer()`
 
 `ea.ttpn.gate.sequencer()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.sequencer()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.sequencer()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.sink()`
 
 `ea.ttpn.gate.sink()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.sink()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.sink()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.splitter()`
 
 `ea.ttpn.gate.splitter()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.splitter()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.splitter()` by robotevo2d-main:1.6.2
 
 ### Builder `ea.ttpn.gate.unpairer()`
 
 `ea.ttpn.gate.unpairer()`
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.unpairer()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.representation.programsynthesis.ttpn.Gate">Gate</abbr></code>; built from `io.github.ericmedvet.jgea.experimenter.builders.NetworkGates.unpairer()` by robotevo2d-main:1.6.2
 
 ## Package `evorobots`
 
@@ -5668,7 +5668,7 @@ Aliases: `er`, `evorobots`
 | `consumers` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers$ProducingConsumer">PlayConsumers$ProducingConsumer</abbr>&gt;</code> |
 | `outcomeFunctions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;?, ?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.robotevo2d.main.Play">Play</abbr></code>; built from `io.github.ericmedvet.robotevo2d.main.Play()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.robotevo2d.main.Play">Play</abbr></code>; built from `io.github.ericmedvet.robotevo2d.main.Play()` by robotevo2d-main:1.6.2
 
 ## Package `evorobots.consumer`
 
@@ -5690,7 +5690,7 @@ Aliases: `er.c`, `er.consumer`, `evorobots.c`, `evorobots.consumer`
 | `startTime` | d | `0.0` | <code>double</code> |
 | `filePath` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers$ProducingConsumer">PlayConsumers$ProducingConsumer</abbr></code>; built from `io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers.frames()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers$ProducingConsumer">PlayConsumers$ProducingConsumer</abbr></code>; built from `io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers.frames()` by robotevo2d-main:1.6.2
 
 ### Builder `evorobots.consumer.rtGUI()`
 
@@ -5702,7 +5702,7 @@ Produces <code><abbr title="io.github.ericmedvet.robotevo2d.main.builders.PlayCo
 | `drawer` | npm | `sim.drawer()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="io.github.ericmedvet.mrsim2d.viewer.Drawer">Drawer</abbr>&gt;</code> |
 | `frameRate` | d | `30.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers$ProducingConsumer">PlayConsumers$ProducingConsumer</abbr></code>; built from `io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers.rtGUI()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers$ProducingConsumer">PlayConsumers$ProducingConsumer</abbr></code>; built from `io.github.ericmedvet.robotevo2d.main.builders.PlayConsumers.rtGUI()` by robotevo2d-main:1.6.2
 
 ## Package `evorobots.function`
 
@@ -5717,7 +5717,7 @@ Aliases: `er.f`, `er.function`, `evorobots.f`, `evorobots.function`
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$Element">GridBody$Element</abbr>&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Boolean">Boolean</abbr>&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Functions.nonEmptyVoxel()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Boolean">Boolean</abbr>&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Functions.nonEmptyVoxel()` by robotevo2d-main:1.6.2
 
 ## Package `evorobots.mapper`
 
@@ -5737,7 +5737,7 @@ Aliases: `er.m`, `er.mapper`, `evorobots.m`, `evorobots.mapper`
 | `directional` | b | `true` | <code>boolean</code> |
 | `sensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;? super <abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR">DistributedNumGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.bodyBrainHomoDistributedVsr()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR">DistributedNumGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.bodyBrainHomoDistributedVsr()` by robotevo2d-main:1.6.2
 
 ### Builder `evorobots.mapper.dsToNpHeteroBrains()`
 
@@ -5749,7 +5749,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code> |
 | `target` | npm |  | <code>T</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.dsToNpHeteroBrains()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.dsToNpHeteroBrains()` by robotevo2d-main:1.6.2
 
 ### Builder `evorobots.mapper.dsToNpHomoBrains()`
 
@@ -5761,7 +5761,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code> |
 | `target` | npm |  | <code>T</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.dsToNpHomoBrains()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.dsToNpHomoBrains()` by robotevo2d-main:1.6.2
 
 ### Builder `evorobots.mapper.isToReactiveGridVsr()`
 
@@ -5775,7 +5775,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `h` | i |  | <code>int</code> |
 | `availableVoxels` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr>&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.isToReactiveGridVsr()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.isToReactiveGridVsr()` by robotevo2d-main:1.6.2
 
 ### Builder `evorobots.mapper.ndsToFixedBodyCentralizedVsr()`
 
@@ -5787,7 +5787,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `of` | npm | `ea.m.identity()` | <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code> |
 | `body` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR">CentralizedNumGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.ndsToFixedBodyCentralizedVsr()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR">CentralizedNumGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.ndsToFixedBodyCentralizedVsr()` by robotevo2d-main:1.6.2
 
 ### Builder `evorobots.mapper.ndsToFixedBodyHomoDistributedVsr()`
 
@@ -5801,7 +5801,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `nOfSignals` | i | `1` | <code>int</code> |
 | `directional` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR">DistributedNumGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.ndsToFixedBodyHomoDistributedVsr()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR">DistributedNumGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.ndsToFixedBodyHomoDistributedVsr()` by robotevo2d-main:1.6.2
 
 ### Builder `evorobots.mapper.nmrfToReactiveGridVsr()`
 
@@ -5815,7 +5815,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `h` | i |  | <code>int</code> |
 | `availableVoxels` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr>&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.nmrfToReactiveGridVsr()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.nmrfToReactiveGridVsr()` by robotevo2d-main:1.6.2
 
 ### Builder `evorobots.mapper.sGridToReactiveGridVsr()`
 
@@ -5830,7 +5830,7 @@ Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">Inv
 | `maxH` | i | `10` | <code>int</code> |
 | `yMirror` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.sGridToReactiveGridVsr()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jgea.core.InvertibleMapper">InvertibleMapper</abbr>&lt;X, <abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.robotevo2d.main.builders.Mappers.sGridToReactiveGridVsr()` by robotevo2d-main:1.6.2
 
 ## Package `function`
 
@@ -5846,7 +5846,7 @@ Aliases: `f`, `function`
 | `fs` | npm[] | `[f.identity()]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;T, K&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.all()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.all()` by robotevo2d-main:1.6.2
 
 ### Builder `function.allNamed()`
 
@@ -5858,7 +5858,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `fs` | npm |  | <code><abbr title="java.util.SequencedMap">SequencedMap</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="java.util.function.Function">Function</abbr>&lt;T, K&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.SequencedMap">SequencedMap</abbr>&lt;<abbr title="java.lang.String">String</abbr>, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.allNamed()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.SequencedMap">SequencedMap</abbr>&lt;<abbr title="java.lang.String">String</abbr>, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.allNamed()` by robotevo2d-main:1.6.2
 
 ### Builder `function.any()`
 
@@ -5869,7 +5869,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.any()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.any()` by robotevo2d-main:1.6.2
 
 ### Builder `function.as()`
 
@@ -5880,7 +5880,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, Y&gt;</code> |
 | `name` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, Y&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.as()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, Y&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.as()` by robotevo2d-main:1.6.2
 
 ### Builder `function.avg()`
 
@@ -5891,7 +5891,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;? extends <abbr title="java.lang.Number">Number</abbr>&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.avg()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.avg()` by robotevo2d-main:1.6.2
 
 ### Builder `function.cached()`
 
@@ -5901,7 +5901,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;T, R&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;T, R&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.cached()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;T, R&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.cached()` by robotevo2d-main:1.6.2
 
 ### Builder `function.classSimpleName()`
 
@@ -5911,7 +5911,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | --- | --- | --- | --- |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Object">Object</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.classSimpleName()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.classSimpleName()` by robotevo2d-main:1.6.2
 
 ### Builder `function.clip()`
 
@@ -5923,7 +5923,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `range` | npm |  | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.clip()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.clip()` by robotevo2d-main:1.6.2
 
 ### Builder `function.composition()`
 
@@ -5934,7 +5934,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, Z&gt;</code> |
 | `then` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;Z, Y&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, Y&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.composition()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, Y&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.composition()` by robotevo2d-main:1.6.2
 
 ### Builder `function.copy()`
 
@@ -5946,7 +5946,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, T&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.copy()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.copy()` by robotevo2d-main:1.6.2
 
 ### Builder `function.distinct()`
 
@@ -5957,7 +5957,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Set">Set</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.distinct()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Set">Set</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.distinct()` by robotevo2d-main:1.6.2
 
 ### Builder `function.distinctByKey()`
 
@@ -5970,7 +5970,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `representer` | npm | `f.any()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;, T&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Set">Set</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.distinctByKey()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Set">Set</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.distinctByKey()` by robotevo2d-main:1.6.2
 
 ### Builder `function.distinctSortedByKey()`
 
@@ -5984,7 +5984,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `sort` | npm | `` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Set">Set</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.distinctByKey()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Set">Set</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.distinctByKey()` by robotevo2d-main:1.6.2
 
 ### Builder `function.eGridString()`
 
@@ -5998,7 +5998,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `separator` | s | `;` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.eGridString()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.eGridString()` by robotevo2d-main:1.6.2
 
 ### Builder `function.each()`
 
@@ -6009,7 +6009,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `mapF` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;T, R&gt;</code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;R&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.each()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;R&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.each()` by robotevo2d-main:1.6.2
 
 ### Builder `function.emptySplitter()`
 
@@ -6021,7 +6021,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `name` | s | `empty` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.emptySplitter()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.emptySplitter()` by robotevo2d-main:1.6.2
 
 ### Builder `function.filter()`
 
@@ -6033,7 +6033,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.filter()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.filter()` by robotevo2d-main:1.6.2
 
 ### Builder `function.first()`
 
@@ -6045,7 +6045,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.nTh()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.nTh()` by robotevo2d-main:1.6.2
 
 ### Builder `function.fittedGrid()`
 
@@ -6057,7 +6057,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code> |
 | `predicate` | npm | `f.nonNull()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;T, <abbr title="java.lang.Boolean">Boolean</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.fittedGrid()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.fittedGrid()` by robotevo2d-main:1.6.2
 
 ### Builder `function.flat()`
 
@@ -6068,7 +6068,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;? extends <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.flat()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.flat()` by robotevo2d-main:1.6.2
 
 ### Builder `function.format()`
 
@@ -6081,7 +6081,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `functions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;T, ?&gt;&gt;</code> |
 | `format` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.format()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.format()` by robotevo2d-main:1.6.2
 
 ### Builder `function.fromBase64()`
 
@@ -6092,7 +6092,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Object">Object</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.fromBase64()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Object">Object</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.fromBase64()` by robotevo2d-main:1.6.2
 
 ### Builder `function.gridCompactness()`
 
@@ -6104,7 +6104,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridCompactness()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridCompactness()` by robotevo2d-main:1.6.2
 
 ### Builder `function.gridCount()`
 
@@ -6116,7 +6116,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%2d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridCount()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridCount()` by robotevo2d-main:1.6.2
 
 ### Builder `function.gridCoverage()`
 
@@ -6128,7 +6128,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%2d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridCoverage()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridCoverage()` by robotevo2d-main:1.6.2
 
 ### Builder `function.gridElongation()`
 
@@ -6140,7 +6140,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridElongation()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridElongation()` by robotevo2d-main:1.6.2
 
 ### Builder `function.gridFitH()`
 
@@ -6152,7 +6152,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%2d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridFitH()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridFitH()` by robotevo2d-main:1.6.2
 
 ### Builder `function.gridFitW()`
 
@@ -6164,7 +6164,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%2d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridFitW()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridFitW()` by robotevo2d-main:1.6.2
 
 ### Builder `function.gridH()`
 
@@ -6175,7 +6175,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%2d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridH()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridH()` by robotevo2d-main:1.6.2
 
 ### Builder `function.gridString()`
 
@@ -6193,7 +6193,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `yMirror` | b | `false` | <code>boolean</code> |
 | `xMirror` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridString()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridString()` by robotevo2d-main:1.6.2
 
 ### Builder `function.gridW()`
 
@@ -6204,7 +6204,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%2d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridW()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.gridW()` by robotevo2d-main:1.6.2
 
 ### Builder `function.iApply()`
 
@@ -6215,7 +6215,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `iF` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.function.Function">Function</abbr>&lt;T, R&gt;&gt;</code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, T&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, R&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.iApply()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, R&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.iApply()` by robotevo2d-main:1.6.2
 
 ### Builder `function.iComposition()`
 
@@ -6227,7 +6227,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `before` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;A, B&gt;</code> |
 | `then` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;C, D&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.function.Function">Function</abbr>&lt;A, D&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.iComposition()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.function.Function">Function</abbr>&lt;A, D&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.iComposition()` by robotevo2d-main:1.6.2
 
 ### Builder `function.iEach()`
 
@@ -6238,13 +6238,13 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `iMapF` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.function.Function">Function</abbr>&lt;T, R&gt;&gt;</code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;R&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.iEach()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;R&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.iEach()` by robotevo2d-main:1.6.2
 
 ### Builder `function.identity()`
 
 `f.identity()`
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.identity()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.identity()` by robotevo2d-main:1.6.2
 
 ### Builder `function.inner()`
 
@@ -6255,7 +6255,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, X
 | `name` | s | interpolate `inner` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Composed">Composed</abbr>&lt;C&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, C&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.inner()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, C&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.inner()` by robotevo2d-main:1.6.2
 
 ### Builder `function.interpolated()`
 
@@ -6268,7 +6268,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Object">Object</abbr>&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.interpolated()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.interpolated()` by robotevo2d-main:1.6.2
 
 ### Builder `function.last()`
 
@@ -6280,7 +6280,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.nTh()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.nTh()` by robotevo2d-main:1.6.2
 
 ### Builder `function.mapAggregate()`
 
@@ -6293,7 +6293,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `aggregateF` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;T&gt;, K&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.String">String</abbr>, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.mapAggregate()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.String">String</abbr>, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.mapAggregate()` by robotevo2d-main:1.6.2
 
 ### Builder `function.mapValue()`
 
@@ -6305,7 +6305,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.String">String</abbr>, T&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.mapValue()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.mapValue()` by robotevo2d-main:1.6.2
 
 ### Builder `function.mappableKey()`
 
@@ -6318,7 +6318,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.core.Mappable">Mappable</abbr>&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.mappableKey()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.mappableKey()` by robotevo2d-main:1.6.2
 
 ### Builder `function.mapper()`
 
@@ -6330,7 +6330,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, T&gt;</code> |
 | `map` | npm |  | <code><abbr title="java.util.Map">Map</abbr>&lt;T, K&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, K&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.mapper()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, K&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.mapper()` by robotevo2d-main:1.6.2
 
 ### Builder `function.mathConst()`
 
@@ -6341,7 +6341,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `v` | d |  | <code>double</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.mathConst()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.mathConst()` by robotevo2d-main:1.6.2
 
 ### Builder `function.mathOp()`
 
@@ -6354,7 +6354,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `op` | e |  | <code><abbr title="io.github.ericmedvet.jnb.buildable.MathOp">MathOp</abbr></code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.mathOp()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.mathOp()` by robotevo2d-main:1.6.2
 
 ### Builder `function.max()`
 
@@ -6366,7 +6366,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `by` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;T, C&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.max()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.max()` by robotevo2d-main:1.6.2
 
 ### Builder `function.median()`
 
@@ -6379,7 +6379,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.percentile()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.percentile()` by robotevo2d-main:1.6.2
 
 ### Builder `function.min()`
 
@@ -6391,7 +6391,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `by` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;T, C&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.min()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.min()` by robotevo2d-main:1.6.2
 
 ### Builder `function.nTh()`
 
@@ -6403,7 +6403,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.nTh()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.nTh()` by robotevo2d-main:1.6.2
 
 ### Builder `function.nThMapValue()`
 
@@ -6415,7 +6415,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.SequencedMap">SequencedMap</abbr>&lt;<abbr title="java.lang.String">String</abbr>, T&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.nThMapValue()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.nThMapValue()` by robotevo2d-main:1.6.2
 
 ### Builder `function.namedMerged()`
 
@@ -6428,7 +6428,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `mappers` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Function">Function</abbr>&lt;T, <abbr title="java.util.SequencedMap">SequencedMap</abbr>&lt;<abbr title="java.lang.String">String</abbr>, K&gt;&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.SequencedMap">SequencedMap</abbr>&lt;<abbr title="java.lang.String">String</abbr>, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.namedMerged()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.SequencedMap">SequencedMap</abbr>&lt;<abbr title="java.lang.String">String</abbr>, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.namedMerged()` by robotevo2d-main:1.6.2
 
 ### Builder `function.nkTh()`
 
@@ -6441,7 +6441,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.nkTh()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.nkTh()` by robotevo2d-main:1.6.2
 
 ### Builder `function.nonNull()`
 
@@ -6452,7 +6452,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Object">Object</abbr>&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Boolean">Boolean</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.nonNull()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Boolean">Boolean</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.nonNull()` by robotevo2d-main:1.6.2
 
 ### Builder `function.orElseD()`
 
@@ -6465,7 +6465,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `name` | s | interpolate `orElseD[{v}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.orElseD()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.orElseD()` by robotevo2d-main:1.6.2
 
 ### Builder `function.orElseI()`
 
@@ -6478,7 +6478,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `name` | s | interpolate `orElseD[{v}]` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.orElseI()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.orElseI()` by robotevo2d-main:1.6.2
 
 ### Builder `function.pairFirst()`
 
@@ -6490,7 +6490,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;F, S&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, F&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.pairFirst()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, F&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.pairFirst()` by robotevo2d-main:1.6.2
 
 ### Builder `function.pairSecond()`
 
@@ -6502,7 +6502,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;F, S&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, S&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.pairSecond()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, S&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.pairSecond()` by robotevo2d-main:1.6.2
 
 ### Builder `function.pairerFirst()`
 
@@ -6514,7 +6514,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `second` | npm |  | <code>S</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;F, S&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.pairerFirst()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;F, S&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.pairerFirst()` by robotevo2d-main:1.6.2
 
 ### Builder `function.pairerSecond()`
 
@@ -6526,7 +6526,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `first` | npm |  | <code>F</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;F, S&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.pairerSecond()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Pair">Pair</abbr>&lt;F, S&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.pairerSecond()` by robotevo2d-main:1.6.2
 
 ### Builder `function.percentile()`
 
@@ -6539,7 +6539,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.percentile()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.percentile()` by robotevo2d-main:1.6.2
 
 ### Builder `function.quantized()`
 
@@ -6551,7 +6551,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.quantized()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.quantized()` by robotevo2d-main:1.6.2
 
 ### Builder `function.replaceAll()`
 
@@ -6565,7 +6565,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `name` | s | interpolate `replace.all` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.replaceAll()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.replaceAll()` by robotevo2d-main:1.6.2
 
 ### Builder `function.sd()`
 
@@ -6576,7 +6576,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;? extends <abbr title="java.lang.Number">Number</abbr>&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.sd()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.sd()` by robotevo2d-main:1.6.2
 
 ### Builder `function.size()`
 
@@ -6587,7 +6587,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%3d` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.size()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.size()` by robotevo2d-main:1.6.2
 
 ### Builder `function.sizeIf()`
 
@@ -6601,7 +6601,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `mapF` | npm | `f.identity()` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `predicate` | npm | `predicate.always()` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.size()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.size()` by robotevo2d-main:1.6.2
 
 ### Builder `function.sizeIfGt()`
 
@@ -6616,7 +6616,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `predicate` | npm | `predicate.gt(t = 0)` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `t` | d | `0.0` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.size()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.size()` by robotevo2d-main:1.6.2
 
 ### Builder `function.sizeIfLt()`
 
@@ -6631,7 +6631,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `predicate` | npm | `predicate.lt(t = 0)` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `t` | d | `0.0` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.size()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.size()` by robotevo2d-main:1.6.2
 
 ### Builder `function.sortedBy()`
 
@@ -6644,7 +6644,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `reversed` | b | `false` | <code>boolean</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.sortedBy()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.sortedBy()` by robotevo2d-main:1.6.2
 
 ### Builder `function.subList()`
 
@@ -6658,7 +6658,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.subList()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.subList()` by robotevo2d-main:1.6.2
 
 ### Builder `function.sum()`
 
@@ -6669,7 +6669,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;? extends <abbr title="java.lang.Number">Number</abbr>&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.sum()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.sum()` by robotevo2d-main:1.6.2
 
 ### Builder `function.tdaMapToTable()`
 
@@ -6681,7 +6681,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, double[]&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Table">Table</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.tdaMapToTable()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Table">Table</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, <abbr title="java.lang.Double">Double</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.tdaMapToTable()` by robotevo2d-main:1.6.2
 
 ### Builder `function.timestamp()`
 
@@ -6691,7 +6691,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | --- | --- | --- | --- |
 | `format` | s | `%1$tH:%1$tM:%1$tS` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.time.LocalDateTime">LocalDateTime</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.timestamp()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.time.LocalDateTime">LocalDateTime</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.timestamp()` by robotevo2d-main:1.6.2
 
 ### Builder `function.toBase64()`
 
@@ -6702,7 +6702,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Object">Object</abbr>&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.toBase64()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.toBase64()` by robotevo2d-main:1.6.2
 
 ### Builder `function.toString()`
 
@@ -6716,7 +6716,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `keepNull` | b | `false` | <code>boolean</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.toString()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.toString()` by robotevo2d-main:1.6.2
 
 ### Builder `function.toaMapToTable()`
 
@@ -6728,7 +6728,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, T[]&gt;&gt;</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Table">Table</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.toaMapToTable()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Table">Table</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>, <abbr title="java.lang.Integer">Integer</abbr>, T&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.toaMapToTable()` by robotevo2d-main:1.6.2
 
 ### Builder `function.uniqueness()`
 
@@ -6739,7 +6739,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.util.Collection">Collection</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%5.3f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.uniqueness()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Functions.uniqueness()` by robotevo2d-main:1.6.2
 
 ## Package `listener`
 
@@ -6761,7 +6761,7 @@ Aliases: `list`, `listener`
 | `kCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;K&gt;</code> |
 | `logExceptions` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.console()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.console()` by robotevo2d-main:1.6.2
 
 ### Builder `listener.csv()`
 
@@ -6782,7 +6782,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `intFormat` | s | `%d` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `doubleFormat` | s | `%.5e` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.csv()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.csv()` by robotevo2d-main:1.6.2
 
 ### Builder `listener.onDone()`
 
@@ -6797,7 +6797,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `eCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;E&gt;</code> |
 | `kCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;K&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onDone()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onDone()` by robotevo2d-main:1.6.2
 
 ### Builder `listener.onKDone()`
 
@@ -6812,7 +6812,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `eCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;E&gt;</code> |
 | `kCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;K&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onKDone()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;E, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.onKDone()` by robotevo2d-main:1.6.2
 
 ### Builder `listener.split()`
 
@@ -6827,7 +6827,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `eCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;OE&gt;</code> |
 | `kCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;K&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;OE, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.split()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;OE, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.split()` by robotevo2d-main:1.6.2
 
 ### Builder `listener.splitPair()`
 
@@ -6842,7 +6842,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | `eCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;OE&gt;</code> |
 | `kCondition` | npm | `predicate.always()` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;K&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;OE, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.splitPair()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.util.concurrent.Executor">Executor</abbr>, <abbr title="io.github.ericmedvet.jnb.datastructure.ListenerFactory">ListenerFactory</abbr>&lt;OE, K&gt;&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Listeners.splitPair()` by robotevo2d-main:1.6.2
 
 ## Package `misc`
 
@@ -6856,7 +6856,7 @@ Aliases: `m`, `misc`
 | --- | --- | --- | --- |
 | `seed` | i | `0` | <code>int</code> |
 
-Produces <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.defaultRG()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.defaultRG()` by robotevo2d-main:1.6.2
 
 ### Builder `misc.grid()`
 
@@ -6868,7 +6868,7 @@ Produces <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</a
 | `h` | i |  | <code>int</code> |
 | `items` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;T&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.grid()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.grid()` by robotevo2d-main:1.6.2
 
 ### Builder `misc.map()`
 
@@ -6879,7 +6879,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</a
 | `keys` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;K&gt;</code> |
 | `values` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;V&gt;</code> |
 
-Produces <code><abbr title="java.util.Map">Map</abbr>&lt;K, V&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.map()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.Map">Map</abbr>&lt;K, V&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.map()` by robotevo2d-main:1.6.2
 
 ### Builder `misc.nTh()`
 
@@ -6890,13 +6890,13 @@ Produces <code><abbr title="java.util.Map">Map</abbr>&lt;K, V&gt;</code>; built 
 | `n` | i |  | <code>int</code> |
 | `values` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;T&gt;</code> |
 
-Produces <code>T</code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.nTh()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code>T</code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.nTh()` by robotevo2d-main:1.6.2
 
 ### Builder `misc.nullValue()`
 
 `m.nullValue()`
 
-Produces <code><abbr title="java.lang.Object">Object</abbr></code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.nullValue()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.lang.Object">Object</abbr></code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.nullValue()` by robotevo2d-main:1.6.2
 
 ### Builder `misc.range()`
 
@@ -6907,7 +6907,7 @@ Produces <code><abbr title="java.lang.Object">Object</abbr></code>; built from `
 | `min` | d |  | <code>double</code> |
 | `max` | d |  | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.range()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.range()` by robotevo2d-main:1.6.2
 
 ### Builder `misc.sKeyMap()`
 
@@ -6918,7 +6918,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">
 | `keys` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `values` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;V&gt;</code> |
 
-Produces <code><abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.String">String</abbr>, V&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.sKeyMap()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.String">String</abbr>, V&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.sKeyMap()` by robotevo2d-main:1.6.2
 
 ### Builder `misc.sMap()`
 
@@ -6929,7 +6929,7 @@ Produces <code><abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.
 | `keys` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `values` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code> |
 
-Produces <code><abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.sMap()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.sMap()` by robotevo2d-main:1.6.2
 
 ### Builder `misc.sValueMap()`
 
@@ -6940,7 +6940,7 @@ Produces <code><abbr title="java.util.Map">Map</abbr>&lt;<abbr title="java.lang.
 | `keys` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;K&gt;</code> |
 | `values` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code> |
 
-Produces <code><abbr title="java.util.Map">Map</abbr>&lt;K, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.sValueMap()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.Map">Map</abbr>&lt;K, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.sValueMap()` by robotevo2d-main:1.6.2
 
 ### Builder `misc.sharedRG()`
 
@@ -6950,7 +6950,7 @@ Produces <code><abbr title="java.util.Map">Map</abbr>&lt;K, <abbr title="java.la
 | --- | --- | --- | --- |
 | `seed` | i | `0` | <code>int</code> |
 
-Produces <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.sharedRG()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</abbr></code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.sharedRG()` by robotevo2d-main:1.6.2
 
 ### Builder `misc.supplier()`
 
@@ -6960,7 +6960,7 @@ Produces <code><abbr title="java.util.random.RandomGenerator">RandomGenerator</a
 | --- | --- | --- | --- |
 | `of` | npm |  | <code>T</code> |
 
-Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.supplier()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;T&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Miscs.supplier()` by robotevo2d-main:1.6.2
 
 ## Package `predicate`
 
@@ -6972,13 +6972,13 @@ Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;T&gt
 | --- | --- | --- | --- |
 | `conditions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.all()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.all()` by robotevo2d-main:1.6.2
 
 ### Builder `predicate.always()`
 
 `predicate.always()`
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;?&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.always()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;?&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.always()` by robotevo2d-main:1.6.2
 
 ### Builder `predicate.any()`
 
@@ -6988,7 +6988,7 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;?&
 | --- | --- | --- | --- |
 | `conditions` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.any()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.any()` by robotevo2d-main:1.6.2
 
 ### Builder `predicate.divisibleBy()`
 
@@ -6999,7 +6999,7 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `divisor` | d |  | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.divisibleBy()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.divisibleBy()` by robotevo2d-main:1.6.2
 
 ### Builder `predicate.eq()`
 
@@ -7010,7 +7010,7 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, T&gt;</code> |
 | `v` | npm |  | <code>T</code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.eq()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.eq()` by robotevo2d-main:1.6.2
 
 ### Builder `predicate.eqD()`
 
@@ -7021,7 +7021,7 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 | `v` | d |  | <code><abbr title="java.lang.Double">Double</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.eqD()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.eqD()` by robotevo2d-main:1.6.2
 
 ### Builder `predicate.eqI()`
 
@@ -7032,7 +7032,7 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
 | `v` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.eqI()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.eqI()` by robotevo2d-main:1.6.2
 
 ### Builder `predicate.eqS()`
 
@@ -7043,7 +7043,7 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `v` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.eqS()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.eqS()` by robotevo2d-main:1.6.2
 
 ### Builder `predicate.gt()`
 
@@ -7054,7 +7054,7 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `t` | d |  | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.gt()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.gt()` by robotevo2d-main:1.6.2
 
 ### Builder `predicate.gtEq()`
 
@@ -7065,7 +7065,7 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `t` | d |  | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.gtEq()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.gtEq()` by robotevo2d-main:1.6.2
 
 ### Builder `predicate.inD()`
 
@@ -7076,7 +7076,7 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 | `values` | d[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Double">Double</abbr>&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.inD()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.inD()` by robotevo2d-main:1.6.2
 
 ### Builder `predicate.inI()`
 
@@ -7087,7 +7087,7 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
 | `values` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.inI()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.inI()` by robotevo2d-main:1.6.2
 
 ### Builder `predicate.inL()`
 
@@ -7098,7 +7098,7 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Long">Long</abbr>&gt;</code> |
 | `values` | i[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.Integer">Integer</abbr>&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.inL()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.inL()` by robotevo2d-main:1.6.2
 
 ### Builder `predicate.inS()`
 
@@ -7109,7 +7109,7 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `values` | s[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="java.lang.String">String</abbr>&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.inS()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.inS()` by robotevo2d-main:1.6.2
 
 ### Builder `predicate.lt()`
 
@@ -7120,7 +7120,7 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `t` | d |  | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.lt()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.lt()` by robotevo2d-main:1.6.2
 
 ### Builder `predicate.ltEq()`
 
@@ -7131,7 +7131,7 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, ? extends <abbr title="java.lang.Number">Number</abbr>&gt;</code> |
 | `t` | d |  | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.ltEq()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.ltEq()` by robotevo2d-main:1.6.2
 
 ### Builder `predicate.matches()`
 
@@ -7142,7 +7142,7 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&
 | `f` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code> |
 | `regex` | s |  | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.matches()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.matches()` by robotevo2d-main:1.6.2
 
 ### Builder `predicate.not()`
 
@@ -7152,7 +7152,7 @@ Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&
 | --- | --- | --- | --- |
 | `condition` | npm |  | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.not()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jnb.buildable.Predicates.not()` by robotevo2d-main:1.6.2
 
 ## Package `sim`
 
@@ -7167,7 +7167,7 @@ Aliases: `s`, `sim`
 | `enlargement` | d | `1.5` | <code>double</code> |
 | `followTime` | d | `2.0` | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.viewer.Framer">Framer</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Snapshot">Snapshot</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.allAgentsFramer()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.viewer.Framer">Framer</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Snapshot">Snapshot</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.allAgentsFramer()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.drawer()`
 
@@ -7187,13 +7187,13 @@ Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abb
 | `nfc` | b | `false` | <code>boolean</code> |
 | `parts` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="io.github.ericmedvet.mrsim2d.viewer.Drawer">Drawer</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.drawer()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="java.lang.String">String</abbr>, <abbr title="io.github.ericmedvet.mrsim2d.viewer.Drawer">Drawer</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.drawer()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.engine()`
 
 `s.engine()`
 
-Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.engine.Engine">Engine</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.engine()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.engine.Engine">Engine</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.engine()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.staticFramer()`
 
@@ -7206,7 +7206,7 @@ Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abb
 | `minY` | d |  | <code>double</code> |
 | `maxY` | d |  | <code>double</code> |
 
-Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.viewer.Framer">Framer</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Snapshot">Snapshot</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.staticFramer()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.viewer.Framer">Framer</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Snapshot">Snapshot</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Miscs.staticFramer()` by robotevo2d-main:1.6.2
 
 ## Package `sim.agent`
 
@@ -7221,7 +7221,7 @@ Aliases: `s.a`, `s.agent`, `sim.a`, `sim.agent`
 | `body` | npm |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code> |
 | `nds` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR">CentralizedNumGridVSR</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Agents.centralizedNumGridVSR()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.CentralizedNumGridVSR">CentralizedNumGridVSR</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Agents.centralizedNumGridVSR()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.distributedNumGridVSR()`
 
@@ -7234,7 +7234,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.Cen
 | `nOfSignals` | i | `1` | <code>int</code> |
 | `directional` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR">DistributedNumGridVSR</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Agents.distributedNumGridVSR()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.DistributedNumGridVSR">DistributedNumGridVSR</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Agents.distributedNumGridVSR()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.dummyBox()`
 
@@ -7245,7 +7245,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.Dis
 | `w` | i | `2` | <code>int</code> |
 | `h` | i | `2` | <code>int</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.EmbodiedAgent">EmbodiedAgent</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Agents.dummyBox()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.EmbodiedAgent">EmbodiedAgent</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Agents.dummyBox()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.numIndependentVoxel()`
 
@@ -7259,7 +7259,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.EmbodiedAgent">Emb
 | `nOfNFCChannels` | i | `1` | <code>int</code> |
 | `nds` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.independentvoxel.NumIndependentVoxel">NumIndependentVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Agents.numIndependentVoxel()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.independentvoxel.NumIndependentVoxel">NumIndependentVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Agents.numIndependentVoxel()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.numLeggedHybridModularRobot()`
 
@@ -7270,7 +7270,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.independent
 | `modules` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Module">AbstractLeggedHybridModularRobot$Module</abbr>&gt;</code> |
 | `nds` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.NumLeggedHybridModularRobot">NumLeggedHybridModularRobot</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Agents.numLeggedHybridModularRobot()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.NumLeggedHybridModularRobot">NumLeggedHybridModularRobot</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Agents.numLeggedHybridModularRobot()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.numLeggedHybridRobot()`
 
@@ -7286,7 +7286,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.NumL
 | `headSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;?&gt;&gt;</code> |
 | `nds` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;, <abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.NumLeggedHybridRobot">NumLeggedHybridRobot</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Agents.numLeggedHybridRobot()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.NumLeggedHybridRobot">NumLeggedHybridRobot</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Agents.numLeggedHybridRobot()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.reactiveGridVSR()`
 
@@ -7296,7 +7296,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.NumL
 | --- | --- | --- | --- |
 | `body` | npm |  | <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Agents.reactiveGridVSR()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR">ReactiveGridVSR</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Agents.reactiveGridVSR()` by robotevo2d-main:1.6.2
 
 ## Package `sim.agent.legged`
 
@@ -7313,7 +7313,7 @@ Aliases: `s.a.l`, `s.a.legged`, `s.agent.l`, `s.agent.legged`, `sim.a.l`, `sim.a
 | `downConnector` | e | `RIGID` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.ConnectorType">ConnectorType</abbr></code> |
 | `downConnectorSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.AbstractLeggedHybridRobot$Leg">AbstractLeggedHybridRobot$Leg</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.LeggedMisc.leg()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.AbstractLeggedHybridRobot$Leg">AbstractLeggedHybridRobot$Leg</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.LeggedMisc.leg()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.legged.legChunk()`
 
@@ -7334,7 +7334,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.Abst
 | `motorAngleTolerance` | d | `0.0` | <code>double</code> |
 | `activeAngleRange` | npm | `m.range(max = 1.047; min = -1.047)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.LegChunk">LegChunk</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.LeggedMisc.legChunk()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.LegChunk">LegChunk</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.LeggedMisc.legChunk()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.legged.module()`
 
@@ -7352,7 +7352,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.LegC
 | `rightConnectorSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;?&gt;&gt;</code> |
 | `downConnectorSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;?&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Module">AbstractLeggedHybridModularRobot$Module</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.LeggedMisc.module()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.legged.AbstractLeggedHybridModularRobot$Module">AbstractLeggedHybridModularRobot$Module</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.LeggedMisc.module()` by robotevo2d-main:1.6.2
 
 ## Package `sim.agent.vsr`
 
@@ -7367,7 +7367,7 @@ Aliases: `s.a.vsr`, `s.agent.vsr`, `sim.a.vsr`, `sim.agent.vsr`
 | `shape` | npm |  | <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code> |
 | `sensorizingFunction` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.lang.Boolean">Boolean</abbr>&gt;, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;? super <abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;&gt;&gt;&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.VSRMisc.gridBody()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody">GridBody</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.VSRMisc.gridBody()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.voxel()`
 
@@ -7377,7 +7377,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.Gri
 | --- | --- | --- | --- |
 | `type` | e |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.VSRMisc.voxel()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.VSRMisc.voxel()` by robotevo2d-main:1.6.2
 
 ## Package `sim.agent.vsr.reactiveVoxel`
 
@@ -7392,7 +7392,7 @@ Aliases: `s.a.vsr.reactiveVoxel`, `s.a.vsr.rv`, `s.agent.vsr.reactiveVoxel`, `s.
 | `angle` | d | `0.0` | <code>double</code> |
 | `action` | e | `EXPAND` | <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels$Action">ReactiveVoxels$Action</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.aa()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.aa()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.reactiveVoxel.ahsin()`
 
@@ -7403,7 +7403,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.Rea
 | `f` | d | `1.0` | <code>double</code> |
 | `phase` | d | `0.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.ahsin()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.ahsin()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.reactiveVoxel.asin()`
 
@@ -7414,7 +7414,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.Rea
 | `f` | d | `1.0` | <code>double</code> |
 | `phase` | d | `0.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.asin()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.asin()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.reactiveVoxel.asld()`
 
@@ -7426,7 +7426,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.Rea
 | `threshold` | d | `0.05` | <code>double</code> |
 | `action` | e | `EXPAND` | <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels$Action">ReactiveVoxels$Action</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.asld()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.asld()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.reactiveVoxel.at()`
 
@@ -7439,7 +7439,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.Rea
 | `side` | e | `S` | <code><abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel$Side">Voxel$Side</abbr></code> |
 | `action` | e | `EXPAND` | <code><abbr title="io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels$Action">ReactiveVoxels$Action</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.at()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.at()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.reactiveVoxel.avsin()`
 
@@ -7450,25 +7450,25 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.Rea
 | `f` | d | `1.0` | <code>double</code> |
 | `phase` | d | `0.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.avsin()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.avsin()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.reactiveVoxel.none()`
 
 `s.a.vsr.rv.none()`
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.none()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.none()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.reactiveVoxel.ph()`
 
 `s.a.vsr.rv.ph()`
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.ph()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.ph()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.reactiveVoxel.ps()`
 
 `s.a.vsr.rv.ps()`
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.ps()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.ReactiveGridVSR$ReactiveVoxel">ReactiveGridVSR$ReactiveVoxel</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.ReactiveVoxels.ps()` by robotevo2d-main:1.6.2
 
 ## Package `sim.agent.vsr.sensorizingFunction`
 
@@ -7487,13 +7487,13 @@ Aliases: `s.a.vsr.sensorizingFunction`, `s.a.vsr.sf`, `s.agent.vsr.sensorizingFu
 | `headSensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;? super <abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel">Voxel</abbr>&gt;&gt;</code> |
 | `sensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;? super <abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel">Voxel</abbr>&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.lang.Boolean">Boolean</abbr>&gt;, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;? super <abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel">Voxel</abbr>&gt;&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.VSRSensorizingFunctions.directional()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.lang.Boolean">Boolean</abbr>&gt;, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;? super <abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel">Voxel</abbr>&gt;&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.VSRSensorizingFunctions.directional()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.sensorizingFunction.empty()`
 
 `s.a.vsr.sf.empty()`
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.lang.Boolean">Boolean</abbr>&gt;, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;? super <abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel">Voxel</abbr>&gt;&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.VSRSensorizingFunctions.empty()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.lang.Boolean">Boolean</abbr>&gt;, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;? super <abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel">Voxel</abbr>&gt;&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.VSRSensorizingFunctions.empty()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.sensorizingFunction.uniform()`
 
@@ -7503,7 +7503,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abb
 | --- | --- | --- | --- |
 | `sensors` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;? super <abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel">Voxel</abbr>&gt;&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.lang.Boolean">Boolean</abbr>&gt;, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;? super <abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel">Voxel</abbr>&gt;&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.VSRSensorizingFunctions.uniform()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;<abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.lang.Boolean">Boolean</abbr>&gt;, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;? super <abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel">Voxel</abbr>&gt;&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.VSRSensorizingFunctions.uniform()` by robotevo2d-main:1.6.2
 
 ## Package `sim.agent.vsr.shape`
 
@@ -7517,7 +7517,7 @@ Aliases: `s.a.vsr.s`, `s.a.vsr.shape`, `s.agent.vsr.s`, `s.agent.vsr.shape`, `si
 | --- | --- | --- | --- |
 | `d` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.GridShapes.ball()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.GridShapes.ball()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.shape.biped()`
 
@@ -7528,7 +7528,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</a
 | `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 | `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.GridShapes.biped()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.GridShapes.biped()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.shape.comb()`
 
@@ -7539,7 +7539,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</a
 | `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 | `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.GridShapes.comb()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.GridShapes.comb()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.shape.free()`
 
@@ -7549,7 +7549,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</a
 | --- | --- | --- | --- |
 | `s` | s | `rsr-s.s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.GridShapes.free()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.GridShapes.free()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.shape.t()`
 
@@ -7560,7 +7560,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</a
 | `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 | `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.GridShapes.t()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.GridShapes.t()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.shape.triangle()`
 
@@ -7570,7 +7570,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</a
 | --- | --- | --- | --- |
 | `l` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.GridShapes.triangle()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.GridShapes.triangle()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.shape.tripod()`
 
@@ -7581,7 +7581,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</a
 | `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 | `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.GridShapes.tripod()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.GridShapes.tripod()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.agent.vsr.shape.worm()`
 
@@ -7592,7 +7592,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</a
 | `w` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 | `h` | i |  | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.GridShapes.worm()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.GridShapes.worm()` by robotevo2d-main:1.6.2
 
 ## Package `sim.function`
 
@@ -7614,7 +7614,7 @@ Aliases: `s.f`, `s.function`, `sim.f`, `sim.function`
 | `endTime` | d | `Infinity` | <code>double</code> |
 | `frameRate` | d | `30.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.drawer.Video">Video</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.biTaskVideo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.drawer.Video">Video</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.biTaskVideo()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.numBrains()`
 
@@ -7626,7 +7626,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `name` | s | `n.brains` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.numBrains()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;<abbr title="io.github.ericmedvet.jsdynsym.core.numerical.NumericalDynamicalSystem">NumericalDynamicalSystem</abbr>&lt;?&gt;&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.numBrains()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.taskRun()`
 
@@ -7640,7 +7640,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedName
 | `duration` | d |  | <code>double</code> |
 | `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.engine.Engine">Engine</abbr>&gt;</code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, O&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.taskRun()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, O&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.taskRun()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.taskRuns()`
 
@@ -7655,7 +7655,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, O
 | `duration` | d |  | <code>double</code> |
 | `engine` | npm | `sim.engine()` | <code><abbr title="java.util.function.Supplier">Supplier</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.engine.Engine">Engine</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;O&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.taskRuns()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.util.List">List</abbr>&lt;O&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.taskRuns()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.taskVideo()`
 
@@ -7673,7 +7673,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `endTime` | d | `10.0` | <code>double</code> |
 | `frameRate` | d | `30.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.drawer.Video">Video</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.taskVideo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.drawer.Video">Video</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.taskVideo()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.vsrBody()`
 
@@ -7686,7 +7686,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `nullify` | b | `true` | <code>boolean</code> |
 | `format` | s | `%s` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.vsrBody()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.FormattedNamedFunction">FormattedNamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Functions.vsrBody()` by robotevo2d-main:1.6.2
 
 ## Package `sim.function.outcome`
 
@@ -7702,7 +7702,7 @@ Aliases: `s.f.o`, `s.f.outcome`, `s.function.o`, `s.function.outcome`, `sim.f.o`
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaAvgH()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaAvgH()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.aaAvgMaxH()`
 
@@ -7714,7 +7714,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaAvgMaxH()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaAvgMaxH()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.aaAvgMaxW()`
 
@@ -7726,7 +7726,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaAvgMaxW()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaAvgMaxW()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.aaAvgW()`
 
@@ -7738,7 +7738,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaAvgW()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaAvgW()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.aaFinalAvgW()`
 
@@ -7749,7 +7749,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalAvgW()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalAvgW()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.aaFinalH()`
 
@@ -7760,7 +7760,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalH()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalH()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.aaFinalMaxH()`
 
@@ -7771,7 +7771,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalMaxH()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalMaxH()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.aaFinalMaxW()`
 
@@ -7782,7 +7782,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalMaxW()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalMaxW()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.aaFinalMinH()`
 
@@ -7793,7 +7793,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalMinH()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalMinH()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.aaFinalMinW()`
 
@@ -7804,7 +7804,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalMinW()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalMinW()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.aaFinalMrH()`
 
@@ -7815,7 +7815,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalMrH()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalMrH()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.aaFinalMrW()`
 
@@ -7826,7 +7826,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalMrW()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalMrW()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.aaFinalW()`
 
@@ -7837,7 +7837,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalW()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaFinalW()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.aaMaxH()`
 
@@ -7849,7 +7849,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaMaxH()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaMaxH()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.aaMaxW()`
 
@@ -7861,7 +7861,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaMaxW()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.aaMaxW()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.avgSwingAngle()`
 
@@ -7873,7 +7873,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.balancing.BalancingAgentsOutcome">BalancingAgentsOutcome</abbr>&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.avgSwingAngle()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.avgSwingAngle()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.avgSwingAngleWithMalus()`
 
@@ -7886,7 +7886,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.balancing.BalancingAgentsOutcome">BalancingAgentsOutcome</abbr>&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.avgSwingAngleWithMalus()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.avgSwingAngleWithMalus()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.faAvgArea()`
 
@@ -7898,7 +7898,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faAvgArea()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faAvgArea()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.faAvgBBMinY()`
 
@@ -7910,7 +7910,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faAvgBBMinY()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faAvgBBMinY()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.faAvgPower()`
 
@@ -7922,7 +7922,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.2f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faAvgPower()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faAvgPower()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.faAvgTerrainHeight()`
 
@@ -7934,7 +7934,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faAvgTerrainHeight()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faAvgTerrainHeight()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.faAvgY()`
 
@@ -7946,7 +7946,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faAvgY()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faAvgY()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.faMaxBBMinY()`
 
@@ -7958,7 +7958,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faMaxBBMinY()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faMaxBBMinY()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.faMaxMaxRelJumpH()`
 
@@ -7970,7 +7970,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faMaxMaxRelJumpH()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faMaxMaxRelJumpH()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.faMaxY()`
 
@@ -7982,7 +7982,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faMaxY()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faMaxY()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.faXDistance()`
 
@@ -7994,7 +7994,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faXDistance()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faXDistance()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.faXVelocity()`
 
@@ -8006,7 +8006,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.AgentsOutcome">AgentsOutcome</abbr>&lt;?&gt;&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faXVelocity()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.faXVelocity()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.scoreSumoAgent1()`
 
@@ -8018,7 +8018,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.sumo.SumoAgentsOutcome">SumoAgentsOutcome</abbr>&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.scoreSumoAgent1()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.scoreSumoAgent1()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.scoreSumoAgent2()`
 
@@ -8030,7 +8030,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.sumo.SumoAgentsOutcome">SumoAgentsOutcome</abbr>&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.scoreSumoAgent2()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.scoreSumoAgent2()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.sumoShiftedScoreDifference1()`
 
@@ -8042,7 +8042,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.sumo.SumoAgentsOutcome">SumoAgentsOutcome</abbr>&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.sumoShiftedScoreDifference1()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.sumoShiftedScoreDifference1()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.function.outcome.sumoShiftedScoreDifference2()`
 
@@ -8054,7 +8054,7 @@ Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <
 | `of` | npm | `f.identity()` | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="io.github.ericmedvet.mrsim2d.core.tasks.sumo.SumoAgentsOutcome">SumoAgentsOutcome</abbr>&gt;</code> |
 | `format` | s | `%.1f` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.sumoShiftedScoreDifference2()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, <abbr title="java.lang.Double">Double</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.OutcomeFunctions.sumoShiftedScoreDifference2()` by robotevo2d-main:1.6.2
 
 ## Package `sim.sensors`
 
@@ -8064,19 +8064,19 @@ Aliases: `s.s`, `s.sensors`, `sim.s`, `sim.sensors`
 
 `s.s.a()`
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.a()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.a()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.sensors.ar()`
 
 `s.s.ar()`
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.ar()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.ar()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.sensors.c()`
 
 `s.s.c()`
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.c()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.c()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.sensors.d()`
 
@@ -8087,13 +8087,13 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</ab
 | `a` | d | `0.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `r` | d | `1.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.d()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.d()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.sensors.ja()`
 
 `s.s.ja()`
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.RotationalJoint">RotationalJoint</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.ja()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.RotationalJoint">RotationalJoint</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.ja()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.sensors.rv()`
 
@@ -8103,7 +8103,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</ab
 | --- | --- | --- | --- |
 | `a` | d | `0.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.rv()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.rv()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.sensors.sa()`
 
@@ -8113,7 +8113,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</ab
 | --- | --- | --- | --- |
 | `s` | e |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel$Side">Voxel$Side</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel">Voxel</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.sa()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel">Voxel</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.sa()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.sensors.sc()`
 
@@ -8123,7 +8123,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</ab
 | --- | --- | --- | --- |
 | `s` | e |  | <code><abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel$Side">Voxel$Side</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel">Voxel</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.sc()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Voxel">Voxel</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.sc()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.sensors.sin()`
 
@@ -8134,7 +8134,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</ab
 | `f` | d | `1.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `p` | d | `0.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.sin()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.sin()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.sensors.v()`
 
@@ -8144,7 +8144,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</ab
 | --- | --- | --- | --- |
 | `a` | d | `0.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.v()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.Sensor">Sensor</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.bodies.Body">Body</abbr>&gt;</code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Sensors.v()` by robotevo2d-main:1.6.2
 
 ## Package `sim.task`
 
@@ -8163,7 +8163,7 @@ Aliases: `s.task`, `sim.task`
 | `initialXGap` | d | `0.0` | <code>double</code> |
 | `initialYGap` | d | `0.1` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.balancing.Balancing">Balancing</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.balancing()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.balancing.Balancing">Balancing</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.balancing()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.task.fallPiling()`
 
@@ -8181,7 +8181,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.balancing.Ba
 | `yGapRatio` | d | `1.0` | <code>double</code> |
 | `xGap` | d | `10.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.piling.FallPiling">FallPiling</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.fallPiling()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.piling.FallPiling">FallPiling</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.fallPiling()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.task.jumping()`
 
@@ -8192,7 +8192,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.piling.FallP
 | `name` | s | `jumping` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `initialYGap` | d | `0.1` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.jumping.Jumping">Jumping</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.jumping()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.jumping.Jumping">Jumping</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.jumping()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.task.locomotion()`
 
@@ -8206,7 +8206,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.jumping.Jump
 | `initialXGap` | d | `1.0` | <code>double</code> |
 | `initialYGap` | d | `0.1` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.locomotion.Locomotion">Locomotion</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.locomotion()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.locomotion.Locomotion">Locomotion</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.locomotion()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.task.prebuiltIndependentLocomotion()`
 
@@ -8223,7 +8223,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.locomotion.L
 | `yGapRatio` | d | `1.0` | <code>double</code> |
 | `shape` | npm |  | <code><abbr title="io.github.ericmedvet.jnb.datastructure.Grid">Grid</abbr>&lt;<abbr title="io.github.ericmedvet.mrsim2d.core.agents.gridvsr.GridBody$VoxelType">GridBody$VoxelType</abbr>&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.locomotion.PrebuiltIndependentLocomotion">PrebuiltIndependentLocomotion</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.prebuiltIndependentLocomotion()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.locomotion.PrebuiltIndependentLocomotion">PrebuiltIndependentLocomotion</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.prebuiltIndependentLocomotion()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.task.standPiling()`
 
@@ -8239,7 +8239,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.locomotion.P
 | `firstXGap` | d | `10.0` | <code>double</code> |
 | `initialYGap` | d | `0.1` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.piling.StandPiling">StandPiling</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.standPiling()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.piling.StandPiling">StandPiling</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.standPiling()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.task.sumo()`
 
@@ -8249,7 +8249,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.piling.Stand
 | --- | --- | --- | --- |
 | `name` | s | `sumo` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.sumo.Sumo">Sumo</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.sumo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.sumo.Sumo">Sumo</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.sumo()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.task.sumoCup()`
 
@@ -8259,7 +8259,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.sumo.Sumo">S
 | --- | --- | --- | --- |
 | `name` | s | `sumoCup` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.sumo.SumoCup">SumoCup</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.sumoCup()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.tasks.sumo.SumoCup">SumoCup</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Tasks.sumoCup()` by robotevo2d-main:1.6.2
 
 ## Package `sim.terrain`
 
@@ -8278,7 +8278,7 @@ Aliases: `s.t`, `s.terrain`, `sim.t`, `sim.terrain`
 | `borderH` | d | `100.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `a` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Terrains.downhill()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Terrains.downhill()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.terrain.flat()`
 
@@ -8292,7 +8292,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">
 | `borderW` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `borderH` | d | `100.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Terrains.flat()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Terrains.flat()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.terrain.hilly()`
 
@@ -8309,7 +8309,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">
 | `chunkH` | d | `0.75` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `seed` | i | `1` | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Terrains.hilly()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Terrains.hilly()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.terrain.holed()`
 
@@ -8326,7 +8326,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">
 | `borderW` | d | `10.0` | <code>double</code> |
 | `borderH` | d | `100.0` | <code>double</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Terrains.holed()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Terrains.holed()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.terrain.steppy()`
 
@@ -8343,7 +8343,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">
 | `chunkH` | d | `0.75` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `seed` | i | `1` | <code><abbr title="java.lang.Integer">Integer</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Terrains.steppy()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Terrains.steppy()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.terrain.sumoArena()`
 
@@ -8359,7 +8359,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">
 | `flatW` | d | `20.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `flatH` | d | `15.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Terrains.sumoArena()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Terrains.sumoArena()` by robotevo2d-main:1.6.2
 
 ### Builder `sim.terrain.uphill()`
 
@@ -8374,7 +8374,7 @@ Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">
 | `borderH` | d | `100.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 | `a` | d | `10.0` | <code><abbr title="java.lang.Double">Double</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Terrains.uphill()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.mrsim2d.core.geometry.Terrain">Terrain</abbr></code>; built from `io.github.ericmedvet.mrsim2d.buildable.builders.Terrains.uphill()` by robotevo2d-main:1.6.2
 
 ## Package `viz.drawer`
 
@@ -8389,7 +8389,7 @@ Aliases: `viz.d`, `viz.drawer`
 | `drawer` | npm |  | <code><abbr title="io.github.ericmedvet.jviz.core.drawer.Drawer">Drawer</abbr>&lt;E&gt;</code> |
 | `f` | npm |  | <code><abbr title="java.util.function.Function">Function</abbr>&lt;X, E&gt;</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.drawer.Drawer">Drawer</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Drawers.composition()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.drawer.Drawer">Drawer</abbr>&lt;X&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Drawers.composition()` by robotevo2d-main:1.6.2
 
 ### Builder `viz.drawer.multi()`
 
@@ -8400,7 +8400,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.drawer.Drawer">Drawer
 | `drawer` | npm |  | <code><abbr title="io.github.ericmedvet.jviz.core.drawer.Drawer">Drawer</abbr>&lt;E&gt;</code> |
 | `arrangement` | e | `HORIZONTAL` | <code><abbr title="io.github.ericmedvet.jviz.core.drawer.Drawer$Arrangement">Drawer$Arrangement</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.drawer.Drawer">Drawer</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;E&gt;&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Drawers.multi()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.drawer.Drawer">Drawer</abbr>&lt;<abbr title="java.util.List">List</abbr>&lt;E&gt;&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Drawers.multi()` by robotevo2d-main:1.6.2
 
 ### Builder `viz.drawer.stacked()`
 
@@ -8411,7 +8411,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.drawer.Drawer">Drawer
 | `drawers` | npm[] | `[]` | <code><abbr title="java.util.List">List</abbr>&lt;? extends <abbr title="io.github.ericmedvet.jviz.core.drawer.Drawer">Drawer</abbr>&lt;? super E&gt;&gt;</code> |
 | `arrangement` | e | `VERTICAL` | <code><abbr title="io.github.ericmedvet.jviz.core.drawer.Drawer$Arrangement">Drawer$Arrangement</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.drawer.Drawer">Drawer</abbr>&lt;E&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Drawers.stacked()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.drawer.Drawer">Drawer</abbr>&lt;E&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Drawers.stacked()` by robotevo2d-main:1.6.2
 
 ## Package `viz.function`
 
@@ -8430,7 +8430,7 @@ Aliases: `viz.f`, `viz.function`
 | `missingDataString` | s | `nan` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `mode` | e | `PAPER_FRIENDLY` | <code><abbr title="io.github.ericmedvet.jviz.core.plot.csv.Configuration$Mode">Configuration$Mode</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Functions.csvPlotter()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Functions.csvPlotter()` by robotevo2d-main:1.6.2
 
 ### Builder `viz.function.imagePlotter()`
 
@@ -8445,7 +8445,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `secondary` | b | `false` | <code>boolean</code> |
 | `type` | s | `png` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Object">Object</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Functions.imagePlotter()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Object">Object</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Functions.imagePlotter()` by robotevo2d-main:1.6.2
 
 ### Builder `viz.function.toImage()`
 
@@ -8459,7 +8459,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `h` | i | `-1` | <code>int</code> |
 | `type` | s | `png` | <code><abbr title="java.lang.String">String</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Object">Object</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Functions.toImage()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Object">Object</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Functions.toImage()` by robotevo2d-main:1.6.2
 
 ### Builder `viz.function.toImagesVideo()`
 
@@ -8474,7 +8474,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `frameRate` | d | `10.0` | <code>double</code> |
 | `encoder` | e | `DEFAULT` | <code><abbr title="io.github.ericmedvet.jviz.core.util.VideoUtils$EncoderFacility">VideoUtils$EncoderFacility</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.drawer.Video">Video</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Functions.toImagesVideo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.drawer.Video">Video</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Functions.toImagesVideo()` by robotevo2d-main:1.6.2
 
 ### Builder `viz.function.toMultiImage()`
 
@@ -8489,7 +8489,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `type` | s | `png` | <code><abbr title="java.lang.String">String</abbr></code> |
 | `arrangement` | e | `HORIZONTAL` | <code><abbr title="io.github.ericmedvet.jviz.core.drawer.Drawer$Arrangement">Drawer$Arrangement</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Object">Object</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Functions.toMultiImage()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="java.lang.Object">Object</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Functions.toMultiImage()` by robotevo2d-main:1.6.2
 
 ### Builder `viz.function.toVideo()`
 
@@ -8503,7 +8503,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `h` | i | `-1` | <code>int</code> |
 | `encoder` | e | `DEFAULT` | <code><abbr title="io.github.ericmedvet.jviz.core.util.VideoUtils$EncoderFacility">VideoUtils$EncoderFacility</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.drawer.Video">Video</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Functions.toVideo()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.drawer.Video">Video</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Functions.toVideo()` by robotevo2d-main:1.6.2
 
 ### Builder `viz.function.videoPlotter()`
 
@@ -8519,7 +8519,7 @@ Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction
 | `configuration` | npm | `viz.plot.configuration.image()` | <code><abbr title="io.github.ericmedvet.jviz.core.plot.image.Configuration">Configuration</abbr></code> |
 | `secondary` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.drawer.Video">Video</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Functions.videoPlotter()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jnb.datastructure.NamedFunction">NamedFunction</abbr>&lt;X, <abbr title="io.github.ericmedvet.jviz.core.drawer.Video">Video</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.Functions.videoPlotter()` by robotevo2d-main:1.6.2
 
 ## Package `viz.plot.configuration`
 
@@ -8546,7 +8546,7 @@ Aliases: `viz.plot.c`, `viz.plot.conf`, `viz.plot.configuration`
 | `marker` | e | `CIRCLE` | <code><abbr title="io.github.ericmedvet.jviz.core.plot.image.XYPlotDrawer$Marker">XYPlotDrawer$Marker</abbr></code> |
 | `debug` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.image.Configuration">Configuration</abbr></code>; built from `io.github.ericmedvet.jviz.buildable.builders.PlotConfigurations.image()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.image.Configuration">Configuration</abbr></code>; built from `io.github.ericmedvet.jviz.buildable.builders.PlotConfigurations.image()` by robotevo2d-main:1.6.2
 
 ## Package `viz.plot.multi`
 
@@ -8569,7 +8569,7 @@ Aliases: `viz.plot.m`, `viz.plot.multi`
 | `yRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `limitOneYForK` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.ScatterMKPAF">ScatterMKPAF</abbr>&lt;E, K, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.scatter()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.ScatterMKPAF">ScatterMKPAF</abbr>&lt;E, K, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.scatter()` by robotevo2d-main:1.6.2
 
 ### Builder `viz.plot.multi.xy()`
 
@@ -8590,7 +8590,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Scat
 | `limitOneYForK` | b | `true` | <code>boolean</code> |
 | `useKForX` | b | `false` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.AggregatedXYDataSeriesMKPAF">AggregatedXYDataSeriesMKPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.xy()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.AggregatedXYDataSeriesMKPAF">AggregatedXYDataSeriesMKPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.xy()` by robotevo2d-main:1.6.2
 
 ### Builder `viz.plot.multi.yBoxplot()`
 
@@ -8607,7 +8607,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Aggr
 | `yRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `limitOneYForK` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.DistributionMKPAF">DistributionMKPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.yBoxplot()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.DistributionMKPAF">DistributionMKPAF</abbr>&lt;E, R, <abbr title="java.lang.String">String</abbr>, X&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.MultiPlots.yBoxplot()` by robotevo2d-main:1.6.2
 
 ## Package `viz.plot.single`
 
@@ -8626,7 +8626,7 @@ Aliases: `viz.plot.s`, `viz.plot.single`
 | `condition` | npm | `predicate.ltEq(t = 1)` | <code><abbr title="java.util.function.Predicate">Predicate</abbr>&lt;X&gt;</code> |
 | `unique` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.VectorialFieldSEPAF">VectorialFieldSEPAF</abbr>&lt;E, K, X, F&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.field()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.VectorialFieldSEPAF">VectorialFieldSEPAF</abbr>&lt;E, K, X, F&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.field()` by robotevo2d-main:1.6.2
 
 ### Builder `viz.plot.single.grid()`
 
@@ -8642,7 +8642,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Vect
 | `valueRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `unique` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.UnivariateGridSEPAF">UnivariateGridSEPAF</abbr>&lt;E, K, X, G&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.grid()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.UnivariateGridSEPAF">UnivariateGridSEPAF</abbr>&lt;E, K, X, G&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.grid()` by robotevo2d-main:1.6.2
 
 ### Builder `viz.plot.single.heat()`
 
@@ -8658,7 +8658,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Univ
 | `valueRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `unique` | b | `true` | <code>boolean</code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.HeatPolyMapSEPAF">HeatPolyMapSEPAF</abbr>&lt;E, K, X, V&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.heat()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.HeatPolyMapSEPAF">HeatPolyMapSEPAF</abbr>&lt;E, K, X, V&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.heat()` by robotevo2d-main:1.6.2
 
 ### Builder `viz.plot.single.xyes()`
 
@@ -8676,7 +8676,7 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.Heat
 | `xRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `yRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDataSeriesSEPAF">XYDataSeriesSEPAF</abbr>&lt;E, K, X, P&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.xyes()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDataSeriesSEPAF">XYDataSeriesSEPAF</abbr>&lt;E, K, X, P&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.xyes()` by robotevo2d-main:1.6.2
 
 ### Builder `viz.plot.single.xyrs()`
 
@@ -8690,5 +8690,5 @@ Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDa
 | `xRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 | `yRange` | npm | `m.range(max = Infinity; min = -Infinity)` | <code><abbr title="io.github.ericmedvet.jnb.datastructure.DoubleRange">DoubleRange</abbr></code> |
 
-Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDataSeriesSRPAF">XYDataSeriesSRPAF</abbr>&lt;E, K&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.xyrs()` by robotevo2d-main:1.6.2-SNAPSHOT
+Produces <code><abbr title="io.github.ericmedvet.jviz.core.plot.accumulator.XYDataSeriesSRPAF">XYDataSeriesSRPAF</abbr>&lt;E, K&gt;</code>; built from `io.github.ericmedvet.jviz.buildable.builders.SinglePlots.xyrs()` by robotevo2d-main:1.6.2
 
