@@ -72,7 +72,6 @@ public class PlayConsumers {
     }
   }
 
-  @SuppressWarnings("unused")
   public static ProducingConsumer frames(
       @Param("title") String title,
       @Param(value = "drawer", dNPM = "sim.drawer()") Function<String, Drawer> drawer,
@@ -107,7 +106,6 @@ public class PlayConsumers {
     });
   }
 
-  @SuppressWarnings("unused")
   public static ProducingConsumer rtGUI(
       @Param("title") String title,
       @Param(value = "drawer", dNPM = "sim.drawer()") Function<String, Drawer> drawer,

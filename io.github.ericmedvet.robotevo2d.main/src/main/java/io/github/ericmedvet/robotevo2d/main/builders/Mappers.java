@@ -68,7 +68,6 @@ public class Mappers {
     return i;
   }
 
-  @SuppressWarnings("unused")
   @Cacheable
   public static <X> InvertibleMapper<X, Supplier<DistributedNumGridVSR>> bodyBrainHomoDistributedVsr(
       @Param(value = "name", iS = "pairToBodyBrainHomoDistributedVsr[{w}x{h}]") String name,
@@ -169,7 +168,6 @@ public class Mappers {
     }
   }
 
-  @SuppressWarnings("unused")
   @Cacheable
   public static <X> InvertibleMapper<X, Supplier<ReactiveGridVSR>> sGridToReactiveGridVsr(
       @Param(value = "name", iS = "sGridToReactiveGridVsr") String name,
@@ -211,7 +209,6 @@ public class Mappers {
     );
   }
 
-  @SuppressWarnings("unused")
   @Cacheable
   public static <X, T extends NumMultiBrained> InvertibleMapper<X, Supplier<T>> dsToNpHeteroBrains(
       @Param(value = "name", iS = "dsToHeteroBrains") String name,
@@ -271,7 +268,6 @@ public class Mappers {
     );
   }
 
-  @SuppressWarnings("unused")
   @Cacheable
   public static <X, T extends NumMultiBrained> InvertibleMapper<X, Supplier<T>> dsToNpHomoBrains(
       @Param(value = "name", iS = "dsToHomoBrains") String name,
@@ -323,7 +319,6 @@ public class Mappers {
     );
   }
 
-  @SuppressWarnings("unused")
   @Cacheable
   public static <X> InvertibleMapper<X, Supplier<ReactiveGridVSR>> isToReactiveGridVsr(
       @Param(value = "name", iS = "isToReactiveGridVsr[{w}x{h}]") String name,
@@ -380,7 +375,6 @@ public class Mappers {
     );
   }
 
-  @SuppressWarnings("unused")
   @Cacheable
   public static <X> InvertibleMapper<X, Supplier<DistributedNumGridVSR>> ndsToFixedBodyHomoDistributedVsr(
       @Param(value = "name", iS = "ndsToDistributedVsr[n={nOfSignals}]") String name,
@@ -426,7 +420,6 @@ public class Mappers {
     );
   }
 
-  @SuppressWarnings("unused")
   @Cacheable
   public static <X> InvertibleMapper<X, Supplier<ReactiveGridVSR>> nmrfToReactiveGridVsr(
       @Param(value = "name", iS = "nmrfToReactiveVsr[{w}x{h}]") String name,

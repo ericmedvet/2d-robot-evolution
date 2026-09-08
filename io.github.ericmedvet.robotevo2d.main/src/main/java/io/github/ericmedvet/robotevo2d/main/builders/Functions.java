@@ -32,7 +32,6 @@ public class Functions {
   private Functions() {
   }
 
-  @SuppressWarnings("unused")
   @Cacheable
   public static <X> FormattedNamedFunction<X, Boolean> nonEmptyVoxel(
       @Param(value = "of", dNPM = "f.identity()") Function<X, GridBody.Element> beforeF,
